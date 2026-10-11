@@ -1,0 +1,40 @@
+import {test,expect} from '@playwright/test';
+test('published routes, concierge controls and free audit download survive recovery',async({page})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.emulateMedia({reducedMotion:'reduce'});
+ await page.route('https://www.googletagmanager.com/**',r=>r.fulfill({body:''}));
+ await page.route('**/api/concierge/session',r=>r.fulfill({json:{leadConfigured:false}}));
+ await page.route('**/api/concierge/chat',r=>r.fulfill({contentType:'text/event-stream',body:'event: delta\ndata: {"text":"Test odgovora"}\n\nevent: done\ndata: {}\n\n'}));
+ await page.route('**/api/concierge/audit',r=>r.fulfill({contentType:'text/event-stream',body:'event: result\ndata: '+JSON.stringify({url:'https://example.com/',finalUrl:'https://example.com/',checkedAt:new Date().toISOString(),checks:[{id:'title',title:'Naslov',status:'found',severity:'good',weight:1,category:'Tehnička osnova',evidence:'Naslov postoji.',recommendation:'',url:'https://example.com/'}],limitations:['Provjeren javni HTML.']})+'\n\n'}));
+ await page.goto('/');
+ await expect(page.locator('.brand').first()).toHaveAttribute('href','/');
+ await expect(page.locator('.hero-actions [data-tour-start]')).toBeVisible();
+ await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href','https://www.digital-x-marketing.com/');
+ await page.locator('.desktop-nav a[href="/usluge/"]').click();await expect(page).toHaveURL(/\/usluge\/$/);
+ await page.locator('.brand').first().click();await expect(page).toHaveURL(/\/$/);await expect(page.locator('body')).toHaveAttribute('data-page','home');
+ expect(await page.locator('#concierge-gtm').count()).toBe(0);
+ await page.locator('[data-text]').first().click();await expect(page.locator('#conversation')).toBeVisible();
+ await page.locator('#close-conversation').click();
+ await page.locator('[data-audit]').first().click();
+ await page.getByLabel('Vaša web stranica',{exact:true}).fill('example.com');
+ await page.getByRole('button',{name:'Nastavi',exact:true}).click();
+ await page.getByLabel('U kojoj djelatnosti poslujete?').fill('Usluge');await page.getByRole('button',{name:'Nastavi',exact:true}).click();
+ await page.getByLabel('Koje tržište pokrivate?').fill('Sarajevo');await page.getByRole('button',{name:'Nastavi',exact:true}).click();
+ await page.getByRole('button',{name:'Pokreni provjeru',exact:true}).click();
+ await expect(page.locator('.audit-report')).toBeVisible();await expect(page.locator('.audit-followup')).toHaveCount(0);
+ const download=page.waitForEvent('download');await page.getByRole('button',{name:'Preuzmi besplatan izvještaj',exact:true}).click();expect((await download).suggestedFilename()).toBe('digital-x-izvjestaj.html');
+ await page.keyboard.press('Escape');
+ for(const [path,id] of [['/usluge/','services'],['/ai-concierge-preview/','concierge'],['/projekti/eynna-hair-dizajner-perika/','designer']]){
+  await page.goto(path);await expect(page.locator('body')).toHaveAttribute('data-page',id);await expect(page.locator('.brand').first()).toHaveAttribute('href','/');
+  await expect(page.locator('meta[name=robots]')).not.toHaveAttribute('content',/noindex/);
+  await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href','https://www.digital-x-marketing.com'+path);
+ }
+ await expect(page.locator('a[href*="eynna-hair.ba"]').first()).toBeVisible();
+ await page.setViewportSize({width:390,height:844});await page.goto('/');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
+ await page.screenshot({path:'concierge/.reports/recovery-mobile.png'});
+ await page.locator('#cookie-preferences').click();await page.locator('[data-consent="granted"]').click();
+ await expect(page.locator('#concierge-gtm')).toHaveCount(1);await page.locator('[data-audit]').first().click();
+ expect(await page.evaluate(()=>window.dataLayer?.some(e=>'event' in e&&e.event==='cta_click'&&e.interaction==='concierge_audit_open'))).toBe(true);
+ expect(errors).toEqual([]);
+});

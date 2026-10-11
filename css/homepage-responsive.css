@@ -1,0 +1,303 @@
+/* Homepage-only responsive refinements. Kept separate from the restored,
+   compiled cinematic stylesheet so the reference bundle remains intact. */
+:root {
+  --homepage-card-gap: clamp(.75rem, 1.6vw, 1.25rem);
+  --homepage-grid-offset: clamp(2rem, 4vw, 3.5rem);
+  --homepage-section-space: clamp(4.75rem, 8vw, 7rem);
+}
+
+.section {
+  padding-block: var(--homepage-section-space);
+}
+
+.disc,
+.showcase,
+.shop,
+.pricing__grid {
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--homepage-card-gap);
+  background: transparent;
+  border: 0;
+}
+
+.disc,
+.showcase,
+.shop {
+  margin-top: var(--homepage-grid-offset);
+}
+
+.pricing__group {
+  margin-top: var(--homepage-grid-offset);
+}
+
+.disc__item,
+.showcase__item,
+.shop__item,
+.price {
+  min-width: 0;
+  border: 1px solid var(--edge-1);
+}
+
+.disc__item,
+.price,
+.showcase__copy,
+.shop__copy {
+  overflow-wrap: anywhere;
+}
+
+.audit > *,
+.showcase__link > * {
+  min-width: 0;
+}
+
+/* Keep the generated launch artwork fully visible in the cinematic 16:7 frame. */
+.offer__image {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Make the new cinematic deliverable impossible to miss beneath the offer
+   headline while preserving the restrained Digital X interface language. */
+.offer__feature {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: clamp(.9rem, 1.8vw, 1.25rem);
+  padding: .58rem .8rem .52rem;
+  border: 1px solid rgba(101, 220, 236, .5);
+  background: linear-gradient(105deg, rgba(101, 220, 236, .16), rgba(101, 220, 236, .035));
+  box-shadow: 0 0 26px rgba(101, 220, 236, .09), inset 0 0 18px rgba(101, 220, 236, .035);
+  color: var(--cyan);
+  font: 700 clamp(.68rem, 1vw, .78rem)/1 var(--mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.offer__feature span {
+  margin-right: .55rem;
+  font-size: .8em;
+}
+
+.offer__feature + .offer__body {
+  margin-top: clamp(1rem, 1.8vw, 1.4rem);
+}
+
+.audit__cta {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  overflow: hidden;
+  border: 1px solid var(--edge-1);
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+}
+
+.audit__cta::before {
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--spectral);
+  content: "";
+}
+
+.audit__cta h3 {
+  max-width: 18ch;
+  font-size: clamp(1.5rem, 3vw, 2.35rem);
+  font-variation-settings: "wdth" 92, "wght" 600;
+  letter-spacing: -.025em;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+
+.audit__cta-copy {
+  max-width: 54ch;
+  color: var(--muted);
+}
+
+a[href="https://audit.digital-x-marketing.com/"] {
+  min-height: 44px;
+}
+
+.nav__links a[href="https://audit.digital-x-marketing.com/"],
+.nav__sheet a[href="https://audit.digital-x-marketing.com/"],
+.foot__col a[href="https://audit.digital-x-marketing.com/"] {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+}
+
+a[href="https://audit.digital-x-marketing.com/"]:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+/* Compact, always-visible locale navigation. It sits between the primary
+   links and CTA on wide screens, and remains beside the menu toggle on mobile. */
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 0;
+  margin-left: .15rem;
+  padding: .2rem;
+  border: 1px solid var(--edge-1);
+  border-radius: 999px;
+  background: rgba(7, 7, 8, .58);
+  backdrop-filter: blur(14px);
+}
+
+.language-switcher a {
+  display: grid;
+  min-width: 2rem;
+  min-height: 2rem;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--muted);
+  font: 500 .62rem/1 var(--mono);
+  letter-spacing: .08em;
+  transition: color .2s var(--ease), background .2s var(--ease);
+}
+
+.language-switcher a:hover {
+  color: var(--ivory);
+}
+
+.language-switcher a[aria-current="page"] {
+  background: var(--cyan);
+  color: var(--ink);
+}
+
+.language-switcher a:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.language-switcher--sheet {
+  display: none;
+}
+
+html.film-running .language-switcher {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (max-width: 1120px) {
+  .nav__links {
+    gap: .75rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .nav > .language-switcher {
+    margin-left: auto;
+  }
+
+  .nav__toggle {
+    margin-left: 0;
+  }
+
+  .nav__sheet > .language-switcher--sheet {
+    display: inline-flex;
+    margin-top: .5rem;
+  }
+
+  .nav__sheet > .language-switcher--sheet a {
+    min-width: 2.6rem;
+    min-height: 2.6rem;
+    font-size: .72rem;
+    letter-spacing: .08em;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav {
+    gap: .55rem;
+  }
+
+  .nav > .language-switcher a {
+    min-width: 1.8rem;
+  }
+}
+
+@media (min-width: 680px) {
+  .showcase,
+  .shop,
+  .pricing__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 720px) {
+  .disc {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1080px) {
+  .disc,
+  .showcase,
+  .shop {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1080px) and (max-width: 1199px) {
+  .pricing__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .pricing__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pricing__group:first-of-type .pricing__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --homepage-card-gap: .75rem;
+    --homepage-grid-offset: 2rem;
+    --homepage-section-space: 4rem;
+  }
+
+  .disc__item,
+  .price {
+    padding: 1.35rem 1.25rem;
+  }
+
+  .audit__cta {
+    padding: 1.35rem 1.25rem;
+  }
+}
+
+/* Showcase card titles must break between words, never mid-word.
+   `.showcase__copy` uses `overflow-wrap: anywhere` for long body copy,
+   but that also let short names like "Cinematic Hotel" split as
+   "Cinemat / ic Hotel". Restrict names to word-level wrapping and keep
+   the featured (first) title sized so whole words fit its column. */
+.showcase__name {
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
+  text-wrap: balance;
+}
+
+.showcase__item:first-child .showcase__name {
+  font-size: clamp(1.9rem, 3.6vw, 4rem);
+  line-height: 1.04;
+}
+
+@media (max-width: 680px) {
+  .showcase__item:first-child .showcase__name {
+    font-size: clamp(1.75rem, 8vw, 2.4rem);
+  }
+}

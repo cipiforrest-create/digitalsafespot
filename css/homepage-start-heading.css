@@ -1,0 +1,41 @@
+/* The restored cinematic keeps its original end-card heading. This visual
+   duplicate adds the same statement only to the opening frame. */
+.film__start-heading {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  top: 50%;
+  width: min(100% - var(--pad) * 2, var(--wrap));
+  margin-inline: auto;
+  color: var(--ivory);
+  font-size: var(--t-display);
+  font-variation-settings: "wdth" 82, "wght" 650;
+  letter-spacing: -.055em;
+  line-height: .91;
+  pointer-events: none;
+  text-wrap: balance;
+  opacity: 1;
+  transform: translateY(-50%);
+  transition: opacity .45s var(--ease), transform .45s var(--ease);
+}
+
+.film__start-heading span {
+  display: block;
+}
+
+.film.has-moved .film__start-heading,
+.film.is-over .film__start-heading {
+  opacity: 0;
+  transform: translateY(calc(-50% - .7rem));
+}
+
+.film--still .film__start-heading {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film__start-heading {
+    transition: none;
+  }
+}

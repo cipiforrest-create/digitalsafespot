@@ -1,0 +1,166 @@
+/* Live 3D checkpoints layered on the cinema story. Palette sampled from the stop frames:
+   shadow #010204 · mid #39465c · bright #abbee2 · peak #f1f7fc. */
+.world-nodes{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;position:relative;z-index:2}
+.world-node a{display:grid;grid-template-columns:9px auto;column-gap:10px;align-items:center;color:#f1f7fc;text-decoration:none;padding:6px 0}
+.world-node-dot{grid-row:span 2;width:9px;height:9px;border-radius:50%;background:#f1f7fc;box-shadow:0 0 0 3px #abbee21f,0 0 14px 2px #abbee255}
+.world-node strong{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;line-height:1.3}
+.world-node strong+span{font-size:12px;line-height:1.35;color:#abbee2}
+.world-node a:focus-visible{outline:2px solid #f1f7fc;outline-offset:4px;border-radius:4px}
+.converge-triad{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:560px}
+.converge-triad li{border-left:1px solid #39465c;padding-left:12px}
+.converge-triad strong{display:block;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#f1f7fc}
+.converge-triad span{display:block;font-size:12px;line-height:1.4;color:#abbee2;margin-top:4px}
+/* Drag hint: tells visitors the 3D object can be turned; disappears once they have turned it. */
+.world-hint{position:absolute;left:50%;bottom:104px;z-index:2;display:flex;align-items:center;gap:10px;margin:0;padding:8px 14px;transform:translate(-50%,6px);border:1px solid #39465c;border-radius:999px;background:#010204c4;color:#f1f7fc;font-size:10px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;opacity:0;transition:opacity .5s ease,transform .5s ease;pointer-events:none}
+.cinema-story[data-hint=true] .world-hint{opacity:1;transform:translate(-50%,0)}
+.world-hint-icon{position:relative;width:34px;height:12px;border-radius:6px;border:1px solid #abbee2}
+.world-hint-icon i{position:absolute;top:2px;left:3px;width:6px;height:6px;border-radius:50%;background:#f1f7fc;box-shadow:0 0 8px #abbee2;animation:world-hint 1.8s ease-in-out infinite alternate}
+@keyframes world-hint{to{transform:translateX(18px)}}
+.world-hint-touch{display:none}
+@media(pointer:coarse){.world-hint-fine{display:none}.world-hint-touch{display:inline}}
+.world-loader{position:absolute;inset:0;z-index:7;display:grid;place-content:center;justify-items:center;gap:14px;pointer-events:none;color:#abbee2;transition:opacity .45s ease}
+.world-loader[data-done]{opacity:0}
+.world-loader p{margin:0;font-size:11px;letter-spacing:.32em;color:#f1f7fc}
+.world-loader-mark{transform:scale(.9)}
+.world-loader-bar{width:180px;height:1px;background:#39465c}
+.world-loader-bar i{display:block;height:100%;background:#f1f7fc;transform:scaleX(var(--load,0));transform-origin:left;transition:transform .2s ease}
+.world-loader [data-load-value]{font-size:10px;letter-spacing:.2em;color:#8391a8}
+
+@media(prefers-reduced-motion:no-preference){
+ .cinema-screen .world-canvas{position:absolute;inset:0;opacity:0;pointer-events:none;transition:none}
+ /* The live world owns motion at the checkpoints: the CSS drift would misregister film and WebGL layers. */
+ .cinema-story[data-world=on] .cinema-screen canvas{animation:none!important}
+ .cinema-story[data-world=on][data-checkpoint]:not([data-checkpoint="-1"]) .cinema-stage{touch-action:pan-y pinch-zoom}
+ /* Interactive checkpoint cue on fine pointers: the stage reads as something to turn, never as a scroll trap. */
+ @media(pointer:fine){.cinema-story[data-world=on][data-phase$="_EXPLORE"] .cinema-stage{cursor:grab}.cinema-story[data-world=on][data-phase$="_EXPLORE"] .cinema-stage:active{cursor:grabbing}}
+ .cinema-story[data-enhanced]:not([data-ready]) .cinema-static-art{opacity:0}
+ /* Opening typography follows Video 1: title, tagline, intro, values; intro clears for the ORB handoff.
+    The concierge controls (actions and panel) are never staged: the assistant works from the first frame. */
+ .cinema-story[data-enhanced] .hero :is(.cinema-tagline,.cinema-intro,.cinema-values){transition:opacity .6s ease,transform .6s ease}
+ .cinema-story[data-reveal="0"] .hero :is(.cinema-tagline,.cinema-intro,.cinema-values),
+ .cinema-story[data-reveal="1"] .hero :is(.cinema-intro,.cinema-values),
+ .cinema-story[data-reveal="2"] .hero .cinema-values,
+ .cinema-story[data-reveal="4"] .hero :is(.cinema-intro,.cinema-values),
+ .cinema-story[data-reveal="hold"] .hero :is(.cinema-intro,.cinema-values){opacity:0;transform:translateY(8px)}
+ .cinema-story[data-enhanced] .world-nodes{opacity:0;visibility:hidden;transition:opacity .5s ease,visibility 0s linear .5s}
+ .cinema-story:is([data-phase=ORB_EXPLORE],[data-phase=X_EXPLORE],[data-phase=ENGINE_EXPLORE]) .world-nodes{opacity:1;visibility:visible;transition:opacity .7s ease .15s,visibility 0s}
+ .cinema-story[data-enhanced] .cinema-converge h2{font-size:clamp(34px,3.6vw,58px)}
+}
+
+/* Desktop and tablet: nodes are placed on their calibrated 3D anchors (--nx/--ny, stage pixels). */
+@media(prefers-reduced-motion:no-preference) and (min-width:721px){
+ .cinema-story[data-enhanced] .world-nodes{position:absolute;inset:0;margin:0;display:block;pointer-events:none;z-index:3}
+ .cinema-story[data-enhanced] .world-node{position:absolute;left:0;top:0;width:0;height:0;transform:translate3d(var(--nx,-999px),var(--ny,-999px),0);transition:opacity .45s ease}
+ /* Every label sits on a small dark plate, so it stays readable over bright glass, beams and floor glow. */
+ .cinema-story[data-enhanced] .world-node a{position:absolute;top:0;pointer-events:auto;width:max-content;max-width:220px;padding:7px 11px;scale:calc(1 - var(--nd,0) * .05);transition:scale .45s ease,opacity .45s ease,border-color .35s ease;text-shadow:0 1px 10px #010204;background:#010204c9;border:1px solid #39465c80;border-radius:7px;backdrop-filter:blur(4px)}
+ .cinema-story[data-enhanced] .world-node[data-active] a{border-color:#abbee2}
+ .cinema-story[data-enhanced] .world-node[data-side=right] a{left:-12px;transform:translateY(-50%)}
+ .cinema-story[data-enhanced] .world-node[data-side=left] a{right:-12px;transform:translateY(-50%);grid-template-columns:auto 9px;text-align:right}
+ .cinema-story[data-enhanced] .world-node[data-side=left] .world-node-dot{grid-column:2;grid-row:1/span 2}
+ .cinema-story[data-enhanced] .world-node[data-side=left] strong,.cinema-story[data-enhanced] .world-node[data-side=left] strong+span{grid-column:1}
+ .cinema-story[data-enhanced] .world-node[data-side=below] a{left:0;transform:translateX(-50%);grid-template-columns:auto;justify-items:center;text-align:center;row-gap:4px}
+ .cinema-story[data-enhanced] .world-node[data-side=below] .world-node-dot{grid-row:auto;width:7px;height:7px}
+ .cinema-story[data-enhanced] .world-node-dot{transition:transform .35s ease,box-shadow .35s ease}
+ .cinema-story[data-enhanced] [data-has-active] .world-node:not([data-active]){opacity:.42}
+ .cinema-story[data-enhanced] .world-node[data-active] a{scale:1.07}
+ .cinema-story[data-enhanced] .world-node[data-active] .world-node-dot{transform:scale(1.5);box-shadow:0 0 0 4px #abbee233,0 0 22px 5px #f1f7fc88}
+ /* Modules and tiles keep only their name until selected, so the engine reads as structure rather than a card grid. */
+ .cinema-story[data-enhanced] .world-system .world-node strong+span{display:none;max-width:190px}
+ .cinema-story[data-enhanced] .world-system .world-node[data-active] strong+span{display:block}
+ .cinema-story[data-enhanced] .world-tile strong{font-size:10px;letter-spacing:.18em}
+ .cinema-story[data-enhanced] .world-module strong{font-size:10px;color:#abbee2}
+ .cinema-story[data-enhanced] .world-module[data-active] strong{color:#f1f7fc}
+ /* The hero column is narrow from the first frame (never reflowed at the handoff) so the ORB nodes own the space around the sphere. */
+ .cinema-story[data-enhanced] .hero .cinema-copy{width:30%}
+ .cinema-story[data-enhanced] .cinema-systems .cinema-system-heading h2{font-size:clamp(26px,2.6vw,40px);margin:8px 0 4px}
+ .cinema-story[data-enhanced] .cinema-systems .cinema-system-signoff{text-align:left;font-size:11px;letter-spacing:.2em;margin:0}
+ .cinema-story[data-enhanced] .cinema-systems .cinema-system-signoff span{display:inline;margin:0 0 0 10px;letter-spacing:.06em}
+ .cinema-story[data-enhanced] .cinema-converge .cinema-copy{max-width:440px;width:31%}
+ /* The X statement sits over live light columns: same quiet plate as the labels. */
+ .cinema-story[data-enhanced] .cinema-statement{padding:10px 14px 10px 18px;background:#010204b3;border-radius:0 7px 7px 0;backdrop-filter:blur(4px)}
+}
+@media(prefers-reduced-motion:no-preference) and (min-width:721px) and (max-width:1100px){
+ .cinema-story[data-enhanced] .world-node a{max-width:170px;padding:4px 6px}
+ .cinema-story[data-enhanced] .world-node strong{font-size:10px}
+ .cinema-story[data-enhanced] .world-node strong+span{font-size:11px}
+ .cinema-story[data-enhanced] .world-module strong{font-size:9px;letter-spacing:.1em}
+ /* Tablet: inactive nodes show only their name, the hero narrows at the ORB, the triad stacks. */
+ .cinema-story[data-enhanced] .world-node strong+span{display:none}
+ .cinema-story[data-enhanced] .world-node[data-active] strong+span{display:block}
+ .cinema-story[data-enhanced] .hero .cinema-copy{width:25%}
+ .cinema-story[data-enhanced] .hero .hero-actions .button{min-width:0}
+ .cinema-story[data-enhanced] .hero .talk-mic{display:none}
+ /* The X copy is proportionally taller on tablets: its intro would meet the foot labels. */
+ .cinema-story[data-enhanced] .cinema-core .cinema-intro{display:none}
+ .cinema-story[data-enhanced] .cinema-assistant-panel{width:24%}
+ .cinema-story[data-enhanced] .cinema-converge .cinema-copy{width:38%}
+ .cinema-story[data-enhanced] .converge-triad{grid-template-columns:1fr;gap:6px;margin-top:14px}
+ .cinema-story[data-enhanced] .converge-triad span{display:inline;margin:0 0 0 8px}
+ .cinema-story[data-enhanced] .converge-triad strong{display:inline}
+}
+
+/* Phones: a different composition. The live world stays in the film band; nodes become a compact chip rail. */
+@media(max-width:720px){
+ .world-nodes{grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}
+ .world-node a{grid-template-columns:7px auto;column-gap:8px;padding:8px;border:1px solid #39465c;border-radius:8px;background:#010204cc;min-height:44px}
+ .world-node-dot{width:7px;height:7px}
+ .world-node strong{font-size:9px;letter-spacing:.12em}
+ .world-node strong+span{font-size:10px}
+ .converge-triad{grid-template-columns:1fr;gap:8px;margin-top:14px}
+}
+@media(max-width:720px) and (prefers-reduced-motion:no-preference){
+ .world-hint{top:12px;bottom:auto;font-size:9px;letter-spacing:.14em;padding:6px 11px}
+ /* Services appear as two-by-two bubbles on the checkpoint's second screen (the Engine: pillars, then modules). */
+ .cinema-story[data-enhanced] .world-nodes{display:none;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 0;padding:0;overflow:visible;opacity:1;visibility:visible;transition:none}
+ .cinema-story[data-enhanced][data-sub=b] .world-nodes,.cinema-story[data-enhanced][data-sub=a] .world-system{display:grid}
+ .cinema-story[data-enhanced] .world-nodes::before{content:attr(data-caption);grid-column:1/-1;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#8391a8}
+ .cinema-story[data-enhanced][data-sub=a] .world-system::before{content:attr(data-caption-a)}
+ .cinema-story[data-enhanced][data-sub=b] .world-system::before{content:attr(data-caption-b)}
+ .cinema-story[data-enhanced][data-sub=a] .world-system .world-module,.cinema-story[data-enhanced][data-sub=b] .world-system .world-tile{display:none}
+ .cinema-story[data-enhanced] .world-node{max-width:none;min-width:0;animation:dx-rise .55s cubic-bezier(.2,.7,.2,1) both}
+ .cinema-story[data-enhanced] .world-node:nth-child(4n+2){animation-delay:.07s}
+ .cinema-story[data-enhanced] .world-node:nth-child(4n+3){animation-delay:.14s}
+ .cinema-story[data-enhanced] .world-node:nth-child(4n){animation-delay:.21s}
+ .cinema-story[data-enhanced] .world-node a{position:relative;height:100%;grid-template-columns:7px minmax(0,1fr);column-gap:9px;row-gap:3px;align-items:start;min-height:62px;padding:11px 24px 11px 11px;border:1px solid #39465c99;border-radius:14px;background:linear-gradient(160deg,#0e1522f2,#03050be0);box-shadow:inset 0 1px 0 #ffffff12,0 8px 22px #00000066;transition:border-color .3s ease,box-shadow .3s ease,background .3s ease}
+ .cinema-story[data-enhanced] .world-node a::after{content:"↗";position:absolute;top:9px;right:10px;font-size:11px;color:#8391a8;transition:color .3s ease}
+ .cinema-story[data-enhanced] .world-node-dot{margin-top:3px;width:7px;height:7px;animation:dx-dot 2.8s ease-in-out infinite}
+ .cinema-story[data-enhanced] .world-node:nth-child(even) .world-node-dot{animation-delay:1.4s}
+ .cinema-story[data-enhanced] .world-node strong{font-size:10px;letter-spacing:.12em}
+ .cinema-story[data-enhanced] .world-node strong+span{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:11px;line-height:1.35;color:#abbee2}
+ .cinema-story[data-enhanced] .world-node[data-active] a{border-color:#abbee2;background:linear-gradient(160deg,#1a2436f5,#050811e8);box-shadow:inset 0 1px 0 #ffffff1f,0 0 22px #abbee22e}
+ .cinema-story[data-enhanced] .world-node[data-active] a::after{color:#f1f7fc}
+ .cinema-story[data-enhanced] .world-system .world-module a{min-height:56px}
+ .cinema-story[data-enhanced] .world-system .world-module strong{font-size:9px}
+ @keyframes dx-dot{50%{box-shadow:0 0 0 5px #abbee214,0 0 16px 3px #abbee277}}
+
+ .cinema-story[data-reveal="4"] .hero .cinema-intro,.cinema-story[data-reveal="hold"] .hero .cinema-intro{opacity:1;transform:none}
+ .cinema-story[data-enhanced] .converge-triad{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
+ .cinema-story[data-enhanced] .converge-triad span{display:none}
+ .cinema-story[data-enhanced] .converge-triad strong{font-size:9px;letter-spacing:.1em}
+}
+@media(prefers-reduced-motion:reduce){
+ .world-canvas,.world-loader{display:none!important}
+}
+
+/* Phone tile labels: pinned under the four glass tiles of stop 3 (both of its screens and the convergence). */
+.world-tags{display:none}
+@media(max-width:720px) and (prefers-reduced-motion:no-preference){
+ .cinema-story[data-enhanced][data-stage="2"][data-holding=true] .world-tags{display:block;position:absolute;inset:0;pointer-events:none;z-index:3}
+ .cinema-story[data-enhanced] .world-tag{position:absolute;left:0;top:0;width:max-content;max-width:27vw;transform:translate3d(var(--nx,-999px),var(--ny,-999px),0) translateX(-50%);pointer-events:auto;display:block;padding:5px 7px;border:1px solid #abbee259;border-radius:8px;background:#010204d9;color:#f1f7fc;text-decoration:none;text-align:center;font-size:8px;line-height:1.25;letter-spacing:.05em;text-transform:uppercase;box-shadow:0 4px 14px #0008,0 0 12px #abbee21a;animation:dx-fade .6s ease both}
+ @keyframes dx-fade{from{opacity:0}}
+ .cinema-story[data-enhanced] .world-tag span{color:#abbee2}
+ .cinema-story[data-enhanced] .world-tag:nth-child(2){animation-delay:.07s}
+ .cinema-story[data-enhanced] .world-tag:nth-child(3){animation-delay:.14s}
+ .cinema-story[data-enhanced] .world-tag:nth-child(4){animation-delay:.21s}
+ .cinema-story[data-enhanced] .world-tag:active{border-color:#f1f7fc;background:#1a2436}
+}
+
+/* The final composition keeps the four service labels visible beside the closing copy. */
+.final-system-labels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;position:absolute;left:37%;right:5%;top:42%;z-index:4}
+.final-system-labels a{background:#010204df;border:1px solid #39465c;border-radius:7px;padding:10px 6px;text-align:center;color:#f1f7fc;font-size:10px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+@media(max-width:720px),(prefers-reduced-motion:reduce){.final-system-labels{position:relative;inset:auto;margin:18px 0;grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* The final Engine scene carries the closing copy; its live nodes (desktop) and tile tags (phones) already label the tiles. */
+@media(prefers-reduced-motion:no-preference){.cinema-story[data-world=on][data-phase=ENGINE_EXPLORE] .final-system-labels{display:none}}
+/* Final Engine scene: the chapter heading fades under the closing copy while its live nodes stay. */
+.cinema-story [data-cinema-state="2"] .cinema-system-heading{opacity:var(--cinema-heading-opacity,1)}

@@ -1,0 +1,399 @@
+/* ===========================================================================
+   DIGITAL X — Award-winning scroll-driven 3D cinematic hero
+   Framework-free. CSS 3D depth planes + scroll/pointer parallax.
+   Progressive enhancement: without JS it degrades to the base .land-hero.
+   Respects prefers-reduced-motion.
+   ===========================================================================*/
+
+/* Stage: establishes 3D perspective for the first hero section only. */
+.cine-hero3d{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:150px 0 80px;
+  overflow:hidden;
+  perspective:1400px;
+  perspective-origin:50% 42%;
+  isolation:isolate;
+}
+/* Fullscreen immersive mode */
+.cine-hero3d--immersive{
+  position:fixed!important;inset:0!important;z-index:9999!important;
+  min-height:100vh;padding:0;margin:0;
+  overflow-y:auto;overflow-x:hidden;
+  background:var(--bg,#05080c);
+}
+.cine-hero3d--immersive .container{
+  max-width:100%;padding:0 5vw;
+}
+.cine-hero3d--immersive .land-flex{
+  flex-direction:column;text-align:center;gap:40px;
+  padding-top:80px;
+}
+.cine-hero3d--immersive .cine-hero3d__copy{max-width:720px;margin:0 auto;}
+.cine-hero3d--immersive .cine-hero3d__stage{
+  width:min(92vw,1200px);margin:0 auto;
+}
+.cine-hero3d--immersive .cine-hero3d__stage,
+.cine-hero3d--immersive .cine-hero3d__copy{
+  transform:none!important;
+  opacity:1!important;
+}
+.cine-hero3d--immersive .cine-hero3d__card img{
+  width:100%;height:auto;border-radius:16px;
+}
+
+/* ---- Cinematic Film Grain Overlay ----*/
+.cine-hero3d__grain{
+  position:absolute;inset:0;z-index:7;pointer-events:none;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+  mix-blend-mode:overlay;
+  animation:grainShift 0.4s steps(3) infinite;
+}
+@keyframes grainShift{
+  0%{transform:translate(0,0)}
+  33%{transform:translate(-2px,1px)}
+  66%{transform:translate(1px,-1px)}
+  100%{transform:translate(-1px,2px)}
+}
+
+/* ---- Volumetric Light Rays ---- */
+.cine-hero3d__rays{
+  position:absolute;inset:-20%;z-index:1;pointer-events:none;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.cine-hero3d__ray{
+  position:absolute;
+  width:2px;
+  background:linear-gradient(180deg,rgba(95,201,255,.0) 0%,rgba(95,201,255,.12) 30%,rgba(217,242,255,.22) 50%,rgba(95,201,255,.08) 70%,transparent 100%);
+  filter:blur(3px);
+  transform-origin:top center;
+  opacity:0;
+  animation:rayFade 5s ease-in-out infinite;
+}
+.cine-hero3d__ray:nth-child(1){left:15%;height:120%;animation-delay:0s;transform:rotate(-12deg)}
+.cine-hero3d__ray:nth-child(2){left:35%;height:130%;animation-delay:1.2s;transform:rotate(-4deg)}
+.cine-hero3d__ray:nth-child(3){left:55%;height:110%;animation-delay:2.5s;transform:rotate(3deg)}
+.cine-hero3d__ray:nth-child(4){left:75%;height:125%;animation-delay:3.8s;transform:rotate(8deg)}
+.cine-hero3d__ray:nth-child(5){left:90%;height:105%;animation-delay:0.6s;transform:rotate(14deg)}
+@keyframes rayFade{
+  0%,100%{opacity:0;filter:blur(3px)}
+  40%{opacity:.6;filter:blur(2px)}
+  60%{opacity:.4;filter:blur(4px)}
+}
+
+/* ---- Anamorphic Lens Flare ---- */
+.cine-hero3d__flare{
+  position:absolute;z-index:6;pointer-events:none;
+  width:clamp(300px,60vw,900px);height:3px;
+  left:50%;top:40%;
+  transform:translate(-50%,-50%);
+  background:linear-gradient(90deg,transparent,rgba(95,201,255,.0) 15%,rgba(95,201,255,.25) 40%,rgba(217,242,255,.5) 50%,rgba(95,201,255,.25) 60%,rgba(95,201,255,.0) 85%,transparent);
+  filter:blur(1px);
+  opacity:0;
+  mix-blend-mode:screen;
+  transition:opacity 1.2s ease;
+}
+.cine-hero3d.cine--scrolled .cine-hero3d__flare{opacity:1}
+
+/* Depth backdrop planes — parallax layers that move at different rates. */
+.cine-hero3d__depth{
+  position:absolute;
+  inset:-8%;
+  z-index:0;
+  pointer-events:none;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.cine-hero3d__plane{
+  position:absolute;
+  inset:0;
+  background-repeat:no-repeat;
+  background-position:center;
+  will-change:transform,opacity;
+}
+/* Far nebula glow */
+.cine-hero3d__plane--far{
+  background:
+    radial-gradient(60% 55% at 22% 30%, rgba(95,201,255,.20), transparent 60%),
+    radial-gradient(50% 50% at 82% 68%, rgba(217,242,255,.10), transparent 62%);
+  filter:blur(14px);
+  transform:translateZ(-620px) scale(1.55);
+  opacity:.9;
+}
+/* Mid grid mesh — subtle perspective floor/ceiling lines */
+.cine-hero3d__plane--grid{
+  background-image:
+    linear-gradient(to right, rgba(95,201,255,.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(95,201,255,.06) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(70% 70% at 50% 45%, #000 30%, transparent 78%);
+  -webkit-mask-image:radial-gradient(70% 70% at 50% 45%, #000 30%, transparent 78%);
+  transform:translateZ(-360px) scale(1.3);
+  opacity:.5;
+}
+
+/* ---- Horizon Glow Floor ---- */
+.cine-hero3d__horizon{
+  position:absolute;
+  bottom:-10%;left:-10%;right:-10%;height:50%;
+  z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 40% at 50% 100%,rgba(95,201,255,.08) 0%,transparent 70%);
+  transform:translateZ(-200px) rotateX(45deg);
+  transform-origin:center bottom;
+  will-change:transform,opacity;
+  opacity:0;
+  transition:opacity 1.6s ease;
+}
+.cine-hero3d.cine--scrolled .cine-hero3d__horizon{opacity:1}
+
+/* Floating particles field */
+.cine-hero3d__particles{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  transform-style:preserve-3d;
+}
+.cine-hero3d__particles i{
+  position:absolute;
+  width:3px;height:3px;border-radius:50%;
+  background:radial-gradient(circle, rgba(217,242,255,.95), rgba(95,201,255,.2) 70%, transparent);
+  box-shadow:0 0 8px rgba(95,201,255,.6);
+  opacity:0;
+  will-change:transform,opacity;
+  font-style:normal;font-size:0;line-height:0;text-indent:-9999px;
+  overflow:hidden;color:transparent;
+}
+/* Glow trail for premium particles */
+.cine-hero3d__particles i::after{
+  content:"";
+  position:absolute;left:50%;top:50%;
+  width:18px;height:18px;border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(95,201,255,.15),transparent 70%);
+  pointer-events:none;
+}
+
+/* Content grid sits above the depth planes but inside 3D space. */
+.cine-hero3d .container{position:relative;z-index:3;transform-style:preserve-3d;}
+.cine-hero3d .land-flex{align-items:center;}
+
+/* Copy column: subtle 3D lift + staggered reveal */
+.cine-hero3d__copy{
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.cine-hero3d__copy .kicker,
+.cine-hero3d__copy h1,
+.cine-hero3d__copy .sec-sub,
+.cine-hero3d__copy .badge-row,
+.cine-hero3d__copy .hero-cta{
+  opacity:0;
+  transform:translateY(26px) translateZ(40px);
+  animation:cineRise .9s cubic-bezier(.22,.61,.36,1) forwards;
+}
+.cine-hero3d__copy .kicker{animation-delay:.15s}
+.cine-hero3d__copy h1{animation-delay:.30s}
+.cine-hero3d__copy .sec-sub{animation-delay:.48s}
+.cine-hero3d__copy .badge-row{animation-delay:.62s}
+.cine-hero3d__copy .hero-cta{animation-delay:.76s}
+@keyframes cineRise{to{opacity:1;transform:none}}
+
+.cine-hero3d h1 .grad-text,
+.cine-hero3d h1 span{will-change:transform}
+
+/* ---- Glowing Title Underline ---- */
+.cine-hero3d__copy h1{position:relative}
+.cine-hero3d__copy h1::after{
+  content:"";display:block;
+  width:0;height:2px;margin-top:12px;
+  background:var(--grad,linear-gradient(90deg,#5fc9ff,#d9f2ff));
+  box-shadow:0 0 18px rgba(95,201,255,.5);
+  border-radius:2px;
+  transition:width 1.2s cubic-bezier(.22,.61,.36,1) .6s;
+}
+.cine-hero3d.cine--visible .cine-hero3d__copy h1::after{
+  width:min(260px,80%);
+}
+
+/* Media column: the cinematic 3D card */
+.cine-hero3d__stage{
+  position:relative;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.cine-hero3d__card{
+  position:relative;
+  border-radius:14px;
+  overflow:hidden;
+  transform-style:preserve-3d;
+  box-shadow:
+    0 40px 90px -30px rgba(0,0,0,.85),
+    0 0 0 1px rgba(95,201,255,.14) inset;
+  will-change:transform;
+  transition:box-shadow .6s ease;
+}
+/* Holographic border glow on hover */
+.cine-hero3d__card::before{
+  content:"";position:absolute;inset:-1px;z-index:5;
+  border-radius:15px;pointer-events:none;
+  background:conic-gradient(from var(--holo-angle,0deg) at 50% 50%,
+    rgba(95,201,255,.0),rgba(95,201,255,.35),rgba(217,242,255,.5),
+    rgba(95,201,255,.35),rgba(95,201,255,.0));
+  mask:linear-gradient(#000,#000) content-box,linear-gradient(#000,#000);
+  -webkit-mask:linear-gradient(#000,#000) content-box,linear-gradient(#000,#000);
+  mask-composite:exclude;-webkit-mask-composite:xor;
+  padding:1px;
+  opacity:0;transition:opacity .6s ease;
+}
+.cine-hero3d__card:hover::before{opacity:1}
+.cine-hero3d__card::after{
+  /* moving cinematic sheen */
+  content:"";
+  position:absolute;inset:0;z-index:4;pointer-events:none;
+  background:linear-gradient(115deg, transparent 32%, rgba(217,242,255,.16) 48%, transparent 62%);
+  transform:translateX(var(--sheen,-40%));
+  transition:transform .1s linear;
+  mix-blend-mode:screen;
+}
+.cine-hero3d__card img{
+  display:block;width:100%;height:auto;
+  transform:scale(1.06);
+  transition:transform .1s linear;
+  will-change:transform;
+}
+/* Depth grade + vignette baked on the media */
+.cine-hero3d__card .grade{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 50% 40%, transparent 40%, rgba(3,6,10,.55) 100%),
+    linear-gradient(180deg, rgba(3,6,10,.12), rgba(3,6,10,.45));
+}
+
+/* ---- Glassmorphism Info Panel ---- */
+.cine-hero3d__glass{
+  position:absolute;z-index:7;
+  bottom:18px;left:18px;right:18px;
+  padding:20px 24px;border-radius:14px;
+  background:rgba(5,8,12,.42);
+  border:1px solid rgba(95,201,255,.18);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  box-shadow:0 20px 60px -20px rgba(0,0,0,.7),inset 0 1px 0 rgba(217,242,255,.08);
+  transform:translateY(20px) translateZ(60px);
+  opacity:0;
+  transition:all .8s cubic-bezier(.22,.61,.36,1);
+}
+.cine-hero3d.cine--scrolled .cine-hero3d__glass{
+  opacity:1;transform:translateY(0) translateZ(60px);
+}
+.cine-hero3d__glass-title{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--a1,#5fc9ff);margin:0 0 6px;
+}
+.cine-hero3d__glass-stats{
+  display:flex;gap:24px;font-size:.78rem;color:var(--muted,#6b7f8e);
+}
+.cine-hero3d__glass-stats strong{
+  display:block;font-size:1.1rem;color:var(--text,#d9f2ff);
+  font-variant-numeric:tabular-nums;
+}
+
+/* Floating chips that lift out of the card in 3D */
+.cine-hero3d__chip{
+  position:absolute;z-index:6;
+  padding:9px 15px;border-radius:999px;
+  font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--a2);
+  background:rgba(5,8,12,.66);
+  border:1px solid rgba(95,201,255,.28);
+  backdrop-filter:blur(10px);
+  box-shadow:0 18px 40px -18px rgba(0,0,0,.8);
+  transform:translateZ(90px);
+  will-change:transform;
+  white-space:nowrap;
+}
+.cine-hero3d__chip--a{top:12%;left:-6%}
+.cine-hero3d__chip--b{bottom:14%;right:-5%}
+
+/* Scroll cue */
+.cine-hero3d__cue{
+  position:absolute;left:50%;bottom:26px;z-index:5;
+  transform:translateX(-50%);
+  color:var(--muted);font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;
+  opacity:.85;
+}
+.cine-hero3d__cue::after{
+  content:"";display:block;width:1px;height:42px;margin:12px auto 0;
+  background:linear-gradient(var(--a1),transparent);
+  animation:cuedrop 1.8s ease-in-out infinite;
+}
+@keyframes cuedrop{0%,100%{transform:scaleY(.5);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+
+/* Progress rail for the cinematic scroll */
+.cine-hero3d__rail{
+  position:absolute;top:0;left:0;right:0;height:3px;z-index:8;
+  background:transparent;
+}
+.cine-hero3d__rail i{
+  display:block;height:100%;width:0;
+  background:var(--grad);
+  box-shadow:0 0 14px rgba(95,201,255,.7);
+}
+
+/* Expand / fullscreen button */
+.cine-hero3d__expand{
+  position:absolute;bottom:16px;right:16px;z-index:10;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 18px;border:1px solid rgba(95,201,255,.35);border-radius:999px;
+  background:rgba(5,8,12,.72);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  color:#d9f2ff;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  cursor:pointer;
+  transition:all .35s ease;
+  box-shadow:0 8px 32px -8px rgba(0,0,0,.6);
+}
+.cine-hero3d__expand:hover{
+  background:rgba(95,201,255,.18);border-color:rgba(95,201,255,.6);
+  box-shadow:0 0 24px rgba(95,201,255,.3);transform:scale(1.05);
+  cursor:pointer;
+}
+.cine-hero3d__expand svg{flex-shrink:0}
+.cine-hero3d--immersive .cine-hero3d__expand{
+  position:fixed;bottom:28px;right:28px;z-index:10001;
+  background:rgba(5,8,12,.85);
+}
+
+/* ---- Cinematic Color Shift on Scroll ---- */
+.cine-hero3d::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(5,8,12,.0) 0%,rgba(4,18,32,.4) 100%);
+  opacity:0;transition:opacity 1.4s ease;
+}
+.cine-hero3d.cine--scrolled::before{opacity:1}
+
+@media(max-width:900px){
+  .cine-hero3d{min-height:auto;padding:130px 0 60px;perspective:1000px}
+  .cine-hero3d__chip{display:none}
+  .cine-hero3d__cue{display:none}
+  .cine-hero3d__rays{display:none}
+  .cine-hero3d__glass{bottom:10px;left:10px;right:10px;padding:14px 16px}
+  .cine-hero3d__flare{display:none}
+}
+
+/* Reduced motion: flatten everything, keep it elegant + static. */
+@media(prefers-reduced-motion: reduce){
+  .cine-hero3d{perspective:none}
+  .cine-hero3d__depth,.cine-hero3d__particles,.cine-hero3d__cue,.cine-hero3d__rail{display:none}
+  .cine-hero3d__grain,.cine-hero3d__rays,.cine-hero3d__flare,.cine-hero3d__horizon{display:none}
+  .cine-hero3d__card::after,.cine-hero3d__card::before{display:none}
+  .cine-hero3d__card img{transform:none}
+  .cine-hero3d__chip{transform:none}
+  .cine-hero3d__glass{opacity:1;transform:none}
+  .cine-hero3d__copy .kicker,
+  .cine-hero3d__copy h1,
+  .cine-hero3d__copy .sec-sub,
+  .cine-hero3d__copy .badge-row,
+  .cine-hero3d__copy .hero-cta{opacity:1;transform:none;animation:none}
+  .cine-hero3d__copy h1::after{width:min(260px,80%);transition:none}
+}

@@ -1,0 +1,14 @@
+/* Without scripts the story is a plain page: every chapter in flow, with the still posters instead of the film. */
+.cinema-story{height:auto!important}
+.cinema-story .cinema-stage{position:relative!important;height:auto!important;min-height:0!important;overflow:visible!important}
+.cinema-story .cinema-screen,.cinema-story .world-loader,.cinema-story .world-hint{display:none!important}
+.cinema-story .cinema-state{position:relative!important;inset:auto!important;height:auto!important;display:block!important;padding:48px 6vw!important;opacity:1!important}
+.cinema-story .cinema-state .cinema-static-art{display:block!important;position:static!important;width:100%!important;max-width:1100px!important;height:auto!important;opacity:1!important;margin:0 auto 24px!important}
+.cinema-story .cinema-copy,.cinema-story .cinema-assistant-panel{width:auto!important;max-width:560px!important;margin:0 0 24px!important}
+.cinema-story .cinema-copy>*,.cinema-story .hero-actions,.cinema-story .cinema-assistant-panel,.cinema-story .cinema-actions{opacity:1!important;visibility:visible!important;transform:none!important}
+.cinema-story .cinema-copy>*:not(.hero-actions):not(.cinema-actions),.cinema-story .cinema-assistant-panel{display:block!important}
+.cinema-story .hero-actions,.cinema-story .cinema-actions{display:flex!important}
+.cinema-story .world-nodes{display:grid!important;position:static!important;opacity:1!important;visibility:visible!important}
+.cinema-story .world-node,.cinema-story .world-node a{position:static!important;transform:none!important;width:auto!important;height:auto!important;animation:none!important}
+.cinema-story .world-node strong+span{display:block!important}
+.cinema-story .cinema-controls{position:relative!important}

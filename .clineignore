@@ -1,0 +1,14 @@
+/node_modules/
+/public/
+/.concierge/
+/ai-concierge-preview/assets/
+
+/test-results/
+/concierge/.reports/
+
+/*.log
+/.env.concierge.local
+
+/media/frames/**/*.jpg
+/media/frames/**/*.webp
+/media/frames/**/*.avif

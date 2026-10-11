@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ABYSSAL — Descend Aboard the EREBUS</title>
+<meta name="description" content="ABYSSAL takes 8 civilians per year to the ocean floor aboard the submersible EREBUS. 3,800 meters. One unbroken descent." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<script src="/cinematic-shared/preload.js" defer></script>
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div id="loader" class="loader">
+  <div class="loader-inner">
+    <div class="loader-mark">ABYSSAL</div>
+    <div class="loader-bar"><span id="loader-fill"></span></div>
+    <div class="loader-meta">
+      <span id="loader-pct">0%</span>
+      <span>PRESSURIZING DESCENT SEQUENCE</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FIXED CANVAS (the descent) ============ -->
+<canvas id="scene"></canvas>
+<div class="grade-overlay" id="grade"></div>
+<div class="vignette"></div>
+
+<!-- ============ FIXED HUD ============ -->
+<header class="hud hud-top">
+  <div class="hud-left">
+    <span class="hud-logo">ABYSSAL</span>
+    <span class="hud-sub">DEEP-SEA EXPEDITION CO.</span>
+  </div>
+  <div class="hud-right">
+    <span class="hud-status"><i class="dot"></i>EREBUS · SYSTEMS NOMINAL</span>
+  </div>
+</header>
+
+<!-- Depth meter -->
+<aside class="hud depth-meter" aria-hidden="true">
+  <div class="dm-frame">
+    <div class="dm-readout">
+      <span id="depth-val">0</span><span class="dm-unit">m</span>
+    </div>
+    <div class="dm-zone" id="depth-zone">THE SURFACE</div>
+    <div class="dm-track">
+      <div class="dm-progress" id="dm-progress"></div>
+      <div class="dm-ticks" id="dm-ticks"></div>
+    </div>
+    <div class="dm-scale">
+      <span>0m</span><span>3,800m</span>
+    </div>
+    <div class="dm-press"><span id="press-val">1.0</span> ATM</div>
+  </div>
+</aside>
+
+<!-- Scroll hint -->
+<div class="scroll-hint" id="scroll-hint">
+  <span>SCROLL TO DIVE</span>
+  <div class="sh-line"><i></i></div>
+</div>
+
+<!-- ============ SCROLL CONTENT ============ -->
+<main id="story">
+
+  <!-- HERO -->
+  <section class="panel panel-hero" data-zone="THE SURFACE">
+    <div class="panel-inner center">
+      <div class="eyebrow">3,800 METERS BELOW SEA LEVEL</div>
+      <h1 class="mega">How deep<br/>will you go?</h1>
+      <p class="lede">Eight civilians. One year. A single unbroken descent aboard the <em>EREBUS</em> — to the floor of the ocean and back.</p>
+    </div>
+  </section>
+
+  <!-- ZONE 1: SURFACE FACT -->
+  <section class="panel" data-zone="THE SURFACE">
+    <div class="panel-inner">
+      <div class="zone-index">01 / SUNLIT SURFACE</div>
+      <div class="fact">
+        <span class="fact-num">0–200<span class="fact-unit">m</span></span>
+        <p class="fact-text">The <em>epipelagic zone.</em> The last place sunlight behaves like sunlight. Below the keel of the EREBUS, ninety-five percent of the ocean has never been seen by human eyes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONE 2: SUNLIT / TWILIGHT -->
+  <section class="panel" data-zone="SUNLIT ZONE">
+    <div class="panel-inner">
+      <div class="zone-index">02 / SUNLIT ZONE</div>
+      <div class="fact">
+        <span class="fact-num">200<span class="fact-unit">m</span></span>
+        <p class="fact-text">A blue whale glides past the viewport — the largest heart ever to beat, the size of a small car. From here the water swallows red light first, then orange. The world turns monochrome blue.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONE 3: TWILIGHT -->
+  <section class="panel" data-zone="TWILIGHT ZONE">
+    <div class="panel-inner">
+      <div class="zone-index">03 / TWILIGHT ZONE</div>
+      <div class="fact">
+        <span class="fact-num">1,000<span class="fact-unit">m</span></span>
+        <p class="fact-text">Sunlight surrenders. In perpetual dusk, ghostly jellyfish pulse through the black. The EREBUS wakes its twin floodlights — the only stars this deep. Pressure: one hundred atmospheres.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONE 4: MIDNIGHT -->
+  <section class="panel" data-zone="MIDNIGHT ZONE">
+    <div class="panel-inner">
+      <div class="zone-index">04 / MIDNIGHT ZONE</div>
+      <div class="fact">
+        <span class="fact-num">3,000<span class="fact-unit">m</span></span>
+        <p class="fact-text">Total darkness. Then — sparks. Ninety percent of creatures here make their own light. The hull drifts through a living starfield of bioluminescence, each flash a language we cannot read.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEC CALLOUTS -->
+  <section class="panel panel-spec" data-zone="MIDNIGHT ZONE">
+    <div class="panel-inner">
+      <div class="zone-index">VESSEL / EREBUS</div>
+      <h2 class="spec-title">Engineered for the crush.</h2>
+      <div class="spec-grid">
+        <div class="spec">
+          <span class="spec-val">150<span class="spec-u">mm</span></span>
+          <span class="spec-label">Titanium-alloy pressure hull</span>
+        </div>
+        <div class="spec">
+          <span class="spec-val">3,800<span class="spec-u">m</span></span>
+          <span class="spec-label">Certified operating depth</span>
+        </div>
+        <div class="spec">
+          <span class="spec-val">380<span class="spec-u">atm</span></span>
+          <span class="spec-label">Rated external pressure</span>
+        </div>
+        <div class="spec">
+          <span class="spec-val">96<span class="spec-u">hrs</span></span>
+          <span class="spec-label">Life-support endurance</span>
+        </div>
+        <div class="spec">
+          <span class="spec-val">2×<span class="spec-u">14kW</span></span>
+          <span class="spec-label">Xenon flood arrays</span>
+        </div>
+        <div class="spec">
+          <span class="spec-val">280<span class="spec-u">°</span></span>
+          <span class="spec-label">Panoramic viewport ring</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONE 5: THE FLOOR -->
+  <section class="panel" data-zone="THE FLOOR">
+    <div class="panel-inner">
+      <div class="zone-index">05 / THE FLOOR</div>
+      <div class="fact">
+        <span class="fact-num">3,800<span class="fact-unit">m</span></span>
+        <p class="fact-text">Contact. Floodlights sweep across hydrothermal vents belching black mineral smoke at 400°C — an ecosystem that needs no sun. You are among the fewer than one thousand humans who have ever stood at this depth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="panel panel-offer" data-zone="THE FLOOR">
+    <div class="panel-inner center">
+      <div class="offer-line">
+        <span>8 SEATS</span><i></i><span>$250,000</span><i></i><span>DEPARTING MARCH 2027</span>
+      </div>
+      <h2 class="mega small">The floor is<br/>waiting.</h2>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="panel panel-cta" data-zone="THE FLOOR">
+    <div class="panel-inner center">
+      <div class="eyebrow">EXPEDITION EREBUS — MMXXVII</div>
+      <h2 class="cta-head">Join the Manifest</h2>
+      <p class="lede">Applications are reviewed individually. Medical clearance and a one-week surface training programme are required of every passenger.</p>
+      <form class="manifest" id="manifest" onsubmit="return false;">
+        <input type="text" placeholder="FULL NAME" aria-label="Full name" />
+        <input type="email" placeholder="EMAIL ADDRESS" aria-label="Email" />
+        <button type="submit">REQUEST A SEAT <span>→</span></button>
+      </form>
+      <div class="cta-foot">
+        <span>ABYSSAL DEEP-SEA EXPEDITION CO.</span>
+        <span>N 36.221° · W 122.804° · PACIFIC</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+// Stable entry point for Vercel function discovery; implementation is compiled server-side.
+module.exports = (req, res) => require('../../.concierge/brief.cjs').default(req, res);

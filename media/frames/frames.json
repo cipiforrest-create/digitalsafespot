@@ -1,0 +1,50 @@
+{
+  "aspect": 1.7777777777777777,
+  "ladders": [
+    {
+      "dir": "sm",
+      "width": 768,
+      "webp": true
+    },
+    {
+      "dir": "lg",
+      "width": 1280,
+      "webp": false
+    },
+    {
+      "dir": "xs",
+      "width": 860,
+      "webp": false
+    }
+  ],
+  "chapters": [
+    {
+      "id": "signal-engine",
+      "hero": true,
+      "source": {
+        "frames": 551,
+        "fps": 15,
+        "duration": 36.733333333333334
+      },
+      "counts": {
+        "sm": 551,
+        "lg": 551,
+        "xs": 184
+      }
+    },
+    {
+      "id": "system",
+      "hero": false,
+      "source": {
+        "frames": 192,
+        "fps": 24,
+        "duration": 8
+      },
+      "counts": {
+        "sm": 192,
+        "lg": 192,
+        "xs": 192
+      }
+    }
+  ]
+}

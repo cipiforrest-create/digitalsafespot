@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="bs">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#050608">
+  <title>DIGITAL X — AI Concierge</title>
+  <meta name="description" content="Talk to DIGITAL X about smarter websites, AI visibility and better lead response.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/ai-concierge-preview/media/concierge-environment.webp" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="/ai-concierge-preview/concierge.css">
+<link rel="stylesheet" href="/ai-concierge-preview/agency.css">
+</head>
+<body>
+<a class="skip" href="#main">Preskoči na sadržaj</a>
+<svg class="symbol-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M7 20v-2a5 5 0 0 1 10 0v2M5 5a3 3 0 0 0 0 6m14-6a3 3 0 0 1 0 6M5 14a4 4 0 0 0-3 4v2m17-6a4 4 0 0 1 3 4v2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></symbol>
+  <symbol id="i-screen" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M12 17v4m-5 0h10"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="m14 2-9 12h7l-2 8 9-12h-7z"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+  <symbol id="i-minimize" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></symbol>
+</defs></svg>
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title" id="top">
+    <img class="environment" src="/ai-concierge-preview/media/concierge-environment.webp" width="1536" height="1024" alt="" fetchpriority="high">
+    <div class="floor-shade" aria-hidden="true"></div>
+    <header class="navigation">
+      <a class="brand" href="/ai-concierge-preview/" aria-label="Digital X početna">DIGITAL <span>X</span></a>
+      <nav class="desktop-nav" aria-label="Glavna navigacija"><a href="/#usluge">Usluge</a><a href="/#radovi">Radovi</a><a href="#aeo">AEO</a><a href="/o-nama.html">O nama</a><a href="/blog/">Uvidi</a></nav>
+      <button class="button header-audit" data-audit>Pokreni AI analizu <svg><use href="#i-arrow"/></svg></button>
+      <button class="menu-toggle" aria-label="Otvori navigaciju" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+    </header>
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobilna navigacija" hidden><a href="/#usluge">Usluge</a><a href="/#radovi">Radovi</a><a href="#aeo">AEO</a><a href="/o-nama.html">O nama</a><a href="/blog/">Uvidi</a><button data-audit>Pokreni AI analizu</button></nav>
+    <div class="hero-heading"><h1 id="hero-title">Vaša web stranica može<br><span>više od dobrog izgleda.</span></h1><p>Neka razumije posjetioce, prepozna prilike<br class="desktop-break"> i pretvori interes u sljedeći korak.</p></div>
+    <p class="side-label left upper">WEB STRANICE<br>ZA NOVU ERU<br>POSLOVANJA<span></span></p>
+    <p class="side-label left lower">STRATEGIJA<br>DIZAJN<br>AI AUTOMATIZACIJA<br>AEO RAST<span></span></p>
+    <p class="side-label right upper">UPEČATLJIVO<br>INTELIGENTNO<br>SVRSISHODNO<span></span></p>
+    <p class="side-label right lower">VIŠE POSJETILACA<br>KVALITETNIJI UPITI<br>JASNIJI PROCES<br>SNAŽNIJI BREND<span></span></p>
+    <div class="ai-core" data-state="idle">
+      <canvas id="waveform" width="1560" height="240" aria-hidden="true"></canvas>
+      <button class="orb" id="orb" data-talk aria-label="Pokreni glasovni razgovor s DIGITAL X AI"><span class="orb-sheen"></span><svg><use href="#i-mic"/></svg></button>
+      <p class="core-status" id="core-status" role="status">Spreman za razgovor</p>
+      <div class="core-caption">UPOZNAJTE DIGITAL X <span>·</span> <button data-text>NAPIŠITE PORUKU</button></div>
+    </div>
+    <div class="quick-goals" role="group" aria-label="Šta želite unaprijediti?">
+      <button class="goal" data-goal="customers" aria-pressed="false"><svg><use href="#i-users"/></svg><span>Želim više<br>klijenata</span></button>
+      <button class="goal" data-goal="visibility" aria-pressed="false"><svg><use href="#i-search"/></svg><span>AI ne preporučuje<br>moju firmu</span></button>
+      <button class="goal" data-goal="website" aria-pressed="false"><svg><use href="#i-screen"/></svg><span>Web stranici<br>treba novi izgled</span></button>
+      <button class="goal" data-goal="response" aria-pressed="false"><svg><use href="#i-bolt"/></svg><span>Presporo odgovaramo<br>na upite</span></button>
+    </div>
+    <div class="hero-actions"><button class="button primary" data-talk><svg><use href="#i-mic"/></svg><span>Razgovaraj s DIGITAL X AI</span><svg><use href="#i-arrow"/></svg></button><button class="button secondary" data-audit>Pokreni AI analizu <svg><use href="#i-arrow"/></svg></button></div>
+    <p class="hero-signoff">STVARNI RAZGOVORI. KONKRETNA RJEŠENJA.</p>
+  </section>
+  <div id="story" class="story">
+    <section id="growth" class="story-section growth-section" aria-labelledby="growth-title">
+      <div class="section-heading"><p class="eyebrow">01 / GROWTH INFRASTRUCTURE</p><h2 id="growth-title">A beautiful website.<br><span>A better way to grow.</span></h2></div>
+      <div class="section-body"><p class="section-lead">Your website is the beginning of the conversation. What happens next is where the opportunity lives.</p><p>We connect strategy, design and intelligent automation into one considered experience — helping the right people find you, understand your value and take the next step.</p><div class="capability-list"><div><span>01</span><h3>Attract the right attention</h3><p>Clear positioning. Searchable expertise. A reason to choose you.</p></div><div><span>02</span><h3>Turn interest into intent</h3><p>Useful conversations that uncover what your visitors actually need.</p></div><div><span>03</span><h3>Keep the momentum</h3><p>A clear handoff from first enquiry to your team’s next action.</p></div></div><button class="text-link" data-text>Find the opportunity in your business <svg><use href="#i-arrow"/></svg></button></div>
+    </section>
+    <section id="receptionist" class="story-section receptionist-section" aria-labelledby="receptionist-title">
+      <div class="section-heading"><p class="eyebrow">02 / AI RECEPTIONIST</p><h2 id="receptionist-title">Every enquiry<br>deserves <span>an answer.</span></h2><p class="section-lead">Make a good first impression.<br>Even when your team is busy.</p><p>An AI receptionist can welcome visitors, ask the right questions and prepare a useful summary. Connected workflows can then help your team follow through.</p></div>
+      <div class="workflow"><div class="workflow-header"><span class="status-dot"></span><span>INTERACTIVE DEMONSTRATION</span></div><ol class="workflow-steps"><li data-demo-step="0"><span>01</span><div><h3>A new enquiry</h3><p>“I’m interested. Can you help?”</p></div></li><li data-demo-step="1"><span>02</span><div><h3>A useful conversation</h3><p>Needs, context and the right questions.</p></div></li><li data-demo-step="2"><span>03</span><div><h3>A clearer next step</h3><p>A structured summary for your team.</p></div></li><li data-demo-step="3"><span>04</span><div><h3>Your workflow, connected</h3><p>SMS · appointments · CRM</p><small>Requires verified integrations</small></div></li></ol><div class="demo-footer"><p id="demo-output" role="status">Explore the journey from first enquiry to a prepared handoff. This demonstration does not send messages or book appointments.</p><button id="run-demo" class="button">Explore the workflow <svg><use href="#i-arrow"/></svg></button></div></div>
+    </section>
+    <section id="aeo" class="story-section aeo-section" aria-labelledby="aeo-title">
+      <div class="section-heading"><p class="eyebrow">03 / AEO + GEO</p><h2 id="aeo-title">Be understood.<br><span>Be part of the answer.</span></h2><p class="section-lead">Your next customer may ask an AI before they ever visit your website.</p><p>Give search engines and AI systems a clearer picture of who you are, what you do and why your expertise matters.</p><button class="text-link" data-audit>Explore your website’s signals <svg><use href="#i-arrow"/></svg></button></div>
+      <div class="signal-stack"><p class="eyebrow">A STRONGER FOUNDATION FOR DISCOVERY</p><article><span>01</span><div><h3>Clear expertise</h3><p>Useful answers grounded in your actual services and experience.</p></div></article><article><span>02</span><div><h3>Readable structure</h3><p>Accessible pages, meaningful headings and consistent structured data.</p></div></article><article><span>03</span><div><h3>Verifiable identity</h3><p>Consistent business information, service details and trustworthy sources.</p></div></article><p class="evidence-note">Our initial audit checks visible website evidence. AI recommendations and rankings are not measured by this scan.</p></div>
+    </section>
+    <section id="storefront" class="story-section storefront-section" aria-labelledby="storefront-title">
+      <div class="storefront-visual" aria-hidden="true"><div class="mini-browser"><div class="mini-nav"><span>DIGITAL X</span><i></i><i></i><i></i></div><div class="mini-x">X</div><div class="mini-conversation"><span class="status-dot"></span>A more personal way to explore.<svg><use href="#i-arrow"/></svg></div><div class="mini-lines"><i></i><i></i><i></i></div></div><p>DESIGNED TO CONNECT.</p></div>
+      <div class="section-heading"><p class="eyebrow">04 / SMART STOREFRONT</p><h2 id="storefront-title">From a place to visit.<br><span>To a reason to stay.</span></h2><p class="section-lead">An experience that helps people find what matters to them.</p><p>Bring your brand, services and a helpful conversation together. Guide visitors through choices, answer their questions and make the next step feel natural.</p><ul class="plain-list"><li>Distinctive design, built around your brand</li><li>Guided discovery through voice or text</li><li>Relevant recommendations and clear next steps</li><li>A thoughtful experience on every screen</li></ul><button class="text-link" data-text>Explore a smarter storefront <svg><use href="#i-arrow"/></svg></button></div>
+    </section>
+    <section id="process" class="process-section" aria-labelledby="process-title"><div class="process-heading"><div><p class="eyebrow">05 / FROM AMBITION TO EXPERIENCE</p><h2 id="process-title">Considered at every step.</h2></div><p>Start with your business.<br>Build what moves it forward.</p></div><ol class="process-grid"><li><span>01 / DISCOVER</span><h3>Find the opportunity.</h3><p>Your customers, your goals and the gaps worth closing.</p></li><li><span>02 / DESIGN</span><h3>Make it unmistakable.</h3><p>A clear journey and a visual world that feels like you.</p></li><li><span>03 / CONNECT</span><h3>Bring it to life.</h3><p>Carefully scoped AI, website tools and verified integrations.</p></li><li><span>04 / IMPROVE</span><h3>Keep moving forward.</h3><p>Review real conversations and consented performance signals.</p></li></ol></section>
+    <section id="strategy" class="strategy-section" aria-labelledby="strategy-title"><p class="eyebrow">THE NEXT MOVE IS YOURS</p><h2 id="strategy-title">Let’s build what’s next.<br><span>For your business.</span></h2><p>Tell us where you want to go.<br>We’ll help you find a considered way forward.</p><div class="strategy-actions"><button class="button primary" data-strategy>Start a strategy conversation <svg><use href="#i-arrow"/></svg></button><button class="button" data-audit>Pokreni AI analizu <svg><use href="#i-arrow"/></svg></button></div></section>
+  </div>
+</main>
+<footer class="site-footer"><a class="brand" href="/" aria-label="Digital X početna">DIGITAL <span>X</span></a><p>Strategija. Dizajn. Inteligencija.</p><nav aria-label="Footer"><a href="/kontakt.html">Kontakt</a><a href="/privatnost.html">Privatnost</a><button id="cookie-preferences">Postavke kolačića</button></nav></footer>
+<aside class="conversation" id="conversation" aria-labelledby="conversation-title" hidden>
+  <header><div><p class="eyebrow">VAŠ DIGITAL X ASISTENT</p><h2 id="conversation-title">Pronađimo vaš sljedeći korak.</h2></div><div class="panel-actions"><button class="icon-button" id="minimize-conversation" aria-label="Smanji razgovor" title="Smanji i nastavi razgovarati"><svg aria-hidden="true"><use href="#i-minimize"/></svg></button><button class="icon-button" id="close-conversation" aria-label="Zatvori razgovor i zaustavi glas" title="Zatvori i zaustavi glas"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div></header>
+  <p class="conversation-intro">O vašem poslu, vašim ciljevima i sljedećem koraku. Podijelite samo ono što želite.</p>
+  <div class="transcript" id="transcript" role="log" aria-live="polite" aria-relevant="additions"></div>
+  <button id="new-messages" class="new-messages" hidden>Nove poruke ↓</button><p id="conversation-status" role="status"></p>
+  <div class="voice-controls"><button id="voice-mode">Glas</button><button id="text-mode">Tekst</button><button id="mute-voice" hidden>Isključi mikrofon</button><button id="stop-voice" hidden>Zaustavi glas</button><button id="end-conversation">Završi razgovor</button></div>
+  <form id="chat-form"><label class="sr-only" for="chat-input">Vaša poruka</label><textarea id="chat-input" rows="2" maxlength="2000" placeholder="Šta želite unaprijediti u svom poslu?" required></textarea><button class="icon-button" aria-label="Pošalji poruku" type="submit"><svg><use href="#i-arrow"/></svg></button></form>
+  <button id="retry-message" hidden>Pokušaj ponovo</button><div class="conversation-bottom"><button id="review-lead">Pregledaj sljedeći korak</button><span>Ne pohranjujemo audiosnimke.</span></div>
+</aside>
+<aside class="conversation-dock" id="conversation-dock" aria-label="Smanjeni asistent" data-state="idle" hidden>
+  <button class="dock-expand" id="restore-conversation" aria-label="Proširi razgovor" aria-controls="conversation" aria-expanded="false"><span class="dock-orb" aria-hidden="true"><svg><use href="#i-mic"/></svg></span><span class="dock-copy"><strong>DIGITAL X AI</strong><span id="dock-status" role="status">Spreman za razgovor</span></span><svg class="dock-chevron" aria-hidden="true"><use href="#i-expand"/></svg></button>
+  <button class="dock-control" id="dock-mute" aria-label="Isključi mikrofon" aria-pressed="false" hidden>Isključi mikrofon</button>
+  <button class="dock-control" id="dock-end" aria-label="Završi razgovor">Završi</button>
+</aside>
+<dialog id="audit-dialog" aria-labelledby="audit-title"><div class="dialog-shell"><button class="icon-button close-dialog" data-close-dialog aria-label="Zatvori analizu"><svg><use href="#i-close"/></svg></button><p class="eyebrow">X SIGNAL / POČNIMO OD ČINJENICA</p><h2 id="audit-title">Šta vaša web stranica<br>može raditi bolje?</h2><p class="muted">Provjera javno dostupnih signala vidljivosti i konverzije. Bez obaveznog e-maila.</p><div id="audit-content"></div></div></dialog>
+<dialog id="lead-dialog" aria-labelledby="lead-title"><div class="dialog-shell"><button class="icon-button close-dialog" data-close-dialog aria-label="Zatvori upit"><svg><use href="#i-close"/></svg></button><p class="eyebrow">VAŠ SLJEDEĆI KORAK</p><h2 id="lead-title">Nastavimo razgovor.</h2><p class="muted">Pregledajte podatke koje želite podijeliti s Digital X timom.</p><form id="lead-form"><label>Firma<input name="company" maxlength="160" autocomplete="organization"></label><label>Web stranica firme<input name="businessWebsite" type="url" placeholder="https://vasa-firma.ba" maxlength="2048"></label><div class="field-pair"><label>Vaše ime<input name="name" maxlength="120" autocomplete="name" required></label><label>Poslovni e-mail<input name="email" type="email" maxlength="254" autocomplete="email" required></label></div><label>Sažetak<textarea name="summary" rows="5" maxlength="4000" required></textarea></label><label class="honeypot" aria-hidden="true">Ostavite prazno<input name="website" tabindex="-1" autocomplete="off"></label><label class="consent"><input name="consent" type="checkbox" required><span>Saglasan/na sam da ove podatke pošaljem Digital X timu radi odgovora na moj upit. <a href="/privatnost.html" target="_blank" rel="noopener">Politika privatnosti</a></span></label><p id="lead-status" role="status"></p><div class="dialog-actions"><button class="button primary" type="submit">Pošalji upit <svg><use href="#i-arrow"/></svg></button><button class="button" type="button" id="export-lead">Preuzmi sažetak</button></div></form></div></dialog>
+<div class="notice" id="notice" role="status" hidden></div>
+<dialog id="consent-dialog" aria-labelledby="consent-title"><div class="dialog-shell"><button class="icon-button close-dialog" data-close-dialog aria-label="Zatvori postavke kolačića"><svg><use href="#i-close"/></svg></button><p class="eyebrow">VAŠ IZBOR</p><h2 id="consent-title">Postavke kolačića</h2><p class="muted">Nužni kolačići štite sesiju. Opcionalna analitika pomaže nam razumjeti korištenje funkcija. Razgovori, kontakt podaci i audio nisu dio analitičkih događaja asistenta.</p><div class="dialog-actions"><button class="button" data-consent="denied">Samo nužni</button><button class="button primary" data-consent="granted">Dozvoli analitiku</button></div></div></dialog>
+<script type="module" src="/ai-concierge-preview/assets/main.js"></script>
+</body></html>

@@ -1,0 +1,96 @@
+{
+  "preparedAt": "2026-09-11T11:47:53.108Z",
+  "approvedVideos": [
+    {
+      "filename": "vid1.mp4",
+      "publicPath": "/media/video/vid1.mp4",
+      "duration": 8,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "unchanged": true,
+      "poster": "/media/posters/vid1.jpg",
+      "scrubFrames": {
+        "path": "/media/frames/vid1/frame_{frame}.webp",
+        "count": 96,
+        "fps": 12
+      }
+    },
+    {
+      "filename": "vid2.mp4",
+      "publicPath": "/media/video/vid2.mp4",
+      "duration": 8,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "unchanged": true,
+      "poster": "/media/posters/vid2.jpg",
+      "scrubFrames": {
+        "path": "/media/frames/vid2/frame_{frame}.webp",
+        "count": 96,
+        "fps": 12
+      }
+    },
+    {
+      "filename": "vid3.mp4",
+      "publicPath": "/media/video/vid3.mp4",
+      "duration": 8,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "unchanged": true,
+      "poster": "/media/posters/vid3.jpg",
+      "scrubFrames": {
+        "path": "/media/frames/vid3/frame_{frame}.webp",
+        "count": 96,
+        "fps": 12
+      }
+    }
+  ],
+  "productReferences": [
+    {
+      "filename": "img1.jpg",
+      "publicPath": "/media/products/img1.jpg",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "filename": "img2.jpg",
+      "publicPath": "/media/products/img2.jpg",
+      "width": 1600,
+      "height": 900
+    }
+  ],
+  "continuityFrame": "/media/posters/vid3-final.jpg",
+  "cinematicVideos": [
+    {
+      "filename": "vid4.mp4",
+      "publicPath": "/media/digital-x/videos/vid4.mp4",
+      "duration": 10,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "unchangedVideoTrack": true,
+      "scrubVideo": "/media/digital-x/videos/vid4-scrub.mp4",
+      "scrubFps": 60,
+      "scrubMotionInterpolation": true,
+      "scrubKeyframeInterval": 0.1,
+      "poster": "/media/digital-x/posters/vid4-poster.jpg"
+    },
+    {
+      "filename": "vid5-women-hero-xcore.mp4",
+      "publicPath": "/media/digital-x/videos/vid5-women-hero-xcore.mp4",
+      "duration": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "unchangedVideoTrack": true,
+      "scrubVideo": "/media/digital-x/videos/vid5-women-hero-xcore-scrub.mp4",
+      "scrubFps": 60,
+      "scrubMotionInterpolation": true,
+      "scrubKeyframeInterval": 0.1,
+      "poster": "/media/digital-x/posters/vid5-women-poster.jpg",
+      "finalFrame": "/media/digital-x/frames/vid5-women-last.jpg"
+    }
+  ]
+}

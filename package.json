@@ -1,0 +1,29 @@
+{
+  "name": "digital-x-concierge-preview",
+  "private": true,
+  "scripts": {
+    "dev": "node concierge/dev.mjs",
+    "build": "node concierge/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint concierge --max-warnings=0",
+    "test": "tsx --test concierge/tests/*.test.ts",
+    "test:browser": "playwright test -c concierge/playwright.config.ts"
+  },
+  "dependencies": {
+    "cheerio": "1.0.0",
+    "ipaddr.js": "^2.2.0",
+    "three": "^0.186.0",
+    "zod": "4.1.12"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.0.0",
+    "@types/three": "^0.186.0",
+    "esbuild": "^0.25.0",
+    "eslint": "^9.39.1",
+    "tsx": "^4.23.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.0.0"
+  }
+}

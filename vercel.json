@@ -1,0 +1,1197 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
+  "functions": {
+    "api/concierge/chat.js": {
+      "maxDuration": 45
+    },
+    "api/concierge/audit.js": {
+      "maxDuration": 35
+    },
+    "api/concierge/session.js": {
+      "maxDuration": 25
+    },
+    "api/concierge/brief.js": {
+      "maxDuration": 15
+    },
+    "api/concierge/execution.js": {
+      "maxDuration": 30
+    },
+    "api/lead.js": {
+      "maxDuration": 20
+    }
+  },
+  "redirects": [
+    {
+      "source": "/shop/product.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "web-presence"
+        }
+      ],
+      "destination": "/shop/product/web-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/product.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "ecommerce-launch"
+        }
+      ],
+      "destination": "/shop/product/ecommerce-launch/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/product.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "application-mvp"
+        }
+      ],
+      "destination": "/shop/product/application-mvp/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/product.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "second-brain-os"
+        }
+      ],
+      "destination": "/shop/product/second-brain-os/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/product.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "ai-concierge"
+        }
+      ],
+      "destination": "/shop/product/ai-concierge/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/product.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "workflow-starter"
+        }
+      ],
+      "destination": "/shop/product/workflow-starter/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/product.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "review-engine"
+        }
+      ],
+      "destination": "/shop/product/review-engine/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/product.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "seo-aeo"
+        }
+      ],
+      "destination": "/shop/product/seo-aeo/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/product.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "growth-campaigns"
+        }
+      ],
+      "destination": "/shop/product/growth-campaigns/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/product.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "speed-optimization"
+        }
+      ],
+      "destination": "/shop/product/speed-optimization/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/product.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "content-system"
+        }
+      ],
+      "destination": "/shop/product/content-system/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/product.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "digital-partner"
+        }
+      ],
+      "destination": "/shop/product/digital-partner/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/category.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "web"
+        }
+      ],
+      "destination": "/shop/category/web/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/category.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "ai"
+        }
+      ],
+      "destination": "/shop/category/ai/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/category.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "automation"
+        }
+      ],
+      "destination": "/shop/category/automation/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/category.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "growth"
+        }
+      ],
+      "destination": "/shop/category/growth/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/category.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "content"
+        }
+      ],
+      "destination": "/shop/category/content/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/product.html",
+      "destination": "/shop/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/category.html",
+      "destination": "/shop/",
+      "permanent": true
+    },
+    {
+      "source": "/audit.html",
+      "destination": "https://audit.digital-x-marketing.com/",
+      "permanent": true
+    },
+    {
+      "source": "/audit",
+      "destination": "https://audit.digital-x-marketing.com/",
+      "permanent": true
+    },
+    {
+      "source": "/audit/",
+      "destination": "https://audit.digital-x-marketing.com/",
+      "permanent": true
+    },
+    {
+      "source": "/assets/film/poster-hero.webp",
+      "destination": "/assets/images/service-web.webp",
+      "permanent": false
+    },
+    {
+      "source": "/assets/film/still-final.webp",
+      "destination": "/assets/images/custom-project-planning.webp",
+      "permanent": false
+    },
+    {
+      "source": "/assets/film/og-final.jpg",
+      "destination": "/assets/images/service-growth.webp",
+      "permanent": false
+    },
+    {
+      "source": "/assets/primjeri/hotel/poster.jpg",
+      "destination": "/assets/images/custom-project-planning.webp",
+      "permanent": false
+    },
+    {
+      "source": "/assets/primjeri/watch/hero-poster.webp",
+      "destination": "/assets/images/service-content.webp",
+      "permanent": false
+    },
+    {
+      "source": "/assets/primjeri/penthouse/poster.jpg",
+      "destination": "/assets/images/application-suite.webp",
+      "permanent": false
+    },
+    {
+      "source": "/assets/primjeri/clothes/cloth-1.jpg",
+      "destination": "/assets/images/portfolio-commerce.webp",
+      "permanent": false
+    },
+    {
+      "source": "/assets/primjeri/deepsea/poster.jpg",
+      "destination": "/assets/images/service-automation.webp",
+      "permanent": false
+    },
+    {
+      "source": "/about.html",
+      "destination": "/o-nama.html",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/o-nama.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/kontakt.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/kontakt.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/privatnost.html",
+      "permanent": true
+    },
+    {
+      "source": "/terms.html",
+      "destination": "/uslovi.html",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/index.html",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/index.html",
+      "destination": "/shop/",
+      "permanent": true
+    },
+    {
+      "source": "/en/cinematic-hotel",
+      "destination": "/cinematic-hotel/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-hotel/",
+      "destination": "/cinematic-hotel/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-watch",
+      "destination": "/cinematic-watch/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-watch/",
+      "destination": "/cinematic-watch/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-penthouse",
+      "destination": "/cinematic-penthouse/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-penthouse/",
+      "destination": "/cinematic-penthouse/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-clothes",
+      "destination": "/cinematic-clothes/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-clothes/",
+      "destination": "/cinematic-clothes/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-dentist",
+      "destination": "/cinematic-dentist/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-dentist/",
+      "destination": "/cinematic-dentist/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-deepsea",
+      "destination": "/cinematic-deepsea/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-deepsea/",
+      "destination": "/cinematic-deepsea/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-vanta",
+      "destination": "/cinematic-vanta/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-vanta/",
+      "destination": "/cinematic-vanta/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-hotel",
+      "destination": "/cinematic-hotel/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-hotel/",
+      "destination": "/cinematic-hotel/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-watch",
+      "destination": "/cinematic-watch/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-watch/",
+      "destination": "/cinematic-watch/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-penthouse",
+      "destination": "/cinematic-penthouse/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-penthouse/",
+      "destination": "/cinematic-penthouse/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-clothes",
+      "destination": "/cinematic-clothes/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-clothes/",
+      "destination": "/cinematic-clothes/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-dentist",
+      "destination": "/cinematic-dentist/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-dentist/",
+      "destination": "/cinematic-dentist/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-deepsea",
+      "destination": "/cinematic-deepsea/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-deepsea/",
+      "destination": "/cinematic-deepsea/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-vanta",
+      "destination": "/cinematic-vanta/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-vanta/",
+      "destination": "/cinematic-vanta/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "destination": "https://www.digital-x-marketing.com/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "digital-x-marketing.com"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://www.digital-x-marketing.com/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "digital-x-marketing.com"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "destination": "https://www.digital-x-marketing.com/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "digital-x-agency.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://www.digital-x-marketing.com/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "digital-x-agency.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "destination": "https://www.digital-x-marketing.com/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "digital-x-agency-eynna-hair.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://www.digital-x-marketing.com/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "digital-x-agency-eynna-hair.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "destination": "https://www.digital-x-marketing.com/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "digital-x-agency-cipiforrest-7602-eynna-hair.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://www.digital-x-marketing.com/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "digital-x-agency-cipiforrest-7602-eynna-hair.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "destination": "https://www.digital-x-marketing.com/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "digital-x-agency-kth7lby38-eynna-hair.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://www.digital-x-marketing.com/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "digital-x-agency-kth7lby38-eynna-hair.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/cinematic-digiritalx",
+      "destination": "/cinematic-digitalx/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cinematic-digiritalx/",
+      "destination": "/cinematic-digitalx/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cinematic-digiritalx/:path+",
+      "destination": "/cinematic-digitalx/:path+",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/cinematic-digiritalx",
+      "destination": "/en/cinematic-digitalx/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/cinematic-digiritalx/",
+      "destination": "/en/cinematic-digitalx/",
+      "permanent": false
+    },
+    {
+      "source": "/en/cinematic-digiritalx/",
+      "destination": "/en/cinematic-digitalx/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/cinematic-digiritalx/:path+",
+      "destination": "/en/cinematic-digitalx/:path+",
+      "statusCode": 301
+    },
+    {
+      "source": "/de/cinematic-digiritalx",
+      "destination": "/de/cinematic-digitalx/",
+      "statusCode": 301
+    },
+    {
+      "source": "/de/cinematic-digiritalx/",
+      "destination": "/de/cinematic-digitalx/",
+      "permanent": false
+    },
+    {
+      "source": "/de/cinematic-digiritalx/",
+      "destination": "/de/cinematic-digitalx/",
+      "statusCode": 301
+    },
+    {
+      "source": "/de/cinematic-digiritalx/:path+",
+      "destination": "/de/cinematic-digitalx/:path+",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-concierge-preview/visibility/",
+      "destination": "/usluge/seo-aeo-geo/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/convert/",
+      "destination": "/usluge/x-convert/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/growth/",
+      "destination": "/usluge/digitalne-kampanje/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/automate/",
+      "destination": "/usluge/ai-automatizacija/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/cinematic/",
+      "destination": "/usluge/cinematic-web-stranice/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/storefront/",
+      "destination": "/usluge/smart-storefront/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/signal/",
+      "destination": "/usluge/x-signal/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/lead-desk/",
+      "destination": "/usluge/x-lead-desk/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/receptionist/",
+      "destination": "/usluge/ai-receptionist/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/concierge/",
+      "destination": "/ai-concierge-preview/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/tracker/",
+      "destination": "/usluge/ai-visibility-tracker/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/second-brain/",
+      "destination": "/usluge/ai-second-brain/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/meta-ads/",
+      "destination": "/usluge/meta-ads/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/google-ads/",
+      "destination": "/usluge/google-ads/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/social-management/",
+      "destination": "/usluge/drustvene-mreze/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/social-growth/",
+      "destination": "/usluge/social-growth/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/content/",
+      "destination": "/usluge/produkcija-sadrzaja/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/photography/",
+      "destination": "/usluge/fotografija-proizvoda/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/video/",
+      "destination": "/usluge/video-proizvoda/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/catalogues/",
+      "destination": "/usluge/dizajn-kataloga/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/eynna/",
+      "destination": "/projekti/eynna-hair/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/star/",
+      "destination": "/projekti/star-parfimerija/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/designer/",
+      "destination": "/projekti/eynna-hair-dizajner-perika/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/services/",
+      "destination": "/usluge/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/work/",
+      "destination": "/projekti/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/about/",
+      "destination": "/o-nama.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/pricing/",
+      "destination": "/cjenovnik/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/examples/",
+      "destination": "/primjeri-web-stranica/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/contact/",
+      "destination": "/kontakt.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/blog/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/shop/",
+      "destination": "/shop/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/launch/",
+      "destination": "/smart-website-launch/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/shop-web/",
+      "destination": "/shop/category/web/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/shop-ai/",
+      "destination": "/shop/category/ai/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/shop-automation/",
+      "destination": "/shop/category/automation/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/shop-growth/",
+      "destination": "/shop/category/growth/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/shop-content/",
+      "destination": "/shop/category/content/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-web-presence/",
+      "destination": "/shop/product/web-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-ecommerce-launch/",
+      "destination": "/shop/product/ecommerce-launch/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-application-mvp/",
+      "destination": "/shop/product/application-mvp/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-second-brain-os/",
+      "destination": "/shop/product/second-brain-os/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-ai-concierge/",
+      "destination": "/shop/product/ai-concierge/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-workflow-starter/",
+      "destination": "/shop/product/workflow-starter/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-review-engine/",
+      "destination": "/shop/product/review-engine/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-seo-aeo/",
+      "destination": "/shop/product/seo-aeo/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-growth-campaigns/",
+      "destination": "/shop/product/growth-campaigns/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-speed-optimization/",
+      "destination": "/shop/product/speed-optimization/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-content-system/",
+      "destination": "/shop/product/content-system/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-digital-partner/",
+      "destination": "/shop/product/digital-partner/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-smart-website-launch/",
+      "destination": "/shop/product/smart-website-launch/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-landing-starter/",
+      "destination": "/shop/product/landing-starter/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/product-site-care/",
+      "destination": "/shop/product/site-care/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-koliko-kosta-web-stranica-bih/",
+      "destination": "/blog/koliko-kosta-web-stranica-bih.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-landing-stranica-vodic/",
+      "destination": "/blog/landing-stranica-vodic.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-aplikacije-po-mjeri/",
+      "destination": "/blog/aplikacije-po-mjeri.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-uiux-rebranding-vodic/",
+      "destination": "/blog/uiux-rebranding-vodic.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-brzina-sajta/",
+      "destination": "/blog/brzina-sajta.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-odrzavanje-sigurnost-vodic/",
+      "destination": "/blog/odrzavanje-sigurnost-vodic.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-aeo-vodic/",
+      "destination": "/blog/aeo-vodic.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-lokalni-seo-google-mapa/",
+      "destination": "/blog/lokalni-seo-google-mapa.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-google-meta-oglasi-vodic/",
+      "destination": "/blog/google-meta-oglasi-vodic.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-vodjenje-drustvenih-mreza/",
+      "destination": "/blog/vodjenje-drustvenih-mreza.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-content-marketing-vodic/",
+      "destination": "/blog/content-marketing-vodic.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-foto-video-produkcija/",
+      "destination": "/blog/foto-video-produkcija.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-ai-chatbot-vodic/",
+      "destination": "/blog/ai-chatbot-vodic.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-ai-automatizacija-vodic/",
+      "destination": "/blog/ai-automatizacija-vodic.html",
+      "permanent": true
+    },
+    {
+      "source": "/ai-concierge-preview/article-automatizacija-recenzija/",
+      "destination": "/blog/automatizacija-recenzija.html",
+      "permanent": true
+    },
+    {
+      "source": "/usluge/ai-concierge/",
+      "destination": "/ai-concierge-preview/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    },
+    {
+      "source": "/((?!ai-concierge-preview(?:/|$)).+)",
+      "headers": [
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(self), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://www.googletagmanager.com https://cdn.jsdelivr.net https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https://digital-x-pi.vercel.app blob: data:; worker-src 'self' blob:; connect-src 'self' wss://generativelanguage.googleapis.com https://digital-x-pi.vercel.app https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://www.googleapis.com; frame-src https://digital-x-growthos.vercel.app https://www.googletagmanager.com; base-uri 'self'; form-action 'self' mailto:; object-src 'none'"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(self), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; media-src 'self' blob:; worker-src 'self'; connect-src 'self' wss://generativelanguage.googleapis.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'self'"
+        }
+      ]
+    },
+    {
+      "source": "/assets/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/media/frames/dentist/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/media/frames/journey/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/primjeri/dentist/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/primjeri/vanta/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/cinematic-shared/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/cinematic-(.*)\\.(mp4|webm|webp|jpg|jpeg|png|avif)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/ai-concierge-preview",
+      "headers": [
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(self), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; media-src 'self' blob:; worker-src 'self'; connect-src 'self' wss://generativelanguage.googleapis.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'self'"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        }
+      ]
+    },
+    {
+      "source": "/ai-concierge-preview/((?!media/).*)",
+      "headers": [
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(self), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; media-src 'self' blob:; worker-src 'self'; connect-src 'self' wss://generativelanguage.googleapis.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'self'"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        }
+      ]
+    },
+    {
+      "source": "/ai-concierge-preview/media/(.*)",
+      "headers": [
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(self), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; media-src 'self' blob:; worker-src 'self'; connect-src 'self' wss://generativelanguage.googleapis.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'self'"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/api/concierge/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/ai-concierge-preview",
+      "destination": "/ai-concierge-preview/index.html"
+    },
+    {
+      "source": "/ai-concierge-preview/",
+      "destination": "/ai-concierge-preview/index.html"
+    },
+    {
+      "source": "/en",
+      "destination": "/en/index.html"
+    },
+    {
+      "source": "/en/",
+      "destination": "/en/index.html"
+    },
+    {
+      "source": "/de",
+      "destination": "/de/index.html"
+    },
+    {
+      "source": "/de/",
+      "destination": "/de/index.html"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ONYX SUPPLY — MIDNIGHT DROP</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0b'/%3E%3Crect x='8' y='8' width='16' height='16' fill='%23c6ff2e'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Black&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- NOISE / GRAIN OVERLAY -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- STICKY NAV -->
+<header class="nav" id="nav">
+  <div class="nav__left">
+    <span class="brand">ONYX<span class="brand__dot">.</span>SUPPLY</span>
+  </div>
+  <nav class="nav__center">
+    <a href="#drop">DROP</a>
+    <a href="#grid">SHOP</a>
+    <a href="#macro">FABRIC</a>
+    <a href="#notify">NOTIFY</a>
+  </nav>
+  <div class="nav__right">
+    <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+      CART <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO: SCROLL-SCRUB VIDEO -->
+<section class="hero" id="hero">
+  <div class="hero__sticky">
+    <video id="heroVideo" class="hero__video" muted playsinline preload="auto"
+      src="assets/videos/cloth-1-scrub.mp4"></video>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">FW MIDNIGHT SERIES / 003</p>
+      <h1 class="hero__title">
+        <span>ONYX</span>
+        <span class="hero__title--stroke">SUPPLY</span>
+        <span class="hero__title--accent">MIDNIGHT</span>
+        <span>DROP</span>
+      </h1>
+      <div class="countdown" id="countdown" aria-label="Countdown to drop">
+        <div class="countdown__unit"><span id="cd-days">00</span><label>DAYS</label></div>
+        <div class="countdown__sep">:</div>
+        <div class="countdown__unit"><span id="cd-hours">00</span><label>HRS</label></div>
+        <div class="countdown__sep">:</div>
+        <div class="countdown__unit"><span id="cd-mins">00</span><label>MIN</label></div>
+        <div class="countdown__sep">:</div>
+        <div class="countdown__unit"><span id="cd-secs">00</span><label>SEC</label></div>
+      </div>
+    </div>
+    <div class="hero__scrollhint">SCROLL TO REVEAL</div>
+  </div>
+  <div class="hero__spacer"></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee__track">
+    <span>HEAVYWEIGHT HOODIE — 480GSM</span><span class="marquee__dot">●</span>
+    <span>TACTICAL CARGO PANTS</span><span class="marquee__dot">●</span>
+    <span>CHROME-ACCENT PUFFER</span><span class="marquee__dot">●</span>
+    <span>MIDNIGHT DROP</span><span class="marquee__dot">●</span>
+    <span>HEAVYWEIGHT HOODIE — 480GSM</span><span class="marquee__dot">●</span>
+    <span>TACTICAL CARGO PANTS</span><span class="marquee__dot">●</span>
+    <span>CHROME-ACCENT PUFFER</span><span class="marquee__dot">●</span>
+    <span>MIDNIGHT DROP</span><span class="marquee__dot">●</span>
+  </div>
+</div>
+
+<!-- PRODUCT GRID -->
+<section class="grid-section" id="grid">
+  <div class="section-head">
+    <p class="section-head__index">01 / THE FIT</p>
+    <h2 class="section-head__title">THREE PIECES.<br />ONE SILHOUETTE.</h2>
+    <p class="product-motion-hint"><span aria-hidden="true">↗</span> POINT AT A PRODUCT TO SEE IT MOVE · TAP ON TOUCHSCREENS</p>
+  </div>
+
+  <div class="grid" id="productGrid">
+    <!-- Cards injected by JS -->
+  </div>
+</section>
+
+<!-- MARQUEE 2 -->
+<div class="marquee marquee--accent">
+  <div class="marquee__track marquee__track--rev">
+    <span>BUILT HEAVY</span><span class="marquee__dot">◆</span>
+    <span>CUT CLEAN</span><span class="marquee__dot">◆</span>
+    <span>NO LOGOS LOUD</span><span class="marquee__dot">◆</span>
+    <span>ALL SUBSTANCE</span><span class="marquee__dot">◆</span>
+    <span>BUILT HEAVY</span><span class="marquee__dot">◆</span>
+    <span>CUT CLEAN</span><span class="marquee__dot">◆</span>
+    <span>NO LOGOS LOUD</span><span class="marquee__dot">◆</span>
+    <span>ALL SUBSTANCE</span><span class="marquee__dot">◆</span>
+  </div>
+</div>
+
+<!-- FABRIC MACRO -->
+<section class="macro" id="macro">
+  <video class="macro__video" autoplay muted loop playsinline preload="auto"
+    src="assets/videos/cloth-5.mp4"></video>
+  <div class="macro__overlay"></div>
+  <div class="macro__content">
+    <p class="macro__index">02 / THE MATERIAL</p>
+    <h2 class="macro__title">BUILT HEAVY.<br />CUT CLEAN.</h2>
+    <p class="macro__body">
+      480GSM brushed-back fleece. Double-needle bar-tacked stress points.
+      YKK chrome hardware. Embossed onyx crest — felt, never shouted.
+      Every seam is engineered to outlast the trend that inspired it.
+    </p>
+    <ul class="macro__specs">
+      <li><span>01</span> Heavyweight loopback cotton</li>
+      <li><span>02</span> Chrome zipper teeth, self-lubricating</li>
+      <li><span>03</span> Tonal embossed logo, no print</li>
+      <li><span>04</span> Reinforced double-stitch panels</li>
+    </ul>
+  </div>
+</section>
+
+<!-- NOTIFY -->
+<section class="notify" id="notify">
+  <div class="notify__inner">
+    <p class="notify__index">03 / SOLD OUT?</p>
+    <h2 class="notify__title">GET THE RESTOCK<br />BEFORE THE REST.</h2>
+    <p class="notify__sub">Drop your email. We ping you the second sold-out sizes land back in stock.</p>
+    <form class="notify__form" id="notifyForm">
+      <input type="email" id="notifyEmail" placeholder="you@midnight.drop" required />
+      <button type="submit">NOTIFY ME</button>
+    </form>
+    <p class="notify__msg" id="notifyMsg"></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__big">ONYX SUPPLY</div>
+  <div class="footer__cols">
+    <div><h4>SHOP</h4><a href="#grid">Midnight Drop</a><a href="#grid">Hoodie</a><a href="#grid">Cargo</a><a href="#grid">Puffer</a></div>
+    <div><h4>INFO</h4><a href="#">Sizing</a><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Care</a></div>
+    <div><h4>SOCIAL</h4><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Discord</a></div>
+  </div>
+  <div class="footer__legal">© 2026 ONYX SUPPLY — FICTIONAL LABEL / DEMO ONLY. NOTHING FOR SALE.</div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer__head">
+    <h3>YOUR CART</h3>
+    <button class="drawer__close" id="drawerClose" aria-label="Close cart">✕</button>
+  </div>
+  <div class="drawer__items" id="drawerItems">
+    <p class="drawer__empty">Your cart is empty. Go grab the fit.</p>
+  </div>
+  <div class="drawer__foot">
+    <div class="drawer__total"><span>SUBTOTAL</span><span id="drawerTotal">$0</span></div>
+    <button class="drawer__checkout" id="checkoutBtn">DEMO CHECKOUT</button>
+    <p class="drawer__note">Demo store — no real payment is taken.</p>
+  </div>
+</aside>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

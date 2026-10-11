@@ -1,0 +1,79 @@
+{
+  "version": "smooth-v2",
+  "assetRoot": "smooth-v2",
+  "motion": "all original 24 fps frames; fractional runtime blending",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "source": "star1.mp4",
+      "duration": 10.041667,
+      "fps": "24/1",
+      "sourceFrames": 241,
+      "codec": "h264",
+      "sourceWidth": 1280,
+      "sourceHeight": 720,
+      "variants": {
+        "desktop": {
+          "count": 241,
+          "width": 1280,
+          "height": 720,
+          "bytes": 12494810
+        },
+        "mobile": {
+          "count": 241,
+          "width": 960,
+          "height": 540,
+          "bytes": 7363818
+        }
+      }
+    },
+    {
+      "id": "scene-02",
+      "source": "star2.mp4",
+      "duration": 10.041667,
+      "fps": "24/1",
+      "sourceFrames": 241,
+      "codec": "h264",
+      "sourceWidth": 1280,
+      "sourceHeight": 720,
+      "variants": {
+        "desktop": {
+          "count": 241,
+          "width": 1280,
+          "height": 720,
+          "bytes": 12711854
+        },
+        "mobile": {
+          "count": 241,
+          "width": 960,
+          "height": 540,
+          "bytes": 7533186
+        }
+      }
+    },
+    {
+      "id": "scene-03",
+      "source": "star3.mp4",
+      "duration": 10.041667,
+      "fps": "24/1",
+      "sourceFrames": 241,
+      "codec": "h264",
+      "sourceWidth": 1280,
+      "sourceHeight": 720,
+      "variants": {
+        "desktop": {
+          "count": 241,
+          "width": 1280,
+          "height": 720,
+          "bytes": 11321064
+        },
+        "mobile": {
+          "count": 241,
+          "width": 960,
+          "height": 540,
+          "bytes": 6682228
+        }
+      }
+    }
+  ]
+}

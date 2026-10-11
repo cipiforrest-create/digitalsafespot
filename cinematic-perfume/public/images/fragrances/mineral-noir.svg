@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Fasetirana bočica hladnog parfema</title>
+  <desc id="desc">Geometrijska plavozelena bočica s tamnim čepom okružena kamenom i maglom.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9baaa7"/><stop offset=".38" stop-color="#475d5c"/><stop offset="1" stop-color="#10191c"/></linearGradient>
+    <linearGradient id="liquid" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c6ece1" stop-opacity=".72"/><stop offset=".42" stop-color="#3d827f" stop-opacity=".68"/><stop offset="1" stop-color="#0e373d" stop-opacity=".92"/></linearGradient>
+    <linearGradient id="glass" x1="0" x2="1"><stop stop-color="#fff" stop-opacity=".7"/><stop offset=".16" stop-color="#bde4df" stop-opacity=".14"/><stop offset=".58" stop-color="#effffb" stop-opacity=".08"/><stop offset=".87" stop-color="#8ec3c4" stop-opacity=".3"/><stop offset="1" stop-color="#fff" stop-opacity=".62"/></linearGradient>
+    <linearGradient id="cap" x1="0" x2="1"><stop stop-color="#050708"/><stop offset=".48" stop-color="#445053"/><stop offset=".72" stop-color="#111718"/><stop offset="1"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="200%"><feDropShadow dx="0" dy="46" stdDeviation="38" flood-color="#000" flood-opacity=".7"/></filter>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <g fill="#dfe8e2" opacity=".18" filter="url(#blur)"><path d="M-70 1080 250 470l185 710z"/><path d="M1270 1160 955 360 755 1220z"/></g>
+  <path d="M0 1200 205 1020l220 45 175-140 220 133 220-98 160 186v354H0z" fill="#192628"/>
+  <path d="M0 1260 260 1068l204 100 187-177 214 129 188-74 147 160v294H0z" fill="#273536"/>
+  <path d="M65 1300 350 1110l250 90 260-112 280 205" fill="none" stroke="#bfd0c8" stroke-opacity=".25" stroke-width="7"/>
+  <ellipse cx="600" cy="1275" rx="410" ry="80" fill="#000" opacity=".7" filter="url(#blur)"/>
+  <g filter="url(#shadow)">
+    <path d="m455 300 145-98 145 98-50 206H505z" fill="url(#cap)" stroke="#7a8b8a" stroke-width="5"/>
+    <path d="m505 495 95-42 95 42v86H505z" fill="url(#glass)" stroke="#e5f4ed" stroke-opacity=".48" stroke-width="5"/>
+    <path d="m345 555 255-70 255 70 88 535-190 137H447l-190-137z" fill="url(#glass)" stroke="#e5f8f4" stroke-opacity=".68" stroke-width="12"/>
+    <path d="m380 603 220-58 220 58 69 454-165 112H476l-165-112z" fill="url(#liquid)" stroke="#d8f2eb" stroke-opacity=".35" stroke-width="5"/>
+    <path d="m345 555 131 614M855 555 724 1169M600 545v624" stroke="#eafff9" stroke-opacity=".29" stroke-width="6"/>
+    <path d="m345 555 255 118 255-118M311 1057l289-106 289 106" fill="none" stroke="#eafff9" stroke-opacity=".24" stroke-width="5"/>
+    <path d="M464 778h272l-20 176H484z" fill="#09282b" fill-opacity=".38" stroke="#d2eee5" stroke-opacity=".48" stroke-width="3"/>
+    <path d="M526 862h148" stroke="#d9f0e8" stroke-width="3"/>
+    <path d="m600 806 22 28-22 28-22-28z" fill="none" stroke="#d9f0e8" stroke-width="3"/>
+  </g>
+  <path d="M401 636 480 1050" stroke="#fff" stroke-opacity=".42" stroke-width="16" stroke-linecap="round"/>
+  <g fill="#d7e2dd" opacity=".15" filter="url(#blur)"><ellipse cx="210" cy="700" rx="190" ry="55"/><ellipse cx="995" cy="820" rx="240" ry="62"/></g>
+</svg>

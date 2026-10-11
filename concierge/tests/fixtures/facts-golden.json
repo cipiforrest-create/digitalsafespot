@@ -1,0 +1,238 @@
+{
+  "healthy": {
+    "url": "https://example.com/",
+    "status": 200,
+    "ok": true,
+    "https": true,
+    "title": "Digital X — web i AI agencija Sarajevo",
+    "description": "Cinematic web stranice, AI asistenti i SEO za firme u Bosni i Hercegovini. Pomažemo vam do više klijenata i bolje vidljivosti.",
+    "canonical": "https://example.com/",
+    "headings": [
+      "Web i AI rješenja za vaš rast"
+    ],
+    "h2Count": 2,
+    "wordCount": 122,
+    "mentionsServices": true,
+    "images": {
+      "total": 2,
+      "withAlt": 2
+    },
+    "schema": {
+      "types": [
+        "Organization"
+      ],
+      "invalid": 0
+    },
+    "ogTitle": "Digital X",
+    "ogImage": "https://example.com/og.png",
+    "noindex": false,
+    "viewport": "width=device-width, initial-scale=1",
+    "lang": "bs",
+    "hasContact": true
+  },
+  "missing-meta": {
+    "url": "http://example.com/",
+    "status": 200,
+    "ok": true,
+    "https": false,
+    "title": "",
+    "description": "",
+    "canonical": null,
+    "headings": [],
+    "h2Count": 0,
+    "wordCount": 8,
+    "mentionsServices": false,
+    "images": {
+      "total": 0,
+      "withAlt": 0
+    },
+    "schema": {
+      "types": [],
+      "invalid": 0
+    },
+    "ogTitle": null,
+    "ogImage": null,
+    "noindex": false,
+    "viewport": null,
+    "lang": null,
+    "hasContact": false
+  },
+  "headings-anomaly": {
+    "url": "https://example.com/",
+    "status": 200,
+    "ok": true,
+    "https": true,
+    "title": "Stranica s više glavnih naslova ovdje",
+    "description": "Ova stranica ima tri H1 elementa da pokaže kako se ocjenjuje hijerarhija naslova na stranici danas.",
+    "canonical": null,
+    "headings": [
+      "Prvi glavni naslov",
+      "Drugi glavni naslov",
+      "Treći glavni naslov"
+    ],
+    "h2Count": 0,
+    "wordCount": 7,
+    "mentionsServices": false,
+    "images": {
+      "total": 0,
+      "withAlt": 0
+    },
+    "schema": {
+      "types": [],
+      "invalid": 0
+    },
+    "ogTitle": null,
+    "ogImage": null,
+    "noindex": false,
+    "viewport": "width=device-width",
+    "lang": "bs",
+    "hasContact": false
+  },
+  "cta-signals": {
+    "url": "https://example.com/",
+    "status": 200,
+    "ok": true,
+    "https": true,
+    "title": "Kontakt i poziv na akciju stranica",
+    "description": "Stranica s formom, telefonom i e-mailom kao jasnim putem do upita za posjetioce koji žele ponudu.",
+    "canonical": null,
+    "headings": [
+      "Zatražite ponudu za vaše usluge"
+    ],
+    "h2Count": 0,
+    "wordCount": 8,
+    "mentionsServices": true,
+    "images": {
+      "total": 0,
+      "withAlt": 0
+    },
+    "schema": {
+      "types": [],
+      "invalid": 0
+    },
+    "ogTitle": null,
+    "ogImage": null,
+    "noindex": false,
+    "viewport": "width=device-width",
+    "lang": "bs",
+    "hasContact": true
+  },
+  "schema-valid": {
+    "url": "https://example.com/",
+    "status": 200,
+    "ok": true,
+    "https": true,
+    "title": "Lokalna firma sa strukturiranim podacima",
+    "description": "Primjer stranice s ispravnim LocalBusiness i FAQPage JSON-LD oznakama za bolju vidljivost u pretrazi.",
+    "canonical": null,
+    "headings": [
+      "Naša lokalna firma"
+    ],
+    "h2Count": 0,
+    "wordCount": 10,
+    "mentionsServices": true,
+    "images": {
+      "total": 0,
+      "withAlt": 0
+    },
+    "schema": {
+      "types": [
+        "LocalBusiness",
+        "FAQPage"
+      ],
+      "invalid": 0
+    },
+    "ogTitle": null,
+    "ogImage": null,
+    "noindex": false,
+    "viewport": "width=device-width",
+    "lang": "bs",
+    "hasContact": false
+  },
+  "schema-malformed": {
+    "url": "https://example.com/",
+    "status": 200,
+    "ok": true,
+    "https": true,
+    "title": "Stranica s neispravnim JSON-LD blokom",
+    "description": "Ova stranica sadrži neispravan JSON-LD koji parser mora tretirati kao podatak i prijaviti kao neispravan.",
+    "canonical": null,
+    "headings": [
+      "Naslov"
+    ],
+    "h2Count": 0,
+    "wordCount": 1,
+    "mentionsServices": false,
+    "images": {
+      "total": 0,
+      "withAlt": 0
+    },
+    "schema": {
+      "types": [],
+      "invalid": 1
+    },
+    "ogTitle": null,
+    "ogImage": null,
+    "noindex": false,
+    "viewport": "width=device-width",
+    "lang": "bs",
+    "hasContact": false
+  },
+  "malformed-html": {
+    "url": "https://example.com/",
+    "status": 200,
+    "ok": true,
+    "https": true,
+    "title": "Neuredan HTML bez zatvaranja",
+    "description": "",
+    "canonical": null,
+    "headings": [
+      "Naslov",
+      "DrugiTekstMail"
+    ],
+    "h2Count": 0,
+    "wordCount": 1,
+    "mentionsServices": false,
+    "images": {
+      "total": 1,
+      "withAlt": 0
+    },
+    "schema": {
+      "types": [],
+      "invalid": 0
+    },
+    "ogTitle": null,
+    "ogImage": null,
+    "noindex": true,
+    "viewport": null,
+    "lang": null,
+    "hasContact": true
+  },
+  "truncated-like": {
+    "url": "https://example.com/",
+    "status": 200,
+    "ok": true,
+    "https": true,
+    "title": "Djelimično dohvaćena stranica presje",
+    "description": "",
+    "canonical": null,
+    "headings": [],
+    "h2Count": 0,
+    "wordCount": 0,
+    "mentionsServices": false,
+    "images": {
+      "total": 0,
+      "withAlt": 0
+    },
+    "schema": {
+      "types": [],
+      "invalid": 0
+    },
+    "ogTitle": null,
+    "ogImage": null,
+    "noindex": false,
+    "viewport": null,
+    "lang": "bs",
+    "hasContact": false
+  }
+}

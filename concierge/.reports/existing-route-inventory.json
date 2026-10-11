@@ -1,0 +1,1656 @@
+[
+  {
+    "file": "./404.html",
+    "title": "Stranica nije pronađena (404) | Digital X",
+    "robots": "noindex,follow",
+    "h1": [
+      "Ova stranica ne postoji."
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./audit.html",
+    "title": "Digital X AI Search & SEO Auditor",
+    "canonical": "https://audit.digital-x-marketing.com/",
+    "robots": "noindex,follow",
+    "h1": [],
+    "schema": 0
+  },
+  {
+    "file": "./blog/aeo-vodic.html",
+    "title": "AEO: kako da vas ChatGPT preporuči kupcima (vodič 2026) | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/aeo-vodic.html",
+    "robots": "",
+    "h1": [
+      "AEO: kako da vas ChatGPT preporuči kupcima"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/ai-automatizacija-vodic.html",
+    "title": "AI automatizacija poslovanja: šta se sve može automatizovati u malom biznisu | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/ai-automatizacija-vodic.html",
+    "robots": "",
+    "h1": [
+      "AI automatizacija poslovanja: šta se sve može automatizovati u malom biznisu"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/ai-chatbot-vodic.html",
+    "title": "AI chatbot za male biznise: šta je, šta radi i koliko košta (2026) | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/ai-chatbot-vodic.html",
+    "robots": "",
+    "h1": [
+      "AI chatbot za male biznise: šta je, šta radi i koliko košta"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/aplikacije-po-mjeri.html",
+    "title": "Aplikacija po mjeri: kada Excel i sveske više nisu dovoljni | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/aplikacije-po-mjeri.html",
+    "robots": "",
+    "h1": [
+      "Aplikacija po mjeri: kada Excel i sveske više nisu dovoljni"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/automatizacija-recenzija.html",
+    "title": "Google recenzije na autopilotu: kako do 50+ recenzija bez moljenja | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/automatizacija-recenzija.html",
+    "robots": "",
+    "h1": [
+      "Google recenzije na autopilotu: kako do 50+ recenzija bez moljenja kupaca"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/brzina-sajta.html",
+    "title": "Zašto spor sajt tiho ubija vašu prodaju (i kako do ocjene 90+) | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/brzina-sajta.html",
+    "robots": "",
+    "h1": [
+      "Zašto spor sajt tiho ubija vašu prodaju (i kako do ocjene 90+)"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/content-marketing-vodic.html",
+    "title": "Content marketing: prodaja koja ne izgleda kao prodaja | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/content-marketing-vodic.html",
+    "robots": "",
+    "h1": [
+      "Content marketing: prodaja koja ne izgleda kao prodaja"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/foto-video-produkcija.html",
+    "title": "Foto i video produkcija: zašto amaterske fotografije koštaju kupaca | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/foto-video-produkcija.html",
+    "robots": "",
+    "h1": [
+      "Foto i video produkcija: zašto amaterske fotografije koštaju kupaca"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/google-meta-oglasi-vodic.html",
+    "title": "Plaćeni oglasi (Google & Meta): kako budžet pretvoriti u upite, ne u lajkove | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/google-meta-oglasi-vodic.html",
+    "robots": "",
+    "h1": [
+      "Plaćeni oglasi: kako budžet pretvoriti u upite, ne u lajkove"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/index.html",
+    "title": "Blog — praktični vodiči za digitalni rast | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/",
+    "robots": "",
+    "h1": [
+      "Naučite prije nego platite."
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./blog/koliko-kosta-web-stranica-bih.html",
+    "title": "Koliko košta web stranica u BiH u 2026? Realan vodič kroz cijene | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/koliko-kosta-web-stranica-bih.html",
+    "robots": "",
+    "h1": [
+      "Koliko košta web stranica u BiH u 2026? Realan vodič kroz cijene"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/landing-stranica-vodic.html",
+    "title": "Landing stranica: najbrži put od oglasa do upita | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/landing-stranica-vodic.html",
+    "robots": "",
+    "h1": [
+      "Landing stranica: najbrži put od oglasa do upita"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/lokalni-seo-google-mapa.html",
+    "title": "Lokalni SEO: kako biti prvi na Google mapi u svom gradu | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/lokalni-seo-google-mapa.html",
+    "robots": "",
+    "h1": [
+      "Lokalni SEO: kako biti prvi na Google mapi u svom gradu"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/odrzavanje-sigurnost-vodic.html",
+    "title": "Održavanje web stranice: polica osiguranja od 29 KM mjesečno | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/odrzavanje-sigurnost-vodic.html",
+    "robots": "",
+    "h1": [
+      "Održavanje web stranice: polica osiguranja od 29 KM mjesečno"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/uiux-rebranding-vodic.html",
+    "title": "Rebranding i UI/UX dizajn: prvi utisak se ne ponavlja | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/uiux-rebranding-vodic.html",
+    "robots": "",
+    "h1": [
+      "Rebranding i UI/UX dizajn: prvi utisak se ne ponavlja"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./blog/vodjenje-drustvenih-mreza.html",
+    "title": "Vođenje društvenih mreža: šta zapravo plaćate i šta dobijate | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/blog/vodjenje-drustvenih-mreza.html",
+    "robots": "",
+    "h1": [
+      "Vođenje društvenih mreža: šta zapravo plaćate i šta dobijate"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./cinematic-clothes/index.html",
+    "title": "ONYX SUPPLY — MIDNIGHT DROP",
+    "robots": "",
+    "h1": [
+      "\n        ONYX\n        SUPPLY\n        MIDNIGHT\n        DROP\n      "
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./cinematic-deepsea/index.html",
+    "title": "ABYSSAL — Descend Aboard the EREBUS",
+    "robots": "",
+    "h1": [
+      "How deepwill you go?"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./cinematic-dentist/index.html",
+    "title": "Edin Topcic — Osmijeh za pamćenje",
+    "canonical": "https://www.digital-x-marketing.com/cinematic-dentist/",
+    "robots": "",
+    "h1": [
+      "Edin Topcic"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./cinematic-digitalx/index.html",
+    "title": "Digital X — Cinematic Brand Experience",
+    "canonical": "https://www.digital-x-marketing.com/cinematic-digitalx/",
+    "robots": "",
+    "h1": [
+      "Sistem koji se pamti."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./cinematic-hotel/index.html",
+    "title": "HALCYON — A Glass and Travertine Estate",
+    "robots": "",
+    "h1": [],
+    "schema": 0
+  },
+  {
+    "file": "./cinematic-kodent/404/index.html",
+    "title": "KODENT | Stomatološka ordinacija Podgorica404: This page could not be found.",
+    "robots": "noindex",
+    "h1": [
+      "404"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./cinematic-kodent/404.html",
+    "title": "KODENT | Stomatološka ordinacija Podgorica404: This page could not be found.",
+    "robots": "noindex",
+    "h1": [
+      "404"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./cinematic-kodent/index.html",
+    "title": "KODENT | Stomatološka ordinacija Podgorica",
+    "robots": "noindex, nofollow",
+    "h1": [
+      "Prostor zavaš osmijeh."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./cinematic-kodent/_not-found/index.html",
+    "title": "KODENT | Stomatološka ordinacija Podgorica404: This page could not be found.",
+    "robots": "noindex",
+    "h1": [
+      "404"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./cinematic-penthouse/index.html",
+    "title": "THE MERIDIAN — Sixty floors above everything",
+    "robots": "",
+    "h1": [],
+    "schema": 0
+  },
+  {
+    "file": "./cinematic-perfume/index.html",
+    "title": "STAR Sarajevo — Umjetnost mirisa",
+    "robots": "",
+    "h1": [
+      "Nevidljiv.A nezaboravan."
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./cinematic-sneakers/index.html",
+    "title": "DIGITAL X — The Signal Is Moving",
+    "robots": "",
+    "h1": [],
+    "schema": 0
+  },
+  {
+    "file": "./cinematic-vanta/index.html",
+    "title": "VANTA — The Endless Drive | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/cinematic-vanta/",
+    "robots": "",
+    "h1": [
+      "SILENCEHAS ATOP SPEED"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./cinematic-watch/index.html",
+    "title": "AURUM & NOIR — Eclipse",
+    "robots": "",
+    "h1": [],
+    "schema": 0
+  },
+  {
+    "file": "./de/blog/aeo-vodic.html",
+    "title": "AEO: Wie kann ich ChatGPT Kunden empfehlen (Guide 2026) Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/aeo-vodic.html",
+    "robots": "",
+    "h1": [
+      "AEO: Wie Sie ChatGPT Kunden empfehlen"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/ai-automatizacija-vodic.html",
+    "title": "KI Business Automation: Was im Kleinbetrieb automatisiert werden kann Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/ai-automatizacija-vodic.html",
+    "robots": "",
+    "h1": [
+      "KI Business Automation: Was im Kleinbetrieb automatisiert werden kann"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/ai-chatbot-vodic.html",
+    "title": "KI-Chatbot für kleine Unternehmen: Was ist es, was es macht und wie viel es kostet (2026) Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/ai-chatbot-vodic.html",
+    "robots": "",
+    "h1": [
+      "KI-Chatbot für kleine Unternehmen: Was ist es, was macht es und wie viel es kostet"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/aplikacije-po-mjeri.html",
+    "title": "Benutzerdefinierte Anwendung: wenn Excel und Notebooks nicht mehr ausreichend Digital X sind",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/aplikacije-po-mjeri.html",
+    "robots": "",
+    "h1": [
+      "Benutzerdefinierte Anwendung: wenn Excel und Notebooks nicht mehr ausreichen"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/automatizacija-recenzija.html",
+    "title": "Google Bewertungen auf Autopilot: wie man bis zu 50+ Bewertungen ohne Fragen Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/automatizacija-recenzija.html",
+    "robots": "",
+    "h1": [
+      "Google Bewertungen auf Autopilot: wie man bis zu 50+ Bewertungen ohne Kunden fragen"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/brzina-sajta.html",
+    "title": "Warum langsame Website leise tötet Ihren Umsatz (und wie man 90+) Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/brzina-sajta.html",
+    "robots": "",
+    "h1": [
+      "Warum die langsame Website leise tötet Ihren Umsatz (und wie man 90+ Punkte)"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/content-marketing-vodic.html",
+    "title": "Content Marketing: Verkäufe, die nicht wie Verkäufe aussehen Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/content-marketing-vodic.html",
+    "robots": "",
+    "h1": [
+      "Content Marketing: Verkäufe, die nicht wie Verkäufe aussehen"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/foto-video-produkcija.html",
+    "title": "Foto- und Videoproduktion: warum Amateurfotos Kunden kosten Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/foto-video-produkcija.html",
+    "robots": "",
+    "h1": [
+      "Foto- und Videoproduktion: warum Amateurfotos Kunden kosten"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/google-meta-oglasi-vodic.html",
+    "title": "Google & Meta: Wie man das Budget in Abfragen umwandelt, nicht in mag Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/google-meta-oglasi-vodic.html",
+    "robots": "",
+    "h1": [
+      "Pay-Anzeigen: wie man das Budget in Abfragen, nicht in mag"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/index.html",
+    "title": "Blog — Praktische Anleitungen für digitales Wachstum Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/",
+    "robots": "",
+    "h1": [
+      "Lernen Bevor du zahlst."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/koliko-kosta-web-stranica-bih.html",
+    "title": "Wie viel kostet eine Website in BiH im Jahr 2026? Ein echter Leitfaden durch Preise Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/koliko-kosta-web-stranica-bih.html",
+    "robots": "",
+    "h1": [
+      "Wie viel kostet eine Website in BiH im Jahr 2026? Ein echter Leitfaden durch Preise"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/landing-stranica-vodic.html",
+    "title": "Landung: die schnellste Route von der Anzeige zur Frage Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/landing-stranica-vodic.html",
+    "robots": "",
+    "h1": [
+      "Landing site: der schnellste Weg von der Anzeige zur Anzeige"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/lokalni-seo-google-mapa.html",
+    "title": "Lokale SEO: Wie man auf Google Karte in Ihrer Stadt der Erste sein Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/lokalni-seo-google-mapa.html",
+    "robots": "",
+    "h1": [
+      "Lokale SEO: Wie man auf Google Karte in Ihrer Stadt der Erste sein"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/odrzavanje-sigurnost-vodic.html",
+    "title": "Website-Wartung: Versicherungspolice von 29 KM monatlich Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/odrzavanje-sigurnost-vodic.html",
+    "robots": "",
+    "h1": [
+      "Website-Wartung: Versicherungspolice von 29 KM monatlich"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/uiux-rebranding-vodic.html",
+    "title": "Rebranding und UI/UX-Design: Erster Eindruck wird nicht wiederholt Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/uiux-rebranding-vodic.html",
+    "robots": "",
+    "h1": [
+      "Rebranding und UI/UX-Design: Erster Eindruck wiederholt sich nicht"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/blog/vodjenje-drustvenih-mreza.html",
+    "title": "Soziale Vernetzung: was man tatsächlich zahlt und was man Digital X bekommt",
+    "canonical": "https://www.digital-x-marketing.com/de/blog/vodjenje-drustvenih-mreza.html",
+    "robots": "",
+    "h1": [
+      "Soziale Vernetzung: was man tatsächlich zahlt und was man bekommt"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/cinematic-digitalx/index.html",
+    "title": "Digital X — Cinematic-Erlebnis",
+    "canonical": "https://www.digital-x-marketing.com/de/cinematic-digitalx/",
+    "robots": "",
+    "h1": [
+      "Ein System, das in Erinnerung bleibt."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/growthos.html",
+    "title": "GrowthOS Business App nach Maß Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/growthos.html",
+    "robots": "",
+    "h1": [
+      "Dein Job.Ein Betriebssystem."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/index.html",
+    "title": "Digital X Sarajevo | Websites, SEO und KI-Automatisierung",
+    "canonical": "https://www.digital-x-marketing.com/de/",
+    "robots": "",
+    "h1": [
+      "\nIhre Website kann mehr als gut aussehen.\nHelfen Sie Besuchern, Antworten zu finden, Ihre Leistungen zu entdecken und den nächsten Schritt zu machen.\n"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/kolacici.html",
+    "title": "Cookie-Richtlinie Digital X Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/de/kolacici.html",
+    "robots": "index,follow",
+    "h1": [
+      "Cookie-Richtlinie"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./de/kontakt.html",
+    "title": "Kontakt — Kostenlose Konsultationen Digital X Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/de/kontakt.html",
+    "robots": "index,follow",
+    "h1": [
+      "Lass uns über deine das Ziel."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/landing-ai.html",
+    "title": "KI-Chatbot und Automatisierung für Ihr Unternehmen — ein nicht-schlaffähiger Mitarbeiter Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/landing-ai.html",
+    "robots": "",
+    "h1": [
+      "Beschäftigung der Arbeitnehmer Er schläft nicht, er macht keine Fehler, er verlangt nicht um Bezahlung."
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/landing-seo.html",
+    "title": "SEO + Geo + AEO Optimierung — Seien Sie die Antwort auf Google, Karte und AI Suche Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/landing-seo.html",
+    "robots": "",
+    "h1": [
+      "Kunden suchen Sie auf Drei Plätze. Wie lange finden sie dich?"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/landing-web.html",
+    "title": "Professionelle Webseite für Rechtsanwälte, Büros und Handwerk — 449 KM Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/landing-web.html",
+    "robots": "",
+    "h1": [
+      "Kunde Sie zuerst Google. - Ich weiß. Was findet er jetzt?"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/o-nama.html",
+    "title": "Über uns — wer Digital X Digital Agency Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/de/o-nama.html",
+    "robots": "index,follow",
+    "h1": [
+      "Aufbau der digitalen Agentur Die Präsenz, die er verkauft."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/otkazivanje-povrat.html",
+    "title": "Stornierung, Rückgabe und Beschwerden Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/otkazivanje-povrat.html",
+    "robots": "index,follow",
+    "h1": [
+      "Annullierung, Beitreibung und Beschwerde"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./de/pravne-informacije.html",
+    "title": "Rechtliche Hinweise Digital X Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/de/pravne-informacije.html",
+    "robots": "index,follow",
+    "h1": [
+      "Rechtliche Hinweise"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./de/primjeri-web-stranica/index.html",
+    "title": "Kinotische Web-Erfahrung Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/primjeri-web-stranica/",
+    "robots": "",
+    "h1": [
+      "Marken, dieDu siehst nicht nur nach."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/privatnost.html",
+    "title": "Datenschutz Digitale X Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/de/privatnost.html",
+    "robots": "index,follow",
+    "h1": [
+      "Datenschutz"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./de/second-brain-os.html",
+    "title": "AI Zweite Gehirn OS und private Co-Pilot Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/second-brain-os.html",
+    "robots": "",
+    "h1": [
+      "Ihre Geschäftskenntnisse.Eine lebende Galaxie."
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./de/shop/category/ai/index.html",
+    "title": "KI-Systeme - Dienstleistungen Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/category/ai/",
+    "robots": "",
+    "h1": [
+      "KI-Systeme"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/shop/category/automation/index.html",
+    "title": "Automatisierung — Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/category/automation/",
+    "robots": "",
+    "h1": [
+      "Automatisierung"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/shop/category/content/index.html",
+    "title": "Inhalt & Marke — Dienstleistungen Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/category/content/",
+    "robots": "",
+    "h1": [
+      "& Markeninhalt"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/shop/category/growth/index.html",
+    "title": "Sichtbarkeit & Wachstum - Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/category/growth/",
+    "robots": "",
+    "h1": [
+      "Sichtbarkeit"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/shop/category/web/index.html",
+    "title": "Web & E-Commerce — Dienstleistungen Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/category/web/",
+    "robots": "",
+    "h1": [
+      "Web & E-Commerce"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/shop/index.html",
+    "title": "Digital X Shop · Digitale Dienste und Systeme",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/",
+    "robots": "",
+    "h1": [
+      "Dienstleistungen so klarDigitale Produkte."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./de/shop/product/ai-concierge/index.html",
+    "title": "KI Vertriebsassistent — ab 490 KM Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/product/ai-concierge/",
+    "robots": "",
+    "h1": [
+      "KI Vertriebsassistent"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/shop/product/application-mvp/index.html",
+    "title": "Gemessene Bewerbung — Beurteilung auf Anfrage Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/product/application-mvp/",
+    "robots": "",
+    "h1": [
+      "Benutzerdefinierte Anwendung"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/shop/product/content-system/index.html",
+    "title": "Content System - ab 249 KM Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/product/content-system/",
+    "robots": "",
+    "h1": [
+      "Inhaltssystem"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/shop/product/digital-partner/index.html",
+    "title": "Digitaler Partner – ab 899 KM Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/product/digital-partner/",
+    "robots": "",
+    "h1": [
+      "Digitaler Partner"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/shop/product/ecommerce-launch/index.html",
+    "title": "E-Commerce-Einführung – ab 2.490 KM Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/product/ecommerce-launch/",
+    "robots": "",
+    "h1": [
+      "Einführung des elektronischen Geschäftsverkehrs"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/shop/product/growth-campaigns/index.html",
+    "title": "Wachstumskampagne — ab 249 kmM Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/product/growth-campaigns/",
+    "robots": "",
+    "h1": [
+      "Wachstumskampagne"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/shop/product/review-engine/index.html",
+    "title": "Bewertungssystem - ab 199 kmM Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/product/review-engine/",
+    "robots": "",
+    "h1": [
+      "Überprüfungssystem"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/shop/product/second-brain-os/index.html",
+    "title": "AI Second Brain OS — Beurteilung auf Anfrage Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/product/second-brain-os/",
+    "robots": "",
+    "h1": [
+      "KI Zweites Gehirn-Betriebssystem"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/shop/product/seo-aeo/index.html",
+    "title": "SEO · GEO · AEO — ab 249 kmM Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/product/seo-aeo/",
+    "robots": "",
+    "h1": [
+      "SEO · GEO · AEO"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/shop/product/speed-optimization/index.html",
+    "title": "Geschwindigkeitsoptimierung — ab 99 KM Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/product/speed-optimization/",
+    "robots": "",
+    "h1": [
+      "Geschwindigkeitsoptimierung"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/shop/product/web-presence/index.html",
+    "title": "Premium Web Präsenz - ab 449 KM Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/product/web-presence/",
+    "robots": "",
+    "h1": [
+      "Premium Web Präsenz"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/shop/product/workflow-starter/index.html",
+    "title": "Automation Starter - ab 349 KM Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/de/shop/product/workflow-starter/",
+    "robots": "",
+    "h1": [
+      "Automatisch starten"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./de/uslovi.html",
+    "title": "Nutzungsbedingungen Digital X",
+    "canonical": "https://www.digital-x-marketing.com/de/uslovi.html",
+    "robots": "index,follow",
+    "h1": [
+      "Nutzungsbedingungen"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./en/blog/aeo-vodic.html",
+    "title": "AEO: How to recommend ChatGPT to customers (guide 2026)  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/aeo-vodic.html",
+    "robots": "",
+    "h1": [
+      "AEO: How to recommend ChatGPT to customers"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/ai-automatizacija-vodic.html",
+    "title": "AI Business automation: what can be automated in small business  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/ai-automatizacija-vodic.html",
+    "robots": "",
+    "h1": [
+      "AI Business automation: what can be automated in small business"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/ai-chatbot-vodic.html",
+    "title": "AI chatbot for small businesses: what is it, what it does and how much it costs (2026)  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/ai-chatbot-vodic.html",
+    "robots": "",
+    "h1": [
+      "AI chatbot for small businesses: what is it, what does it do and how much it costs"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/aplikacije-po-mjeri.html",
+    "title": "Custom application: when Excel and notebooks are no longer sufficient  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/aplikacije-po-mjeri.html",
+    "robots": "",
+    "h1": [
+      "Custom application: when Excel and notebooks are no longer sufficient"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/automatizacija-recenzija.html",
+    "title": "Google reviews on autopilot: how to up to 50+ reviews without asking  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/automatizacija-recenzija.html",
+    "robots": "",
+    "h1": [
+      "Google reviews on autopilot: how to up to 50+ reviews without asking customers"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/brzina-sajta.html",
+    "title": "Why slow site quietly kills your sales (and how to score 90+)  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/brzina-sajta.html",
+    "robots": "",
+    "h1": [
+      "Why the slow site quietly kills your sales (and how to score 90+)"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/content-marketing-vodic.html",
+    "title": "Content marketing: sales that do not look like sales  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/content-marketing-vodic.html",
+    "robots": "",
+    "h1": [
+      "Content marketing: sales that do not look like sales"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/foto-video-produkcija.html",
+    "title": "Photo and video production: why amateur photos cost customers  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/foto-video-produkcija.html",
+    "robots": "",
+    "h1": [
+      "Photo and video production: why amateur photos cost customers"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/google-meta-oglasi-vodic.html",
+    "title": "Google & Meta: how to convert the budget into queries, not into likes  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/google-meta-oglasi-vodic.html",
+    "robots": "",
+    "h1": [
+      "Pay ads: how to turn the budget into queries, not into likes"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/index.html",
+    "title": "Blog — Practical Guides to Digital Growth  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/",
+    "robots": "",
+    "h1": [
+      "Learn Before you pay."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/koliko-kosta-web-stranica-bih.html",
+    "title": "How much does a website cost in BiH in 2026? A real guide through prices  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/koliko-kosta-web-stranica-bih.html",
+    "robots": "",
+    "h1": [
+      "How much does a website cost in BiH in 2026? A real guide through prices"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/landing-stranica-vodic.html",
+    "title": "Landing site: the fastest route from advert to question  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/landing-stranica-vodic.html",
+    "robots": "",
+    "h1": [
+      "Landing site: the fastest way from ad to ad"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/lokalni-seo-google-mapa.html",
+    "title": "Local SEO: how to be first on Google map in your city  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/lokalni-seo-google-mapa.html",
+    "robots": "",
+    "h1": [
+      "Local SEO: how to be first on Google map in your city"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/odrzavanje-sigurnost-vodic.html",
+    "title": "Website maintenance: insurance policy of 29 KM monthly  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/odrzavanje-sigurnost-vodic.html",
+    "robots": "",
+    "h1": [
+      "Website maintenance: insurance policy of 29 KM monthly"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/uiux-rebranding-vodic.html",
+    "title": "Rebranding and UI/UX design: first impression is not repeated  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/uiux-rebranding-vodic.html",
+    "robots": "",
+    "h1": [
+      "Rebranding and UI/UX design: first impression does not repeat"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/blog/vodjenje-drustvenih-mreza.html",
+    "title": "Social networking: what you actually pay and what you get  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/blog/vodjenje-drustvenih-mreza.html",
+    "robots": "",
+    "h1": [
+      "Social networking: what you actually pay and what you get"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/cinematic-digitalx/index.html",
+    "title": "Digital X — Cinematic Brand Experience",
+    "canonical": "https://www.digital-x-marketing.com/en/cinematic-digitalx/",
+    "robots": "",
+    "h1": [
+      "A system worth remembering."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/growthos.html",
+    "title": "GrowthOS business app by measure  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/growthos.html",
+    "robots": "",
+    "h1": [
+      "Your job.One operating system."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/index.html",
+    "title": "Digital X Sarajevo | Websites, SEO and AI automation",
+    "canonical": "https://www.digital-x-marketing.com/en/",
+    "robots": "",
+    "h1": [
+      "\nYour website can do more than look good.\nHelp visitors find answers, explore your services and take the next step.\n"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/kolacici.html",
+    "title": "Cookie policy  Digital X Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/en/kolacici.html",
+    "robots": "index,follow",
+    "h1": [
+      "Cookie policy"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./en/kontakt.html",
+    "title": "Contact — free consultations  Digital X Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/en/kontakt.html",
+    "robots": "index,follow",
+    "h1": [
+      "Let's talk about your the goal."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/landing-ai.html",
+    "title": "AI chatbot and automation for your business — a non-sleeping worker  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/landing-ai.html",
+    "robots": "",
+    "h1": [
+      "Employment of workers He doesn't sleep, he doesn't make mistakes, he doesn't ask for pay."
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/landing-seo.html",
+    "title": "SEO + Geo + AEO Optimization — Be the answer to Google, Map and AI search  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/landing-seo.html",
+    "robots": "",
+    "h1": [
+      "Customers are looking for you on Three seats. How long do they find you?"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/landing-web.html",
+    "title": "Professional website for lawyers, offices and crafts — 449 KM  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/landing-web.html",
+    "robots": "",
+    "h1": [
+      "Client you first Google. What does he find right now?"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/o-nama.html",
+    "title": "About us — who Digital X  Digital Agency Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/en/o-nama.html",
+    "robots": "index,follow",
+    "h1": [
+      "Digital Agency Building The presence he's selling."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/otkazivanje-povrat.html",
+    "title": "Cancellation, Return and Complaints  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/otkazivanje-povrat.html",
+    "robots": "index,follow",
+    "h1": [
+      "Cancellation, recovery and complaint"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./en/pravne-informacije.html",
+    "title": "Legal information  Digital X Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/en/pravne-informacije.html",
+    "robots": "index,follow",
+    "h1": [
+      "Legal information"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./en/primjeri-web-stranica/index.html",
+    "title": "Cinematic web experience  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/primjeri-web-stranica/",
+    "robots": "",
+    "h1": [
+      "Brands thatYou're not just looking."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/privatnost.html",
+    "title": "Privacy policy  Digital X Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/en/privatnost.html",
+    "robots": "index,follow",
+    "h1": [
+      "Privacy Policy"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./en/second-brain-os.html",
+    "title": "AI Second Brain OS and private Co-pilot  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/second-brain-os.html",
+    "robots": "",
+    "h1": [
+      "Your business skills.One living galaxy."
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./en/shop/category/ai/index.html",
+    "title": "AI Systems - Services  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/category/ai/",
+    "robots": "",
+    "h1": [
+      "AI systems"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/shop/category/automation/index.html",
+    "title": "Automation —  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/category/automation/",
+    "robots": "",
+    "h1": [
+      "Automation"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/shop/category/content/index.html",
+    "title": "Contents & brand — Services  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/category/content/",
+    "robots": "",
+    "h1": [
+      "& Brand Content"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/shop/category/growth/index.html",
+    "title": "Visibility & Growth -  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/category/growth/",
+    "robots": "",
+    "h1": [
+      "Visibility"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/shop/category/web/index.html",
+    "title": "Web & E-commerce — Services  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/category/web/",
+    "robots": "",
+    "h1": [
+      "Web & E-commerce"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/shop/index.html",
+    "title": "Digital X Shop · Digital services and systems",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/",
+    "robots": "",
+    "h1": [
+      "Services as clearDigital products."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./en/shop/product/ai-concierge/index.html",
+    "title": "AI Sales Assistant — from 490 KM  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/product/ai-concierge/",
+    "robots": "",
+    "h1": [
+      "AI Sales Assistant"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/shop/product/application-mvp/index.html",
+    "title": "Measured application — Assessment at request  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/product/application-mvp/",
+    "robots": "",
+    "h1": [
+      "Custom Application"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/shop/product/content-system/index.html",
+    "title": "Content system - from 249 KM  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/product/content-system/",
+    "robots": "",
+    "h1": [
+      "Content system"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/shop/product/digital-partner/index.html",
+    "title": "Digital partner – from 899 KM  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/product/digital-partner/",
+    "robots": "",
+    "h1": [
+      "Digital Partner"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/shop/product/ecommerce-launch/index.html",
+    "title": "E-commerce Launch — from 2.490 KM  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/product/ecommerce-launch/",
+    "robots": "",
+    "h1": [
+      "E-commerce Launch"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/shop/product/growth-campaigns/index.html",
+    "title": "Growth campaign — from 249 kmM  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/product/growth-campaigns/",
+    "robots": "",
+    "h1": [
+      "Growth campaign"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/shop/product/review-engine/index.html",
+    "title": "Review system - from 199 kmM  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/product/review-engine/",
+    "robots": "",
+    "h1": [
+      "Review System"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/shop/product/second-brain-os/index.html",
+    "title": "AI Second Brain OS — Assessment at Request  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/product/second-brain-os/",
+    "robots": "",
+    "h1": [
+      "AI Second Brain OS"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/shop/product/seo-aeo/index.html",
+    "title": "SEO · GEO · AEO — from 249 kmM  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/product/seo-aeo/",
+    "robots": "",
+    "h1": [
+      "SEO · GEO · AEO"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/shop/product/speed-optimization/index.html",
+    "title": "Speed Optimization — from 99 KM  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/product/speed-optimization/",
+    "robots": "",
+    "h1": [
+      "Speed Optimization"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/shop/product/web-presence/index.html",
+    "title": "Premium Web Presence - from 449 KM  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/product/web-presence/",
+    "robots": "",
+    "h1": [
+      "Premium Web Presence"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/shop/product/workflow-starter/index.html",
+    "title": "Automation Starter - from 349 KM  Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/en/shop/product/workflow-starter/",
+    "robots": "",
+    "h1": [
+      "Autostart"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./en/uslovi.html",
+    "title": "Terms of Use  Digital X",
+    "canonical": "https://www.digital-x-marketing.com/en/uslovi.html",
+    "robots": "index,follow",
+    "h1": [
+      "Terms of Use"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./google-business-profile.html",
+    "title": "Google Business Profile optimizacija | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/google-business-profile.html",
+    "robots": "",
+    "h1": [
+      "Google Business Profile koji pretvara lokalnu pretragu u upit."
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./growthos.html",
+    "title": "GrowthOS poslovna aplikacija po mjeri | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/growthos.html",
+    "robots": "",
+    "h1": [
+      "Vaš posao.Jedan operativni sistem."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./hvala.html",
+    "title": "Hvala na upitu | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/hvala.html",
+    "robots": "noindex,follow",
+    "h1": [
+      "Hvala! Vaš upit je stigao."
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./index.html",
+    "title": "Digital X Sarajevo | Web stranice, SEO i AI automatizacija",
+    "canonical": "https://www.digital-x-marketing.com/",
+    "robots": "",
+    "h1": [
+      "\n      Prisustvo koje se pamti.\n      Cinematic web stranice, SEO / GEO / AEO i AI automatizacija — Digital X Sarajevo.\n    "
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./kolacici.html",
+    "title": "Politika kolačića | Digital X Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/kolacici.html",
+    "robots": "index,follow",
+    "h1": [
+      "Politika kolačića"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./kontakt.html",
+    "title": "Kontakt — besplatne konzultacije | Digital X Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/kontakt.html",
+    "robots": "index,follow",
+    "h1": [
+      "Razgovarajmo o vašem cilju."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./landing-ai.html",
+    "title": "AI chatbot i automatizacija za vaš biznis — radnik koji ne spava | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/landing-ai.html",
+    "robots": "",
+    "h1": [
+      "Zaposlite radnika koji ne spava, ne griješi i ne traži platu."
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./landing-seo.html",
+    "title": "SEO + GEO + AEO optimizacija — budite odgovor na Googlu, mapi i u AI pretrazi | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/landing-seo.html",
+    "robots": "",
+    "h1": [
+      "Kupci vas traže na tri mjesta. Na koliko vas pronađu?"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./landing-web.html",
+    "title": "Profesionalna web stranica za advokate, ordinacije i obrte — od 449 KM | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/landing-web.html",
+    "robots": "",
+    "h1": [
+      "Klijent vas prvo gugla. Šta trenutno pronađe?"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./o-nama.html",
+    "title": "O nama — ko je Digital X | Digitalna agencija Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/o-nama.html",
+    "robots": "index,follow",
+    "h1": [
+      "Digitalna agencija koja gradi prisustvo koje prodaje."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./otkazivanje-povrat.html",
+    "title": "Otkazivanje, povrat i reklamacije | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/otkazivanje-povrat.html",
+    "robots": "index,follow",
+    "h1": [
+      "Otkazivanje, povrat i reklamacije"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./pravne-informacije.html",
+    "title": "Pravne informacije | Digital X Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/pravne-informacije.html",
+    "robots": "index,follow",
+    "h1": [
+      "Pravne informacije"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./primjeri-web-stranica/index.html",
+    "title": "Cinematic web iskustva | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/primjeri-web-stranica/",
+    "robots": "",
+    "h1": [
+      "Brandovi kojene samo gledate."
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./privatnost.html",
+    "title": "Politika privatnosti | Digital X Sarajevo",
+    "canonical": "https://www.digital-x-marketing.com/privatnost.html",
+    "robots": "index,follow",
+    "h1": [
+      "Politika privatnosti"
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./projekti/eynna-hair-dizajner-perika/index.html",
+    "title": "Eynna Hair Dizajner perika | Digital X projekt",
+    "canonical": "https://www.digital-x-marketing.com/projekti/eynna-hair-dizajner-perika/",
+    "robots": "",
+    "h1": [
+      "Eynna Hair — Dizajner perika"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./projekti/index.html",
+    "title": "Digital X projekti | Web, SEO, AI i automatizacija",
+    "canonical": "https://www.digital-x-marketing.com/projekti/",
+    "robots": "",
+    "h1": [
+      "Projekti koji spajaju dizajn, vidljivost i sisteme"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./second-brain-os.html",
+    "title": "AI Second Brain OS i privatni Co-Pilot | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/second-brain-os.html",
+    "robots": "",
+    "h1": [
+      "Vaše poslovno znanje.Jedna živa galaksija."
+    ],
+    "schema": 0
+  },
+  {
+    "file": "./shop/category/ai/index.html",
+    "title": "AI sistemi — usluge | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/category/ai/",
+    "robots": "",
+    "h1": [
+      "AI sistemi"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./shop/category/automation/index.html",
+    "title": "Automatizacija — usluge | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/category/automation/",
+    "robots": "",
+    "h1": [
+      "Automatizacija"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./shop/category/content/index.html",
+    "title": "Sadržaj & brend — usluge | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/category/content/",
+    "robots": "",
+    "h1": [
+      "Sadržaj & brend"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./shop/category/growth/index.html",
+    "title": "Vidljivost & rast — usluge | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/category/growth/",
+    "robots": "",
+    "h1": [
+      "Vidljivost & rast"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./shop/category/web/index.html",
+    "title": "Web & E-commerce — usluge | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/category/web/",
+    "robots": "",
+    "h1": [
+      "Web & E-commerce"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./shop/category.html",
+    "title": "Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/",
+    "robots": "noindex,follow",
+    "h1": [],
+    "schema": 0
+  },
+  {
+    "file": "./shop/index.html",
+    "title": "Digital X Shop · digitalne usluge i sistemi",
+    "canonical": "https://www.digital-x-marketing.com/shop/",
+    "robots": "",
+    "h1": [
+      "Usluge kao jasnidigitalni proizvodi."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./shop/product/ai-concierge/index.html",
+    "title": "AI prodajni asistent — od 490 KM | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/product/ai-concierge/",
+    "robots": "",
+    "h1": [
+      "AI prodajni asistent"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./shop/product/application-mvp/index.html",
+    "title": "Aplikacija po mjeri — Procjena po zahtjevu | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/product/application-mvp/",
+    "robots": "",
+    "h1": [
+      "Aplikacija po mjeri"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./shop/product/content-system/index.html",
+    "title": "Sistem sadržaja — od 249 KM | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/product/content-system/",
+    "robots": "",
+    "h1": [
+      "Sistem sadržaja"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./shop/product/digital-partner/index.html",
+    "title": "Digitalni partner — od 899 KM | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/product/digital-partner/",
+    "robots": "",
+    "h1": [
+      "Digitalni partner"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./shop/product/ecommerce-launch/index.html",
+    "title": "E-commerce Launch — od 2.490 KM | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/product/ecommerce-launch/",
+    "robots": "",
+    "h1": [
+      "E-commerce Launch"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./shop/product/growth-campaigns/index.html",
+    "title": "Kampanje za rast — od 249 KM | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/product/growth-campaigns/",
+    "robots": "",
+    "h1": [
+      "Kampanje za rast"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./shop/product/review-engine/index.html",
+    "title": "Sistem recenzija — od 199 KM | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/product/review-engine/",
+    "robots": "",
+    "h1": [
+      "Sistem recenzija"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./shop/product/second-brain-os/index.html",
+    "title": "AI Second Brain OS — Procjena po zahtjevu | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/product/second-brain-os/",
+    "robots": "",
+    "h1": [
+      "AI Second Brain OS"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./shop/product/seo-aeo/index.html",
+    "title": "SEO · GEO · AEO — od 249 KM | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/product/seo-aeo/",
+    "robots": "",
+    "h1": [
+      "SEO · GEO · AEO"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./shop/product/speed-optimization/index.html",
+    "title": "Speed optimizacija — od 99 KM | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/product/speed-optimization/",
+    "robots": "",
+    "h1": [
+      "Speed optimizacija"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./shop/product/web-presence/index.html",
+    "title": "Premium web prisustvo — od 449 KM | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/product/web-presence/",
+    "robots": "",
+    "h1": [
+      "Premium web prisustvo"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./shop/product/workflow-starter/index.html",
+    "title": "Automation Starter — od 349 KM | Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/product/workflow-starter/",
+    "robots": "",
+    "h1": [
+      "Automation Starter"
+    ],
+    "schema": 2
+  },
+  {
+    "file": "./shop/product.html",
+    "title": "Digital X Shop",
+    "canonical": "https://www.digital-x-marketing.com/shop/",
+    "robots": "noindex,follow",
+    "h1": [],
+    "schema": 0
+  },
+  {
+    "file": "./uslovi.html",
+    "title": "Uslovi korištenja | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/uslovi.html",
+    "robots": "index,follow",
+    "h1": [
+      "Uslovi korištenja"
+    ],
+    "schema": 0
+  }
+]

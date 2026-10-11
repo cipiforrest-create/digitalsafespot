@@ -1,0 +1,2 @@
+/** Small safe formatting subset. Links and HTML remain text. */
+export function renderMessage(node:HTMLElement,value:string){node.replaceChildren();for(const[i,line]of value.split('\n').entries()){if(i)node.append(document.createElement('br'));const clean=line.replace(/^#{1,4}\s+/,'').replace(/^[-*]\s+/,'• ');for(const part of clean.split(/(\*\*[^*]+\*\*)/g)){if(part.startsWith('**')&&part.endsWith('**')){const strong=document.createElement('strong');strong.textContent=part.slice(2,-2);node.append(strong);}else node.append(document.createTextNode(part));}}}

@@ -1,0 +1,1598 @@
+[
+  {
+    "id": "home",
+    "preview": "/",
+    "production": "/",
+    "title": "DIGITAL X — Infrastruktura za rast",
+    "description": "Strategija, cinematic web, AI asistenti i marketing povezani u infrastrukturu za rast.",
+    "primaryIntent": "Digital X",
+    "secondaryKeywords": [
+      "Digital X",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "visibility",
+    "preview": "/usluge/seo-aeo-geo/",
+    "production": "/usluge/seo-aeo-geo/",
+    "title": "SEO optimizacija Sarajevo, AEO i GEO | Digital X",
+    "description": "Budite tamo gdje počinje pitanje. SEO, AEO i GEO daju vašoj stručnosti jasnu, provjerljivu strukturu — za ljude, pretraživače i AI sisteme.",
+    "primaryIntent": "X Visibility",
+    "secondaryKeywords": [
+      "SEO i AEO optimizacija",
+      "GEO sadržaj",
+      "AI vidljivost"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Da li garantujete prvo mjesto?",
+      "Moram li mijenjati postojeću stranicu?"
+    ],
+    "links": [
+      "signal",
+      "tracker",
+      "content"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "convert",
+    "preview": "/usluge/x-convert/",
+    "production": "/usluge/x-convert/",
+    "title": "X Convert | DIGITAL X",
+    "description": "Povezujemo dizajn, sadržaj i razgovor u web iskustvo koje ljudima olakšava odluku.",
+    "primaryIntent": "X Convert",
+    "secondaryKeywords": [
+      "optimizacija konverzije",
+      "odredišne stranice",
+      "korisničko iskustvo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Je li redizajn uvijek potreban?",
+      "Može li stranica razgovarati s posjetiocem?"
+    ],
+    "links": [
+      "cinematic",
+      "storefront",
+      "concierge"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "growth",
+    "preview": "/usluge/digitalne-kampanje/",
+    "production": "/usluge/digitalne-kampanje/",
+    "title": "X Growth | DIGITAL X",
+    "description": "Oglasi, sadržaj i konverzije trebaju zajednički cilj, a ne tri odvojena izvještaja.",
+    "primaryIntent": "X Growth",
+    "secondaryKeywords": [
+      "digitalne kampanje",
+      "marketing strategija",
+      "kvalitetni upiti"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Je li budžet za oglase uključen?",
+      "Koji kanal je bolji za moj posao?"
+    ],
+    "links": [
+      "meta-ads",
+      "google-ads",
+      "social-growth"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "automate",
+    "preview": "/usluge/ai-automatizacija/",
+    "production": "/usluge/ai-automatizacija/",
+    "title": "AI automatizacija poslovanja BiH | Digital X",
+    "description": "Povezujemo ponavljajuće korake uz jasno određene odgovornosti, pristupe i potvrde.",
+    "primaryIntent": "X Automate",
+    "secondaryKeywords": [
+      "automatizacija poslovanja",
+      "integracija CRM-a",
+      "automatizacija upita"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Možete li povezati naš CRM?",
+      "Da li AI dobija neograničen pristup?"
+    ],
+    "links": [
+      "lead-desk",
+      "receptionist",
+      "second-brain"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "cinematic",
+    "preview": "/usluge/cinematic-web-stranice/",
+    "production": "/usluge/cinematic-web-stranice/",
+    "title": "Cinematic Websites | DIGITAL X",
+    "description": "Filmski kadar, kontrolisan pokret i jasan put do ponude. Vizuelno iskustvo izgrađeno oko karaktera vašeg brenda.",
+    "primaryIntent": "Cinematic Websites",
+    "secondaryKeywords": [
+      "cinematic web dizajn",
+      "interaktivne web stranice",
+      "scroll animacija"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Da li svaka stranica treba video?",
+      "Možemo li koristiti postojeće materijale?"
+    ],
+    "links": [
+      "storefront",
+      "video",
+      "photography"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "storefront",
+    "preview": "/usluge/smart-storefront/",
+    "production": "/usluge/smart-storefront/",
+    "title": "Smart Storefront | DIGITAL X",
+    "description": "Spajamo cinematic web, AI Concierge, jasnu strukturu ponude i dogovorene automatizacije.",
+    "primaryIntent": "Smart Storefront",
+    "secondaryKeywords": [
+      "pametna web stranica",
+      "AI prodajni asistent",
+      "vođena kupovina"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Je li ovo samo za online prodavnice?",
+      "Može li se dodati postojećem webu?"
+    ],
+    "links": [
+      "cinematic",
+      "concierge",
+      "lead-desk"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "signal",
+    "preview": "/usluge/x-signal/",
+    "production": "/usluge/x-signal/",
+    "title": "X Signal | DIGITAL X",
+    "description": "Početna analiza javno dostupne web stranice: metapodaci, struktura, upute za indeksiranje i put do upita.",
+    "primaryIntent": "X Signal",
+    "secondaryKeywords": [
+      "analiza web stranice",
+      "tehnički SEO pregled",
+      "provjera metapodataka"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Moram li ostaviti e-mail?",
+      "Dobijam li ocjenu AI vidljivosti?"
+    ],
+    "links": [
+      "visibility",
+      "tracker",
+      "convert"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "lead-desk",
+    "preview": "/usluge/x-lead-desk/",
+    "production": "/usluge/x-lead-desk/",
+    "title": "X Lead Desk | DIGITAL X",
+    "description": "Jasno organizovan put od prvog kontakta do odgovorne osobe i narednog koraka.",
+    "primaryIntent": "X Lead Desk",
+    "secondaryKeywords": [
+      "upravljanje upitima",
+      "kvalifikacija leadova",
+      "predaja prodajnom timu"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šalje li ova demonstracija stvarne poruke?",
+      "Da li zamjenjuje prodajni tim?"
+    ],
+    "links": [
+      "receptionist",
+      "concierge",
+      "automate"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "receptionist",
+    "preview": "/usluge/ai-receptionist/",
+    "production": "/usluge/ai-receptionist/",
+    "title": "AI Receptionist | DIGITAL X",
+    "description": "AI recepcionar dočekuje upit, razjašnjava potrebu i priprema koristan sažetak za vaš tim.",
+    "primaryIntent": "AI Receptionist",
+    "secondaryKeywords": [
+      "AI recepcionar",
+      "automatski odgovor na upit",
+      "kvalifikacija kontakta"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Može li zakazivati termine?",
+      "Može li razgovarati na više jezika?"
+    ],
+    "links": [
+      "lead-desk",
+      "concierge",
+      "automate"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "concierge",
+    "preview": "/ai-concierge-preview/",
+    "production": "/ai-concierge-preview/",
+    "title": "AI Concierge | DIGITAL X",
+    "description": "Glasovni i tekstualni vodič koji povezuje pitanja posjetilaca s pravim dijelom vaše ponude.",
+    "primaryIntent": "AI Concierge",
+    "secondaryKeywords": [
+      "AI asistent za web",
+      "glasovni chatbot",
+      "navigacija razgovorom"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Može li izvršavati bilo koju naredbu?",
+      "Radi li kada zaključam telefon?"
+    ],
+    "links": [
+      "storefront",
+      "receptionist",
+      "signal"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "tracker",
+    "preview": "/usluge/ai-visibility-tracker/",
+    "production": "/usluge/ai-visibility-tracker/",
+    "title": "AI Visibility Tracker | DIGITAL X",
+    "description": "Metodologija praćenja spominjanja i izvora u AI odgovorima na dogovorena poslovna pitanja.",
+    "primaryIntent": "AI Visibility Tracker",
+    "secondaryKeywords": [
+      "praćenje AI spominjanja",
+      "AI citati",
+      "metodologija AI vidljivosti"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Prikazujete li ovdje moje stvarne rezultate?",
+      "Možete li garantovati AI preporuku?"
+    ],
+    "links": [
+      "visibility",
+      "signal",
+      "content"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "second-brain",
+    "preview": "/usluge/ai-second-brain/",
+    "production": "/usluge/ai-second-brain/",
+    "title": "AI Second Brain | DIGITAL X",
+    "description": "Organizacija odobrenih poslovnih informacija u pretraživ sistem znanja s kontrolisanim pristupom.",
+    "primaryIntent": "AI Second Brain",
+    "secondaryKeywords": [
+      "poslovna baza znanja",
+      "AI pretraga dokumenata",
+      "organizacija internog znanja"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Može li koristiti naše dokumente?",
+      "Je li povezan s ovim asistentom?"
+    ],
+    "links": [
+      "automate",
+      "lead-desk",
+      "concierge"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "meta-ads",
+    "preview": "/usluge/meta-ads/",
+    "production": "/usluge/meta-ads/",
+    "title": "Meta Ads | DIGITAL X",
+    "description": "Facebook i Instagram kampanje povezane s ponudom, kreativom i relevantnim sljedećim korakom.",
+    "primaryIntent": "Meta Ads",
+    "secondaryKeywords": [
+      "Facebook oglašavanje",
+      "Instagram kampanje",
+      "Meta Ads agencija"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Da li je potrebna nova fotografija ili video?",
+      "Je li praćenje automatski uključeno?"
+    ],
+    "links": [
+      "content",
+      "convert",
+      "lead-desk"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "google-ads",
+    "preview": "/usluge/google-ads/",
+    "production": "/usluge/google-ads/",
+    "title": "Google Ads | DIGITAL X",
+    "description": "Kampanje u Google pretrazi i odgovarajući YouTube formati, povezani s jasnom ponudom i mjerenjem.",
+    "primaryIntent": "Google Ads",
+    "secondaryKeywords": [
+      "Google oglašavanje",
+      "Search kampanje",
+      "YouTube oglasi"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Radite li kampanje izvan Sarajeva?",
+      "Da li garantujete cijenu upita?"
+    ],
+    "links": [
+      "growth",
+      "convert",
+      "video"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "social-management",
+    "preview": "/usluge/drustvene-mreze/",
+    "production": "/usluge/drustvene-mreze/",
+    "title": "Upravljanje društvenim mrežama | DIGITAL X",
+    "description": "Planiranje, priprema i upravljanje sadržajem uz prepoznatljiv ton i jasnu organizaciju odobravanja.",
+    "primaryIntent": "Upravljanje društvenim mrežama",
+    "secondaryKeywords": [
+      "vođenje društvenih mreža",
+      "plan objava",
+      "upravljanje profilima"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Da li odgovarate na sve poruke?",
+      "Da li plaćeno oglašavanje ulazi u paket?"
+    ],
+    "links": [
+      "social-growth",
+      "content",
+      "meta-ads"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "social-growth",
+    "preview": "/usluge/social-growth/",
+    "production": "/usluge/social-growth/",
+    "title": "Social Growth | DIGITAL X",
+    "description": "Napredni program sadržaja koji testira teme, formate i put od pažnje do interesa.",
+    "primaryIntent": "Social Growth",
+    "secondaryKeywords": [
+      "strategija rasta profila",
+      "testiranje sadržaja",
+      "organski angažman"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Kupujete li pratioce?",
+      "Možete li obećati viralan video?"
+    ],
+    "links": [
+      "social-management",
+      "video",
+      "meta-ads"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "content",
+    "preview": "/usluge/produkcija-sadrzaja/",
+    "production": "/usluge/produkcija-sadrzaja/",
+    "title": "Produkcija sadržaja | DIGITAL X",
+    "description": "Fotografija, video i tekst planirani oko ponude, publike i načina korištenja.",
+    "primaryIntent": "Produkcija sadržaja",
+    "secondaryKeywords": [
+      "produkcija sadržaja",
+      "Content Day",
+      "sadržaj za kampanje"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Možete li obraditi naš postojeći sadržaj?",
+      "Šta uključuje Content Day?"
+    ],
+    "links": [
+      "photography",
+      "video",
+      "catalogues"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "photography",
+    "preview": "/usluge/fotografija-proizvoda/",
+    "production": "/usluge/fotografija-proizvoda/",
+    "title": "Fotografija proizvoda | DIGITAL X",
+    "description": "Fotografije prilagođene web prodavnici, kampanji ili katalogu, s dosljednim prikazom proizvoda.",
+    "primaryIntent": "Fotografija proizvoda",
+    "secondaryKeywords": [
+      "fotografisanje proizvoda",
+      "fotografije za webshop",
+      "kataloška fotografija"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Gdje se organizuje snimanje?",
+      "Možete li pripremiti slike za webshop?"
+    ],
+    "links": [
+      "catalogues",
+      "video",
+      "cinematic"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "video",
+    "preview": "/usluge/video-proizvoda/",
+    "production": "/usluge/video-proizvoda/",
+    "title": "Video proizvoda | DIGITAL X",
+    "description": "Pokret, detalj i kontekst proizvoda pretvoreni u video za web, oglase i društvene mreže.",
+    "primaryIntent": "Video proizvoda",
+    "secondaryKeywords": [
+      "snimanje proizvoda",
+      "video za oglase",
+      "montaža kratkog videa"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Da li svaki video ima zvuk?",
+      "Može li video postati cinematic web sekvenca?"
+    ],
+    "links": [
+      "cinematic",
+      "social-growth",
+      "meta-ads"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "catalogues",
+    "preview": "/usluge/dizajn-kataloga/",
+    "production": "/usluge/dizajn-kataloga/",
+    "title": "Dizajn kataloga | DIGITAL X",
+    "description": "Strukturisani digitalni i štampani katalozi s jasnim informacijama i dosljednim vizuelnim sistemom.",
+    "primaryIntent": "Dizajn kataloga",
+    "secondaryKeywords": [
+      "izrada kataloga",
+      "digitalni katalog",
+      "priprema za štampu"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Da li preuzimate podatke iz webshopa?",
+      "Da li je štampa uključena?"
+    ],
+    "links": [
+      "photography",
+      "content",
+      "storefront"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "eynna",
+    "preview": "/projekti/eynna-hair/",
+    "production": "/projekti/eynna-hair/",
+    "title": "EYNNA Hair | DIGITAL X",
+    "description": "Prikaz EYNNA Hair digitalne ponude i puta prema informisanijem izboru proizvoda.",
+    "primaryIntent": "EYNNA Hair",
+    "secondaryKeywords": [
+      "EYNNA Hair",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Gdje mogu vidjeti brend?",
+      "Jesu li prikazani poslovni rezultati?"
+    ],
+    "links": [
+      "designer",
+      "photography",
+      "storefront"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "star",
+    "preview": "/projekti/star-parfimerija/",
+    "production": "/projekti/star-parfimerija/",
+    "title": "STAR Parfimerija | DIGITAL X",
+    "description": "Cinematic prikaz parfimerijske ponude s naglaskom na ambijent, proizvod i ritam istraživanja.",
+    "primaryIntent": "STAR Parfimerija",
+    "secondaryKeywords": [
+      "STAR Parfimerija",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Mogu li pogledati prikaz?",
+      "Može li ovakav stil odgovarati drugom brendu?"
+    ],
+    "links": [
+      "cinematic",
+      "video",
+      "photography"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "designer",
+    "preview": "/projekti/eynna-hair-dizajner-perika/",
+    "production": "/projekti/eynna-hair-dizajner-perika/",
+    "title": "Dizajner perika | DIGITAL X",
+    "description": "EYNNA Hair konfigurator pomaže korisniku da strukturira izbor modela, boje, dužine i detalja perike.",
+    "primaryIntent": "Dizajner perika",
+    "secondaryKeywords": [
+      "Dizajner perika",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Je li ovo isto što i chatbot?",
+      "Gdje je izvorni projekt?"
+    ],
+    "links": [
+      "eynna",
+      "convert",
+      "storefront"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "services",
+    "preview": "/usluge/",
+    "production": "/usluge/",
+    "title": "Sve usluge | DIGITAL X",
+    "description": "Istražite četiri smjera rada i odaberite ono što odgovara trenutnoj fazi vašeg poslovanja.",
+    "primaryIntent": "Sve usluge",
+    "secondaryKeywords": [
+      "Sve usluge",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Kako odabrati uslugu?",
+      "Postoje li manji paketi?"
+    ],
+    "links": [
+      "visibility",
+      "convert",
+      "growth",
+      "automate"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "work",
+    "preview": "/projekti/",
+    "production": "/projekti/",
+    "title": "Odabrani radovi | DIGITAL X",
+    "description": "Projekti i vizuelni prikazi koji povezuju identitet, sadržaj i korisnički put.",
+    "primaryIntent": "Odabrani radovi",
+    "secondaryKeywords": [
+      "Odabrani radovi",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Mogu li istražiti primjere?",
+      "Možete li napraviti sličan projekt?"
+    ],
+    "links": [
+      "eynna",
+      "star",
+      "designer"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "about",
+    "preview": "/o-nama.html",
+    "production": "/o-nama.html",
+    "title": "O nama | DIGITAL X",
+    "description": "Digital X povezuje strategiju, web dizajn, sadržaj, vidljivost i automatizaciju u smislen digitalni nastup.",
+    "primaryIntent": "O nama",
+    "secondaryKeywords": [
+      "O nama",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Kako započinje saradnja?",
+      "Da li radite sve odjednom?"
+    ],
+    "links": [
+      "services",
+      "work",
+      "signal"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "pricing",
+    "preview": "/cjenovnik/",
+    "production": "/cjenovnik/",
+    "title": "Cjenovnik | DIGITAL X",
+    "description": "Počnite malim, korisnim korakom. Usporedite obim i početne cijene prije razgovora.",
+    "primaryIntent": "Cjenovnik",
+    "secondaryKeywords": [
+      "Cjenovnik",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Kako započeti?",
+      "Mogu li tražiti drugačiji obim?"
+    ],
+    "links": [
+      "services",
+      "contact",
+      "signal"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "examples",
+    "preview": "/primjeri-web-stranica/",
+    "production": "/primjeri-web-stranica/",
+    "title": "Primjeri web stranica | DIGITAL X",
+    "description": "Od hotela do webshopa: pogledajte kako različiti poslovi mogu izgledati na ekranu.",
+    "primaryIntent": "Primjeri web stranica",
+    "secondaryKeywords": [
+      "Primjeri web stranica",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Kako započeti?",
+      "Mogu li tražiti drugačiji obim?"
+    ],
+    "links": [
+      "services",
+      "contact",
+      "signal"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "contact",
+    "preview": "/kontakt.html",
+    "production": "/kontakt.html",
+    "title": "Kontakt | DIGITAL X",
+    "description": "Recite nam šta želite postići. Zajedno ćemo složiti korake, obim i procjenu.",
+    "primaryIntent": "Kontakt",
+    "secondaryKeywords": [
+      "Kontakt",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Kako započeti?",
+      "Mogu li tražiti drugačiji obim?"
+    ],
+    "links": [
+      "services",
+      "contact",
+      "signal"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "blog",
+    "preview": "/blog/",
+    "production": "/blog/",
+    "title": "Naučite prije nego platite. | DIGITAL X",
+    "description": "Praktični vodiči za web, sadržaj, oglašavanje i automatizaciju. Razumijte ponudu prije odluke.",
+    "primaryIntent": "Naučite prije nego platite.",
+    "secondaryKeywords": [
+      "Naučite prije nego platite.",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Kako započeti?",
+      "Mogu li tražiti drugačiji obim?"
+    ],
+    "links": [
+      "services",
+      "contact",
+      "signal"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "shop",
+    "preview": "/shop/",
+    "production": "/shop/",
+    "title": "Digital X Shop | DIGITAL X",
+    "description": "Odaberite kategoriju, usporedite proizvode i pronađite prvi korak za svoj posao.",
+    "primaryIntent": "Digital X Shop",
+    "secondaryKeywords": [
+      "Digital X Shop",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Kako započeti?",
+      "Mogu li tražiti drugačiji obim?"
+    ],
+    "links": [
+      "services",
+      "contact",
+      "signal"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "launch",
+    "preview": "/smart-website-launch/",
+    "production": "/smart-website-launch/",
+    "title": "Smart Website Launch | DIGITAL X",
+    "description": "Cinematic web do pet stranica i AI Lead Assistant prva tri mjeseca. Jasan početak digitalnog prisustva.",
+    "primaryIntent": "Smart Website Launch",
+    "secondaryKeywords": [
+      "Smart Website Launch",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Kako započeti?",
+      "Mogu li tražiti drugačiji obim?"
+    ],
+    "links": [
+      "services",
+      "contact",
+      "signal"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "shop-web",
+    "preview": "/shop/category/web/",
+    "production": "/shop/category/web/",
+    "title": "Web & E-commerce | DIGITAL X",
+    "description": "Stranice, trgovine i aplikacije koje pretvaraju interes u upit ili kupovinu.",
+    "primaryIntent": "Web & E-commerce",
+    "secondaryKeywords": [
+      "Web & E-commerce",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Jesu li cijene konačne?"
+    ],
+    "links": [
+      "shop",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "shop-ai",
+    "preview": "/shop/category/ai/",
+    "production": "/shop/category/ai/",
+    "title": "AI sistemi | DIGITAL X",
+    "description": "Privatno poslovno znanje, razgovorni asistenti i sistemi koji rade s vašim kontekstom.",
+    "primaryIntent": "AI sistemi",
+    "secondaryKeywords": [
+      "AI sistemi",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Jesu li cijene konačne?"
+    ],
+    "links": [
+      "shop",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "shop-automation",
+    "preview": "/shop/category/automation/",
+    "production": "/shop/category/automation/",
+    "title": "Automatizacija | DIGITAL X",
+    "description": "Workflowi koji povezuju upite, CRM, termine, dokumente, obavijesti i izvještaje.",
+    "primaryIntent": "Automatizacija",
+    "secondaryKeywords": [
+      "Automatizacija",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Jesu li cijene konačne?"
+    ],
+    "links": [
+      "shop",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "shop-growth",
+    "preview": "/shop/category/growth/",
+    "production": "/shop/category/growth/",
+    "title": "Vidljivost & rast | DIGITAL X",
+    "description": "SEO, GEO, AEO, oglašavanje i optimizacija mjerljivog korisničkog puta.",
+    "primaryIntent": "Vidljivost & rast",
+    "secondaryKeywords": [
+      "Vidljivost & rast",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Jesu li cijene konačne?"
+    ],
+    "links": [
+      "shop",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "shop-content",
+    "preview": "/shop/category/content/",
+    "production": "/shop/category/content/",
+    "title": "Sadržaj & brend | DIGITAL X",
+    "description": "Vizuali, video, copy i sistemi sadržaja koji izgledaju kao jedan dosljedan brend.",
+    "primaryIntent": "Sadržaj & brend",
+    "secondaryKeywords": [
+      "Sadržaj & brend",
+      "digitalne usluge Sarajevo"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Jesu li cijene konačne?"
+    ],
+    "links": [
+      "shop",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-web-presence",
+    "preview": "/shop/product/web-presence/",
+    "production": "/shop/product/web-presence/",
+    "title": "Premium web prisustvo — cijena i obim | DIGITAL X",
+    "description": "Prezentacijska stranica s jasnom ponudom, mobilnim dizajnom, osnovnim SEO-om i kontakt tokom.",
+    "primaryIntent": "Premium web prisustvo",
+    "secondaryKeywords": [
+      "Premium web prisustvo",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-web",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-ecommerce-launch",
+    "preview": "/shop/product/ecommerce-launch/",
+    "production": "/shop/product/ecommerce-launch/",
+    "title": "E-commerce Launch — cijena i obim | DIGITAL X",
+    "description": "Kompletna trgovina s kategorijama, proizvodima, dostavom, plaćanjem i obukom.",
+    "primaryIntent": "E-commerce Launch",
+    "secondaryKeywords": [
+      "E-commerce Launch",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-web",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-application-mvp",
+    "preview": "/shop/product/application-mvp/",
+    "production": "/shop/product/application-mvp/",
+    "title": "Aplikacija po mjeri — cijena i obim | DIGITAL X",
+    "description": "Portal, booking, dashboard ili operativni alat prilagođen vašem procesu.",
+    "primaryIntent": "Aplikacija po mjeri",
+    "secondaryKeywords": [
+      "Aplikacija po mjeri",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-web",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-second-brain-os",
+    "preview": "/shop/product/second-brain-os/",
+    "production": "/shop/product/second-brain-os/",
+    "title": "AI Second Brain OS — cijena i obim | DIGITAL X",
+    "description": "Privatna poslovna memorija s Co-Pilot asistentom, povezanim izvorima i odobrenim komandama.",
+    "primaryIntent": "AI Second Brain OS",
+    "secondaryKeywords": [
+      "AI Second Brain OS",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-ai",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-ai-concierge",
+    "preview": "/shop/product/ai-concierge/",
+    "production": "/shop/product/ai-concierge/",
+    "title": "AI prodajni asistent — cijena i obim | DIGITAL X",
+    "description": "Asistent za web i kanale komunikacije koji odgovara, kvalifikuje i prikuplja upite.",
+    "primaryIntent": "AI prodajni asistent",
+    "secondaryKeywords": [
+      "AI prodajni asistent",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-ai",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-workflow-starter",
+    "preview": "/shop/product/workflow-starter/",
+    "production": "/shop/product/workflow-starter/",
+    "title": "Automation Starter — cijena i obim | DIGITAL X",
+    "description": "Jedan prioritetni workflow od upita do zadatka, obavijesti ili CRM zapisa.",
+    "primaryIntent": "Automation Starter",
+    "secondaryKeywords": [
+      "Automation Starter",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-automation",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-review-engine",
+    "preview": "/shop/product/review-engine/",
+    "production": "/shop/product/review-engine/",
+    "title": "Sistem recenzija — cijena i obim | DIGITAL X",
+    "description": "Automatski zahtjev za recenziju nakon završene usluge, uz praćenje odgovora.",
+    "primaryIntent": "Sistem recenzija",
+    "secondaryKeywords": [
+      "Sistem recenzija",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-automation",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-seo-aeo",
+    "preview": "/shop/product/seo-aeo/",
+    "production": "/shop/product/seo-aeo/",
+    "title": "SEO · GEO · AEO — cijena i obim | DIGITAL X",
+    "description": "Tehnička osnova, lokalna vidljivost, sadržaj i struktura za Google i AI odgovore.",
+    "primaryIntent": "SEO · GEO · AEO",
+    "secondaryKeywords": [
+      "SEO · GEO · AEO",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-growth",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-growth-campaigns",
+    "preview": "/shop/product/growth-campaigns/",
+    "production": "/shop/product/growth-campaigns/",
+    "title": "Kampanje za rast — cijena i obim | DIGITAL X",
+    "description": "Meta i Google kampanje povezane s landing stranicom, analitikom i prodajnim ciljem.",
+    "primaryIntent": "Kampanje za rast",
+    "secondaryKeywords": [
+      "Kampanje za rast",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-growth",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-speed-optimization",
+    "preview": "/shop/product/speed-optimization/",
+    "production": "/shop/product/speed-optimization/",
+    "title": "Speed optimizacija — cijena i obim | DIGITAL X",
+    "description": "Brže učitavanje, stabilniji prikaz i tehničko čišćenje postojećeg sajta.",
+    "primaryIntent": "Speed optimizacija",
+    "secondaryKeywords": [
+      "Speed optimizacija",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-growth",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-content-system",
+    "preview": "/shop/product/content-system/",
+    "production": "/shop/product/content-system/",
+    "title": "Sistem sadržaja — cijena i obim | DIGITAL X",
+    "description": "Plan, copy, vizuali i kratki video formatirani kao jedan dosljedan sadržajni sistem.",
+    "primaryIntent": "Sistem sadržaja",
+    "secondaryKeywords": [
+      "Sistem sadržaja",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-content",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-digital-partner",
+    "preview": "/shop/product/digital-partner/",
+    "production": "/shop/product/digital-partner/",
+    "title": "Digitalni partner — cijena i obim | DIGITAL X",
+    "description": "Kombinovana saradnja za web, rast, sadržaj, automatizaciju i kontinuirano poboljšanje.",
+    "primaryIntent": "Digitalni partner",
+    "secondaryKeywords": [
+      "Digitalni partner",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-content",
+      "pricing",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "product-smart-website-launch",
+    "preview": "/shop/product/smart-website-launch/",
+    "production": "/shop/product/smart-website-launch/",
+    "title": "Smart Website Launch — cijena i obim | DIGITAL X",
+    "description": "Cinematic web do pet stranica i AI Lead Assistant uključen prva tri mjeseca.",
+    "primaryIntent": "Smart Website Launch",
+    "secondaryKeywords": [
+      "Smart Website Launch",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-web",
+      "pricing",
+      "contact"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "product-landing-starter",
+    "preview": "/shop/product/landing-starter/",
+    "production": "/shop/product/landing-starter/",
+    "title": "Landing stranica — cijena i obim | DIGITAL X",
+    "description": "Jedna stranica, jedan cilj. Ponuda spremna za upit i kampanju.",
+    "primaryIntent": "Landing stranica",
+    "secondaryKeywords": [
+      "Landing stranica",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-web",
+      "pricing",
+      "contact"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "product-site-care",
+    "preview": "/shop/product/site-care/",
+    "production": "/shop/product/site-care/",
+    "title": "Održavanje stranice — cijena i obim | DIGITAL X",
+    "description": "Mirniji rad uz redovno održavanje i dogovorenu podršku.",
+    "primaryIntent": "Održavanje stranice",
+    "secondaryKeywords": [
+      "Održavanje stranice",
+      "cijena i obim usluge"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [
+      "Šta je uključeno?",
+      "Mogu li prilagoditi paket?"
+    ],
+    "links": [
+      "shop-web",
+      "pricing",
+      "contact"
+    ],
+    "action": "new_route_proposed",
+    "noindex": true
+  },
+  {
+    "id": "article-koliko-kosta-web-stranica-bih",
+    "preview": "/blog/koliko-kosta-web-stranica-bih.html",
+    "production": "/blog/koliko-kosta-web-stranica-bih.html",
+    "title": "Koliko košta web stranica u BiH u 2026? | DIGITAL X",
+    "description": "Realan vodič kroz cijene — i kako ne platiti dvaput.",
+    "primaryIntent": "Koliko košta web stranica u BiH u 2026?",
+    "secondaryKeywords": [
+      "Koliko košta web stranica u BiH u 2026?",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-landing-stranica-vodic",
+    "preview": "/blog/landing-stranica-vodic.html",
+    "production": "/blog/landing-stranica-vodic.html",
+    "title": "Landing stranica: od oglasa do upita | DIGITAL X",
+    "description": "Jedna stranica, jedan cilj — od 199 KM.",
+    "primaryIntent": "Landing stranica: od oglasa do upita",
+    "secondaryKeywords": [
+      "Landing stranica: od oglasa do upita",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-aplikacije-po-mjeri",
+    "preview": "/blog/aplikacije-po-mjeri.html",
+    "production": "/blog/aplikacije-po-mjeri.html",
+    "title": "Aplikacija po mjeri | DIGITAL X",
+    "description": "Kada Excel i sveske više nisu dovoljni.",
+    "primaryIntent": "Aplikacija po mjeri",
+    "secondaryKeywords": [
+      "Aplikacija po mjeri",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-uiux-rebranding-vodic",
+    "preview": "/blog/uiux-rebranding-vodic.html",
+    "production": "/blog/uiux-rebranding-vodic.html",
+    "title": "Rebranding i UI/UX dizajn | DIGITAL X",
+    "description": "Prvi utisak se ne ponavlja.",
+    "primaryIntent": "Rebranding i UI/UX dizajn",
+    "secondaryKeywords": [
+      "Rebranding i UI/UX dizajn",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-brzina-sajta",
+    "preview": "/blog/brzina-sajta.html",
+    "production": "/blog/brzina-sajta.html",
+    "title": "Zašto spor sajt tiho ubija prodaju | DIGITAL X",
+    "description": "Svaki sekund čekanja košta do 20% posjetilaca.",
+    "primaryIntent": "Zašto spor sajt tiho ubija prodaju",
+    "secondaryKeywords": [
+      "Zašto spor sajt tiho ubija prodaju",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-odrzavanje-sigurnost-vodic",
+    "preview": "/blog/odrzavanje-sigurnost-vodic.html",
+    "production": "/blog/odrzavanje-sigurnost-vodic.html",
+    "title": "Održavanje: polica osiguranja od 29 KM | DIGITAL X",
+    "description": "Šta se dešava sa sajtom koji niko ne dira.",
+    "primaryIntent": "Održavanje: polica osiguranja od 29 KM",
+    "secondaryKeywords": [
+      "Održavanje: polica osiguranja od 29 KM",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-aeo-vodic",
+    "preview": "/blog/aeo-vodic.html",
+    "production": "/blog/aeo-vodic.html",
+    "title": "Kako da vas ChatGPT preporuči | DIGITAL X",
+    "description": "Novo bojno polje vidljivosti.",
+    "primaryIntent": "Kako da vas ChatGPT preporuči",
+    "secondaryKeywords": [
+      "Kako da vas ChatGPT preporuči",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-lokalni-seo-google-mapa",
+    "preview": "/blog/lokalni-seo-google-mapa.html",
+    "production": "/blog/lokalni-seo-google-mapa.html",
+    "title": "Kako biti prvi na Google mapi | DIGITAL X",
+    "description": "Top 3 na mapi dobijaju većinu poziva.",
+    "primaryIntent": "Kako biti prvi na Google mapi",
+    "secondaryKeywords": [
+      "Kako biti prvi na Google mapi",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-google-meta-oglasi-vodic",
+    "preview": "/blog/google-meta-oglasi-vodic.html",
+    "production": "/blog/google-meta-oglasi-vodic.html",
+    "title": "Oglasi: budžet u upite, ne u lajkove | DIGITAL X",
+    "description": "Kako izgleda profesionalno vođenje kampanja.",
+    "primaryIntent": "Oglasi: budžet u upite, ne u lajkove",
+    "secondaryKeywords": [
+      "Oglasi: budžet u upite, ne u lajkove",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-vodjenje-drustvenih-mreza",
+    "preview": "/blog/vodjenje-drustvenih-mreza.html",
+    "production": "/blog/vodjenje-drustvenih-mreza.html",
+    "title": "Vođenje mreža: šta zapravo plaćate | DIGITAL X",
+    "description": "I kako prepoznati \"objavljivače sličica\".",
+    "primaryIntent": "Vođenje mreža: šta zapravo plaćate",
+    "secondaryKeywords": [
+      "Vođenje mreža: šta zapravo plaćate",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-content-marketing-vodic",
+    "preview": "/blog/content-marketing-vodic.html",
+    "production": "/blog/content-marketing-vodic.html",
+    "title": "Content marketing | DIGITAL X",
+    "description": "Prodaja koja ne izgleda kao prodaja.",
+    "primaryIntent": "Content marketing",
+    "secondaryKeywords": [
+      "Content marketing",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-foto-video-produkcija",
+    "preview": "/blog/foto-video-produkcija.html",
+    "production": "/blog/foto-video-produkcija.html",
+    "title": "Foto i video produkcija | DIGITAL X",
+    "description": "Zašto amaterske fotografije koštaju kupaca.",
+    "primaryIntent": "Foto i video produkcija",
+    "secondaryKeywords": [
+      "Foto i video produkcija",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-ai-chatbot-vodic",
+    "preview": "/blog/ai-chatbot-vodic.html",
+    "production": "/blog/ai-chatbot-vodic.html",
+    "title": "AI chatbot za male biznise | DIGITAL X",
+    "description": "Radnik koji ne spava — šta je i koliko košta.",
+    "primaryIntent": "AI chatbot za male biznise",
+    "secondaryKeywords": [
+      "AI chatbot za male biznise",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-ai-automatizacija-vodic",
+    "preview": "/blog/ai-automatizacija-vodic.html",
+    "production": "/blog/ai-automatizacija-vodic.html",
+    "title": "Šta se sve može automatizovati | DIGITAL X",
+    "description": "Šest automatizacija koje se najbrže isplate.",
+    "primaryIntent": "Šta se sve može automatizovati",
+    "secondaryKeywords": [
+      "Šta se sve može automatizovati",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  },
+  {
+    "id": "article-automatizacija-recenzija",
+    "preview": "/blog/automatizacija-recenzija.html",
+    "production": "/blog/automatizacija-recenzija.html",
+    "title": "Google recenzije na autopilotu | DIGITAL X",
+    "description": "Do 50+ recenzija bez moljenja kupaca.",
+    "primaryIntent": "Google recenzije na autopilotu",
+    "secondaryKeywords": [
+      "Google recenzije na autopilotu",
+      "Digital X vodič"
+    ],
+    "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
+    "questions": [],
+    "links": [
+      "blog",
+      "services",
+      "contact"
+    ],
+    "action": "improve_existing",
+    "noindex": true
+  }
+]

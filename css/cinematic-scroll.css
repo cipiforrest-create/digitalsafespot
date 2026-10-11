@@ -1,0 +1,190 @@
+/* Digital X shared full-page cinematic scroll experience. */
+.dx-scroll-cinema{
+  --dx-cinema-accent:#65c9ff;
+  position:relative;
+  z-index:2;
+  width:100%;
+  margin:0;
+  background:#030508;
+  color:#fff;
+  isolation:isolate;
+}
+.dx-scroll-cinema__track{position:relative;height:var(--dx-cinema-track,360vh)}
+.dx-scroll-cinema__sticky{
+  position:sticky;
+  top:0;
+  height:100vh;
+  height:100svh;
+  overflow:hidden;
+  background:#030508;
+}
+.dx-scroll-cinema__media,.dx-scroll-cinema__media::after{position:absolute;inset:0}
+.dx-scroll-cinema__media{background:#030508}
+.dx-scroll-cinema__media::after{
+  content:"";
+  z-index:4;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(2,4,7,.52) 0%,transparent 24%,transparent 54%,rgba(2,4,7,.9) 100%),
+    linear-gradient(90deg,rgba(2,4,7,.68),transparent 62%);
+}
+.dx-scroll-cinema__video{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transform:scale(1.035);
+  filter:saturate(.9) contrast(1.04);
+  transition:opacity .75s ease,transform 1.4s cubic-bezier(.2,.7,.2,1);
+}
+.dx-scroll-cinema__video.is-active{z-index:2;opacity:1;transform:scale(1)}
+.dx-scroll-cinema__grain{
+  position:absolute;
+  inset:-40%;
+  z-index:5;
+  pointer-events:none;
+  opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:dxCinemaGrain .35s steps(2) infinite;
+  mix-blend-mode:soft-light;
+}
+@keyframes dxCinemaGrain{0%{transform:translate(0)}50%{transform:translate(3%,-2%)}100%{transform:translate(-2%,3%)}}
+.dx-scroll-cinema__top{
+  position:absolute;
+  top:max(22px,env(safe-area-inset-top));
+  left:clamp(18px,4vw,58px);
+  right:clamp(18px,4vw,58px);
+  z-index:8;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  font:700 .66rem/1 var(--sans,Inter,sans-serif);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.dx-scroll-cinema__back{color:rgba(255,255,255,.82);text-decoration:none}
+.dx-scroll-cinema__counter{color:var(--dx-cinema-accent)}
+.dx-scroll-cinema__copy{
+  position:absolute;
+  left:clamp(22px,7vw,110px);
+  right:clamp(22px,7vw,110px);
+  bottom:clamp(74px,13vh,145px);
+  z-index:7;
+  max-width:760px;
+}
+.dx-scroll-cinema__chapter{
+  position:absolute;
+  inset:auto 0 0;
+  opacity:0;
+  transform:translateY(22px);
+  pointer-events:none;
+  transition:opacity .55s ease,transform .7s cubic-bezier(.2,.7,.2,1);
+}
+.dx-scroll-cinema__chapter.is-active{opacity:1;transform:none}
+.dx-scroll-cinema__eyebrow{
+  margin:0 0 12px;
+  color:var(--dx-cinema-accent);
+  font:700 .7rem/1.2 var(--sans,Inter,sans-serif);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.dx-scroll-cinema__title{
+  max-width:720px;
+  margin:0;
+  font:500 clamp(3rem,8vw,7rem)/.88 var(--serif,"Cormorant Garamond",serif);
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+.dx-scroll-cinema__title em{color:var(--dx-cinema-accent);font-weight:500}
+.dx-scroll-cinema__lede{
+  max-width:590px;
+  margin:20px 0 0;
+  color:rgba(242,247,255,.78);
+  font:400 clamp(.96rem,1.5vw,1.16rem)/1.65 var(--sans,Inter,sans-serif);
+}
+.dx-scroll-cinema__progress{
+  position:absolute;
+  left:clamp(22px,7vw,110px);
+  right:clamp(22px,7vw,110px);
+  bottom:clamp(34px,5vh,54px);
+  z-index:8;
+  height:2px;
+  background:rgba(255,255,255,.18);
+}
+.dx-scroll-cinema__progress i{
+  display:block;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,var(--dx-cinema-accent),#eef9ff);
+  box-shadow:0 0 18px color-mix(in srgb,var(--dx-cinema-accent) 68%,transparent);
+  transform:scaleX(0);
+  transform-origin:left center;
+}
+.dx-scroll-cinema__fullscreen{
+  position:absolute;
+  right:clamp(18px,4vw,58px);
+  top:clamp(64px,10vh,94px);
+  z-index:10;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  min-height:42px;
+  padding:10px 15px;
+  border:1px solid rgba(255,255,255,.26);
+  border-radius:999px;
+  background:rgba(3,7,12,.62);
+  color:#fff;
+  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);
+  font:700 .66rem/1 var(--sans,Inter,sans-serif);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.dx-scroll-cinema__fullscreen:hover,.dx-scroll-cinema__fullscreen:focus-visible{border-color:var(--dx-cinema-accent);outline:none}
+.dx-scroll-cinema__cue{
+  position:absolute;
+  z-index:8;
+  right:clamp(18px,4vw,58px);
+  bottom:clamp(34px,5vh,54px);
+  color:rgba(255,255,255,.62);
+  font:700 .62rem/1 var(--sans,Inter,sans-serif);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.dx-scroll-cinema:fullscreen,
+.dx-scroll-cinema.dx-scroll-cinema--fullscreen{
+  position:fixed!important;
+  inset:0!important;
+  z-index:2147483000!important;
+  width:100vw!important;
+  height:100vh!important;
+  height:100dvh!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  margin:0!important;
+  background:#030508;
+}
+.dx-scroll-cinema:fullscreen .dx-scroll-cinema__sticky,
+.dx-scroll-cinema--fullscreen .dx-scroll-cinema__sticky{height:100vh;height:100dvh}
+body.dx-cinema-lock{overflow:hidden!important}
+@media(max-width:700px){
+  .dx-scroll-cinema__media::after{background:linear-gradient(180deg,rgba(2,4,7,.5),transparent 28%,rgba(2,4,7,.18) 48%,rgba(2,4,7,.94) 100%)}
+  .dx-scroll-cinema__copy{bottom:100px}
+  .dx-scroll-cinema__title{font-size:clamp(3rem,16vw,5.1rem)}
+  .dx-scroll-cinema__lede{font-size:.95rem;line-height:1.55}
+  .dx-scroll-cinema__cue{display:none}
+  .dx-scroll-cinema__fullscreen span{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .dx-scroll-cinema__track{height:100vh!important}
+  .dx-scroll-cinema__video{display:none}
+  .dx-scroll-cinema__video:first-child{display:block;opacity:1}
+  .dx-scroll-cinema__chapter{display:none;transition:none}
+  .dx-scroll-cinema__chapter:first-child{display:block;opacity:1;transform:none}
+  .dx-scroll-cinema__grain{display:none}
+}

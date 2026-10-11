@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<!-- Consent Mode v2 default (before GTM) --><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});try{if(localStorage.getItem('dx-consent')==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var done=false;function go(){if(done)return;done=true;var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}['pointerdown','keydown','touchstart','scroll'].forEach(function(e){w.addEventListener(e,go,{once:true,passive:true});});w.addEventListener('load',function(){setTimeout(go,2500);});})(window,document,'script','dataLayer','GTM-5JT2X695');</script>
+<!-- End Google Tag Manager -->
+<script src="/js/consent.js" defer></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>VANTA — The Endless Drive | Digital X</title>
+    <meta property="og:site_name" content="Digital X">
+    <meta property="og:url" content="https://www.digital-x-marketing.com/cinematic-vanta/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VANTA — The Endless Drive | Digital X">
+    <meta name="twitter:description" content="VANTA — Digital X scroll-driven cinematic web demo. 1,200 horsepower of silence. Scroll controls every frame of the drive.">
+    <meta name="twitter:image" content="https://www.digital-x-marketing.com/media/live/cinematic-vanta.jpg">
+<meta name="description" content="VANTA — Digital X scroll-driven cinematic web demo. 1,200 horsepower of silence. Scroll controls every frame of the drive." />
+<link rel="canonical" href="https://www.digital-x-marketing.com/cinematic-vanta/">
+<meta name="theme-color" content="#000000" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='23' font-family='Arial,sans-serif' font-size='20' font-weight='700' fill='%2300E5FF' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website" />
+<meta property="og:title" content="VANTA — Electric Hypercar" />
+<meta property="og:description" content="1,200 hp. 0–60 in 1.9s. 520 miles. The endless drive begins." />
+<meta property="og:image" content="/assets/primjeri/vanta/hero.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Semi+Condensed:wght@300;400;500;600&family=Barlow+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="/assets/primjeri/vanta/frames/frame_001.jpg" />
+<link rel="preload" as="image" href="/assets/primjeri/vanta/hero.jpg" />
+<link rel="stylesheet" href="/cinematic-vanta/styles.css" />
+<link rel="stylesheet" href="/cinematic-shared/performance.css" />
+<script src="/cinematic-shared/preload.js" defer></script>
+</head>
+<body data-cinematic="vanta">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5JT2X695" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ===== PRELOADER ===== -->
+<div id="preloader" class="preloader">
+  <div class="pl-wordmark">VANTA</div>
+  <div class="pl-bar"><span id="plFill" class="pl-fill"></span></div>
+  <div class="pl-meta"><span id="plPct">0</span>% · rendering the drive</div>
+</div>
+
+<!-- ===== FIXED CINEMATIC STAGE ===== -->
+<div class="stage">
+  <canvas id="drive" class="drive-canvas" aria-hidden="true"></canvas>
+  <div class="stage-grain"></div>
+  <div class="stage-vignette"></div>
+  <div id="wipe" class="stage-wipe"></div>
+
+  <!-- HUD overlay -->
+  <div class="hud" id="hud" aria-hidden="true">
+    <div class="hud-speed">
+      <div class="hud-number"><span id="mph">0</span><em>mph</em></div>
+      <div class="hud-bar"><span id="mphBar" class="hud-bar-fill"></span></div>
+      <div class="hud-ticks">
+        <span>0</span><span>50</span><span>100</span><span>150</span><span>200</span><span>250</span>
+      </div>
+    </div>
+    <div class="hud-status">
+      <div class="hud-chip"><i>DRIVE</i><b id="hudMode">AUTONOMY · OFF</b></div>
+      <div class="hud-chip"><i>BATTERY</i><b><span id="hudBatt">100</span>%</b></div>
+      <div class="hud-chip"><i>G-FORCE</i><b><span id="hudG">0.0</span>g</b></div>
+    </div>
+  </div>
+
+  <!-- Chapter rail -->
+  <nav class="rail" id="rail" aria-label="Chapters">
+    <a class="rail-item is-active" data-target="ch-flats"><span class="rail-dot"></span><span class="rail-lbl">The Flats</span></a>
+    <a class="rail-item" data-target="ch-canyon"><span class="rail-dot"></span><span class="rail-lbl">The Canyon</span></a>
+    <a class="rail-item" data-target="ch-night"><span class="rail-dot"></span><span class="rail-lbl">Night</span></a>
+  </nav>
+
+  <div class="scroll-cue" id="scrollCue">
+    <span>SCROLL TO DRIVE</span>
+    <div class="scroll-cue-line"></div>
+  </div>
+</div>
+
+<!-- ===== TOP BAR ===== -->
+<header class="topbar" id="topbar">
+  <a class="brand" href="/">VANTA</a>
+  <div class="topbar-mid">ELECTRIC HYPERCAR · MMXXVI</div>
+  <a class="btn-mini" href="/#radovi">Nazad na radove</a>
+</header>
+
+
+
+<!-- ===== SCROLL CONTENT ===== -->
+<main id="top">
+
+  <!-- HERO -->
+  <section class="panel panel-hero" data-chapter="ch-flats">
+    <div class="hero-copy">
+      <div class="eyebrow">The Endless Drive</div>
+      <h1 class="mega">SILENCE<br />HAS A<br /><span class="accent">TOP SPEED</span></h1>
+      <p class="lede">1,200 horsepower of pure electric intent. No engine note. No compromise. Only the horizon, folding toward you.</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 1: THE FLATS -->
+  <section class="panel" id="ch-flats" data-chapter="ch-flats">
+    <div class="chapter-mark"><span>01</span> THE FLATS</div>
+    <div class="stat-grid reveal">
+      <div class="stat">
+        <div class="stat-num"><span class="count" data-to="1.9" data-dec="1">0.0</span><em>s</em></div>
+        <div class="stat-lbl">0 — 60 mph</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="count" data-to="1200" data-dec="0">0</span><em>hp</em></div>
+        <div class="stat-lbl">Peak Output</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="count" data-to="520" data-dec="0">0</span><em>mi</em></div>
+        <div class="stat-lbl">EPA Range</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 2: THE CANYON -->
+  <section class="panel panel-split" id="ch-canyon" data-chapter="ch-canyon">
+    <div class="chapter-mark"><span>02</span> THE CANYON</div>
+    <div class="split-copy reveal">
+      <h2 class="head">CARVED<br />FOR THE<br /><span class="accent">TURN</span></h2>
+      <p class="body">Torque-vectored quad motors read the road 1,000 times a second. Active aero folds the air. The canyon becomes a corridor — and VANTA becomes the current running through it.</p>
+      <ul class="spec-list">
+        <li><span>Quad Motor AWD</span><b>Torque Vectoring</b></li>
+        <li><span>Active Aero</span><b>±480 kg downforce</b></li>
+        <li><span>Chassis</span><b>Forged carbon monocoque</b></li>
+        <li><span>Curb Weight</span><b>1,910 kg</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DESIGN MACRO STILLS -->
+  <section class="panel panel-design" data-chapter="ch-canyon">
+    <div class="chapter-mark"><span>—</span> DESIGN LANGUAGE</div>
+    <div class="macro-row reveal">
+      <figure class="macro"><div class="macro-img macro-a"></div><figcaption>Continuous light blade — a single seam of cyan from nose to tail.</figcaption></figure>
+      <figure class="macro"><div class="macro-img macro-b"></div><figcaption>Frameless glass canopy, floating on a shadow gap.</figcaption></figure>
+      <figure class="macro"><div class="macro-img macro-c"></div><figcaption>Turbine-forged monoblocks, machined from a single billet.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- CHAPTER 3: NIGHT -->
+  <section class="panel" id="ch-night" data-chapter="ch-night">
+    <div class="chapter-mark"><span>03</span> NIGHT</div>
+    <div class="night-copy reveal">
+      <h2 class="head">THE CITY<br />NEVER HEARD<br /><span class="accent">IT COMING</span></h2>
+      <p class="body">In the dark, VANTA disappears into its own reflection. Only the light blade remains — a cyan signature written across wet asphalt at three-figure speeds.</p>
+    </div>
+  </section>
+
+  <!-- CONFIGURATOR -->
+  <section class="panel panel-config" data-chapter="ch-night">
+    <div class="chapter-mark"><span>04</span> COMMISSION YOURS</div>
+    <div class="config reveal">
+      <div class="config-stage">
+        <canvas id="paintCanvas" class="config-canvas" width="1600" height="900"></canvas>
+        <div class="config-tag">VANTA · <span id="paintName">Obsidian</span></div>
+      </div>
+      <div class="config-panel">
+        <h3 class="config-title">Three finishes.<br />One silhouette.</h3>
+        <div class="swatches" id="swatches">
+          <button class="swatch is-active" data-name="Obsidian"   data-hue="0"   data-sat="0.62" data-lum="0.9"  data-accent="#00E5FF" style="--sw:#0b0d10"></button>
+          <button class="swatch" data-name="Blade Cyan"           data-hue="150" data-sat="1.05" data-lum="1.04" data-accent="#00E5FF" style="--sw:#0e3b45"></button>
+          <button class="swatch" data-name="Solar Ember"          data-hue="-25" data-sat="1.15" data-lum="1.05" data-accent="#FF6A2C" style="--sw:#5a1e0c"></button>
+        </div>
+        <p class="config-note">Recolour is rendered live from the master still. Accent lighting shifts to match the finish.</p>
+        <a class="btn-ghost" href="#reserve">Take it further →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVE -->
+  <section class="panel panel-reserve" id="reserve" data-chapter="ch-night">
+    <div class="reserve" id="reserveCard">
+      <div class="reserve-head">
+        <div class="eyebrow">Limited to 199 units worldwide</div>
+        <h2 class="mega sm">RESERVE<br /><span class="accent">VANTA</span></h2>
+      </div>
+      <form class="reserve-form" id="reserveForm" novalidate>
+        <div class="field"><label>Full name</label><input type="text" name="name" required placeholder="Alex Vantablack" /></div>
+        <div class="field"><label>Email</label><input type="email" name="email" required placeholder="you@domain.com" /></div>
+        <div class="field"><label>Finish</label>
+          <select name="finish" id="finishSelect"><option>Obsidian</option><option>Blade Cyan</option><option>Solar Ember</option></select>
+        </div>
+        <div class="reserve-deposit">
+          <div><span class="dep-label">Fully-refundable deposit</span><span class="dep-val">$1,000</span></div>
+          <button type="submit" class="btn-primary">Reserve — $1,000 deposit</button>
+        </div>
+        <p class="reserve-fine">No payment is taken in this demo. Confirmation is stored locally on your device.</p>
+      </form>
+      <div class="reserve-done" id="reserveDone" hidden>
+        <div class="done-check">✓</div>
+        <h3>Your VANTA is reserved.</h3>
+        <p id="doneMsg">Priority build slot secured. We'll be in touch.</p>
+        <button class="btn-ghost" id="resetReserve">Make another reservation</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="foot-brand">VANTA</div>
+    <div class="foot-cols">
+      <span>© MMXXVI VANTA MOTORS — Concept demonstration</span>
+      <span>1,200 hp · 0–60 in 1.9s · 520 mi</span>
+    </div>
+  </footer>
+</main>
+
+<script src="/cinematic-shared/performance.js"></script>
+<script src="/cinematic-vanta/app.js"></script>
+</body>
+</html>
+

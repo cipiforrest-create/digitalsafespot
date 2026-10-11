@@ -1,0 +1,2 @@
+import { defineConfig } from '@playwright/test';
+export default defineConfig({testDir:'./tests',testMatch:'*.spec.ts',fullyParallel:false,workers:1,timeout:30000,use:{baseURL:process.env.CONCIERGE_TEST_ORIGIN||'http://localhost:4317',channel:'chrome',headless:true,hasTouch:true,viewport:{width:1440,height:900},trace:'retain-on-failure',launchOptions:{args:process.platform==='win32'?['--use-angle=d3d11','--ignore-gpu-blocklist']:['--ignore-gpu-blocklist']}},reporter:'list'});

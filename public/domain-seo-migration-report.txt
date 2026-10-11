@@ -1,0 +1,9 @@
+Digital X domain SEO migration report
+Date: 2026-07-21T12:17:39.705Z
+Site root: C:\Users\DT User2\claudecode\digital-x\site
+Canonical origin: https://www.digital-x-marketing.com
+HTML pages checked: 26
+HTML pages changed: 0
+Other text files changed: 1
+Vercel config: C:\Users\DT User2\claudecode\digital-x\site\vercel.json
+Validation: PASSED

@@ -1,0 +1,3 @@
+:HL["/cinematic-kodent/_next/static/css/dabe8af97be6b18f.css","style"]
+:HL["/cinematic-kodent/_next/static/css/d9936a680da96c14.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"2HIj4-bu6j9nwG6lvsKYt"}

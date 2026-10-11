@@ -1,0 +1,12 @@
+{
+  "frameCount": 180,
+  "width": 1600,
+  "height": 900,
+  "fps": 5.625,
+  "pattern": "frame_%04d.jpg",
+  "dir": "assets/tour/frames",
+  "master": "assets/tour/master_tour.mp4",
+  "web": "assets/tour/master_tour_web.mp4",
+  "mobile": "assets/tour/master_tour_mobile.mp4",
+  "poster": "assets/tour/poster.jpg"
+}

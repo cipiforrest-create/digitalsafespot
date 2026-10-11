@@ -1,0 +1,136 @@
+/* Shared cinematic polish: keep the film dominant and compositing predictable. */
+body[data-cinematic] .grain,
+body[data-cinematic] .stage-grain {
+  animation: none !important;
+  mix-blend-mode: normal !important;
+}
+
+body[data-cinematic="clothes"] .hero__overlay {
+  background:
+    linear-gradient(90deg, rgba(10, 10, 11, .92) 0%, rgba(10, 10, 11, .48) 48%, transparent 76%),
+    linear-gradient(0deg, rgba(10, 10, 11, .92) 0%, transparent 58%);
+}
+body[data-cinematic="clothes"] .hero__content {
+  align-items: flex-start;
+  justify-content: flex-end;
+  text-align: left;
+  padding: 0 clamp(20px, 6vw, 96px) clamp(72px, 11vh, 120px);
+}
+body[data-cinematic="clothes"] .hero__title { font-size: clamp(48px, 10vw, 164px); }
+body[data-cinematic="clothes"] .countdown { justify-content: flex-start; }
+
+body[data-cinematic="deepsea"] .panel-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(2, 6, 11, .9), rgba(2, 6, 11, .25) 58%, transparent 78%);
+  pointer-events: none;
+}
+body[data-cinematic="deepsea"] .panel-hero .panel-inner.center {
+  position: relative;
+  align-items: flex-start;
+  text-align: left;
+  justify-content: flex-end;
+  min-height: 76vh;
+}
+body[data-cinematic="deepsea"] .grade-overlay,
+body[data-cinematic="deepsea"] .vignette,
+body[data-cinematic="deepsea"] .hud-top { mix-blend-mode: normal; }
+body[data-cinematic="deepsea"] .spec { backdrop-filter: none; }
+
+body[data-cinematic="dentist"] .hero__vignette {
+  background:
+    linear-gradient(90deg, rgba(5, 5, 6, .9), rgba(5, 5, 6, .25) 58%, transparent 78%),
+    linear-gradient(0deg, rgba(5, 5, 6, .78), transparent 55%);
+}
+body[data-cinematic="dentist"] .hero__type {
+  position: absolute;
+  left: clamp(20px, 5vw, 72px);
+  right: clamp(20px, 38vw, 560px);
+  bottom: clamp(72px, 11vh, 120px);
+  text-align: left;
+  padding: 0;
+  transform: none;
+}
+body[data-cinematic="dentist"] .hero__name { font-size: clamp(3.2rem, 11vw, 11rem); }
+body[data-cinematic="dentist"] .card { backdrop-filter: none; }
+
+body[data-cinematic="vanta"] .stage-grain { opacity: .025; }
+body[data-cinematic="vanta"] .reserve { backdrop-filter: none; background: rgba(10, 12, 14, .9); }
+
+/* Hotel chapters marked as centered now use the art-directed lower-left safe area. */
+body[data-cinematic="hotel"] .scrub__copy[data-align="center"] {
+  left: 0;
+  top: auto;
+  bottom: clamp(3rem, 10vh, 7rem);
+  max-width: 36rem;
+  padding: 0 clamp(1.4rem, 5vw, 4rem);
+  text-align: left;
+  transform: translateY(18px);
+}
+body[data-cinematic="hotel"] .scrub__copy[data-align="center"].is-on { transform: translateY(0); }
+body[data-cinematic="hotel"] .scrub__copy[data-align="center"] .scrub__tags { justify-content: flex-start; }
+
+/* Turn Watch's minimal line into a full-bleed, percentage-led opening scene. */
+body[data-cinematic="watch"] .cine__loader {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  width: auto;
+  height: auto;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1rem;
+  transform: none;
+  background: #08080a;
+  color: #d1b47a;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .75s cubic-bezier(.16, 1, .3, 1), visibility .75s;
+}
+body[data-cinematic="watch"] .cine__loader::after {
+  content: "";
+  width: min(30rem, 72vw);
+  height: 1px;
+  margin-top: .6rem;
+  transform: scaleX(var(--load, 0));
+  transform-origin: left;
+  background: linear-gradient(90deg, #735c35, #d1b47a);
+  box-shadow: 0 0 24px rgba(209, 180, 122, .32);
+}
+body[data-cinematic="watch"] .cine__loader[data-active="false"] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+body[data-cinematic="watch"] .cine__loader > span {
+  font-size: clamp(.8rem, 1.5vw, 1rem);
+  letter-spacing: .42em;
+}
+body[data-cinematic="watch"] .cine__loader > b {
+  font: 300 clamp(4rem, 14vw, 10rem)/.8 "Cormorant Garamond", serif;
+}
+body[data-cinematic="watch"] .cine__loader > small {
+  color: rgba(244, 239, 230, .58);
+  font-size: .62rem;
+  letter-spacing: .3em;
+}
+body[data-cinematic="watch"] .cue--hero {
+  top: auto;
+  left: var(--gutter);
+  bottom: clamp(4rem, 10vh, 7rem);
+  transform: translateY(var(--cue-y, 0));
+  text-align: left;
+}
+body[data-cinematic="watch"] .cue__hero { justify-items: start; }
+
+@media (max-width: 720px) {
+  body[data-cinematic="dentist"] .hero__type { right: 20px; }
+  body[data-cinematic="clothes"] .hero__content { padding-bottom: 76px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-cinematic] .grain,
+  body[data-cinematic] .stage-grain { display: none; }
+}

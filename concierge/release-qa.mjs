@@ -1,0 +1,9 @@
+/* global innerHeight */
+import {chromium} from '@playwright/test';
+import {mkdirSync,writeFileSync,readFileSync} from 'node:fs';
+const directory='concierge/.screenshots';mkdirSync(directory,{recursive:true});
+const origin=process.env.CONCIERGE_TEST_ORIGIN||'http://localhost:4317';
+const browser=await chromium.launch({channel:'chrome',headless:true});const context=await browser.newContext();
+if(origin.startsWith('https:')){const cookies=readFileSync(`${directory}/deployed-cookies.txt`,'utf8').split('\n').filter(l=>l.startsWith('#HttpOnly_')||!l.startsWith('#')).map(l=>l.replace(/^#HttpOnly_/,'').trim().split('\t')).filter(r=>r.length===7&&r[0]===new URL(origin).hostname).map(r=>({name:r[5],value:r[6],domain:r[0],path:r[2],secure:r[3]==='TRUE',httpOnly:true,expires:Number(r[4])}));await context.addCookies(cookies);}
+const report=[];
+try{for(const [width,height] of [[1536,1025],[1440,900],[390,844]]){const page=await context.newPage();await page.setViewportSize({width,height});const errors=[];page.on('pageerror',e=>errors.push(e.message));for(const id of ['','cinematic/','google-ads/','services/']){await page.goto(`${origin}/ai-concierge-preview/${id}`);await page.evaluate(()=>document.fonts.ready);await page.screenshot({path:`${directory}/release-${id.replace('/','')||'home'}-${width}.png`,fullPage:id==='services/'||width===390});const layout=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,h1:document.querySelectorAll('h1').length,links:document.querySelectorAll('a').length,viewport:innerHeight}));report.push({page:id||'home',width,height,...layout,errors:[...errors]});}await page.goto(`${origin}/ai-concierge-preview/`);await page.locator('[data-text]').first().click();await page.screenshot({path:`${directory}/release-chat-${width}.png`});await page.close();}}finally{writeFileSync(`${directory}/release-layout.json`,JSON.stringify(report,null,2));console.log(JSON.stringify(report));await browser.close();}

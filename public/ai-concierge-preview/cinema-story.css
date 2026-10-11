@@ -1,0 +1,121 @@
+/* The hero H1 says what Digital X does in eyebrow style; .cinema-hero-title keeps the large display look. */
+:where(h1).cinema-eyebrow{font-weight:inherit;margin:1em 0;text-transform:uppercase}
+.cinema-shell{background:#030303;color:#f5f5f5}.cinema-shell>.navigation{position:relative;z-index:20;margin:0 auto!important}.cinema-story{background:#030303;color:#f5f5f5;position:relative;isolation:isolate;--cinema-progress:0}.cinema-story *{box-sizing:border-box}.cinema-stage{position:relative;max-width:1920px;margin:auto}.cinema-screen{display:none}.cinema-state{position:relative;min-height:680px;padding:64px 6vw 96px;background:#030303}.cinema-state.hero{height:auto;min-height:680px;max-height:none;overflow:visible;display:block;margin:0;border:0;border-radius:0;background:#030303;padding:64px 6vw 96px}.cinema-static-art{width:100%;height:auto;display:block;filter:grayscale(1);margin:0 auto 32px;max-width:1100px}.cinema-copy{max-width:480px;position:relative;z-index:2}.cinema-story h1:not(.cinema-eyebrow),.cinema-story .cinema-hero-title,.cinema-story h2{font-size:clamp(36px,4.2vw,64px);font-weight:450;line-height:1.05;letter-spacing:-.04em;margin:20px 0}.cinema-story h3{font-size:22px;line-height:1.15;font-weight:500;margin:14px 0}.cinema-eyebrow{font-size:11px;letter-spacing:.19em;color:#ccc;line-height:1.7}.cinema-tagline{font-size:clamp(26px,2.8vw,42px);line-height:1.15;color:#b9b9bd;margin:0 0 22px;letter-spacing:-.035em}.cinema-intro{font-size:17px;line-height:1.55;max-width:425px;color:#ccc}.cinema-story .button{border-color:#737478;min-height:46px;font-size:13px;box-shadow:none;background:#101114;color:white;text-decoration:none;white-space:normal}.cinema-story .button.primary{background:#f3f3f3;color:#080808;box-shadow:none}.cinema-story .talk-button{display:inline-flex;align-items:center;justify-content:center;gap:9px}.cinema-story .talk-mic{width:17px;height:17px;stroke-width:1.8}.cinema-story .hero-actions,.cinema-actions{position:static;display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:26px 0 0;transform:none;width:auto}.cinema-text{background:transparent;border:0;padding:12px 0;color:#ddd;cursor:pointer;text-decoration:underline;text-underline-offset:5px;font:inherit;font-size:13px;min-height:44px}.cinema-values{display:flex;gap:20px;margin-top:35px;font-size:10px;letter-spacing:.06em}.cinema-values>span{border-left:1px solid #777;padding-left:12px}.cinema-values small{display:block;color:#aaa;font-size:12px;letter-spacing:0;margin-top:9px}.cinema-assistant-panel{position:relative;z-index:2;max-width:270px;margin-top:32px}.cinema-assistant-panel>p{padding:17px;border:1px solid #555;border-radius:14px;font-size:13px;line-height:1.5;background:#08090bdd}.cinema-story .ai-core{position:relative;inset:auto;transform:none;display:flex;flex-wrap:wrap;align-items:center;gap:12px;width:auto;height:auto;margin:12px 0}.cinema-story #waveform{position:static;width:100%;height:56px;transform:none;filter:grayscale(1);opacity:1}.cinema-story #orb{position:relative;inset:auto;transform:none;width:44px;height:44px;min-width:44px;border:1px solid #9a9a9a;border-radius:50%;background:radial-gradient(circle at 30% 20%,#555,#050505 65%);box-shadow:0 0 14px #ffffff16;animation:none;padding:10px}.cinema-story #orb svg{width:22px;height:22px;filter:grayscale(1)}.cinema-story #core-status{font-size:12px;margin:0;color:#ccc}.cinema-story .quick-goals{position:static;display:grid;grid-template-columns:1fr;gap:5px;margin:16px 0;transform:none;width:100%;max-width:none}.cinema-story .goal{display:flex;align-items:center;gap:12px;min-height:44px;padding:8px 4px;border:0;border-bottom:1px solid #ffffff19;border-radius:0;background:#030303bb;box-shadow:none;font-size:12px;color:#ddd;text-align:left;cursor:pointer}.cinema-story .goal[aria-pressed=true]{color:white;border-bottom-color:white}.cinema-story .goal span{display:inline;font-size:16px}.cinema-statement{position:absolute;right:6vw;top:40%;border-left:1px solid #bbb;padding-left:20px;font-size:12px;line-height:2;letter-spacing:.18em}.cinema-system-heading{position:relative;z-index:2}.cinema-system-heading h2{font-size:clamp(28px,3.2vw,48px);max-width:820px}.cinema-cards{position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}.cinema-card{display:flex;flex-direction:column;position:relative;min-height:245px;padding:24px;color:#fff;text-decoration:none;border:1px solid #777b;border-radius:16px;background:linear-gradient(130deg,#17191cde,#050607d9);box-shadow:inset 0 1px 1px #fff4;backdrop-filter:blur(8px);transition:border-color .2s,background .2s,transform .2s}.cinema-card p{font-size:14px;line-height:1.5;color:#c7c7cb;margin:0}.cinema-card-icon{font-size:40px;height:45px;color:#ddd}.cinema-card-arrow{margin-top:auto;padding-top:20px}.cinema-card:hover,.cinema-card:focus-visible{border-color:white;background:linear-gradient(130deg,#303236e8,#0a0b0de8);transform:translateY(-3px)}.cinema-card:hover .cinema-card-icon{transform:translateY(-2px)}.cinema-connections{display:block;width:100%;height:150px;margin:auto;stroke:#888;stroke-width:1.6;fill:none}.cinema-connections path[data-active]{stroke:#fff;stroke-width:3;filter:drop-shadow(0 0 3px white)}.cinema-system-signoff{position:relative;text-align:center;letter-spacing:.15em;font-size:22px;margin:10px auto}.cinema-system-signoff span{display:block;font-size:11px;letter-spacing:.1em;color:#ccc;margin:12px 0}.cinema-controls{position:relative;z-index:6;padding:20px 6vw 16px;background:linear-gradient(0deg,#030303,transparent);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px}.cinema-controls nav{display:flex;gap:8px}.cinema-controls a{display:inline-flex;gap:8px;align-items:center;min-height:44px;padding:8px 14px;border:1px solid #555;border-radius:24px;color:#eee;background:#080808d9;text-decoration:none;font-size:12px}.cinema-controls a[aria-current=true]{background:#eee;color:#090909}.cinema-controls>a{border:0;background:transparent}.cinema-progress{width:100%;height:1px;background:#333}.cinema-progress i{display:block;width:100%;height:1px;background:#fff;transform:scaleX(var(--cinema-progress));transform-origin:left}.cinema-loading{position:absolute;right:6vw;bottom:70px;font-size:12px;color:#bbb}.cinema-story :focus-visible{outline:2px solid white;outline-offset:5px}.cinema-story [hidden]{display:none!important}
+@media(prefers-reduced-motion:no-preference){.cinema-story[data-enhanced]{height:calc(var(--cinema-travel,16.07) * 100svh + 100svh)}.cinema-story[data-enhanced] .cinema-stage{position:sticky;top:0;height:100svh;min-height:560px;overflow:hidden}.cinema-story[data-enhanced] .cinema-screen{display:block;position:absolute;inset:0;background:#030303}.cinema-screen canvas{width:100%;height:100%;display:block;filter:grayscale(1)}.cinema-screen:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#030303dc 0%,#03030390 24%,transparent 52%,#03030355 100%),linear-gradient(0deg,#030303,transparent 22%,transparent 84%,#03030355)}.cinema-story[data-holding=true] .cinema-story[data-holding=true] .cinema-screen canvas{animation:cinema-drift 10s ease-in-out infinite alternate}.cinema-story[data-enhanced] .cinema-state{position:absolute;inset:0;min-height:0;height:100%;padding:0 6vw 110px;background:transparent;display:flex;align-items:center;gap:4%;}.cinema-story[data-enhanced] .cinema-state.hero{min-height:0;height:100%;background:transparent;padding:0 6vw 110px}.cinema-story[data-enhanced][data-ready] .cinema-static-art{display:none}.cinema-story[data-enhanced] .cinema-static-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;margin:0;max-width:none;pointer-events:none}.cinema-story[data-enhanced] .cinema-copy{width:34%;max-width:480px}.cinema-story[data-enhanced] .cinema-assistant-panel{margin:0 0 0 auto;width:23%;max-width:270px}.cinema-story[data-enhanced] .cinema-controls{position:absolute;bottom:0;left:0;right:0}.cinema-story[data-enhanced] .cinema-systems{display:block;padding-top:5vh}.cinema-story[data-enhanced] .cinema-cards{gap:18px;margin-top:24px}.cinema-story[data-enhanced] .cinema-card{min-height:240px}.cinema-story[data-enhanced] .cinema-connections{height:clamp(60px,15vh,150px)}.cinema-story[data-enhanced] .cinema-system-signoff{font-size:18px;margin-top:0}.cinema-story[data-enhanced] .cinema-system-heading h2{margin:10px 0}.cinema-state{opacity:var(--cinema-copy-opacity,1)}
+@keyframes cinema-light{from{transform:scaleY(.96);opacity:.35}to{transform:scaleY(1.04);opacity:.6}}@keyframes cinema-drift{from{transform:translateY(0)}to{transform:translateY(-2px)}}}
+@media(max-width:1050px) and (min-width:721px){.cinema-story h1:not(.cinema-eyebrow),.cinema-story .cinema-hero-title,.cinema-story h2{font-size:38px}.cinema-tagline{font-size:28px}.cinema-intro{font-size:15px}.cinema-values{gap:8px}.cinema-values small{font-size:10px}.cinema-story .button{padding:12px}.cinema-card{padding:16px}.cinema-story h3{font-size:19px}}
+@media(max-width:720px){.cinema-state,.cinema-state.hero{padding:24px 22px 50px;min-height:0}.cinema-static-art{margin:0 0 16px}.cinema-copy{max-width:none}.cinema-story h1:not(.cinema-eyebrow),.cinema-story .cinema-hero-title{font-size:36px;margin:8px 0}.cinema-story h2{font-size:32px;margin:10px 0}.cinema-tagline{font-size:28px;margin:0 0 12px}.cinema-intro{font-size:14px;line-height:1.45;margin:10px 0}.cinema-eyebrow{font-size:9px;letter-spacing:.12em;margin:6px 0}.cinema-values{display:none}.cinema-story .hero-actions,.cinema-actions{gap:8px;margin-top:12px}.cinema-story .button{font-size:12px;padding:12px 14px;min-height:44px}.cinema-text{font-size:12px}.cinema-assistant-panel{max-width:none;width:100%;margin-top:14px;display:flex;flex-direction:column}.cinema-assistant-panel>p{display:none}.cinema-story .ai-core{order:-1;margin:0;gap:8px}.cinema-story #waveform{width:95px;height:35px}.cinema-story #core-status{font-size:11px}.cinema-story .quick-goals{grid-template-columns:1fr 1fr;gap:4px;margin:6px 0 0}.cinema-story .goal{font-size:10px;min-height:44px;padding:6px;border:1px solid #555;border-radius:8px;gap:4px}.cinema-story .goal span{font-size:12px}.cinema-statement{position:static;font-size:10px;line-height:1.7;margin-top:20px}.cinema-cards{grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.cinema-card{padding:14px;min-height:180px;border-radius:12px;backdrop-filter:none}.cinema-story h3{font-size:17px;margin:6px 0}.cinema-card p{font-size:12px;line-height:1.35}.cinema-card-icon{font-size:26px;height:28px}.cinema-card-arrow{padding-top:10px}.cinema-connections{height:60px}.cinema-controls{padding:12px 20px;gap:3px}.cinema-controls a{font-size:10px;padding:8px 10px;gap:4px}.cinema-controls nav{gap:4px}.cinema-controls>a{padding:6px 0}.cinema-system-signoff{font-size:17px}.cinema-system-signoff span{font-size:10px}.cinema-system-heading h2{font-size:28px}}
+
+@media(max-height:700px) and (min-width:721px){.cinema-story[data-enhanced] .cinema-stage{min-height:560px}.cinema-story h1:not(.cinema-eyebrow),.cinema-story .cinema-hero-title,.cinema-story h2{font-size:38px}.cinema-tagline{font-size:30px}.cinema-values{display:none}.cinema-story[data-enhanced] .cinema-card{min-height:210px;padding:18px}.cinema-story[data-enhanced] .cinema-connections{height:45px}.cinema-card-icon{height:30px;font-size:28px}}
+@media(prefers-reduced-motion:reduce){.cinema-card,.cinema-card-icon{transition:none;transform:none!important}.cinema-screen{display:none!important}.cinema-state{opacity:1}.cinema-connections{display:none}}
+
+/* Source-derived service imagery and compact small-screen layout. */
+.cinema-story .cinema-card-icon{display:block;width:72px;height:72px;object-fit:cover;border-radius:8px;filter:grayscale(1);margin-bottom:8px}
+.cinema-story[data-enhanced] .cinema-card{min-height:280px}
+.cinema-story[data-enhanced] .cinema-stage{min-height:560px}
+.cinema-controls nav a{cursor:pointer}
+@media(max-width:720px){.cinema-story .cinema-card-icon{width:38px;height:38px;margin-bottom:3px}.cinema-story[data-enhanced] .cinema-card{min-height:175px}.cinema-story .hero-actions{justify-content:flex-start}.cinema-story .hero-actions .button{flex:1}.cinema-story .hero-actions .cinema-text{width:auto}.cinema-story[data-enhanced] .cinema-systems{padding-top:16px}.cinema-story[data-enhanced] .cinema-connections{height:30px}}
+
+
+/* Reserve the complete scroll runway before scripts mount, including reload restoration. */
+@media(prefers-reduced-motion:no-preference){.cinema-story{height:calc(19.3500004 * max(100svh,560px));overflow-anchor:none}.cinema-stage{position:sticky;top:0;height:100svh;min-height:560px;overflow:hidden}.cinema-story:not([data-mounted]) .cinema-state:not(:first-of-type){display:none}}
+@media(max-width:720px) and (prefers-reduced-motion:no-preference){.cinema-story{height:calc(14.6925003 * max(100svh,520px))}.cinema-stage{min-height:520px}}
+@media(scripting:none){.cinema-story{height:auto!important}.cinema-stage{position:relative;height:auto;overflow:visible}.cinema-story .cinema-state:not(:first-of-type){display:block}}
+
+.cinema-story .hero-actions .button{flex-basis:100%}.cinema-story .hero-actions .cinema-text{flex:1;text-align:left}@media(max-width:720px){.cinema-story .hero-actions .cinema-text{font-size:11px;white-space:nowrap;text-align:center}}
+
+/* Phones: the film band always holds the top half of the screen and never moves. Each chapter's copy sits beneath
+   it, above the chapter dock, and every checkpoint splits into two calm screens (data-sub: v video, a, b, c). */
+@media(max-width:720px) and (prefers-reduced-motion:no-preference){
+ .cinema-story{--stage-h:max(100svh,520px);--band:calc(var(--stage-h) * .52);--dock:54px}
+ .cinema-story[data-enhanced] .cinema-stage{height:100svh;min-height:520px}
+ .cinema-story[data-enhanced] .cinema-screen{inset:0 0 auto;height:var(--band);opacity:1}
+ .cinema-screen:after{background:linear-gradient(0deg,#030303 0%,#03030300 20%,#03030300 90%,#03030399 100%)}
+
+ .cinema-story[data-enhanced] .cinema-static-art{inset:0 0 auto;height:var(--band);object-fit:cover}
+ .cinema-story[data-enhanced] .cinema-systems .cinema-static-art{display:none}
+ .cinema-story[data-enhanced] .cinema-state,.cinema-story[data-enhanced] .cinema-state.hero{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;padding:calc(var(--band) - 16px) 20px calc(var(--dock) + 10px)}
+ .cinema-story[data-enhanced] .cinema-copy{width:100%;max-width:none;display:flex;flex-direction:column;flex:0 0 auto}
+ .cinema-story[data-enhanced] .cinema-eyebrow{margin:0 0 2px;font-size:9px;letter-spacing:.16em;color:#9aa6ba}
+ .cinema-story[data-enhanced] h1:not(.cinema-eyebrow),.cinema-story[data-enhanced] .cinema-hero-title{font-size:clamp(30px,8.6vw,36px);margin:4px 0 6px}
+ .cinema-story[data-enhanced] h2,.cinema-story[data-enhanced] .cinema-system-heading h2,.cinema-story[data-enhanced] .cinema-converge h2{font-size:clamp(24px,7.2vw,29px);line-height:1.08;margin:4px 0 8px}
+ .cinema-story[data-enhanced] .cinema-tagline{font-size:22px;margin:0 0 6px}
+ .cinema-story[data-enhanced] .cinema-intro{font-size:13px;line-height:1.45;margin:4px 0 0;color:#c4ccd8}
+ .cinema-story[data-enhanced] .cinema-statement,.cinema-story[data-enhanced] .cinema-system-signoff{display:none}
+ @keyframes dx-rise{from{opacity:0;transform:translateY(10px)}}
+
+ /* Screen 1 (Video 1): title at the top, the conversation actions at the bottom, the tour last. */
+ .cinema-story[data-enhanced] .hero .cinema-copy{flex:1 0 auto}
+ .cinema-story[data-enhanced] .hero .hero-actions{margin-top:auto;padding-top:12px;display:grid;grid-template-columns:auto auto;justify-content:space-between;gap:2px 12px}
+ .cinema-story[data-enhanced] .hero .hero-actions [data-talk]{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:10px;min-height:50px;border-radius:999px;font-size:13px;box-shadow:0 0 0 1px #ffffff26,0 10px 30px #abbee21f}
+ .cinema-story[data-enhanced] .hero .hero-actions .cinema-text{font-size:12px;padding:10px 2px;min-height:44px;white-space:nowrap}
+ .cinema-story[data-enhanced][data-holding=true] .hero :is(h1,.cinema-tagline,.cinema-intro,.hero-actions),
+ .cinema-story[data-enhanced] .hero .cinema-assistant-panel{display:none}
+ .cinema-story[data-enhanced][data-holding=true] .hero .cinema-copy{flex:0 0 auto}
+
+ /* ORB screen A: the assistant itself (question, microphone, quick goals). Screen B: the AI services. */
+ .cinema-story[data-enhanced][data-sub=a] .hero .cinema-assistant-panel{display:flex;flex-direction:column;gap:10px;width:100%;max-width:none;margin:4px 0 0;animation:dx-rise .55s cubic-bezier(.2,.7,.2,1) both}
+ .cinema-story[data-enhanced] .cinema-assistant-panel>p{display:block;margin:0;padding:0;border:0;background:none;font-size:21px;line-height:1.22;letter-spacing:-.025em;color:#f3f6fa}
+ .cinema-story[data-enhanced] .ai-core{order:0;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center;margin:0}
+ .cinema-story[data-enhanced] #orb{grid-row:1/span 2;width:56px;height:56px;min-width:56px;padding:15px;border-color:#abbee2;background:radial-gradient(circle at 32% 22%,#6b7890,#0b0f16 68%);box-shadow:0 0 0 6px #abbee214,0 0 26px #abbee240;animation:dx-mic 2.6s ease-in-out infinite}
+ .cinema-story[data-enhanced] #orb svg{width:24px;height:24px}
+ .cinema-story[data-enhanced] #waveform{width:100%;height:30px}
+ .cinema-story[data-enhanced] #core-status{font-size:11px;letter-spacing:.06em;color:#abbee2}
+ .cinema-story[data-enhanced] .quick-goals{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:2px 0 0}
+ .cinema-story[data-enhanced] .goal{min-height:48px;padding:8px 10px;border:1px solid #39465c99;border-radius:12px;background:linear-gradient(160deg,#0e1522f0,#03050bdd);box-shadow:inset 0 1px 0 #ffffff12;font-size:11px;line-height:1.25;gap:8px;color:#e6ecf5}
+ .cinema-story[data-enhanced] .goal span{font-size:12px;color:#abbee2}
+ @keyframes dx-mic{50%{box-shadow:0 0 0 11px #abbee208,0 0 34px #abbee25c}}
+
+ /* X and Engine: during the video only the upcoming title shows, so the screen is never an empty void. */
+ .cinema-story[data-enhanced][data-sub=v] :is(.cinema-core,.cinema-systems) :is(.cinema-intro,.cinema-actions),
+ .cinema-story[data-enhanced][data-sub=b] .cinema-core :is(.cinema-intro,.cinema-actions){display:none}
+ .cinema-story[data-enhanced][data-sub=a] .cinema-core :is(.cinema-intro,.cinema-actions){animation:dx-rise .55s cubic-bezier(.2,.7,.2,1) both}
+ .cinema-story[data-enhanced] .cinema-core .cinema-actions,.cinema-story[data-enhanced] .cinema-converge .cinema-actions{display:grid;grid-template-columns:1fr;gap:8px;margin-top:14px}
+ .cinema-story[data-enhanced] .cinema-actions .button{width:100%;justify-content:center;min-height:46px;border-radius:999px}
+ .cinema-story[data-enhanced] .cinema-systems{padding-top:calc(var(--band) - 16px)}
+ /* The Engine's second screen is led by its caption, so the six modules fit above the dock. */
+ .cinema-story[data-enhanced][data-sub=b] .cinema-systems h2{display:none}
+ .cinema-story[data-enhanced] .cinema-converge .cinema-tagline{font-size:20px}
+
+ /* Chapter dock: one slim row; only the current chapter shows its name. */
+ .cinema-story[data-enhanced] .cinema-controls{flex-wrap:nowrap;gap:8px;padding:8px 14px calc(8px + env(safe-area-inset-bottom));background:linear-gradient(0deg,#030303 62%,#03030300)}
+ .cinema-story[data-enhanced] .cinema-controls nav{gap:4px}
+ .cinema-story[data-enhanced] .cinema-controls a{min-height:36px;padding:6px 11px;font-size:10px;gap:5px}
+ .cinema-story[data-enhanced] .cinema-controls nav a:not([aria-current=true]) span{display:none}
+ .cinema-story[data-enhanced] .cinema-controls>a{padding:6px 0;white-space:nowrap;color:#aeb7c6}
+ .cinema-story[data-enhanced] .cinema-progress{position:absolute;top:0;left:14px;right:14px;width:auto}
+ .cinema-story[data-enhanced] .cinema-loading{bottom:calc(var(--dock) + 6px)}
+}
+@media(max-width:720px) and (max-height:700px) and (prefers-reduced-motion:no-preference){
+ .cinema-story{--band:calc(var(--stage-h) * .46)}
+ .cinema-story[data-enhanced] h1:not(.cinema-eyebrow),.cinema-story[data-enhanced] .cinema-hero-title{font-size:28px}
+ .cinema-story[data-enhanced] .cinema-tagline{font-size:19px}
+ .cinema-story[data-enhanced] .cinema-assistant-panel>p{font-size:17px}
+ .cinema-story[data-enhanced] .hero .hero-actions [data-talk]{min-height:46px}
+}
+/* Very short screens (small phones with browser bars): titles and one-line labels only. */
+@media(max-width:720px) and (max-height:620px) and (prefers-reduced-motion:no-preference){
+ .cinema-story[data-enhanced] :is(.cinema-core,.cinema-systems) h2,.cinema-story[data-enhanced] .cinema-converge h2{font-size:22px}
+ .cinema-story[data-enhanced] .cinema-core .cinema-intro,.cinema-story[data-enhanced][data-holding=true] .cinema-systems h2,.cinema-story[data-enhanced] .converge-triad{display:none}
+ .cinema-story[data-enhanced] .world-node strong+span{display:none!important}
+ .cinema-story[data-enhanced] .world-node a{min-height:44px;align-items:center}
+ .cinema-story[data-enhanced] .cinema-actions .button{min-height:42px}
+ .cinema-story[data-enhanced] .quick-goals .goal{min-height:42px}
+}
+
+/* First paint = the film's first frame, at exactly the fit the canvas will use (contain on desktop, the centre crop on
+   phones), so the swap to the live film is invisible. It is the same file the film draws first. */
+.cinema-first{display:none}
+@media(prefers-reduced-motion:no-preference){
+ .cinema-story[data-enhanced] .cinema-screen{overflow:hidden}
+ .cinema-story[data-enhanced] .cinema-first{display:block;position:absolute;inset:0;pointer-events:none}
+ .cinema-story[data-enhanced] .cinema-first img{width:100%;height:100%;object-fit:contain;filter:grayscale(1);display:block}
+ .cinema-story[data-ready] .cinema-first{display:none}
+ .cinema-story[data-enhanced] .cinema-static-art{display:none!important}
+}
+@media(max-width:720px) and (prefers-reduced-motion:no-preference){
+ .cinema-story[data-enhanced] .cinema-first{inset:auto;left:50%;top:50%;width:min(183.83%,calc(var(--band) * 1.9355));aspect-ratio:864/496;transform:translate(-50%,-50%)}
+}
+
+/* SEO h1 in the hero: .hero h1 (agency/concierge) outsized it; keep it a smaller headline that fits one screen. Mobile [data-enhanced] eyebrow rule still wins. */
+.hero h1.cinema-eyebrow{font-size:clamp(24px,2.3vw,42px);line-height:1.1;letter-spacing:-.01em}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Zaobljena bočica ružičastog parfema</title>
+  <desc id="desc">Skulpturalna okrugla bočica nježno ružičastog mirisa na svijetlom postolju.</desc>
+  <defs>
+    <radialGradient id="bg" cx="40%" cy="34%"><stop stop-color="#f1d9d1"/><stop offset=".52" stop-color="#b88d88"/><stop offset="1" stop-color="#302126"/></radialGradient>
+    <radialGradient id="orb" cx="38%" cy="28%"><stop stop-color="#fff" stop-opacity=".88"/><stop offset=".24" stop-color="#f5dcd9" stop-opacity=".42"/><stop offset=".72" stop-color="#9b4e54" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity=".55"/></radialGradient>
+    <linearGradient id="rose" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f5c8c1" stop-opacity=".55"/><stop offset=".66" stop-color="#bc5e64" stop-opacity=".76"/><stop offset="1" stop-color="#73343d" stop-opacity=".9"/></linearGradient>
+    <linearGradient id="metal" x1="0" x2="1"><stop stop-color="#493a37"/><stop offset=".18" stop-color="#d5b4a9"/><stop offset=".46" stop-color="#fff2e6"/><stop offset=".68" stop-color="#9b7770"/><stop offset="1" stop-color="#322425"/></linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="200%"><feDropShadow dx="0" dy="45" stdDeviation="42" flood-color="#241318" flood-opacity=".58"/></filter>
+    <filter id="blur"><feGaussianBlur stdDeviation="22"/></filter>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <path d="M-90 1040C250 790 360 320 620-60M1220 1300C850 990 990 470 1200 210" fill="none" stroke="#fff" stroke-opacity=".13" stroke-width="115" filter="url(#blur)"/>
+  <g opacity=".48" filter="url(#blur)"><circle cx="150" cy="250" r="65" fill="#fff0d3"/><circle cx="1020" cy="390" r="92" fill="#ffd2bd"/><circle cx="1025" cy="1020" r="56" fill="#fff"/></g>
+  <ellipse cx="600" cy="1250" rx="425" ry="82" fill="#2a1219" opacity=".5" filter="url(#blur)"/>
+  <path d="M145 1190c155-67 755-67 910 0v155c-184 88-726 88-910 0z" fill="#d8c0b8"/>
+  <ellipse cx="600" cy="1190" rx="455" ry="92" fill="#f6e8df" stroke="#fff" stroke-opacity=".5" stroke-width="5"/>
+  <g filter="url(#shadow)">
+    <circle cx="600" cy="747" r="385" fill="url(#orb)" stroke="#fff" stroke-opacity=".66" stroke-width="14"/>
+    <circle cx="600" cy="778" r="300" fill="url(#rose)" stroke="#f9e1db" stroke-opacity=".46" stroke-width="6"/>
+    <path d="M386 555c80-105 248-158 374-81" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="24" stroke-linecap="round"/>
+    <rect x="506" y="280" width="188" height="145" rx="62" fill="url(#metal)"/>
+    <ellipse cx="600" cy="288" rx="95" ry="31" fill="#f2d6ce"/>
+    <path d="M520 396c50 20 110 20 160 0" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="6"/>
+    <rect x="458" y="708" width="284" height="164" rx="82" fill="#5a3038" fill-opacity=".17" stroke="#ffe8dc" stroke-opacity=".58" stroke-width="3"/>
+    <circle cx="600" cy="761" r="18" fill="#f6ddd4"/>
+    <path d="M525 814h150" stroke="#f9e7de" stroke-width="3"/>
+  </g>
+  <ellipse cx="470" cy="560" rx="58" ry="132" fill="#fff" opacity=".14" transform="rotate(36 470 560)"/>
+</svg>

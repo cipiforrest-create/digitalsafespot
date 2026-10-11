@@ -1,0 +1,21 @@
+.cinematic-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  background: #050506;
+  color: #f4f1e9;
+  transition: opacity .75s cubic-bezier(.16, 1, .3, 1), visibility .75s;
+}
+.cinematic-loader.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+.cinematic-loader__inner { width: min(34rem, 80vw); text-align: center; }
+.cinematic-loader__brand { margin: 0 0 1.5rem; font: 700 clamp(1rem, 3vw, 1.8rem)/1 system-ui, sans-serif; letter-spacing: .32em; text-transform: uppercase; }
+.cinematic-loader__track { height: 1px; overflow: hidden; background: rgba(255,255,255,.16); }
+.cinematic-loader__track i { display: block; width: 0; height: 100%; background: currentColor; box-shadow: 0 0 18px currentColor; transition: width .15s linear; }
+.cinematic-loader__meta { display: flex; justify-content: space-between; gap: 1rem; margin-top: .9rem; font: 500 .62rem/1.4 ui-monospace, monospace; letter-spacing: .18em; text-transform: uppercase; opacity: .65; }
+[data-scrub-copy] { will-change: opacity, transform; transition: opacity .08s linear, transform .08s linear; }
+canvas[data-cinematic-canvas] { display: block; width: 100%; height: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  [data-scrub-copy] { opacity: 1 !important; transform: none !important; }
+}
