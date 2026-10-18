@@ -177,4 +177,8 @@ mountExamplePrompts();
 window.visualViewport?.addEventListener('resize',viewport);window.visualViewport?.addEventListener('scroll',viewport);viewport();
 document.addEventListener('concierge:navigated',()=>{waveform.attach(document.querySelector('#waveform'));heroWave.attach(document.querySelector('[data-x-wave]'));void import('./page-effects').then(m=>{m.mountEffects();xStageState(lastVoiceState);});});
 window.addEventListener('popstate',()=>{const id=pageFromPath(location.pathname);if(id)void navigate(id,location.hash,false).catch(()=>notice('Povratak nije uspio. Otvorite stranicu ponovo.'));});
-document.addEventListener('visibilitychange',()=>{waveform.resume();heroWave.resume();});window.addEventListener('pagehide',()=>{request?.abort();voice?.stop();});loadAnalytics();void import('./page-effects').then(m=>m.mountEffects());
+document.addEventListener('visibilitychange',()=>{waveform.resume();heroWave.resume();});window.addEventListener('pagehide',()=>{request?.abort();voice?.stop();});loadAnalytics();
+// Page effects (ambient canvas, cinema story, 3D world) start once the hero has painted its largest element (or
+// after 2.5 s), so the first screen never waits for their setup work.
+function afterHeroPaint(run:()=>void){let done=false;const go=()=>{if(done)return;done=true;observer?.disconnect();requestAnimationFrame(()=>setTimeout(run,0));};const observer='PerformanceObserver' in window&&PerformanceObserver.supportedEntryTypes?.includes('largest-contentful-paint')?new PerformanceObserver(go):null;observer?.observe({type:'largest-contentful-paint',buffered:true});setTimeout(go,observer?2500:0);}
+afterHeroPaint(()=>void import('./page-effects').then(m=>m.mountEffects()));

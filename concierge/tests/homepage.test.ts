@@ -49,3 +49,13 @@ test('homepage answers search and AI audits: organisation, short descriptions, d
  const llms=readFileSync('public/llms.txt','utf8');
  for(const fact of ['Sarajevo','digital.x.agency.ba@gmail.com','## Početne cijene','## Vodiči','/blog/aeo-vodic.html'])assert.ok(llms.includes(fact),fact);
 });
+test('EN and DE pages carry reviewed translations, not machine errors the audit found',()=>{
+ const pages=['index.html','usluge/seo-aeo-geo/index.html','cjenovnik/index.html','kontakt.html'];
+ for(const lang of ['en','de'])for(const page of pages){
+  const text=load(readFileSync(`public/${lang}/${page}`,'utf8'))('body').text();
+  for(const bad of ['Synchronising folder','Ordner synchronisieren','AEO Rast','AEO-Rass','STRONGER BREND','QUANTITATIVE','RÜCKGEHENDE','Recipeist','Rezeptmacher'])assert.ok(!text.includes(bad),`${lang}/${page}: ${bad}`);
+ }
+ assert.ok(load(readFileSync('public/en/usluge/seo-aeo-geo/index.html','utf8'))('body').text().includes('Search intent mapping'));
+ // The inquiry form offers every service, not a single run-together option.
+ assert.equal(load(readFileSync('public/kontakt.html','utf8'))('select[name=service] option').length,9);
+});
