@@ -296,14 +296,13 @@ export const products = [
     "id": "site-care",
     "category": "web",
     "name": "Održavanje stranice",
-    "priceMinor": 2900,
+    "priceMinor": 4900,
     "billing": "mjesečno",
-    "summary": "Mirniji rad uz redovno održavanje i dogovorenu podršku.",
+    "summary": "Tri paketa: 49 KM osnovno tehničko održavanje, 149 KM uz održavanje AI asistenta, 249 KM uz održavanje automatizacija.",
     "features": [
-      "Ažuriranja",
-      "Backup prema dogovoru",
-      "Monitoring dostupnosti",
-      "Sitne izmjene"
+      "Osnovno tehničko održavanje — 49 KM",
+      "+ održavanje AI asistenta — 149 KM",
+      "+ održavanje automatizacija — 249 KM"
     ],
     "image": "service-web.webp"
   }
@@ -347,7 +346,7 @@ export const posts = [
   {
     "id": "odrzavanje-sigurnost-vodic",
     "url": "/blog/odrzavanje-sigurnost-vodic.html",
-    "title": "Održavanje: polica osiguranja od 29 KM",
+    "title": "Održavanje: polica osiguranja od 49 KM",
     "description": "Šta se dešava sa sajtom koji niko ne dira.",
     "meta": "Održavanje · 4 min"
   },

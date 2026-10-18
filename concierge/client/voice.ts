@@ -18,6 +18,9 @@ export class VoiceSession {
   private flow = new InputFlow();
   private ready = false;
   private gains = new Map<AudioBufferSourceNode, GainNode>();
+  // Streamed audio arrives in short chunks with small network gaps. Falling back to 'listening' only after a short
+  // quiet period stops the visible state (orb, X stage, status text) flickering between speaking and listening.
+  private settle: ReturnType<typeof setTimeout> | undefined;
   constructor(private events: Events) {}
   private emitState(state: VoiceState) { this.events.state(this.flow.paused && !this.muted && !['idle','error','connecting'].includes(state) ? 'recovering' : state); }
   get active() { return Boolean(this.socket && this.socket.readyState <= WebSocket.OPEN); }
@@ -74,7 +77,7 @@ export class VoiceSession {
           for (const id of data.toolCallCancellation?.ids || []) this.cancelled.add(id);
           const content = data.serverContent;
           if (content?.interrupted) { this.clearPlayback(); this.events.transcript('assistant', '', true); this.emitState(this.muted ? 'muted' : 'listening'); this.events.interrupted?.(); }
-          if (content?.inputTranscription?.text) { this.events.transcript('user', content.inputTranscription.text); if (!this.sources.size) this.emitState('thinking'); }
+          if (content?.inputTranscription?.text) { this.events.transcript('user', content.inputTranscription.text); if (!this.sources.size) { clearTimeout(this.settle); this.emitState('thinking'); } }
           if (content?.outputTranscription?.text) { this.events.transcript('user', '', true); this.events.transcript('assistant', content.outputTranscription.text); }
           for (const part of content?.modelTurn?.parts || []) if (part.inlineData?.data) this.play(part.inlineData.data, part.inlineData.mimeType);
           if (data.toolCall) {
@@ -113,13 +116,13 @@ export class VoiceSession {
     const at = restarting ? this.audio.currentTime + 0.08 : this.nextPlay; this.nextPlay = at + buffer.duration;
     if(restarting){gain.gain.setValueAtTime(0,at);gain.gain.linearRampToValueAtTime(1,at+0.005);}
     if (this.nextPlay - this.audio.currentTime > 60) { this.failure('The spoken reply was too long. Please continue in text.'); return; }
-    this.sources.add(source); this.emitState('speaking'); source.start(at);
-    source.onended = () => { this.sources.delete(source); this.gains.delete(source); source.disconnect(); gain.disconnect(); if (!this.sources.size && !this.ending) this.emitState(this.muted ? 'muted' : 'listening'); };
+    clearTimeout(this.settle); this.sources.add(source); this.emitState('speaking'); source.start(at);
+    source.onended = () => { this.sources.delete(source); this.gains.delete(source); source.disconnect(); gain.disconnect(); if (!this.sources.size && !this.ending) { clearTimeout(this.settle); this.settle = setTimeout(() => { if (!this.sources.size && !this.ending) this.emitState(this.muted ? 'muted' : 'listening'); }, 350); } };
   }
   private clearPlayback() { for (const source of this.sources) { const gain=this.gains.get(source);const now=this.audio?.currentTime||0;source.onended=()=>{source.disconnect();gain?.disconnect();};try { if(!this.ending&&gain){gain.gain.cancelScheduledValues(now);gain.gain.setValueAtTime(gain.gain.value,now);gain.gain.linearRampToValueAtTime(0,now+0.008);source.stop(now+0.009);}else{source.stop();source.disconnect();gain?.disconnect();} } catch { source.disconnect();gain?.disconnect(); } } this.gains.clear();this.sources.clear(); this.nextPlay = 0; }
   private failure(message: string) { this.stop(); this.emitState('error'); this.events.error(publicError(message)); }
   stop() {
-    this.ending = true; this.ready = false; this.generation++; clearTimeout(this.timeout); this.pendingTasks.forEach(clearTimeout); this.pendingTasks = [];
+    this.ending = true; this.ready = false; this.generation++; clearTimeout(this.timeout); clearTimeout(this.settle); this.pendingTasks.forEach(clearTimeout); this.pendingTasks = [];
     if (this.socket) { this.socket.onclose = null; this.socket.onerror = null; this.socket.onmessage = null; this.socket.close(); this.socket = null; }
     this.clearPlayback(); this.worklet?.disconnect(); if (this.worklet) this.worklet.port.onmessage = null; this.worklet = null;
     this.input?.disconnect(); this.input = null; this.output?.disconnect(); this.output = null; this.flow = new InputFlow();

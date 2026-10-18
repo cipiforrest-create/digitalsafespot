@@ -1,10 +1,35 @@
 # Digital X
 
-> Digitalna agencija iz Sarajeva: web stranice, SEO/AEO/GEO, sadržaj i AI automatizacija.
+> Digital X je digitalna agencija iz Sarajeva (Bosna i Hercegovina): web stranice i web shopovi, cinematic web iskustva, SEO/AEO/GEO, Google i Meta oglašavanje, sadržaj i AI automatizacija (AI asistenti, recepcionar, obrada upita).
 
-Cijene su početne; obim i dostupnost potvrđuju se prije ugovaranja. Audit provjerava javni HTML i tehničke signale; ne mjeri AI pozicije, konverzije niti Core Web Vitals.
+English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovina. It builds websites and online shops, cinematic web experiences, SEO/AEO/GEO, Google and Meta ads, content and AI automation for businesses in Bosnia and Herzegovina, the region and the diaspora (Germany, Austria, Switzerland). Pages are available in Bosnian (/), English (/en/) and German (/de/).
 
-## Usluge i vodiči
+## Ukratko
+- Sjedište: Sarajevo, Bosna i Hercegovina
+- Klijenti: firme u BiH, regionu i dijaspori (Njemačka, Austrija, Švicarska)
+- Jezici: bosanski, hrvatski, srpski, engleski, njemački
+- Radno vrijeme: ponedjeljak–petak, 09:00–17:00
+- Cijene su početne; obim i dostupnost potvrđuju se prije ugovaranja.
+- Besplatna analiza sajta provjerava javni HTML i tehničke signale; ne mjeri AI pozicije, konverzije niti Core Web Vitals.
+
+## Početne cijene
+- [Premium web prisustvo](https://www.digital-x-marketing.com/shop/product/web-presence/): od 449 KM (jednokratno). Prezentacijska stranica s jasnom ponudom, mobilnim dizajnom, osnovnim SEO-om i kontakt tokom.
+- [E-commerce Launch](https://www.digital-x-marketing.com/shop/product/ecommerce-launch/): od 2.490 KM (jednokratno). Kompletna trgovina s kategorijama, proizvodima, dostavom, plaćanjem i obukom.
+- [Aplikacija po mjeri](https://www.digital-x-marketing.com/shop/product/application-mvp/): procjena po zahtjevu. Portal, booking, dashboard ili operativni alat prilagođen vašem procesu.
+- [AI Second Brain OS](https://www.digital-x-marketing.com/shop/product/second-brain-os/): procjena po zahtjevu. Privatna poslovna memorija s Co-Pilot asistentom, povezanim izvorima i odobrenim komandama.
+- [AI prodajni asistent](https://www.digital-x-marketing.com/shop/product/ai-concierge/): od 490 KM (+ održavanje). Asistent za web i kanale komunikacije koji odgovara, kvalifikuje i prikuplja upite.
+- [Automation Starter](https://www.digital-x-marketing.com/shop/product/workflow-starter/): od 349 KM (jednokratno). Jedan prioritetni workflow od upita do zadatka, obavijesti ili CRM zapisa.
+- [Sistem recenzija](https://www.digital-x-marketing.com/shop/product/review-engine/): od 199 KM (+ održavanje). Automatski zahtjev za recenziju nakon završene usluge, uz praćenje odgovora.
+- [SEO · GEO · AEO](https://www.digital-x-marketing.com/shop/product/seo-aeo/): od 249 KM (mjesečno). Tehnička osnova, lokalna vidljivost, sadržaj i struktura za Google i AI odgovore.
+- [Kampanje za rast](https://www.digital-x-marketing.com/shop/product/growth-campaigns/): od 249 KM (mjesečno + budžet). Meta i Google kampanje povezane s landing stranicom, analitikom i prodajnim ciljem.
+- [Speed optimizacija](https://www.digital-x-marketing.com/shop/product/speed-optimization/): od 99 KM (jednokratno). Brže učitavanje, stabilniji prikaz i tehničko čišćenje postojećeg sajta.
+- [Sistem sadržaja](https://www.digital-x-marketing.com/shop/product/content-system/): od 249 KM (mjesečno). Plan, copy, vizuali i kratki video formatirani kao jedan dosljedan sadržajni sistem.
+- [Digitalni partner](https://www.digital-x-marketing.com/shop/product/digital-partner/): od 899 KM (mjesečno). Kombinovana saradnja za web, rast, sadržaj, automatizaciju i kontinuirano poboljšanje.
+- [Smart Website Launch](https://www.digital-x-marketing.com/shop/product/smart-website-launch/): 499 KM (jednokratno). Cinematic web do pet stranica i AI Lead Assistant uključen prva tri mjeseca.
+- [Landing stranica](https://www.digital-x-marketing.com/shop/product/landing-starter/): od 199 KM (jednokratno). Jedna stranica, jedan cilj. Ponuda spremna za upit i kampanju.
+- [Održavanje stranice](https://www.digital-x-marketing.com/shop/product/site-care/): od 49 KM (mjesečno). Tri paketa: 49 KM osnovno tehničko održavanje, 149 KM uz održavanje AI asistenta, 249 KM uz održavanje automatizacija.
+
+## Usluge
 - [X Visibility](https://www.digital-x-marketing.com/usluge/seo-aeo-geo/): Budite tamo gdje počinje pitanje. SEO, AEO i GEO daju vašoj stručnosti jasnu, provjerljivu strukturu — za ljude, pretraživače i AI sisteme.
 - [X Convert](https://www.digital-x-marketing.com/usluge/x-convert/): Povezujemo dizajn, sadržaj i razgovor u web iskustvo koje ljudima olakšava odluku.
 - [X Growth](https://www.digital-x-marketing.com/usluge/digitalne-kampanje/): Oglasi, sadržaj i konverzije trebaju zajednički cilj, a ne tri odvojena izvještaja.
@@ -25,44 +50,16 @@ Cijene su početne; obim i dostupnost potvrđuju se prije ugovaranja. Audit prov
 - [Fotografija proizvoda](https://www.digital-x-marketing.com/usluge/fotografija-proizvoda/): Fotografije prilagođene web prodavnici, kampanji ili katalogu, s dosljednim prikazom proizvoda.
 - [Video proizvoda](https://www.digital-x-marketing.com/usluge/video-proizvoda/): Pokret, detalj i kontekst proizvoda pretvoreni u video za web, oglase i društvene mreže.
 - [Dizajn kataloga](https://www.digital-x-marketing.com/usluge/dizajn-kataloga/): Strukturisani digitalni i štampani katalozi s jasnim informacijama i dosljednim vizuelnim sistemom.
-- [EYNNA Hair](https://www.digital-x-marketing.com/projekti/eynna-hair/): Prikaz EYNNA Hair digitalne ponude i puta prema informisanijem izboru proizvoda.
-- [STAR Parfimerija](https://www.digital-x-marketing.com/projekti/star-parfimerija/): Cinematic prikaz parfimerijske ponude s naglaskom na ambijent, proizvod i ritam istraživanja.
-- [Dizajner perika](https://www.digital-x-marketing.com/projekti/eynna-hair-dizajner-perika/): EYNNA Hair konfigurator pomaže korisniku da strukturira izbor modela, boje, dužine i detalja perike.
 - [Sve usluge](https://www.digital-x-marketing.com/usluge/): Istražite četiri smjera rada i odaberite ono što odgovara trenutnoj fazi vašeg poslovanja.
-- [Odabrani radovi](https://www.digital-x-marketing.com/projekti/): Projekti i vizuelni prikazi koji povezuju identitet, sadržaj i korisnički put.
-- [O nama](https://www.digital-x-marketing.com/o-nama.html): Digital X povezuje strategiju, web dizajn, sadržaj, vidljivost i automatizaciju u smislen digitalni nastup.
-- [Cjenovnik](https://www.digital-x-marketing.com/cjenovnik/): Počnite malim, korisnim korakom. Usporedite obim i početne cijene prije razgovora.
-- [Primjeri web stranica](https://www.digital-x-marketing.com/primjeri-web-stranica/): Od hotela do webshopa: pogledajte kako različiti poslovi mogu izgledati na ekranu.
-- [Kontakt](https://www.digital-x-marketing.com/kontakt.html): Recite nam šta želite postići. Zajedno ćemo složiti korake, obim i procjenu.
-- [Naučite prije nego platite.](https://www.digital-x-marketing.com/blog/): Praktični vodiči za web, sadržaj, oglašavanje i automatizaciju. Razumijte ponudu prije odluke.
-- [Digital X Shop](https://www.digital-x-marketing.com/shop/): Odaberite kategoriju, usporedite proizvode i pronađite prvi korak za svoj posao.
 - [Smart Website Launch](https://www.digital-x-marketing.com/smart-website-launch/): Cinematic web do pet stranica i AI Lead Assistant prva tri mjeseca. Jasan početak digitalnog prisustva.
-- [Web & E-commerce](https://www.digital-x-marketing.com/shop/category/web/): Stranice, trgovine i aplikacije koje pretvaraju interes u upit ili kupovinu.
-- [AI sistemi](https://www.digital-x-marketing.com/shop/category/ai/): Privatno poslovno znanje, razgovorni asistenti i sistemi koji rade s vašim kontekstom.
-- [Automatizacija](https://www.digital-x-marketing.com/shop/category/automation/): Workflowi koji povezuju upite, CRM, termine, dokumente, obavijesti i izvještaje.
-- [Vidljivost & rast](https://www.digital-x-marketing.com/shop/category/growth/): SEO, GEO, AEO, oglašavanje i optimizacija mjerljivog korisničkog puta.
-- [Sadržaj & brend](https://www.digital-x-marketing.com/shop/category/content/): Vizuali, video, copy i sistemi sadržaja koji izgledaju kao jedan dosljedan brend.
-- [Premium web prisustvo](https://www.digital-x-marketing.com/shop/product/web-presence/): Prezentacijska stranica s jasnom ponudom, mobilnim dizajnom, osnovnim SEO-om i kontakt tokom.
-- [E-commerce Launch](https://www.digital-x-marketing.com/shop/product/ecommerce-launch/): Kompletna trgovina s kategorijama, proizvodima, dostavom, plaćanjem i obukom.
-- [Aplikacija po mjeri](https://www.digital-x-marketing.com/shop/product/application-mvp/): Portal, booking, dashboard ili operativni alat prilagođen vašem procesu.
-- [AI Second Brain OS](https://www.digital-x-marketing.com/shop/product/second-brain-os/): Privatna poslovna memorija s Co-Pilot asistentom, povezanim izvorima i odobrenim komandama.
-- [AI prodajni asistent](https://www.digital-x-marketing.com/shop/product/ai-concierge/): Asistent za web i kanale komunikacije koji odgovara, kvalifikuje i prikuplja upite.
-- [Automation Starter](https://www.digital-x-marketing.com/shop/product/workflow-starter/): Jedan prioritetni workflow od upita do zadatka, obavijesti ili CRM zapisa.
-- [Sistem recenzija](https://www.digital-x-marketing.com/shop/product/review-engine/): Automatski zahtjev za recenziju nakon završene usluge, uz praćenje odgovora.
-- [SEO · GEO · AEO](https://www.digital-x-marketing.com/shop/product/seo-aeo/): Tehnička osnova, lokalna vidljivost, sadržaj i struktura za Google i AI odgovore.
-- [Kampanje za rast](https://www.digital-x-marketing.com/shop/product/growth-campaigns/): Meta i Google kampanje povezane s landing stranicom, analitikom i prodajnim ciljem.
-- [Speed optimizacija](https://www.digital-x-marketing.com/shop/product/speed-optimization/): Brže učitavanje, stabilniji prikaz i tehničko čišćenje postojećeg sajta.
-- [Sistem sadržaja](https://www.digital-x-marketing.com/shop/product/content-system/): Plan, copy, vizuali i kratki video formatirani kao jedan dosljedan sadržajni sistem.
-- [Digitalni partner](https://www.digital-x-marketing.com/shop/product/digital-partner/): Kombinovana saradnja za web, rast, sadržaj, automatizaciju i kontinuirano poboljšanje.
-- [Smart Website Launch](https://www.digital-x-marketing.com/shop/product/smart-website-launch/): Cinematic web do pet stranica i AI Lead Assistant uključen prva tri mjeseca.
-- [Landing stranica](https://www.digital-x-marketing.com/shop/product/landing-starter/): Jedna stranica, jedan cilj. Ponuda spremna za upit i kampanju.
-- [Održavanje stranice](https://www.digital-x-marketing.com/shop/product/site-care/): Mirniji rad uz redovno održavanje i dogovorenu podršku.
+
+## Vodiči
 - [Koliko košta web stranica u BiH u 2026?](https://www.digital-x-marketing.com/blog/koliko-kosta-web-stranica-bih.html): Realan vodič kroz cijene — i kako ne platiti dvaput.
 - [Landing stranica: od oglasa do upita](https://www.digital-x-marketing.com/blog/landing-stranica-vodic.html): Jedna stranica, jedan cilj — od 199 KM.
 - [Aplikacija po mjeri](https://www.digital-x-marketing.com/blog/aplikacije-po-mjeri.html): Kada Excel i sveske više nisu dovoljni.
 - [Rebranding i UI/UX dizajn](https://www.digital-x-marketing.com/blog/uiux-rebranding-vodic.html): Prvi utisak se ne ponavlja.
 - [Zašto spor sajt tiho ubija prodaju](https://www.digital-x-marketing.com/blog/brzina-sajta.html): Svaki sekund čekanja košta do 20% posjetilaca.
-- [Održavanje: polica osiguranja od 29 KM](https://www.digital-x-marketing.com/blog/odrzavanje-sigurnost-vodic.html): Šta se dešava sa sajtom koji niko ne dira.
+- [Održavanje: polica osiguranja od 49 KM](https://www.digital-x-marketing.com/blog/odrzavanje-sigurnost-vodic.html): Šta se dešava sa sajtom koji niko ne dira.
 - [Kako da vas ChatGPT preporuči](https://www.digital-x-marketing.com/blog/aeo-vodic.html): Novo bojno polje vidljivosti.
 - [Kako biti prvi na Google mapi](https://www.digital-x-marketing.com/blog/lokalni-seo-google-mapa.html): Top 3 na mapi dobijaju većinu poziva.
 - [Oglasi: budžet u upite, ne u lajkove](https://www.digital-x-marketing.com/blog/google-meta-oglasi-vodic.html): Kako izgleda profesionalno vođenje kampanja.
@@ -73,6 +70,20 @@ Cijene su početne; obim i dostupnost potvrđuju se prije ugovaranja. Audit prov
 - [Šta se sve može automatizovati](https://www.digital-x-marketing.com/blog/ai-automatizacija-vodic.html): Šest automatizacija koje se najbrže isplate.
 - [Google recenzije na autopilotu](https://www.digital-x-marketing.com/blog/automatizacija-recenzija.html): Do 50+ recenzija bez moljenja kupaca.
 
+## Projekti i stranice
+- [EYNNA Hair](https://www.digital-x-marketing.com/projekti/eynna-hair/): Prikaz EYNNA Hair digitalne ponude i puta prema informisanijem izboru proizvoda.
+- [STAR Parfimerija](https://www.digital-x-marketing.com/projekti/star-parfimerija/): Cinematic prikaz parfimerijske ponude s naglaskom na ambijent, proizvod i ritam istraživanja.
+- [Dizajner perika](https://www.digital-x-marketing.com/projekti/eynna-hair-dizajner-perika/): EYNNA Hair konfigurator pomaže korisniku da strukturira izbor modela, boje, dužine i detalja perike.
+- [Odabrani radovi](https://www.digital-x-marketing.com/projekti/): Projekti i vizuelni prikazi koji povezuju identitet, sadržaj i korisnički put.
+- [O nama](https://www.digital-x-marketing.com/o-nama.html): Digital X povezuje strategiju, web dizajn, sadržaj, vidljivost i automatizaciju u smislen digitalni nastup.
+- [Cjenovnik](https://www.digital-x-marketing.com/cjenovnik/): Počnite malim, korisnim korakom. Usporedite obim i početne cijene prije razgovora.
+- [Primjeri web stranica](https://www.digital-x-marketing.com/primjeri-web-stranica/): Od hotela do webshopa: pogledajte kako različiti poslovi mogu izgledati na ekranu.
+- [Kontakt](https://www.digital-x-marketing.com/kontakt.html): Recite nam šta želite postići. Zajedno ćemo složiti korake, obim i procjenu.
+- [Naučite prije nego platite.](https://www.digital-x-marketing.com/blog/): Praktični vodiči za web, sadržaj, oglašavanje i automatizaciju. Razumijte ponudu prije odluke.
+- [Digital X Shop](https://www.digital-x-marketing.com/shop/): Odaberite kategoriju, usporedite proizvode i pronađite prvi korak za svoj posao.
+
 ## Kontakt
-- digital.x.agency.ba@gmail.com
-- +387 64 438 3566
+- Email: digital.x.agency.ba@gmail.com
+- Telefon i WhatsApp: +387 64 438 3566
+- Instagram: https://www.instagram.com/digitalxmarketing.ba
+- Web: https://www.digital-x-marketing.com/

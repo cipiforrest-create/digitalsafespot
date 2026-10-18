@@ -19,7 +19,7 @@ test('compile is deterministic', () => {
 test('corpus has the frozen shape', () => {
   const c = compileCorpus();
   assert.equal(c.count, 20);
-  assert.equal(c.checksum, '4bd7ac29');
+  assert.equal(c.checksum, 'b4a26bb9'); // Maintenance packages repriced to 49 / 149 / 249 KM (2026-10-14).
   assert.equal(c.reviewDate, REVIEW_DATE);
   assert.equal(c.sources.length, APPROVED_PRICE_IDS.length + APPROVED_SERVICE_IDS.length);
 });

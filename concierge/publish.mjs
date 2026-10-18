@@ -4,7 +4,7 @@ import {createRequire} from 'node:module';
 import {load} from 'cheerio';
 import {filterGscSitemap} from '../lib/gsc-indexing.mjs';
 import {localizePage} from './localize-pages.mjs';
-const {offers}=createRequire(import.meta.url)('../.concierge/catalogue.cjs');
+const {offers,products}=createRequire(import.meta.url)('../.concierge/catalogue.cjs');
 const origin='https://www.digital-x-marketing.com';
 const routes=[{id:'home',production:'/'},...offers];
 const localizedRoutes=new Set(routes.map(p=>p.production));
@@ -27,4 +27,29 @@ writeFileSync('public/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlse
 // Translated guides now inherit the same editorial covers and markup during publication.
 const file='public/google-business-profile.html';if(existsSync(file)){const $=load(readFileSync(file,'utf8'));$('meta[property="og:image"]').attr('content',origin+'/media/review-2026/service-local-seo.webp');$('img[src*="service-seo"]').attr('src','/media/review-2026/service-local-seo.webp');writeFileSync(file,$.html());}
 console.log(`Published ${routes.length} canonical pages and updated sitemap.`);
-writeFileSync('public/llms.txt',`# Digital X\n\n> Digitalna agencija iz Sarajeva: web stranice, SEO/AEO/GEO, sadržaj i AI automatizacija.\n\nCijene su početne; obim i dostupnost potvrđuju se prije ugovaranja. Audit provjerava javni HTML i tehničke signale; ne mjeri AI pozicije, konverzije niti Core Web Vitals.\n\n## Usluge i vodiči\n${offers.map(p=>`- [${p.name}](${origin+p.production}): ${p.intro}`).join('\n')}\n\n## Kontakt\n- digital.x.agency.ba@gmail.com\n- +387 64 438 3566\n`);
+// llms.txt: a plain-text summary for AI assistants, built from the same catalogue as the pages so facts never drift.
+const kmPrice=p=>p.priceMinor==null?'procjena po zahtjevu':`${p.id==='smart-website-launch'?'':'od '}${(p.priceMinor/100).toLocaleString('bs-BA')} KM (${p.billing})`;
+const pageLine=p=>`- [${p.name}](${origin+p.production}): ${p.intro}`;
+const group=test=>offers.filter(test).map(pageLine).join('\n');
+writeFileSync('public/llms.txt',[
+ '# Digital X','',
+ '> Digital X je digitalna agencija iz Sarajeva (Bosna i Hercegovina): web stranice i web shopovi, cinematic web iskustva, SEO/AEO/GEO, Google i Meta oglašavanje, sadržaj i AI automatizacija (AI asistenti, recepcionar, obrada upita).','',
+ 'English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovina. It builds websites and online shops, cinematic web experiences, SEO/AEO/GEO, Google and Meta ads, content and AI automation for businesses in Bosnia and Herzegovina, the region and the diaspora (Germany, Austria, Switzerland). Pages are available in Bosnian (/), English (/en/) and German (/de/).','',
+ '## Ukratko',
+ '- Sjedište: Sarajevo, Bosna i Hercegovina',
+ '- Klijenti: firme u BiH, regionu i dijaspori (Njemačka, Austrija, Švicarska)',
+ '- Jezici: bosanski, hrvatski, srpski, engleski, njemački',
+ '- Radno vrijeme: ponedjeljak–petak, 09:00–17:00',
+ '- Cijene su početne; obim i dostupnost potvrđuju se prije ugovaranja.',
+ '- Besplatna analiza sajta provjerava javni HTML i tehničke signale; ne mjeri AI pozicije, konverzije niti Core Web Vitals.','',
+ '## Početne cijene',
+ ...products.map(p=>`- [${p.name}](${origin}/shop/product/${p.id}/): ${kmPrice(p)}. ${p.summary}`),'',
+ '## Usluge',group(p=>p.production.startsWith('/usluge/')||['concierge','launch'].includes(p.id)),'',
+ '## Vodiči',group(p=>p.id.startsWith('article-')),'',
+ '## Projekti i stranice',group(p=>['work','eynna','star','designer','examples','pricing','shop','blog','about','contact'].includes(p.id)),'',
+ '## Kontakt',
+ '- Email: digital.x.agency.ba@gmail.com',
+ '- Telefon i WhatsApp: +387 64 438 3566',
+ '- Instagram: https://www.instagram.com/digitalxmarketing.ba',
+ `- Web: ${origin}/`,''
+].join('\n'));

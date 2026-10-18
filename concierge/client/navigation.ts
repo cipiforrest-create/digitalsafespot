@@ -14,7 +14,13 @@ export async function navigate(id:PageId,hash='',push=true):Promise<boolean>{
       if(!next||doc.documentElement.dataset.experience!=='digital-x-preview')throw new Error('Unexpected page');
       // Only registered first-party build output enters the document. Never audit or model HTML.
       next.querySelectorAll('script').forEach(n=>n.remove());
-      document.querySelector('main#main')!.replaceWith(document.importNode(next,true));document.title=doc.title;
+      // Crossfade the page swap where supported instead of a hard cut while the concierge keeps talking.
+      // The swap runs once: if the browser is not rendering (a background tab), it falls back to a plain swap.
+      let swapped=false;const swap=()=>{if(swapped)return;swapped=true;document.querySelector('main#main')!.replaceWith(document.importNode(next,true));};
+      const start=(document as Document&{startViewTransition?:(update:()=>void)=>{updateCallbackDone:Promise<void>}}).startViewTransition;
+      if(start&&document.visibilityState==='visible'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)await Promise.race([start.call(document,swap).updateCallbackDone.catch(()=>undefined),new Promise(resolve=>setTimeout(resolve,400))]);
+      swap();
+      document.title=doc.title;
       for(const selector of ['meta[name="description"]','meta[name="robots"]','meta[name="keywords"]','meta[property="og:image"]','meta[property="og:title"]','meta[property="og:description"]','meta[property="og:url"]','link[rel="canonical"]','link[rel="alternate"][hreflang]','script[data-page-schema]']){
         document.querySelectorAll(selector).forEach(node=>node.remove());doc.querySelectorAll(selector).forEach(node=>document.head.append(document.importNode(node,true)));
       }
