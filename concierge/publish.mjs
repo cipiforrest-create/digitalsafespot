@@ -24,6 +24,18 @@ function inlineHeadStyles(html){
  }
  return top+html.slice(head);
 }
+// main.js pulls its chunks in a chain (main -> chunk -> chunk, then page-effects after the first paint). Declaring the
+// whole static graph plus the page-effects entry up front lets the browser fetch them in parallel with main.js.
+const assetDir='ai-concierge-preview/assets/';
+const moduleGraph=(()=>{const seen=new Set();const visit=f=>{if(seen.has(f))return;seen.add(f);
+ const js=readFileSync(assetDir+f,'utf8');for(const m of js.matchAll(/(?:^|[;}])\s*import(?:[^"'();]*?from)?\s*"\.\/([\w-]+\.js)"/g))visit(m[1]);};
+ visit('main.js');const effects=readFileSync(assetDir+'main.js','utf8').match(/import\("\.\/(page-effects-[\w]+\.js)"\)/);
+ if(!effects)throw new Error('page-effects entry not found in main.js');visit(effects[1]);seen.delete('main.js');return [...seen];})();
+const mainTag='<script type="module" src="/ai-concierge-preview/assets/main.js">';
+function preloadModules(html){
+ if(!html.includes(mainTag))return html;
+ return html.replace(mainTag,()=>moduleGraph.map(f=>`<link rel="modulepreload" href="/${assetDir}${f}">`).join('')+mainTag);
+}
 for(const p of routes){
  const source=readFileSync(`.concierge/pages/${p.id}.html`,'utf8');
  const $=load(source);
@@ -34,7 +46,7 @@ for(const p of routes){
  for(const lang of ['bs','en','de']){
   const file='public'+(lang==='bs'?'':`/${lang}`)+p.production+(p.production.endsWith('/')?'index.html':'');
   const html=lang==='bs'?base:localizePage(base,lang,p.production,localizedRoutes);
-  mkdirSync(dirname(file),{recursive:true});writeFileSync(file,p.id==='home'?inlineHeadStyles(html):html);
+  mkdirSync(dirname(file),{recursive:true});writeFileSync(file,preloadModules(p.id==='home'?inlineHeadStyles(html):html));
  }
 }
 // Preserve existing translations and legacy URLs in the sitemap; add all published canonical pages.
