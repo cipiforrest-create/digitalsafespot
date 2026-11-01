@@ -50,7 +50,7 @@ English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovi
 - [Fotografija proizvoda](https://www.digital-x-marketing.com/usluge/fotografija-proizvoda/): Fotografije prilagođene web prodavnici, kampanji ili katalogu, s dosljednim prikazom proizvoda.
 - [Video proizvoda](https://www.digital-x-marketing.com/usluge/video-proizvoda/): Pokret, detalj i kontekst proizvoda pretvoreni u video za web, oglase i društvene mreže.
 - [Dizajn kataloga](https://www.digital-x-marketing.com/usluge/dizajn-kataloga/): Strukturisani digitalni i štampani katalozi s jasnim informacijama i dosljednim vizuelnim sistemom.
-- [Sve usluge](https://www.digital-x-marketing.com/usluge/): Istražite četiri smjera rada i odaberite ono što odgovara trenutnoj fazi vašeg poslovanja.
+- [Sve usluge](https://www.digital-x-marketing.com/usluge/): Krenite od jednog od četiri cilja (vidljivost, konverzija, rast, automatizacija) ili pregledajte svih šest disciplina.
 - [Smart Website Launch](https://www.digital-x-marketing.com/smart-website-launch/): Cinematic web do pet stranica i AI Lead Assistant prva tri mjeseca. Jasan početak digitalnog prisustva.
 
 ## Vodiči
@@ -58,7 +58,7 @@ English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovi
 - [Landing stranica: od oglasa do upita](https://www.digital-x-marketing.com/blog/landing-stranica-vodic.html): Jedna stranica, jedan cilj — od 199 KM.
 - [Aplikacija po mjeri](https://www.digital-x-marketing.com/blog/aplikacije-po-mjeri.html): Kada Excel i sveske više nisu dovoljni.
 - [Rebranding i UI/UX dizajn](https://www.digital-x-marketing.com/blog/uiux-rebranding-vodic.html): Prvi utisak se ne ponavlja.
-- [Zašto spor sajt tiho ubija prodaju](https://www.digital-x-marketing.com/blog/brzina-sajta.html): Svaki sekund čekanja košta do 20% posjetilaca.
+- [Zašto spor sajt tiho ubija prodaju](https://www.digital-x-marketing.com/blog/brzina-sajta.html): Svaka sekunda čekanja povećava broj posjetilaca koji odu.
 - [Održavanje: polica osiguranja od 49 KM](https://www.digital-x-marketing.com/blog/odrzavanje-sigurnost-vodic.html): Šta se dešava sa sajtom koji niko ne dira.
 - [Kako da vas ChatGPT preporuči](https://www.digital-x-marketing.com/blog/aeo-vodic.html): Novo bojno polje vidljivosti.
 - [Kako biti prvi na Google mapi](https://www.digital-x-marketing.com/blog/lokalni-seo-google-mapa.html): Top 3 na mapi dobijaju većinu poziva.
@@ -68,7 +68,7 @@ English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovi
 - [Foto i video produkcija](https://www.digital-x-marketing.com/blog/foto-video-produkcija.html): Zašto amaterske fotografije koštaju kupaca.
 - [AI chatbot za male biznise](https://www.digital-x-marketing.com/blog/ai-chatbot-vodic.html): Radnik koji ne spava — šta je i koliko košta.
 - [Šta se sve može automatizovati](https://www.digital-x-marketing.com/blog/ai-automatizacija-vodic.html): Šest automatizacija koje se najbrže isplate.
-- [Google recenzije na autopilotu](https://www.digital-x-marketing.com/blog/automatizacija-recenzija.html): Do 50+ recenzija bez moljenja kupaca.
+- [Google recenzije na autopilotu](https://www.digital-x-marketing.com/blog/automatizacija-recenzija.html): Više recenzija bez moljenja kupaca.
 
 ## Projekti i stranice
 - [EYNNA Hair](https://www.digital-x-marketing.com/projekti/eynna-hair/): Prikaz EYNNA Hair digitalne ponude i puta prema informisanijem izboru proizvoda.
