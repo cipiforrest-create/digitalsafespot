@@ -27,8 +27,17 @@ export function mountAmbient(signal:AbortSignal){
   if(W===laidW)return;laidW=W;count=0;
   layers.forEach((l,li)=>{const n=Math.min(MAX-count,Math.round(W/(mobile?22:24)*l.share*1.6));for(let k=0;k<n;k++){const i=count++;colLayer[i]=li;colX[i]=(k+rand(.2,.8))*W/n;spawn(i,true);for(let j=0;j<TRAIL;j++)bits[i*TRAIL+j]=Math.random()<.5?0:1;}});
  }
- // The film stage is opaque: while it fills the viewport there is nothing of the background to draw.
- function covered(){const story=document.querySelector('[data-cinema-story][data-enhanced]');if(!story)return document.body.classList.contains('film-visible');const r=story.getBoundingClientRect();return r.top<=0&&r.bottom>=innerHeight;}
+ // The X hero stage and the film stage are opaque: while either fills the viewport there is nothing of the background
+ // to draw. Their rects are re-measured after a scroll or resize (and every 30 frames as a safety net), not every frame,
+ // so an idle page does not force a layout on each animation frame.
+ const opaque=['.xs-stage','[data-cinema-story][data-enhanced]'];
+ let hidden=false,storyFound=false,stale=true,age=0;const invalidate=()=>{stale=true;};
+ function covered(){
+  if(stale||++age>30){stale=false;age=0;hidden=false;storyFound=false;
+   for(const selector of opaque){const node=document.querySelector(selector);if(!node)continue;if(selector!=='.xs-stage')storyFound=true;
+    const r=node.getBoundingClientRect();if(r.top<=0&&r.bottom>=innerHeight){hidden=true;break;}}}
+  return hidden||(!storyFound&&document.body.classList.contains('film-visible'));
+ }
  function tick(now:number){
   raf=requestAnimationFrame(tick);const dt=Math.min(.05,last?(now-last)/1000:.016);last=now;
   if(document.body.classList.contains('motion-paused')||covered())return;
@@ -47,7 +56,7 @@ export function mountAmbient(signal:AbortSignal){
   }
   ctx!.fillStyle=mid!;ctx!.fillRect(0,0,W,H);ctx!.fillStyle=vig!;ctx!.fillRect(0,0,W,H);
  }
- resize();raf=requestAnimationFrame(tick);window.addEventListener('resize',resize,{signal});
+ resize();raf=requestAnimationFrame(tick);window.addEventListener('resize',()=>{resize();invalidate();},{signal});window.addEventListener('scroll',invalidate,{passive:true,signal});
  document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(raf);last=0;if(!document.hidden)raf=requestAnimationFrame(tick);},{signal});
  signal.addEventListener('abort',()=>cancelAnimationFrame(raf),{once:true});
 }

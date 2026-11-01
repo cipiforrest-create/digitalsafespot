@@ -61,14 +61,14 @@ export function mountCinemaStory(section:HTMLElement,signal:AbortSignal){
  }
  // Whole-film preload after the first frame: every clip in story order, two quiet requests at a time, so fast
  // scrolling later finds compressed frames already local and only decodes them.
- let warm=0,warmCursor=0;const total=()=>clips.reduce((n,c)=>n+c.frames,0);
+ let warm=0,warmCursor=0,intent=false;const opening=32;const intentEvents=['scroll','wheel','touchstart','pointerdown','keydown'] as const;const total=()=>clips.reduce((n,c)=>n+c.frames,0);
  function preload(){
   checkMotion();if(stopped||reduced.matches||(navigator as Navigator&{connection?:{saveData?:boolean}}).connection?.saveData)return;const version=epoch;
   // Video 1 (the opening) warms four at a time from the first moment; the rest of the film follows two at a time.
-  while(warm<(warmCursor<clips[0].frames?4:2)&&warmCursor<total()){
+  while(warm<(warmCursor<clips[0].frames?4:2)&&warmCursor<(intent?total():Math.min(total(),opening))){
    let n=warmCursor++,clip=0;while(n>=clips[clip].frames){n-=clips[clip].frames;clip++;}
    const k=key(clip,n);if(blobs.has(k)||pending.has(k)||failed.has(k))continue;warm++;
-   void fetch(`/ai-concierge-preview/media/cinema-v1/clip-${clip+1}/${bucket}/${String(n).padStart(4,'0')}.webp`,{signal}).then(r=>r.ok?r.blob():Promise.reject(new Error('Frame unavailable')))
+   void fetch(`/ai-concierge-preview/media/cinema-v1/clip-${clip+1}/${bucket}/${String(n).padStart(4,'0')}.webp`,{signal,priority:'low'}).then(r=>r.ok?r.blob():Promise.reject(new Error('Frame unavailable')))
     .then(b=>{if(!stopped&&version===epoch&&!blobs.has(k)){blobs.set(k,b);if(distance(k)<12)decode(k);}}).catch(()=>{}).finally(()=>{if(version===epoch){warm--;preload();}});
   }
   section.dataset.preloaded=String(Math.round(blobs.size/total()*100));
@@ -160,7 +160,7 @@ export function mountCinemaStory(section:HTMLElement,signal:AbortSignal){
   }else{
    section.removeAttribute('data-ready');if(!loadingTimer)loadingTimer=window.setTimeout(()=>{if(!stopped){const label=section.querySelector<HTMLElement>('.cinema-loading')!;label.textContent=failed.has(shown)?'Animacija trenutno nije dostupna. Sadržaj možete nastaviti istraživati.':'Pripremamo sljedeći kadar…';label.hidden=false;}},700);
   }
-  loader();if(!warm&&warmCursor===0)preload();
+  loader();if(!warm&&document.readyState==='complete')preload();
   // Drag hint: shown at a live checkpoint until the visitor has turned that object once.
   section.dataset.hint=String(worldState==='on'&&p.phase.endsWith('_EXPLORE')&&p.checkpoint>=0&&!dragged[p.checkpoint]);
   // The world loads only after the first film frame is on screen, in idle time.
@@ -186,7 +186,9 @@ export function mountCinemaStory(section:HTMLElement,signal:AbortSignal){
   const next=mobile.matches?640:864;if(next!==bucket){bucket=next;reset();}
   world?.resize(bucket,mobile.matches);if(!world)placeStatic();schedule();
  }
- function mode(){motion=reduced.matches;section.toggleAttribute('data-enhanced',!reduced.matches);section.dataset.mounted='';states.forEach(s=>{s.hidden=false;s.inert=false;s.style.removeProperty('--cinema-copy-opacity');});
+ function mode(){motion=reduced.matches;section.toggleAttribute('data-enhanced',!reduced.matches);section.dataset.mounted='';// Enhanced mode stacks the chapters in one sticky stage: until the first frame renders, only the opening chapter is
+  // shown (as before mount), so later chapters' copy never sits invisibly on top of the opening buttons.
+  states.forEach((s,i)=>{s.hidden=!reduced.matches&&i>0;s.inert=false;s.style.removeProperty('--cinema-copy-opacity');});
   if(reduced.matches){cancelAnimationFrame(raf);raf=0;reset();world?.pause(true);section.style.removeProperty('height');clearTimeout(loadingTimer);loadingTimer=0;section.querySelector<HTMLElement>('.cinema-loading')!.hidden=true;if(loaderEl)loaderEl.hidden=true;['phase','reveal','checkpoint','sub'].forEach(k=>delete section.dataset[k]);}
   else{world?.pause(false);resize();}
  }
@@ -218,5 +220,11 @@ export function mountCinemaStory(section:HTMLElement,signal:AbortSignal){
  },{signal});
  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else schedule();},{signal});const motionWatch=matchMedia('(prefers-reduced-motion:reduce)');motionWatch.addEventListener('change',checkMotion);signal.addEventListener('abort',()=>motionWatch.removeEventListener('change',checkMotion),{once:true});
  signal.addEventListener('abort',()=>{stopped=true;cancelAnimationFrame(raf);clearTimeout(loadingTimer);clearTimeout(loaderTimer);observer.disconnect();ro.disconnect();reset();world?.dispose();states.forEach(s=>{s.hidden=false;s.inert=false;});},{once:true});
- section.dataset.world=worldState;mode();idle(preload);
+ // After the page load event only the film's opening frames warm up, so they are ready before the film scrolls into
+ // view. The rest of the film (every frame of every clip) waits for the visitor's first scroll, touch, click or key, so
+ // an untouched page does no background fetching or decoding.
+ section.dataset.world=worldState;mode();
+ const warmUp=()=>{if(intent)return;intent=true;intentEvents.forEach(type=>window.removeEventListener(type,warmUp));idle(preload);};
+ const listenForIntent=()=>{idle(preload);intentEvents.forEach(type=>window.addEventListener(type,warmUp,{once:true,passive:true,signal}));};
+ if(document.readyState==='complete')listenForIntent();else window.addEventListener('load',listenForIntent,{once:true,signal});
 }
