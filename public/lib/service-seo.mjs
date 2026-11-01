@@ -217,6 +217,8 @@ function schemaMarkup(pathname, route, faqs = route.faqs) {
       '@id': localBusinessId,
       name: 'Digital X Sarajevo',
       url: `${SITE_ORIGIN}/`,
+      email: 'digital.x.agency.ba@gmail.com',
+      telephone: '+387644383566',
       parentOrganization: { '@id': organizationId },
       logo: { '@type': 'ImageObject', '@id': `${organizationId}-logo`, url: LOGO_URL },
       address: { '@type': 'PostalAddress', addressLocality: 'Sarajevo', addressCountry: 'BA' },
