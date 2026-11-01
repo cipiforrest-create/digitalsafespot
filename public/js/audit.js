@@ -61,7 +61,7 @@ form.addEventListener('submit', async e => {
     // llms.txt / AI-crawler pristup i GBP se ne mogu provjeriti iz browsera → ide u puni izvještaj
     const aeoNote = 'llms.txt, pristup AI crawlera (GPTBot, ClaudeBot, PerplexityBot) i Q&A struktura sadržaja provjeravaju se ručno — stižu u punom izvještaju na email.';
 
-    if (perf < 50) issues.unshift(['r', 'Brzina na mobitelu: ' + perf + '/100 — svaki sekund čekanja košta do 20% posjetilaca.']);
+    if (perf < 50) issues.unshift(['r', 'Brzina na mobitelu: ' + perf + '/100 — svaka sekunda čekanja povećava broj posjetilaca koji odu.']);
     else if (perf < 90) issues.push(['y', 'Brzina na mobitelu: ' + perf + '/100 — ima prostora, konkurencija s 90+ prolazi bolje na Googlu.']);
     if (seoBase < 90) issues.push(['y', 'Google SEO osnove: ' + seoBase + '/100 — čak i osnovni signali nisu kompletni.']);
 

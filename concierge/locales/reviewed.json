@@ -3859,9 +3859,9 @@
     "One partner. The connected parts of your growth.",
     "Ein Partner. Die verbundenen Bausteine Ihres Wachstums."
   ],
-  "Istražite četiri smjera rada i odaberite ono što odgovara trenutnoj fazi vašeg poslovanja.": [
-    "Explore four areas of work and choose what fits your business right now.",
-    "Entdecken Sie vier Arbeitsbereiche und wählen Sie, was zur aktuellen Phase Ihres Unternehmens passt."
+  "Krenite od jednog od četiri cilja (vidljivost, konverzija, rast, automatizacija) ili pregledajte svih šest disciplina.": [
+    "Start from one of four goals (visibility, conversion, growth, automation) or browse all six disciplines.",
+    "Starten Sie mit einem von vier Zielen (Sichtbarkeit, Conversion, Wachstum, Automatisierung) oder sehen Sie sich alle sechs Disziplinen an."
   ],
   "Sve usluge": [
     "All services",
@@ -4483,9 +4483,9 @@
     "Why a slow website quietly kills sales",
     "Warum eine langsame Website still den Umsatz kostet"
   ],
-  "Svaki sekund čekanja košta do 20% posjetilaca.": [
-    "Every second of waiting costs up to 20% of visitors.",
-    "Jede Sekunde Wartezeit kostet bis zu 20 % der Besucher."
+  "Svaka sekunda čekanja povećava broj posjetilaca koji odu.": [
+    "Every second of waiting means more visitors leave.",
+    "Jede Sekunde Wartezeit bedeutet, dass mehr Besucher abspringen."
   ],
   "Održavanje · 4 min": [
     "Maintenance · 4 min",
@@ -4579,9 +4579,9 @@
     "Google reviews on autopilot",
     "Google-Bewertungen auf Autopilot"
   ],
-  "Do 50+ recenzija bez moljenja kupaca.": [
-    "50+ reviews without begging customers.",
-    "50+ Bewertungen, ohne Kunden zu bitten."
+  "Više recenzija bez moljenja kupaca.": [
+    "More reviews without chasing customers.",
+    "Mehr Bewertungen, ohne Kunden hinterherzulaufen."
   ],
   "Vizuelni koncept: Naučite prije nego platite. — Jasan obim": [
     "Visual concept: Learn before you invest — Clear scope",
@@ -5383,9 +5383,9 @@
     "Five questions to ask EVERY provider",
     "Fünf Fragen an JEDEN Anbieter"
   ],
-  "Tražite Google ocjenu 85+. Spora stranica gubi do 20% posjetilaca po sekundi čekanja.": [
-    "Look for a Google score of 85+. A slow page loses up to 20% of visitors for every second of waiting.",
-    "Achten Sie auf einen Google-Wert von 85+. Eine langsame Seite verliert pro Sekunde Wartezeit bis zu 20 % der Besucher."
+  "Tražite Google ocjenu 85+. Spora stranica gubi posjetioce već u prvim sekundama.": [
+    "Look for a Google score of 85+. A slow page starts losing visitors within the first few seconds.",
+    "Achten Sie auf einen Google-Wert von 85+. Eine langsame Seite verliert schon in den ersten Sekunden Besucher."
   ],
   "Koliko brzo se stranica učitava na telefonu?": [
     "How fast does the site load on a phone?",
@@ -5839,17 +5839,17 @@
     "Guide · Performance · July 2026",
     "Ratgeber · Performance · Juli 2026"
   ],
-  "Spor sajt je najskuplji problem koji ne vidite. Niko vam se neće žaliti — posjetilac jednostavno pritisne \"nazad\" i ode kod konkurencije. Statistika je brutalna:": [
-    "A slow website is the most expensive problem you can't see. Nobody will complain — the visitor simply hits \"back\" and goes to a competitor. The statistics are brutal:",
-    "Eine langsame Website ist das teuerste Problem, das Sie nicht sehen. Niemand beschwert sich — der Besucher drückt einfach auf „Zurück“ und geht zur Konkurrenz. Die Zahlen sind brutal:"
+  "Spor sajt je najskuplji problem koji ne vidite. Niko vam se neće žaliti — posjetilac jednostavno pritisne \"nazad\" i ode kod konkurencije. Google-ovi podaci su jasni:": [
+    "A slow website is the most expensive problem you can't see. Nobody will complain — the visitor simply hits \"back\" and goes to a competitor. Google's data is clear:",
+    "Eine langsame Website ist das teuerste Problem, das Sie nicht sehen. Niemand beschwert sich — der Besucher drückt einfach auf „Zurück“ und geht zur Konkurrenz. Die Daten von Google sind eindeutig:"
   ],
-  ", a preko polovine mobilnih korisnika napusti stranicu koja se učitava duže od tri sekunde.": [
-    ", and over half of mobile users leave a page that takes longer than three seconds to load.",
-    ", und mehr als die Hälfte der mobilen Nutzer verlässt eine Seite, die länger als drei Sekunden lädt."
+  ", a 53% mobilnih posjeta se napusti ako se stranica učitava duže od tri sekunde (Google, 2016).": [
+    ", and 53% of mobile visits are abandoned when a page takes longer than three seconds to load (Google, 2016).",
+    ", und 53 % der mobilen Besuche werden abgebrochen, wenn eine Seite länger als drei Sekunden lädt (Google, 2016)."
   ],
-  "svaki dodatni sekund učitavanja košta do 20% posjetilaca": [
-    "every extra second of loading costs up to 20% of visitors",
-    "jede zusätzliche Sekunde Ladezeit kostet bis zu 20 % der Besucher"
+  "kad se učitavanje produži s jedne na tri sekunde, vjerovatnoća da posjetilac ode raste za 32% (Google, 2017)": [
+    "when load time grows from one to three seconds, the chance a visitor leaves rises by 32% (Google, 2017)",
+    "wenn die Ladezeit von einer auf drei Sekunden steigt, erhöht sich die Absprungwahrscheinlichkeit um 32 % (Google, 2017)"
   ],
   "Dvostruka šteta: kupci + Google": [
     "Double damage: customers + Google",
@@ -6067,9 +6067,9 @@
     "Five years ago the question was \"are you on the first page of Google?\". Today more and more customers don't open Google at all — they ask ChatGPT, Perplexity or Gemini:",
     "Vor fünf Jahren lautete die Frage: „Sind Sie auf der ersten Google-Seite?“ Heute öffnen immer mehr Kunden Google gar nicht — sie fragen ChatGPT, Perplexity oder Gemini:"
   ],
-  ". AI odgovori s dvije-tri preporuke. Ili ste u tom odgovoru — ili ne postojite.": [
-    ". The AI answers with two or three recommendations. Either you're in that answer — or you don't exist.",
-    ". Die KI antwortet mit zwei, drei Empfehlungen. Entweder Sie stehen in dieser Antwort — oder es gibt Sie nicht."
+  ". AI odgovori s dvije-tri preporuke. Ako niste u tom odgovoru, taj kupac vas vjerovatno neće ni pronaći.": [
+    ". The AI answers with two or three recommendations. If you're not in that answer, that customer probably won't find you at all.",
+    ". Die KI antwortet mit zwei, drei Empfehlungen. Wenn Sie nicht in dieser Antwort stehen, findet Sie dieser Kunde wahrscheinlich gar nicht."
   ],
   "\"Koji je dobar zubar u Sarajevu?\"": [
     "\"Who's a good dentist in Sarajevo?\"",
@@ -7151,9 +7151,9 @@
     "Reviews decide who gets the call from Google Maps. How an automatic system collects a review after every job, and why that changes your local ranking.",
     "Bewertungen entscheiden, wer den Anruf über Google Maps bekommt. Wie ein automatisches System nach jedem Auftrag Bewertungen sammelt und das lokale Ranking stärkt."
   ],
-  "Svaki sekund čekanja košta do 20% posjetilaca. Kako provjeriti brzinu svog sajta i šta su najčešći krivci — slike, hosting, dodaci.": [
-    "Every second of waiting costs up to 20% of visitors. How to check your website's speed and what the usual culprits are: images, hosting and plugins.",
-    "Jede Sekunde Wartezeit kostet bis zu 20 % der Besucher. So prüfen Sie die Geschwindigkeit Ihrer Website und finden die üblichen Bremsen: Bilder, Hosting, Plugins."
+  "Svaka sekunda čekanja povećava broj posjetilaca koji odu. Kako provjeriti brzinu svog sajta i šta su najčešći krivci — slike, hosting, dodaci.": [
+    "Every second of waiting means more visitors leave. How to check your website's speed and what the usual culprits are: images, hosting and plugins.",
+    "Jede Sekunde Wartezeit bedeutet, dass mehr Besucher abspringen. So prüfen Sie die Geschwindigkeit Ihrer Website und finden die üblichen Bremsen: Bilder, Hosting, Plugins."
   ],
   "Kako blogovi, vodiči i prodajni copy dovode kupce godinama: šta je content marketing, kako izgleda u praksi i zašto je gorivo za SEO i AEO.": [
     "How blogs, guides and sales copy keep bringing customers for years: what content marketing is, how it works in practice and why it fuels SEO and AEO.",
