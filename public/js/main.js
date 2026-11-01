@@ -225,7 +225,7 @@ document.querySelectorAll('form.lead-form').forEach(form => {
     {
       priority: 3,
       keys: ["cijena", "cijene", "cjenovnik", "koliko kosta", "budzet", "paket"],
-      text: "Početne cijene su: landing stranica od 199 KM, prezentacijska stranica od 449 KM, e-commerce od 2.490 KM, e-commerce + SEO/AEO od 3.490 KM, SEO/GEO/AEO od 249 KM mjesečno, AI chatbot od 490 KM + 39 KM mjesečno, speed optimizacija od 99 KM i održavanje od 29 KM mjesečno. Konačna cijena zavisi od obima.",
+      text: "Početne cijene su: landing stranica od 199 KM, prezentacijska stranica od 449 KM, e-commerce od 2.490 KM, e-commerce + SEO/AEO od 3.490 KM, SEO/GEO/AEO od 249 KM mjesečno, AI chatbot od 490 KM + 149 KM mjesečno, speed optimizacija od 99 KM i održavanje od 49 KM mjesečno. Konačna cijena zavisi od obima.",
       href: linkTo("index.html#cjenovnik"),
       label: "Otvori cjenovnik",
     },
@@ -253,7 +253,7 @@ document.querySelectorAll('form.lead-form').forEach(form => {
     {
       priority: 2,
       keys: ["chatbot", "chat asistent", "ai asistent", "copilot", "co-pilot", "24/7"],
-      text: "Digital X AI asistent koristi sadržaj i ton vaše firme za odgovore 24/7, kvalifikaciju upita i predaju razgovora čovjeku. Početna ponuda je od 490 KM + 39 KM mjesečno, uz demo prije kupovine.",
+      text: "Digital X AI asistent koristi sadržaj i ton vaše firme za odgovore 24/7, kvalifikaciju upita i predaju razgovora čovjeku. Početna ponuda je od 490 KM + 149 KM mjesečno, uz demo prije kupovine.",
       href: linkTo("landing-ai.html"),
       label: "AI asistent detalji",
     },

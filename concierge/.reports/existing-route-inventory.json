@@ -240,15 +240,6 @@
     "schema": 0
   },
   {
-    "file": "./cinematic-kodent/index.html",
-    "title": "KODENT | Stomatološka ordinacija Podgorica",
-    "robots": "noindex, nofollow",
-    "h1": [
-      "Prostor zavaš osmijeh."
-    ],
-    "schema": 1
-  },
-  {
     "file": "./cinematic-kodent/_not-found/index.html",
     "title": "KODENT | Stomatološka ordinacija Podgorica404: This page could not be found.",
     "robots": "noindex",
@@ -256,6 +247,15 @@
       "404"
     ],
     "schema": 0
+  },
+  {
+    "file": "./cinematic-kodent/index.html",
+    "title": "KODENT | Stomatološka ordinacija Podgorica",
+    "robots": "noindex, nofollow",
+    "h1": [
+      "Prostor zavaš osmijeh."
+    ],
+    "schema": 1
   },
   {
     "file": "./cinematic-penthouse/index.html",

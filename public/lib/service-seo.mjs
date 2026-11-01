@@ -37,6 +37,8 @@ export const SERVICE_ROUTES = new Map([
   })],
   ['/usluge/izrada-web-stranica/', config({
     sourcePath: '/landing-web.html',
+    // EN/DE translations of this service still live at their legacy URLs.
+    alternates: { en: '/en/landing-web.html', de: '/de/landing-web.html' },
     title: 'Izrada web stranica Sarajevo | Digital X',
     description: 'Izrada brzih, modernih web stranica u Sarajevu i za klijente u regionu: mobilni dizajn, SEO osnova, konverzije, analitika i podrška.',
     h1Html: 'Izrada web stranica koje <span class="grad-text">pretvaraju posjete u upite.</span>',
@@ -129,6 +131,16 @@ function stripSeoHead(html) {
     .replace(/\s*<script\b(?=[^>]*\btype=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/gi, '');
 }
 
+function alternateMarkup(pathname, route) {
+  if (!route.alternates) return [];
+  const bs = absolute(pathname);
+  return [
+    `<link rel="alternate" hreflang="bs" href="${bs}">`,
+    ...Object.entries(route.alternates).map(([lang, href]) => `<link rel="alternate" hreflang="${lang}" href="${absolute(href)}">`),
+    `<link rel="alternate" hreflang="x-default" href="${bs}">`,
+  ];
+}
+
 function metadataMarkup(pathname, route) {
   const canonical = absolute(pathname);
   const image = absolute(route.image);
@@ -136,6 +148,7 @@ function metadataMarkup(pathname, route) {
     `<title>${escapeHtml(route.title)}</title>`,
     `<meta name="description" content="${escapeHtml(route.description)}">`,
     `<link rel="canonical" href="${canonical}">`,
+    ...alternateMarkup(pathname, route),
     `<meta property="og:type" content="website">`,
     `<meta property="og:title" content="${escapeHtml(route.title)}">`,
     `<meta property="og:description" content="${escapeHtml(route.description)}">`,
@@ -204,6 +217,8 @@ function schemaMarkup(pathname, route, faqs = route.faqs) {
       '@id': localBusinessId,
       name: 'Digital X Sarajevo',
       url: `${SITE_ORIGIN}/`,
+      email: 'digital.x.agency.ba@gmail.com',
+      telephone: '+387644383566',
       parentOrganization: { '@id': organizationId },
       logo: { '@type': 'ImageObject', '@id': `${organizationId}-logo`, url: LOGO_URL },
       address: { '@type': 'PostalAddress', addressLocality: 'Sarajevo', addressCountry: 'BA' },
