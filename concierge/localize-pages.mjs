@@ -55,6 +55,8 @@ export function localizePage(source,lang,route,routes){
  });
  const schema=value=>{
   if(Array.isArray(value))return value.map(schema);
+  // Site-level entities (/#organization, /#website) are one entity in every language: never re-key them per locale.
+  if(value&&typeof value==='object'&&typeof value['@id']==='string'&&value['@id'].startsWith(`${origin}/#`))return value;
   if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([key,item])=>[key,key==='inLanguage'?lang:schema(item)]));
   if(typeof value!=='string')return value;
   if(value.startsWith(origin))return localPath(value);
