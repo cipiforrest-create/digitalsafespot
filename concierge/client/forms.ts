@@ -1,6 +1,7 @@
 import {ui} from './page-language';
 
-import { goalLabels, type Context, type AuditCheck, type AuditResult } from '../shared/contracts';
+import type { Context, AuditCheck, AuditResult } from '../shared/contracts';
+import { goalLabels } from '../shared/goals';
 import { auditSummary, categories, priorities, reportHtml, reportText, scoreMethod, severityLabel } from '../shared/audit-report';
 import { readSse } from '../shared/sse';
 import { el, text, post, track } from './dom';

@@ -1,4 +1,4 @@
-import {pageFromPath,previewPath,type PageId} from '../shared/catalogue';
+import {pageFromPath,previewPath,type PageId} from './routes';
 import {trackPage} from './dom';
 let navigation:AbortController|null=null;
 export async function navigate(id:PageId,hash='',push=true):Promise<boolean>{
