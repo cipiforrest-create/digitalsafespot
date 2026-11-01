@@ -7,7 +7,10 @@ const require=createRequire(import.meta.url);
 const {offers,previewPath,categories,products,posts}=require('../.concierge/catalogue.cjs');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const path=previewPath;
-const img=(src,alt='',eager=false,featureIndex=null)=>`<img src="${esc(src)}" sizes="(max-width:760px) 92vw, 50vw" width="1536" height="1024" alt="${esc(alt)}" loading="${eager?'eager':'lazy'}" decoding="async"${featureIndex===null?'':` data-feature-image="${featureIndex}"${featureIndex===0?'':' hidden aria-hidden="true"'}`}>`;
+// Smaller sibling (-640/-768) for phones when one is on disk; the 1536px original stays the desktop source.
+const smallVariant=src=>{for(const w of [768,640]){const small=String(src).replace(/\.webp$/,`-${w}.webp`);if(small!==src&&existsSync('.'+small))return [small,w];}return null;};
+export const imageSrcset=src=>{const small=smallVariant(src);return small?`${small[0]} ${small[1]}w, ${src} 1536w`:null;};
+const img=(src,alt='',eager=false,featureIndex=null)=>`<img src="${esc(src)}"${imageSrcset(src)?` srcset="${esc(imageSrcset(src))}"`:''} sizes="(max-width:760px) 92vw, 50vw" width="1536" height="1024" alt="${esc(alt)}" loading="${eager?'eager':'lazy'}" decoding="async"${featureIndex===null?'':` data-feature-image="${featureIndex}"${featureIndex===0?'':' hidden aria-hidden="true"'}`}>`;
 const link=(id,label,cls='text-link')=>`<a class="${cls}" href="${path(id)}">${esc(label||offers.find(p=>p.id===id)?.name||'Početna')} <span aria-hidden="true">↗</span></a>`;
 const cta=(audit=false)=>`<div class="offer-actions"><button class="button primary" ${audit?'data-audit':'data-strategy'}>${audit?'Besplatna analiza sajta':'Besplatne konzultacije'} ↗</button><button class="button" data-tour-start>Provedi me kroz ponudu</button></div>`;
 const logo=()=>`<a class="brand dx-brand" href="${path('home')}" aria-label="Digital X početna"><span class="brand-symbol" aria-hidden="true"><i></i><i></i></span><span class="brand-word">DIGITAL <b>X</b><small>WEB. MARKETING. INTELIGENCIJA.</small></span></a>`;
@@ -130,7 +133,7 @@ export function enhanceVisualPage($,p){
  if(p.id==='home'){$('.hero').replaceWith(`<div class="cinema-shell" id="top">${navigation()}${xHero()}${cinemaStory()}</div>`);$('#story').replaceWith(homeContent());}
  else{$('#main').html(`${navigation()}<section class="offer-hero visual-hero"><div><nav class="breadcrumbs" aria-label="Putanja">${link('home','Početna')}<span>/</span>${link(p.id.startsWith('product-')?'shop':p.id.startsWith('article-')?'blog':'services','Istražite')}<span>/ ${esc(p.name)}</span></nav><p class="eyebrow">${esc(p.pillar)} / DIGITAL X</p><h1>${esc(p.headline)}</h1><p class="offer-intro">${esc(p.intro)}</p>${cta(p.id==='signal')}</div>${visual(p,true)}</section>${serviceBody(p)}`);}
  // The X hero is the home page's first screen: its plate is the LCP image.
- $('head link[rel=preload][as=image]').remove();$('head').append(p.id==='home'?xStageHead():`<link rel="preload" as="image" href="${visualSrc(p)}" fetchpriority="high">`);
+ $('head link[rel=preload][as=image]').remove();$('head').append(p.id==='home'?xStageHead():`<link rel="preload" as="image" href="${visualSrc(p)}"${imageSrcset(visualSrc(p))?` imagesrcset="${imageSrcset(visualSrc(p))}" imagesizes="(max-width:760px) 92vw, 50vw"`:''} fetchpriority="high">`);
  $('body').append('<aside id="tour-bar" class="tour-bar" hidden aria-label="Vođeni obilazak"><span id="tour-label" role="status"></span><p id="tour-caption"></p><button data-tour-action="pause">Pauza</button><button data-tour-action="next">Sljedeće ↗</button><button data-tour-action="stop">Završi obilazak</button></aside>');
  // Audit results remain free; contact is requested only for a detailed follow-up.
  $('#lead-dialog h2').text('Vaš sljedeći korak.');
