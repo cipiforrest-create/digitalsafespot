@@ -39,7 +39,7 @@ for(const file of htmlFiles('public')){
  const fileLang=/^public\/(en|de)\//.exec(file)?.[1];
  let html=before;
  // On EN/DE pages a legacy Bosnian landing link should land on the same-language page, not the Bosnian one.
- if(fileLang)for(const [legacy,clean] of [...localizedLegacy,['landing-web.html','landing-web.html']])html=html.replaceAll(`"/${legacy}`,`"/${fileLang}/${clean}`).replaceAll(`${origin}/${legacy}`,`${origin}/${fileLang}/${clean}`);
+ if(fileLang)for(const [legacy,clean] of [...localizedLegacy,['landing-web.html','landing-web.html'],['usluge/izrada-web-stranica/','landing-web.html']])html=html.replaceAll(`"/${legacy}`,`"/${fileLang}/${clean}`).replaceAll(`${origin}/${legacy}`,`${origin}/${fileLang}/${clean}`);
  html=replaceLegacyServiceLinks(html);
  for(const lang of ['en','de'])for(const [legacy,clean] of localizedLegacy)html=html.replaceAll(`"/${lang}/${legacy}`,`"/${lang}/${clean}`).replaceAll(`${origin}/${lang}/${legacy}`,`${origin}/${lang}/${clean}`);
  const rel=file.slice('public'.length);
