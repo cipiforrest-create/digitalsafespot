@@ -1,11 +1,14 @@
 import { cleanPathForLegacy } from './service-seo.mjs';
 
 const CANONICAL_HOST = 'www.digital-x-marketing.com';
+// Apex and the production vercel.app alias both serve the live site; send them to www so search
+// engines see one host. Preview hosts (digital-x-agency-<hash>/-git-<branch>) are left alone.
+const REDIRECTED_HOSTS = new Set(['digital-x-marketing.com', 'digital-x-agency.vercel.app']);
 
 export function canonicalHostTarget(input) {
   const url = input instanceof URL ? new URL(input.href) : new URL(String(input));
   if (url.hostname === CANONICAL_HOST) return null;
-  if (url.hostname !== 'digital-x-marketing.com') return null;
+  if (!REDIRECTED_HOSTS.has(url.hostname)) return null;
   url.protocol = 'https:';
   url.hostname = CANONICAL_HOST;
   return url.href;
