@@ -101,7 +101,7 @@ writeFileSync('public/llms.txt',[
  '## Vodiči',group(p=>p.id.startsWith('article-')),'',
  '## Projekti i stranice',group(p=>['work','eynna','star','designer','examples','pricing','shop','blog','about','contact'].includes(p.id)),'',
  '## Kontakt',
- '- Email: digital.x.agency.ba@gmail.com',
+ '- Email: marketing@digital-x-marketing.com',
  '- Telefon i WhatsApp: +387 64 438 3566',
  '- Instagram: https://www.instagram.com/digitalxmarketing.ba',
  `- Web: ${origin}/`,''
