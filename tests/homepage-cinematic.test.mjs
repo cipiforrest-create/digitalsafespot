@@ -232,7 +232,7 @@ test("the single lead form still posts the fields the intake endpoint needs", ()
   assert.match(script, /fetch\('\/api\/lead'/);
   assert.match(script, /name = 'website'/);
   assert.match(script, /name="consent"/);
-  assert.match(script, /mailto:digital\.x\.agency\.ba@gmail\.com/);
+  assert.match(script, /mailto:marketing@digital-x-marketing\.com/);
 });
 
 test("mobile gets a smaller ladder, a shorter track and a full-screen film", () => {

@@ -86,8 +86,9 @@ const group=test=>offers.filter(test).map(pageLine).join('\n');
 writeFileSync('public/llms.txt',[
  '# Digital X','',
  '> Digital X je digitalna agencija iz Sarajeva (Bosna i Hercegovina): web stranice i web shopovi, cinematic web iskustva, SEO/AEO/GEO, Google i Meta oglašavanje, sadržaj i AI automatizacija (AI asistenti, recepcionar, obrada upita).','',
- 'English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovina. It builds websites and online shops, cinematic web experiences, SEO/AEO/GEO, Google and Meta ads, content and AI automation for businesses in Bosnia and Herzegovina, the region and the diaspora (Germany, Austria, Switzerland). Pages are available in Bosnian (/), English (/en/) and German (/de/).','',
+ 'English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovina. It builds websites and online shops, cinematic web experiences, SEO/AEO/GEO, Google and Meta ads, content and AI automation for businesses in Bosnia and Herzegovina, the region and the diaspora (Germany, Austria, Switzerland). Pages are available in Bosnian (/), English (/en/) and German (/de/). Digital X (digital-x-marketing.com) is not affiliated with similarly named agencies such as digitalxmarketing.com or digitalx-ai.com.','',
  '## Ukratko',
+ '- Domena: digital-x-marketing.com. Digital X nije povezan s agencijama sličnog naziva kao što su digitalxmarketing.com ili digitalx-ai.com.',
  '- Sjedište: Sarajevo, Bosna i Hercegovina',
  '- Klijenti: firme u BiH, regionu i dijaspori (Njemačka, Austrija, Švicarska)',
  '- Jezici: bosanski, hrvatski, srpski, engleski, njemački',
@@ -100,7 +101,7 @@ writeFileSync('public/llms.txt',[
  '## Vodiči',group(p=>p.id.startsWith('article-')),'',
  '## Projekti i stranice',group(p=>['work','eynna','star','designer','examples','pricing','shop','blog','about','contact'].includes(p.id)),'',
  '## Kontakt',
- '- Email: digital.x.agency.ba@gmail.com',
+ '- Email: marketing@digital-x-marketing.com',
  '- Telefon i WhatsApp: +387 64 438 3566',
  '- Instagram: https://www.instagram.com/digitalxmarketing.ba',
  `- Web: ${origin}/`,''

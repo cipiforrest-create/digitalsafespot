@@ -195,7 +195,7 @@
     if (event.target.closest("[data-cart-checkout]")) {
       const names = cart.map((id) => products.find((product) => product.id === id)?.name).filter(Boolean);
       pushEcom("begin_checkout", { currency: CURRENCY, value: cartValue(), items: cartItems() });
-      location.href = `mailto:digital.x.agency.ba@gmail.com?subject=${encodeURIComponent("Zahtjev iz Digital X Shopa")}&body=${encodeURIComponent(`Zanima me:\n- ${names.join("\n- ")}\n\nMolim dogovor i procjenu cijene.`)}`;
+      location.href = `mailto:marketing@digital-x-marketing.com?subject=${encodeURIComponent("Zahtjev iz Digital X Shopa")}&body=${encodeURIComponent(`Zanima me:\n- ${names.join("\n- ")}\n\nMolim dogovor i procjenu cijene.`)}`;
     }
   });
 
