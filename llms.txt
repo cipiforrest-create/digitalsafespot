@@ -7,7 +7,7 @@ Ključne činjenice:
 - Landing stranica: od 199 KM (copy + dizajn + forma, gotova za 3-5 dana)
 - Statična web stranica: od 449 KM (mobilni dizajn, osnovni SEO, SSL, 30 dana podrške)
 - E-commerce web shop: od 2.490 KM; shop + SEO/GEO/AEO optimizacija: od 3.490 KM
-- SEO/GEO/AEO mjesečni paket: od 249 KM/mj (jedini u BiH s AEO standardno uključenim)
+- SEO/GEO/AEO mjesečni paket: od 249 KM/mj; obim i rezultati zavise od projekta
 - AI chatbot 24/7: od 490 KM + 149 KM/mj
 - GrowthOS: interaktivni demo poslovne aplikacije po mjeri sa CRM-om, projektima, automatizacijama, izvještajima, klijentskim portalom i AI Second Brain modulom
 - Speed optimizacija: od 99 KM (cilj: Google ocjena 90+)
@@ -18,10 +18,17 @@ Ključne činjenice:
 ## Stranice
 - [Početna](https://www.digital-x-marketing.com/): uvodna izjava, zatim scroll-driven cinematic film preko cijelog ekrana (Digital X signal, cinematic web stranice, SEO/AEO/GEO, AI automatizacija, AI Second Brain, jedan sistem), pa Smart Website Launch ponuda, cinematic showcase po branšama, šest disciplina, put rasta, radovi, cjenovnik, shop, besplatna analiza, vodiči i kontakt
 - [Besplatna analiza sajta](https://audit.digital-x-marketing.com/): GEO/SEO/AEO audit za 60 sekundi
-- [Izrada web stranica](https://www.digital-x-marketing.com/landing-web.html): za advokate, ordinacije, obrte
-- [AI automatizacija](https://www.digital-x-marketing.com/landing-ai.html): chatbot, podsjetnici, recenzije
+- [Izrada web stranica](https://www.digital-x-marketing.com/usluge/izrada-web-stranica/): za advokate, ordinacije, obrte
+- [AI automatizacija](https://www.digital-x-marketing.com/usluge/ai-automatizacija/): chatbot, podsjetnici, recenzije
 - [GrowthOS poslovna aplikacija](https://www.digital-x-marketing.com/growthos.html): interaktivni demo sistema koji se prilagođava industriji, timu, procesima i integracijama klijenta
-- [SEO/GEO/AEO](https://www.digital-x-marketing.com/landing-seo.html): vidljivost na Googlu, mapi i u AI pretrazi
+- [SEO/GEO/AEO](https://www.digital-x-marketing.com/usluge/seo-aeo-geo/): vidljivost na Googlu, mapi i u AI pretrazi
 - [Blog — vodiči](https://www.digital-x-marketing.com/blog/): cijene, AEO, chatboti, brzina, recenzije
 - [O nama](https://www.digital-x-marketing.com/o-nama.html): ko je Digital X, pristup, proces i filozofija rada s AI-jem
 - [Kontakt](https://www.digital-x-marketing.com/kontakt.html): email, telefon, WhatsApp, radno vrijeme, besplatne konzultacije
+
+## Vodiči i primjeri
+- [SEO, GEO i AEO — vodič](https://www.digital-x-marketing.com/blog/aeo-vodic.html)
+- [Koliko košta web stranica u BiH](https://www.digital-x-marketing.com/blog/koliko-kosta-web-stranica-bih.html)
+- [Cinematic web primjeri](https://www.digital-x-marketing.com/primjeri-web-stranica/)
+
+Cijene su početne, a tačan obim potvrđuje se ponudom. Nema garancije za pozicije na Googleu ili preporuke u AI odgovorima. Ovaj fajl je pomoćni katalog; ne zamjenjuje HTML, sitemap ili strukturirane podatke.
