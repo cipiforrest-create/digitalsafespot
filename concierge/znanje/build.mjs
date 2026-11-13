@@ -57,11 +57,11 @@ ${siblings.length || c.blog.length ? `<h3>Još iz teme „${esc(c.name)}“</h3>
 <nav class="step-nav" aria-label="Prethodni i sljedeći korak">${prev ? `<a rel="prev" href="${url(prev)}"><small>← Prethodni korak</small>${esc(prev.title)}</a>` : `<a href="/znanje/"><small>← Početak</small>Centar znanja</a>`}${next ? `<a rel="next" href="${url(next)}"><small>Sljedeći korak →</small>${esc(next.title)}</a>` : `<a href="/kontakt.html"><small>Kraj puta →</small>Razgovarajte s Digital X</a>`}</nav>
 </div></div></article>${cta}`;
   const schema = [
-    { '@type': 'Article', '@id': origin + path + '#article', headline: g.h1, description: g.desc, inLanguage: 'bs', datePublished: published, dateModified: published, wordCount: words, articleSection: c.name, keywords: g.keywords.join(', '), mainEntityOfPage: origin + path, image: origin + '/media/poster/journey-core.jpg', author: { '@id': origin + '/#organization' }, publisher: { '@id': origin + '/#organization' }, isPartOf: { '@id': origin + '/znanje/#hub' } },
+    { '@type': 'Article', '@id': origin + path + '#article', headline: g.h1, description: g.desc, inLanguage: 'bs', datePublished: published, dateModified: published, wordCount: words, articleSection: c.name, keywords: g.keywords.join(', '), mainEntityOfPage: origin + path, image: origin + '/media/znanje/znanje-og.jpg', author: { '@id': origin + '/#organization' }, publisher: { '@id': origin + '/#organization' }, isPartOf: { '@id': origin + '/znanje/#hub' } },
     crumbs([['Digital X', '/'], ['Centar znanja', '/znanje/'], [g.title, path]]),
     faqSchema(g.faq),
   ];
-  return page({ path, title: `${g.title} | Digital X`, desc: g.desc, keywords: g.keywords, image: '/media/poster/journey-core.jpg', type: 'article', schema, body, bodyClass: 'is-guide' });
+  return page({ path, title: `${g.title} | Digital X`, desc: g.desc, keywords: g.keywords, image: '/media/znanje/znanje-og.jpg', type: 'article', schema, body, bodyClass: 'is-guide' });
 }
 
 function hubPage() {
@@ -69,8 +69,8 @@ function hubPage() {
   const galaxy = { clusters: clusters.map(c => ({ id: c.id, name: c.name, color: c.color, pos: c.pos, nodes: [...byCluster(c).map(g => ({ t: g.title.split(':')[0], h: url(g) })), ...c.blog.map(([h, t]) => ({ t, h }))] })) };
   const panel = (c, n) => `<article class="g-panel" id="${c.id}" data-stop="${n + 1}" style="--accent:${c.color}"><p class="eyebrow">KLASTER ${String(n + 1).padStart(2, '0')} / ${String(clusters.length).padStart(2, '0')}</p><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p><ul>${byCluster(c).map(g => `<li><a href="${url(g)}">${esc(g.title)}</a></li>`).join('')}${c.blog.map(([h, t]) => `<li><a href="${h}">${esc(t)}</a></li>`).join('')}</ul><a class="g-service" href="${c.service[0]}">Usluga: ${esc(c.service[1])} →</a></article>`;
   const body = `<section class="hub-hero"><div class="hub-hero-copy"><p class="eyebrow">DIGITAL X / CENTAR ZNANJA</p><h1>Sve što trebate znati o webu, vidljivosti i AI-ju — povezano u jednu mapu.</h1><p class="lead">${guides.length} novih vodiča i ${clusters.reduce((n, c) => n + c.blog.length, 0)} postojećih, složenih u ${clusters.length} tema i sedam koraka: od prvog pitanja do rezultata koji se mjeri. Bez žargona, s javnim cijenama.</p><div class="hub-actions"><a class="btn btn-primary" href="#galaksija">Uđite u galaksiju znanja ↓</a><a class="btn" href="#put">Odaberite svoj put</a></div></div></section>
-<section class="g-scroll" id="galaksija" data-galaxy aria-label="Interaktivna mapa znanja"><div class="g-sticky"><canvas class="g-canvas" aria-hidden="true"></canvas><div class="g-labels" aria-hidden="true"></div>
-<div class="g-intro g-panel is-active" data-stop="0"><p class="eyebrow">GALAKSIJA ZNANJA</p><h2>Osam tema. Jedan povezan sistem.</h2><p>Skrolajte da proletite kroz teme, povucite da okrenete mapu ili kliknite čvor da otvorite vodič.</p></div>
+<section class="g-scroll" id="galaksija" data-galaxy aria-label="Interaktivna mapa znanja"><div class="g-sticky"><div class="g-bg g-bg-far" aria-hidden="true"></div><div class="g-bg g-bg-near" aria-hidden="true"></div><canvas class="g-canvas" aria-hidden="true"></canvas><div class="g-labels" aria-hidden="true"></div>
+<div class="g-intro g-panel is-active" data-stop="0"><p class="eyebrow">GALAKSIJA ZNANJA</p><h2>Osam tema. Jedan povezan sistem.</h2><p class="g-hint">Skrolajte da proletite kroz teme, povucite da okrenete mapu ili kliknite čvor da otvorite vodič.</p><img class="g-poster" src="/media/znanje/znanje-poster.webp" width="1774" height="887" loading="lazy" decoding="async" alt="Mozak sastavljen od zvijezda s osam obojenih klastera tema povezanih nitima svjetlosti"></div>
 ${clusters.map(panel).join('')}
 <nav class="g-rail" aria-label="Teme">${clusters.map((c, n) => `<a href="#${c.id}" data-go="${n + 1}" style="--accent:${c.color}"><span></span>${esc(c.name)}</a>`).join('')}</nav>
 <a class="g-skip" href="#put">Preskočite animaciju ↓</a></div></section>
@@ -84,7 +84,7 @@ ${clusters.map(panel).join('')}
     crumbs([['Digital X', '/'], ['Centar znanja', '/znanje/']]),
     faqSchema(hubFaq),
   ];
-  return page({ path: '/znanje/', title: 'Centar znanja: vodiči za web, SEO, AI i marketing | Digital X', desc: 'Besplatni vodiči Digital X: izrada web stranica, web shop, SEO, AEO i GEO, Google i Meta oglasi, društvene mreže i AI automatizacija — u sedam povezanih koraka.', keywords: ['digitalni marketing vodič', 'izrada web stranica', 'seo optimizacija', 'aeo geo', 'ai automatizacija'], image: '/media/poster/journey-core.jpg', type: 'website', schema, body, scripts: '<script src="/znanje/assets/galaxy.js" defer></script>', bodyClass: 'is-hub' });
+  return page({ path: '/znanje/', title: 'Centar znanja: vodiči za web, SEO, AI i marketing | Digital X', desc: 'Besplatni vodiči Digital X: izrada web stranica, web shop, SEO, AEO i GEO, Google i Meta oglasi, društvene mreže i AI automatizacija — u sedam povezanih koraka.', keywords: ['digitalni marketing vodič', 'izrada web stranica', 'seo optimizacija', 'aeo geo', 'ai automatizacija'], image: '/media/znanje/znanje-og.jpg', type: 'website', schema, body, scripts: '<script src="/znanje/assets/galaxy.js" defer></script>', bodyClass: 'is-hub' });
 }
 
 mkdirSync('znanje', { recursive: true });

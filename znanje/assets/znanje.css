@@ -38,7 +38,7 @@ p{margin:0 0 1em}
 .btn-small{min-height:44px;padding:0 20px;font-size:13px}
 
 /* hub hero */
-.hub-hero{min-height:74vh;display:grid;align-items:center;padding:clamp(56px,9vw,120px) clamp(16px,4vw,44px) 40px;background:radial-gradient(900px 520px at 72% 30%,rgba(120,150,255,.13),transparent 70%),radial-gradient(700px 480px at 12% 90%,rgba(255,170,220,.07),transparent 70%)}
+.hub-hero{min-height:74vh;display:grid;align-items:center;padding:clamp(56px,9vw,120px) clamp(16px,4vw,44px) 40px;background:linear-gradient(90deg,#050608 0%,rgba(5,6,8,.86) 38%,rgba(5,6,8,.25) 100%),url(/media/znanje/hero-galaxy.webp) right center/cover no-repeat,radial-gradient(900px 520px at 72% 30%,rgba(120,150,255,.13),transparent 70%),radial-gradient(700px 480px at 12% 90%,rgba(255,170,220,.07),transparent 70%)}
 .hub-hero-copy{max-width:var(--wrap);width:100%;margin:0 auto}
 .hub-hero h1{font-size:clamp(36px,5.4vw,76px);max-width:17ch;letter-spacing:-.035em}
 .lead{font-size:clamp(17px,1.5vw,20px);color:var(--muted);max-width:62ch;margin:26px 0 34px}
@@ -47,6 +47,10 @@ p{margin:0 0 1em}
 /* galaxy */
 .g-scroll{position:relative;height:900vh;background:#030407}
 .g-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.g-bg{position:absolute;inset:-7%;background:center/cover no-repeat;transform:translate3d(calc(var(--gx,0px)*var(--depth)),calc(var(--gy,0px)*var(--depth)),0);will-change:transform}
+.g-bg-far{--depth:.35;background-image:url(/media/znanje/nebula-far.webp);opacity:.9}
+.g-bg-near{--depth:1;background-image:url(/media/znanje/nebula-near.webp);mix-blend-mode:screen;opacity:.55}
+.g-poster{display:none}
 .g-canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y;cursor:grab}
 .g-canvas.is-dragging{cursor:grabbing}
 .g-labels{position:absolute;inset:0;pointer-events:none}
@@ -70,11 +74,13 @@ p{margin:0 0 1em}
 .g-rail:hover a,.g-rail a.is-active,.g-rail a:focus-visible{color:var(--muted)}
 .g-rail a.is-active{color:#fff}
 .g-rail a.is-active span{background:var(--accent);box-shadow:0 0 14px var(--accent);transform:scale(1.3)}
-.g-skip{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:12px}
+.g-skip{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:12px 18px;border-radius:999px;background:rgba(5,6,8,.66);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);white-space:nowrap}
 .g-skip:hover{color:#fff}
 /* No WebGL or reduced motion: the same content as a plain grid. */
 .g-scroll.is-static{height:auto;padding:clamp(48px,7vw,96px) clamp(16px,4vw,44px)}
 .is-static .g-sticky{position:static;height:auto;overflow:visible;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;max-width:var(--wrap);margin:0 auto}
+.is-static .g-poster{display:block;width:100%;height:auto;border-radius:22px;margin-top:22px}
+.is-static .g-hint,.is-static .g-bg{display:none}
 .is-static .g-canvas,.is-static .g-labels,.is-static .g-rail,.is-static .g-skip{display:none}
 .is-static .g-panel{position:static;opacity:1;visibility:visible;transform:none;width:auto}
 .is-static .g-panel ul{max-height:none}
@@ -185,6 +191,7 @@ td{color:#d3d6dc}
 }
 @media (max-width:760px){
   body{font-size:16px}
+  .hub-hero{background-position:0 0,70% center,0 0,0 0}
   .g-panel{left:12px;right:12px;width:auto;bottom:64px;padding:20px 20px 16px;border-radius:18px}
   .g-panel ul{max-height:26vh}
   .g-rail{top:84px;transform:none;right:10px}
