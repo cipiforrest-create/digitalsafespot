@@ -1,5 +1,6 @@
 import {readFileSync} from 'node:fs';
 import {load} from 'cheerio';
+import {copyTranslations} from './seo-copy.mjs';
 
 const origin='https://www.digital-x-marketing.com';
 const attributes=['alt','title','aria-label','placeholder','data-feature','data-goal-prompt'];
@@ -7,6 +8,7 @@ const reviewed=JSON.parse(readFileSync(new URL('./locales/reviewed.json',import.
 const dictionaries=Object.fromEntries(['en','de'].map((lang,index)=>{
  const cache=JSON.parse(readFileSync(new URL(`./locales/${lang}.json`,import.meta.url),'utf8'));
  for(const [key,values] of Object.entries(reviewed))cache[key]=values[index];
+ for(const [key,values] of Object.entries(copyTranslations))cache[key]=values[index];
  // Symbols, numbers and brand names are not prose. Keep them intact.
  for(const key of Object.keys(cache)){
   if(!/\p{L}/u.test(key)||/^(?:INITIALIZING SIGNAL ENGINE|Cinematic (?:Hotel|Watch|Penthouse|KODENT|Perfume|Sneakers|Dentist|Deepsea|VANTA)$|DIGITAL X$|Digital X$)/.test(key))cache[key]=key;

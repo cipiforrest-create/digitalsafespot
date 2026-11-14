@@ -240,15 +240,6 @@
     "schema": 0
   },
   {
-    "file": "./cinematic-kodent/index.html",
-    "title": "KODENT | Stomatološka ordinacija Podgorica",
-    "robots": "noindex, nofollow",
-    "h1": [
-      "Prostor zavaš osmijeh."
-    ],
-    "schema": 1
-  },
-  {
     "file": "./cinematic-kodent/_not-found/index.html",
     "title": "KODENT | Stomatološka ordinacija Podgorica404: This page could not be found.",
     "robots": "noindex",
@@ -256,6 +247,15 @@
       "404"
     ],
     "schema": 0
+  },
+  {
+    "file": "./cinematic-kodent/index.html",
+    "title": "KODENT | Stomatološka ordinacija Podgorica",
+    "robots": "noindex, nofollow",
+    "h1": [
+      "Prostor zavaš osmijeh."
+    ],
+    "schema": 1
   },
   {
     "file": "./cinematic-penthouse/index.html",
@@ -1652,5 +1652,145 @@
       "Uslovi korištenja"
     ],
     "schema": 0
+  },
+  {
+    "file": "./usluge/izrada-web-stranica/sarajevo/index.html",
+    "title": "Izrada web stranica Sarajevo: cijene i rokovi | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-stranica/sarajevo/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Izrada web stranica u Sarajevu: brze, jasne i pronađene na Googleu"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/ai-za-male-firme/index.html",
+    "title": "AI za male firme: 7 primjena koje se isplate i odakle početi | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/ai-za-male-firme/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "AI u maloj firmi: gdje umjetna inteligencija stvarno štedi vrijeme"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/digitalni-marketing-za-male-firme/index.html",
+    "title": "Digitalni marketing za male firme: plan za prvih 90 dana | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/digitalni-marketing-za-male-firme/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Digitalni marketing za male firme: odakle početi i šta raditi prvih 90 dana"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/google-oglasi-cijena/index.html",
+    "title": "Google oglasi: cijena, budžet i kako rade (vodič 2026) | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/google-oglasi-cijena/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Google oglasi: koliko koštaju i kako odrediti budžet"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/index.html",
+    "title": "Centar znanja: vodiči za web, SEO, AI i marketing | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Sve što trebate znati o webu, vidljivosti i AI-ju — povezano u jednu mapu."
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/instagram-facebook-reklama-cijena/index.html",
+    "title": "Instagram i Facebook reklama: cijena i kako početi (2026) | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/instagram-facebook-reklama-cijena/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Instagram i Facebook reklama: koliko košta i kako je postaviti da radi"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/izrada-web-stranica-vodic/index.html",
+    "title": "Izrada web stranica: kompletan vodič za firme u BiH (2026) | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/izrada-web-stranica-vodic/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Izrada web stranice za firmu: koraci, rokovi i šta stranica mora imati"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/kako-mjeriti-rezultate-marketinga/index.html",
+    "title": "Kako mjeriti rezultate marketinga: 6 brojeva koji su bitni | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/kako-mjeriti-rezultate-marketinga/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Kako mjeriti rezultate digitalnog marketinga bez gubljenja u izvještajima"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/kako-odabrati-digitalnu-agenciju/index.html",
+    "title": "Kako odabrati digitalnu agenciju u BiH: 9 pitanja prije potpisa | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/kako-odabrati-digitalnu-agenciju/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Kako odabrati digitalnu ili marketing agenciju: pitanja koja vrijedi postaviti"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/kako-otvoriti-web-shop-bih/index.html",
+    "title": "Kako otvoriti web shop u BiH: koraci, troškovi i platforme | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/kako-otvoriti-web-shop-bih/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Kako otvoriti web shop u BiH: od ideje do prve narudžbe"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/plan-sadrzaja-drustvene-mreze/index.html",
+    "title": "Plan sadržaja za društvene mreže: šta objavljivati i koliko često | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/plan-sadrzaja-drustvene-mreze/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Plan sadržaja za društvene mreže: jednostavan sistem za mjesec dana objava"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/seo-aeo-geo-razlika/index.html",
+    "title": "SEO, AEO i GEO: razlika i kako se pojaviti u AI odgovorima | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/seo-aeo-geo-razlika/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "SEO, AEO i GEO: u čemu je razlika i šta od toga treba vašoj firmi"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/sta-je-seo-optimizacija/index.html",
+    "title": "Šta je SEO optimizacija i koliko košta u BiH (2026) | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/sta-je-seo-optimizacija/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Šta je SEO optimizacija: kako radi, koliko košta i kada daje rezultate"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/wordpress-shopify-ili-custom/index.html",
+    "title": "WordPress, Shopify ili custom web: šta odabrati za firmu | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/wordpress-shopify-ili-custom/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "WordPress, Shopify ili stranica po mjeri: kako odabrati platformu"
+    ],
+    "schema": 1
   }
 ]

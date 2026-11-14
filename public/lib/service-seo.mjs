@@ -193,7 +193,7 @@ function schemaMarkup(pathname, route, faqs = route.faqs) {
       name: 'Digital X',
       alternateName: 'Digital X Sarajevo',
       url: `${SITE_ORIGIN}/`,
-      email: 'digital.x.agency.ba@gmail.com',
+      email: 'marketing@digital-x-marketing.com',
       telephone: '+387644383566',
       logo: { '@type': 'ImageObject', url: LOGO_URL },
       image: LOGO_URL,

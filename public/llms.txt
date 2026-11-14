@@ -70,6 +70,25 @@ English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovi
 - [Šta se sve može automatizovati](https://www.digital-x-marketing.com/blog/ai-automatizacija-vodic.html): Šest automatizacija koje se najbrže isplate.
 - [Google recenzije na autopilotu](https://www.digital-x-marketing.com/blog/automatizacija-recenzija.html): Do 50+ recenzija bez moljenja kupaca.
 
+## Centar znanja
+- [Centar znanja](https://www.digital-x-marketing.com/znanje/): Mapa svih vodiča po temama i koracima.
+- [Digitalni marketing za male firme: plan za prvih 90 dana](https://www.digital-x-marketing.com/znanje/digitalni-marketing-za-male-firme/): Šta je digitalni marketing, koje kanale mala firma u BiH zaista treba i kako izgleda realan plan za prvih 90 dana — bez bacanja budžeta.
+- [Kako odabrati digitalnu agenciju u BiH: 9 pitanja prije potpisa](https://www.digital-x-marketing.com/znanje/kako-odabrati-digitalnu-agenciju/): Praktična lista za izbor digitalne agencije u Sarajevu i BiH: šta pitati, koje odgovore tražiti i koji su znakovi da treba otići.
+- [Izrada web stranica: kompletan vodič za firme u BiH (2026)](https://www.digital-x-marketing.com/znanje/izrada-web-stranica-vodic/): Kako napraviti web stranicu za firmu: koraci izrade, šta pripremiti, koliko traje, koliko košta i po čemu prepoznati stranicu koja donosi upite.
+- [WordPress, Shopify ili custom web: šta odabrati za firmu](https://www.digital-x-marketing.com/znanje/wordpress-shopify-ili-custom/): Poređenje WordPressa, Shopifyja i stranice po mjeri: kome koja platforma odgovara, šta košta dugoročno i kako donijeti odluku bez kajanja.
+- [Kako otvoriti web shop u BiH: koraci, troškovi i platforme](https://www.digital-x-marketing.com/znanje/kako-otvoriti-web-shop-bih/): Vodič za pokretanje web trgovine u BiH: platforma, plaćanje i dostava, fotografije proizvoda, pravne stranice, troškovi i prvi kupci.
+- [Šta je SEO optimizacija i koliko košta u BiH (2026)](https://www.digital-x-marketing.com/znanje/sta-je-seo-optimizacija/): SEO optimizacija objašnjena jednostavno: tri dijela SEO-a, šta možete sami, koliko košta u BiH, koliko se čeka na rezultate i kako prepoznati lošu ponudu.
+- [SEO, AEO i GEO: razlika i kako se pojaviti u AI odgovorima](https://www.digital-x-marketing.com/znanje/seo-aeo-geo-razlika/): Šta znače SEO, AEO i GEO, kako ChatGPT, Gemini i Google AI pregledi biraju izvore i šta konkretno uraditi da AI preporuči vašu firmu.
+- [Google oglasi: cijena, budžet i kako rade (vodič 2026)](https://www.digital-x-marketing.com/znanje/google-oglasi-cijena/): Kako se formira cijena Google oglasa, koliki budžet je razuman za firmu u BiH, koje vrste kampanja postoje i kako izbjeći bacanje novca.
+- [Instagram i Facebook reklama: cijena i kako početi (2026)](https://www.digital-x-marketing.com/znanje/instagram-facebook-reklama-cijena/): Koliko košta reklama na Instagramu i Facebooku, razlika između „Promoviši objavu“ i Ads Managera, kako odabrati cilj, publiku i kreativu.
+- [Plan sadržaja za društvene mreže: šta objavljivati i koliko često](https://www.digital-x-marketing.com/znanje/plan-sadrzaja-drustvene-mreze/): Kako napraviti plan sadržaja za Instagram, Facebook i TikTok: stubovi sadržaja, formati, učestalost objava i mjesečni kalendar koji se može održati.
+- [AI za male firme: 7 primjena koje se isplate i odakle početi](https://www.digital-x-marketing.com/znanje/ai-za-male-firme/): Praktičan vodič za AI u maloj firmi: gdje umjetna inteligencija pomaže, šta košta, koji su rizici i kako uvesti prvi AI alat bez haosa.
+- [Kako mjeriti rezultate marketinga: 6 brojeva koji su bitni](https://www.digital-x-marketing.com/znanje/kako-mjeriti-rezultate-marketinga/): Koje brojeve pratiti u Google Analyticsu i Search Consoleu, kako izračunati cijenu upita i povrat ulaganja te kako izgleda koristan mjesečni izvještaj.
+- [Izrada web stranica Sarajevo: cijene i rokovi](https://www.digital-x-marketing.com/usluge/izrada-web-stranica/sarajevo/): Izrada web stranica u Sarajevu: prezentacija od 449 KM, web s AI asistentom 499 KM, web shop od 2.490 KM. Lokalni SEO, Google mapa i sastanak uživo.
+
+## Demo aplikacije
+- [GrowthOS](https://www.digital-x-marketing.com/growthos.html): interaktivni demo poslovne aplikacije po mjeri sa CRM-om, projektima, automatizacijama, izvještajima, klijentskim portalom i AI Second Brain modulom
+
 ## Projekti i stranice
 - [EYNNA Hair](https://www.digital-x-marketing.com/projekti/eynna-hair/): Prikaz EYNNA Hair digitalne ponude i puta prema informisanijem izboru proizvoda.
 - [STAR Parfimerija](https://www.digital-x-marketing.com/projekti/star-parfimerija/): Cinematic prikaz parfimerijske ponude s naglaskom na ambijent, proizvod i ritam istraživanja.
@@ -83,7 +102,7 @@ English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovi
 - [Digital X Shop](https://www.digital-x-marketing.com/shop/): Odaberite kategoriju, usporedite proizvode i pronađite prvi korak za svoj posao.
 
 ## Kontakt
-- Email: digital.x.agency.ba@gmail.com
+- Email: marketing@digital-x-marketing.com
 - Telefon i WhatsApp: +387 64 438 3566
 - Instagram: https://www.instagram.com/digitalxmarketing.ba
 - Web: https://www.digital-x-marketing.com/

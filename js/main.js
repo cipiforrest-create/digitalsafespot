@@ -1,7 +1,7 @@
 // DIGITAL X — site behavior
 // ⬇️ KONFIGURACIJA: zalijepi svoj n8n/Make webhook URL (vidi prirucnik/03-automatizacije-uputstvo.md)
 const WEBHOOK_URL = "";            // npr. https://n8n.tvoj-server.com/webhook/leads
-const FALLBACK_EMAIL = "digital.x.agency.ba@gmail.com";
+const FALLBACK_EMAIL = "marketing@digital-x-marketing.com";
 const PAGE_LOCALE = document.documentElement.lang || 'bs';
 const UI_COPY = PAGE_LOCALE === 'en' ? {
   skip: 'Skip to content', field: 'Field', service: 'Choose a service'
@@ -295,7 +295,7 @@ document.querySelectorAll('form.lead-form').forEach(form => {
     {
       priority: 1,
       keys: ["kontakt", "email", "razgovor", "procjena", "zahtjev", "treba mi", "po mjeri"],
-      text: "Opišite cilj, problem i usluge koje trebate. Digital X zatim definiše obim, faze, način saradnje i realnu procjenu cijene. Možete koristiti kontakt formu ili pisati na digital.x.agency.ba@gmail.com.",
+      text: "Opišite cilj, problem i usluge koje trebate. Digital X zatim definiše obim, faze, način saradnje i realnu procjenu cijene. Možete koristiti kontakt formu ili pisati na marketing@digital-x-marketing.com.",
       href: linkTo("index.html#custom-requirements"),
       label: "Zatražite procjenu",
     },
