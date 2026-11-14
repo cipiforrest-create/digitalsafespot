@@ -4,6 +4,9 @@ import {load} from 'cheerio';
 import {enhanceVisualPage,homeHead,visualSrc} from './visual-pages.mjs';
 const require=createRequire(import.meta.url);
 const {offers,previewPath,products,posts}=require('../.concierge/catalogue.cjs');
+import {pageCopy,answerLabel} from './seo-copy.mjs';
+// Extra FAQ from seo-copy.mjs joins the catalogue FAQ, so it shows on the page and in FAQPage schema alike.
+for(const p of offers)for(const [q,a] of pageCopy[p.id]?.faq||[])if(!p.faq.some(([x])=>x===q[0]))p.faq.push([q[0],a[0]]);
 const template=readFileSync('concierge/template.html','utf8');
 const standalone=existsSync('concierge/kit.json');
 const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -48,12 +51,16 @@ for(const p of [{id:'home',name:'Digital X',intro:'Strategija, cinematic web, AI
  enhanceVisualPage($,p);
  if(p.id!=='home'&&$('#main').text().includes('EYNNA Hair')&&!$('#main a[href="https://eynna-hair.ba/"]').length)$('#main').append('<p class="source-link"><a href="https://eynna-hair.ba/" target="_blank" rel="noopener">EYNNA Hair — službena stranica ↗</a></p>');
  const canonical=`https://www.digital-x-marketing.com${p.production}`;
- const title=p.id==='home'?'DIGITAL X — Infrastruktura za rast':searchTitles[p.id]||`${p.name}${p.id.startsWith('product-')?' — cijena i obim':''} | DIGITAL X`;
- $('title').text(title);$('meta[name="description"]').attr('content',p.intro);
- $('head').append(`<link rel="canonical" href="${canonical}"><meta property="og:type" content="website"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(p.intro)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="https://www.digital-x-marketing.com/media/poster/journey-beat-2.webp">`);
+ const copy=pageCopy[p.id]||{};
+ const title=p.id==='home'?'DIGITAL X — Infrastruktura za rast':copy.title?.[0]||searchTitles[p.id]||`${p.name}${p.id.startsWith('product-')?' — cijena i obim':''} | DIGITAL X`;
+ const description=copy.desc?.[0]||p.intro;
+ $('title').text(title);$('meta[name="description"]').attr('content',description);
+ // Answer-first lead: a plain definition with the starting price, right under the hero intro.
+ if(copy.answer)$('.offer-intro').first().after(`<div class="answer-lead"><p class="eyebrow">${answerLabel[0]}</p><p>${escape(copy.answer[0])}</p></div>`);
+ $('head').append(`<link rel="canonical" href="${canonical}"><meta property="og:type" content="website"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="https://www.digital-x-marketing.com/media/poster/journey-beat-2.webp">`);
  const focusKeywords=keywords[p.id]||[p.name,p.id.startsWith('article-')?'Digital X vodič':p.id.startsWith('product-')?'cijena i obim usluge':'digitalne usluge Sarajevo'];
  $('head').append(`<meta name="keywords" content="${escape(focusKeywords.join(', '))}">`);
- const schema={'@context':'https://schema.org','@graph':[{'@type':'Organization','@id':'https://www.digital-x-marketing.com/#organization',name:'Digital X',url:'https://www.digital-x-marketing.com/',logo:'https://www.digital-x-marketing.com/assets/icon-512.png',sameAs:['https://www.instagram.com/digitalxmarketing.ba'],address:{'@type':'PostalAddress',addressLocality:'Sarajevo',addressCountry:'BA'}},{'@type':'WebPage','@id':canonical+'#page',url:canonical,name:title,description:p.intro,inLanguage:'bs'},...(p.id==='home'?[]:[{'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Digital X',item:'https://www.digital-x-marketing.com/'},{'@type':'ListItem',position:2,name:p.name,item:canonical}]}]),...(p.faq?[{'@type':'FAQPage',mainEntity:p.faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}]:[]),...(p.pillar&&!['work','services','about','eynna','star','designer','blog','contact','pricing','shop','examples'].includes(p.id)&&!p.id.startsWith('article-')&&!p.id.startsWith('product-')&&!p.id.startsWith('shop-')?[{'@type':'Service',name:p.name,description:p.intro,provider:{'@id':'https://www.digital-x-marketing.com/#organization'}}]:[])]};
+ const schema={'@context':'https://schema.org','@graph':[{'@type':'Organization','@id':'https://www.digital-x-marketing.com/#organization',name:'Digital X',url:'https://www.digital-x-marketing.com/',logo:'https://www.digital-x-marketing.com/assets/icon-512.png',sameAs:['https://www.instagram.com/digitalxmarketing.ba'],address:{'@type':'PostalAddress',addressLocality:'Sarajevo',addressCountry:'BA'}},{'@type':'WebPage','@id':canonical+'#page',url:canonical,name:title,description,inLanguage:'bs'},...(p.id==='home'?[]:[{'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Digital X',item:'https://www.digital-x-marketing.com/'},{'@type':'ListItem',position:2,name:p.name,item:canonical}]}]),...(p.faq?[{'@type':'FAQPage',mainEntity:p.faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}]:[]),...(p.pillar&&!['work','services','about','eynna','star','designer','blog','contact','pricing','shop','examples'].includes(p.id)&&!p.id.startsWith('article-')&&!p.id.startsWith('product-')&&!p.id.startsWith('shop-')?[{'@type':'Service',name:p.name,description:p.intro,provider:{'@id':'https://www.digital-x-marketing.com/#organization'}}]:[])]};
  const product=products.find(x=>'product-'+x.id===p.id),article=posts.find(x=>'article-'+x.id===p.id);
  const previewOrigin='https://www.digital-x-marketing.com';
  const socialImage=`${previewOrigin}${visualSrc(p)}`;

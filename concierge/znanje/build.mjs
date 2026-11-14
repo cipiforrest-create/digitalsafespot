@@ -91,5 +91,5 @@ mkdirSync('znanje', { recursive: true });
 writeFileSync('znanje/index.html', hubPage());
 guides.forEach((g, i) => { mkdirSync(`znanje/${g.slug}`, { recursive: true }); writeFileSync(`znanje/${g.slug}/index.html`, guidePage(g, i)); });
 // Shared with publish.mjs so the sitemap and llms.txt list the same pages.
-export const znanjePages = [{ path: '/znanje/', title: 'Centar znanja', desc: 'Mapa svih vodiča po temama i koracima.' }, ...guides.map(g => ({ path: url(g), title: g.title, desc: g.desc }))];
+export const znanjePages = [{ path: '/znanje/', title: 'Centar znanja', desc: 'Mapa svih vodiča po temama i koracima.', lastmod: published }, ...guides.map(g => ({ path: url(g), title: g.title, desc: g.desc, lastmod: published }))];
 console.log(`Centar znanja: hub + ${guides.length} guides.`);

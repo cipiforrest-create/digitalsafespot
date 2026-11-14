@@ -20,7 +20,7 @@ export const clusters = [
     service: ['/usluge/', 'Sve usluge'], blog: [] },
   { id: 'web', name: 'Web stranice i dizajn', color: '#9fc4ff', pos: [-0.36, 0.3, 0.62],
     blurb: 'Od prve ideje do stranice koja se brzo učitava i vodi posjetioca do upita.',
-    service: ['/usluge/x-convert/', 'Web dizajn — X Convert'],
+    service: ['/usluge/izrada-web-stranica/', 'Izrada web stranica'],
     blog: [['/blog/koliko-kosta-web-stranica-bih.html', 'Koliko košta web stranica u BiH'], ['/blog/landing-stranica-vodic.html', 'Landing stranica: od oglasa do upita'], ['/blog/brzina-sajta.html', 'Zašto spor sajt ubija prodaju'], ['/blog/odrzavanje-sigurnost-vodic.html', 'Održavanje i sigurnost sajta'], ['/blog/uiux-rebranding-vodic.html', 'Rebranding i UI/UX dizajn']] },
   { id: 'shop', name: 'Web shop i e-commerce', color: '#8fe3d0', pos: [0.36, 0.3, 0.62],
     blurb: 'Platforma, plaćanje, dostava i sve što trgovina treba prije prve narudžbe.',
@@ -145,7 +145,7 @@ export const guides = [
       ['Da li mi treba web stranica ako imam Instagram?', 'Da. Profil na mreži nije vaš — pravila i doseg se mijenjaju. Web stranica je jedino mjesto koje u potpunosti kontrolišete i koje Google i AI sistemi mogu citirati.'],
       ['Šta je s domenom i hostingom?', 'Domena je adresa (npr. vasafirma.ba), hosting je prostor na kojem stranica živi. Oboje se plaća godišnje i oboje treba biti registrovano na vas.'],
     ],
-    related: [['/usluge/x-convert/', 'Web dizajn — X Convert'], ['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/smart-website-launch/', 'Smart Website Launch — 499 KM']],
+    related: [['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/smart-website-launch/', 'Smart Website Launch — 499 KM']],
   },
   {
     slug: 'wordpress-shopify-ili-custom', cluster: 'web', stage: 'izgraditi', minutes: 5,

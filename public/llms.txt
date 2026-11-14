@@ -85,6 +85,9 @@ English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovi
 - [AI za male firme: 7 primjena koje se isplate i odakle početi](https://www.digital-x-marketing.com/znanje/ai-za-male-firme/): Praktičan vodič za AI u maloj firmi: gdje umjetna inteligencija pomaže, šta košta, koji su rizici i kako uvesti prvi AI alat bez haosa.
 - [Kako mjeriti rezultate marketinga: 6 brojeva koji su bitni](https://www.digital-x-marketing.com/znanje/kako-mjeriti-rezultate-marketinga/): Koje brojeve pratiti u Google Analyticsu i Search Consoleu, kako izračunati cijenu upita i povrat ulaganja te kako izgleda koristan mjesečni izvještaj.
 
+## Demo aplikacije
+- [GrowthOS](https://www.digital-x-marketing.com/growthos.html): interaktivni demo poslovne aplikacije po mjeri sa CRM-om, projektima, automatizacijama, izvještajima, klijentskim portalom i AI Second Brain modulom
+
 ## Projekti i stranice
 - [EYNNA Hair](https://www.digital-x-marketing.com/projekti/eynna-hair/): Prikaz EYNNA Hair digitalne ponude i puta prema informisanijem izboru proizvoda.
 - [STAR Parfimerija](https://www.digital-x-marketing.com/projekti/star-parfimerija/): Cinematic prikaz parfimerijske ponude s naglaskom na ambijent, proizvod i ritam istraživanja.
