@@ -642,7 +642,7 @@
       "growth",
       "automate"
     ],
-    "action": "new_route_proposed",
+    "action": "improve_existing",
     "noindex": true
   },
   {

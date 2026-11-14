@@ -2,6 +2,7 @@
 // Runs from the repo root, before the site is copied into public/.
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { origin, published, stages, clusters, paths, guides, hubFaq } from './content.mjs';
+import { cities } from './cities.mjs';
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const strip = html => html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -31,7 +32,7 @@ function page({ path, title, desc, keywords, image, type, schema, body, scripts 
 <link rel="stylesheet" href="/css/fonts.css"><link rel="stylesheet" href="/znanje/assets/znanje.css">
 <meta property="og:type" content="${type}"><meta property="og:site_name" content="Digital X Sarajevo"><meta property="og:locale" content="bs_BA"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${origin + image}"><meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': [organization, ...schema] }).replace(/</g, '\\u003c')}</script>
-</head><body class="${bodyClass}">${header}<main id="main">${body}</main>${footer}<script src="/znanje/assets/site.js" defer></script>${scripts}</body></html>`;
+</head><body class="${bodyClass}">${path.startsWith('/znanje/') ? header : header.replace(' aria-current="true"', '')}<main id="main">${body}</main>${footer}<script src="/znanje/assets/site.js" defer></script>${scripts}</body></html>`;
 }
 
 const faqHtml = faq => `<div class="faq">${faq.map(([q, a]) => `<details><summary><h3>${esc(q)}</h3></summary><p>${esc(a)}</p></details>`).join('')}</div>`;
@@ -87,9 +88,35 @@ ${clusters.map(panel).join('')}
   return page({ path: '/znanje/', title: 'Centar znanja: vodiči za web, SEO, AI i marketing | Digital X', desc: 'Besplatni vodiči Digital X: izrada web stranica, web shop, SEO, AEO i GEO, Google i Meta oglasi, društvene mreže i AI automatizacija — u sedam povezanih koraka.', keywords: ['digitalni marketing vodič', 'izrada web stranica', 'seo optimizacija', 'aeo geo', 'ai automatizacija'], image: '/media/znanje/znanje-og.jpg', type: 'website', schema, body, scripts: '<script src="/znanje/assets/galaxy.js" defer></script>', bodyClass: 'is-hub' });
 }
 
+// City landing pages (/usluge/izrada-web-stranica/<grad>/) reuse the guide layout with local content.
+const cityUrl = c => `/usluge/izrada-web-stranica/${c.slug}/`;
+function cityPage(c) {
+  const path = cityUrl(c);
+  const toc = c.sections.map(([h]) => [h, slugify(h)]);
+  const body = `<article class="guide" style="--accent:#9fc4ff">
+<header class="guide-hero"><nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span>/</span><a href="/usluge/">Usluge</a><span>/</span><a href="/usluge/izrada-web-stranica/">Izrada web stranica</a><span>/</span><span>${esc(c.city)}</span></nav>
+<p class="eyebrow">IZRADA WEB STRANICA · ${esc(c.city).toUpperCase()}</p><h1>${esc(c.h1)}</h1>
+<p class="guide-meta">Digital X, Sarajevo · ažurirano <time datetime="${published}">13. 11. 2026.</time></p>
+<div class="hub-actions"><a class="btn btn-primary" href="/kontakt.html">Besplatne konzultacije</a><a class="btn" href="/usluge/x-signal/">Besplatna analiza sajta</a></div></header>
+<div class="guide-layout"><aside class="guide-toc" aria-label="Sadržaj"><h2>Na ovoj stranici</h2><ol>${toc.map(([h, id]) => `<li><a href="#${id}">${esc(h)}</a></li>`).join('')}<li><a href="#pitanja">Česta pitanja</a></li></ol></aside>
+<div class="guide-body"><div class="answer"><p class="eyebrow">KRATAK ODGOVOR</p><p>${esc(c.answer)}</p></div>
+${c.sections.map(([h, html]) => `<section id="${slugify(h)}"><h2>${esc(h)}</h2>${html}</section>`).join('')}
+<section id="pitanja"><h2>Česta pitanja</h2>${faqHtml(c.faq)}</section>
+<section class="related"><h2>Povezano</h2><div class="related-grid">${c.related.map(([h, n]) => `<a href="${h}">${esc(n)}<span aria-hidden="true">→</span></a>`).join('')}</div></section>
+</div></div></article>${cta}`;
+  const schema = [
+    { '@type': 'Service', '@id': origin + path + '#service', name: `Izrada web stranica ${c.city}`, serviceType: 'Web design and web development', description: c.desc, provider: { '@id': origin + '/#organization' }, areaServed: { '@type': 'City', name: c.city },
+      offers: [['Landing stranica', 199], ['Premium web prisustvo', 449], ['Smart Website Launch', 499], ['E-commerce Launch', 2490]].map(([name, price]) => ({ '@type': 'Offer', name, price, priceCurrency: 'BAM' })) },
+    crumbs([['Digital X', '/'], ['Usluge', '/usluge/'], ['Izrada web stranica', '/usluge/izrada-web-stranica/'], [c.city, path]]),
+    faqSchema(c.faq),
+  ];
+  return page({ path, title: c.title, desc: c.desc, keywords: c.keywords, image: '/media/znanje/znanje-og.jpg', type: 'website', schema, body, bodyClass: 'is-guide' });
+}
+
 mkdirSync('znanje', { recursive: true });
+for (const c of cities) { mkdirSync(`.${cityUrl(c)}`, { recursive: true }); writeFileSync(`.${cityUrl(c)}index.html`, cityPage(c)); }
 writeFileSync('znanje/index.html', hubPage());
 guides.forEach((g, i) => { mkdirSync(`znanje/${g.slug}`, { recursive: true }); writeFileSync(`znanje/${g.slug}/index.html`, guidePage(g, i)); });
 // Shared with publish.mjs so the sitemap and llms.txt list the same pages.
-export const znanjePages = [{ path: '/znanje/', title: 'Centar znanja', desc: 'Mapa svih vodiča po temama i koracima.', lastmod: published }, ...guides.map(g => ({ path: url(g), title: g.title, desc: g.desc, lastmod: published }))];
+export const znanjePages = [{ path: '/znanje/', title: 'Centar znanja', desc: 'Mapa svih vodiča po temama i koracima.', lastmod: published }, ...guides.map(g => ({ path: url(g), title: g.title, desc: g.desc, lastmod: published })), ...cities.map(c => ({ path: cityUrl(c), title: c.title.replace(' | Digital X', ''), desc: c.desc, lastmod: published }))];
 console.log(`Centar znanja: hub + ${guides.length} guides.`);

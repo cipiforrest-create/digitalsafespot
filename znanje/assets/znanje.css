@@ -154,6 +154,7 @@ p{margin:0 0 1em}
 .guide-toc a:hover,.guide-toc a.is-active{color:#fff;border-left-color:var(--accent)}
 .answer{border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:20px;padding:24px 26px;background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 9%,transparent),transparent 70%);margin-bottom:10px}
 .answer p:last-child{margin:0;font-size:18.5px;line-height:1.62}
+.guide-body{min-width:0}
 .guide-body section{padding-top:44px;scroll-margin-top:84px}
 .guide-body h2{font-size:clamp(25px,2.5vw,33px);margin-bottom:18px}
 .guide-body h3{font-size:19px;margin:28px 0 12px}
@@ -184,7 +185,7 @@ td{color:#d3d6dc}
 
 @media (max-width:1080px){.zn-nav,.zn-header>.btn{display:none}.zn-menu{display:block}}
 @media (max-width:900px){
-  .guide-layout{grid-template-columns:1fr}
+  .guide-layout{grid-template-columns:minmax(0,1fr)}
   .guide-toc{position:static;border:1px solid var(--line);border-radius:16px;padding:18px 20px}
   .zn-cta{grid-template-columns:1fr}
   .zn-footer{grid-template-columns:1fr 1fr}

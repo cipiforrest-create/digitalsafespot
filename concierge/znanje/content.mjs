@@ -145,7 +145,7 @@ export const guides = [
       ['Da li mi treba web stranica ako imam Instagram?', 'Da. Profil na mreži nije vaš — pravila i doseg se mijenjaju. Web stranica je jedino mjesto koje u potpunosti kontrolišete i koje Google i AI sistemi mogu citirati.'],
       ['Šta je s domenom i hostingom?', 'Domena je adresa (npr. vasafirma.ba), hosting je prostor na kojem stranica živi. Oboje se plaća godišnje i oboje treba biti registrovano na vas.'],
     ],
-    related: [['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/smart-website-launch/', 'Smart Website Launch — 499 KM']],
+    related: [['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/usluge/izrada-web-stranica/sarajevo/', 'Izrada web stranica u Sarajevu'], ['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/smart-website-launch/', 'Smart Website Launch — 499 KM']],
   },
   {
     slug: 'wordpress-shopify-ili-custom', cluster: 'web', stage: 'izgraditi', minutes: 5,
