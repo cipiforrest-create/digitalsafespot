@@ -31,7 +31,10 @@
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
       "Da li garantujete prvo mjesto?",
-      "Moram li mijenjati postojeću stranicu?"
+      "Moram li mijenjati postojeću stranicu?",
+      "Koliko košta SEO optimizacija?",
+      "Kada se vide prvi rezultati?",
+      "Šta je razlika između SEO, AEO i GEO?"
     ],
     "links": [
       "signal",
@@ -45,7 +48,7 @@
     "id": "convert",
     "preview": "/usluge/x-convert/",
     "production": "/usluge/x-convert/",
-    "title": "X Convert | DIGITAL X",
+    "title": "Redizajn web stranice za više upita | Digital X",
     "description": "Povezujemo dizajn, sadržaj i razgovor u web iskustvo koje ljudima olakšava odluku.",
     "primaryIntent": "X Convert",
     "secondaryKeywords": [
@@ -56,7 +59,10 @@
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
       "Je li redizajn uvijek potreban?",
-      "Može li stranica razgovarati s posjetiocem?"
+      "Može li stranica razgovarati s posjetiocem?",
+      "Koliko traje redizajn?",
+      "Hoću li izgubiti pozicije na Googleu?",
+      "Šta ako mi treba potpuno nova stranica?"
     ],
     "links": [
       "cinematic",
@@ -70,7 +76,7 @@
     "id": "growth",
     "preview": "/usluge/digitalne-kampanje/",
     "production": "/usluge/digitalne-kampanje/",
-    "title": "X Growth | DIGITAL X",
+    "title": "Digitalne kampanje: Google i Meta oglasi | Digital X",
     "description": "Oglasi, sadržaj i konverzije trebaju zajednički cilj, a ne tri odvojena izvještaja.",
     "primaryIntent": "X Growth",
     "secondaryKeywords": [
@@ -81,7 +87,10 @@
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
       "Je li budžet za oglase uključen?",
-      "Koji kanal je bolji za moj posao?"
+      "Koji kanal je bolji za moj posao?",
+      "Koliki budžet za oglase je potreban?",
+      "Kada se vide prvi upiti?",
+      "Ko je vlasnik oglasnih naloga?"
     ],
     "links": [
       "meta-ads",
@@ -106,7 +115,10 @@
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
       "Možete li povezati naš CRM?",
-      "Da li AI dobija neograničen pristup?"
+      "Da li AI dobija neograničen pristup?",
+      "Koliko košta automatizacija?",
+      "Šta se najbrže isplati automatizovati?",
+      "Šta je s privatnošću podataka?"
     ],
     "links": [
       "lead-desk",
@@ -120,7 +132,7 @@
     "id": "cinematic",
     "preview": "/usluge/cinematic-web-stranice/",
     "production": "/usluge/cinematic-web-stranice/",
-    "title": "Cinematic Websites | DIGITAL X",
+    "title": "Cinematic web stranice: 3D i scroll animacije | Digital X",
     "description": "Filmski kadar, kontrolisan pokret i jasan put do ponude. Vizuelno iskustvo izgrađeno oko karaktera vašeg brenda.",
     "primaryIntent": "Cinematic Websites",
     "secondaryKeywords": [
@@ -131,7 +143,10 @@
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
       "Da li svaka stranica treba video?",
-      "Možemo li koristiti postojeće materijale?"
+      "Možemo li koristiti postojeće materijale?",
+      "Koliko košta cinematic web stranica?",
+      "Da li animacije usporavaju stranicu?",
+      "Da li Google može pročitati cinematic stranicu?"
     ],
     "links": [
       "storefront",
@@ -145,7 +160,7 @@
     "id": "storefront",
     "preview": "/usluge/smart-storefront/",
     "production": "/usluge/smart-storefront/",
-    "title": "Smart Storefront | DIGITAL X",
+    "title": "Izrada web shopa u BiH: Smart Storefront | Digital X",
     "description": "Spajamo cinematic web, AI Concierge, jasnu strukturu ponude i dogovorene automatizacije.",
     "primaryIntent": "Smart Storefront",
     "secondaryKeywords": [
@@ -156,7 +171,10 @@
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
       "Je li ovo samo za online prodavnice?",
-      "Može li se dodati postojećem webu?"
+      "Može li se dodati postojećem webu?",
+      "Koje načine plaćanja i dostave podržavate?",
+      "Shopify, WooCommerce ili rješenje po mjeri?",
+      "Mogu li sam dodavati proizvode?"
     ],
     "links": [
       "cinematic",
@@ -170,7 +188,7 @@
     "id": "signal",
     "preview": "/usluge/x-signal/",
     "production": "/usluge/x-signal/",
-    "title": "X Signal | DIGITAL X",
+    "title": "Besplatna SEO analiza web stranice | Digital X",
     "description": "Početna analiza javno dostupne web stranice: metapodaci, struktura, upute za indeksiranje i put do upita.",
     "primaryIntent": "X Signal",
     "secondaryKeywords": [
@@ -195,7 +213,7 @@
     "id": "lead-desk",
     "preview": "/usluge/x-lead-desk/",
     "production": "/usluge/x-lead-desk/",
-    "title": "X Lead Desk | DIGITAL X",
+    "title": "Obrada upita i leadova za firme | Digital X",
     "description": "Jasno organizovan put od prvog kontakta do odgovorne osobe i narednog koraka.",
     "primaryIntent": "X Lead Desk",
     "secondaryKeywords": [
@@ -220,7 +238,7 @@
     "id": "receptionist",
     "preview": "/usluge/ai-receptionist/",
     "production": "/usluge/ai-receptionist/",
-    "title": "AI Receptionist | DIGITAL X",
+    "title": "AI recepcionar za pozive i termine | Digital X",
     "description": "AI recepcionar dočekuje upit, razjašnjava potrebu i priprema koristan sažetak za vaš tim.",
     "primaryIntent": "AI Receptionist",
     "secondaryKeywords": [
@@ -231,7 +249,10 @@
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
       "Može li zakazivati termine?",
-      "Može li razgovarati na više jezika?"
+      "Može li razgovarati na više jezika?",
+      "Koliko košta AI recepcionar?",
+      "Šta se dešava kad asistent ne zna odgovor?",
+      "Mogu li ga isprobati prije kupovine?"
     ],
     "links": [
       "lead-desk",
@@ -245,7 +266,7 @@
     "id": "concierge",
     "preview": "/ai-concierge-preview/",
     "production": "/ai-concierge-preview/",
-    "title": "AI Concierge | DIGITAL X",
+    "title": "AI asistent za web stranicu: isprobajte uživo | Digital X",
     "description": "Glasovni i tekstualni vodič koji povezuje pitanja posjetilaca s pravim dijelom vaše ponude.",
     "primaryIntent": "AI Concierge",
     "secondaryKeywords": [
@@ -270,7 +291,7 @@
     "id": "tracker",
     "preview": "/usluge/ai-visibility-tracker/",
     "production": "/usluge/ai-visibility-tracker/",
-    "title": "AI Visibility Tracker | DIGITAL X",
+    "title": "Praćenje vidljivosti u AI odgovorima | Digital X",
     "description": "Metodologija praćenja spominjanja i izvora u AI odgovorima na dogovorena poslovna pitanja.",
     "primaryIntent": "AI Visibility Tracker",
     "secondaryKeywords": [
@@ -295,7 +316,7 @@
     "id": "second-brain",
     "preview": "/usluge/ai-second-brain/",
     "production": "/usluge/ai-second-brain/",
-    "title": "AI Second Brain | DIGITAL X",
+    "title": "AI Second Brain: baza znanja firme | Digital X",
     "description": "Organizacija odobrenih poslovnih informacija u pretraživ sistem znanja s kontrolisanim pristupom.",
     "primaryIntent": "AI Second Brain",
     "secondaryKeywords": [
@@ -320,7 +341,7 @@
     "id": "meta-ads",
     "preview": "/usluge/meta-ads/",
     "production": "/usluge/meta-ads/",
-    "title": "Meta Ads | DIGITAL X",
+    "title": "Facebook i Instagram oglasi u BiH | Digital X",
     "description": "Facebook i Instagram kampanje povezane s ponudom, kreativom i relevantnim sljedećim korakom.",
     "primaryIntent": "Meta Ads",
     "secondaryKeywords": [
@@ -331,7 +352,10 @@
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
       "Da li je potrebna nova fotografija ili video?",
-      "Je li praćenje automatski uključeno?"
+      "Je li praćenje automatski uključeno?",
+      "Koliko košta reklama na Instagramu?",
+      "Zašto ne samo dugme Promoviši?",
+      "Kada mogu očekivati rezultate?"
     ],
     "links": [
       "content",
@@ -345,7 +369,7 @@
     "id": "google-ads",
     "preview": "/usluge/google-ads/",
     "production": "/usluge/google-ads/",
-    "title": "Google Ads | DIGITAL X",
+    "title": "Google oglasi: vođenje kampanja u BiH | Digital X",
     "description": "Kampanje u Google pretrazi i odgovarajući YouTube formati, povezani s jasnom ponudom i mjerenjem.",
     "primaryIntent": "Google Ads",
     "secondaryKeywords": [
@@ -356,7 +380,10 @@
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
       "Radite li kampanje izvan Sarajeva?",
-      "Da li garantujete cijenu upita?"
+      "Da li garantujete cijenu upita?",
+      "Koliko koštaju Google oglasi?",
+      "Gdje se oglasi prikazuju?",
+      "Treba li mi posebna landing stranica?"
     ],
     "links": [
       "growth",
@@ -370,7 +397,7 @@
     "id": "social-management",
     "preview": "/usluge/drustvene-mreze/",
     "production": "/usluge/drustvene-mreze/",
-    "title": "Upravljanje društvenim mrežama | DIGITAL X",
+    "title": "Vođenje društvenih mreža u BiH | Digital X",
     "description": "Planiranje, priprema i upravljanje sadržajem uz prepoznatljiv ton i jasnu organizaciju odobravanja.",
     "primaryIntent": "Upravljanje društvenim mrežama",
     "secondaryKeywords": [
@@ -381,7 +408,10 @@
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
       "Da li odgovarate na sve poruke?",
-      "Da li plaćeno oglašavanje ulazi u paket?"
+      "Da li plaćeno oglašavanje ulazi u paket?",
+      "Koliko objava mjesečno dobijam?",
+      "Ko snima fotografije i video?",
+      "Kako mjerite uspjeh?"
     ],
     "links": [
       "social-growth",
@@ -395,7 +425,7 @@
     "id": "social-growth",
     "preview": "/usluge/social-growth/",
     "production": "/usluge/social-growth/",
-    "title": "Social Growth | DIGITAL X",
+    "title": "Rast na društvenim mrežama: kratki video | Digital X",
     "description": "Napredni program sadržaja koji testira teme, formate i put od pažnje do interesa.",
     "primaryIntent": "Social Growth",
     "secondaryKeywords": [
@@ -420,7 +450,7 @@
     "id": "content",
     "preview": "/usluge/produkcija-sadrzaja/",
     "production": "/usluge/produkcija-sadrzaja/",
-    "title": "Produkcija sadržaja | DIGITAL X",
+    "title": "Foto i video produkcija za firme | Digital X",
     "description": "Fotografija, video i tekst planirani oko ponude, publike i načina korištenja.",
     "primaryIntent": "Produkcija sadržaja",
     "secondaryKeywords": [
@@ -431,7 +461,9 @@
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
       "Možete li obraditi naš postojeći sadržaj?",
-      "Šta uključuje Content Day?"
+      "Šta uključuje Content Day?",
+      "Gdje se snima?",
+      "Dobijam li materijal za sve formate?"
     ],
     "links": [
       "photography",
@@ -445,7 +477,7 @@
     "id": "photography",
     "preview": "/usluge/fotografija-proizvoda/",
     "production": "/usluge/fotografija-proizvoda/",
-    "title": "Fotografija proizvoda | DIGITAL X",
+    "title": "Fotografisanje proizvoda za web shop | Digital X",
     "description": "Fotografije prilagođene web prodavnici, kampanji ili katalogu, s dosljednim prikazom proizvoda.",
     "primaryIntent": "Fotografija proizvoda",
     "secondaryKeywords": [
@@ -470,7 +502,7 @@
     "id": "video",
     "preview": "/usluge/video-proizvoda/",
     "production": "/usluge/video-proizvoda/",
-    "title": "Video proizvoda | DIGITAL X",
+    "title": "Video proizvoda za web i oglase | Digital X",
     "description": "Pokret, detalj i kontekst proizvoda pretvoreni u video za web, oglase i društvene mreže.",
     "primaryIntent": "Video proizvoda",
     "secondaryKeywords": [
@@ -495,7 +527,7 @@
     "id": "catalogues",
     "preview": "/usluge/dizajn-kataloga/",
     "production": "/usluge/dizajn-kataloga/",
-    "title": "Dizajn kataloga | DIGITAL X",
+    "title": "Dizajn kataloga i brošura | Digital X",
     "description": "Strukturisani digitalni i štampani katalozi s jasnim informacijama i dosljednim vizuelnim sistemom.",
     "primaryIntent": "Dizajn kataloga",
     "secondaryKeywords": [
@@ -592,7 +624,7 @@
     "id": "services",
     "preview": "/usluge/",
     "production": "/usluge/",
-    "title": "Sve usluge | DIGITAL X",
+    "title": "Usluge: web, SEO, oglasi i AI automatizacija | Digital X",
     "description": "Krenite od jednog od četiri cilja (vidljivost, konverzija, rast, automatizacija) ili pregledajte svih šest disciplina.",
     "primaryIntent": "Sve usluge",
     "secondaryKeywords": [
@@ -610,14 +642,14 @@
       "growth",
       "automate"
     ],
-    "action": "new_route_proposed",
+    "action": "improve_existing",
     "noindex": true
   },
   {
     "id": "work",
     "preview": "/projekti/",
     "production": "/projekti/",
-    "title": "Odabrani radovi | DIGITAL X",
+    "title": "Radovi i vizuelni koncepti | Digital X",
     "description": "Projekti i vizuelni prikazi koji povezuju identitet, sadržaj i korisnički put.",
     "primaryIntent": "Odabrani radovi",
     "secondaryKeywords": [
@@ -641,7 +673,7 @@
     "id": "about",
     "preview": "/o-nama.html",
     "production": "/o-nama.html",
-    "title": "O nama | DIGITAL X",
+    "title": "O nama: digitalna agencija iz Sarajeva | Digital X",
     "description": "Digital X povezuje strategiju, web dizajn, sadržaj, vidljivost i automatizaciju u smislen digitalni nastup.",
     "primaryIntent": "O nama",
     "secondaryKeywords": [
@@ -665,7 +697,7 @@
     "id": "pricing",
     "preview": "/cjenovnik/",
     "production": "/cjenovnik/",
-    "title": "Cjenovnik | DIGITAL X",
+    "title": "Cjenovnik: web stranice, SEO i oglasi | Digital X",
     "description": "Počnite malim, korisnim korakom. Usporedite obim i početne cijene prije razgovora.",
     "primaryIntent": "Cjenovnik",
     "secondaryKeywords": [
@@ -689,7 +721,7 @@
     "id": "examples",
     "preview": "/primjeri-web-stranica/",
     "production": "/primjeri-web-stranica/",
-    "title": "Primjeri web stranica | DIGITAL X",
+    "title": "Primjeri web stranica po branšama | Digital X",
     "description": "Od hotela do webshopa: pogledajte kako različiti poslovi mogu izgledati na ekranu.",
     "primaryIntent": "Primjeri web stranica",
     "secondaryKeywords": [
@@ -713,7 +745,7 @@
     "id": "contact",
     "preview": "/kontakt.html",
     "production": "/kontakt.html",
-    "title": "Kontakt | DIGITAL X",
+    "title": "Kontakt i besplatne konzultacije | Digital X",
     "description": "Recite nam šta želite postići. Zajedno ćemo složiti korake, obim i procjenu.",
     "primaryIntent": "Kontakt",
     "secondaryKeywords": [
@@ -737,7 +769,7 @@
     "id": "blog",
     "preview": "/blog/",
     "production": "/blog/",
-    "title": "Naučite prije nego platite. | DIGITAL X",
+    "title": "Blog: vodiči za web, SEO, oglase i AI | Digital X",
     "description": "Praktični vodiči za web, sadržaj, oglašavanje i automatizaciju. Razumijte ponudu prije odluke.",
     "primaryIntent": "Naučite prije nego platite.",
     "secondaryKeywords": [
@@ -761,7 +793,7 @@
     "id": "shop",
     "preview": "/shop/",
     "production": "/shop/",
-    "title": "Digital X Shop | DIGITAL X",
+    "title": "Shop: paketi i cijene digitalnih usluga | Digital X",
     "description": "Odaberite kategoriju, usporedite proizvode i pronađite prvi korak za svoj posao.",
     "primaryIntent": "Digital X Shop",
     "secondaryKeywords": [
@@ -785,7 +817,7 @@
     "id": "launch",
     "preview": "/smart-website-launch/",
     "production": "/smart-website-launch/",
-    "title": "Smart Website Launch | DIGITAL X",
+    "title": "Web stranica s AI asistentom za 499 KM | Digital X",
     "description": "Cinematic web do pet stranica i AI Lead Assistant prva tri mjeseca. Jasan početak digitalnog prisustva.",
     "primaryIntent": "Smart Website Launch",
     "secondaryKeywords": [
@@ -795,7 +827,9 @@
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
       "Kako započeti?",
-      "Mogu li tražiti drugačiji obim?"
+      "Mogu li tražiti drugačiji obim?",
+      "Šta se dešava nakon prva tri mjeseca?",
+      "Šta trebam pripremiti?"
     ],
     "links": [
       "services",
@@ -1284,7 +1318,7 @@
     "id": "article-koliko-kosta-web-stranica-bih",
     "preview": "/blog/koliko-kosta-web-stranica-bih.html",
     "production": "/blog/koliko-kosta-web-stranica-bih.html",
-    "title": "Koliko košta web stranica u BiH u 2026? | DIGITAL X",
+    "title": "Koliko košta web stranica u BiH 2026: cijene | Digital X",
     "description": "Realan vodič kroz cijene — i kako ne platiti dvaput.",
     "primaryIntent": "Koliko košta web stranica u BiH u 2026?",
     "secondaryKeywords": [
@@ -1305,7 +1339,7 @@
     "id": "article-landing-stranica-vodic",
     "preview": "/blog/landing-stranica-vodic.html",
     "production": "/blog/landing-stranica-vodic.html",
-    "title": "Landing stranica: od oglasa do upita | DIGITAL X",
+    "title": "Landing stranica: šta je i kako donosi upite | Digital X",
     "description": "Jedna stranica, jedan cilj — od 199 KM.",
     "primaryIntent": "Landing stranica: od oglasa do upita",
     "secondaryKeywords": [
@@ -1326,7 +1360,7 @@
     "id": "article-aplikacije-po-mjeri",
     "preview": "/blog/aplikacije-po-mjeri.html",
     "production": "/blog/aplikacije-po-mjeri.html",
-    "title": "Aplikacija po mjeri | DIGITAL X",
+    "title": "Aplikacija po mjeri za firmu: kada se isplati | Digital X",
     "description": "Kada Excel i sveske više nisu dovoljni.",
     "primaryIntent": "Aplikacija po mjeri",
     "secondaryKeywords": [
@@ -1347,7 +1381,7 @@
     "id": "article-uiux-rebranding-vodic",
     "preview": "/blog/uiux-rebranding-vodic.html",
     "production": "/blog/uiux-rebranding-vodic.html",
-    "title": "Rebranding i UI/UX dizajn | DIGITAL X",
+    "title": "Rebranding i UI/UX dizajn: kada i kako | Digital X",
     "description": "Prvi utisak se ne ponavlja.",
     "primaryIntent": "Rebranding i UI/UX dizajn",
     "secondaryKeywords": [
@@ -1368,7 +1402,7 @@
     "id": "article-brzina-sajta",
     "preview": "/blog/brzina-sajta.html",
     "production": "/blog/brzina-sajta.html",
-    "title": "Zašto spor sajt tiho ubija prodaju | DIGITAL X",
+    "title": "Brzina sajta: zašto spor web gubi kupce | Digital X",
     "description": "Svaka sekunda čekanja povećava broj posjetilaca koji odu.",
     "primaryIntent": "Zašto spor sajt tiho ubija prodaju",
     "secondaryKeywords": [
@@ -1389,7 +1423,7 @@
     "id": "article-odrzavanje-sigurnost-vodic",
     "preview": "/blog/odrzavanje-sigurnost-vodic.html",
     "production": "/blog/odrzavanje-sigurnost-vodic.html",
-    "title": "Održavanje: polica osiguranja od 49 KM | DIGITAL X",
+    "title": "Održavanje web stranice: šta uključuje i cijena | Digital X",
     "description": "Šta se dešava sa sajtom koji niko ne dira.",
     "primaryIntent": "Održavanje: polica osiguranja od 49 KM",
     "secondaryKeywords": [
@@ -1410,7 +1444,7 @@
     "id": "article-aeo-vodic",
     "preview": "/blog/aeo-vodic.html",
     "production": "/blog/aeo-vodic.html",
-    "title": "Kako da vas ChatGPT preporuči | DIGITAL X",
+    "title": "Kako da vas ChatGPT preporuči: AEO vodič | Digital X",
     "description": "Novo bojno polje vidljivosti.",
     "primaryIntent": "Kako da vas ChatGPT preporuči",
     "secondaryKeywords": [
@@ -1431,7 +1465,7 @@
     "id": "article-lokalni-seo-google-mapa",
     "preview": "/blog/lokalni-seo-google-mapa.html",
     "production": "/blog/lokalni-seo-google-mapa.html",
-    "title": "Kako biti prvi na Google mapi | DIGITAL X",
+    "title": "Lokalni SEO: kako biti prvi na Google mapi | Digital X",
     "description": "Top 3 na mapi dobijaju većinu poziva.",
     "primaryIntent": "Kako biti prvi na Google mapi",
     "secondaryKeywords": [
@@ -1452,7 +1486,7 @@
     "id": "article-google-meta-oglasi-vodic",
     "preview": "/blog/google-meta-oglasi-vodic.html",
     "production": "/blog/google-meta-oglasi-vodic.html",
-    "title": "Oglasi: budžet u upite, ne u lajkove | DIGITAL X",
+    "title": "Google i Meta oglasi: budžet u upite | Digital X",
     "description": "Kako izgleda profesionalno vođenje kampanja.",
     "primaryIntent": "Oglasi: budžet u upite, ne u lajkove",
     "secondaryKeywords": [
@@ -1473,7 +1507,7 @@
     "id": "article-vodjenje-drustvenih-mreza",
     "preview": "/blog/vodjenje-drustvenih-mreza.html",
     "production": "/blog/vodjenje-drustvenih-mreza.html",
-    "title": "Vođenje mreža: šta zapravo plaćate | DIGITAL X",
+    "title": "Vođenje društvenih mreža: šta plaćate | Digital X",
     "description": "I kako prepoznati \"objavljivače sličica\".",
     "primaryIntent": "Vođenje mreža: šta zapravo plaćate",
     "secondaryKeywords": [
@@ -1494,7 +1528,7 @@
     "id": "article-content-marketing-vodic",
     "preview": "/blog/content-marketing-vodic.html",
     "production": "/blog/content-marketing-vodic.html",
-    "title": "Content marketing | DIGITAL X",
+    "title": "Content marketing: sadržaj koji prodaje | Digital X",
     "description": "Prodaja koja ne izgleda kao prodaja.",
     "primaryIntent": "Content marketing",
     "secondaryKeywords": [
@@ -1515,7 +1549,7 @@
     "id": "article-foto-video-produkcija",
     "preview": "/blog/foto-video-produkcija.html",
     "production": "/blog/foto-video-produkcija.html",
-    "title": "Foto i video produkcija | DIGITAL X",
+    "title": "Foto i video produkcija proizvoda | Digital X",
     "description": "Zašto amaterske fotografije koštaju kupaca.",
     "primaryIntent": "Foto i video produkcija",
     "secondaryKeywords": [
@@ -1536,7 +1570,7 @@
     "id": "article-ai-chatbot-vodic",
     "preview": "/blog/ai-chatbot-vodic.html",
     "production": "/blog/ai-chatbot-vodic.html",
-    "title": "AI chatbot za male biznise | DIGITAL X",
+    "title": "AI chatbot za firmu: šta radi i koliko košta | Digital X",
     "description": "Radnik koji ne spava — šta je i koliko košta.",
     "primaryIntent": "AI chatbot za male biznise",
     "secondaryKeywords": [
@@ -1557,7 +1591,7 @@
     "id": "article-ai-automatizacija-vodic",
     "preview": "/blog/ai-automatizacija-vodic.html",
     "production": "/blog/ai-automatizacija-vodic.html",
-    "title": "Šta se sve može automatizovati | DIGITAL X",
+    "title": "AI automatizacija: šta se može automatizovati | Digital X",
     "description": "Šest automatizacija koje se najbrže isplate.",
     "primaryIntent": "Šta se sve može automatizovati",
     "secondaryKeywords": [
@@ -1578,7 +1612,7 @@
     "id": "article-automatizacija-recenzija",
     "preview": "/blog/automatizacija-recenzija.html",
     "production": "/blog/automatizacija-recenzija.html",
-    "title": "Google recenzije na autopilotu | DIGITAL X",
+    "title": "Google recenzije: kako ih automatski skupljati | Digital X",
     "description": "Više recenzija bez moljenja kupaca.",
     "primaryIntent": "Google recenzije na autopilotu",
     "secondaryKeywords": [

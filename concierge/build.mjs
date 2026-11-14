@@ -6,6 +6,8 @@ await build({entryPoints:['concierge/shared/catalogue.ts'],outfile:'.concierge/c
 // The browser bundle navigates with an id -> path map instead of the whole catalogue (concierge/client/routes.ts).
 {const {pageIds,previewPath}=createRequire(import.meta.url)('../.concierge/catalogue.cjs');writeFileSync('concierge/shared/page-routes.json',JSON.stringify(Object.fromEntries(pageIds.map(id=>[id,previewPath(id)])),null,1)+'\n');}
 await import('./pages.mjs');
+// Centar znanja is generated into /znanje/ before the static copy below picks it up.
+await import('./znanje/build.mjs');
 mkdirSync('ai-concierge-preview/assets', { recursive: true });
 if (existsSync('concierge/client/main.ts')) await build({ entryPoints: ['concierge/client/main.ts'], outdir: 'ai-concierge-preview/assets', bundle: true, splitting: true, format: 'esm', target: ['es2022'], minify: true, sourcemap: false, entryNames: '[name]', chunkNames: '[name]-[hash]' });
 for (const name of ['session', 'chat', 'audit', 'brief', 'execution']) {

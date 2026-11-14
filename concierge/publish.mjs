@@ -7,6 +7,7 @@ import {isServicePath,replaceLegacyServiceLinks} from '../lib/service-seo.mjs';
 import {isLegacyRedirectPath} from '../lib/routing-policy.mjs';
 import {readdirSync,statSync} from 'node:fs';
 import {localizePage} from './localize-pages.mjs';
+import {znanjePages} from './znanje/build.mjs';
 const {offers,products}=createRequire(import.meta.url)('../.concierge/catalogue.cjs');
 const origin='https://www.digital-x-marketing.com';
 const routes=[{id:'home',production:'/'},...offers];
@@ -51,10 +52,11 @@ for(const p of routes){
 }
 // Preserve existing translations and legacy URLs in the sitemap; add all published canonical pages.
 const sitemap=load(filterGscSitemap(readFileSync('sitemap.xml','utf8')),{xmlMode:true});
-const urls=new Set([...sitemap('loc').map((i,e)=>sitemap(e).text()).get(),...routes.flatMap(p=>['','/en','/de'].map(prefix=>origin+prefix+p.production))]);
+const urls=new Set([...sitemap('loc').map((i,e)=>sitemap(e).text()).get(),...routes.flatMap(p=>['','/en','/de'].map(prefix=>origin+prefix+p.production)),...znanjePages.map(p=>origin+p.path)]);
+const lastmod=new Map(znanjePages.map(p=>[origin+p.path,p.lastmod]));
 // Only 200 URLs: middleware-served service pages count; redirected legacy URLs never do.
 const inSitemap=p=>!isLegacyRedirectPath(p)&&(isServicePath(p)||existsSync('public'+p+(p.endsWith('/')?'index.html':'')));
-writeFileSync('public/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${[...urls].sort().filter(u=>inSitemap(new URL(u).pathname)).map(u=>`<url><loc>${u}</loc></url>`).join('')}</urlset>`);
+writeFileSync('public/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${[...urls].sort().filter(u=>inSitemap(new URL(u).pathname)).map(u=>`<url><loc>${u}</loc>${lastmod.has(u)?`<lastmod>${lastmod.get(u)}</lastmod>`:''}</url>`).join('')}</urlset>`);
 // Site-wide link hygiene on the published HTML: point internal links straight at the final URL instead of a 301,
 // and give Bosnian pages that have EN/DE translations the reciprocal hreflang set their translations already carry.
 const localizedLegacy=[['landing-seo.html','usluge/seo-aeo-geo/'],['landing-ai.html','usluge/ai-automatizacija/']];
@@ -99,6 +101,9 @@ writeFileSync('public/llms.txt',[
  ...products.map(p=>`- [${p.name}](${origin}/shop/product/${p.id}/): ${kmPrice(p)}. ${p.summary}`),'',
  '## Usluge',group(p=>p.production.startsWith('/usluge/')||['concierge','launch'].includes(p.id)),'',
  '## Vodiči',group(p=>p.id.startsWith('article-')),'',
+ '## Centar znanja',...znanjePages.map(p=>`- [${p.title}](${origin+p.path}): ${p.desc}`),'',
+ '## Demo aplikacije',
+ `- [GrowthOS](${origin}/growthos.html): interaktivni demo poslovne aplikacije po mjeri sa CRM-om, projektima, automatizacijama, izvještajima, klijentskim portalom i AI Second Brain modulom`,'',
  '## Projekti i stranice',group(p=>['work','eynna','star','designer','examples','pricing','shop','blog','about','contact'].includes(p.id)),'',
  '## Kontakt',
  '- Email: marketing@digital-x-marketing.com',

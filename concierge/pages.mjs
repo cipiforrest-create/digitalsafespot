@@ -4,6 +4,9 @@ import {load} from 'cheerio';
 import {enhanceVisualPage,homeHead,visualSrc} from './visual-pages.mjs';
 const require=createRequire(import.meta.url);
 const {offers,previewPath,products,posts}=require('../.concierge/catalogue.cjs');
+import {pageCopy,answerLabel} from './seo-copy.mjs';
+// Extra FAQ from seo-copy.mjs joins the catalogue FAQ, so it shows on the page and in FAQPage schema alike.
+for(const p of offers)for(const [q,a] of pageCopy[p.id]?.faq||[])if(!p.faq.some(([x])=>x===q[0]))p.faq.push([q[0],a[0]]);
 const template=readFileSync('concierge/template.html','utf8');
 const standalone=existsSync('concierge/kit.json');
 const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -49,11 +52,14 @@ for(const p of [{id:'home',name:'Digital X',intro:'Strategija, cinematic web, AI
  enhanceVisualPage($,p);
  if(p.id!=='home'&&$('#main').text().includes('EYNNA Hair')&&!$('#main a[href="https://eynna-hair.ba/"]').length)$('#main').append('<p class="source-link"><a href="https://eynna-hair.ba/" target="_blank" rel="noopener">EYNNA Hair — službena stranica ↗</a></p>');
  const canonical=`https://www.digital-x-marketing.com${p.production}`;
- const title=p.id==='home'?'DIGITAL X — Infrastruktura za rast':searchTitles[p.id]||`${p.name}${p.id.startsWith('product-')?' — cijena i obim':''} | DIGITAL X`;
+ const copy=pageCopy[p.id]||{};
+ const title=p.id==='home'?'DIGITAL X — Infrastruktura za rast':copy.title?.[0]||searchTitles[p.id]||`${p.name}${p.id.startsWith('product-')?' — cijena i obim':''} | DIGITAL X`;
  // Guides keep the search description written for the original article; the card subtitle (intro) is too short for search.
  const sourceArticle=posts.find(x=>'article-'+x.id===p.id);
- const description=(sourceArticle&&articleDescription(sourceArticle))||p.intro;
+ const description=(sourceArticle&&articleDescription(sourceArticle))||copy.desc?.[0]||p.intro;
  $('title').text(title);$('meta[name="description"]').attr('content',description);
+ // Answer-first lead: a plain definition with the starting price, right under the hero intro.
+ if(copy.answer)$('.offer-intro').first().after(`<div class="answer-lead"><p class="eyebrow">${answerLabel[0]}</p><p>${escape(copy.answer[0])}</p></div>`);
  $('head').append(`<link rel="canonical" href="${canonical}"><meta property="og:type" content="website"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="https://www.digital-x-marketing.com/media/poster/journey-beat-2.webp">`);
  const focusKeywords=keywords[p.id]||[p.name,p.id.startsWith('article-')?'Digital X vodič':p.id.startsWith('product-')?'cijena i obim usluge':'digitalne usluge Sarajevo'];
  $('head').append(`<meta name="keywords" content="${escape(focusKeywords.join(', '))}">`);

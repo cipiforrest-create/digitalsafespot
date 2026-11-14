@@ -7,10 +7,11 @@ const config = (value) => Object.freeze(value);
 export const SERVICE_ROUTES = new Map([
   ['/usluge/ai-automatizacija/', config({
     sourcePath: '/landing-ai.html',
-    title: 'AI automatizacija za firme | Digital X Sarajevo',
-    description: 'AI automatizacija za firme: chatbot 24/7, booking, podsjetnici, leadovi, recenzije i povezivanje CRM-a. Demo prije kupovine. Digital X Sarajevo.',
-    h1Html: 'AI automatizacija za firme koja <span class="grad-text">odgovara, zakazuje i prati leadove.</span>',
+    title: 'AI automatizacija poslovanja Sarajevo i BiH | Digital X',
+    description: 'AI automatizacija poslovanja u Sarajevu i BiH: chatbotovi, booking, podsjetnici i povezivanje CRM-a. Početni workflow od 349 KM, nakon dogovora o opsegu.',
+    h1Html: 'AI automatizacija poslovanja za firme u <span class="grad-text">Sarajevu i BiH.</span>',
     serviceType: 'AI automation and chatbot',
+    offer: { price: 349, description: 'Početna jednokratna cijena Automation Starter workflowa; opseg i integracije dogovaraju se zasebno.' },
     image: '/media/live/service-automation.webp',
     defaultAlt: 'AI automatizacija za firme — Digital X',
     faqs: [
@@ -22,10 +23,11 @@ export const SERVICE_ROUTES = new Map([
   })],
   ['/usluge/seo-aeo-geo/', config({
     sourcePath: '/landing-seo.html',
-    title: 'SEO, GEO i AEO optimizacija | Digital X Sarajevo',
-    description: 'SEO, Google Maps/GEO i AEO optimizacija za firme: tehnički SEO, sadržaj, strukturirani podaci, lokalna vidljivost i mjerenje rezultata.',
-    h1Html: 'SEO, GEO i AEO: budite vidljivi na <span class="grad-text">Googleu, mapama i AI pretrazi.</span>',
+    title: 'SEO, AEO i GEO optimizacija Sarajevo i BiH | Digital X',
+    description: 'SEO, AEO i GEO optimizacija za firme u Sarajevu i BiH od 249 KM mjesečno: tehnički SEO, lokalna vidljivost, sadržaj, schema i praćenje rezultata.',
+    h1Html: 'SEO, AEO i GEO optimizacija za <span class="grad-text">Google i AI pretragu.</span>',
     serviceType: 'SEO, local SEO, GEO and AEO optimization',
+    offer: { price: 249, perMonth: true, description: 'Početna mjesečna cijena SEO, AEO i GEO usluge; konačan obim potvrđuje se ponudom.' },
     image: '/media/live/service-seo.webp',
     defaultAlt: 'SEO, GEO i AEO optimizacija — Digital X',
     faqs: [
@@ -39,10 +41,11 @@ export const SERVICE_ROUTES = new Map([
     sourcePath: '/landing-web.html',
     // EN/DE translations of this service still live at their legacy URLs.
     alternates: { en: '/en/landing-web.html', de: '/de/landing-web.html' },
-    title: 'Izrada web stranica Sarajevo | Digital X',
-    description: 'Izrada brzih, modernih web stranica u Sarajevu i za klijente u regionu: mobilni dizajn, SEO osnova, konverzije, analitika i podrška.',
-    h1Html: 'Izrada web stranica koje <span class="grad-text">pretvaraju posjete u upite.</span>',
+    title: 'Izrada web stranica Sarajevo i BiH — od 449 KM | Digital X',
+    description: 'Izrada web stranica u Sarajevu i BiH od 449 KM: mobilni dizajn, osnovni SEO, kontakt forme i analitika. Tipičan rok 7–14 radnih dana po dogovoru.',
+    h1Html: 'Izrada web stranica u <span class="grad-text">Sarajevu i BiH.</span>',
     serviceType: 'Web design and web development',
+    offer: { price: 449, description: 'Početna jednokratna cijena prezentacijske stranice; rok i opseg potvrđuju se u ponudi.' },
     image: '/media/live/service-web.webp',
     defaultAlt: 'Izrada web stranica Sarajevo — Digital X',
     faqs: [
@@ -253,6 +256,22 @@ function schemaMarkup(pathname, route, faqs = route.faqs) {
       url: canonical,
       image,
       provider: { '@id': organizationId },
+      ...(route.offer ? {
+        offers: {
+          '@type': 'Offer',
+          priceCurrency: 'BAM',
+          price: route.offer.price,
+          description: route.offer.description,
+          ...(route.offer.perMonth ? {
+            priceSpecification: {
+              '@type': 'UnitPriceSpecification',
+              price: route.offer.price,
+              priceCurrency: 'BAM',
+              unitCode: 'MON',
+            },
+          } : {}),
+        },
+      } : {}),
       areaServed: ['BA', 'HR', 'RS', 'ME', 'DE', 'AT', 'CH'],
       mainEntityOfPage: { '@id': `${canonical}#webpage` },
     },
