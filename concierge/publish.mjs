@@ -59,7 +59,7 @@ writeFileSync('public/llms.txt',[
  `- [GrowthOS](${origin}/growthos.html): interaktivni demo poslovne aplikacije po mjeri sa CRM-om, projektima, automatizacijama, izvještajima, klijentskim portalom i AI Second Brain modulom`,'',
  '## Projekti i stranice',group(p=>['work','eynna','star','designer','examples','pricing','shop','blog','about','contact'].includes(p.id)),'',
  '## Kontakt',
- '- Email: digital.x.agency.ba@gmail.com',
+ '- Email: marketing@digital-x-marketing.com',
  '- Telefon i WhatsApp: +387 64 438 3566',
  '- Instagram: https://www.instagram.com/digitalxmarketing.ba',
  `- Web: ${origin}/`,''

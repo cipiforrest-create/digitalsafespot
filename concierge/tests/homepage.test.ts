@@ -47,7 +47,7 @@ test('homepage answers search and AI audits: organisation, short descriptions, d
  const guide=JSON.parse(load(readFileSync('public/blog/aeo-vodic.html','utf8'))('script[data-page-schema]').text())['@graph'].find((n:{'@type':string})=>n['@type']==='HowTo');
  assert.equal(guide.step.length,5);
  const llms=readFileSync('public/llms.txt','utf8');
- for(const fact of ['Sarajevo','digital.x.agency.ba@gmail.com','## Početne cijene','## Vodiči','/blog/aeo-vodic.html'])assert.ok(llms.includes(fact),fact);
+ for(const fact of ['Sarajevo','marketing@digital-x-marketing.com','## Početne cijene','## Vodiči','/blog/aeo-vodic.html'])assert.ok(llms.includes(fact),fact);
 });
 test('EN and DE pages carry reviewed translations, not machine errors the audit found',()=>{
  const pages=['index.html','usluge/seo-aeo-geo/index.html','cjenovnik/index.html','kontakt.html'];

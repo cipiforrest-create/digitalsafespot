@@ -305,7 +305,7 @@
       } catch {
         const body = Object.entries(data).map(([key, value]) => `${key}: ${value}`).join('\n');
         say('Otvaramo pripremljeni email — pošaljite ga i javljamo se u roku od 24 sata.');
-        location.href = `mailto:digital.x.agency.ba@gmail.com?subject=${encodeURIComponent(`Upit sa sajta (${data.izvor})`)}&body=${encodeURIComponent(body)}`;
+        location.href = `mailto:marketing@digital-x-marketing.com?subject=${encodeURIComponent(`Upit sa sajta (${data.izvor})`)}&body=${encodeURIComponent(body)}`;
       }
     });
   }
