@@ -28,7 +28,7 @@ test('canonical pages publish at their public routes, with a distinct concierge 
  assert.deepEqual(JSON.parse($('script[data-page-schema]').text())['@graph'].map((n:{'@type':string|string[]})=>n['@type']),[['Organization','ProfessionalService'],'WebPage']);
  for(const route of ['usluge/index.html','cjenovnik/index.html','kontakt.html','ai-concierge-preview/index.html'])assert.doesNotMatch(load(readFileSync(`public/${route}`,'utf8'))('meta[name=robots]').attr('content')!,/noindex/);
  const landing=load(readFileSync('public/ai-concierge-preview/index.html','utf8'));assert.equal(landing('body').attr('data-page'),'concierge');assert.equal(landing('link[rel=canonical]').attr('href'),'https://www.digital-x-marketing.com/ai-concierge-preview/');
- assert.equal($('.brand').first().attr('href'),'/');assert.equal($('.xh-actions [data-tour-start]').length,1);assert.equal($('.final-system-labels a').length,4);
+ assert.equal($('.brand').first().attr('href'),'/');assert.equal($('.xh-actions [data-tour-start]').length,1);assert.equal($('.world-system a').length,6);
 });
 test('homepage answers search and AI audits: organisation, short descriptions, decorative images, llms.txt',()=>{
  for(const file of ['public/index.html','public/en/index.html','public/de/index.html']){
