@@ -27,13 +27,20 @@ export function mountAmbient(signal:AbortSignal){
   if(W===laidW)return;laidW=W;count=0;
   layers.forEach((l,li)=>{const n=Math.min(MAX-count,Math.round(W/(mobile?22:24)*l.share*1.6));for(let k=0;k<n;k++){const i=count++;colLayer[i]=li;colX[i]=(k+rand(.2,.8))*W/n;spawn(i,true);for(let j=0;j<TRAIL;j++)bits[i*TRAIL+j]=Math.random()<.5?0:1;}});
  }
- // The film stage is opaque: while it fills the viewport there is nothing of the background to draw.
- function covered(){const story=document.querySelector('[data-cinema-story][data-enhanced]');if(!story)return document.body.classList.contains('film-visible');const r=story.getBoundingClientRect();return r.top<=0&&r.bottom>=innerHeight;}
+ // The rain is always present, at a pace that stays cheap: it draws at 30 frames a second, and at 20 while the live
+ // 3D story shares the screen (the streams fall slowly, so the lower rate is not visible). Only the colour film,
+ // which is opaque picture edge to edge, leaves nothing of the background to draw.
+ const story=document.querySelector<HTMLElement>('[data-cinema-story]');let storyVisible=false,drawn=0;
+ const watch=story?new IntersectionObserver(entries=>{storyVisible=entries[0].isIntersecting;document.body.classList.toggle('story-visible',storyVisible);}):null;
+ if(story)watch!.observe(story);
+ const covered=()=>document.body.classList.contains('film-visible');
  function tick(now:number){
-  raf=requestAnimationFrame(tick);const dt=Math.min(.05,last?(now-last)/1000:.016);last=now;
-  if(document.body.classList.contains('motion-paused')||covered())return;
+  raf=requestAnimationFrame(tick);
+  if(document.body.classList.contains('motion-paused')||covered()){last=0;return;}
+  if(now-drawn<(storyVisible?50:33)-4)return;drawn=now;
+  const dt=Math.min(.1,last?(now-last)/1000:.033);last=now;
   // Matrix flicker: a few percent of the digits switch 0 ↔ 1 every frame.
-  for(let n=Math.ceil(count*TRAIL*.03);n>0;n--){const i=Math.random()*count*TRAIL|0;bits[i]^=1;}
+  for(let n=Math.ceil(count*TRAIL*.06);n>0;n--){const i=Math.random()*count*TRAIL|0;bits[i]^=1;}
   ctx!.fillStyle='#060607';ctx!.fillRect(0,0,W,H);
   for(let i=0;i<count;i++){
    const l=layers[colLayer[i]],step=l.size*1.15,half=l.size*(CELL/BASE)/2,len=colLen[i];
@@ -49,5 +56,5 @@ export function mountAmbient(signal:AbortSignal){
  }
  resize();raf=requestAnimationFrame(tick);window.addEventListener('resize',resize,{signal});
  document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(raf);last=0;if(!document.hidden)raf=requestAnimationFrame(tick);},{signal});
- signal.addEventListener('abort',()=>cancelAnimationFrame(raf),{once:true});
+ signal.addEventListener('abort',()=>{cancelAnimationFrame(raf);watch?.disconnect();document.body.classList.remove('story-visible');},{once:true});
 }

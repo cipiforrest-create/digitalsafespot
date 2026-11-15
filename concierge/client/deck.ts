@@ -105,8 +105,9 @@ function environment(renderer:WebGLRenderer):Texture{
 
 export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  let renderer:WebGLRenderer;
- try{renderer=new WebGLRenderer({canvas:host.canvas,antialias:true,alpha:false,powerPreference:'high-performance'});}catch{return null;}
- renderer.setClearColor(BG,1);renderer.toneMapping=ACESFilmicToneMapping;renderer.toneMappingExposure=1.08;renderer.outputColorSpace=SRGBColorSpace;renderer.localClippingEnabled=true;
+ try{renderer=new WebGLRenderer({canvas:host.canvas,antialias:true,alpha:true,powerPreference:'high-performance'});}catch{return null;}
+ // Transparent clear: the page's 0/1 rain stays visible behind the scene.
+ renderer.setClearColor(BG,0);renderer.toneMapping=ACESFilmicToneMapping;renderer.toneMappingExposure=1.08;renderer.outputColorSpace=SRGBColorSpace;renderer.localClippingEnabled=true;
  const disposables:{dispose():void}[]=[];
  const keep=<T extends {dispose():void}>(x:T)=>{disposables.push(x);return x;};
  const scene=new Scene();scene.fog=new FogExp2(BG,.03);
