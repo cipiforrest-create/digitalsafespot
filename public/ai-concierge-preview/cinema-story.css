@@ -108,5 +108,5 @@
  .cinema-story[data-enhanced]:not([data-world=fallback]) .cinema-static-art{display:none!important}
 }
 
-/* SEO h1 in the hero: .hero h1 (agency/concierge) outsized it; keep it a smaller headline that fits one screen. Mobile [data-enhanced] eyebrow rule still wins. */
-.hero h1.cinema-eyebrow{font-size:clamp(24px,2.3vw,42px);line-height:1.1;letter-spacing:-.01em}
+/* SEO h1 in the hero: kept for search, shown as a quiet eyebrow so the display title carries the screen. Mobile [data-enhanced] eyebrow rule still wins. */
+.hero h1.cinema-eyebrow{font-size:12px;line-height:1.6;letter-spacing:.18em;font-weight:500;color:#9aa6ba;max-width:430px;margin:0 0 14px}

@@ -60,6 +60,8 @@
  .cinema-story[data-enhanced] .world-node[data-side=left] strong,.cinema-story[data-enhanced] .world-node[data-side=left] strong+span{grid-column:1}
  .cinema-story[data-enhanced] .world-node[data-side=below] a{left:0;transform:translateX(-50%);grid-template-columns:auto;justify-items:center;text-align:center;row-gap:4px}
  .cinema-story[data-enhanced] .world-node[data-side=below] .world-node-dot{grid-row:auto;width:7px;height:7px}
+ .cinema-story[data-enhanced] .world-node[data-side=above] a{top:auto;bottom:0;left:0;transform:translateX(-50%);grid-template-columns:auto;justify-items:center;text-align:center;row-gap:4px}
+ .cinema-story[data-enhanced] .world-node[data-side=above] .world-node-dot{grid-row:auto;order:2;width:7px;height:7px}
  .cinema-story[data-enhanced] .world-node-dot{transition:transform .35s ease,box-shadow .35s ease}
  .cinema-story[data-enhanced] [data-has-active] .world-node:not([data-active]){opacity:.42}
  .cinema-story[data-enhanced] .world-node[data-active] a{scale:1.07}

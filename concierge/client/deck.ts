@@ -8,7 +8,7 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {smooth,type StoryPosition} from '../shared/cinema-timeline';
 import {drawIcon,drawModule} from './deck-modules';
 
-export type NodePlacement={x:number;y:number;depth:number;side:'left'|'right'|'below'};
+export type NodePlacement={x:number;y:number;depth:number;side:'left'|'right'|'below'|'above'};
 export type DeckHost={
  canvas:HTMLCanvasElement;screen:HTMLElement;stage:HTMLElement;small:boolean;
  /** Stage-pixel anchors for the spatial service links of checkpoint `cp`. */
@@ -42,7 +42,7 @@ const PLATE_W=1.32,PLATE_H=.82;
 type CameraKey={pos:[number,number,number];target:[number,number,number];off:number};
 const CAMERA:CameraKey[]=[
  {pos:[0,1.15,13.5],target:[0,1.05,0],off:0},// opening: the empty lake in the fog
- {pos:[0,1.85,8.4],target:[0,1.22,0],off:-.01},// act 1: the orb on its rock
+ {pos:[0,1.85,8.4],target:[0,1.22,0],off:.05},// act 1: the orb on its rock
  {pos:[0,2.35,10.6],target:[0,1.9,0],off:.07},// act 2: the X
  {pos:[0,4.5,15.8],target:[0,1.65,0],off:.05},// act 3: the service rocks
  {pos:[0,5.4,20.5],target:[0,1.6,0],off:.14},// closing: the isle slides right for the copy
@@ -199,7 +199,25 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
    void main(){vec3 n=normalize(vN);float f=pow(1.-abs(dot(n,normalize(vV))),2.6);
     float spec=pow(max(dot(n,normalize(vec3(-.45,.6,.65))),0.),40.)*1.4;float lower=smoothstep(-.2,-1.,vP.y/.82)*.35;
     float a=(f*1.05+.035+spec+lower*f)*uAlpha*(1.+uPulse*.5);gl_FragColor=vec4(vec3(.9,.94,1.)*a,a);}`}));
- orb.add(new Mesh(keep(new SphereGeometry(ORB_R,64,40)),shellMat));
+ // Glass body: a solid lens ball. Each pixel looks through the sphere and samples the backdrop plate along the bent ray,
+ // so the lake shows inverted and compressed inside it, the way a real crystal ball does.
+ const glassUniforms={uBack:backMat.uniforms.map,uBackSize:{value:new Vector2(1,1)},uBackY:{value:0},uBackD:{value:BACK_D},uFade:{value:0},uAlpha:orbUniforms.uAlpha};
+ const glassMat=keep(new ShaderMaterial({uniforms:glassUniforms,transparent:true,depthWrite:false,
+  vertexShader:`varying vec3 vN;varying vec3 vP;
+   void main(){vec4 mv=modelViewMatrix*vec4(position,1.);vN=normalize(normalMatrix*normal);vP=mv.xyz;gl_Position=projectionMatrix*mv;}`,
+  fragmentShader:`uniform sampler2D uBack;uniform vec2 uBackSize;uniform float uBackY;uniform float uBackD;uniform float uFade;uniform float uAlpha;
+   varying vec3 vN;varying vec3 vP;
+   vec3 look(vec3 d){d.z=min(d.z,-.05);vec2 h=d.xy*(uBackD/-d.z);vec2 uv=vec2(h.x/uBackSize.x+.5,(h.y-uBackY)/uBackSize.y+.5);return texture2D(uBack,clamp(uv,.002,.998)).rgb;}
+   void main(){vec3 n=normalize(vN),v=normalize(vP);float edge=1.-abs(dot(n,-v));
+    vec3 d=normalize(v-n*1.15);
+    vec3 c=look(d)*.7+look(normalize(v-n*1.22))*.3;
+    c=c*1.35*uFade+vec3(.035,.04,.05);
+    c*=1.-.55*pow(edge,3.);
+    float a=uAlpha*(.9-.25*edge);gl_FragColor=vec4(c,clamp(a,0.,1.));
+    #include <colorspace_fragment>
+   }`}));
+ const glassBody=new Mesh(keep(new SphereGeometry(ORB_R*.995,64,40)),glassMat);glassBody.renderOrder=1;orb.add(glassBody);
+ const shell=new Mesh(keep(new SphereGeometry(ORB_R,64,40)),shellMat);shell.renderOrder=2;orb.add(shell);
  // Light ribbons inside the glass: dense points along a few flowing sheets, brightest on their centre lines.
  const ribbons=new Group();orb.add(ribbons);
  {
@@ -221,6 +239,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
     void main(){vec2 d=gl_PointCoord-.5;float a=smoothstep(.5,0.,length(d))*vA*uAlpha;gl_FragColor=vec4(vec3(.92,.95,1.)*a,a);}`}));
   ribbons.add(new Points(g,m));
  }
+ ribbons.renderOrder=3;
  // Sparks inside the orb.
  {
   const n=small0?160:320,pos=new Float32Array(n*3);
@@ -235,17 +254,20 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  const pickMat=keep(new MeshBasicMaterial({colorWrite:false,depthWrite:false}));
  const pickOrb=new Mesh(keep(new SphereGeometry(ORB_R*1.05,16,12)),pickMat);orb.add(pickOrb);
  // Satellites: small glass beads that come out of the orb at the act 1 checkpoint (the AI services).
- const beadGeometry=keep(new SphereGeometry(.13,24,16)),beadRingGeometry=keep(new TorusGeometry(.22,.007,6,48)),beadPick=keep(new SphereGeometry(.34,10,8));
+ const beadGeometry=keep(new SphereGeometry(.15,32,20)),beadCoreGeometry=keep(new PlaneGeometry(.2,.2)),beadRingGeometry=keep(new TorusGeometry(.26,.004,6,64)),beadPick=keep(new SphereGeometry(.34,10,8));
  const sats=SATS.map(([x,y,z])=>{
-  const g=new Group(),bead=new Mesh(beadGeometry,shellMat);g.add(bead);
+  const g=new Group(),body=new Mesh(beadGeometry,glassMat);body.renderOrder=1;g.add(body);const bead=new Mesh(beadGeometry,shellMat);bead.renderOrder=2;g.add(bead);
+  const core=new Mesh(beadCoreGeometry,keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false})));core.renderOrder=3;g.add(core);
   const ringMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false})),ring=new Mesh(beadRingGeometry,ringMat);g.add(ring);
   const haloMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false})),halo=new Mesh(keep(new PlaneGeometry(1.1,1.1)),haloMat);g.add(halo);
   const pick=new Mesh(beadPick,pickMat);g.add(pick);g.visible=false;orb.add(g);
-  return {group:g,ring,ringMat,haloMat,halo,pick,rest:new Vector3(x,y,z),level:0};
+  return {group:g,ring,ringMat,haloMat,halo,core,pick,rest:new Vector3(x,y,z),level:0};
  });
  // Beam from the orb to whatever is selected.
  const beamMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
- const beam=new Mesh(keep(new CylinderGeometry(.008,.02,1,8,1,true)),beamMat);beam.visible=false;scene.add(beam);
+ const beam=new Mesh(keep(new CylinderGeometry(.006,.014,1,8,1,true)),beamMat);beam.visible=false;scene.add(beam);
+ const beamGlowMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ const beamGlow=new Mesh(keep(new CylinderGeometry(.03,.06,1,12,1,true)),beamGlowMat);beam.add(beamGlow);
  const hitMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
  const hit=new Mesh(keep(new PlaneGeometry(.9,.9)),hitMat);hit.visible=false;scene.add(hit);
 
@@ -335,6 +357,12 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   if(key===lastPlaced[cp])return;lastPlaced[cp]=key;host.place(cp,pts);
  }
  // World-space anchor of a service node: where its label sits and where the orb's beam lands.
+ // Where the beam lands: on the X it hits the face turned toward the camera, just inside the tip.
+ function beamTarget(cp:number,i:number,out:Vector3){
+  if(cp!==1)return anchor(cp,i,out);
+  tmp3.copy(camera.position);xMesh.worldToLocal(tmp3);const face=tmp3.z>=0?.27:-.27;
+  return out.set(X_TIPS[i][0]*.82,X_TIPS[i][1]*.82,face).applyMatrix4(xMesh.matrixWorld);
+ }
  function anchor(cp:number,i:number,out:Vector3){
   if(cp===0)return sats[i].group.getWorldPosition(out);
   if(cp===1)return out.set(X_TIPS[i][0]*1.15,X_TIPS[i][1]*1.15,0).applyMatrix4(xPivot.matrixWorld);
@@ -382,6 +410,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   const bh=Math.max(viewH,viewW/IMG_ASPECT,(halfH*1.1-horizonY)/IMG_HORIZON,(halfH*1.1+horizonY)/(1-IMG_HORIZON)),bw=bh*IMG_ASPECT;
   backdrop.scale.set(bw,bh,1);backdrop.position.set(0,horizonY-(.5-IMG_HORIZON)*bh,-BACK_D);
   backFade=lerp(backFade,backReady?1:0,1-Math.exp(-dt*3));backMat.uniforms.uFade.value=backFade;
+  glassUniforms.uBackSize.value.set(bw,bh);glassUniforms.uBackY.value=backdrop.position.y;glassUniforms.uFade.value=backFade;
 
   // ---- water, moon, fog ----
   waterUniforms.uTime.value=time;pathMat.uniforms.uTime.value=time;pathMat.uniforms.uAlpha.value=.35+.15*emerge;
@@ -418,8 +447,9 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
    s.level=lerp(s.level,a?.[0]===0&&a[1]===i?1:0,1-Math.exp(-dt*9));
    s.group.position.copy(s.rest).multiplyScalar(launch);s.group.position.y+=Math.sin(time*1.2+i*1.9)*.05*launch;
    s.group.scale.setScalar((.4+.6*launch)*(1+s.level*.35));
-   s.ring.rotation.set(Math.PI/2+Math.sin(time*1.1+i)*.4,time*1.3+i,0);s.ringMat.opacity=(.4+.6*s.level)*launch;
-   s.halo.quaternion.copy(rig.quaternion).invert().multiply(camera.quaternion);s.haloMat.opacity=(.16+.5*s.level)*launch;
+   s.ring.rotation.set(Math.PI/2-.28,0,time*.6+i);s.ringMat.opacity=(.18+.55*s.level)*launch;
+   s.halo.quaternion.copy(rig.quaternion).invert().multiply(camera.quaternion);s.haloMat.opacity=(.1+.4*s.level)*launch;
+   s.core.quaternion.copy(s.halo.quaternion);(s.core.material as MeshBasicMaterial).opacity=(.55+.45*s.level)*launch*(.85+.15*Math.sin(time*2.4+i*1.3));
   });
 
   // ---- the X: rises out of the stone and settles with a slow turn ----
@@ -459,17 +489,26 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   // ---- beam from the orb to the selected service ----
   rig.updateMatrixWorld(true);
   orb.getWorldPosition(tmp);
-  const target=a&&p.hold&&a[0]===c&&a[0]!==0?anchor(a[0],a[1],tmp2.set(0,0,0)).clone():null;
+  const target=a&&p.hold&&a[0]===c&&a[0]!==0?beamTarget(a[0],a[1],new Vector3()):null;
+  // Leave the orb from its surface on the side facing the target, not from its centre.
+  if(target)tmp.addScaledVector(tmp3.copy(target).sub(tmp).normalize(),ORB_R*orbScale*.92);
   beamLevel=lerp(beamLevel,target?1:0,1-Math.exp(-dt*(target?10:6)));
   if(target&&beamLevel>.01){
    const length=tmp.distanceTo(target);beam.visible=hit.visible=true;
    beam.position.copy(tmp).lerp(target,.5);beam.quaternion.setFromUnitVectors(up,tmp2.copy(target).sub(tmp).normalize());beam.scale.set(1,length,1);
-   beamMat.opacity=beamLevel*(.45+.15*Math.sin(time*20));hit.position.copy(target);hit.quaternion.copy(camera.quaternion);hit.scale.setScalar(.8+.12*Math.sin(time*8));hitMat.opacity=beamLevel*.7;
+   beamMat.opacity=beamLevel*(.6+.15*Math.sin(time*20));beamGlowMat.opacity=beamLevel*(.1+.04*Math.sin(time*7));hit.position.copy(target);hit.quaternion.copy(camera.quaternion);hit.scale.setScalar(.8+.12*Math.sin(time*8));hitMat.opacity=beamLevel*.7;
   }else{beam.visible=hit.visible=false;}
 
   // ---- labels ----
   if(p.hold){
-   if(c===0)placeNodes(0,sats.map((_,i)=>project(anchor(0,i,tmp),SATS[i][3])));
+   if(c===0){
+    // Labels sit above the upper satellites and below the lower ones, clear of the bead and its ring, so the four
+    // boxes stay in the gap between the hero copy and the concierge panel instead of covering the beads.
+    tmp3.setFromMatrixColumn(camera.matrixWorld,1);
+    placeNodes(0,sats.map((s,i)=>{const upper=SATS[i][1]>0,side=upper?'above':'below',at=anchor(0,i,tmp),n=project(at,side),ry=n.y;
+     const edge=project(at.addScaledVector(tmp3,.3*s.group.getWorldScale(tmp2).x),side).y,gap=Math.abs(edge-ry)+10;
+     n.y=ry+(upper?-gap:gap);return n;}));
+   }
    else if(c===1)placeNodes(1,X_TIPS.map((_,i)=>{const n=project(anchor(1,i,tmp),'right');n.side=n.x<stageBox.left+stageBox.width*(.5+off)?'left':'right';return n;}));
    else placeNodes(2,isles.map((isle,i)=>project(anchor(2,i,tmp).setY(tmp.y-PLATE_H*.62*isle.plate.scale.y),'below')));
   }
