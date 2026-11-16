@@ -82,17 +82,55 @@ function analytics(x:Ctx,t:number){
 }
 const draw=[web,radar,assistant,chain,funnel,analytics];
 // Idle face: one line icon per service, like the glass plates on the reference rocks.
+// Static icons, redrawn from the supplied Digital X icon set: thin glowing line art over a faint reticle.
+function rr(x:Ctx,l:number,t:number,w:number,h:number,r:number){x.moveTo(l+r,t);x.arcTo(l+w,t,l+w,t+h,r);x.arcTo(l+w,t+h,l,t+h,r);x.arcTo(l,t+h,l,t,r);x.arcTo(l,t,l+w,t,r);x.closePath();}
+function gear(x:Ctx,cx:number,cy:number,r:number,teeth:number,hole:number){
+ x.beginPath();const tooth=r*.22,step=Math.PI*2/teeth;
+ for(let i=0;i<teeth;i++){const a=i*step;const p=[[a-step*.5,r],[a-step*.22,r],[a-step*.16,r+tooth],[a+step*.16,r+tooth],[a+step*.22,r],[a+step*.5,r]];
+  p.forEach(([b,d],k)=>{const px=cx+Math.cos(b)*d,py=cy+Math.sin(b)*d;if(i===0&&k===0)x.moveTo(px,py);else x.lineTo(px,py);});}
+ x.closePath();x.stroke();x.beginPath();x.arc(cx,cy,hole,0,Math.PI*2);x.stroke();
+}
+function arrowHead(x:Ctx,px:number,py:number,a:number,s=9){x.beginPath();x.moveTo(px+Math.cos(a+2.5)*s,py+Math.sin(a+2.5)*s);x.lineTo(px,py);x.lineTo(px+Math.cos(a-2.5)*s,py+Math.sin(a-2.5)*s);x.stroke();}
 const icons:((x:Ctx)=>void)[]=[
- x=>{x.strokeRect(-46,-32,92,60);x.beginPath();x.moveTo(-46,-18);x.lineTo(46,-18);x.moveTo(-14,28);x.lineTo(-20,42);x.lineTo(20,42);x.lineTo(14,28);x.stroke();},
- x=>{x.beginPath();x.arc(-8,-8,28,0,Math.PI*2);x.moveTo(12,12);x.lineTo(40,40);x.stroke();},
- x=>{x.strokeRect(-30,-30,60,60);x.strokeRect(-14,-14,28,28);x.beginPath();for(const k of [-16,0,16]){x.moveTo(k,-30);x.lineTo(k,-42);x.moveTo(k,30);x.lineTo(k,42);x.moveTo(-30,k);x.lineTo(-42,k);x.moveTo(30,k);x.lineTo(42,k);}x.stroke();},
- x=>{x.beginPath();x.arc(0,0,16,0,Math.PI*2);for(let i=0;i<8;i++){const a=i*Math.PI/4;x.moveTo(Math.cos(a)*24,Math.sin(a)*24);x.lineTo(Math.cos(a)*38,Math.sin(a)*38);}x.stroke();x.beginPath();x.arc(0,0,30,0,Math.PI*2);x.stroke();},
- x=>{x.beginPath();x.moveTo(-44,-34);x.lineTo(44,-34);x.lineTo(12,4);x.lineTo(12,38);x.lineTo(-12,30);x.lineTo(-12,4);x.closePath();x.stroke();},
- x=>{x.beginPath();x.moveTo(-44,40);x.lineTo(44,40);x.stroke();[[-30,14],[-6,-6],[18,-28]].forEach(([l,t])=>x.strokeRect(l,t,16,40-t));},
+ // Cinematic websites: a browser window with a play button and a film strip.
+ x=>{x.beginPath();rr(x,-82,-56,164,112,10);x.moveTo(-82,-36);x.lineTo(82,-36);x.moveTo(40,-36);x.lineTo(40,56);x.stroke();
+  [-68,-54,-40].forEach(c=>{x.beginPath();x.arc(c,-46,4.5,0,Math.PI*2);x.stroke();});
+  x.beginPath();x.moveTo(-26,-12);x.lineTo(-26,34);x.lineTo(12,11);x.closePath();x.stroke();
+  for(let i=0;i<4;i++){x.beginPath();rr(x,50,-29+i*21,22,15,3);x.stroke();x.fillStyle='rgba(244,246,249,.85)';x.fillRect(44,-26+i*21,3,4);x.fillRect(44,-18+i*21,3,4);x.fillRect(75,-26+i*21,3,4);x.fillRect(75,-18+i*21,3,4);}},
+ // SEO · AEO · GEO: a magnifying glass holding a location pin and rising bars.
+ x=>{x.beginPath();x.arc(-12,-10,54,0,Math.PI*2);x.stroke();
+  x.beginPath();x.moveTo(27,33);x.lineTo(56,62);x.stroke();x.save();x.lineWidth=13;x.globalAlpha=.25;x.beginPath();x.moveTo(30,36);x.lineTo(56,62);x.stroke();x.restore();
+  x.beginPath();x.arc(-24,-30,15,Math.PI*.82,Math.PI*2.18);x.lineTo(-24,-4);x.closePath();x.stroke();x.beginPath();x.arc(-24,-30,5.5,0,Math.PI*2);x.stroke();
+  [[-38,8,11,14],[-22,0,11,22],[-6,-10,11,32]].forEach(([l,t,w,h])=>{x.beginPath();rr(x,l+20,t+10,w,h,2.5);x.stroke();});},
+ // AI systems: a hexagonal core with six connected nodes.
+ x=>{x.beginPath();for(let i=0;i<6;i++){const a=-Math.PI/2+i*Math.PI/3;const px=Math.cos(a)*38,py=Math.sin(a)*38;if(i)x.lineTo(px,py);else x.moveTo(px,py);}x.closePath();x.stroke();
+  for(let i=0;i<6;i++){const a=-Math.PI/2+i*Math.PI/3,c=Math.cos(a),sn=Math.sin(a);x.beginPath();x.moveTo(c*38,sn*38);x.lineTo(c*62,sn*62);x.stroke();x.beginPath();x.arc(c*73,sn*73,11,0,Math.PI*2);x.stroke();}},
+ // Automation: two interlocking gears inside a looping arrow.
+ x=>{x.beginPath();x.arc(0,0,72,Math.PI*1.08,Math.PI*1.9);x.stroke();arrowHead(x,Math.cos(Math.PI*1.9)*72,Math.sin(Math.PI*1.9)*72,Math.PI*1.9+Math.PI/2);
+  x.beginPath();x.arc(0,0,72,Math.PI*.08,Math.PI*.9);x.stroke();arrowHead(x,Math.cos(Math.PI*.9)*72,Math.sin(Math.PI*.9)*72,Math.PI*.9+Math.PI/2);
+  gear(x,-14,-12,26,8,11);gear(x,24,22,18,8,8);},
+ // Lead systems: three leads drop into a funnel and one client comes out.
+ x=>{[-34,0,34].forEach(c=>{x.beginPath();x.arc(c,-80,8,0,Math.PI*2);x.stroke();});
+  x.beginPath();x.moveTo(-30,-66);x.quadraticCurveTo(-22,-56,-18,-46);x.moveTo(0,-68);x.lineTo(0,-46);x.moveTo(30,-66);x.quadraticCurveTo(22,-56,18,-46);x.stroke();
+  arrowHead(x,-18,-44,Math.PI*.42,7);arrowHead(x,0,-44,Math.PI/2,7);arrowHead(x,18,-44,Math.PI*.58,7);
+  x.beginPath();x.ellipse(0,-30,50,9,0,0,Math.PI*2);x.moveTo(-50,-30);x.lineTo(-10,20);x.lineTo(-10,38);x.lineTo(10,38);x.lineTo(10,20);x.lineTo(50,-30);x.stroke();
+  x.beginPath();x.moveTo(0,46);x.lineTo(0,62);x.stroke();arrowHead(x,0,64,Math.PI/2,7);x.beginPath();x.arc(0,80,8,0,Math.PI*2);x.stroke();},
+ // Analytics: rising bars with a growth line that ends in a bright point.
+ x=>{x.beginPath();x.moveTo(-74,56);x.lineTo(74,56);x.stroke();
+  [[-62,30],[-30,14],[2,-2],[34,-24]].forEach(([l,t])=>{x.beginPath();rr(x,l,t,24,56-t,4);x.stroke();});
+  const pts=[[-56,6],[-20,-12],[16,-30],[56,-56]];x.beginPath();pts.forEach(([px,py],i)=>{if(i)x.lineTo(px,py);else x.moveTo(px,py);});x.stroke();
+  pts.forEach(([px,py],i)=>{x.beginPath();x.arc(px,py,i===3?8:6,0,Math.PI*2);if(i===3){x.fillStyle='rgba(255,255,255,1)';x.fill();}else{x.fillStyle='rgba(6,8,11,1)';x.fill();x.stroke();}});},
 ];
+// The faint reticle and corner glints of the glass plate behind every icon.
+function reticle(x:Ctx){
+ x.save();x.shadowBlur=0;x.strokeStyle='rgba(220,226,235,.14)';x.lineWidth=1;x.beginPath();x.arc(0,0,96,0,Math.PI*2);x.moveTo(-150,0);x.lineTo(150,0);x.moveTo(0,-110);x.lineTo(0,110);x.stroke();
+ x.fillStyle='rgba(235,240,246,.55)';for(let i=0;i<8;i++){const a=i*Math.PI/4;x.beginPath();x.arc(Math.cos(a)*96,Math.sin(a)*96,1.6,0,Math.PI*2);x.fill();}
+ for(const [cx,cy] of [[-W/2+10,-H/2+10],[W/2-10,-H/2+10],[-W/2+10,H/2-10],[W/2-10,H/2-10],[0,H/2-8]]){const g=x.createRadialGradient(cx,cy,0,cx,cy,16);g.addColorStop(0,'rgba(255,255,255,.9)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(cx-16,cy-16,32,32);}
+ x.restore();
+}
 export function drawIcon(x:Ctx,index:number,glow:number){
- frame(x,glow>.5);x.save();x.translate(W/2,H/2);x.lineWidth=5;x.lineJoin='round';x.lineCap='round';
- x.shadowColor='rgba(255,255,255,.9)';x.shadowBlur=10+18*glow;x.strokeStyle=`rgba(244,246,249,${.82+.18*glow})`;
- icons[index%MODULE_COUNT](x);x.restore();
+ frame(x,glow>.5);x.save();x.translate(W/2,H/2);reticle(x);x.scale(1.16,1.16);x.lineWidth=3;x.lineJoin='round';x.lineCap='round';
+ x.shadowColor='rgba(255,255,255,.95)';x.shadowBlur=8+16*glow;x.strokeStyle=`rgba(244,246,249,${.86+.14*glow})`;
+ icons[index%MODULE_COUNT](x);x.shadowBlur=0;x.globalAlpha=.55;icons[index%MODULE_COUNT](x);x.restore();
 }
 export function drawModule(x:Ctx,index:number,t:number,active:boolean){frame(x,active);x.save();draw[index%MODULE_COUNT](x,t);x.restore();}

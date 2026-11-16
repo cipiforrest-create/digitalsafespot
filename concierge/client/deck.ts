@@ -2,7 +2,7 @@
 // a marble X that rises out of the water, and service rocks that surface around it, joined by arcs of light.
 // The backdrop and the stone textures are generated images (ai-concierge-preview/media/isle-v1); everything else is
 // procedural. Every scroll-driven value is a pure function of the story position, so reverse scrolling replays it.
-import {ACESFilmicToneMapping,AdditiveBlending,AmbientLight,BackSide,BufferAttribute,BufferGeometry,CanvasTexture,Color,CylinderGeometry,DirectionalLight,DoubleSide,EdgesGeometry,ExtrudeGeometry,FogExp2,Group,IcosahedronGeometry,LineBasicMaterial,Matrix4,LineSegments,Mesh,MeshBasicMaterial,MeshPhysicalMaterial,MeshStandardMaterial,MirroredRepeatWrapping,PerspectiveCamera,Plane,PlaneGeometry,PMREMGenerator,PointLight,Points,PointsMaterial,QuadraticBezierCurve3,Raycaster,RepeatWrapping,RingGeometry,Scene,ShaderMaterial,Shape,SphereGeometry,SRGBColorSpace,TextureLoader,TorusGeometry,TubeGeometry,Vector2,Vector3,WebGLRenderer,BoxGeometry,type Material,type Texture} from 'three';
+import {ACESFilmicToneMapping,AdditiveBlending,AmbientLight,BackSide,BufferAttribute,BufferGeometry,CanvasTexture,Color,CylinderGeometry,DirectionalLight,DoubleSide,EdgesGeometry,ExtrudeGeometry,FogExp2,Group,IcosahedronGeometry,LineBasicMaterial,Matrix4,LineSegments,Mesh,MeshBasicMaterial,MeshPhysicalMaterial,MeshStandardMaterial,MirroredRepeatWrapping,PerspectiveCamera,Plane,PlaneGeometry,PMREMGenerator,PointLight,Points,PointsMaterial,QuadraticBezierCurve3,Quaternion,Raycaster,RepeatWrapping,RingGeometry,Scene,ShaderMaterial,Shape,SphereGeometry,SRGBColorSpace,TextureLoader,TorusGeometry,TubeGeometry,Vector2,Vector3,WebGLRenderer,BoxGeometry,type Material,type Texture} from 'three';
 import {Reflector} from 'three/examples/jsm/objects/Reflector.js';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {smooth,type StoryPosition} from '../shared/cinema-timeline';
@@ -233,7 +233,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
      float y=.34*sin(u*2.3+phase)*cos(w*.9+s)+(s-1.)*.16+.05*sin(u*7.+phase*1.7)*uPulse;
      vec3 p=vec3(u*.78,y,w*.18*(1.+.4*sin(u*3.+phase)));
      float c=cos(s*1.05),sn=sin(s*1.05);p.xz=mat2(c,-sn,sn,c)*p.xz;
-     float r=length(p);vA=smoothstep(.8,.6,r)*exp(-w*w*9.)*(.45+.55*aInfo.x);
+     float r=length(p);vA=smoothstep(.8,.6,r)*exp(-w*w*9.)*(.45+.55*aInfo.x)*.6;
      vec4 mv=modelViewMatrix*vec4(p,1.);gl_Position=projectionMatrix*mv;gl_PointSize=(1.2+1.6*aInfo.x)*(8./-mv.z);}`,
    fragmentShader:`uniform float uAlpha;varying float vA;
     void main(){vec2 d=gl_PointCoord-.5;float a=smoothstep(.5,0.,length(d))*vA*uAlpha;gl_FragColor=vec4(vec3(.92,.95,1.)*a,a);}`}));
@@ -247,6 +247,33 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   const g=keep(new BufferGeometry());g.setAttribute('position',new BufferAttribute(pos,3));
   ribbons.add(new Points(g,keep(new PointsMaterial({color:WHITE,size:.018,transparent:true,opacity:.7,blending:AdditiveBlending,depthWrite:false,fog:false}))));
  }
+ // A constellation inside the glass: points near the inner surface joined to their nearest neighbours.
+ const net=new Group();orb.add(net);net.renderOrder=3;
+ const netPts:Vector3[]=[];{const n=small0?46:72;for(let i=0;i<n;i++){const y=1-2*(i+.5)/n,r=Math.sqrt(1-y*y),a=i*2.39996;const d=ORB_R*(.62+.3*hash(i,7,1));netPts.push(new Vector3(Math.cos(a)*r*d,y*d,Math.sin(a)*r*d));}}
+ const netLinePos:number[]=[];netPts.forEach((pt,i)=>{netPts.map((q,j)=>[pt.distanceTo(q),j] as [number,number]).filter(([d,j])=>j>i&&d<ORB_R*.62).sort((a,b)=>a[0]-b[0]).slice(0,2).forEach(([,j])=>{netLinePos.push(pt.x,pt.y,pt.z,netPts[j].x,netPts[j].y,netPts[j].z);});});
+ const netLineGeometry=keep(new BufferGeometry());netLineGeometry.setAttribute('position',new BufferAttribute(new Float32Array(netLinePos),3));
+ const netLineMat=keep(new LineBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ const netLines=new LineSegments(netLineGeometry,netLineMat);netLines.renderOrder=3;net.add(netLines);
+ const netNodeGeometry=keep(new BufferGeometry());netNodeGeometry.setFromPoints(netPts);
+ const netNodeMat=keep(new PointsMaterial({color:WHITE,map:glow,size:.11,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ const netNodes=new Points(netNodeGeometry,netNodeMat);netNodes.renderOrder=3;net.add(netNodes);
+ // Two orbit rings of fine particles around the glass, each with a bright runner. Particles behind the sphere are
+ // dimmed in the shader, as if seen through the glass.
+ const orbitUniforms={uAlpha:{value:0}};
+ const orbitMat=keep(new ShaderMaterial({uniforms:orbitUniforms,transparent:true,depthWrite:false,blending:AdditiveBlending,
+  vertexShader:`attribute float aSeed;varying float vA;
+   void main(){vec4 mv=modelViewMatrix*vec4(position,1.);vec4 c=modelViewMatrix*vec4(0.,0.,0.,1.);
+    float behind=step(mv.z,c.z-.02);vA=(.55+.45*aSeed)*(1.-.7*behind);gl_Position=projectionMatrix*mv;gl_PointSize=(2.2+3.6*aSeed)*(9./-mv.z);}`,
+  fragmentShader:`uniform float uAlpha;varying float vA;void main(){float a=smoothstep(.5,0.,length(gl_PointCoord-.5))*vA*uAlpha;gl_FragColor=vec4(vec3(.94,.96,1.)*a,a);}`}));
+ const orbits=[[1.38,1.32,.24],[1.55,1.42,-.3]].map(([radius,tiltX,tiltZ],k)=>{
+  const n=small0?160:300,pos=new Float32Array(n*3),seed=new Float32Array(n);
+  for(let i=0;i<n;i++){const a=i/n*Math.PI*2,j=(hash(i,k,9)-.5)*.03;pos[i*3]=Math.cos(a)*ORB_R*radius*(1+j);pos[i*3+1]=(hash(i,k,4)-.5)*.02;pos[i*3+2]=Math.sin(a)*ORB_R*radius*(1+j);seed[i]=Math.pow(hash(i,k,5),3);}
+  const g=keep(new BufferGeometry());g.setAttribute('position',new BufferAttribute(pos,3));g.setAttribute('aSeed',new BufferAttribute(seed,1));
+  const ring=new Points(g,orbitMat);ring.renderOrder=3;const pivot=new Group();pivot.rotation.set(tiltX,0,tiltZ);pivot.add(ring);orb.add(pivot);
+  const runnerMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+  const runner=new Mesh(keep(new PlaneGeometry(.34,.34)),runnerMat);runner.renderOrder=4;pivot.add(runner);
+  return {ring,pivot,runner,runnerMat,radius:ORB_R*radius,speed:k?-.42:.3};
+ });
  const orbHaloMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
  const orbHalo=new Mesh(keep(new PlaneGeometry(4.2,4.2)),orbHaloMat);scene.add(orbHalo);
  const poolMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
@@ -264,9 +291,10 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   return {group:g,ring,ringMat,haloMat,halo,core,pick,rest:new Vector3(x,y,z),level:0};
  });
  // Beam from the orb to whatever is selected.
- const beamMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ // The beam is drawn over the scene: it always leaves the orb in front of the X and lands on the X's visible face.
+ const beamMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,depthTest:false,fog:false}));
  const beam=new Mesh(keep(new CylinderGeometry(.006,.014,1,8,1,true)),beamMat);beam.visible=false;scene.add(beam);
- const beamGlowMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ const beamGlowMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,depthTest:false,fog:false}));
  const beamGlow=new Mesh(keep(new CylinderGeometry(.03,.06,1,12,1,true)),beamGlowMat);beam.add(beamGlow);
  const hitMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
  const hit=new Mesh(keep(new PlaneGeometry(.9,.9)),hitMat);hit.visible=false;scene.add(hit);
@@ -335,7 +363,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  const look=new Vector3(),tilt=new Vector2(),zero2=new Vector2();
  const stageBox={left:0,top:0,width:1,height:1};
  const lastPlaced:string[]=['','',''];
- const raycaster=new Raycaster(),tmp=new Vector3(),tmp2=new Vector3(),tmp3=new Vector3(),up=new Vector3(0,1,0);
+ const tmpQ=new Quaternion(),raycaster=new Raycaster(),tmp=new Vector3(),tmp2=new Vector3(),tmp3=new Vector3(),up=new Vector3(0,1,0);
 
  const active=()=>locked??hover??domActive;
  function measure(){
@@ -428,14 +456,21 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
 
   // ---- the orb: forms on its rock in act 1, lifts above the X in act 2 ----
   const lift=c===0?0:c===1?smooth(run/.8):1;
-  const orbY=lerp(ORB_REST+(surface-TOP),4.35,lift),orbScale=lerp(1,.44,lift)*(.55+.45*orbOn);
-  orb.position.set(0,orbY+Math.sin(time*1.05)*.035*lift+Math.sin(time*.8)*.012,lerp(0,-.55,lift));orb.scale.setScalar(orbScale);
+  const orbY=lerp(ORB_REST+(surface-TOP),c===2?lerp(3.9,4.35,smooth(run)):3.9,lift),orbScale=lerp(1,.44,lift)*(.55+.45*orbOn);
+  const orbZ=c===0?0:c===1?lerp(0,.9,lift):lerp(.9,-.55,smooth(run));
+  orb.position.set(0,orbY+Math.sin(time*1.05)*.035*lift+Math.sin(time*.8)*.012,orbZ);orb.scale.setScalar(orbScale);
   talkPulse=Math.max(0,talkPulse-dt*1.5);
   orbUniforms.uTime.value=time;orbUniforms.uAlpha.value=orbOn*(orbHover?1.25:1);orbUniforms.uPulse.value=Math.max(talkPulse,orbHover?.4:0);
   // The ribbons lean toward the cursor, so the orb seems to pay attention.
   const a=active();
   tilt.lerp(pointerInside&&!small?pointer:zero2,1-Math.exp(-dt*3));
   ribbons.rotation.set(-tilt.y*.35,tilt.x*.5+time*.05,0);
+  net.rotation.set(-tilt.y*.25,time*.07+tilt.x*.35,0);netLineMat.opacity=orbOn*(.22+.2*talkPulse+(orbHover?.1:0));netNodeMat.opacity=orbOn*(.85+.15*Math.sin(time*2.2));
+  orbitUniforms.uAlpha.value=orbOn*(1-.45*lift);
+  orbits.forEach(o=>{o.ring.rotation.y=time*o.speed*.35;const a=time*o.speed*2.2;o.runner.position.set(Math.cos(a)*o.radius,0,Math.sin(a)*o.radius);
+   o.runner.quaternion.copy(o.pivot.getWorldQuaternion(tmpQ)).invert().multiply(camera.quaternion);
+   o.runner.getWorldPosition(tmp3);tmp2.copy(tmp3).applyMatrix4(camera.matrixWorldInverse);orb.getWorldPosition(tmp3).applyMatrix4(camera.matrixWorldInverse);
+   o.runnerMat.opacity=orbOn*(1-.45*lift)*(tmp2.z<tmp3.z?.25:.95);});
   orb.getWorldPosition(orbHalo.position);orbHalo.quaternion.copy(camera.quaternion);orbHalo.scale.setScalar(orbScale*(1+talkPulse*.4));
   orbHaloMat.opacity=orbOn*(.26+.2*talkPulse+(orbHover?.12:0));
   pool.position.y=TOP+.015;poolMat.opacity=orbOn*(1-lift)*.5;pool.scale.setScalar(1+grow*.6);
@@ -496,7 +531,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   if(target&&beamLevel>.01){
    const length=tmp.distanceTo(target);beam.visible=hit.visible=true;
    beam.position.copy(tmp).lerp(target,.5);beam.quaternion.setFromUnitVectors(up,tmp2.copy(target).sub(tmp).normalize());beam.scale.set(1,length,1);
-   beamMat.opacity=beamLevel*(.6+.15*Math.sin(time*20));beamGlowMat.opacity=beamLevel*(.1+.04*Math.sin(time*7));hit.position.copy(target);hit.quaternion.copy(camera.quaternion);hit.scale.setScalar(.8+.12*Math.sin(time*8));hitMat.opacity=beamLevel*.7;
+   beam.renderOrder=beamGlow.renderOrder=hit.renderOrder=10;beamMat.opacity=beamLevel*(.6+.15*Math.sin(time*20));beamGlowMat.opacity=beamLevel*(.1+.04*Math.sin(time*7));hit.position.copy(target);hit.quaternion.copy(camera.quaternion);hit.scale.setScalar(.8+.12*Math.sin(time*8));hitMat.opacity=beamLevel*.7;
   }else{beam.visible=hit.visible=false;}
 
   // ---- labels ----
