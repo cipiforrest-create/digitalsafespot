@@ -4,6 +4,7 @@
 // procedural. Every scroll-driven value is a pure function of the story position, so reverse scrolling replays it.
 import {ACESFilmicToneMapping,AdditiveBlending,AmbientLight,BackSide,BufferAttribute,BufferGeometry,CanvasTexture,Color,CylinderGeometry,DirectionalLight,DoubleSide,EdgesGeometry,ExtrudeGeometry,FogExp2,Group,IcosahedronGeometry,LineBasicMaterial,Matrix4,LineSegments,Mesh,MeshBasicMaterial,MeshPhysicalMaterial,MeshStandardMaterial,MirroredRepeatWrapping,PerspectiveCamera,Plane,PlaneGeometry,PMREMGenerator,PointLight,Points,PointsMaterial,QuadraticBezierCurve3,Raycaster,RepeatWrapping,RingGeometry,Scene,ShaderMaterial,Shape,SphereGeometry,SRGBColorSpace,TextureLoader,TorusGeometry,TubeGeometry,Vector2,Vector3,WebGLRenderer,BoxGeometry,type Material,type Texture} from 'three';
 import {Reflector} from 'three/examples/jsm/objects/Reflector.js';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {smooth,type StoryPosition} from '../shared/cinema-timeline';
 import {drawIcon,drawModule} from './deck-modules';
 
@@ -57,7 +58,7 @@ function noise(x:number,y:number,z:number){
 function fbm(x:number,y:number,z:number){let a=0,f=1,s=.5;for(let i=0;i<4;i++){a+=noise(x*f,y*f,z*f)*s;f*=2.1;s*=.5;}return a;}
 // A craggy rock: a displaced sphere with a flat, slightly uneven top at local y = .45 (objects stand there) and a
 // rough body that sinks below the waterline.
-function rockGeometry(seed:number,detail:number,flat=.45){
+function rockGeometry(seed:number,detail:number,flat=.45):BufferGeometry{
  const g=new IcosahedronGeometry(1,detail),p=g.attributes.position;
  for(let i=0;i<p.count;i++){
   const x=p.getX(i),y=p.getY(i),z=p.getZ(i),r=1+.36*fbm(x*1.5+seed,y*1.5-seed,z*1.5+seed*.7)+.12*fbm(x*5+seed,y*5,z*5)+.04*fbm(x*13,y*13+seed,z*13);
@@ -128,10 +129,13 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   const t=keep(loader.load(`${MEDIA}/${file}`));t.colorSpace=SRGBColorSpace;t.wrapS=t.wrapT=mirrored?MirroredRepeatWrapping:RepeatWrapping;t.repeat.set(repeat,repeat);t.anisotropy=4;return t;
  };
  loader.load(`${MEDIA}/lake-360.webp`,t=>{if(stopped){t.dispose();return;}t.colorSpace=SRGBColorSpace;const next=environment(renderer,t);t.dispose();env.dispose();env=next;scene.environment=env;wake();});
- const rockMap=texture('rock-1024.webp',true,2),marbleMap=texture('marble-1024.webp',true,.42);
+ const rockMap=texture('rock-1024.webp',true,2),marbleMap=texture('marble-1024.webp',true,.3);
+ // Keep the mirror line of the repeated marble off the face of the X.
+ marbleMap.offset.set(.55,.55);
 
  // ---- backdrop: the generated lake plate, fixed to the camera and slid so its horizon meets the 3D horizon ----
- const BACK_D=90,IMG_ASPECT=16/9,IMG_HORIZON=.565;// horizon row of the plate, from the top
+ // Two plates: a wide one for desktops and a tall one for phones, each with its horizon row (share from the top).
+ const BACK_D=90,IMG_ASPECT=small0?941/1672:16/9,IMG_HORIZON=small0?.44:.565;
  const backMat=keep(new ShaderMaterial({uniforms:{map:{value:null as Texture|null},uFade:{value:0}},depthWrite:false,transparent:true,fog:false,
   vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
   fragmentShader:`uniform sampler2D map;uniform float uFade;varying vec2 vUv;
@@ -140,7 +144,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
     #include <colorspace_fragment>
    }`}));
  const backdrop=new Mesh(keep(new PlaneGeometry(1,1)),backMat);backdrop.renderOrder=-10;backdrop.frustumCulled=false;camera.add(backdrop);
- loader.load(`${MEDIA}/backdrop-${small0?1280:2048}.webp`,t=>{if(stopped){t.dispose();return;}keep(t);t.colorSpace=SRGBColorSpace;backMat.uniforms.map.value=t;backReady=true;wake();});
+ loader.load(`${MEDIA}/${small0?'backdrop-phone':'backdrop-2048'}.webp`,t=>{if(stopped){t.dispose();return;}keep(t);t.colorSpace=SRGBColorSpace;backMat.uniforms.map.value=t;backReady=true;wake();});
  let backReady=false,backFade=0;
 
  // ---- water ----
@@ -274,6 +278,17 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   return {rock,plate,face,faceMat,edgeMat,haloMat,pick,rings,arc,arcMat,context,tex,base,size,lift,level:0,clock:i*1.7,showing:'icon' as 'icon'|'live'};
  });
 
+ // Sculpted basalt from Blender (ai-concierge-preview/media/isle-v1/rocks.glb): one plinth and three islands, in the
+ // same local units as rockGeometry (radius about 1, flat top at .45), so they replace the procedural rocks in place
+ // as soon as the file arrives.
+ new GLTFLoader().load(`${MEDIA}/rocks.glb`,gltf=>{
+  if(stopped)return;const found:Record<string,BufferGeometry>={};
+  gltf.scene.traverse(o=>{if(o instanceof Mesh){const key=(o.parent&&o.parent!==gltf.scene?o.parent.name:o.name).replace(/\.\d+$/,'');found[key]=keep(o.geometry as BufferGeometry);}});
+  const plinth=found.ROCK_plinth,islands=['ROCK_island_1','ROCK_island_2','ROCK_island_3'].map(n=>found[n]).filter(Boolean);
+  if(plinth){const old=centre.geometry;centre.geometry=plinth;old.dispose();}
+  if(islands.length)isles.forEach((isle,i)=>{const old=isle.rock.geometry;isle.rock.geometry=islands[i%islands.length];old.dispose();});
+  wake();
+ },undefined,()=>{/* The procedural rocks stay. */});
  // ---- atmosphere ----
  // Fog banks: the supplied fog images (luminance as alpha), two planes each, at different depths and drift speeds.
  const fogMaps=[1,2,3].map(n=>{const t=keep(loader.load(`${MEDIA}/fog-${n}.webp`,()=>{fogReady++;wake();}));return t;});let fogReady=0;
@@ -361,9 +376,10 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
 
   // ---- backdrop: cover the view and put the plate's horizon on the true horizon ----
   const halfH=Math.tan(camera.fov*Math.PI/360)*BACK_D,viewH=halfH*2*1.18,viewW=viewH*Math.max(camera.aspect,1e-3)*1.1;
-  const bh=Math.max(viewH,viewW/IMG_ASPECT),bw=bh*IMG_ASPECT;
   tmp.set(0,0,-1).applyQuaternion(camera.quaternion).setY(0).normalize().multiplyScalar(1e4).add(camera.position);
   tmp.applyMatrix4(camera.matrixWorldInverse);const horizonY=tmp.y/-tmp.z*BACK_D;
+  // Cover the whole view while the plate's horizon sits on the true horizon: tall enough above and below it.
+  const bh=Math.max(viewH,viewW/IMG_ASPECT,(halfH*1.1-horizonY)/IMG_HORIZON,(halfH*1.1+horizonY)/(1-IMG_HORIZON)),bw=bh*IMG_ASPECT;
   backdrop.scale.set(bw,bh,1);backdrop.position.set(0,horizonY-(.5-IMG_HORIZON)*bh,-BACK_D);
   backFade=lerp(backFade,backReady?1:0,1-Math.exp(-dt*3));backMat.uniforms.uFade.value=backFade;
 
