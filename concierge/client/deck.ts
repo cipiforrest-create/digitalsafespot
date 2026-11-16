@@ -1,13 +1,12 @@
-// X Deck: the live 3D scene behind the homepage story. One silver command terminal stays on screen for all three
-// acts; the concierge hologram above it operates it. Everything is procedural (no model or texture downloads) and
-// every scroll-driven value is a pure function of the story position, so reverse scrolling replays it exactly.
-import {ACESFilmicToneMapping,AdditiveBlending,BackSide,BoxGeometry,BufferAttribute,BufferGeometry,CanvasTexture,CircleGeometry,Color,CylinderGeometry,DirectionalLight,DoubleSide,ExtrudeGeometry,FogExp2,Group,InstancedMesh,Matrix4,Mesh,MeshBasicMaterial,MeshPhysicalMaterial,MeshStandardMaterial,Object3D,PerspectiveCamera,Plane,PlaneGeometry,PMREMGenerator,PointLight,Points,PointsMaterial,Quaternion,Raycaster,RingGeometry,Scene,ShaderMaterial,Shape,SphereGeometry,SRGBColorSpace,TorusGeometry,Vector2,Vector3,WebGLRenderer,type Material,type Texture} from 'three';
+// X Isle: the live 3D scene behind the homepage story. A black lake at night, a glass orb (the concierge) on a rock,
+// a marble X that rises out of the water, and service rocks that surface around it, joined by arcs of light.
+// The backdrop and the stone textures are generated images (ai-concierge-preview/media/isle-v1); everything else is
+// procedural. Every scroll-driven value is a pure function of the story position, so reverse scrolling replays it.
+import {ACESFilmicToneMapping,AdditiveBlending,AmbientLight,BackSide,BufferAttribute,BufferGeometry,CanvasTexture,Color,CylinderGeometry,DirectionalLight,DoubleSide,EdgesGeometry,ExtrudeGeometry,FogExp2,Group,IcosahedronGeometry,LineBasicMaterial,Matrix4,LineSegments,Mesh,MeshBasicMaterial,MeshPhysicalMaterial,MeshStandardMaterial,MirroredRepeatWrapping,PerspectiveCamera,Plane,PlaneGeometry,PMREMGenerator,PointLight,Points,PointsMaterial,QuadraticBezierCurve3,Raycaster,RepeatWrapping,RingGeometry,Scene,ShaderMaterial,Shape,SphereGeometry,SRGBColorSpace,TextureLoader,TorusGeometry,TubeGeometry,Vector2,Vector3,WebGLRenderer,BoxGeometry,type Material,type Texture} from 'three';
+import {Reflector} from 'three/examples/jsm/objects/Reflector.js';
 import {smooth,type StoryPosition} from '../shared/cinema-timeline';
-import {drawModule,MODULE_COUNT} from './deck-modules';
+import {drawIcon,drawModule} from './deck-modules';
 
-// Brand palette: cool silver from the hero X, teal from the Digital X film, a little violet in the reflections.
-const SILVER=0xcfd6e0,TEAL=0x37e6d0,COOL=0xabbee2,PEAK=0xf1f7fc,BG=0x030303;
-const TOP=.645;// height of the deck's glass top
 export type NodePlacement={x:number;y:number;depth:number;side:'left'|'right'|'below'};
 export type DeckHost={
  canvas:HTMLCanvasElement;screen:HTMLElement;stage:HTMLElement;small:boolean;
@@ -15,7 +14,7 @@ export type DeckHost={
  place(cp:number,pts:NodePlacement[]):void;
  /** The scene picked a service (hover, tap or click) or released it. */
  hover(cp:number,node:number|null):void;
- /** The visitor clicked the hologram: open the real concierge. */
+ /** The visitor clicked the orb: open the real concierge. */
  talk():void;
  fail(reason:string):void;
  dragged?(cp:number):void;
@@ -23,274 +22,289 @@ export type DeckHost={
 export type DeckStats={phase:string;quality:number;fps:number;active:[number,number]|null;locked:boolean;yaw:number;power:number};
 export type Deck={update(p:StoryPosition):void;resize(small:boolean):void;pause(paused:boolean):void;select(cp:number,node:number|null):void;stats():DeckStats;frame():void;dispose():void};
 
+const MEDIA='/ai-concierge-preview/media/isle-v1';
+const BG=0x07090c,MOON=0xdfe6f0,WHITE=0xf4f6f9;
 const clamp=(v:number,a=0,b=1)=>Math.min(b,Math.max(a,v));
 const lerp=(a:number,b:number,t:number)=>a+(b-a)*t;
 // X outline in film pixels (the same silhouette as the hero mark), normalised around its pivot.
 const X_OUTLINE:[number,number][]=[[262,88],[358,83],[425,172],[503,82],[598,90],[460,221],[565,350],[492,349],[422,262],[350,349],[277,349],[392,220]];
-const X_PIVOT:[number,number]=[430,220],X_SCALE=1/135;
+const X_PIVOT:[number,number]=[430,220],X_SCALE=1.35/135;
 const X_TIPS:[number,number][]=[[1.16,.95],[-1.16,.95],[-1.1,-.94],[1.02,-.94]];
-const PORTS:[number,number][]=[[-1.22,-.6],[1.22,-.6],[1.22,.6],[-1.22,.6]];
-// Service drones: launched from the ports in act 1, they hover where their labels sit (deck space) and the hologram
-// reaches for them. Order matches the AI service links: upper left, upper right, lower right, lower left.
-const DRONES:[number,number,number,'left'|'right'][]=[[-1.3,TOP+2,.1,'left'],[1.3,TOP+2,.1,'right'],[1,.38,3,'right'],[-1,.38,3,'left']];
-// Module mounts: angle from the front (degrees), radius and height. Rear modules stand higher so all six stay in view.
-const MOUNTS:[number,number,number][]=[[-118,3.7,3.05],[-80,4.5,2],[-44,4.3,.98],[44,4.3,.98],[80,4.5,2],[118,3.7,3.05]];
-const KEYS=14,SLOPE=Math.atan2(.3,.36);
+// Central rock: its flat top, and the orb that rests on it.
+const TOP=.42,ORB_R=.82,ORB_REST=TOP+ORB_R*.93;
+// AI satellites around the orb in act 1 (orb space): upper left, upper right, lower right, lower left.
+const SATS:[number,number,number,'left'|'right'][]=[[-1.45,.75,.2,'left'],[1.45,.8,.1,'right'],[1.55,-.55,.6,'right'],[-1.5,-.6,.55,'left']];
+// Service rocks: angle from the front (degrees), radius, and how high the glass plate floats above the rock.
+const MOUNTS:[number,number,number][]=[[-124,4.5,1.55],[-78,5.1,1.3],[-38,4.9,1.05],[38,4.9,1.05],[78,5.1,1.3],[124,4.5,1.55]];
+const PLATE_W=1.32,PLATE_H=.82;
 
 type CameraKey={pos:[number,number,number];target:[number,number,number];off:number};
 const CAMERA:CameraKey[]=[
- {pos:[0,2.9,12.4],target:[0,1.1,0],off:-.01},// opening: the dark deck
- {pos:[0,2.6,11],target:[0,1.25,0],off:-.01},// act 1: the hologram
- {pos:[0,2.7,10.4],target:[0,1.8,0],off:.07},// act 2: the X
- {pos:[0,4.4,15.2],target:[0,1.9,0],off:.05},// act 3: the modules
- {pos:[0,4.6,17.6],target:[0,1.85,0],off:.17},// closing: the system slides right for the copy
+ {pos:[0,1.15,13.5],target:[0,1.05,0],off:0},// opening: the empty lake in the fog
+ {pos:[0,1.85,8.4],target:[0,1.22,0],off:-.01},// act 1: the orb on its rock
+ {pos:[0,2.35,10.6],target:[0,1.9,0],off:.07},// act 2: the X
+ {pos:[0,4.5,15.8],target:[0,1.65,0],off:.05},// act 3: the service rocks
+ {pos:[0,5.4,20.5],target:[0,1.6,0],off:.14},// closing: the isle slides right for the copy
 ];
 
-function octagon(hw:number,hd:number,c:number){
- const s=new Shape();
- s.moveTo(-hw+c,-hd);s.lineTo(hw-c,-hd);s.lineTo(hw,-hd+c);s.lineTo(hw,hd-c);s.lineTo(hw-c,hd);s.lineTo(-hw+c,hd);s.lineTo(-hw,hd-c);s.lineTo(-hw,-hd+c);s.closePath();
- return s;
+// ---- procedural helpers ----
+function hash(x:number,y:number,z:number){const h=Math.sin(x*127.1+y*311.7+z*74.7)*43758.5453;return h-Math.floor(h);}
+function noise(x:number,y:number,z:number){
+ const xi=Math.floor(x),yi=Math.floor(y),zi=Math.floor(z),xf=x-xi,yf=y-yi,zf=z-zi,u=xf*xf*(3-2*xf),v=yf*yf*(3-2*yf),w=zf*zf*(3-2*zf);
+ const l=(a:number,b:number,t:number)=>a+(b-a)*t,c=(dx:number,dy:number,dz:number)=>hash(xi+dx,yi+dy,zi+dz);
+ return l(l(l(c(0,0,0),c(1,0,0),u),l(c(0,1,0),c(1,1,0),u),v),l(l(c(0,0,1),c(1,0,1),u),l(c(0,1,1),c(1,1,1),u),v),w)*2-1;
 }
-function slab(shape:Shape,depth:number,bevel:number){
- const g=new ExtrudeGeometry(shape,{depth,bevelEnabled:bevel>0,bevelSize:bevel,bevelThickness:bevel,bevelSegments:3,curveSegments:8});
- g.rotateX(-Math.PI/2);return g;
+function fbm(x:number,y:number,z:number){let a=0,f=1,s=.5;for(let i=0;i<4;i++){a+=noise(x*f,y*f,z*f)*s;f*=2.1;s*=.5;}return a;}
+// A craggy rock: a displaced sphere with a flat, slightly uneven top at local y = .45 (objects stand there) and a
+// rough body that sinks below the waterline.
+function rockGeometry(seed:number,detail:number,flat=.45){
+ const g=new IcosahedronGeometry(1,detail),p=g.attributes.position;
+ for(let i=0;i<p.count;i++){
+  const x=p.getX(i),y=p.getY(i),z=p.getZ(i),r=1+.36*fbm(x*1.5+seed,y*1.5-seed,z*1.5+seed*.7)+.12*fbm(x*5+seed,y*5,z*5)+.04*fbm(x*13,y*13+seed,z*13);
+  let ny=y*r;if(ny>flat)ny=flat+(ny-flat)*.08+.02*fbm(x*4+seed,0,z*4);
+  p.setXYZ(i,x*r,ny,z*r);
+ }
+ g.computeVertexNormals();return g;
 }
-function additive(color:number,opacity=1):MeshBasicMaterial{return new MeshBasicMaterial({color,transparent:true,opacity,blending:AdditiveBlending,depthWrite:false,toneMapped:false,side:DoubleSide,fog:false});}
-// Floor fade: opaque under the deck, gone before the edge, so the floor never shows a rim against the dark hall.
-function fadeTexture(){
+function glowTexture(){
  const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d')!;
- const g=x.createRadialGradient(128,128,0,128,128,128);g.addColorStop(0,'#fff');g.addColorStop(.45,'#fff');g.addColorStop(.9,'#000');g.addColorStop(1,'#000');
+ const g=x.createRadialGradient(128,128,0,128,128,128);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(.22,'rgba(255,255,255,.42)');g.addColorStop(.55,'rgba(255,255,255,.08)');g.addColorStop(1,'rgba(255,255,255,0)');
  x.fillStyle=g;x.fillRect(0,0,256,256);return new CanvasTexture(c);
 }
-function radialTexture(){
- const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d')!;
- const g=x.createRadialGradient(128,128,0,128,128,128);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(.25,'rgba(255,255,255,.45)');g.addColorStop(.6,'rgba(255,255,255,.1)');g.addColorStop(1,'rgba(255,255,255,0)');
- x.fillStyle=g;x.fillRect(0,0,256,256);return new CanvasTexture(c);
+// Fog bank: soft overlapping blobs, wide and low.
+function fogTexture(seed:number){
+ const c=document.createElement('canvas');c.width=512;c.height=128;const x=c.getContext('2d')!;
+ for(let i=0;i<46;i++){
+  const px=hash(i,seed,1)*512,py=40+hash(i,seed,2)*48,r=26+hash(i,seed,3)*60,g=x.createRadialGradient(px,py,0,px,py,r);
+  g.addColorStop(0,`rgba(255,255,255,${.1+hash(i,seed,4)*.12})`);g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,0,512,128);
+ }
+ const fade=x.createLinearGradient(0,0,512,0);fade.addColorStop(0,'rgba(0,0,0,1)');fade.addColorStop(.18,'rgba(0,0,0,0)');fade.addColorStop(.82,'rgba(0,0,0,0)');fade.addColorStop(1,'rgba(0,0,0,1)');
+ x.globalCompositeOperation='destination-out';x.fillStyle=fade;x.fillRect(0,0,512,128);
+ return new CanvasTexture(c);
 }
-// The glass top's light: traces from the X slot to the four ports, drawn once and used as an emissive map.
-function circuitTexture(hw:number,hd:number){
- const W=1024,H=Math.round(W*hd/hw),c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d')!;
- const px=(u:number)=>(u+hw)/(2*hw)*W,py=(v:number)=>(v+hd)/(2*hd)*H;
- x.fillStyle='#000';x.fillRect(0,0,W,H);x.lineCap='round';x.lineJoin='round';
- x.strokeStyle='rgba(120,160,190,.16)';x.lineWidth=1;
- for(let i=1;i<24;i++){x.beginPath();x.moveTo(i*W/24,0);x.lineTo(i*W/24,H);x.stroke();}
- for(let i=1;i<14;i++){x.beginPath();x.moveTo(0,i*H/14);x.lineTo(W,i*H/14);x.stroke();}
- x.shadowColor='#37e6d0';x.shadowBlur=14;x.strokeStyle='#5cf0dc';x.lineWidth=3;
- PORTS.forEach(([u,v])=>{const sx=Math.sign(u),sy=Math.sign(v);x.beginPath();x.moveTo(px(sx*.34),py(sy*.34));x.lineTo(px(sx*.62),py(sy*.6));x.lineTo(px(u-sx*.16),py(v));x.stroke();x.beginPath();x.arc(px(u),py(v),26,0,Math.PI*2);x.stroke();});
- x.strokeStyle='rgba(92,240,220,.55)';x.lineWidth=2;x.strokeRect(22,22,W-44,H-44);
- for(let i=0;i<9;i++){x.beginPath();x.moveTo(px(-1.05+i*.26),py(-.78));x.lineTo(px(-1.05+i*.26)+26,py(-.78));x.stroke();}
- x.shadowColor='#dfe9ff';x.shadowBlur=22;x.strokeStyle='#eef4ff';x.lineWidth=13;
- x.beginPath();x.moveTo(px(-.36),py(-.36));x.lineTo(px(.36),py(.36));x.moveTo(px(.36),py(-.36));x.lineTo(px(-.36),py(.36));x.stroke();
- x.shadowBlur=10;x.lineWidth=2;x.beginPath();x.arc(px(0),py(0),px(.62)-px(0),0,Math.PI*2);x.stroke();
- const t=new CanvasTexture(c);t.colorSpace=SRGBColorSpace;t.anisotropy=4;return t;
-}
-// Studio reflections: a few bright panels in a dark room, so the silver reads as polished metal with brand accents.
+// Studio reflections in monochrome: a soft dome, a bright moon panel behind and a dim fill in front, so the marble
+// and the glass read as polished without picking up any colour.
 function environment(renderer:WebGLRenderer):Texture{
- const room=new Scene(),panel=(w:number,h:number,r:number,g:number,b:number)=>new Mesh(new PlaneGeometry(w,h),new MeshBasicMaterial({color:new Color(r,g,b),side:DoubleSide}));
- // A soft studio dome (bright overhead, dark floor) gives the metal something to reflect everywhere; the panels add
- // the sharp highlights and the brand colours.
+ const room=new Scene(),panel=(w:number,h:number,v:number)=>new Mesh(new PlaneGeometry(w,h),new MeshBasicMaterial({color:new Color(v,v*1.04,v*1.1),side:DoubleSide}));
  room.add(new Mesh(new SphereGeometry(30,32,24),new ShaderMaterial({side:BackSide,
   vertexShader:`varying vec3 vP;void main(){vP=normalize(position);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
-  fragmentShader:`varying vec3 vP;void main(){float h=vP.y;vec3 c=mix(vec3(.012,.015,.022),vec3(.2,.235,.3),smoothstep(-.15,.35,h));c=mix(c,vec3(.9,.98,1.12),smoothstep(.45,1.,h));gl_FragColor=vec4(c,1.);}`})));
- const key=panel(11,5,6.4,6.9,7.8);key.position.set(0,8,2);key.rotation.x=Math.PI/2;room.add(key);
- const teal=panel(1.4,8,.3,4.6,4);teal.position.set(-9,2.5,1);teal.rotation.y=Math.PI/2;room.add(teal);
- const violet=panel(1.2,7,2.2,1.5,5.2);violet.position.set(9,2.5,-2);violet.rotation.y=-Math.PI/2;room.add(violet);
- const fill=panel(16,6,.95,1.05,1.25);fill.position.set(0,3,11);room.add(fill);
- const rim=panel(14,1.1,5,5.6,6.4);rim.position.set(0,5,-10);room.add(rim);
- const low=panel(10,.4,1.6,1.9,2.4);low.position.set(0,.4,9);room.add(low);
+  fragmentShader:`varying vec3 vP;void main(){float h=vP.y;vec3 c=mix(vec3(.01,.012,.016),vec3(.16,.17,.2),smoothstep(-.1,.4,h));c=mix(c,vec3(.75,.78,.84),smoothstep(.55,1.,h));gl_FragColor=vec4(c,1.);}`})));
+ const moon=panel(10,5,7);moon.position.set(0,7,-12);moon.lookAt(0,0,0);room.add(moon);
+ const rim=panel(18,1,4);rim.position.set(0,3,-14);room.add(rim);
+ const left=panel(1.2,8,1.6);left.position.set(-10,3,0);left.rotation.y=Math.PI/2;room.add(left);
+ const right=panel(1.2,8,1.4);right.position.set(10,3,-2);right.rotation.y=-Math.PI/2;room.add(right);
+ const fill=panel(14,4,1.1);fill.position.set(0,2.5,12);room.add(fill);
  const pmrem=new PMREMGenerator(renderer),texture=pmrem.fromScene(room,.03).texture;pmrem.dispose();
  room.traverse(o=>{if(o instanceof Mesh){o.geometry.dispose();(o.material as Material).dispose();}});
  return texture;
 }
+const WATER_VERTEX=`uniform mat4 textureMatrix;varying vec4 vUv;varying vec3 vWorld;
+ void main(){vUv=textureMatrix*vec4(position,1.);vec4 w=modelMatrix*vec4(position,1.);vWorld=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}`;
+// Black water: the mirrored scene, broken by a slow ripple, darkened by a fresnel term, fading out with distance so
+// the backdrop's own lake takes over at the horizon. `uMirror` is 0 where there is no reflection pass (phones).
+const WATER_FRAGMENT=`uniform sampler2D tDiffuse;uniform float uTime;uniform float uMirror;uniform vec3 uTint;varying vec4 vUv;varying vec3 vWorld;
+ void main(){
+  vec2 w=vWorld.xz;
+  vec2 d=vec2(sin(w.x*1.9+uTime*.55)+sin(w.y*2.7-uTime*.42)+.5*sin((w.x+w.y)*5.3+uTime*.9),cos(w.y*2.1+uTime*.47)+sin(w.x*2.9+uTime*.33)+.5*cos((w.x-w.y)*4.7-uTime*.8))*.0055;
+  vec3 refl=uMirror>0.?texture2DProj(tDiffuse,vec4(vUv.xy+d*vUv.w,vUv.zw)).rgb:vec3(0.);
+  vec3 view=normalize(cameraPosition-vWorld);float fres=.25+.75*pow(1.-max(view.y,0.),3.);
+  vec3 col=uTint+refl*fres*.82;
+  float dist=length(w);float a=1.-smoothstep(10.,25.,dist);
+  gl_FragColor=vec4(col,a);
+  #include <tonemapping_fragment>
+  #include <colorspace_fragment>
+ }`;
 
 export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  let renderer:WebGLRenderer;
  try{renderer=new WebGLRenderer({canvas:host.canvas,antialias:true,alpha:true,powerPreference:'high-performance'});}catch{return null;}
- // Transparent clear: the page's 0/1 rain stays visible behind the scene.
- renderer.setClearColor(BG,0);renderer.toneMapping=ACESFilmicToneMapping;renderer.toneMappingExposure=1.08;renderer.outputColorSpace=SRGBColorSpace;renderer.localClippingEnabled=true;
+ // Transparent clear: the page's 0/1 rain stays faintly visible through the sky.
+ renderer.setClearColor(BG,0);renderer.toneMapping=ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;renderer.outputColorSpace=SRGBColorSpace;renderer.localClippingEnabled=true;
  const disposables:{dispose():void}[]=[];
  const keep=<T extends {dispose():void}>(x:T)=>{disposables.push(x);return x;};
+ const small0=host.small,mirror=!small0;
  const scene=new Scene();scene.fog=new FogExp2(BG,.03);
  const env=keep(environment(renderer));scene.environment=env;
- const camera=new PerspectiveCamera(32,1,.1,80);
- const sun=new DirectionalLight(0xdfe8ff,1.1);sun.position.set(-4,7,6);scene.add(sun);
- const holoLight=new PointLight(TEAL,0,9,1.6);scene.add(holoLight);
+ const camera=new PerspectiveCamera(32,1,.1,200);scene.add(camera);
+ const ambient=new AmbientLight(0xc8d0dc,.18);scene.add(ambient);
+ const moon=new DirectionalLight(MOON,2.4);moon.position.set(1.5,9,-14);scene.add(moon);
+ const fill=new DirectionalLight(0xc0c8d4,.85);fill.position.set(-5,4,10);scene.add(fill);
+ const orbLight=new PointLight(WHITE,0,6,1.7);scene.add(orbLight);
+ const glow=keep(glowTexture());
 
- // ---- materials ----
- const brushed=keep(new MeshPhysicalMaterial({color:SILVER,metalness:1,roughness:.3,clearcoat:.35,clearcoatRoughness:.25,envMapIntensity:1.15}));
- const polished=keep(new MeshPhysicalMaterial({color:0xe3e9f1,metalness:1,roughness:.09,clearcoat:.6,clearcoatRoughness:.06,envMapIntensity:1.35}));
- const dark=keep(new MeshStandardMaterial({color:0x0a0d12,metalness:.9,roughness:.36}));
- const glow=keep(radialTexture());
+ // ---- textures ----
+ const loader=new TextureLoader(),texture=(file:string,mirrored:boolean,repeat:number)=>{
+  const t=keep(loader.load(`${MEDIA}/${file}`));t.colorSpace=SRGBColorSpace;t.wrapS=t.wrapT=mirrored?MirroredRepeatWrapping:RepeatWrapping;t.repeat.set(repeat,repeat);t.anisotropy=4;return t;
+ };
+ const rockMap=texture('rock-768.webp',true,2.2),marbleMap=texture('marble-1024.webp',true,.42);
 
- // ---- floor ----
- const floor=new Mesh(keep(new CircleGeometry(18,72)),keep(new MeshStandardMaterial({color:0x030406,metalness:.7,roughness:.5,envMapIntensity:.32,alphaMap:keep(fadeTexture()),transparent:true})));floor.renderOrder=-1;floor.rotation.x=-Math.PI/2;scene.add(floor);
- const floorGlowMat=keep(additive(COOL,0));floorGlowMat.map=glow;
- const floorGlow=new Mesh(keep(new PlaneGeometry(13,13)),floorGlowMat);floorGlow.rotation.x=-Math.PI/2;floorGlow.position.y=.012;scene.add(floorGlow);
- const ringMat=keep(additive(COOL,0));
- [3.5,4.9,6.5].forEach((r,i)=>{const m=new Mesh(keep(new RingGeometry(r,r+.014+i*.004,128)),ringMat);m.rotation.x=-Math.PI/2;m.position.y=.014;scene.add(m);});
+ // ---- backdrop: the generated lake plate, fixed to the camera and slid so its horizon meets the 3D horizon ----
+ const BACK_D=90,IMG_ASPECT=16/9,IMG_HORIZON=.565;// horizon row of the plate, from the top
+ const backMat=keep(new ShaderMaterial({uniforms:{map:{value:null as Texture|null},uFade:{value:0}},depthWrite:false,transparent:true,fog:false,
+  vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+  fragmentShader:`uniform sampler2D map;uniform float uFade;varying vec2 vUv;
+   void main(){vec3 c=texture2D(map,vUv).rgb;
+    // The sky lets the page's 0/1 rain show through faintly; the water stays solid.
+    float a=mix(.8,1.,smoothstep(.36,.46,1.-vUv.y));gl_FragColor=vec4(c*.92,a*uFade);
+    #include <colorspace_fragment>
+   }`}));
+ const backdrop=new Mesh(keep(new PlaneGeometry(1,1)),backMat);backdrop.renderOrder=-10;backdrop.frustumCulled=false;camera.add(backdrop);
+ loader.load(`${MEDIA}/backdrop-${small0?1280:2048}.webp`,t=>{if(stopped){t.dispose();return;}keep(t);t.colorSpace=SRGBColorSpace;backMat.uniforms.map.value=t;backReady=true;wake();});
+ let backReady=false,backFade=0;
 
- // ---- the deck ----
- const rig=new Group();scene.add(rig);
- const plinth=new Mesh(keep(new CylinderGeometry(2.72,2.86,.12,96)),dark);plinth.position.y=.06;rig.add(plinth);
- const plinthLineMat=keep(additive(TEAL,0));
- const plinthLine=new Mesh(keep(new TorusGeometry(2.73,.012,8,128)),plinthLineMat);plinthLine.rotation.x=Math.PI/2;plinthLine.position.y=.122;rig.add(plinthLine);
- const body=new Mesh(keep(slab(octagon(2,1.25,.45),.3,.035)),brushed);body.position.y=.155;rig.add(body);
- const tier=new Mesh(keep(slab(octagon(1.72,1,.38),.1,.025)),polished);tier.position.y=.515;rig.add(tier);
- const seamMat=keep(additive(TEAL,0));
- const seam=new Mesh(keep(slab(octagon(1.745,1.025,.39),.014,0)),seamMat);seam.position.y=.492;rig.add(seam);
- const GW=1.56,GD=.86;
- const glassGeometry=keep(slab(octagon(GW,GD,.3),.012,0));
- {// Map the emissive traces across the top face.
-  const p=glassGeometry.attributes.position,uv=new Float32Array(p.count*2);
-  for(let i=0;i<p.count;i++){uv[i*2]=(p.getX(i)+GW)/(2*GW);uv[i*2+1]=(-p.getZ(i)+GD)/(2*GD);}
-  glassGeometry.setAttribute('uv',new BufferAttribute(uv,2));
+ // ---- water ----
+ const waterShader={uniforms:{color:{value:null},tDiffuse:{value:null},textureMatrix:{value:null},uTime:{value:0},uMirror:{value:mirror?1:0},uTint:{value:new Color(.006,.008,.011)}},vertexShader:WATER_VERTEX,fragmentShader:WATER_FRAGMENT};
+ const waterGeometry=keep(new PlaneGeometry(64,64));
+ let water:Mesh,waterUniforms:Record<string,{value:unknown}>;
+ if(mirror){
+  const r=new Reflector(waterGeometry,{textureWidth:512,textureHeight:512,clipBias:.003,multisample:0,shader:waterShader});
+  // The backdrop belongs to the real camera only; keep it out of the mirrored pass.
+  const before=r.onBeforeRender.bind(r);r.onBeforeRender=(...args:Parameters<typeof r.onBeforeRender>)=>{backdrop.visible=false;before(...args);backdrop.visible=true;};
+  water=r;waterUniforms=(r.material as ShaderMaterial).uniforms;disposables.push({dispose:()=>r.dispose()});
+ }else{
+  const m=keep(new ShaderMaterial({uniforms:{...waterShader.uniforms,tDiffuse:{value:null},textureMatrix:{value:new Matrix4()}},vertexShader:WATER_VERTEX,fragmentShader:WATER_FRAGMENT}));
+  water=new Mesh(waterGeometry,m);waterUniforms=m.uniforms;
  }
- const circuit=keep(circuitTexture(GW,GD));
- const glassMat=keep(new MeshPhysicalMaterial({color:0x04060a,metalness:.5,roughness:.07,clearcoat:1,clearcoatRoughness:.04,emissive:new Color(0xffffff),emissiveMap:circuit,emissiveIntensity:0,envMapIntensity:1.1}));
- const glass=new Mesh(glassGeometry,glassMat);glass.position.y=TOP-.012;rig.add(glass);
- // Ports: the four emitters the hologram reaches for in act 1.
- const portGeometry=keep(new CylinderGeometry(.105,.12,.035,32)),portRingGeometry=keep(new RingGeometry(.062,.098,32));
- const ports=PORTS.map(([x,z])=>{
-  const g=new Group();g.position.set(x,TOP,z);
-  const cap=new Mesh(portGeometry,polished);cap.position.y=.012;g.add(cap);
-  const mat=keep(additive(TEAL,0)),ring=new Mesh(portRingGeometry,mat);ring.rotation.x=-Math.PI/2;ring.position.y=.034;g.add(ring);
-  const haloMat=keep(additive(TEAL,0));haloMat.map=glow;const halo=new Mesh(keep(new PlaneGeometry(.9,.9)),haloMat);halo.rotation.x=-Math.PI/2;halo.position.y=.04;g.add(halo);
-  rig.add(g);return {group:g,cap,mat,haloMat,level:0};
- });
- const droneGeometry=keep(new CylinderGeometry(.17,.11,.07,24)),droneRingGeometry=keep(new TorusGeometry(.25,.012,8,48)),dronePickGeometry=keep(new SphereGeometry(.36,10,8)),pickMat=keep(new MeshBasicMaterial({colorWrite:false,depthWrite:false}));
- const drones=DRONES.map(([x,y,z])=>{
-  const group=new Group(),hull=new Mesh(droneGeometry,polished);group.add(hull);
-  const mat=keep(additive(TEAL,0)),ring=new Mesh(droneRingGeometry,mat);ring.rotation.x=Math.PI/2;group.add(ring);
-  const haloMat=keep(additive(TEAL,0));haloMat.map=glow;const halo=new Mesh(keep(new PlaneGeometry(1.5,1.5)),haloMat);group.add(halo);
-  const pick=new Mesh(dronePickGeometry,pickMat);group.add(pick);group.visible=false;rig.add(group);
-  return {group,ring,mat,haloMat,halo,pick,rest:new Vector3(x,y,z),level:0};
- });
- // Key bank on the front console: keys dip under the cursor and a click sends a ripple down the row.
- const keyMat=keep(new MeshPhysicalMaterial({color:0xffffff,metalness:1,roughness:.2,clearcoat:.4,envMapIntensity:1.2}));
- const keys=new InstancedMesh(keep(new BoxGeometry(.15,.05,.115)),keyMat,KEYS);rig.add(keys);
- const keyLevel=new Float32Array(KEYS),keyX=(i:number)=>(i-(KEYS-1)/2)*.19;
- const keyGlowMat=keep(additive(TEAL,.0));keyGlowMat.map=glow;
- const keyGlow=new Mesh(keep(new PlaneGeometry(.5,.34)),keyGlowMat);keyGlow.rotation.x=-Math.PI/2+SLOPE;keyGlow.visible=false;rig.add(keyGlow);
- // Front console: a sloped key panel, the part of the terminal a hand would rest on.
- const wedgeShape=new Shape();wedgeShape.moveTo(0,0);wedgeShape.lineTo(.4,0);wedgeShape.lineTo(.4,.07);wedgeShape.lineTo(.04,.37);wedgeShape.lineTo(0,.37);wedgeShape.closePath();
- const wedgeGeometry=keep(new ExtrudeGeometry(wedgeShape,{depth:2.9,bevelEnabled:true,bevelSize:.012,bevelThickness:.012,bevelSegments:2}));wedgeGeometry.translate(0,0,-1.45);wedgeGeometry.rotateY(-Math.PI/2);
- const gunmetal=keep(new MeshPhysicalMaterial({color:0x39414d,metalness:1,roughness:.34,clearcoat:.3,clearcoatRoughness:.3,envMapIntensity:1.1}));
- const wedge=new Mesh(wedgeGeometry,gunmetal);wedge.position.set(0,.12,1.22);rig.add(wedge);
- // Rear spine and the two projector pylons that frame the hologram.
- const spine=new Mesh(keep(new BoxGeometry(2.5,.2,.2)),polished);spine.position.set(0,.59,-1.08);rig.add(spine);
- const spineLine=new Mesh(keep(new BoxGeometry(2.3,.018,.018)),seamMat);spineLine.position.set(0,.66,-.975);rig.add(spineLine);
- const pylonGeometry=keep(slab(octagon(.13,.13,.045),1.5,.012)),pylonLineGeometry=keep(new BoxGeometry(.02,1.3,.012)),pylonCapGeometry=keep(new CylinderGeometry(.05,.13,.1,8));
- [-1,1].forEach(side=>{
-  const pylon=new Mesh(pylonGeometry,brushed);pylon.position.set(side*1.62,.5,-1.05);rig.add(pylon);
-  const line=new Mesh(pylonLineGeometry,seamMat);line.position.set(side*1.62-side*.135,1.25,-1.05);line.rotation.y=Math.PI/2;rig.add(line);
-  const cap=new Mesh(pylonCapGeometry,polished);cap.position.set(side*1.62,2.07,-1.05);rig.add(cap);
- });
- const fins=keep(new BoxGeometry(.05,.16,.5));
- [-1,1].forEach(s=>[-.3,0,.3].forEach(z=>{const f=new Mesh(fins,dark);f.position.set(s*1.99,.32,z*1.6);rig.add(f);}));
-
- // ---- the gate and the X ----
- const gateMat=keep(additive(PEAK,0));gateMat.map=glow;
- const gate=new Mesh(keep(new PlaneGeometry(3.4,3.4)),gateMat);gate.rotation.x=-Math.PI/2;gate.position.y=TOP+.006;rig.add(gate);
- const xShape=new Shape();X_OUTLINE.forEach(([u,v],i)=>{const x=(u-X_PIVOT[0])*X_SCALE,y=-(v-X_PIVOT[1])*X_SCALE;if(i)xShape.lineTo(x,y);else xShape.moveTo(x,y);});xShape.closePath();
- const xGeometry=keep(new ExtrudeGeometry(xShape,{depth:.4,bevelEnabled:true,bevelSize:.05,bevelThickness:.05,bevelSegments:4}));xGeometry.translate(0,0,-.2);
- const xMat=keep(new MeshPhysicalMaterial({color:0xe6ecf4,metalness:1,roughness:.1,clearcoat:.7,clearcoatRoughness:.05,envMapIntensity:1.5,clippingPlanes:[new Plane(new Vector3(0,1,0),-(TOP+.004))]}));
- const xPivot=new Group(),xMesh=new Mesh(xGeometry,xMat);xPivot.add(xMesh);xPivot.visible=false;rig.add(xPivot);
- const X_REST=TOP+1.32,X_START=TOP-1.2;
- const xGlowMat=keep(additive(TEAL,0));xGlowMat.map=glow;
- const xGlow=new Mesh(keep(new PlaneGeometry(4.4,4.4)),xGlowMat);xGlow.position.set(0,X_REST,-.5);rig.add(xGlow);
-
- // ---- the hologram ----
- const holo=new Group();rig.add(holo);
- const holoUniforms={uTime:{value:0},uAlpha:{value:0},uPulse:{value:0}};
- const count=host.small?900:1600,sphere=new Float32Array(count*3);
- for(let i=0;i<count;i++){const y=1-2*(i+.5)/count,r=Math.sqrt(1-y*y),a=i*2.399963;sphere[i*3]=Math.cos(a)*r;sphere[i*3+1]=y;sphere[i*3+2]=Math.sin(a)*r;}
- const dotsGeometry=keep(new BufferGeometry());dotsGeometry.setAttribute('position',new BufferAttribute(sphere,3));
- const dotsMat=keep(new ShaderMaterial({uniforms:holoUniforms,transparent:true,depthWrite:false,blending:AdditiveBlending,
-  vertexShader:`uniform float uTime;uniform float uPulse;varying float vA;
-   void main(){vec3 p=position*(.62+.02*sin(uTime*1.7+position.y*9.)+.05*uPulse*sin(uTime*9.+position.x*14.));
-    vec4 mv=modelViewMatrix*vec4(p,1.);gl_Position=projectionMatrix*mv;
-    float f=fract(sin(dot(position.xy,vec2(12.9898,78.233)))*43758.5453);
-    vA=.55+.45*sin(uTime*(1.2+f*2.4)+f*40.);gl_PointSize=(1.4+2.2*f)*(9./-mv.z);}`,
-  fragmentShader:`uniform float uAlpha;varying float vA;
-   void main(){vec2 d=gl_PointCoord-.5;float a=smoothstep(.5,.05,length(d))*vA*uAlpha;gl_FragColor=vec4(mix(vec3(.22,.9,.82),vec3(.95,.98,1.),vA*.7)*a,a);}`}));
- holo.add(new Points(dotsGeometry,dotsMat));
- const shellMat=keep(new ShaderMaterial({uniforms:holoUniforms,transparent:true,depthWrite:false,blending:AdditiveBlending,
-  vertexShader:`varying vec3 vN;varying vec3 vV;varying float vY;
-   void main(){vec4 mv=modelViewMatrix*vec4(position,1.);vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);vY=position.y;gl_Position=projectionMatrix*mv;}`,
-  fragmentShader:`uniform float uTime;uniform float uAlpha;uniform float uPulse;varying vec3 vN;varying vec3 vV;varying float vY;
-   void main(){float f=pow(1.-abs(dot(normalize(vN),normalize(vV))),2.2);float scan=.7+.3*sin(vY*70.-uTime*5.);
-    float a=(f*1.25+.07)*scan*uAlpha*(1.+uPulse*.6);gl_FragColor=vec4(mix(vec3(.16,.85,.78),vec3(.9,.96,1.),f)*a,a);}`}));
- holo.add(new Mesh(keep(new SphereGeometry(.56,48,32)),shellMat));
- const ringGeometry=keep(new TorusGeometry(.8,.006,6,96)),holoRingMat=keep(additive(COOL,0));
- const holoRings=[0,1,2].map(i=>{const m=new Mesh(ringGeometry,holoRingMat);m.scale.setScalar(1+i*.13);holo.add(m);return m;});
- // The eye: a bright core that turns toward the cursor or toward whatever it is operating.
- const eye=new Group();holo.add(eye);
- const eyeMat=keep(additive(PEAK,0));eyeMat.map=glow;
- const pupil=new Mesh(keep(new PlaneGeometry(.5,.5)),eyeMat);pupil.position.z=.46;eye.add(pupil);
- const irisMat=keep(additive(TEAL,0)),iris=new Mesh(keep(new RingGeometry(.13,.142,40)),irisMat);iris.position.z=.5;eye.add(iris);
- const coneMat=keep(new ShaderMaterial({uniforms:holoUniforms,transparent:true,depthWrite:false,blending:AdditiveBlending,side:DoubleSide,
+ (water.material as ShaderMaterial).transparent=true;(water.material as ShaderMaterial).depthWrite=false;
+ water.rotation.x=-Math.PI/2;water.renderOrder=-5;scene.add(water);
+ // Moonlight path on the water, shimmering.
+ const pathMat=keep(new ShaderMaterial({uniforms:{uTime:{value:0},uAlpha:{value:.0}},transparent:true,depthWrite:false,blending:AdditiveBlending,fog:false,
   vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
   fragmentShader:`uniform float uTime;uniform float uAlpha;varying vec2 vUv;
-   void main(){float a=(1.-vUv.y)*(.16+.06*sin(vUv.y*46.-uTime*7.))*uAlpha;gl_FragColor=vec4(vec3(.3,.92,.86)*a,a);}`}));
- const cone=new Mesh(keep(new CylinderGeometry(.5,.1,1,40,1,true)),coneMat);rig.add(cone);
- const columnMat=keep(new ShaderMaterial({uniforms:{uAlpha:{value:0}},transparent:true,depthWrite:false,blending:AdditiveBlending,side:DoubleSide,
-  vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
-  fragmentShader:`uniform float uAlpha;varying vec2 vUv;
-   void main(){float x=(vUv.x-.5)*5.;float a=exp(-x*x)*smoothstep(1.,.15,vUv.y)*smoothstep(0.,.06,vUv.y)*uAlpha;gl_FragColor=vec4(vec3(.72,.82,1.)*a,a);}`}));
- const column=new Mesh(keep(new PlaneGeometry(2.6,11)),columnMat);column.position.set(0,TOP+5.5,-.3);scene.add(column);
+   void main(){float x=(vUv.x-.5)*2.;float core=exp(-x*x*9.);float ripple=.55+.45*sin(vUv.y*170.+uTime*1.6+sin(vUv.x*31.+uTime)*2.);
+    float a=core*ripple*smoothstep(0.,.25,vUv.y)*smoothstep(1.,.55,vUv.y)*uAlpha;gl_FragColor=vec4(vec3(.85,.9,.98)*a,a);}`}));
+ const path=new Mesh(keep(new PlaneGeometry(3.4,34)),pathMat);path.rotation.x=-Math.PI/2;path.position.set(0,.01,-12);scene.add(path);
 
- const holoHaloMat=keep(additive(TEAL,0));holoHaloMat.map=glow;
- const holoHalo=new Mesh(keep(new PlaneGeometry(3.4,3.4)),holoHaloMat);scene.add(holoHalo);
- const pickHolo=new Mesh(keep(new SphereGeometry(.7,12,10)),pickMat);holo.add(pickHolo);
- // The beam the hologram sends to whatever is selected.
- const beamMat=keep(additive(TEAL,0)),beam=new Mesh(keep(new CylinderGeometry(.012,.034,1,10,1,true)),beamMat);beam.visible=false;scene.add(beam);
- const hitMat=keep(additive(TEAL,0));hitMat.map=glow;const hit=new Mesh(keep(new PlaneGeometry(1,1)),hitMat);hit.visible=false;scene.add(hit);
+ // ---- the isle ----
+ const rig=new Group();scene.add(rig);
+ const rockMat=keep(new MeshStandardMaterial({map:rockMap,color:0x8e949c,roughness:.58,metalness:.12,bumpMap:rockMap,bumpScale:3,envMapIntensity:.55}));
+ const detail=small0?4:5;
+ const centre=new Mesh(keep(rockGeometry(3.1,detail)),rockMat);rig.add(centre);
+ const rippleGeometry=keep(new RingGeometry(.96,1,96));
+ const ripple=(opacity:number)=>{const m=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity,blending:AdditiveBlending,depthWrite:false,fog:false}));const r=new Mesh(rippleGeometry,m);r.rotation.x=-Math.PI/2;r.position.y=.012;return r;};
+ const centreRipples=[ripple(0),ripple(0)];centreRipples.forEach(r=>rig.add(r));
 
- // ---- service modules (act 3) ----
- const podBody=keep(new BoxGeometry(1.5,1,.08)),podBezel=keep(new BoxGeometry(1.6,1.1,.05)),podScreen=keep(new PlaneGeometry(1.4,.875)),strut=keep(new CylinderGeometry(.022,.03,1,10)),joint=keep(new SphereGeometry(.06,16,12));
- const pods=MOUNTS.map(([deg,radius,height],i)=>{
-  const a=deg*Math.PI/180,rest=new Vector3(Math.sin(a)*radius,height,Math.cos(a)*radius),root=new Vector3(Math.sin(a)*1.9,.36,Math.cos(a)*1.2);
-  const group=new Group(),bezel=new Mesh(podBezel,polished),back=new Mesh(podBody,dark);back.position.z=.012;group.add(bezel,back);
-  const canvas=document.createElement('canvas');canvas.width=384;canvas.height=240;const context=canvas.getContext('2d')!;
-  const texture=keep(new CanvasTexture(canvas));texture.colorSpace=SRGBColorSpace;
-  const screenMat=keep(new MeshBasicMaterial({map:texture,toneMapped:false,transparent:true,opacity:0}));
-  const screen=new Mesh(podScreen,screenMat);screen.position.z=.056;group.add(screen);
-  const haloMat=keep(additive(TEAL,0));haloMat.map=glow;const halo=new Mesh(keep(new PlaneGeometry(3.8,2.9)),haloMat);halo.position.z=-.06;group.add(halo);
-  const arm=new Mesh(strut,brushed),knuckle=new Mesh(joint,polished);
-  rig.add(group,arm,knuckle);
-  drawModule(context,i,0,false);texture.needsUpdate=true;
-  return {group,bezel,arm,knuckle,rest,root,context,texture,screenMat,haloMat,level:0,clock:i*1.7};
- });
- // Backdrop: distant light columns, the hall the deck stands in (and something bright for the silver to mirror).
- const pillarMat=keep(new ShaderMaterial({uniforms:{uAlpha:{value:0}},transparent:true,depthWrite:false,blending:AdditiveBlending,side:DoubleSide,
-  vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
-  fragmentShader:`uniform float uAlpha;varying vec2 vUv;
-   void main(){float x=(vUv.x-.5)*4.;float a=exp(-x*x)*smoothstep(1.,.55,vUv.y)*smoothstep(0.,.3,vUv.y)*uAlpha;gl_FragColor=vec4(vec3(.62,.74,1.)*a,a);}`}));
- const pillarGeometry=keep(new PlaneGeometry(1,1));
- for(let i=0;i<16;i++){
-  const a=(-64+i*128/15)*Math.PI/180,r=21+(i%3)*2.5,h=7+((i*5)%4)*2.2,w=.35+((i*3)%4)*.22;
-  const m=new Mesh(pillarGeometry,pillarMat);m.position.set(Math.sin(a)*r,h/2-.4,-Math.cos(a)*r);m.scale.set(w,h,1);m.rotation.y=-a;scene.add(m);
+ // ---- the marble X ----
+ const xShape=new Shape();X_OUTLINE.forEach(([u,v],i)=>{const x=(u-X_PIVOT[0])*X_SCALE,y=-(v-X_PIVOT[1])*X_SCALE;if(i)xShape.lineTo(x,y);else xShape.moveTo(x,y);});xShape.closePath();
+ const xGeometry=keep(new ExtrudeGeometry(xShape,{depth:.46,bevelEnabled:true,bevelSize:.035,bevelThickness:.035,bevelSegments:3}));xGeometry.translate(0,0,-.23);
+ const xClip=new Plane(new Vector3(0,1,0),-(TOP-.02));
+ const xMat=keep(new MeshPhysicalMaterial({map:marbleMap,color:0xd4d8de,roughness:.24,metalness:.05,clearcoat:1,clearcoatRoughness:.06,envMapIntensity:1.6,emissive:new Color(0xffffff),emissiveMap:marbleMap,emissiveIntensity:.08,clippingPlanes:[xClip]}));
+ const xPivot=new Group(),xMesh=new Mesh(xGeometry,xMat);xPivot.add(xMesh);xPivot.visible=false;rig.add(xPivot);
+ const X_HALF=(350-82)*X_SCALE/2,X_REST=TOP+X_HALF+.02,X_START=TOP-X_HALF*2.1;
+ const xGlowMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ const xGlow=new Mesh(keep(new PlaneGeometry(5.2,5.2)),xGlowMat);xGlow.position.set(0,X_REST,-.9);rig.add(xGlow);
+
+ // ---- the orb (the concierge) ----
+ const orb=new Group();rig.add(orb);
+ const orbUniforms={uTime:{value:0},uAlpha:{value:0},uPulse:{value:0},uTilt:{value:new Vector2()}};
+ const shellMat=keep(new ShaderMaterial({uniforms:orbUniforms,transparent:true,depthWrite:false,blending:AdditiveBlending,
+  vertexShader:`varying vec3 vN;varying vec3 vV;varying vec3 vP;
+   void main(){vec4 mv=modelViewMatrix*vec4(position,1.);vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);vP=position;gl_Position=projectionMatrix*mv;}`,
+  fragmentShader:`uniform float uAlpha;uniform float uPulse;varying vec3 vN;varying vec3 vV;varying vec3 vP;
+   void main(){vec3 n=normalize(vN);float f=pow(1.-abs(dot(n,normalize(vV))),2.6);
+    float spec=pow(max(dot(n,normalize(vec3(-.45,.6,.65))),0.),40.)*1.4;float lower=smoothstep(-.2,-1.,vP.y/.82)*.35;
+    float a=(f*1.05+.035+spec+lower*f)*uAlpha*(1.+uPulse*.5);gl_FragColor=vec4(vec3(.9,.94,1.)*a,a);}`}));
+ orb.add(new Mesh(keep(new SphereGeometry(ORB_R,64,40)),shellMat));
+ // Light ribbons inside the glass: dense points along a few flowing sheets, brightest on their centre lines.
+ const ribbons=new Group();orb.add(ribbons);
+ {
+  const sheets=3,across=small0?40:64,along=small0?120:200,n=sheets*across*along,pos=new Float32Array(n*3),info=new Float32Array(n*2);let k=0;
+  for(let s=0;s<sheets;s++)for(let i=0;i<across;i++)for(let j=0;j<along;j++){
+   pos[k*3]=j/(along-1)*2-1;pos[k*3+1]=s;pos[k*3+2]=i/(across-1)*2-1;info[k*2]=hash(i,j,s);info[k*2+1]=s;k++;
+  }
+  const g=keep(new BufferGeometry());g.setAttribute('position',new BufferAttribute(pos,3));g.setAttribute('aInfo',new BufferAttribute(info,2));
+  const m=keep(new ShaderMaterial({uniforms:orbUniforms,transparent:true,depthWrite:false,blending:AdditiveBlending,
+   vertexShader:`uniform float uTime;uniform float uPulse;attribute vec2 aInfo;varying float vA;
+    void main(){float s=aInfo.y;float u=position.x,w=position.z;
+     float phase=uTime*(.55+s*.12)+s*2.1;
+     float y=.34*sin(u*2.3+phase)*cos(w*.9+s)+(s-1.)*.16+.05*sin(u*7.+phase*1.7)*uPulse;
+     vec3 p=vec3(u*.78,y,w*.18*(1.+.4*sin(u*3.+phase)));
+     float c=cos(s*1.05),sn=sin(s*1.05);p.xz=mat2(c,-sn,sn,c)*p.xz;
+     float r=length(p);vA=smoothstep(.8,.6,r)*exp(-w*w*9.)*(.45+.55*aInfo.x);
+     vec4 mv=modelViewMatrix*vec4(p,1.);gl_Position=projectionMatrix*mv;gl_PointSize=(1.2+1.6*aInfo.x)*(8./-mv.z);}`,
+   fragmentShader:`uniform float uAlpha;varying float vA;
+    void main(){vec2 d=gl_PointCoord-.5;float a=smoothstep(.5,0.,length(d))*vA*uAlpha;gl_FragColor=vec4(vec3(.92,.95,1.)*a,a);}`}));
+  ribbons.add(new Points(g,m));
  }
- // Dust in the light, so the space has depth.
- const dustCount=host.small?140:300,dust=new Float32Array(dustCount*3);
- for(let i=0;i<dustCount;i++){dust[i*3]=(Math.random()-.5)*16;dust[i*3+1]=Math.random()*7;dust[i*3+2]=(Math.random()-.5)*12;}
+ // Sparks inside the orb.
+ {
+  const n=small0?160:320,pos=new Float32Array(n*3);
+  for(let i=0;i<n;i++){const r=Math.cbrt(hash(i,1,2))*ORB_R*.85,a=hash(i,3,4)*Math.PI*2,b=Math.acos(hash(i,5,6)*2-1);pos[i*3]=r*Math.sin(b)*Math.cos(a);pos[i*3+1]=r*Math.cos(b);pos[i*3+2]=r*Math.sin(b)*Math.sin(a);}
+  const g=keep(new BufferGeometry());g.setAttribute('position',new BufferAttribute(pos,3));
+  ribbons.add(new Points(g,keep(new PointsMaterial({color:WHITE,size:.018,transparent:true,opacity:.7,blending:AdditiveBlending,depthWrite:false,fog:false}))));
+ }
+ const orbHaloMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ const orbHalo=new Mesh(keep(new PlaneGeometry(4.2,4.2)),orbHaloMat);scene.add(orbHalo);
+ const poolMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ const pool=new Mesh(keep(new PlaneGeometry(2.6,2.6)),poolMat);pool.rotation.x=-Math.PI/2;pool.position.y=TOP+.015;rig.add(pool);
+ const pickMat=keep(new MeshBasicMaterial({colorWrite:false,depthWrite:false}));
+ const pickOrb=new Mesh(keep(new SphereGeometry(ORB_R*1.05,16,12)),pickMat);orb.add(pickOrb);
+ // Satellites: small glass beads that come out of the orb at the act 1 checkpoint (the AI services).
+ const beadGeometry=keep(new SphereGeometry(.13,24,16)),beadRingGeometry=keep(new TorusGeometry(.22,.007,6,48)),beadPick=keep(new SphereGeometry(.34,10,8));
+ const sats=SATS.map(([x,y,z])=>{
+  const g=new Group(),bead=new Mesh(beadGeometry,shellMat);g.add(bead);
+  const ringMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false})),ring=new Mesh(beadRingGeometry,ringMat);g.add(ring);
+  const haloMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false})),halo=new Mesh(keep(new PlaneGeometry(1.1,1.1)),haloMat);g.add(halo);
+  const pick=new Mesh(beadPick,pickMat);g.add(pick);g.visible=false;orb.add(g);
+  return {group:g,ring,ringMat,haloMat,halo,pick,rest:new Vector3(x,y,z),level:0};
+ });
+ // Beam from the orb to whatever is selected.
+ const beamMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ const beam=new Mesh(keep(new CylinderGeometry(.008,.02,1,8,1,true)),beamMat);beam.visible=false;scene.add(beam);
+ const hitMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ const hit=new Mesh(keep(new PlaneGeometry(.9,.9)),hitMat);hit.visible=false;scene.add(hit);
+
+ // ---- service rocks with glass plates (act 3) ----
+ const plateGeometry=keep(new PlaneGeometry(PLATE_W,PLATE_H)),plateEdges=keep(new EdgesGeometry(new BoxGeometry(PLATE_W+.04,PLATE_H+.04,.03))),platePick=keep(new BoxGeometry(PLATE_W+.1,PLATE_H+.1,.1));
+ const arcMats:ShaderMaterial[]=[];
+ const isles=MOUNTS.map(([deg,radius,lift],i)=>{
+  const a=deg*Math.PI/180,base=new Vector3(Math.sin(a)*radius,0,Math.cos(a)*radius),size=.95+hash(i,7,1)*.35;
+  const rock=new Mesh(keep(rockGeometry(11+i*3.7,small0?2:3)),rockMat);rock.scale.set(size*1.05,.85*size,size*.9);rig.add(rock);
+  const plate=new Group();rig.add(plate);
+  const canvas=document.createElement('canvas');canvas.width=384;canvas.height=240;const context=canvas.getContext('2d')!;
+  const tex=keep(new CanvasTexture(canvas));tex.colorSpace=SRGBColorSpace;
+  const faceMat=keep(new MeshBasicMaterial({map:tex,transparent:true,opacity:0,toneMapped:false,depthWrite:false,fog:false,side:DoubleSide}));
+  const face=new Mesh(plateGeometry,faceMat);plate.add(face);
+  const edgeMat=keep(new LineBasicMaterial({color:WHITE,transparent:true,opacity:0,fog:false})),edge=new LineSegments(plateEdges,edgeMat);plate.add(edge);
+  const haloMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false})),halo=new Mesh(keep(new PlaneGeometry(3,2.2)),haloMat);halo.position.z=-.05;plate.add(halo);
+  const pick=new Mesh(platePick,pickMat);plate.add(pick);
+  const rings=[ripple(0),ripple(0)];rings.forEach(r=>{r.position.x=base.x;r.position.z=base.z;rig.add(r);});
+  // Arc of light from the foot of the X to the rock.
+  const top=base.clone().setY(.3),from=new Vector3(base.x*.12,.55,base.z*.12),mid=from.clone().lerp(top,.5).setY(1.6+radius*.18);
+  const arcMat=keep(new ShaderMaterial({uniforms:{uDraw:{value:0},uTime:{value:0},uOn:{value:0}},transparent:true,depthWrite:false,blending:AdditiveBlending,fog:false,
+   vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+   fragmentShader:`uniform float uDraw;uniform float uTime;uniform float uOn;varying vec2 vUv;
+    void main(){float t=vUv.x;if(t>uDraw)discard;float head=smoothstep(uDraw-.12,uDraw,t)*(1.-step(.999,uDraw));
+     float pulse=pow(.5+.5*sin(t*18.-uTime*(3.+uOn*4.)),6.);float ends=smoothstep(0.,.06,t)*smoothstep(1.,.92,t);
+     float a=ends*(.32+.4*uOn+pulse*(.3+.7*uOn)+head*.8);gl_FragColor=vec4(vec3(.92,.95,1.)*a,a);}`}));
+  arcMats.push(arcMat);
+  const arc=new Mesh(keep(new TubeGeometry(new QuadraticBezierCurve3(from,mid,top),48,.012,6,false)),arcMat);rig.add(arc);
+  drawIcon(context,i,0);tex.needsUpdate=true;
+  return {rock,plate,face,faceMat,edgeMat,haloMat,pick,rings,arc,arcMat,context,tex,base,size,lift,level:0,clock:i*1.7,showing:'icon' as 'icon'|'live'};
+ });
+
+ // ---- atmosphere ----
+ const fogs=[0,1,2,3,4,5].map(i=>{
+  const t=keep(fogTexture(i+1)),m=keep(new MeshBasicMaterial({color:0x9aa3ae,alphaMap:t,map:t,transparent:true,opacity:0,depthWrite:false,fog:false}));
+  const mesh=new Mesh(keep(new PlaneGeometry(26,6.5)),m);mesh.position.set((hash(i,2,3)-.5)*10,.9+hash(i,4,5)*1.6,-6-i*3.2);scene.add(mesh);
+  return {mesh,mat:m,speed:(hash(i,6,7)-.5)*.25,x:mesh.position.x,base:.1+hash(i,8,9)*.08};
+ });
+ const dustCount=small0?160:340,dust=new Float32Array(dustCount*3);
+ for(let i=0;i<dustCount;i++){dust[i*3]=(hash(i,1,1)-.5)*22;dust[i*3+1]=.2+hash(i,2,2)*6;dust[i*3+2]=(hash(i,3,3)-.5)*16;}
  const dustGeometry=keep(new BufferGeometry());dustGeometry.setAttribute('position',new BufferAttribute(dust,3));
- const dustMat=keep(new PointsMaterial({color:COOL,size:.028,transparent:true,opacity:.5,blending:AdditiveBlending,depthWrite:false,sizeAttenuation:true,fog:false}));
+ const dustMat=keep(new PointsMaterial({color:WHITE,size:.022,transparent:true,opacity:.35,blending:AdditiveBlending,depthWrite:false,sizeAttenuation:true,fog:false}));
  const dustPoints=new Points(dustGeometry,dustMat);scene.add(dustPoints);
 
  // ---- state ----
  let story:StoryPosition|null=null,small=host.small,paused=false,stopped=false,raf=0,lastNow=0,time=0,width=1,height=1;
  let quality=Math.min(devicePixelRatio||1,small?1.5:2),slow=0,fps=60;
  const pointer=new Vector2(0,0),ndc=new Vector2(2,2);let pointerInside=false;
- let hover:[number,number]|null=null,locked:[number,number]|null=null,domActive:[number,number]|null=null,holoHover=false,keyHover=-1;
- let rippleAt=-10,rippleFrom=0,talkPulse=0;
- let deckYaw=0,xYaw=0,xPitch=0,xSpin=0,dragging=false,dragX=0,dragY=0,dragMoved=0,downAt:[number,number]|null=null;
- let beamLevel=0;
- const eyeDir=new Vector3(0,0,1),look=new Vector3(),lockMix={value:0};
+ let hover:[number,number]|null=null,locked:[number,number]|null=null,domActive:[number,number]|null=null,orbHover=false;
+ let talkPulse=0,isleYaw=0,xYaw=0,xPitch=0,dragging=false,dragX=0,dragY=0,dragMoved=0,downAt:[number,number]|null=null,beamLevel=0,lockMix=0;
+ const look=new Vector3(),tilt=new Vector2(),zero2=new Vector2();
  const stageBox={left:0,top:0,width:1,height:1};
  const lastPlaced:string[]=['','',''];
- const raycaster=new Raycaster(),tmp=new Vector3(),tmp2=new Vector3(),up=new Vector3(0,1,0),quat=new Quaternion(),matrix=new Matrix4(),dummy=new Object3D(),color=new Color();
- const silver=new Color(0xffffff),lit=new Color(0x8ffff0);
+ const raycaster=new Raycaster(),tmp=new Vector3(),tmp2=new Vector3(),tmp3=new Vector3(),up=new Vector3(0,1,0);
 
  const active=()=>locked??hover??domActive;
  function measure(){
@@ -301,6 +315,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  function resize(nextSmall:boolean){
   small=nextSmall;measure();renderer.setPixelRatio(quality);renderer.setSize(width,height,false);
   camera.aspect=width/height;lastPlaced.fill('');
+  if(mirror)(water as Reflector).getRenderTarget().setSize(Math.round(width*quality*.5),Math.round(height*quality*.5));
  }
  function project(v:Vector3,side:NodePlacement['side']):NodePlacement{
   tmp2.copy(v).project(camera);
@@ -310,12 +325,15 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   const key=pts.map(p=>`${Math.round(p.x)},${Math.round(p.y)},${p.side}`).join(';');
   if(key===lastPlaced[cp])return;lastPlaced[cp]=key;host.place(cp,pts);
  }
- // World-space anchor of a service node: where its label sits and where the hologram's beam lands.
+ // World-space anchor of a service node: where its label sits and where the orb's beam lands.
  function anchor(cp:number,i:number,out:Vector3){
-  if(cp===0)return drones[i].group.getWorldPosition(out);
-  if(cp===1)return out.set(X_TIPS[i][0],X_TIPS[i][1],0).applyMatrix4(xPivot.matrixWorld);
-  return pods[i].group.getWorldPosition(out);
+  if(cp===0)return sats[i].group.getWorldPosition(out);
+  if(cp===1)return out.set(X_TIPS[i][0]*1.15,X_TIPS[i][1]*1.15,0).applyMatrix4(xPivot.matrixWorld);
+  return isles[i].plate.getWorldPosition(out);
  }
+ const setRipple=(r:Mesh,progress:number,radius:number,lag:number)=>{
+  const t=clamp(progress*1.15-lag);(r.material as MeshBasicMaterial).opacity=Math.sin(Math.PI*t)*.32;r.scale.setScalar(radius*(.6+t*1.6));
+ };
 
  function frame(now:number){
   const dt=lastNow?Math.min(.05,(now-lastNow)/1000):1/60;lastNow=now;time+=dt;
@@ -323,127 +341,127 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   // Adaptive quality: step the resolution down when frames run long, never back up (no oscillation).
   fps=lerp(fps,1/Math.max(dt,.001),.05);
   if(dt>.03)slow++;else slow=Math.max(0,slow-1);
-  if(slow>45&&quality>1){quality=Math.max(1,quality-.25);slow=0;renderer.setPixelRatio(quality);renderer.setSize(width,height,false);}
+  if(slow>45&&quality>1){quality=Math.max(1,quality-.25);slow=0;resize(small);}
 
   // ---- scroll-driven values ----
   const c=p.clip,run=p.hold?1:p.progress;
-  const power=c>0?1:smooth(run/.55),holoOn=c>0?1:smooth((run-.4)/.6);
-  const rise=c>1?1:c===1?smooth((run-.12)/.88):0,gateOpen=c===1&&!p.hold?Math.sin(Math.PI*clamp(run/.9)):0;
-  const deploy=c===2?run:0,closing=p.converge;
+  const emerge=c>0?1:smooth(run/.6),orbOn=c>0?1:smooth((run-.35)/.6);
+  const rise=c>1?1:c===1?smooth((run-.1)/.85):0,deploy=c===2?run:0,closing=p.converge;
+  const grow=c>1?1:c===1?smooth(run/.6):0;// the centre rock widens into the X's plinth
+
   // ---- camera ----
   let from=CAMERA[0],to=CAMERA[1];const mix=smooth(run);
   if(c===1){from=CAMERA[1];to=CAMERA[2];}else if(c===2){from=CAMERA[2];to=CAMERA[3];}
-  const narrow=clamp((1.45-camera.aspect)/.9),reach=1+narrow*.7;// phones: pull back so the whole deck fits the band
+  const narrow=clamp((1.45-camera.aspect)/.9),reach=1+narrow*.75;// phones: pull back so the whole isle fits the band
   const k=(i:0|1|2)=>lerp(lerp(from.pos[i],to.pos[i],mix),CAMERA[4].pos[i],closing);
   const t=(i:0|1|2)=>lerp(lerp(from.target[i],to.target[i],mix),CAMERA[4].target[i],closing);
   look.set(t(0),t(1),t(2));
   const sway=pointerInside&&!small?1:0;
-  camera.position.set(k(0)*reach+pointer.x*.35*sway,look.y+(k(1)-look.y)*reach-pointer.y*.2*sway,k(2)*reach);
-  // A locked module pulls the camera a little toward itself.
-  lockMix.value=lerp(lockMix.value,locked&&locked[0]===2?1:0,1-Math.exp(-dt*5));
-  if(lockMix.value>.001&&locked){pods[locked[1]].group.getWorldPosition(tmp);look.lerp(tmp,lockMix.value*.45);camera.position.lerp(tmp,lockMix.value*.16);}
+  camera.position.set(k(0)*reach+pointer.x*.3*sway,look.y+(k(1)-look.y)*reach-pointer.y*.15*sway,k(2)*reach);
+  lockMix=lerp(lockMix,locked&&locked[0]===2?1:0,1-Math.exp(-dt*5));
+  if(lockMix>.001&&locked){isles[locked[1]].plate.getWorldPosition(tmp);look.lerp(tmp,lockMix*.4);camera.position.lerp(tmp,lockMix*.14);}
   camera.lookAt(look);
   const off=small?0:lerp(lerp(from.off,to.off,mix),CAMERA[4].off,closing);
   camera.setViewOffset(width,height,-off*width,0,width,height);
+  camera.updateMatrixWorld();
 
-  // ---- deck ----
-  const flicker=power<1?power*(.7+.3*Math.sin(time*38)):1;
-  scene.environmentIntensity=.3+.7*power;sun.intensity=.35+.75*power;
-  glassMat.emissiveIntensity=flicker*(1.5+.25*Math.sin(time*1.3))+gateOpen*1.2;
-  seamMat.opacity=flicker*.95;plinthLineMat.opacity=flicker*.6;ringMat.opacity=power*.22;floorGlowMat.opacity=power*.26+gateOpen*.25;
-  rig.rotation.y=deckYaw+Math.sin(time*.21)*.035*power;
+  // ---- backdrop: cover the view and put the plate's horizon on the true horizon ----
+  const halfH=Math.tan(camera.fov*Math.PI/360)*BACK_D,viewH=halfH*2*1.18,viewW=viewH*Math.max(camera.aspect,1e-3)*1.1;
+  const bh=Math.max(viewH,viewW/IMG_ASPECT),bw=bh*IMG_ASPECT;
+  tmp.set(0,0,-1).applyQuaternion(camera.quaternion).setY(0).normalize().multiplyScalar(1e4).add(camera.position);
+  tmp.applyMatrix4(camera.matrixWorldInverse);const horizonY=tmp.y/-tmp.z*BACK_D;
+  backdrop.scale.set(bw,bh,1);backdrop.position.set(0,horizonY-(.5-IMG_HORIZON)*bh,-BACK_D);
+  backFade=lerp(backFade,backReady?1:0,1-Math.exp(-dt*3));backMat.uniforms.uFade.value=backFade;
+
+  // ---- water, moon, fog ----
+  waterUniforms.uTime.value=time;pathMat.uniforms.uTime.value=time;pathMat.uniforms.uAlpha.value=.35+.15*emerge;
+  moon.intensity=1.2+1.2*emerge;ambient.intensity=.12+.08*emerge;
+  fogs.forEach((f,i)=>{f.mesh.position.x=f.x+Math.sin(time*.04+i)*2+time*f.speed%8;f.mesh.quaternion.copy(camera.quaternion);f.mat.opacity=f.base*(1.15-.35*deploy)*(1-.5*closing);});
+  dustPoints.rotation.y=time*.01;
+
+  // ---- centre rock, rising out of the water in act 1 and widening into a plinth in act 2 ----
+  const sx=lerp(1.25,2.5,grow),sy=lerp(.85,1.05,grow),sz=lerp(1.05,1.95,grow);
+  const surface=lerp(-1.4,TOP,emerge);
+  centre.scale.set(sx,sy,sz);centre.position.y=surface-.45*sy;
+  setRipple(centreRipples[0],c===0&&!p.hold?run/.7:c===1&&!p.hold?run:1,1.6+grow*1.4,0);
+  setRipple(centreRipples[1],c===0&&!p.hold?run/.7:c===1&&!p.hold?run:1,1.6+grow*1.4,.3);
+  rig.rotation.y=isleYaw+Math.sin(time*.17)*.025;
+
+  // ---- the orb: forms on its rock in act 1, lifts above the X in act 2 ----
+  const lift=c===0?0:c===1?smooth(run/.8):1;
+  const orbY=lerp(ORB_REST+(surface-TOP),4.35,lift),orbScale=lerp(1,.44,lift)*(.55+.45*orbOn);
+  orb.position.set(0,orbY+Math.sin(time*1.05)*.035*lift+Math.sin(time*.8)*.012,lerp(0,-.55,lift));orb.scale.setScalar(orbScale);
+  talkPulse=Math.max(0,talkPulse-dt*1.5);
+  orbUniforms.uTime.value=time;orbUniforms.uAlpha.value=orbOn*(orbHover?1.25:1);orbUniforms.uPulse.value=Math.max(talkPulse,orbHover?.4:0);
+  // The ribbons lean toward the cursor, so the orb seems to pay attention.
   const a=active();
-  ports.forEach((port,i)=>{
-   const on=c===0&&p.hold&&a?.[0]===0&&a[1]===i?1:0;port.level=lerp(port.level,on,1-Math.exp(-dt*9));
-   port.mat.opacity=flicker*(.5+.25*Math.sin(time*2+i*1.6))+port.level*.5;port.haloMat.opacity=port.level*.7+power*.08;
-   port.cap.position.y=.012+port.level*.05;
-  });
-  // Drones launch from their ports as the checkpoint arrives and dock again as it releases.
+  tilt.lerp(pointerInside&&!small?pointer:zero2,1-Math.exp(-dt*3));
+  ribbons.rotation.set(-tilt.y*.35,tilt.x*.5+time*.05,0);
+  orb.getWorldPosition(orbHalo.position);orbHalo.quaternion.copy(camera.quaternion);orbHalo.scale.setScalar(orbScale*(1+talkPulse*.4));
+  orbHaloMat.opacity=orbOn*(.26+.2*talkPulse+(orbHover?.12:0));
+  pool.position.y=TOP+.015;poolMat.opacity=orbOn*(1-lift)*.5;pool.scale.setScalar(1+grow*.6);
+  orbLight.position.copy(orbHalo.position).y-=.2;orbLight.intensity=orbOn*(2.2+talkPulse*3)*(1-lift*.55);
+  // Satellites leave the orb as the checkpoint arrives and return as it releases.
   const launch=c===0&&p.hold?(p.phase.endsWith('_ARRIVAL')?smooth(p.local):p.phase.endsWith('_RELEASE')?1-smooth(p.local):1):0;
-  drones.forEach((drone,i)=>{
-   drone.group.visible=launch>.01;if(!drone.group.visible)return;
-   drone.level=lerp(drone.level,ports[i].level>.5||(a?.[0]===0&&a[1]===i)?1:0,1-Math.exp(-dt*9));
-   tmp.set(PORTS[i][0],TOP+.08,PORTS[i][1]).lerp(drone.rest,launch);tmp.y+=Math.sin(launch*Math.PI)*.5+Math.sin(time*1.3+i*1.9)*.05*launch;
-   drone.group.position.copy(tmp);drone.group.scale.setScalar((.4+.6*launch)*(1+drone.level*.3));
-   drone.ring.rotation.set(Math.PI/2+Math.sin(time*1.1+i)*.35,time*1.4+i,0);drone.mat.opacity=.55+drone.level*.45;
-   drone.halo.quaternion.copy(rig.quaternion).invert().multiply(camera.quaternion);drone.haloMat.opacity=(.22+drone.level*.6)*launch;
+  sats.forEach((s,i)=>{
+   s.group.visible=launch>.01;if(!s.group.visible)return;
+   s.level=lerp(s.level,a?.[0]===0&&a[1]===i?1:0,1-Math.exp(-dt*9));
+   s.group.position.copy(s.rest).multiplyScalar(launch);s.group.position.y+=Math.sin(time*1.2+i*1.9)*.05*launch;
+   s.group.scale.setScalar((.4+.6*launch)*(1+s.level*.35));
+   s.ring.rotation.set(Math.PI/2+Math.sin(time*1.1+i)*.4,time*1.3+i,0);s.ringMat.opacity=(.4+.6*s.level)*launch;
+   s.halo.quaternion.copy(rig.quaternion).invert().multiply(camera.quaternion);s.haloMat.opacity=(.16+.5*s.level)*launch;
   });
-  // Keys.
-  const wave=(time-rippleAt)*16;
-  for(let i=0;i<KEYS;i++){
-   const ripple=wave<KEYS+3?clamp(1-Math.abs(Math.abs(i-rippleFrom)-wave)/1.6):0,target=Math.max(i===keyHover?1:0,ripple);
-   keyLevel[i]=lerp(keyLevel[i],target,1-Math.exp(-dt*(target>keyLevel[i]?26:7)));
-   dummy.position.set(keyX(i),.388-keyLevel[i]*.016,1.432-keyLevel[i]*.012);dummy.rotation.set(SLOPE,0,0);dummy.scale.set(1,1,1);dummy.updateMatrix();keys.setMatrixAt(i,dummy.matrix);
-   keys.setColorAt(i,color.copy(silver).lerp(lit,keyLevel[i]*power));
-  }
-  keys.instanceMatrix.needsUpdate=true;if(keys.instanceColor)keys.instanceColor.needsUpdate=true;
-  keyGlow.visible=keyHover>=0;if(keyHover>=0){keyGlow.position.set(keyX(keyHover),.43,1.45);keyGlowMat.opacity=.55*power;}
 
-  // ---- gate and X ----
-  gateMat.opacity=gateOpen*.95;gate.scale.setScalar(.6+gateOpen*.5);
+  // ---- the X: rises out of the stone and settles with a slow turn ----
   xPivot.visible=rise>0;
   const settle=c===1&&!p.hold?1-smooth(run):0;
-  xSpin=settle*Math.PI*1.5;
-  xPivot.position.y=lerp(X_START,X_REST,rise)+(rise>=1?Math.sin(time*.9)*.035:0);
-  xPivot.scale.setScalar(c===2?lerp(1,.8,smooth(deploy/.6)):1);
-  xPivot.rotation.set(xPitch,xYaw+xSpin+(rise>=1?Math.sin(time*.33)*.14:0),0);
-  xGlowMat.opacity=rise*.2+gateOpen*.3;xGlow.position.y=xPivot.position.y;
+  xPivot.position.y=lerp(X_START,X_REST,rise)+(rise>=1?Math.sin(time*.8)*.025:0);
+  xPivot.scale.setScalar(c===2?lerp(1,.86,smooth(deploy/.6)):1);
+  xPivot.rotation.set(xPitch,xYaw+settle*Math.PI*.42+(rise>=1?Math.sin(time*.3)*.12:0),0);
+  xClip.constant=-(TOP-.02);
+  // While the X rises the stone opens in light, so the cut through the rock reads as a gateway, not as debris.
+  const gate=c===1&&!p.hold?Math.sin(Math.PI*clamp((run-.05)/.9)):0;
+  if(gate>0){poolMat.opacity=Math.max(poolMat.opacity,gate);pool.scale.setScalar(1.6+gate*1.2);}
+  xGlowMat.opacity=rise*(.1+.04*Math.sin(time*.7))+gate*.45;xGlow.position.y=xPivot.position.y;
+  xMat.emissiveIntensity=.12+.08*rise+gate*.25+(a?.[0]===1&&c===1&&p.hold?.08:0);
 
-  // ---- hologram ----
-  const lift=c===0?0:c===1?rise:1,holoY=lerp(TOP+1.08,TOP+2.92,lift),holoScale=lerp(1,.5,lift);
-  holo.position.set(0,holoY+Math.sin(time*1.1)*.03,0);holo.scale.setScalar(holoScale*(.6+.4*holoOn));
-  talkPulse=Math.max(0,talkPulse-dt*1.6);
-  holoUniforms.uTime.value=time;holoUniforms.uAlpha.value=holoOn*(holoHover?1.25:1);holoUniforms.uPulse.value=Math.max(talkPulse,holoHover?.35:0);
-  holoRingMat.opacity=holoOn*.5;holoHaloMat.opacity=holoOn*(.26+talkPulse*.3+(holoHover?.12:0));holo.getWorldPosition(holoHalo.position);holoHalo.quaternion.copy(camera.quaternion);holoHalo.scale.setScalar(holoScale);
-  pillarMat.uniforms.uAlpha.value=power*.34;
-  holoRings.forEach((ring,i)=>ring.rotation.set(Math.PI/2+Math.sin(time*.4+i*2.1)*.5,time*(.3+i*.17),i*1.1));
-  cone.visible=holoOn>.01;cone.position.set(0,(TOP+holoY-.5*holoScale)/2,0);cone.scale.set(holoScale,Math.max(.01,holoY-.5*holoScale-TOP),holoScale);
-  columnMat.uniforms.uAlpha.value=holoOn*.3+gateOpen*.55;column.quaternion.copy(camera.quaternion);
-  holoLight.position.set(0,holoY,0).applyMatrix4(rig.matrixWorld);holoLight.intensity=holoOn*(3.4+talkPulse*4);
-  // Where the eye looks: the selected service, otherwise the cursor.
+  // ---- service rocks ----
   rig.updateMatrixWorld(true);
-  holo.getWorldPosition(tmp);
-  const target=a&&p.hold&&a[0]===c?anchor(a[0],a[1],tmp2.set(0,0,0)).clone():null;
-  if(target)look.copy(target).sub(tmp).normalize();
-  else if(pointerInside&&!small){raycaster.setFromCamera(pointer,camera);look.copy(raycaster.ray.direction).multiplyScalar(camera.position.distanceTo(tmp)*.8).add(raycaster.ray.origin).sub(tmp).normalize();}
-  else look.copy(camera.position).sub(tmp).normalize();
-  eyeDir.lerp(look,1-Math.exp(-dt*7)).normalize();
-  quat.setFromUnitVectors(tmp2.set(0,0,1),eyeDir);eye.quaternion.copy(rig.quaternion).invert().multiply(quat);
-  eyeMat.opacity=holoOn*.85;irisMat.opacity=holoOn*.9;iris.scale.setScalar(1+(holoHover?.25:0)+talkPulse*.5);
-  // Beam.
+  const toCam=tmp3.copy(camera.position).applyMatrix4(rig.matrixWorld.clone().invert());
+  isles.forEach((isle,i)=>{
+   const out=c===2?smooth((deploy-i*.07)/.55):0,on=a?.[0]===2&&a[1]===i&&c===2&&p.hold?1:0;
+   isle.level=lerp(isle.level,on,1-Math.exp(-dt*8));
+   const visible=out>.001;isle.rock.visible=isle.plate.visible=isle.arc.visible=visible;
+   setRipple(isle.rings[0],c===2?deploy*1.4-i*.1:0,isle.size*1.3,0);setRipple(isle.rings[1],c===2?deploy*1.4-i*.1:0,isle.size*1.3,.3);
+   if(!visible)return;
+   const rockTop=lerp(-1.2,.32,out);isle.rock.position.set(isle.base.x,rockTop-.45*isle.rock.scale.y,isle.base.z);
+   const plateOut=smooth((out-.35)/.65);
+   isle.plate.position.set(isle.base.x,rockTop+isle.lift*plateOut+.45+Math.sin(time*.9+i*1.3)*.04+isle.level*.18,isle.base.z);
+   isle.plate.scale.setScalar((.35+.65*plateOut)*(1+isle.level*.22));
+   isle.plate.rotation.set(-.06,Math.atan2(toCam.x-isle.base.x,toCam.z-isle.base.z),0);
+   isle.faceMat.opacity=plateOut*(out<.9?.75+.25*Math.sin(time*30+i):1);isle.edgeMat.opacity=plateOut*(.45+.55*isle.level);isle.haloMat.opacity=plateOut*(.12+.4*isle.level);
+   isle.arcMat.uniforms.uDraw.value=smooth((out-.2)/.8);isle.arcMat.uniforms.uTime.value=time;isle.arcMat.uniforms.uOn.value=isle.level;
+   // The selected plate plays its miniature; the rest show their icon.
+   if(isle.level>.05){isle.clock+=dt;drawModule(isle.context,i,isle.clock,isle.level>.4);isle.tex.needsUpdate=true;isle.showing='live';}
+   else if(isle.showing==='live'){drawIcon(isle.context,i,0);isle.tex.needsUpdate=true;isle.showing='icon';}
+  });
+
+  // ---- beam from the orb to the selected service ----
+  rig.updateMatrixWorld(true);
+  orb.getWorldPosition(tmp);
+  const target=a&&p.hold&&a[0]===c&&a[0]!==0?anchor(a[0],a[1],tmp2.set(0,0,0)).clone():null;
   beamLevel=lerp(beamLevel,target?1:0,1-Math.exp(-dt*(target?10:6)));
   if(target&&beamLevel>.01){
    const length=tmp.distanceTo(target);beam.visible=hit.visible=true;
    beam.position.copy(tmp).lerp(target,.5);beam.quaternion.setFromUnitVectors(up,tmp2.copy(target).sub(tmp).normalize());beam.scale.set(1,length,1);
-   beamMat.opacity=beamLevel*(.55+.2*Math.sin(time*22));hit.position.copy(target);hit.quaternion.copy(camera.quaternion);hit.scale.setScalar(.7+.15*Math.sin(time*9));hitMat.opacity=beamLevel*.8;
+   beamMat.opacity=beamLevel*(.45+.15*Math.sin(time*20));hit.position.copy(target);hit.quaternion.copy(camera.quaternion);hit.scale.setScalar(.8+.12*Math.sin(time*8));hitMat.opacity=beamLevel*.7;
   }else{beam.visible=hit.visible=false;}
 
-  // ---- modules ----
-  pods.forEach((pod,i)=>{
-   const out=c===2?smooth((deploy-i*.07)/.58):0,on=a?.[0]===2&&a[1]===i&&c===2&&p.hold?1:0;
-   pod.level=lerp(pod.level,on,1-Math.exp(-dt*8));
-   const visible=out>.001;pod.group.visible=pod.arm.visible=pod.knuckle.visible=visible;if(!visible)return;
-   tmp.copy(pod.root).lerp(pod.rest,out);tmp.y+=Math.sin(time*.8+i*1.3)*.035*out+pod.level*.14;
-   pod.group.position.copy(tmp);pod.group.scale.setScalar((.2+.8*out)*(1+pod.level*.2));
-   // Face the camera (yaw only), in the deck's own frame.
-   tmp2.copy(camera.position).applyMatrix4(matrix.copy(rig.matrixWorld).invert());
-   pod.group.rotation.set(-.08,Math.atan2(tmp2.x-tmp.x,tmp2.z-tmp.z),0);
-   pod.screenMat.opacity=smooth((out-.3)/.4)*(out<.8?.7+.3*Math.sin(time*40+i):1);pod.haloMat.opacity=pod.level*.5;
-   tmp2.copy(tmp).setY(tmp.y-.55*pod.group.scale.y);
-   pod.arm.position.copy(pod.root).lerp(tmp2,.5);pod.arm.quaternion.setFromUnitVectors(up,look.copy(tmp2).sub(pod.root).normalize());pod.arm.scale.set(1,Math.max(.001,pod.root.distanceTo(tmp2)),1);
-   pod.knuckle.position.copy(tmp2);
-   // The selected module plays its miniature at full rate; the rest tick over slowly, one per frame.
-   const due=pod.level>.05||Math.floor(time*60)%MODULE_COUNT===i;
-   if(due&&out>.3){pod.clock+=pod.level>.05?dt:dt*MODULE_COUNT*.35;drawModule(pod.context,i,pod.clock,pod.level>.4);pod.texture.needsUpdate=true;}
-  });
-  dustPoints.rotation.y=time*.012;dustMat.opacity=.2+.3*power;
-
   // ---- labels ----
-  rig.updateMatrixWorld(true);camera.updateMatrixWorld();
   if(p.hold){
-   if(c===0)placeNodes(0,drones.map((_,i)=>project(anchor(0,i,tmp),DRONES[i][3])));
+   if(c===0)placeNodes(0,sats.map((_,i)=>project(anchor(0,i,tmp),SATS[i][3])));
    else if(c===1)placeNodes(1,X_TIPS.map((_,i)=>{const n=project(anchor(1,i,tmp),'right');n.side=n.x<stageBox.left+stageBox.width*(.5+off)?'left':'right';return n;}));
-   else placeNodes(2,pods.map((pod,i)=>project(anchor(2,i,tmp).setY(tmp.y-.66*pod.group.scale.y),'below')));
+   else placeNodes(2,isles.map((isle,i)=>project(anchor(2,i,tmp).setY(tmp.y-PLATE_H*.62*isle.plate.scale.y),'below')));
   }
   renderer.render(scene,camera);
  }
@@ -457,20 +475,20 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   pointer.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);ndc.copy(pointer);
   pointerInside=Math.abs(pointer.x)<=1&&Math.abs(pointer.y)<=1;
  }
- function pick():{kind:'holo'|'key'|'port'|'x'|'pod';index:number}|null{
+ function pick():{kind:'orb'|'sat'|'x'|'isle';index:number}|null{
   const p=story;if(!p||!pointerInside)return null;
   raycaster.setFromCamera(ndc,camera);
   const c=p.clip,ready=p.hold;
-  if(raycaster.intersectObject(pickHolo,false).length&&(c>0||ready))return {kind:'holo',index:0};
-  if(c===2&&ready){for(let i=0;i<pods.length;i++)if(raycaster.intersectObject(pods[i].bezel,false).length)return {kind:'pod',index:i};}
+  if(c===0&&ready){for(let i=0;i<sats.length;i++)if(sats[i].group.visible&&raycaster.intersectObject(sats[i].pick,false).length)return {kind:'sat',index:i};}
+  if(raycaster.intersectObject(pickOrb,false).length&&(c>0||ready))return {kind:'orb',index:0};
+  if(c===2&&ready){for(let i=0;i<isles.length;i++)if(raycaster.intersectObject(isles[i].pick,false).length||raycaster.intersectObject(isles[i].rock,false).length)return {kind:'isle',index:i};}
   if(c===1&&ready){
    const x=raycaster.intersectObject(xMesh,false)[0];
    if(x){const local=xPivot.worldToLocal(x.point.clone());let best=0,d=Infinity;X_TIPS.forEach(([u,v],i)=>{const q=(local.x-u)**2+(local.y-v)**2;if(q<d){d=q;best=i;}});return {kind:'x',index:best};}
   }
-  if(c===0&&ready){for(let i=0;i<drones.length;i++)if(raycaster.intersectObject(drones[i].pick,false).length)return {kind:'port',index:i};}
-  const key=raycaster.intersectObject(keys,false)[0];if(key&&key.instanceId!==undefined)return {kind:'key',index:key.instanceId};
   return null;
  }
+ const cpOf=(kind:'sat'|'x'|'isle')=>kind==='sat'?0:kind==='x'?1:2;
  function setHover(next:[number,number]|null){
   if(next?.[0]===hover?.[0]&&next?.[1]===hover?.[1])return;
   const previous=hover;hover=next;
@@ -478,18 +496,18 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   if(next)host.hover(next[0],next[1]);else if(locked)host.hover(locked[0],locked[1]);
  }
  function refreshHover(target:EventTarget|null){
-  if(interactive(target)||dragging){holoHover=false;keyHover=-1;setHover(null);host.stage.style.removeProperty('cursor');return;}
-  const found=pick();holoHover=found?.kind==='holo';keyHover=found?.kind==='key'?found.index:-1;
+  if(interactive(target)||dragging){orbHover=false;setHover(null);host.stage.style.removeProperty('cursor');return;}
+  const found=pick();orbHover=found?.kind==='orb';
   // A locked service stays selected until it is clicked again; hovering others does not steal it.
-  setHover(locked?null:found?.kind==='port'?[0,found.index]:found?.kind==='x'?[1,found.index]:found?.kind==='pod'?[2,found.index]:null);
+  setHover(locked||!found||found.kind==='orb'?null:[cpOf(found.kind),found.index]);
   if(found)host.stage.style.cursor='pointer';else host.stage.style.removeProperty('cursor');
  }
  function onMove(e:PointerEvent){
   setPointer(e);
   if(dragging&&story){
    const dx=e.clientX-dragX,dy=e.clientY-dragY;dragX=e.clientX;dragY=e.clientY;dragMoved+=Math.abs(dx)+Math.abs(dy);
-   if(story.checkpoint===1){xYaw+=dx*.008;xPitch=clamp(xPitch+dy*.004,-.45,.45);}
-   else deckYaw=clamp(deckYaw+dx*.004,-.55,.55);
+   if(story.checkpoint===1){xYaw+=dx*.008;xPitch=clamp(xPitch+dy*.004,-.4,.4);}
+   else isleYaw=clamp(isleYaw+dx*.004,-.55,.55);
    if(dragMoved>12)host.dragged?.(story.checkpoint);
    return;
   }
@@ -505,9 +523,8 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   if(!tap||interactive(e.target))return;
   setPointer(e);const found=pick();
   if(!found){if(locked){const was=locked;locked=null;host.hover(was[0],null);}return;}
-  if(found.kind==='holo'){talkPulse=1;host.talk();return;}
-  if(found.kind==='key'){rippleAt=time;rippleFrom=found.index;return;}
-  const next:[number,number]=[found.kind==='port'?0:found.kind==='x'?1:2,found.index];
+  if(found.kind==='orb'){talkPulse=1;host.talk();return;}
+  const next:[number,number]=[cpOf(found.kind),found.index];
   const same=locked&&locked[0]===next[0]&&locked[1]===next[1];
   if(locked&&!same)host.hover(locked[0],null);
   locked=same?null:next;host.hover(next[0],same?null:next[1]);
@@ -517,7 +534,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  host.stage.addEventListener('pointerdown',onDown,{signal,passive:true});
  window.addEventListener('pointerup',onUp,{signal,passive:true});
  window.addEventListener('pointercancel',()=>{dragging=false;downAt=null;},{signal,passive:true});
- host.stage.addEventListener('pointerleave',()=>{pointerInside=false;holoHover=false;keyHover=-1;if(!dragging)setHover(null);host.stage.style.removeProperty('cursor');},{signal,passive:true});
+ host.stage.addEventListener('pointerleave',()=>{pointerInside=false;orbHover=false;if(!dragging)setHover(null);host.stage.style.removeProperty('cursor');},{signal,passive:true});
  host.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();stopped=true;cancelAnimationFrame(raf);host.fail('context-lost');},{signal});
  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;lastNow=0;}else wake();},{signal});
 
@@ -531,7 +548,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   resize,
   pause(next){paused=next;if(paused){cancelAnimationFrame(raf);raf=0;lastNow=0;}else wake();},
   select(cp,node){domActive=node===null?null:[cp,node];},
-  stats(){const a=active();return {phase:story?.phase??'',quality,fps:Math.round(fps),active:a?[a[0],a[1]]:null,locked:!!locked,yaw:story?.checkpoint===1?xYaw:deckYaw,power:glassMat.emissiveIntensity};},
+  stats(){const a=active();return {phase:story?.phase??'',quality,fps:Math.round(fps),active:a?[a[0],a[1]]:null,locked:!!locked,yaw:story?.checkpoint===1?xYaw:isleYaw,power:moon.intensity};},
   frame(){frame(performance.now());},
   dispose(){
    stopped=true;cancelAnimationFrame(raf);host.stage.style.removeProperty('cursor');

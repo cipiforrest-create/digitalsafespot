@@ -7131,18 +7131,6 @@
     "SEO / AEO / GEO",
     "SEO / AEO / GEO"
   ],
-  "Srebrni Digital X terminal s hologramom digitalnog asistenta": [
-    "Silver Digital X terminal with the digital assistant hologram",
-    "Silbernes Digital X Terminal mit dem Hologramm des digitalen Assistenten"
-  ],
-  "Srebrni X izlazi iz Digital X terminala": [
-    "A silver X rising out of the Digital X terminal",
-    "Ein silbernes X steigt aus dem Digital X Terminal"
-  ],
-  "Šest servisnih modula povezanih s Digital X terminalom": [
-    "Six service modules connected to the Digital X terminal",
-    "Sechs Servicemodule, verbunden mit dem Digital X Terminal"
-  ],
   "03 / OD JEDNE VIZIJE DO ŠEST POVEZANIH SISTEMA": [
     "03 / FROM ONE VISION TO SIX CONNECTED SYSTEMS",
     "03 / VON EINER VISION ZU SECHS VERBUNDENEN SYSTEMEN"
@@ -7154,5 +7142,17 @@
   "Povezani sistem: šest servisnih modula oko X Core": [
     "Connected system: six service modules around the X Core",
     "Verbundenes System: sechs Servicemodule um den X Core"
+  ],
+  "Stakleni orb digitalnog asistenta na stijeni u tamnom jezeru": [
+    "Glass orb of the digital assistant on a rock in a dark lake",
+    "Glaskugel des digitalen Assistenten auf einem Felsen in einem dunklen See"
+  ],
+  "Mramorni X na kamenom postolju usred tamnog jezera": [
+    "Marble X on a stone plinth in the middle of a dark lake",
+    "Marmor-X auf einem Steinsockel mitten in einem dunklen See"
+  ],
+  "Šest kamenih otoka sa staklenim pločama povezanih svjetlom s mramornim X-om": [
+    "Six stone islands with glass plates, linked by light to the marble X",
+    "Sechs Steininseln mit Glasplatten, durch Licht mit dem Marmor-X verbunden"
   ]
 }
