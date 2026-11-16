@@ -118,7 +118,6 @@ const WATER_FRAGMENT=`uniform sampler2D tDiffuse;uniform float uTime;uniform flo
 export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  let renderer:WebGLRenderer;
  try{renderer=new WebGLRenderer({canvas:host.canvas,antialias:true,alpha:true,powerPreference:'high-performance'});}catch{return null;}
- // Transparent clear: the page's 0/1 rain stays faintly visible through the sky.
  renderer.setClearColor(BG,0);renderer.toneMapping=ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;renderer.outputColorSpace=SRGBColorSpace;renderer.localClippingEnabled=true;
  const disposables:{dispose():void}[]=[];
  const keep=<T extends {dispose():void}>(x:T)=>{disposables.push(x);return x;};
@@ -144,8 +143,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
   fragmentShader:`uniform sampler2D map;uniform float uFade;varying vec2 vUv;
    void main(){vec3 c=texture2D(map,vUv).rgb;
-    // The sky lets the page's 0/1 rain show through faintly; the water stays solid.
-    float a=mix(.8,1.,smoothstep(.36,.46,1.-vUv.y));gl_FragColor=vec4(c*.92,a*uFade);
+    gl_FragColor=vec4(c*.92,uFade);
     #include <colorspace_fragment>
    }`}));
  const backdrop=new Mesh(keep(new PlaneGeometry(1,1)),backMat);backdrop.renderOrder=-10;backdrop.frustumCulled=false;camera.add(backdrop);

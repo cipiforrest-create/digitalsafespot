@@ -143,12 +143,10 @@
 /* Final Engine scene: the chapter heading fades under the closing copy while its live nodes stay. */
 .cinema-story [data-cinema-state="2"] .cinema-system-heading{opacity:var(--cinema-heading-opacity,1)}
 
-/* The live deck renders on a transparent canvas, so the page's 0/1 rain stays present behind the whole story.
-   It is dimmed while the story is on screen, and phones veil the copy area so text never sits on bare digits. */
+/* The live scene renders on a transparent canvas over the page background; phones veil the copy area beneath it. */
 @media(prefers-reduced-motion:no-preference){
  .cinema-story[data-enhanced][data-world=on],.cinema-story[data-enhanced][data-world=on] .cinema-screen{background:transparent}
  .cinema-shell:has(.cinema-story[data-enhanced][data-world=on]){background:transparent}
- .story-visible #matrix-background{opacity:.42}
 }
 @media(max-width:720px) and (prefers-reduced-motion:no-preference){
  .cinema-story[data-enhanced][data-world=on] .cinema-stage{background:linear-gradient(180deg,#03030300 0,#03030300 calc(var(--band) - 40px),#030303d9 calc(var(--band) + 30px),#030303d9 100%)}
