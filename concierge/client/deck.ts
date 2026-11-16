@@ -2,13 +2,13 @@
 // a marble X that rises out of the water, and service rocks that surface around it, joined by arcs of light.
 // The backdrop and the stone textures are generated images (ai-concierge-preview/media/isle-v1); everything else is
 // procedural. Every scroll-driven value is a pure function of the story position, so reverse scrolling replays it.
-import {ACESFilmicToneMapping,AdditiveBlending,AmbientLight,BackSide,BufferAttribute,BufferGeometry,CanvasTexture,Color,CylinderGeometry,DirectionalLight,DoubleSide,EdgesGeometry,ExtrudeGeometry,FogExp2,Group,IcosahedronGeometry,LineBasicMaterial,Matrix4,LineSegments,Mesh,MeshBasicMaterial,MeshPhysicalMaterial,MeshStandardMaterial,MirroredRepeatWrapping,PerspectiveCamera,Plane,PlaneGeometry,PMREMGenerator,PointLight,Points,PointsMaterial,QuadraticBezierCurve3,Quaternion,Raycaster,RepeatWrapping,RingGeometry,Scene,ShaderMaterial,Shape,SphereGeometry,SRGBColorSpace,TextureLoader,TorusGeometry,TubeGeometry,Vector2,Vector3,WebGLRenderer,BoxGeometry,type Material,type Texture} from 'three';
+import {ACESFilmicToneMapping,AdditiveBlending,AmbientLight,BackSide,BufferAttribute,BufferGeometry,CanvasTexture,Color,CylinderGeometry,DirectionalLight,DoubleSide,EdgesGeometry,ExtrudeGeometry,FogExp2,Group,IcosahedronGeometry,LineBasicMaterial,Matrix4,LineSegments,Mesh,MeshBasicMaterial,MeshPhysicalMaterial,MeshStandardMaterial,MirroredRepeatWrapping,PerspectiveCamera,Plane,PlaneGeometry,PMREMGenerator,PointLight,LineLoop,Points,PointsMaterial,QuadraticBezierCurve3,Quaternion,Raycaster,RepeatWrapping,RingGeometry,Scene,ShaderMaterial,Shape,SphereGeometry,SRGBColorSpace,TextureLoader,TorusGeometry,TubeGeometry,Vector2,Vector3,WebGLRenderer,BoxGeometry,type Material,type Texture} from 'three';
 import {Reflector} from 'three/examples/jsm/objects/Reflector.js';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {smooth,type StoryPosition} from '../shared/cinema-timeline';
-import {drawIcon,drawModule} from './deck-modules';
+import {drawPanel,PANEL_W,PANEL_H} from './deck-modules';
 
-export type NodePlacement={x:number;y:number;depth:number;side:'left'|'right'|'below'|'above'};
+export type NodePlacement={x:number;y:number;depth:number;side:'left'|'right'|'below'|'above'|'center';w?:number;h?:number};
 export type DeckHost={
  canvas:HTMLCanvasElement;screen:HTMLElement;stage:HTMLElement;small:boolean;
  /** Stage-pixel anchors for the spatial service links of checkpoint `cp`. */
@@ -19,6 +19,7 @@ export type DeckHost={
  talk():void;
  fail(reason:string):void;
  dragged?(cp:number):void;
+ open?(cp:number,node:number):void;
 };
 export type DeckStats={phase:string;quality:number;fps:number;active:[number,number]|null;locked:boolean;yaw:number;power:number};
 export type Deck={update(p:StoryPosition):void;resize(small:boolean):void;pause(paused:boolean):void;select(cp:number,node:number|null):void;stats():DeckStats;frame():void;dispose():void};
@@ -38,7 +39,9 @@ const PED_S=.84,PED_H=.245*PED_S,TOP=.42,ORB_R=.82,ORB_REST=TOP+PED_H+ORB_R*.97;
 const SATS:[number,number,number,'left'|'right'][]=[[-1.45,.75,.2,'left'],[1.45,.8,.1,'right'],[1.55,-.55,.6,'right'],[-1.5,-.6,.55,'left']];
 // Service rocks: angle from the front (degrees), radius, and how high the glass plate floats above the rock.
 const MOUNTS:[number,number,number][]=[[-124,4.5,1.55],[-78,5.1,1.3],[-38,4.9,1.05],[38,4.9,1.05],[78,5.1,1.3],[124,4.5,1.55]];
-const PLATE_W=1.32,PLATE_H=.82;
+// Act 3 glass panels: two columns of three beside the X (order: left top→bottom 0,1,2; right top→bottom 5,4,3).
+const PLATE_W=2.5,PLATE_H=PLATE_W*PANEL_H/PANEL_W;
+const PANEL_SLOTS:[number,number][]=[[-1,0],[-1,1],[-1,2],[1,2],[1,1],[1,0]];
 
 type CameraKey={pos:[number,number,number];target:[number,number,number];off:number};
 const CAMERA:CameraKey[]=[
@@ -187,6 +190,33 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  const xMat=keep(new MeshPhysicalMaterial({map:marbleMap,color:0xd4d8de,roughness:.24,metalness:.05,clearcoat:1,clearcoatRoughness:.06,envMapIntensity:1.6,emissive:new Color(0xffffff),emissiveMap:marbleMap,emissiveIntensity:.08,clippingPlanes:[xClip]}));
  const xPivot=new Group(),xMesh=new Mesh(xGeometry,xMat);xPivot.add(xMesh);xPivot.visible=false;rig.add(xPivot);
  const X_HALF=(350-82)*X_SCALE/2,X_REST=TOP+X_HALF+.02,X_START=TOP-X_HALF*2.1;
+ // Fractured X (Blender: HERO_xs_* shards around a light core, HERO_x_core) — filled in when isle.glb arrives.
+ const xCoreMat=keep(new MeshBasicMaterial({color:WHITE,toneMapped:false,clippingPlanes:[xClip],fog:false}));
+ const xShards:{mesh:Mesh;dir:Vector3;spin:number}[]=[];let xCore:Mesh|null=null;
+ // Light tether from the orb into the heart of the X (acts 2 and 3).
+ const tetherUniforms={uTime:{value:0},uAlpha:{value:0}};
+ const tetherMat=keep(new ShaderMaterial({uniforms:tetherUniforms,transparent:true,depthWrite:false,blending:AdditiveBlending,
+  vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+  fragmentShader:`uniform float uTime;uniform float uAlpha;varying vec2 vUv;void main(){float pulse=pow(.5+.5*sin(vUv.y*40.+uTime*6.),8.);float a=(.55+.45*pulse)*uAlpha*smoothstep(0.,.06,vUv.y)*smoothstep(1.,.94,vUv.y);gl_FragColor=vec4(vec3(.95,.97,1.)*a,a);}`}));
+ const tether=new Mesh(keep(new CylinderGeometry(.007,.007,1,8,1,true)),tetherMat);tether.visible=false;scene.add(tether);
+ const tetherGlowMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ tether.add(new Mesh(keep(new CylinderGeometry(.035,.035,1,10,1,true)),tetherGlowMat));
+ // A wide orbit of light around the X, with bright nodes riding it (acts 2 and 3).
+ const ellipse=new Group();rig.add(ellipse);ellipse.visible=false;
+ const ellipseLineMat=keep(new LineBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ const ellipseMat=keep(new PointsMaterial({color:WHITE,map:glow,size:.06,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ {const n=small0?260:520,pos=new Float32Array(n*3);for(let i=0;i<n;i++){const a=i/n*Math.PI*2;pos[i*3]=Math.cos(a);pos[i*3+1]=0;pos[i*3+2]=Math.sin(a);}
+  const g=keep(new BufferGeometry());g.setAttribute('position',new BufferAttribute(pos,3));ellipse.add(new Points(g,ellipseMat));ellipse.add(new LineLoop(g,ellipseLineMat));}
+ const ellipseNodeMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ const ellipseNodes=[0,1,2,3,4,5,6,7].map(()=>{const m=new Mesh(keep(new PlaneGeometry(.32,.32)),ellipseNodeMat);rig.add(m);return m;});
+ // Two tall light portals at the edges of the lake (act 3).
+ const portalUniforms={uTime:{value:0},uAlpha:{value:0}};
+ const portalMat=keep(new ShaderMaterial({uniforms:portalUniforms,transparent:true,depthWrite:false,blending:AdditiveBlending,side:DoubleSide,
+  vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+  fragmentShader:`uniform float uTime;uniform float uAlpha;varying vec2 vUv;void main(){float edge=pow(1.-abs(vUv.x*2.-1.),.5);float rim=smoothstep(.93,1.,abs(vUv.x*2.-1.));
+   float streak=.6+.4*sin(vUv.x*90.+uTime*.8)*sin(vUv.x*37.-uTime*.5);float fall=smoothstep(0.,.12,vUv.y)*(.35+.65*vUv.y);
+   float a=(rim*1.4+edge*.34*streak+.08)*fall*uAlpha;gl_FragColor=vec4(vec3(.9,.94,1.)*a,a);}`}));
+ const portals=[-1,1].map(sd=>{const m=new Mesh(keep(new PlaneGeometry(3.6,10)),portalMat);m.position.set(sd*11.2,4.6,-6);m.rotation.y=-sd*.5;m.visible=false;scene.add(m);return m;});
  const xGlowMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
  const xGlow=new Mesh(keep(new PlaneGeometry(5.2,5.2)),xGlowMat);xGlow.position.set(0,X_REST,-.9);rig.add(xGlow);
 
@@ -303,11 +333,14 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  // ---- service rocks with glass plates (act 3) ----
  const plateGeometry=keep(new PlaneGeometry(PLATE_W,PLATE_H)),plateEdges=keep(new EdgesGeometry(new BoxGeometry(PLATE_W+.04,PLATE_H+.04,.03))),platePick=keep(new BoxGeometry(PLATE_W+.1,PLATE_H+.1,.1));
  const arcMats:ShaderMaterial[]=[];
+ const panelFont=getComputedStyle(document.body).fontFamily||'system-ui, sans-serif';
+ const panelNames=[...host.stage.querySelectorAll('[data-world-nodes="2"] strong')].map(n=>(n.textContent||'').trim());
  const isles=MOUNTS.map(([deg,radius,lift],i)=>{
   const a=deg*Math.PI/180,base=new Vector3(Math.sin(a)*radius,0,Math.cos(a)*radius),size=.95+hash(i,7,1)*.35;
   const rock=new Mesh(keep(rockGeometry(11+i*3.7,small0?2:3)),rockMat);rock.scale.set(size*1.05,.85*size,size*.9);rig.add(rock);
   const plate=new Group();rig.add(plate);
-  const canvas=document.createElement('canvas');canvas.width=384;canvas.height=240;const context=canvas.getContext('2d')!;
+  const canvas=document.createElement('canvas');canvas.width=PANEL_W;canvas.height=PANEL_H;const context=canvas.getContext('2d')!;
+  const [side,row]=PANEL_SLOTS[i],slot=new Vector3(side*(small0?2.05:4.35),(small0?3.2:3.55)-row*(small0?.62:1.02),small0?1.6:.9);
   const tex=keep(new CanvasTexture(canvas));tex.colorSpace=SRGBColorSpace;
   const faceMat=keep(new MeshBasicMaterial({map:tex,transparent:true,opacity:0,toneMapped:false,depthWrite:false,fog:false,side:DoubleSide}));
   const face=new Mesh(plateGeometry,faceMat);plate.add(face);
@@ -315,8 +348,8 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   const haloMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false})),halo=new Mesh(keep(new PlaneGeometry(3,2.2)),haloMat);halo.position.z=-.05;plate.add(halo);
   const pick=new Mesh(platePick,pickMat);plate.add(pick);
   const rings=[ripple(0),ripple(0)];rings.forEach(r=>{r.position.x=base.x;r.position.z=base.z;rig.add(r);});
-  // Arc of light from the foot of the X to the rock.
-  const top=base.clone().setY(.3),from=new Vector3(base.x*.12,.55,base.z*.12),mid=from.clone().lerp(top,.5).setY(1.6+radius*.18);
+  // Arc of light from the heart of the X to the inner edge of its panel.
+  const panelScale=small0?.5:1,top=slot.clone().setX(slot.x-side*PLATE_W*.5*panelScale),from=new Vector3(side*.35,1.05+row*.1,.25),mid=from.clone().lerp(top,.5).setY(Math.max(from.y,top.y)+.55);
   const arcMat=keep(new ShaderMaterial({uniforms:{uDraw:{value:0},uTime:{value:0},uOn:{value:0}},transparent:true,depthWrite:false,blending:AdditiveBlending,fog:false,
    vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
    fragmentShader:`uniform float uDraw;uniform float uTime;uniform float uOn;varying vec2 vUv;
@@ -325,10 +358,11 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
      float a=ends*(.32+.4*uOn+pulse*(.3+.7*uOn)+head*.8);gl_FragColor=vec4(vec3(.92,.95,1.)*a,a);}`}));
   arcMats.push(arcMat);
   const arc=new Mesh(keep(new TubeGeometry(new QuadraticBezierCurve3(from,mid,top),48,.012,6,false)),arcMat);rig.add(arc);
-  drawIcon(context,i,0);tex.needsUpdate=true;
-  return {rock,plate,face,faceMat,edgeMat,haloMat,pick,rings,arc,arcMat,context,tex,base,size,lift,level:0,clock:i*1.7,showing:'icon' as 'icon'|'live'};
+  return {rock,plate,face,faceMat,edgeMat,haloMat,pick,rings,arc,arcMat,context,tex,base,size,lift,slot,panelScale,level:0,clock:i*1.7,showing:'icon' as 'icon'|'live'};
  });
 
+ const drawPanels=()=>isles.forEach((isle,i)=>{drawPanel(isle.context,i,panelNames[i]||'',isle.level,isle.clock,panelFont);isle.tex.needsUpdate=true;});
+ drawPanels();document.fonts?.ready.then(()=>{if(!stopped){drawPanels();wake();}});
  // ---- the chrome pedestal under the orb (act 1) and the shaft of light that falls on it ----
  const chromeMat=keep(new MeshPhysicalMaterial({color:0xdfe4ea,metalness:1,roughness:.09,clearcoat:1,clearcoatRoughness:.05,envMapIntensity:1.9}));
  const pedGlowMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
@@ -352,6 +386,13 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   if(islands.length)isles.forEach((isle,i)=>{const old=isle.rock.geometry;isle.rock.geometry=islands[i%islands.length];old.dispose();});
   // The bevelled marble X and the chrome pedestal with its light rings, modelled in Blender.
   if(found.HERO_x){const old=xMesh.geometry;xMesh.geometry=found.HERO_x;old.dispose();}
+  // Shards replace the solid X on screen; the solid X stays as the invisible pick and beam target.
+  const shardKeys=Object.keys(found).filter(k=>/^HERO_xs_\d+$/.test(k)).sort();
+  if(shardKeys.length&&found.HERO_x_core){
+   shardKeys.forEach((k,i)=>{const g=found[k];g.computeBoundingSphere();const ctr=g.boundingSphere!.center;
+    const m=new Mesh(g,xMat);xPivot.add(m);xShards.push({mesh:m,dir:new Vector3(ctr.x,ctr.y,0).normalize(),spin:(i%2?1:-1)*(.25+.1*i)});});
+   xCore=new Mesh(found.HERO_x_core,xCoreMat);xPivot.add(xCore);xMesh.visible=false;
+  }
   if(found.PED_base){const old=pedBase.geometry;pedBase.geometry=found.PED_base;old.dispose();}
   if(found.PED_glow){const old=pedGlow.geometry;pedGlow.geometry=found.PED_glow;old.dispose();}
   wake();
@@ -376,7 +417,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  let quality=Math.min(devicePixelRatio||1,small?1.5:2),slow=0,fps=60;
  const pointer=new Vector2(0,0),ndc=new Vector2(2,2);let pointerInside=false;
  let hover:[number,number]|null=null,locked:[number,number]|null=null,domActive:[number,number]|null=null,orbHover=false;
- let talkPulse=0,isleYaw=0,xYaw=0,xPitch=0,dragging=false,dragX=0,dragY=0,dragMoved=0,downAt:[number,number]|null=null,beamLevel=0,lockMix=0;
+ let talkPulse=0,isleYaw=0,xYaw=0,xPitch=0,dragging=false,dragX=0,dragY=0,dragMoved=0,downAt:[number,number]|null=null,beamLevel=0,lockMix=0,xFocusMix=0;
  const look=new Vector3(),tilt=new Vector2(),zero2=new Vector2();
  const stageBox={left:0,top:0,width:1,height:1};
  const lastPlaced:string[]=['','',''];
@@ -514,7 +555,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   xPivot.visible=rise>0;
   const settle=c===1&&!p.hold?1-smooth(run):0;
   xPivot.position.y=lerp(X_START,X_REST,rise)+(rise>=1?Math.sin(time*.8)*.025:0);
-  xPivot.scale.setScalar(c===2?lerp(1,.86,smooth(deploy/.6)):1);
+  xPivot.scale.setScalar(c===2?lerp(1,1.14,smooth(deploy/.6)):1);
   xPivot.rotation.set(xPitch,xYaw+settle*Math.PI*.42+(rise>=1?Math.sin(time*.3)*.12:0),0);
   xClip.constant=-(TOP-.02);
   // While the X rises the stone opens in light, so the cut through the rock reads as a gateway, not as debris.
@@ -522,6 +563,25 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   if(gate>0){poolMat.opacity=Math.max(poolMat.opacity,gate);pool.scale.setScalar(1.6+gate*1.2);}
   xGlowMat.opacity=rise*(.1+.04*Math.sin(time*.7))+gate*.45;xGlow.position.y=xPivot.position.y;
   xMat.emissiveIntensity=.12+.08*rise+gate*.25+(a?.[0]===1&&c===1&&p.hold?.08:0);
+  // The shards gather as the X rises; afterwards they breathe apart a little, more on hover, and the core shows
+  // through the cracks.
+  const xFocus=a&&(a[0]===1||a[0]===2)&&p.hold?1:0;xFocusMix=lerp(xFocusMix,xFocus,1-Math.exp(-dt*5));
+  const assemble=c===1&&!p.hold?1-smooth((run-.05)/.75):0;
+  xShards.forEach((sh,i)=>{const breathe=(.012+.03*xFocusMix+.05*talkPulse)*(.6+.4*Math.sin(time*1.3+i*1.7));
+   sh.mesh.position.copy(sh.dir).multiplyScalar(assemble*1.1+breathe);sh.mesh.rotation.set(0,0,sh.spin*assemble);});
+  xCoreMat.color.setScalar(.55+.35*xFocusMix+.5*gate+.12*Math.sin(time*2.1));
+  // tether: orb → the notch at the top of the X
+  const tetherOn=c>=1?smooth((rise-.55)/.4)*lift:0;tether.visible=tetherOn>.01;
+  if(tether.visible){orb.getWorldPosition(tmp);tmp2.set(-.05,.5,0).applyMatrix4(xPivot.matrixWorld);
+   tmp.y-=ORB_R*orbScale*.92;const len=tmp.distanceTo(tmp2);tether.position.copy(tmp).lerp(tmp2,.5);tether.quaternion.setFromUnitVectors(up,tmp3.copy(tmp).sub(tmp2).normalize());tether.scale.set(1,len,1);
+   tetherUniforms.uTime.value=time;tetherUniforms.uAlpha.value=tetherOn*(.8+.2*xFocusMix);tetherGlowMat.opacity=tetherOn*.08;}
+  // orbit ring: tight around the X in act 2, wide around the whole system in act 3
+  const ringOn=c>=1?smooth((rise-.3)/.6):0;ellipse.visible=ringOn>.01;
+  const wide=c===2?smooth(deploy/.8):0,rx=lerp(3.3,6.9,wide),rz=lerp(1.5,3.4,wide);
+  ellipse.scale.set(rx,1,rz);ellipse.position.y=lerp(1.25,.75,wide);ellipse.rotation.set(.04,time*.02,0);ellipseMat.opacity=ringOn*.6;ellipseLineMat.opacity=ringOn*.42;ellipseMat.size=small?.08:.06;
+  ellipseNodes.forEach((nd,i)=>{nd.visible=ellipse.visible;const ang=i/8*Math.PI*2+time*.12;nd.position.set(Math.cos(ang)*rx,ellipse.position.y,Math.sin(ang)*rz);nd.quaternion.copy(rig.quaternion).invert().multiply(camera.quaternion);nd.scale.setScalar(.8+.3*Math.sin(time*2+i));});
+  ellipseNodeMat.opacity=ringOn*.9;
+  const portalOn=c===2?smooth((deploy-.2)/.6):0;portals.forEach(m=>{m.visible=portalOn>.01;});portalUniforms.uTime.value=time;portalUniforms.uAlpha.value=portalOn*(1-.4*closing);
 
   // ---- service rocks ----
   rig.updateMatrixWorld(true);
@@ -534,14 +594,15 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
    if(!visible)return;
    const rockTop=lerp(-1.2,.32,out);isle.rock.position.set(isle.base.x,rockTop-.45*isle.rock.scale.y,isle.base.z);
    const plateOut=smooth((out-.35)/.65);
-   isle.plate.position.set(isle.base.x,rockTop+isle.lift*plateOut+.45+Math.sin(time*.9+i*1.3)*.04+isle.level*.18,isle.base.z);
-   isle.plate.scale.setScalar((.35+.65*plateOut)*(1+isle.level*.22));
-   isle.plate.rotation.set(-.06,Math.atan2(toCam.x-isle.base.x,toCam.z-isle.base.z),0);
+   // Panels fly out of the X to their column slot and hang there, turned to the camera.
+   isle.plate.position.set(0,1.6,.3).lerp(isle.slot,plateOut);isle.plate.position.y+=Math.sin(time*.9+i*1.3)*.035;isle.plate.position.z+=isle.level*.35;
+   isle.plate.scale.setScalar(isle.panelScale*(.25+.75*plateOut)*(1+isle.level*.06));
+   isle.plate.rotation.set(-.05,Math.atan2(toCam.x-isle.plate.position.x,toCam.z-isle.plate.position.z)*.6,0);
    isle.faceMat.opacity=plateOut*(out<.9?.75+.25*Math.sin(time*30+i):1);isle.edgeMat.opacity=plateOut*(.45+.55*isle.level);isle.haloMat.opacity=plateOut*(.12+.4*isle.level);
    isle.arcMat.uniforms.uDraw.value=smooth((out-.2)/.8);isle.arcMat.uniforms.uTime.value=time;isle.arcMat.uniforms.uOn.value=isle.level;
    // The selected plate plays its miniature; the rest show their icon.
-   if(isle.level>.05){isle.clock+=dt;drawModule(isle.context,i,isle.clock,isle.level>.4);isle.tex.needsUpdate=true;isle.showing='live';}
-   else if(isle.showing==='live'){drawIcon(isle.context,i,0);isle.tex.needsUpdate=true;isle.showing='icon';}
+   if(isle.level>.05){isle.clock+=dt;drawPanel(isle.context,i,panelNames[i]||'',isle.level,isle.clock,panelFont);isle.tex.needsUpdate=true;isle.showing='live';}
+   else if(isle.showing==='live'){drawPanel(isle.context,i,panelNames[i]||'',0,0,panelFont);isle.tex.needsUpdate=true;isle.showing='icon';}
   });
 
   // ---- beam from the orb to the selected service ----
@@ -568,7 +629,13 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
      n.y=ry+(upper?-gap:gap);return n;}));
    }
    else if(c===1)placeNodes(1,X_TIPS.map((_,i)=>{const n=project(anchor(1,i,tmp),'right');n.side=n.x<stageBox.left+stageBox.width*(.5+off)?'left':'right';return n;}));
-   else placeNodes(2,isles.map((isle,i)=>project(anchor(2,i,tmp).setY(tmp.y-PLATE_H*.62*isle.plate.scale.y),'below')));
+   else{
+    // The panel carries the name; its link becomes a transparent hit area of the panel's size, for clicks and keyboard focus.
+    tmp3.setFromMatrixColumn(camera.matrixWorld,0);
+    placeNodes(2,isles.map((isle,i)=>{const at=anchor(2,i,tmp),n=project(at,'center'),k=isle.plate.getWorldScale(tmp2).x;
+     const l=project(at.clone().addScaledVector(tmp3,-PLATE_W*.5*k),'center'),r=project(at.clone().addScaledVector(tmp3,PLATE_W*.5*k),'center');
+     n.w=Math.round(Math.abs(r.x-l.x));n.h=Math.round(n.w*PLATE_H/PLATE_W);return n;}));
+   }
   }
   renderer.render(scene,camera);
  }
@@ -633,6 +700,8 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   if(found.kind==='orb'){talkPulse=1;host.talk();return;}
   const next:[number,number]=[cpOf(found.kind),found.index];
   const same=locked&&locked[0]===next[0]&&locked[1]===next[1];
+  // Act 3: the first click opens the panel's live preview, a second click on it opens the service page.
+  if(same&&next[0]===2&&host.open){host.open(2,next[1]);return;}
   if(locked&&!same)host.hover(locked[0],null);
   locked=same?null:next;host.hover(next[0],same?null:next[1]);
   if(same&&e.pointerType!=='mouse')hover=null;

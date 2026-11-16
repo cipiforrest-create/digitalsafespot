@@ -33,7 +33,7 @@ export function mountCinemaStory(section:HTMLElement,signal:AbortSignal){
  function schedule(){checkMotion();if(!raf&&visible&&!stopped&&!reduced.matches&&!document.hidden)raf=requestAnimationFrame(render);}
  // Spatial nodes follow the live projection when the deck runs, otherwise their still anchors.
  function place(cp:number,pts:NodePlacement[]){
-  groups[cp].forEach((n,i)=>{const p=pts[i];if(!p)return;n.style.setProperty('--nx',`${p.x.toFixed(1)}px`);n.style.setProperty('--ny',`${p.y.toFixed(1)}px`);n.style.setProperty('--nd',String(p.depth));n.dataset.side=p.side;});
+  groups[cp].forEach((n,i)=>{const p=pts[i];if(!p)return;n.style.setProperty('--nx',`${p.x.toFixed(1)}px`);n.style.setProperty('--ny',`${p.y.toFixed(1)}px`);n.style.setProperty('--nd',String(p.depth));if(p.w){n.style.setProperty('--nw',`${p.w}px`);n.style.setProperty('--nh',`${p.h}px`);}n.dataset.side=p.side;});
  }
  function placeStatic(){
   const s=screen!.getBoundingClientRect(),g=stage!.getBoundingClientRect();
@@ -53,7 +53,8 @@ export function mountCinemaStory(section:HTMLElement,signal:AbortSignal){
    deck=createDeck({canvas:canvas!,screen:screen!,stage:stage!,small:mobile.matches,place,hover:mark,
     talk:()=>section.querySelector<HTMLButtonElement>('[data-talk]')?.click(),
     fail:reason=>{section.dataset.worldFail=reason;setDeck('fallback');},
-    dragged:cp=>{if(cp>=0&&!dragged[cp]){dragged[cp]=true;schedule();}}},signal);
+    dragged:cp=>{if(cp>=0&&!dragged[cp]){dragged[cp]=true;schedule();}},
+    open:(cp,node)=>groups[cp][node]?.querySelector<HTMLAnchorElement>('a')?.click()},signal);
    if(!deck){setDeck('fallback');return;}
    setDeck('on');deck.pause(!visible);if(last)deck.update(last);ready();schedule();
    (section as HTMLElement&{deck?:Deck}).deck=deck;

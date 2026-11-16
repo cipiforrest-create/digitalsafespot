@@ -128,9 +128,34 @@ function reticle(x:Ctx){
  for(const [cx,cy] of [[-W/2+10,-H/2+10],[W/2-10,-H/2+10],[-W/2+10,H/2-10],[W/2-10,H/2-10],[0,H/2-8]]){const g=x.createRadialGradient(cx,cy,0,cx,cy,16);g.addColorStop(0,'rgba(255,255,255,.9)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(cx-16,cy-16,32,32);}
  x.restore();
 }
-export function drawIcon(x:Ctx,index:number,glow:number){
- frame(x,glow>.5);x.save();x.translate(W/2,H/2);reticle(x);x.scale(1.16,1.16);x.lineWidth=3;x.lineJoin='round';x.lineCap='round';
+export function drawIcon(x:Ctx,index:number,glow:number,bare=false){
+ if(!bare)frame(x,glow>.5);x.save();x.translate(W/2,H/2);if(!bare)reticle(x);x.scale(1.16,1.16);x.lineWidth=3;x.lineJoin='round';x.lineCap='round';
  x.shadowColor='rgba(255,255,255,.95)';x.shadowBlur=8+16*glow;x.strokeStyle=`rgba(244,246,249,${.86+.14*glow})`;
  icons[index%MODULE_COUNT](x);x.shadowBlur=0;x.globalAlpha=.55;icons[index%MODULE_COUNT](x);x.restore();
 }
-export function drawModule(x:Ctx,index:number,t:number,active:boolean){frame(x,active);x.save();draw[index%MODULE_COUNT](x,t);x.restore();}
+export function drawModule(x:Ctx,index:number,t:number,active:boolean,bare=false){if(!bare)frame(x,active);x.save();draw[index%MODULE_COUNT](x,t);x.restore();}
+// Act 3 glass panel (after the Digital X key visual): the service's icon, or its live miniature while selected, a
+// divider, then its name. 640×200 canvas; the name comes from the page so translations carry through.
+export const PANEL_W=640,PANEL_H=200;
+export function drawPanel(x:Ctx,index:number,name:string,level:number,t:number,font:string){
+ x.globalAlpha=1;x.shadowBlur=0;x.clearRect(0,0,PANEL_W,PANEL_H);
+ x.beginPath();x.roundRect(4,4,PANEL_W-8,PANEL_H-8,18);x.fillStyle=`rgba(8,10,14,${.72+.12*level})`;x.fill();
+ const g=x.createLinearGradient(0,0,PANEL_W*.6,PANEL_H);g.addColorStop(0,'rgba(255,255,255,.16)');g.addColorStop(.5,'rgba(255,255,255,.03)');g.addColorStop(1,'rgba(255,255,255,.08)');x.fillStyle=g;x.fill();
+ x.lineWidth=2+2*level;x.strokeStyle=`rgba(232,238,246,${.5+.45*level})`;x.stroke();
+ x.save();x.beginPath();x.roundRect(4,4,PANEL_W-8,PANEL_H-8,18);x.clip();
+ // icon area: 320×200 (the 384×240 drawings scaled to fit)
+ x.save();x.translate(8,0);x.scale(PANEL_H/H,PANEL_H/H);
+ if(level>.05)drawModule(x,index,t,level>.4,true);else drawIcon(x,index,level,true);
+ x.restore();x.restore();
+ x.globalAlpha=1;x.shadowBlur=0;x.strokeStyle='rgba(220,226,235,.35)';x.lineWidth=1.5;x.beginPath();x.moveTo(338,38);x.lineTo(338,PANEL_H-38);x.stroke();
+ // name: up to two lines, wide letter spacing
+ x.fillStyle=`rgba(244,246,249,${.82+.18*level})`;x.shadowColor='rgba(255,255,255,.6)';x.shadowBlur=4+10*level;x.textBaseline='middle';
+ let size=30;x.font=`600 ${size}px ${font}`;(x as Ctx&{letterSpacing:string}).letterSpacing='3px';
+ const words=name.toUpperCase().split(/\s+/),lines:string[]=[];let line='';
+ for(const w of words){const test=line?line+' '+w:w;if(x.measureText(test).width>262&&line){lines.push(line);line=w;}else line=test;}if(line)lines.push(line);
+ while(lines.some(l=>x.measureText(l).width>262)&&size>16){size-=2;x.font=`600 ${size}px ${font}`;}
+ const lh=size*1.35,top=PANEL_H/2-(lines.length-1)*lh/2;lines.slice(0,3).forEach((l,i)=>x.fillText(l,362,top+i*lh));
+ // selected: a small arrow says a second click opens the page
+ if(level>.5){x.globalAlpha=level;x.font=`600 26px ${font}`;x.fillText('↗',PANEL_W-46,34);x.globalAlpha=1;}
+ x.shadowBlur=0;
+}

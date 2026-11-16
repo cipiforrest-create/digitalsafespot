@@ -29,7 +29,7 @@ test('the live deck answers hover, click, drag and the hologram opens the concie
  await page.goto(route+'?world=1');const story=page.locator('[data-cinema-story]');
  await story.locator('[data-cinema-seek="2"]').click();await expect(story).toHaveAttribute('data-world','on',{timeout:15000});await settled(page);
  // Hovering a module in the scene selects its link; a click locks it until the next click.
- let [x,y]=await nodePoint(story,2,4);await page.mouse.move(x,y-70);
+ let [x,y]=await nodePoint(story,2,4);await page.mouse.move(x,y);
  await expect.poll(async()=>(await stats(story))?.active).toEqual([2,4]);await expect(story.locator('.world-system .world-node').nth(4)).toHaveAttribute('data-active','');
  await page.mouse.down();await page.mouse.up();await expect.poll(async()=>(await stats(story))?.locked).toBe(true);
  await page.mouse.move(40,400);await expect(story.locator('.world-system .world-node').nth(4)).toHaveAttribute('data-active','');
