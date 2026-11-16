@@ -32,7 +32,8 @@ const X_OUTLINE:[number,number][]=[[262,88],[358,83],[425,172],[503,82],[598,90]
 const X_PIVOT:[number,number]=[430,220],X_SCALE=1.35/135;
 const X_TIPS:[number,number][]=[[1.16,.95],[-1.16,.95],[-1.1,-.94],[1.02,-.94]];
 // Central rock: its flat top, and the orb that rests on it.
-const TOP=.42,ORB_R=.82,ORB_REST=TOP+ORB_R*.93;
+// The chrome pedestal (Blender, PED_base) stands on the rock; its cradle is .245 high at scale 1.
+const PED_S=.84,PED_H=.245*PED_S,TOP=.42,ORB_R=.82,ORB_REST=TOP+PED_H+ORB_R*.97;
 // AI satellites around the orb in act 1 (orb space): upper left, upper right, lower right, lower left.
 const SATS:[number,number,number,'left'|'right'][]=[[-1.45,.75,.2,'left'],[1.45,.8,.1,'right'],[1.55,-.55,.6,'right'],[-1.5,-.6,.55,'left']];
 // Service rocks: angle from the front (degrees), radius, and how high the glass plate floats above the rock.
@@ -42,7 +43,7 @@ const PLATE_W=1.32,PLATE_H=.82;
 type CameraKey={pos:[number,number,number];target:[number,number,number];off:number};
 const CAMERA:CameraKey[]=[
  {pos:[0,1.15,13.5],target:[0,1.05,0],off:0},// opening: the empty lake in the fog
- {pos:[0,1.85,8.4],target:[0,1.22,0],off:.05},// act 1: the orb on its rock
+ {pos:[0,2.05,8.6],target:[0,1.42,0],off:.05},// act 1: the orb on its rock
  {pos:[0,2.35,10.6],target:[0,1.9,0],off:.07},// act 2: the X
  {pos:[0,4.5,15.8],target:[0,1.65,0],off:.05},// act 3: the service rocks
  {pos:[0,5.4,20.5],target:[0,1.6,0],off:.14},// closing: the isle slides right for the copy
@@ -181,7 +182,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
 
  // ---- the marble X ----
  const xShape=new Shape();X_OUTLINE.forEach(([u,v],i)=>{const x=(u-X_PIVOT[0])*X_SCALE,y=-(v-X_PIVOT[1])*X_SCALE;if(i)xShape.lineTo(x,y);else xShape.moveTo(x,y);});xShape.closePath();
- const xGeometry=keep(new ExtrudeGeometry(xShape,{depth:.46,bevelEnabled:true,bevelSize:.035,bevelThickness:.035,bevelSegments:3}));xGeometry.translate(0,0,-.23);
+ const xGeometry:BufferGeometry=keep(new ExtrudeGeometry(xShape,{depth:.46,bevelEnabled:true,bevelSize:.035,bevelThickness:.035,bevelSegments:3}));xGeometry.translate(0,0,-.23);
  const xClip=new Plane(new Vector3(0,1,0),-(TOP-.02));
  const xMat=keep(new MeshPhysicalMaterial({map:marbleMap,color:0xd4d8de,roughness:.24,metalness:.05,clearcoat:1,clearcoatRoughness:.06,envMapIntensity:1.6,emissive:new Color(0xffffff),emissiveMap:marbleMap,emissiveIntensity:.08,clippingPlanes:[xClip]}));
  const xPivot=new Group(),xMesh=new Mesh(xGeometry,xMat);xPivot.add(xMesh);xPivot.visible=false;rig.add(xPivot);
@@ -211,8 +212,8 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
    void main(){vec3 n=normalize(vN),v=normalize(vP);float edge=1.-abs(dot(n,-v));
     vec3 d=normalize(v-n*1.15);
     vec3 c=look(d)*.7+look(normalize(v-n*1.22))*.3;
-    c=c*1.35*uFade+vec3(.035,.04,.05);
-    c*=1.-.55*pow(edge,3.);
+    c=c*.78*uFade+vec3(.02,.022,.028);
+    c*=1.-.35*pow(edge,3.);c+=vec3(.75,.8,.9)*pow(edge,4.)*.45*uFade;
     float a=uAlpha*(.9-.25*edge);gl_FragColor=vec4(c,clamp(a,0.,1.));
     #include <colorspace_fragment>
    }`}));
@@ -328,15 +329,31 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   return {rock,plate,face,faceMat,edgeMat,haloMat,pick,rings,arc,arcMat,context,tex,base,size,lift,level:0,clock:i*1.7,showing:'icon' as 'icon'|'live'};
  });
 
+ // ---- the chrome pedestal under the orb (act 1) and the shaft of light that falls on it ----
+ const chromeMat=keep(new MeshPhysicalMaterial({color:0xdfe4ea,metalness:1,roughness:.09,clearcoat:1,clearcoatRoughness:.05,envMapIntensity:1.9}));
+ const pedGlowMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
+ const ped=new Group(),pedBase=new Mesh(keep(new CylinderGeometry(1.1,1.12,.245,64)) as BufferGeometry,chromeMat),pedGlow=new Mesh(keep(new BufferGeometry()),pedGlowMat);
+ pedBase.geometry.translate(0,.1225,0);ped.add(pedBase,pedGlow);ped.scale.setScalar(PED_S);rig.add(ped);
+ const shaftUniforms={uAlpha:{value:0},uTime:{value:0}};
+ const shaftMat=keep(new ShaderMaterial({uniforms:shaftUniforms,transparent:true,depthWrite:false,blending:AdditiveBlending,side:DoubleSide,
+  vertexShader:`varying vec2 vUv;varying float vF;void main(){vUv=uv;vec4 mv=modelViewMatrix*vec4(position,1.);vec3 n=normalize(normalMatrix*normal);vF=abs(dot(n,normalize(-mv.xyz)));gl_Position=projectionMatrix*mv;}`,
+  fragmentShader:`uniform float uAlpha;uniform float uTime;varying vec2 vUv;varying float vF;
+   void main(){float streak=.55+.45*sin(vUv.x*150.+uTime*.6)*sin(vUv.x*61.-uTime*.35);float fall=pow(1.-vUv.y,1.6)*smoothstep(0.,.08,vUv.y);
+    float a=fall*pow(vF,1.6)*streak*uAlpha*.22;gl_FragColor=vec4(vec3(.92,.95,1.)*a,a);}`}));
+ const shaft=new Mesh(keep(new CylinderGeometry(1.25,.72,7,48,1,true)),shaftMat);shaft.geometry.translate(0,3.5,0);shaft.renderOrder=2;scene.add(shaft);
  // Sculpted basalt from Blender (ai-concierge-preview/media/isle-v1/rocks.glb): one plinth and three islands, in the
  // same local units as rockGeometry (radius about 1, flat top at .45), so they replace the procedural rocks in place
  // as soon as the file arrives.
- new GLTFLoader().load(`${MEDIA}/rocks.glb`,gltf=>{
+ new GLTFLoader().load(`${MEDIA}/isle.glb`,gltf=>{
   if(stopped)return;const found:Record<string,BufferGeometry>={};
   gltf.scene.traverse(o=>{if(o instanceof Mesh){const key=(o.parent&&o.parent!==gltf.scene?o.parent.name:o.name).replace(/\.\d+$/,'');found[key]=keep(o.geometry as BufferGeometry);}});
   const plinth=found.ROCK_plinth,islands=['ROCK_island_1','ROCK_island_2','ROCK_island_3'].map(n=>found[n]).filter(Boolean);
   if(plinth){const old=centre.geometry;centre.geometry=plinth;old.dispose();}
   if(islands.length)isles.forEach((isle,i)=>{const old=isle.rock.geometry;isle.rock.geometry=islands[i%islands.length];old.dispose();});
+  // The bevelled marble X and the chrome pedestal with its light rings, modelled in Blender.
+  if(found.HERO_x){const old=xMesh.geometry;xMesh.geometry=found.HERO_x;old.dispose();}
+  if(found.PED_base){const old=pedBase.geometry;pedBase.geometry=found.PED_base;old.dispose();}
+  if(found.PED_glow){const old=pedGlow.geometry;pedGlow.geometry=found.PED_glow;old.dispose();}
   wake();
  },undefined,()=>{/* The procedural rocks stay. */});
  // ---- atmosphere ----
@@ -473,7 +490,13 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
    o.runnerMat.opacity=orbOn*(1-.45*lift)*(tmp2.z<tmp3.z?.25:.95);});
   orb.getWorldPosition(orbHalo.position);orbHalo.quaternion.copy(camera.quaternion);orbHalo.scale.setScalar(orbScale*(1+talkPulse*.4));
   orbHaloMat.opacity=orbOn*(.26+.2*talkPulse+(orbHover?.12:0));
-  pool.position.y=TOP+.015;poolMat.opacity=orbOn*(1-lift)*.5;pool.scale.setScalar(1+grow*.6);
+  // The pedestal rises with the rock in act 1 and sinks back into it as act 2 begins.
+  const sink=c===0?0:c===1?smooth(run/.28):1;
+  ped.visible=sink<.999;ped.position.y=surface-(PED_H+.06)*sink;ped.rotation.y=time*.05;
+  pedGlowMat.opacity=orbOn*(1-sink)*(.55+.25*Math.sin(time*1.6)+.4*talkPulse+(orbHover?.2:0));
+  shaft.position.set(orb.position.x,orb.position.y+ORB_R*orbScale*.6,orb.position.z);shaft.visible=orbOn>.01&&lift<.99;
+  shaftUniforms.uTime.value=time;shaftUniforms.uAlpha.value=orbOn*(1-lift)*(1+.6*talkPulse);
+  pool.position.y=TOP+.015+PED_H*(1-sink);poolMat.opacity=orbOn*(1-lift)*.5;pool.scale.setScalar((1+grow*.6)*(sink<1?.8:1));
   orbLight.position.copy(orbHalo.position).y-=.2;orbLight.intensity=orbOn*(2.2+talkPulse*3)*(1-lift*.55);
   // Satellites leave the orb as the checkpoint arrives and return as it releases.
   const launch=c===0&&p.hold?(p.phase.endsWith('_ARRIVAL')?smooth(p.local):p.phase.endsWith('_RELEASE')?1-smooth(p.local):1):0;
