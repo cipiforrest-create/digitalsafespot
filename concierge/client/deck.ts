@@ -71,22 +71,14 @@ function glowTexture(){
  const g=x.createRadialGradient(128,128,0,128,128,128);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(.22,'rgba(255,255,255,.42)');g.addColorStop(.55,'rgba(255,255,255,.08)');g.addColorStop(1,'rgba(255,255,255,0)');
  x.fillStyle=g;x.fillRect(0,0,256,256);return new CanvasTexture(c);
 }
-// Fog bank: soft overlapping blobs, wide and low.
-function fogTexture(seed:number){
- const c=document.createElement('canvas');c.width=512;c.height=128;const x=c.getContext('2d')!;
- for(let i=0;i<46;i++){
-  const px=hash(i,seed,1)*512,py=40+hash(i,seed,2)*48,r=26+hash(i,seed,3)*60,g=x.createRadialGradient(px,py,0,px,py,r);
-  g.addColorStop(0,`rgba(255,255,255,${.1+hash(i,seed,4)*.12})`);g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,0,512,128);
- }
- const fade=x.createLinearGradient(0,0,512,0);fade.addColorStop(0,'rgba(0,0,0,1)');fade.addColorStop(.18,'rgba(0,0,0,0)');fade.addColorStop(.82,'rgba(0,0,0,0)');fade.addColorStop(1,'rgba(0,0,0,1)');
- x.globalCompositeOperation='destination-out';x.fillStyle=fade;x.fillRect(0,0,512,128);
- return new CanvasTexture(c);
-}
 // Studio reflections in monochrome: a soft dome, a bright moon panel behind and a dim fill in front, so the marble
 // and the glass read as polished without picking up any colour.
-function environment(renderer:WebGLRenderer):Texture{
+function environment(renderer:WebGLRenderer,lake?:Texture):Texture{
  const room=new Scene(),panel=(w:number,h:number,v:number)=>new Mesh(new PlaneGeometry(w,h),new MeshBasicMaterial({color:new Color(v,v*1.04,v*1.1),side:DoubleSide}));
- room.add(new Mesh(new SphereGeometry(30,32,24),new ShaderMaterial({side:BackSide,
+ // With the 360° lake panorama loaded, the orb, the marble and the rocks reflect the real lake and moon; until then a
+ // soft gradient dome stands in.
+ if(lake)room.add(new Mesh(new SphereGeometry(30,64,32),new MeshBasicMaterial({map:lake,side:BackSide,color:new Color(1.7,1.75,1.85)})));
+ else room.add(new Mesh(new SphereGeometry(30,32,24),new ShaderMaterial({side:BackSide,
   vertexShader:`varying vec3 vP;void main(){vP=normalize(position);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
   fragmentShader:`varying vec3 vP;void main(){float h=vP.y;vec3 c=mix(vec3(.01,.012,.016),vec3(.16,.17,.2),smoothstep(-.1,.4,h));c=mix(c,vec3(.75,.78,.84),smoothstep(.55,1.,h));gl_FragColor=vec4(c,1.);}`})));
  const moon=panel(10,5,7);moon.position.set(0,7,-12);moon.lookAt(0,0,0);room.add(moon);
@@ -123,7 +115,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  const keep=<T extends {dispose():void}>(x:T)=>{disposables.push(x);return x;};
  const small0=host.small,mirror=!small0;
  const scene=new Scene();scene.fog=new FogExp2(BG,.03);
- const env=keep(environment(renderer));scene.environment=env;
+ let env=environment(renderer);scene.environment=env;disposables.push({dispose:()=>env.dispose()});
  const camera=new PerspectiveCamera(32,1,.1,200);scene.add(camera);
  const ambient=new AmbientLight(0xc8d0dc,.18);scene.add(ambient);
  const moon=new DirectionalLight(MOON,2.4);moon.position.set(1.5,9,-14);scene.add(moon);
@@ -135,7 +127,8 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  const loader=new TextureLoader(),texture=(file:string,mirrored:boolean,repeat:number)=>{
   const t=keep(loader.load(`${MEDIA}/${file}`));t.colorSpace=SRGBColorSpace;t.wrapS=t.wrapT=mirrored?MirroredRepeatWrapping:RepeatWrapping;t.repeat.set(repeat,repeat);t.anisotropy=4;return t;
  };
- const rockMap=texture('rock-768.webp',true,2.2),marbleMap=texture('marble-1024.webp',true,.42);
+ loader.load(`${MEDIA}/lake-360.webp`,t=>{if(stopped){t.dispose();return;}t.colorSpace=SRGBColorSpace;const next=environment(renderer,t);t.dispose();env.dispose();env=next;scene.environment=env;wake();});
+ const rockMap=texture('rock-1024.webp',true,2),marbleMap=texture('marble-1024.webp',true,.42);
 
  // ---- backdrop: the generated lake plate, fixed to the camera and slid so its horizon meets the 3D horizon ----
  const BACK_D=90,IMG_ASPECT=16/9,IMG_HORIZON=.565;// horizon row of the plate, from the top
@@ -282,11 +275,14 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  });
 
  // ---- atmosphere ----
+ // Fog banks: the supplied fog images (luminance as alpha), two planes each, at different depths and drift speeds.
+ const fogMaps=[1,2,3].map(n=>{const t=keep(loader.load(`${MEDIA}/fog-${n}.webp`,()=>{fogReady++;wake();}));return t;});let fogReady=0;
  const fogs=[0,1,2,3,4,5].map(i=>{
-  const t=keep(fogTexture(i+1)),m=keep(new MeshBasicMaterial({color:0x9aa3ae,alphaMap:t,map:t,transparent:true,opacity:0,depthWrite:false,fog:false}));
-  const mesh=new Mesh(keep(new PlaneGeometry(26,6.5)),m);mesh.position.set((hash(i,2,3)-.5)*10,.9+hash(i,4,5)*1.6,-6-i*3.2);scene.add(mesh);
-  return {mesh,mat:m,speed:(hash(i,6,7)-.5)*.25,x:mesh.position.x,base:.1+hash(i,8,9)*.08};
+  const m=keep(new MeshBasicMaterial({color:0xb8c0ca,alphaMap:fogMaps[i%3],transparent:true,opacity:0,depthWrite:false,fog:false}));
+  const mesh=new Mesh(keep(new PlaneGeometry(24,8)),m);mesh.position.set((hash(i,2,3)-.5)*10,.7+hash(i,4,5)*1.4,-5-i*3.3);mesh.visible=false;scene.add(mesh);
+  return {mesh,mat:m,speed:(hash(i,6,7)-.5)*.25,x:mesh.position.x,base:.19+hash(i,8,9)*.12};
  });
+
  const dustCount=small0?160:340,dust=new Float32Array(dustCount*3);
  for(let i=0;i<dustCount;i++){dust[i*3]=(hash(i,1,1)-.5)*22;dust[i*3+1]=.2+hash(i,2,2)*6;dust[i*3+2]=(hash(i,3,3)-.5)*16;}
  const dustGeometry=keep(new BufferGeometry());dustGeometry.setAttribute('position',new BufferAttribute(dust,3));
@@ -374,7 +370,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   // ---- water, moon, fog ----
   waterUniforms.uTime.value=time;pathMat.uniforms.uTime.value=time;pathMat.uniforms.uAlpha.value=.35+.15*emerge;
   moon.intensity=1.2+1.2*emerge;ambient.intensity=.12+.08*emerge;
-  fogs.forEach((f,i)=>{f.mesh.position.x=f.x+Math.sin(time*.04+i)*2+time*f.speed%8;f.mesh.quaternion.copy(camera.quaternion);f.mat.opacity=f.base*(1.15-.35*deploy)*(1-.5*closing);});
+  fogs.forEach((f,i)=>{f.mesh.position.x=f.x+Math.sin(time*.04+i)*2+time*f.speed%8;f.mesh.quaternion.copy(camera.quaternion);f.mesh.visible=fogReady===3;f.mat.opacity=f.base*(1.15-.55*deploy)*(1-.5*closing);});
   dustPoints.rotation.y=time*.01;
 
   // ---- centre rock, rising out of the water in act 1 and widening into a plinth in act 2 ----
