@@ -5,6 +5,9 @@ export async function navigate(id:PageId,hash='',push=true):Promise<boolean>{
   if(document.querySelector('dialog[open]'))return false;
   const locale=document.documentElement.lang;const path=(locale==='en'||locale==='de'?`/${locale}`:'')+previewPath(id);navigation?.abort();const controller=new AbortController();navigation=controller;
   try{
+    // The homepage carries inline head styles and its own 3D scripts that a <main> swap cannot bring along
+    // (the X plate rendered at its natural 1536px width with no hero copy). Load it as a full page instead.
+    if(id==='home'&&document.body.dataset.page!=='home'){if(push)location.assign(path+hash);else location.replace(path+hash);return true;}
     if(document.body.dataset.page!==id){
       const response=await fetch(path,{signal:controller.signal,credentials:'same-origin'});
       if(!response.ok||pageFromPath(new URL(response.url).pathname)!==id)throw new Error('Navigation unavailable');

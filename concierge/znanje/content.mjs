@@ -379,7 +379,7 @@ export const guides = [
 ];
 
 export const hubFaq = [
-  ['Šta je Digital X Centar znanja?', 'To je besplatna zbirka vodiča o web stranicama, SEO-u, AI pretrazi, oglašavanju, društvenim mrežama i AI automatizaciji, složena kao put od prvog pitanja do mjerljivog rezultata.'],
+  ['Šta je Digital X blog?', 'To je besplatna zbirka vodiča i članaka o web stranicama, SEO-u, AI pretrazi, oglašavanju, društvenim mrežama i AI automatizaciji, složena kao put od prvog pitanja do mjerljivog rezultata.'],
   ['Kojim redom čitati vodiče?', 'Vodiči prate sedam koraka: razumjeti, planirati, izgraditi, biti pronađen, privući, automatizovati i mjeriti. Možete krenuti od početka ili odabrati jedan od četiri puta prema svojoj situaciji.'],
   ['Da li su cijene u vodičima stvarne?', 'Da. Navedene Digital X cijene su javne početne cijene iz cjenovnika. Obim i dostupnost potvrđuju se prije ugovaranja.'],
   ['Za koga su vodiči pisani?', 'Za vlasnike i menadžere malih i srednjih firmi u BiH, regionu i dijaspori koji žele razumjeti šta kupuju prije nego što plate.'],

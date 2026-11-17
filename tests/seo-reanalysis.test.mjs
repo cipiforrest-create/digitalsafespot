@@ -54,3 +54,28 @@ test('EN and DE pages show the fixed-rate euro equivalent of KM prices', () => {
 test('internal docs are not published', () => {
   assert.ok(!existsSync('public/docs'));
 });
+
+test('Blog and the knowledge hub are one page at /blog/', async () => {
+  const blog = read('/blog/index.html');
+  assert.match(blog, /data-galaxy/);
+  assert.equal((blog.match(/class="post-card"/g) || []).length, 15);
+  assert.ok(!existsSync('public/znanje/index.html'));
+  const { legacyServiceTarget } = await import('../lib/routing-policy.mjs');
+  for (const path of ['/znanje', '/znanje/', '/znanje/index.html'])
+    assert.equal(legacyServiceTarget(`https://www.digital-x-marketing.com${path}`), 'https://www.digital-x-marketing.com/blog/');
+  assert.equal(legacyServiceTarget('https://www.digital-x-marketing.com/znanje/sta-je-seo-optimizacija/'), null);
+});
+
+test('Blog and guide pages use the homepage header: same menu, language switch, no Znanje item', () => {
+  for (const path of ['/blog/index.html', '/znanje/sta-je-seo-optimizacija/index.html', '/industrije/index.html']) {
+    const html = read(path), header = html.match(/<header class="zn-header">[\s\S]*?<\/header>/)[0];
+    assert.deepEqual([...header.matchAll(/class="nav-item" href="([^"]+)"/g)].map(m => m[1]),
+      ['/usluge/', '/cjenovnik/', '/projekti/', '/primjeri-web-stranica/', '/shop/', '/blog/', '/usluge/x-signal/', '/kontakt.html'], path);
+    assert.match(header, /class="zn-lang"[\s\S]*>BS<[\s\S]*>EN<[\s\S]*>DE</, path);
+    assert.doesNotMatch(header, />Znanje</, path);
+  }
+});
+
+test('client navigation loads the homepage as a full page', () => {
+  assert.match(readFileSync('concierge/client/navigation.ts', 'utf8'), /id==='home'&&document\.body\.dataset\.page!=='home'\)\{if\(push\)location\.assign/);
+});

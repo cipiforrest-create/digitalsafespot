@@ -55,6 +55,8 @@ for(const p of routes){
  $('.language-nav a').each((_,node)=>{const lang=$(node).attr('lang');$(node).attr('href',`${lang==='bs'?'':`/${lang}`}${p.production}`).attr('hreflang',lang).removeAttr('target rel');});
  const base=$.html();
  for(const lang of ['bs','en','de']){
+  // The Bosnian /blog/ is the knowledge galaxy (concierge/znanje/build.mjs); EN and DE keep the article list.
+  if(p.id==='blog'&&lang==='bs')continue;
   const file='public'+(lang==='bs'?'':`/${lang}`)+p.production+(p.production.endsWith('/')?'index.html':'');
   const html=lang==='bs'?base:localizePage(base,lang,p.production,localizedRoutes);
   mkdirSync(dirname(file),{recursive:true});writeFileSync(file,preloadModules(p.id==='home'?hintHome(inlineHeadStyles(html)):html));
@@ -111,7 +113,7 @@ writeFileSync('public/llms.txt',[
  ...products.map(p=>`- [${p.name}](${origin}/shop/product/${p.id}/): ${kmPrice(p)}. ${p.summary}`),'',
  '## Usluge',group(p=>p.production.startsWith('/usluge/')||['concierge','launch'].includes(p.id)),'',
  '## Vodiči',group(p=>p.id.startsWith('article-')),'',
- '## Centar znanja',...znanjePages.map(p=>`- [${p.title}](${origin+p.path}): ${p.desc}`),'',
+ '## Blog: vodiči i članci',...znanjePages.map(p=>`- [${p.title}](${origin+p.path}): ${p.desc}`),'',
  '## Demo aplikacije',
  `- [GrowthOS](${origin}/growthos.html): interaktivni demo poslovne aplikacije po mjeri sa CRM-om, projektima, automatizacijama, izvještajima, klijentskim portalom i AI Second Brain modulom`,'',
  '## Projekti i stranice',group(p=>['work','eynna','star','designer','examples','pricing','shop','blog','about','contact'].includes(p.id)),'',

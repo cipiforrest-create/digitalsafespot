@@ -8,6 +8,8 @@ const read=(route:string)=>readFileSync(`public${route}${route.endsWith('/')?'in
 for(const lang of ['en','de']){
  test(`${lang}: every published page preserves the Bosnian structure and shared assets`,()=>{
   for(const id of pageIds){
+   // The Bosnian /blog/ is the knowledge galaxy (concierge/znanje/build.mjs); EN and DE keep the article list.
+   if(id==='blog')continue;
    const route=previewPath(id),bs=load(read(route)),$=load(read(`/${lang}${route}`));
    assert.equal($('html').attr('lang'),lang,route);
    assert.equal($('body').attr('data-page'),id);

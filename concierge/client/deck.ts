@@ -428,7 +428,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  const dustPoints=new Points(dustGeometry,dustMat);scene.add(dustPoints);
 
  // HDR light sources: above the bloom threshold, so they glow like the key visuals.
- netNodeMat.color.setScalar(2.4);pedGlowMat.color.setScalar(2.6);ellipseNodeMat.color.setScalar(1.9);tetherGlowMat.color.setScalar(1.5);
+ netNodeMat.color.setScalar(2.4);pedGlowMat.color.setScalar(1.8);ellipseNodeMat.color.setScalar(1.9);tetherGlowMat.color.setScalar(1.5);
  orbits.forEach(o=>o.runnerMat.color.setScalar(2.4));hitMat.color.setScalar(2.2);
  // ---- bloom (desktop): only light brighter than the threshold glows — cracks, rings, nodes, beams, the orb's network ----
  const composer=small0?null:new EffectComposer(renderer);
@@ -595,11 +595,12 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   // The pedestal rises with the rock in act 1 and sinks back into it as act 2 begins.
   const sink=c===0?0:c===1?smooth(run/.28):1;
   ped.visible=sink<.999;ped.position.y=surface-(PED_H+.06)*sink;ped.rotation.y=time*.05;
-  pedGlowMat.opacity=orbOn*(1-sink)*(.55+.25*Math.sin(time*1.6)+.4*talkPulse+(orbHover?.2:0));
+  // Kept low: the light under the orb read as a white blow-out on desktop.
+  pedGlowMat.opacity=orbOn*(1-sink)*(.3+.1*Math.sin(time*1.6)+.3*talkPulse+(orbHover?.12:0));
   shaft.position.set(orb.position.x,orb.position.y+ORB_R*orbScale*.6,orb.position.z);shaft.visible=orbOn>.01&&lift<.99;
   shaftUniforms.uTime.value=time;shaftUniforms.uAlpha.value=orbOn*(1-lift)*(1+.6*talkPulse);
-  pool.position.y=TOP+.015+PED_H*(1-sink);poolMat.opacity=orbOn*(1-lift)*.5;pool.scale.setScalar((1+grow*.6)*(sink<1?.8:1));
-  orbLight.position.copy(orbHalo.position).y-=.2;orbLight.intensity=orbOn*(2.2+talkPulse*3)*(1-lift*.55);
+  pool.position.y=TOP+.015+PED_H*(1-sink);poolMat.opacity=orbOn*(1-lift)*.2;pool.scale.setScalar((1+grow*.6)*(sink<1?.8:1));
+  orbLight.position.copy(orbHalo.position).y-=.2;orbLight.intensity=orbOn*(1.3+talkPulse*2)*(1-lift*.55);
   // Satellites leave the orb as the checkpoint arrives and return as it releases.
   const launch=c===0&&p.hold?(p.phase.endsWith('_ARRIVAL')?smooth(p.local):p.phase.endsWith('_RELEASE')?1-smooth(p.local):1):0;
   sats.forEach((s,i)=>{

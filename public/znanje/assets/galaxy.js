@@ -23,13 +23,17 @@
   const small = matchMedia('(max-width: 760px)').matches;
   const BRAIN_POINTS = small ? 6500 : 13600;
   const STARS = small ? 500 : 1100;
-  const AXONS = small ? 60 : 130;
+  const AXONS = small ? 40 : 80;
+  // Elliptical halo around the clusters: radii (x, y, z) and centre, in brain units.
+  const HALO_DISTANCE = 0.3, HALO_KEEP = 0.3, HALO_RADII = [1.15, 0.58, 0.9], HALO_CENTRE = [0, 0.18, -0.05];
   const SEGMENTS = 18;
 
   // Deterministic randomness so the galaxy looks the same on every visit.
   let seed = 20261113;
   const rand = () => { seed |= 0; seed = seed + 0x6d2b79f5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
   const gauss = () => (rand() + rand() + rand() + rand() - 2) / 2;
+  // Denser towards the middle like an elliptical galaxy; points outside the ellipsoid are drawn again.
+  const ellipsePoint = () => { for (;;) { const u = [gauss() * 1.7, gauss() * 1.7, gauss() * 1.7]; if (u[0] * u[0] + u[1] * u[1] + u[2] * u[2] <= 1) return u.map((v, n) => HALO_CENTRE[n] + v * HALO_RADII[n]); } };
   const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255);
   const add = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
   const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
@@ -132,7 +136,11 @@ void main(){float t=texture2D(uTex,vUv).r;float a=t*vA*uMix*uMix;gl_FragColor=ve
     const pushPoint = (from, to, size, col, k) => pts.push(from[0], from[1], from[2], to[0], to[1], to[2], size, col[0], col[1], col[2], rand(), k);
     for (let i = 0; i < brainCount; i++) {
       const b = data ? [data[i * 4] / 20000, data[i * 4 + 1] / 20000, data[i * 4 + 2] / 20000, data[i * 4 + 3] / 32767] : proceduralBrainPoint();
-      const p = [b[0], b[1], b[2]], [k, d] = nearest(p), tint = Math.max(0, 1 - d / 0.5) * 0.85;
+      let p = [b[0], b[1], b[2]], [k, d] = nearest(p);
+      // Stars that build a topic cluster keep their place. Most of the outer shell is dropped and the rest
+      // forms a soft elliptical halo, so the galaxy reads as an ellipse and the clusters stay in view.
+      if (d >= HALO_DISTANCE) { if (rand() > HALO_KEEP) continue; p = ellipsePoint(); [k, d] = nearest(p); }
+      const tint = Math.max(0, 1 - d / 0.5) * 0.85;
       const c = colors[k], col = [mix(SILVER[0], c[0], tint), mix(SILVER[1], c[1], tint), mix(SILVER[2], c[2], tint)];
       // Brighter reference pixels are the ridges of the folds, so they get larger, hotter stars.
       pushPoint(galaxyPoint(), p, 1.8 + b[3] * 4.6, mulS(col, 0.28 + b[3] * 0.85), d < 0.4 ? k : -1);

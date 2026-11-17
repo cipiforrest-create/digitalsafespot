@@ -108,13 +108,13 @@
   },
   {
     "file": "./blog/index.html",
-    "title": "Blog — praktični vodiči za digitalni rast | Digital X",
+    "title": "Blog: vodiči za web, SEO, AI i marketing | Digital X",
     "canonical": "https://www.digital-x-marketing.com/blog/",
-    "robots": "",
+    "robots": "index,follow,max-image-preview:large",
     "h1": [
-      "Naučite prije nego platite."
+      "Blog: sve što trebate znati o webu, vidljivosti i AI-ju — povezano u jednu mapu."
     ],
-    "schema": 0
+    "schema": 1
   },
   {
     "file": "./blog/koliko-kosta-web-stranica-bih.html",
@@ -1760,16 +1760,6 @@
     "robots": "index,follow,max-image-preview:large",
     "h1": [
       "Google oglasi: koliko koštaju i kako odrediti budžet"
-    ],
-    "schema": 1
-  },
-  {
-    "file": "./znanje/index.html",
-    "title": "Centar znanja: vodiči za web, SEO, AI i marketing | Digital X",
-    "canonical": "https://www.digital-x-marketing.com/znanje/",
-    "robots": "index,follow,max-image-preview:large",
-    "h1": [
-      "Sve što trebate znati o webu, vidljivosti i AI-ju — povezano u jednu mapu."
     ],
     "schema": 1
   },
