@@ -76,3 +76,28 @@ html{scroll-padding-top:110px}body{background:#08090b;color:#f4f4f5}.story{posit
 .answer-lead .eyebrow{margin:0 0 6px}
 .answer-lead p:last-child{margin:0;font-size:15.5px;line-height:1.6;color:#d6d9df}
 @media (max-width:760px){.answer-lead{padding:14px 16px}.answer-lead p:last-child{font-size:14.5px}}
+/* Wrapper that only marks UI controls data-nosnippet for search engines; it adds no box of its own. */
+.nosnippet-group{display:contents}
+/* Four case studies: 2 x 2 on desktop and tablet, one column on phones. */
+.visual-card-grid.case-grid-four{grid-template-columns:repeat(2,1fr)}
+@media(max-width:760px){.visual-card-grid.case-grid-four{grid-template-columns:1fr}}
+/* Homepage answer block, price table, discipline proof line and FAQ: same palette, type and borders as the rest of the page. */
+.answer-section{padding:70px 0}
+.answer-section h2{font-size:clamp(28px,3vw,44px);margin:10px 0 18px}
+.answer-section p:last-child{max-width:820px;margin:0;padding:18px 22px;border:1px solid rgba(226,233,248,.22);border-left:2px solid #a7b6ca;border-radius:14px;background:rgba(255,255,255,.035);font-size:17px;line-height:1.7;color:#d6d9df}
+.system-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px}
+.proof-strip{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.proof-strip li{padding:6px 12px;border:1px solid rgba(226,233,248,.22);border-radius:999px;background:rgba(255,255,255,.05);font-size:12.5px;letter-spacing:.02em;color:#dfe1e5}
+.price-table-wrap{margin-top:32px;overflow-x:auto;border:1px solid #ffffff20;border-radius:16px;background:rgba(255,255,255,.02)}
+.price-table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.5}
+.price-table caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.price-table th,.price-table td{padding:16px 20px;text-align:left;vertical-align:top;border-bottom:1px solid #ffffff15}
+.price-table tbody tr:last-child th,.price-table tbody tr:last-child td{border-bottom:0}
+.price-table thead th{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#9ea1aa}
+.price-table tbody th{font-weight:500;white-space:nowrap}
+.price-table tbody th a{color:#f1f2f4;text-decoration:underline;text-decoration-color:#ffffff40;text-underline-offset:4px}
+.price-table tbody td:nth-child(2){white-space:nowrap;color:#f1f2f4}
+.price-table tbody td:nth-child(3),.price-table tbody td:nth-child(4){color:#a8abb2}
+.home-faq{padding:80px 0}
+.home-faq details{max-width:900px}
+@media(max-width:760px){.answer-section{padding:50px 0}.answer-section p:last-child{padding:14px 16px;font-size:15.5px}.price-table{font-size:14px}.price-table th,.price-table td{padding:12px 14px}.price-table thead th:nth-child(4),.price-table tbody td:nth-child(4){display:none}.price-table tbody th{white-space:normal}.home-faq{padding:50px 0}}

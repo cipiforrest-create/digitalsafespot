@@ -64,7 +64,7 @@ export const n8nWebhookUrl = () => process.env.N8N_WEBHOOK_URL;
 // T22: when set, force the legacy lead path even for a v2 body (rollback switch). Off by default so v2 is used.
 export const leadV1Only = () => process.env.DX_LEAD_V1 === 'on';
 export const resendApiKey = () => process.env.RESEND_API_KEY;
-export const teamInbox = () => process.env.LEAD_NOTIFY_EMAIL || 'digital.x.agency.ba@gmail.com';
+export const teamInbox = () => process.env.LEAD_NOTIFY_EMAIL || 'marketing@digital-x-marketing.com';
 export const fromEmail = () => process.env.LEAD_FROM_EMAIL || 'Digital X <analiza@digital-x-marketing.com>';
 export const visitorCopyEnabled = () => process.env.DX_VISITOR_COPY === 'on';
 export const visitorCopyDailyMaximum = () => {
