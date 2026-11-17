@@ -1,10 +1,11 @@
 import { z } from 'zod';
 import { pageIds } from './catalogue';
 import {tourStopIds} from './tour';
+import { goalIds } from './goals';
 
-export const goalSchema = z.enum(['customers', 'visibility', 'website', 'response']);
+export const goalSchema = z.enum(goalIds);
 export type Goal = z.infer<typeof goalSchema>;
-export const goalLabels: Record<Goal, string> = { customers: 'Želim više klijenata', visibility: 'AI ne preporučuje moju firmu', website: 'Web stranici treba novi izgled', response: 'Presporo odgovaramo na upite' };
+export { goalLabels } from './goals';
 export const sectionSchema = z.enum(['growth', 'receptionist', 'aeo', 'storefront', 'process', 'strategy','cinematic','examples','services','launch','value','work','pricing','shop','blog','transformations']);
 export type Section = z.infer<typeof sectionSchema>;
 export const goalSections: Record<Goal, Section> = { customers: 'growth', visibility: 'aeo', website: 'storefront', response: 'receptionist' };

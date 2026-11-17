@@ -27,13 +27,25 @@ export function mountAmbient(signal:AbortSignal){
   if(W===laidW)return;laidW=W;count=0;
   layers.forEach((l,li)=>{const n=Math.min(MAX-count,Math.round(W/(mobile?22:24)*l.share*1.6));for(let k=0;k<n;k++){const i=count++;colLayer[i]=li;colX[i]=(k+rand(.2,.8))*W/n;spawn(i,true);for(let j=0;j<TRAIL;j++)bits[i*TRAIL+j]=Math.random()<.5?0:1;}});
  }
- // The film stage is opaque: while it fills the viewport there is nothing of the background to draw.
- function covered(){const story=document.querySelector('[data-cinema-story][data-enhanced]');if(!story)return document.body.classList.contains('film-visible');const r=story.getBoundingClientRect();return r.top<=0&&r.bottom>=innerHeight;}
+ // On the homepage the rain belongs to the page below the cinematic part: it stays off over the hero, the 3D story
+ // and the colour film, and fades in as the end of the film scrolls past. Elsewhere it is always on. It draws at
+ // 30 frames a second; the streams fall slowly, so the lower rate is not visible.
+ const LIGHT=.72;
+ const lastCinematic=()=>document.querySelector<HTMLElement>('[data-sequence]')??document.querySelector<HTMLElement>('[data-cinema-story]');
+ let drawn=0,shown=-1;
+ function reveal(){
+  const end=lastCinematic();if(!end)return 1;
+  const bottom=end.getBoundingClientRect().bottom;return Math.min(1,Math.max(0,(innerHeight-bottom)/(innerHeight*.45)));
+ }
  function tick(now:number){
-  raf=requestAnimationFrame(tick);const dt=Math.min(.05,last?(now-last)/1000:.016);last=now;
-  if(document.body.classList.contains('motion-paused')||covered())return;
+  raf=requestAnimationFrame(tick);
+  if(document.body.classList.contains('motion-paused')){last=0;return;}
+  const v=reveal();if(v!==shown){shown=v;canvas!.style.opacity=String(+(v*LIGHT).toFixed(3));}
+  if(v<=0){last=0;return;}
+  if(now-drawn<29)return;drawn=now;
+  const dt=Math.min(.1,last?(now-last)/1000:.033);last=now;
   // Matrix flicker: a few percent of the digits switch 0 ↔ 1 every frame.
-  for(let n=Math.ceil(count*TRAIL*.03);n>0;n--){const i=Math.random()*count*TRAIL|0;bits[i]^=1;}
+  for(let n=Math.ceil(count*TRAIL*.06);n>0;n--){const i=Math.random()*count*TRAIL|0;bits[i]^=1;}
   ctx!.fillStyle='#060607';ctx!.fillRect(0,0,W,H);
   for(let i=0;i<count;i++){
    const l=layers[colLayer[i]],step=l.size*1.15,half=l.size*(CELL/BASE)/2,len=colLen[i];
@@ -49,5 +61,5 @@ export function mountAmbient(signal:AbortSignal){
  }
  resize();raf=requestAnimationFrame(tick);window.addEventListener('resize',resize,{signal});
  document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(raf);last=0;if(!document.hidden)raf=requestAnimationFrame(tick);},{signal});
- signal.addEventListener('abort',()=>cancelAnimationFrame(raf),{once:true});
+ signal.addEventListener('abort',()=>{cancelAnimationFrame(raf);canvas!.style.removeProperty('opacity');},{once:true});
 }

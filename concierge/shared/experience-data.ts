@@ -340,7 +340,7 @@ export const posts = [
     "id": "brzina-sajta",
     "url": "/blog/brzina-sajta.html",
     "title": "Zašto spor sajt tiho ubija prodaju",
-    "description": "Svaki sekund čekanja košta do 20% posjetilaca.",
+    "description": "Svaka sekunda čekanja povećava broj posjetilaca koji odu.",
     "meta": "Performanse · 4 min"
   },
   {
@@ -410,7 +410,7 @@ export const posts = [
     "id": "automatizacija-recenzija",
     "url": "/blog/automatizacija-recenzija.html",
     "title": "Google recenzije na autopilotu",
-    "description": "Do 50+ recenzija bez moljenja kupaca.",
+    "description": "Više recenzija bez moljenja kupaca.",
     "meta": "Automatizacija · 4 min"
   }
 ] as const;
