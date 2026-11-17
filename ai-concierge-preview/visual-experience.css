@@ -78,9 +78,11 @@ html{scroll-padding-top:110px}body{background:#08090b;color:#f4f4f5}.story{posit
 @media (max-width:760px){.answer-lead{padding:14px 16px}.answer-lead p:last-child{font-size:14.5px}}
 /* Wrapper that only marks UI controls data-nosnippet for search engines; it adds no box of its own. */
 .nosnippet-group{display:contents}
-/* Four case studies: 2 x 2 on desktop and tablet, one column on phones. */
-.visual-card-grid.case-grid-four{grid-template-columns:repeat(2,1fr)}
-@media(max-width:760px){.visual-card-grid.case-grid-four{grid-template-columns:1fr}}
+/* Live client sites under the concepts: two cards side by side, one column on phones. */
+.client-sites{margin-top:56px}
+.client-sites-title{font-size:clamp(24px,2.4vw,34px);font-weight:400;letter-spacing:-.03em;margin:10px 0 0}
+.visual-card-grid.client-grid{grid-template-columns:repeat(2,1fr);margin-top:28px}
+@media(max-width:760px){.client-sites{margin-top:40px}.visual-card-grid.client-grid{grid-template-columns:1fr}}
 /* Homepage answer block, price table, discipline proof line and FAQ: same palette, type and borders as the rest of the page. */
 .answer-section{padding:70px 0}
 .answer-section h2{font-size:clamp(28px,3vw,44px);margin:10px 0 18px}
