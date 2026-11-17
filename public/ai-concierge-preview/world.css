@@ -1,5 +1,5 @@
-/* Live 3D checkpoints layered on the cinema story. Palette sampled from the stop frames:
-   shadow #010204 · mid #39465c · bright #abbee2 · peak #f1f7fc. */
+/* Live X Deck checkpoints layered on the homepage story. Palette: shadow #010204 · mid #39465c · bright #abbee2 ·
+   peak #f1f7fc, with the teal accent #37e6d0 from the Digital X film. */
 .world-nodes{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;position:relative;z-index:2}
 .world-node a{display:grid;grid-template-columns:9px auto;column-gap:10px;align-items:center;color:#f1f7fc;text-decoration:none;padding:6px 0}
 .world-node-dot{grid-row:span 2;width:9px;height:9px;border-radius:50%;background:#f1f7fc;box-shadow:0 0 0 3px #abbee21f,0 0 14px 2px #abbee255}
@@ -27,13 +27,13 @@
 .world-loader [data-load-value]{font-size:10px;letter-spacing:.2em;color:#8391a8}
 
 @media(prefers-reduced-motion:no-preference){
- .cinema-screen .world-canvas{position:absolute;inset:0;opacity:0;pointer-events:none;transition:none}
+ .cinema-screen .world-canvas{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .7s ease}
+ .cinema-story[data-world=on][data-ready] .cinema-screen .world-canvas{opacity:1}
  /* The live world owns motion at the checkpoints: the CSS drift would misregister film and WebGL layers. */
  .cinema-story[data-world=on] .cinema-screen canvas{animation:none!important}
  .cinema-story[data-world=on][data-checkpoint]:not([data-checkpoint="-1"]) .cinema-stage{touch-action:pan-y pinch-zoom}
  /* Interactive checkpoint cue on fine pointers: the stage reads as something to turn, never as a scroll trap. */
  @media(pointer:fine){.cinema-story[data-world=on][data-phase$="_EXPLORE"] .cinema-stage{cursor:grab}.cinema-story[data-world=on][data-phase$="_EXPLORE"] .cinema-stage:active{cursor:grabbing}}
- .cinema-story[data-enhanced]:not([data-ready]) .cinema-static-art{opacity:0}
  /* Opening typography follows Video 1: title, tagline, intro, values; intro clears for the ORB handoff.
     The concierge controls (actions and panel) are never staged: the assistant works from the first frame. */
  .cinema-story[data-enhanced] .hero :is(.cinema-tagline,.cinema-intro,.cinema-values){transition:opacity .6s ease,transform .6s ease}
@@ -60,16 +60,21 @@
  .cinema-story[data-enhanced] .world-node[data-side=left] strong,.cinema-story[data-enhanced] .world-node[data-side=left] strong+span{grid-column:1}
  .cinema-story[data-enhanced] .world-node[data-side=below] a{left:0;transform:translateX(-50%);grid-template-columns:auto;justify-items:center;text-align:center;row-gap:4px}
  .cinema-story[data-enhanced] .world-node[data-side=below] .world-node-dot{grid-row:auto;width:7px;height:7px}
+ .cinema-story[data-enhanced] .world-node[data-side=above] a{top:auto;bottom:0;left:0;transform:translateX(-50%);grid-template-columns:auto;justify-items:center;text-align:center;row-gap:4px}
+ .cinema-story[data-enhanced] .world-node[data-side=above] .world-node-dot{grid-row:auto;order:2;width:7px;height:7px}
  .cinema-story[data-enhanced] .world-node-dot{transition:transform .35s ease,box-shadow .35s ease}
+ /* Act 3: the 3D glass panel shows the name; the link is a transparent hit area over it (focus still shows a ring). */
+ .cinema-story[data-enhanced] .world-node[data-side=center] a{left:0;width:var(--nw,200px);height:var(--nh,60px);max-width:none;padding:0;transform:translate(-50%,-50%);background:none;border:0;backdrop-filter:none;scale:1;border-radius:10px}
+ .cinema-story[data-enhanced] .world-node[data-side=center] a>*{opacity:0}
+ .cinema-story[data-enhanced] .world-node[data-side=center] a:not(:focus-visible){pointer-events:none}
+ .cinema-story[data-enhanced] [data-has-active] .world-node[data-side=center]:not([data-active]){opacity:1}
  .cinema-story[data-enhanced] [data-has-active] .world-node:not([data-active]){opacity:.42}
  .cinema-story[data-enhanced] .world-node[data-active] a{scale:1.07}
  .cinema-story[data-enhanced] .world-node[data-active] .world-node-dot{transform:scale(1.5);box-shadow:0 0 0 4px #abbee233,0 0 22px 5px #f1f7fc88}
  /* Modules and tiles keep only their name until selected, so the engine reads as structure rather than a card grid. */
  .cinema-story[data-enhanced] .world-system .world-node strong+span{display:none;max-width:190px}
  .cinema-story[data-enhanced] .world-system .world-node[data-active] strong+span{display:block}
- .cinema-story[data-enhanced] .world-tile strong{font-size:10px;letter-spacing:.18em}
- .cinema-story[data-enhanced] .world-module strong{font-size:10px;color:#abbee2}
- .cinema-story[data-enhanced] .world-module[data-active] strong{color:#f1f7fc}
+ .cinema-story[data-enhanced] .world-system .world-node strong{font-size:10px;letter-spacing:.18em;color:#f1f7fc}
  /* The hero column is narrow from the first frame (never reflowed at the handoff) so the ORB nodes own the space around the sphere. */
  .cinema-story[data-enhanced] .hero .cinema-copy{width:30%}
  .cinema-story[data-enhanced] .cinema-systems .cinema-system-heading h2{font-size:clamp(26px,2.6vw,40px);margin:8px 0 4px}
@@ -142,25 +147,14 @@
  .world-canvas,.world-loader{display:none!important}
 }
 
-/* Phone tile labels: pinned under the four glass tiles of stop 3 (both of its screens and the convergence). */
-.world-tags{display:none}
-@media(max-width:720px) and (prefers-reduced-motion:no-preference){
- .cinema-story[data-enhanced][data-stage="2"][data-holding=true] .world-tags{display:block;position:absolute;inset:0;pointer-events:none;z-index:3}
- .cinema-story[data-enhanced] .world-tag{position:absolute;left:0;top:0;width:max-content;max-width:27vw;transform:translate3d(var(--nx,-999px),var(--ny,-999px),0) translateX(-50%);pointer-events:auto;display:block;padding:5px 7px;border:1px solid #abbee259;border-radius:8px;background:#010204d9;color:#f1f7fc;text-decoration:none;text-align:center;font-size:8px;line-height:1.25;letter-spacing:.05em;text-transform:uppercase;box-shadow:0 4px 14px #0008,0 0 12px #abbee21a;animation:dx-fade .6s ease both}
- @keyframes dx-fade{from{opacity:0}}
- .cinema-story[data-enhanced] .world-tag span{color:#abbee2}
- .cinema-story[data-enhanced] .world-tag:nth-child(2){animation-delay:.07s}
- .cinema-story[data-enhanced] .world-tag:nth-child(3){animation-delay:.14s}
- .cinema-story[data-enhanced] .world-tag:nth-child(4){animation-delay:.21s}
- .cinema-story[data-enhanced] .world-tag:active{border-color:#f1f7fc;background:#1a2436}
-}
-
-/* The final composition keeps the four service labels visible beside the closing copy. */
-.final-system-labels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;position:absolute;left:37%;right:5%;top:42%;z-index:4}
-.final-system-labels a{background:#010204df;border:1px solid #39465c;border-radius:7px;padding:10px 6px;text-align:center;color:#f1f7fc;font-size:10px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
-@media(max-width:720px),(prefers-reduced-motion:reduce){.final-system-labels{position:relative;inset:auto;margin:18px 0;grid-template-columns:repeat(2,minmax(0,1fr))}}
-
-/* The final Engine scene carries the closing copy; its live nodes (desktop) and tile tags (phones) already label the tiles. */
-@media(prefers-reduced-motion:no-preference){.cinema-story[data-world=on][data-phase=ENGINE_EXPLORE] .final-system-labels{display:none}}
 /* Final Engine scene: the chapter heading fades under the closing copy while its live nodes stay. */
 .cinema-story [data-cinema-state="2"] .cinema-system-heading{opacity:var(--cinema-heading-opacity,1)}
+
+/* The live scene renders on a transparent canvas over the page background; phones veil the copy area beneath it. */
+@media(prefers-reduced-motion:no-preference){
+ .cinema-story[data-enhanced][data-world=on],.cinema-story[data-enhanced][data-world=on] .cinema-screen{background:transparent}
+ .cinema-shell:has(.cinema-story[data-enhanced][data-world=on]){background:transparent}
+}
+@media(max-width:720px) and (prefers-reduced-motion:no-preference){
+ .cinema-story[data-enhanced][data-world=on] .cinema-stage{background:linear-gradient(180deg,#03030300 0,#03030300 calc(var(--band) - 40px),#030303d9 calc(var(--band) + 30px),#030303d9 100%)}
+}
