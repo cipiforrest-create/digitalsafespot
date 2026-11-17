@@ -2,9 +2,13 @@
 // a marble X that rises out of the water, and service rocks that surface around it, joined by arcs of light.
 // The backdrop and the stone textures are generated images (ai-concierge-preview/media/isle-v1); everything else is
 // procedural. Every scroll-driven value is a pure function of the story position, so reverse scrolling replays it.
-import {ACESFilmicToneMapping,AdditiveBlending,AmbientLight,BackSide,BufferAttribute,BufferGeometry,CanvasTexture,Color,CylinderGeometry,DirectionalLight,DoubleSide,EdgesGeometry,ExtrudeGeometry,FogExp2,Group,IcosahedronGeometry,LineBasicMaterial,Matrix4,LineSegments,Mesh,MeshBasicMaterial,MeshPhysicalMaterial,MeshStandardMaterial,MirroredRepeatWrapping,PerspectiveCamera,Plane,PlaneGeometry,PMREMGenerator,PointLight,LineLoop,Points,PointsMaterial,QuadraticBezierCurve3,Quaternion,Raycaster,RepeatWrapping,RingGeometry,Scene,ShaderMaterial,Shape,SphereGeometry,SRGBColorSpace,TextureLoader,TorusGeometry,TubeGeometry,Vector2,Vector3,WebGLRenderer,BoxGeometry,type Material,type Texture} from 'three';
+import {ACESFilmicToneMapping,NeutralToneMapping,AdditiveBlending,AmbientLight,BackSide,BufferAttribute,BufferGeometry,CanvasTexture,Color,CylinderGeometry,DirectionalLight,DoubleSide,EdgesGeometry,ExtrudeGeometry,FogExp2,Group,IcosahedronGeometry,LineBasicMaterial,Matrix4,LineSegments,Mesh,MeshBasicMaterial,MeshPhysicalMaterial,MeshStandardMaterial,MirroredRepeatWrapping,PerspectiveCamera,Plane,PlaneGeometry,PMREMGenerator,PointLight,LineLoop,Points,PointsMaterial,QuadraticBezierCurve3,Quaternion,Raycaster,RepeatWrapping,RingGeometry,Scene,ShaderMaterial,Shape,SphereGeometry,SRGBColorSpace,TextureLoader,TorusGeometry,TubeGeometry,Vector2,Vector3,WebGLRenderer,BoxGeometry,type Material,type Texture} from 'three';
 import {Reflector} from 'three/examples/jsm/objects/Reflector.js';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+import {EffectComposer} from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import {OutputPass} from 'three/examples/jsm/postprocessing/OutputPass.js';
 import {smooth,type StoryPosition} from '../shared/cinema-timeline';
 import {drawPanel,PANEL_W,PANEL_H} from './deck-modules';
 
@@ -185,19 +189,20 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
 
  // ---- the marble X ----
  const xShape=new Shape();X_OUTLINE.forEach(([u,v],i)=>{const x=(u-X_PIVOT[0])*X_SCALE,y=-(v-X_PIVOT[1])*X_SCALE;if(i)xShape.lineTo(x,y);else xShape.moveTo(x,y);});xShape.closePath();
- const xGeometry:BufferGeometry=keep(new ExtrudeGeometry(xShape,{depth:.46,bevelEnabled:true,bevelSize:.035,bevelThickness:.035,bevelSegments:3}));xGeometry.translate(0,0,-.23);
+ const xGeometry:BufferGeometry=keep(new ExtrudeGeometry(xShape,{depth:.8,bevelEnabled:true,bevelSize:.03,bevelThickness:.03,bevelSegments:2}));xGeometry.translate(0,0,-.4);
  const xClip=new Plane(new Vector3(0,1,0),-(TOP-.02));
- const xMat=keep(new MeshPhysicalMaterial({map:marbleMap,color:0xd4d8de,roughness:.24,metalness:.05,clearcoat:1,clearcoatRoughness:.06,envMapIntensity:1.6,emissive:new Color(0xffffff),emissiveMap:marbleMap,emissiveIntensity:.08,clippingPlanes:[xClip]}));
+ const xMat=keep(new MeshPhysicalMaterial({map:marbleMap,color:0xb4b9c0,roughness:.5,metalness:.05,clearcoat:.3,clearcoatRoughness:.45,envMapIntensity:.95,side:DoubleSide,emissive:new Color(0xffffff),emissiveMap:marbleMap,emissiveIntensity:.08,clippingPlanes:[xClip]}));
  const xPivot=new Group(),xMesh=new Mesh(xGeometry,xMat);xPivot.add(xMesh);xPivot.visible=false;rig.add(xPivot);
  const X_HALF=(350-82)*X_SCALE/2,X_REST=TOP+X_HALF+.02,X_START=TOP-X_HALF*2.1;
  // Fractured X (Blender: HERO_xs_* shards around a light core, HERO_x_core) — filled in when isle.glb arrives.
  const xCoreMat=keep(new MeshBasicMaterial({color:WHITE,toneMapped:false,clippingPlanes:[xClip],fog:false}));
+ const xEdgeMat=keep(new LineBasicMaterial({color:WHITE,transparent:true,opacity:.3,blending:AdditiveBlending,depthWrite:false,clippingPlanes:[xClip],fog:false}));
  const xShards:{mesh:Mesh;dir:Vector3;spin:number}[]=[];let xCore:Mesh|null=null;
  // Light tether from the orb into the heart of the X (acts 2 and 3).
  const tetherUniforms={uTime:{value:0},uAlpha:{value:0}};
  const tetherMat=keep(new ShaderMaterial({uniforms:tetherUniforms,transparent:true,depthWrite:false,blending:AdditiveBlending,
   vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
-  fragmentShader:`uniform float uTime;uniform float uAlpha;varying vec2 vUv;void main(){float pulse=pow(.5+.5*sin(vUv.y*40.+uTime*6.),8.);float a=(.55+.45*pulse)*uAlpha*smoothstep(0.,.06,vUv.y)*smoothstep(1.,.94,vUv.y);gl_FragColor=vec4(vec3(.95,.97,1.)*a,a);}`}));
+  fragmentShader:`uniform float uTime;uniform float uAlpha;varying vec2 vUv;void main(){float pulse=pow(.5+.5*sin(vUv.y*40.+uTime*6.),8.);float a=(.55+.45*pulse)*uAlpha*smoothstep(0.,.06,vUv.y)*smoothstep(1.,.94,vUv.y);gl_FragColor=vec4(vec3(2.2,2.25,2.3)*a,a);}`}));
  const tether=new Mesh(keep(new CylinderGeometry(.007,.007,1,8,1,true)),tetherMat);tether.visible=false;scene.add(tether);
  const tetherGlowMat=keep(new MeshBasicMaterial({color:WHITE,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
  tether.add(new Mesh(keep(new CylinderGeometry(.035,.035,1,10,1,true)),tetherGlowMat));
@@ -208,7 +213,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  {const n=small0?260:520,pos=new Float32Array(n*3);for(let i=0;i<n;i++){const a=i/n*Math.PI*2;pos[i*3]=Math.cos(a);pos[i*3+1]=0;pos[i*3+2]=Math.sin(a);}
   const g=keep(new BufferGeometry());g.setAttribute('position',new BufferAttribute(pos,3));ellipse.add(new Points(g,ellipseMat));ellipse.add(new LineLoop(g,ellipseLineMat));}
  const ellipseNodeMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false}));
- const ellipseNodes=[0,1,2,3,4,5,6,7].map(()=>{const m=new Mesh(keep(new PlaneGeometry(.32,.32)),ellipseNodeMat);rig.add(m);return m;});
+ const ellipseNodes=[0,1,2,3,4,5,6,7].map(()=>{const m=new Mesh(keep(new PlaneGeometry(.16,.16)),ellipseNodeMat);rig.add(m);return m;});
  // Two tall light portals at the edges of the lake (act 3).
  const portalUniforms={uTime:{value:0},uAlpha:{value:0}};
  const portalMat=keep(new ShaderMaterial({uniforms:portalUniforms,transparent:true,depthWrite:false,blending:AdditiveBlending,side:DoubleSide,
@@ -390,7 +395,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   const shardKeys=Object.keys(found).filter(k=>/^HERO_xs_\d+$/.test(k)).sort();
   if(shardKeys.length&&found.HERO_x_core){
    shardKeys.forEach((k,i)=>{const g=found[k];g.computeBoundingSphere();const ctr=g.boundingSphere!.center;
-    const m=new Mesh(g,xMat);xPivot.add(m);xShards.push({mesh:m,dir:new Vector3(ctr.x,ctr.y,0).normalize(),spin:(i%2?1:-1)*(.25+.1*i)});});
+    const m=new Mesh(g,xMat);xPivot.add(m);m.add(new LineSegments(keep(new EdgesGeometry(g,28)),xEdgeMat));xShards.push({mesh:m,dir:new Vector3(ctr.x,ctr.y,0).normalize(),spin:(i%2?1:-1)*(.25+.1*i)});});
    xCore=new Mesh(found.HERO_x_core,xCoreMat);xPivot.add(xCore);xMesh.visible=false;
   }
   if(found.PED_base){const old=pedBase.geometry;pedBase.geometry=found.PED_base;old.dispose();}
@@ -412,6 +417,18 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  const dustMat=keep(new PointsMaterial({color:WHITE,size:.022,transparent:true,opacity:.35,blending:AdditiveBlending,depthWrite:false,sizeAttenuation:true,fog:false}));
  const dustPoints=new Points(dustGeometry,dustMat);scene.add(dustPoints);
 
+ // HDR light sources: above the bloom threshold, so they glow like the key visuals.
+ netNodeMat.color.setScalar(2.4);pedGlowMat.color.setScalar(2.6);ellipseNodeMat.color.setScalar(1.9);tetherGlowMat.color.setScalar(1.5);
+ orbits.forEach(o=>o.runnerMat.color.setScalar(2.4));hitMat.color.setScalar(2.2);
+ // ---- bloom (desktop): only light brighter than the threshold glows — cracks, rings, nodes, beams, the orb's network ----
+ const composer=small0?null:new EffectComposer(renderer);
+ const bloom=composer?new UnrealBloomPass(new Vector2(256,256),.85,.28,1.7):null;
+ if(composer&&bloom){composer.addPass(new RenderPass(scene,camera));composer.addPass(bloom);composer.addPass(new OutputPass());
+  // The bloom chain does not keep alpha, so the canvas is opaque while it runs (the story has no page layer behind it).
+  renderer.setClearColor(BG,1);
+  // Tone mapping now runs once over everything (the lake plate included): Neutral keeps everything below the highlights
+  // as it was and only rolls off the bright light, where ACES would lift the whole night scene.
+  renderer.toneMapping=NeutralToneMapping;renderer.toneMappingExposure=1.15;}
  // ---- state ----
  let story:StoryPosition|null=null,small=host.small,paused=false,stopped=false,raf=0,lastNow=0,time=0,width=1,height=1;
  let quality=Math.min(devicePixelRatio||1,small?1.5:2),slow=0,fps=60;
@@ -431,6 +448,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  }
  function resize(nextSmall:boolean){
   small=nextSmall;measure();renderer.setPixelRatio(quality);renderer.setSize(width,height,false);
+  if(composer){composer.setPixelRatio(Math.min(quality,1.5));composer.setSize(width,height);}
   camera.aspect=width/height;lastPlaced.fill('');
   if(mirror)(water as Reflector).getRenderTarget().setSize(Math.round(width*quality*.5),Math.round(height*quality*.5));
  }
@@ -446,7 +464,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  // Where the beam lands: on the X it hits the face turned toward the camera, just inside the tip.
  function beamTarget(cp:number,i:number,out:Vector3){
   if(cp!==1)return anchor(cp,i,out);
-  tmp3.copy(camera.position);xMesh.worldToLocal(tmp3);const face=tmp3.z>=0?.27:-.27;
+  tmp3.copy(camera.position);xMesh.worldToLocal(tmp3);const face=tmp3.z>=0?.44:-.44;
   return out.set(X_TIPS[i][0]*.82,X_TIPS[i][1]*.82,face).applyMatrix4(xMesh.matrixWorld);
  }
  function anchor(cp:number,i:number,out:Vector3){
@@ -569,7 +587,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   const assemble=c===1&&!p.hold?1-smooth((run-.05)/.75):0;
   xShards.forEach((sh,i)=>{const breathe=(.012+.03*xFocusMix+.05*talkPulse)*(.6+.4*Math.sin(time*1.3+i*1.7));
    sh.mesh.position.copy(sh.dir).multiplyScalar(assemble*1.1+breathe);sh.mesh.rotation.set(0,0,sh.spin*assemble);});
-  xCoreMat.color.setScalar(.55+.35*xFocusMix+.5*gate+.12*Math.sin(time*2.1));
+  xCoreMat.color.setScalar(2.6+1.4*xFocusMix+1.6*gate+.3*Math.sin(time*2.1)+1.6*talkPulse);
   // tether: orb → the notch at the top of the X
   const tetherOn=c>=1?smooth((rise-.55)/.4)*lift:0;tether.visible=tetherOn>.01;
   if(tether.visible){orb.getWorldPosition(tmp);tmp2.set(-.05,.5,0).applyMatrix4(xPivot.matrixWorld);
@@ -637,7 +655,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
      n.w=Math.round(Math.abs(r.x-l.x));n.h=Math.round(n.w*PLATE_H/PLATE_W);return n;}));
    }
   }
-  renderer.render(scene,camera);
+  if(composer&&!small)composer.render();else renderer.render(scene,camera);
  }
  function loop(now:number){raf=0;if(stopped||paused)return;frame(now);raf=requestAnimationFrame(loop);}
  function wake(){if(!raf&&!paused&&!stopped&&!document.hidden)raf=requestAnimationFrame(loop);}
