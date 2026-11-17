@@ -3,6 +3,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { origin, published, stages, clusters, paths, guides, hubFaq } from './content.mjs';
 import { cities } from './cities.mjs';
+import { landings, industryHub } from './landings.mjs';
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const strip = html => html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -113,10 +114,47 @@ ${c.sections.map(([h, html]) => `<section id="${slugify(h)}"><h2>${esc(h)}</h2>$
   return page({ path, title: c.title, desc: c.desc, keywords: c.keywords, image: '/media/znanje/znanje-og.jpg', type: 'website', schema, body, bodyClass: 'is-guide' });
 }
 
+// Search-aligned service and industry pages (landings.mjs) share the same layout.
+const offer = ([name, price, period]) => ({ '@type': 'Offer', name, price, priceCurrency: 'BAM', ...(period ? { description: `Početna cijena, ${period}.` } : {}) });
+function landingPage(l) {
+  const toc = l.sections.map(([h]) => [h, slugify(h)]);
+  const trail = [['Početna', '/'], ...l.crumbs];
+  const body = `<article class="guide" style="--accent:#9fc4ff">
+<header class="guide-hero"><nav class="crumbs" aria-label="Putanja">${trail.map(([n, h], i) => i === trail.length - 1 ? `<span>${esc(n)}</span>` : `<a href="${h}">${esc(n)}</a><span>/</span>`).join('')}</nav>
+<p class="eyebrow">${esc(l.eyebrow)}</p><h1>${esc(l.h1)}</h1>
+<p class="guide-meta">Digital X, Sarajevo · ažurirano <time datetime="${published}">17. 11. 2026.</time></p>
+<div class="hub-actions"><a class="btn btn-primary" href="/kontakt.html">Besplatne konzultacije</a><a class="btn" href="/usluge/x-signal/">Besplatna analiza sajta</a></div></header>
+<div class="guide-layout"><aside class="guide-toc" aria-label="Sadržaj"><h2>Na ovoj stranici</h2><ol>${toc.map(([h, id]) => `<li><a href="#${id}">${esc(h)}</a></li>`).join('')}<li><a href="#pitanja">Česta pitanja</a></li></ol></aside>
+<div class="guide-body"><div class="answer"><p class="eyebrow">KRATAK ODGOVOR</p><p>${esc(l.answer)}</p></div>
+${l.sections.map(([h, html]) => `<section id="${slugify(h)}"><h2>${esc(h)}</h2>${html}</section>`).join('')}
+<section id="pitanja"><h2>Česta pitanja</h2>${faqHtml(l.faq)}</section>
+<section class="related"><h2>Povezano</h2><div class="related-grid">${l.related.map(([h, n]) => `<a href="${h}">${esc(n)}<span aria-hidden="true">→</span></a>`).join('')}</div></section>
+</div></div></article>${cta}`;
+  const schema = [
+    { '@type': 'Service', '@id': origin + l.path + '#service', name: l.service.name, serviceType: l.service.serviceType, description: l.desc, provider: { '@id': origin + '/#organization' }, areaServed: l.service.areaServed, offers: l.service.offers.map(offer) },
+    crumbs([['Digital X', '/'], ...l.crumbs]),
+    faqSchema(l.faq),
+  ];
+  return page({ path: l.path, title: l.title, desc: l.desc, keywords: l.keywords, image: '/media/znanje/znanje-og.jpg', type: 'website', schema, body, bodyClass: 'is-guide' });
+}
+function industryHubPage() {
+  const items = landings.filter(l => l.path.startsWith('/industrije/'));
+  const body = `<section class="hub-hero"><div class="hub-hero-copy"><nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span>/</span><span>Industrije</span></nav><p class="eyebrow">DIGITAL X / INDUSTRIJE</p><h1>${esc(industryHub.h1)}</h1><p class="lead">${esc(industryHub.answer)}</p></div></section>
+<section class="hub-section"><div class="paths">${items.map(l => `<article><h2>${esc(l.crumbs.at(-1)[0])}</h2><p>${esc(l.desc)}</p><a class="btn btn-small" href="${l.path}">Pogledajte →</a></article>`).join('')}</div></section>${cta}`;
+  const schema = [
+    { '@type': 'CollectionPage', '@id': origin + industryHub.path + '#hub', url: origin + industryHub.path, name: industryHub.h1, description: industryHub.desc, inLanguage: 'bs', publisher: { '@id': origin + '/#organization' } },
+    { '@type': 'ItemList', itemListElement: items.map((l, i) => ({ '@type': 'ListItem', position: i + 1, name: l.title.replace(' | Digital X', ''), url: origin + l.path })) },
+    crumbs([['Digital X', '/'], ['Industrije', industryHub.path]]),
+  ];
+  return page({ path: industryHub.path, title: industryHub.title, desc: industryHub.desc, image: '/media/znanje/znanje-og.jpg', type: 'website', schema, body, bodyClass: 'is-hub' });
+}
+
 mkdirSync('znanje', { recursive: true });
 for (const c of cities) { mkdirSync(`.${cityUrl(c)}`, { recursive: true }); writeFileSync(`.${cityUrl(c)}index.html`, cityPage(c)); }
+for (const l of landings) { mkdirSync(`.${l.path}`, { recursive: true }); writeFileSync(`.${l.path}index.html`, landingPage(l)); }
+mkdirSync(`.${industryHub.path}`, { recursive: true }); writeFileSync(`.${industryHub.path}index.html`, industryHubPage());
 writeFileSync('znanje/index.html', hubPage());
 guides.forEach((g, i) => { mkdirSync(`znanje/${g.slug}`, { recursive: true }); writeFileSync(`znanje/${g.slug}/index.html`, guidePage(g, i)); });
 // Shared with publish.mjs so the sitemap and llms.txt list the same pages.
-export const znanjePages = [{ path: '/znanje/', title: 'Centar znanja', desc: 'Mapa svih vodiča po temama i koracima.', lastmod: published }, ...guides.map(g => ({ path: url(g), title: g.title, desc: g.desc, lastmod: published })), ...cities.map(c => ({ path: cityUrl(c), title: c.title.replace(' | Digital X', ''), desc: c.desc, lastmod: published }))];
+export const znanjePages = [{ path: '/znanje/', title: 'Centar znanja', desc: 'Mapa svih vodiča po temama i koracima.', lastmod: published }, ...guides.map(g => ({ path: url(g), title: g.title, desc: g.desc, lastmod: published })), ...cities.map(c => ({ path: cityUrl(c), title: c.title.replace(' | Digital X', ''), desc: c.desc, lastmod: published })), ...[...landings, industryHub].map(l => ({ path: l.path, title: l.title.replace(' | Digital X', ''), desc: l.desc, lastmod: published }))];
 console.log(`Centar znanja: hub + ${guides.length} guides.`);

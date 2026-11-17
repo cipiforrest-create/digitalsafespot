@@ -8,7 +8,7 @@ const nodePoint=(story:Locator,cp:number,i:number)=>story.locator(`[data-world-n
 
 test('three acts hold, reverse and expose real controls',async({page})=>{
  await page.goto(route);const story=page.locator('[data-cinema-story]');await expect(story).toHaveAttribute('data-enhanced','');
- await expect(page.locator('h1')).toHaveText('Web stranice, SEO i AI automatizacija za firme u Sarajevu i BiH');await expect(page.locator('#hero-title')).toHaveText('Digitalni Asistent');await expect(page.locator('#hero-title + p')).toHaveText('Uvijek korak ispred.');
+ await expect(page.locator('h1')).toHaveText('Digitalna agencija Sarajevo: web stranice, SEO i AI automatizacija u BiH');await expect(page.locator('#hero-title')).toHaveText('Digitalni Asistent');await expect(page.locator('#hero-title + p')).toHaveText('Uvijek korak ispred.');
  // The whole story is a fraction of the film it replaced: under nine screens of scroll.
  expect(await story.evaluate(n=>(n as HTMLElement).offsetHeight/n.querySelector<HTMLElement>('.cinema-stage')!.offsetHeight)).toBeLessThan(9);
  for(const clip of [0,1,2,1,0]){

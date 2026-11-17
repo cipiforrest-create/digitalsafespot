@@ -18,7 +18,7 @@ console.log('Concierge assets built; existing site files preserved.');
 // Build an isolated static output; server sources, dependencies and local secrets are never served.
 const output=resolve('public');if(dirname(output)!==process.cwd())throw new Error('Output must remain inside the site workspace');
 rmSync(output,{recursive:true,force:true});mkdirSync(output, { recursive: true });
-const excluded = new Set(['public','api','concierge','node_modules','package.json','package-lock.json','tsconfig.json','eslint.config.mjs','vercel.json','test-results','playwright-report']);
+const excluded = new Set(['public','api','concierge','docs','node_modules','package.json','package-lock.json','tsconfig.json','eslint.config.mjs','vercel.json','test-results','playwright-report']);
 for (const entry of readdirSync('.', { withFileTypes: true })) {
   if (entry.name.startsWith('.') || /\.(log|pid)$/.test(entry.name) || excluded.has(entry.name)) continue;
   cpSync(entry.name, `public/${entry.name}`, { recursive: true });
