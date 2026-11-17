@@ -1,7 +1,8 @@
 import {ui} from './page-language';
 
-import {goalLabels,validateTool,type Goal,type Context,type Message,type ToolCall,type ToolResult,type Section} from '../shared/contracts';
-import {pageFromPath,type PageId} from '../shared/catalogue';
+import type {Goal,Context,Message,ToolCall,ToolResult,Section} from '../shared/contracts';
+import {goalLabels} from '../shared/goals';
+import {pageFromPath,type PageId} from './routes';
 import {readSse} from '../shared/sse';
 import {el,text,notice,post,track,loadAnalytics} from './dom';
 import {Forms} from './forms';
@@ -61,7 +62,7 @@ function transcript(role:Message['role'],value:string,done=false){if(role==='use
 function finishDrafts(){transcript('user','',true);transcript('assistant','',true);}
 function selectGoal(value:Goal){goal=value;document.querySelectorAll<HTMLButtonElement>('[data-goal]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.goal===value)));track('concierge_goal_selected',{goal:value});}
 async function reveal(section:Section,move=true):Promise<ToolResult['status']>{if(document.querySelector('dialog[open]'))return'deferred';if(!document.getElementById(section)){if(!move)return'deferred';if(!await navigate('home'))return'deferred';}if(move)actionMinimize();const node=document.getElementById(section);if(!node)return'rejected';if(move)node.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});node.classList.add('is-highlighted');setTimeout(()=>node.classList.remove('is-highlighted'),6000);track('concierge_section_reveal',{section});return'applied';}
-async function execute(raw:ToolCall):Promise<ToolResult>{try{const call=validateTool(raw);let status:ToolResult['status']='applied';switch(call.name){
+async function execute(raw:ToolCall):Promise<ToolResult>{try{const {validateTool}=await import('../shared/contracts');const call=validateTool(raw);let status:ToolResult['status']='applied';switch(call.name){
 case'select_goal':selectGoal(call.args.goal as Goal);break;
 case'navigate_to_section':status=await reveal(call.args.section as Section);break;
 case'highlight_solution':status=await reveal(call.args.section as Section,false);break;

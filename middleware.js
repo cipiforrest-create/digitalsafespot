@@ -31,6 +31,7 @@ import { enhanceStructuredDataHtml } from "./lib/structured-data-fixes.mjs";
 import { enhancePerformanceHtml } from "./lib/performance-html.mjs";
 import {
   canonicalHostTarget,
+  trailingSlashTarget,
   isRetiredLegacyPath,
   legacyServiceTarget,
 } from "./lib/routing-policy.mjs";
@@ -312,7 +313,8 @@ export default async function middleware(request) {
   // Internal source request: continue to the deployment's original static/rewrite handler.
   if (requestUrl.searchParams.get(RAW_QUERY) === "1") return next();
 
-  const canonicalTarget = canonicalHostTarget(requestUrl);
+  const slashTarget = trailingSlashTarget(requestUrl);
+  const canonicalTarget = canonicalHostTarget(slashTarget ? new URL(slashTarget) : requestUrl) || slashTarget;
   if (canonicalTarget) return redirect301(canonicalTarget);
 
   const serviceTarget = legacyServiceTarget(requestUrl);

@@ -1,7 +1,7 @@
 // DIGITAL X — site behavior
 // ⬇️ KONFIGURACIJA: zalijepi svoj n8n/Make webhook URL (vidi prirucnik/03-automatizacije-uputstvo.md)
 const WEBHOOK_URL = "";            // npr. https://n8n.tvoj-server.com/webhook/leads
-const FALLBACK_EMAIL = "digital.x.agency.ba@gmail.com";
+const FALLBACK_EMAIL = "marketing@digital-x-marketing.com";
 const PAGE_LOCALE = document.documentElement.lang || 'bs';
 const UI_COPY = PAGE_LOCALE === 'en' ? {
   skip: 'Skip to content', field: 'Field', service: 'Choose a service'
@@ -225,7 +225,7 @@ document.querySelectorAll('form.lead-form').forEach(form => {
     {
       priority: 3,
       keys: ["cijena", "cijene", "cjenovnik", "koliko kosta", "budzet", "paket"],
-      text: "Početne cijene su: landing stranica od 199 KM, prezentacijska stranica od 449 KM, e-commerce od 2.490 KM, e-commerce + SEO/AEO od 3.490 KM, SEO/GEO/AEO od 249 KM mjesečno, AI chatbot od 490 KM + 39 KM mjesečno, speed optimizacija od 99 KM i održavanje od 29 KM mjesečno. Konačna cijena zavisi od obima.",
+      text: "Početne cijene su: landing stranica od 199 KM, prezentacijska stranica od 449 KM, e-commerce od 2.490 KM, e-commerce + SEO/AEO od 3.490 KM, SEO/GEO/AEO od 249 KM mjesečno, AI chatbot od 490 KM + 149 KM mjesečno, speed optimizacija od 99 KM i održavanje od 49 KM mjesečno. Konačna cijena zavisi od obima.",
       href: linkTo("index.html#cjenovnik"),
       label: "Otvori cjenovnik",
     },
@@ -253,7 +253,7 @@ document.querySelectorAll('form.lead-form').forEach(form => {
     {
       priority: 2,
       keys: ["chatbot", "chat asistent", "ai asistent", "copilot", "co-pilot", "24/7"],
-      text: "Digital X AI asistent koristi sadržaj i ton vaše firme za odgovore 24/7, kvalifikaciju upita i predaju razgovora čovjeku. Početna ponuda je od 490 KM + 39 KM mjesečno, uz demo prije kupovine.",
+      text: "Digital X AI asistent koristi sadržaj i ton vaše firme za odgovore 24/7, kvalifikaciju upita i predaju razgovora čovjeku. Početna ponuda je od 490 KM + 149 KM mjesečno, uz demo prije kupovine.",
       href: linkTo("landing-ai.html"),
       label: "AI asistent detalji",
     },
@@ -295,7 +295,7 @@ document.querySelectorAll('form.lead-form').forEach(form => {
     {
       priority: 1,
       keys: ["kontakt", "email", "razgovor", "procjena", "zahtjev", "treba mi", "po mjeri"],
-      text: "Opišite cilj, problem i usluge koje trebate. Digital X zatim definiše obim, faze, način saradnje i realnu procjenu cijene. Možete koristiti kontakt formu ili pisati na digital.x.agency.ba@gmail.com.",
+      text: "Opišite cilj, problem i usluge koje trebate. Digital X zatim definiše obim, faze, način saradnje i realnu procjenu cijene. Možete koristiti kontakt formu ili pisati na marketing@digital-x-marketing.com.",
       href: linkTo("index.html#custom-requirements"),
       label: "Zatražite procjenu",
     },

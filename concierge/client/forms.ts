@@ -1,6 +1,7 @@
 import {ui} from './page-language';
 
-import { goalLabels, type Context, type AuditCheck, type AuditResult } from '../shared/contracts';
+import type { Context, AuditCheck, AuditResult } from '../shared/contracts';
+import { goalLabels } from '../shared/goals';
 import { auditSummary, categories, priorities, reportHtml, reportText, scoreMethod, severityLabel } from '../shared/audit-report';
 import { readSse } from '../shared/sse';
 import { el, text, post, track } from './dom';
@@ -121,7 +122,7 @@ export class Forms {
   }
   // Fallback that always works: the visitor's own e-mail app, addressed to Digital X, with summary and report highlights.
   private offerMail(status:HTMLElement){const p=this.leadPayload(),r=this.normalized(),body=[`${p.name} · ${p.email}${p.company?` · ${p.company}`:''}`,p.businessWebsite,'',p.summary,r?`\n${reportText(r)}`:''].filter(v=>v!==undefined).join('\n').slice(0,1800);
-   const link=text('a','Pošaljite upit iz svoje e-mail aplikacije','button mail-fallback');link.setAttribute('href',`mailto:digital.x.agency.ba@gmail.com?subject=${encodeURIComponent(`Upit — ${p.company||p.name||'Digital X'}${r?` · X Signal ${auditSummary(r.checks).score}/100`:''}`)}&body=${encodeURIComponent(body)}`);status.append(document.createElement('br'),link);
+   const link=text('a','Pošaljite upit iz svoje e-mail aplikacije','button mail-fallback');link.setAttribute('href',`mailto:marketing@digital-x-marketing.com?subject=${encodeURIComponent(`Upit — ${p.company||p.name||'Digital X'}${r?` · X Signal ${auditSummary(r.checks).score}/100`:''}`)}&body=${encodeURIComponent(body)}`);status.append(document.createElement('br'),link);
   }
   private exportLead() { const p=this.leadPayload(),r=this.normalized();
     const esc=(v:string)=>v.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));

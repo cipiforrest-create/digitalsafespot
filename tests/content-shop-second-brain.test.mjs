@@ -57,7 +57,7 @@ test("Brain Galaxy camera uses damped zoom, rotation, and hero fade", () => {
 
 test("site-wide Digital X assistant has a local company knowledge base", () => {
   const js = read("js/main.js");
-  for (const term of ["digitalx-assistant", "Digital X Co-Pilot", "GrowthOS", "Second Brain", "SEO / GEO / AEO", "2.490 KM", "digital.x.agency.ba@gmail.com"]) {
+  for (const term of ["digitalx-assistant", "Digital X Co-Pilot", "GrowthOS", "Second Brain", "SEO / GEO / AEO", "2.490 KM", "marketing@digital-x-marketing.com"]) {
     assert.ok(js.includes(term), `missing assistant knowledge: ${term}`);
   }
   assert.ok(js.includes('role="dialog"'));

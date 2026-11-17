@@ -28,7 +28,7 @@ export function reportHtml(result:AuditResult,intro='',extraHtml=''):string{
 <table role="presentation" cellspacing="0" cellpadding="0" style="margin:22px 0"><tr><td style="width:110px;height:110px;border:8px solid ${tone[s.band]};border-radius:50%;text-align:center;font-size:30px;font-weight:700;color:${tone[s.band]}">${s.score}<div style="font-size:11px;font-weight:400;color:#475569">/ 100</div></td><td style="padding-left:18px;font-size:14px"><strong style="color:${tone[s.band]}">${severityLabel[s.band]}</strong><div style="margin-top:6px;color:#334155">${s.good} dobro · ${s.warning} srednje · ${s.critical} kritično</div></td></tr></table>
 ${top.length?`<h2 style="font-size:16px;margin:8px 0">Šta prvo popraviti</h2><ol style="padding-left:20px;margin:0;font-size:14px;color:#0f172a">${top.map(c=>`<li style="margin:6px 0"><strong>${esc(c.title)}</strong> — ${esc(c.recommendation||c.evidence)}</li>`).join('')}</ol>`:''}
 ${sections}<p style="font-size:12px;color:#64748b;margin-top:24px">${esc(scoreMethod(s))}</p><ul style="font-size:12px;color:#64748b;padding-left:18px">${result.limitations.map(l=>`<li>${esc(l)}</li>`).join('')}</ul>
-<p style="font-size:13px;margin-top:20px">Digital X · <a href="mailto:digital.x.agency.ba@gmail.com">digital.x.agency.ba@gmail.com</a> · +387 64 438 3566</p></td></tr></table></td></tr></table></body></html>`;
+<p style="font-size:13px;margin-top:20px">Digital X · <a href="mailto:marketing@digital-x-marketing.com">marketing@digital-x-marketing.com</a> · +387 64 438 3566</p></td></tr></table></td></tr></table></body></html>`;
 }
 export function reportText(result:AuditResult):string{
  const s=auditSummary(result.checks);

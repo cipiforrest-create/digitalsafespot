@@ -25,7 +25,7 @@ test('canonical pages publish at their public routes, with a distinct concierge 
  assert.equal($('link[rel=canonical]').attr('href'),'https://www.digital-x-marketing.com/');
  assert.deepEqual($('link[rel=alternate][hreflang]').toArray().map(n=>$(n).attr('hreflang')),['bs','en','de','x-default']);
  assert.equal($('h1').length,1);
- assert.deepEqual(JSON.parse($('script[data-page-schema]').text())['@graph'].map((n:{'@type':string|string[]})=>n['@type']),[['Organization','ProfessionalService'],'WebPage']);
+ assert.deepEqual(JSON.parse($('script[data-page-schema]').text())['@graph'].map((n:{'@type':string|string[]})=>n['@type']),[['Organization','ProfessionalService'],'WebSite','WebPage']);
  for(const route of ['usluge/index.html','cjenovnik/index.html','kontakt.html','ai-concierge-preview/index.html'])assert.doesNotMatch(load(readFileSync(`public/${route}`,'utf8'))('meta[name=robots]').attr('content')!,/noindex/);
  const landing=load(readFileSync('public/ai-concierge-preview/index.html','utf8'));assert.equal(landing('body').attr('data-page'),'concierge');assert.equal(landing('link[rel=canonical]').attr('href'),'https://www.digital-x-marketing.com/ai-concierge-preview/');
  assert.equal($('.brand').first().attr('href'),'/');assert.equal($('.xh-actions [data-tour-start]').length,1);assert.equal($('.world-system a').length,6);
@@ -47,7 +47,7 @@ test('homepage answers search and AI audits: organisation, short descriptions, d
  const guide=JSON.parse(load(readFileSync('public/blog/aeo-vodic.html','utf8'))('script[data-page-schema]').text())['@graph'].find((n:{'@type':string})=>n['@type']==='HowTo');
  assert.equal(guide.step.length,5);
  const llms=readFileSync('public/llms.txt','utf8');
- for(const fact of ['Sarajevo','digital.x.agency.ba@gmail.com','## Početne cijene','## Vodiči','/blog/aeo-vodic.html'])assert.ok(llms.includes(fact),fact);
+ for(const fact of ['Sarajevo','marketing@digital-x-marketing.com','## Početne cijene','## Vodiči','/blog/aeo-vodic.html'])assert.ok(llms.includes(fact),fact);
 });
 test('EN and DE pages carry reviewed translations, not machine errors the audit found',()=>{
  const pages=['index.html','usluge/seo-aeo-geo/index.html','cjenovnik/index.html','kontakt.html'];

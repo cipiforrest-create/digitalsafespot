@@ -1,12 +1,17 @@
 import {readFileSync} from 'node:fs';
 import {load} from 'cheerio';
+import {copyTranslations} from './seo-copy.mjs';
 
 const origin='https://www.digital-x-marketing.com';
 const attributes=['alt','title','aria-label','placeholder','data-feature','data-goal-prompt'];
 const reviewed=JSON.parse(readFileSync(new URL('./locales/reviewed.json',import.meta.url),'utf8'));
+const seoEditorialTranslations=JSON.parse(readFileSync(new URL('./locales/seo-editorial-2026-11.json',import.meta.url),'utf8'));
+
 const dictionaries=Object.fromEntries(['en','de'].map((lang,index)=>{
  const cache=JSON.parse(readFileSync(new URL(`./locales/${lang}.json`,import.meta.url),'utf8'));
  for(const [key,values] of Object.entries(reviewed))cache[key]=values[index];
+ for(const [key,values] of Object.entries(seoEditorialTranslations))cache[key]=values[index];
+ for(const [key,values] of Object.entries(copyTranslations))cache[key]=values[index];
  // Symbols, numbers and brand names are not prose. Keep them intact.
  for(const key of Object.keys(cache)){
   if(!/\p{L}/u.test(key)||/^(?:INITIALIZING SIGNAL ENGINE|Cinematic (?:Hotel|Watch|Penthouse|KODENT|Perfume|Sneakers|Dentist|Deepsea|VANTA)$|DIGITAL X$|Digital X$)/.test(key))cache[key]=key;
@@ -55,6 +60,8 @@ export function localizePage(source,lang,route,routes){
  });
  const schema=value=>{
   if(Array.isArray(value))return value.map(schema);
+  // Site-level entities (/#organization, /#website) are one entity in every language: never re-key them per locale.
+  if(value&&typeof value==='object'&&typeof value['@id']==='string'&&value['@id'].startsWith(`${origin}/#`))return value;
   if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([key,item])=>[key,key==='inLanguage'?lang:schema(item)]));
   if(typeof value!=='string')return value;
   if(value.startsWith(origin))return localPath(value);
