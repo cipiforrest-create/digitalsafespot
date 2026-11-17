@@ -175,7 +175,9 @@ el('#transcript').addEventListener('scroll',()=>{const node=el('#transcript');fo
 el('#cookie-preferences').addEventListener('click',()=>el<HTMLDialogElement>('#consent-dialog').showModal());document.querySelectorAll<HTMLButtonElement>('[data-consent]').forEach(b=>b.onclick=()=>{try{localStorage.setItem('dx-consent',b.dataset.consent!);}catch{/* Optional storage. */}el<HTMLDialogElement>('#consent-dialog').close();if(b.dataset.consent==='granted')loadAnalytics();else if(document.getElementById('concierge-gtm'))location.reload();});
 function viewport(){const view=window.visualViewport;document.documentElement.style.setProperty('--visible-height',`${view?.height||innerHeight}px`);document.documentElement.style.setProperty('--keyboard-offset',`${Math.max(0,innerHeight-(view?.height||innerHeight)-(view?.offsetTop||0))}px`);}
 mountExamplePrompts();
-window.visualViewport?.addEventListener('resize',viewport);window.visualViewport?.addEventListener('scroll',viewport);viewport();
+// No measurement at start-up (it forced a layout during load): the CSS falls back to 100dvh and 0px until the
+// visual viewport changes, e.g. when the on-screen keyboard opens.
+window.visualViewport?.addEventListener('resize',viewport);window.visualViewport?.addEventListener('scroll',viewport);
 document.addEventListener('concierge:navigated',()=>{waveform.attach(document.querySelector('#waveform'));heroWave.attach(document.querySelector('[data-x-wave]'));void import('./page-effects').then(m=>{m.mountEffects();xStageState(lastVoiceState);});});
 window.addEventListener('popstate',()=>{const id=pageFromPath(location.pathname);if(id)void navigate(id,location.hash,false).catch(()=>notice('Povratak nije uspio. Otvorite stranicu ponovo.'));});
 document.addEventListener('visibilitychange',()=>{waveform.resume();heroWave.resume();});window.addEventListener('pagehide',()=>{request?.abort();voice?.stop();});loadAnalytics();

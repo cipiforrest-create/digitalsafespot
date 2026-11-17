@@ -37,6 +37,16 @@ function preloadModules(html){
  if(!html.includes(mainTag))return html;
  return html.replace(mainTag,()=>moduleGraph.map(f=>`<link rel="modulepreload" href="/${assetDir}${f}">`).join('')+mainTag);
 }
+// Homepage: start the late-discovered requests from <head> instead of ~120 KB into the HTML. The Bosnian letters
+// (č, ć, š, ž, đ) live in the latin-ext font, which every page needs; the 3D story's two stylesheets and the
+// script modules follow. Added after the hero image preload, which keeps the highest priority.
+const homeHints=['<link rel="preload" href="/assets/fonts/inter-var-latin-ext-a.woff2" as="font" type="font/woff2" crossorigin>',
+ '<link rel="preload" href="/ai-concierge-preview/cinema-story.css" as="style">','<link rel="preload" href="/ai-concierge-preview/world.css" as="style">',
+ `<link rel="modulepreload" href="/${assetDir}main.js">`].join('');
+function hintHome(html){
+ if(!html.includes('inter-var-latin-ext-a.woff2')||!html.includes('/ai-concierge-preview/cinema-story.css'))throw new Error('Homepage hints are out of date');
+ return html.replace('</head>',()=>homeHints+'</head>');
+}
 for(const p of routes){
  const source=readFileSync(`.concierge/pages/${p.id}.html`,'utf8');
  const $=load(source);
@@ -47,7 +57,7 @@ for(const p of routes){
  for(const lang of ['bs','en','de']){
   const file='public'+(lang==='bs'?'':`/${lang}`)+p.production+(p.production.endsWith('/')?'index.html':'');
   const html=lang==='bs'?base:localizePage(base,lang,p.production,localizedRoutes);
-  mkdirSync(dirname(file),{recursive:true});writeFileSync(file,preloadModules(p.id==='home'?inlineHeadStyles(html):html));
+  mkdirSync(dirname(file),{recursive:true});writeFileSync(file,preloadModules(p.id==='home'?hintHome(inlineHeadStyles(html)):html));
  }
 }
 // Preserve existing translations and legacy URLs in the sitemap; add all published canonical pages.
