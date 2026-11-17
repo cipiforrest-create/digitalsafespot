@@ -137,25 +137,41 @@ export function drawModule(x:Ctx,index:number,t:number,active:boolean,bare=false
 // Act 3 glass panel (after the Digital X key visual): the service's icon, or its live miniature while selected, a
 // divider, then its name. 640×200 canvas; the name comes from the page so translations carry through.
 export const PANEL_W=640,PANEL_H=200;
-export function drawPanel(x:Ctx,index:number,name:string,level:number,t:number,font:string){
- x.globalAlpha=1;x.shadowBlur=0;x.clearRect(0,0,PANEL_W,PANEL_H);
- x.beginPath();x.roundRect(4,4,PANEL_W-8,PANEL_H-8,18);x.fillStyle=`rgba(8,10,14,${.72+.12*level})`;x.fill();
- const g=x.createLinearGradient(0,0,PANEL_W*.6,PANEL_H);g.addColorStop(0,'rgba(255,255,255,.16)');g.addColorStop(.5,'rgba(255,255,255,.03)');g.addColorStop(1,'rgba(255,255,255,.08)');x.fillStyle=g;x.fill();
- x.lineWidth=2+2*level;x.strokeStyle=`rgba(232,238,246,${.5+.45*level})`;x.stroke();
- x.save();x.beginPath();x.roundRect(4,4,PANEL_W-8,PANEL_H-8,18);x.clip();
- // icon area: 320×200 (the 384×240 drawings scaled to fit)
- x.save();x.translate(8,0);x.scale(PANEL_H/H,PANEL_H/H);
- if(level>.05)drawModule(x,index,t,level>.4,true);else drawIcon(x,index,level,true);
- x.restore();x.restore();
- x.globalAlpha=1;x.shadowBlur=0;x.strokeStyle='rgba(220,226,235,.35)';x.lineWidth=1.5;x.beginPath();x.moveTo(338,38);x.lineTo(338,PANEL_H-38);x.stroke();
- // name: up to two lines, wide letter spacing
- x.fillStyle=`rgba(244,246,249,${.82+.18*level})`;x.shadowColor='rgba(255,255,255,.6)';x.shadowBlur=4+10*level;x.textBaseline='middle';
- let size=30;x.font=`600 ${size}px ${font}`;(x as Ctx&{letterSpacing:string}).letterSpacing='3px';
- const words=name.toUpperCase().split(/\s+/),lines:string[]=[];let line='';
- for(const w of words){const test=line?line+' '+w:w;if(x.measureText(test).width>262&&line){lines.push(line);line=w;}else line=test;}if(line)lines.push(line);
- while(lines.some(l=>x.measureText(l).width>262)&&size>16){size-=2;x.font=`600 ${size}px ${font}`;}
- const lh=size*1.35,top=PANEL_H/2-(lines.length-1)*lh/2;lines.slice(0,3).forEach((l,i)=>x.fillText(l,362,top+i*lh));
+// Phones: a taller panel, icon on top and the name below in larger type, so it stays readable at ~120 CSS px wide.
+export const PHONE_PANEL_W=400,PHONE_PANEL_H=236;
+export function drawPanel(x:Ctx,index:number,name:string,level:number,t:number,font:string,compact=false){
+ const PW=compact?PHONE_PANEL_W:PANEL_W,PH=compact?PHONE_PANEL_H:PANEL_H;
+ x.globalAlpha=1;x.shadowBlur=0;x.clearRect(0,0,PW,PH);
+ x.beginPath();x.roundRect(4,4,PW-8,PH-8,compact?24:18);x.fillStyle=`rgba(8,10,14,${(compact?.8:.72)+.12*level})`;x.fill();
+ const g=x.createLinearGradient(0,0,PW*.6,PH);g.addColorStop(0,'rgba(255,255,255,.16)');g.addColorStop(.5,'rgba(255,255,255,.03)');g.addColorStop(1,'rgba(255,255,255,.08)');x.fillStyle=g;x.fill();
+ x.lineWidth=(compact?3:2)+2*level;x.strokeStyle=`rgba(232,238,246,${.5+.45*level})`;x.stroke();
+ x.save();x.beginPath();x.roundRect(4,4,PW-8,PH-8,compact?24:18);x.clip();
+ if(compact){
+  // icon area: 160×100, centred at the top
+  x.save();x.translate((PW-160)/2,12);x.scale(100/H,100/H);
+  if(level>.05)drawModule(x,index,t,level>.4,true);else drawIcon(x,index,level,true);
+  x.restore();
+ }else{
+  // icon area: 320×200 (the 384×240 drawings scaled to fit)
+  x.save();x.translate(8,0);x.scale(PANEL_H/H,PANEL_H/H);
+  if(level>.05)drawModule(x,index,t,level>.4,true);else drawIcon(x,index,level,true);
+  x.restore();
+ }
+ x.restore();
+ x.globalAlpha=1;x.shadowBlur=0;x.strokeStyle='rgba(220,226,235,.35)';x.lineWidth=1.5;x.beginPath();
+ if(compact){x.moveTo(70,120);x.lineTo(PW-70,120);}else{x.moveTo(338,38);x.lineTo(338,PANEL_H-38);}x.stroke();
+ // name: up to two lines (three on desktop), letter-spaced
+ x.fillStyle=`rgba(244,246,249,${.82+.18*level})`;x.shadowColor='rgba(255,255,255,.6)';x.shadowBlur=(compact?2:4)+10*level;x.textBaseline='middle';
+ const room=compact?PW-30:262;let size=compact?50:30;x.font=`600 ${size}px ${font}`;(x as Ctx&{letterSpacing:string}).letterSpacing=compact?'1px':'3px';
+ const words=name.toUpperCase().split(/\s+/),maxLines=compact?2:3;
+ const wrap=()=>{const out:string[]=[];let line='';for(const w of words){const test=line?line+' '+w:w;if(x.measureText(test).width>room&&line){out.push(line);line=w;}else line=test;}if(line)out.push(line);return out;};
+ let lines=wrap();
+ while((lines.length>maxLines||lines.some(l=>x.measureText(l).width>room))&&size>16){size-=2;x.font=`600 ${size}px ${font}`;lines=wrap();}
+ if(compact){
+  const lh=size*1.12,top=176-(Math.min(lines.length,2)-1)*lh/2;x.textAlign='center';
+  lines.slice(0,2).forEach((l,i)=>x.fillText(l,PW/2,top+i*lh));x.textAlign='left';
+ }else{const lh=size*1.35,top=PANEL_H/2-(lines.length-1)*lh/2;lines.slice(0,3).forEach((l,i)=>x.fillText(l,362,top+i*lh));}
  // selected: a small arrow says a second click opens the page
- if(level>.5){x.globalAlpha=level;x.font=`600 26px ${font}`;x.fillText('↗',PANEL_W-46,34);x.globalAlpha=1;}
+ if(level>.5){x.globalAlpha=level;x.font=`600 ${compact?30:26}px ${font}`;x.fillText('↗',PW-(compact?44:46),compact?36:34);x.globalAlpha=1;}
  x.shadowBlur=0;
 }

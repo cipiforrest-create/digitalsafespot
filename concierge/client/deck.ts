@@ -10,7 +10,7 @@ import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import {OutputPass} from 'three/examples/jsm/postprocessing/OutputPass.js';
 import {smooth,type StoryPosition} from '../shared/cinema-timeline';
-import {drawPanel,PANEL_W,PANEL_H} from './deck-modules';
+import {drawPanel,PANEL_W,PANEL_H,PHONE_PANEL_W,PHONE_PANEL_H} from './deck-modules';
 
 export type NodePlacement={x:number;y:number;depth:number;side:'left'|'right'|'below'|'above'|'center';w?:number;h?:number};
 export type DeckHost={
@@ -336,25 +336,34 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  const hit=new Mesh(keep(new PlaneGeometry(.9,.9)),hitMat);hit.visible=false;scene.add(hit);
 
  // ---- service rocks with glass plates (act 3) ----
- const plateGeometry=keep(new PlaneGeometry(PLATE_W,PLATE_H)),plateEdges=keep(new EdgesGeometry(new BoxGeometry(PLATE_W+.04,PLATE_H+.04,.03))),platePick=keep(new BoxGeometry(PLATE_W+.1,PLATE_H+.1,.1));
+ // Phones get the taller panel (icon over name) and a layout fitted to the screen (see layoutPanels).
+ const PH=small0?PLATE_W*PHONE_PANEL_H/PHONE_PANEL_W:PLATE_H;
+ const plateGeometry=keep(new PlaneGeometry(PLATE_W,PH)),plateEdges=keep(new EdgesGeometry(new BoxGeometry(PLATE_W+.04,PH+.04,.03))),platePick=keep(new BoxGeometry(PLATE_W+.1,PH+.1,.1));
  const arcMats:ShaderMaterial[]=[];
  const panelFont=getComputedStyle(document.body).fontFamily||'system-ui, sans-serif';
  const panelNames=[...host.stage.querySelectorAll('[data-world-nodes="2"] strong')].map(n=>(n.textContent||'').trim());
+ // Arc of light from the heart of the X to the inner edge of its panel.
+ function arcGeometry(slot:Vector3,side:number,row:number,scale:number){
+  const top=slot.clone().setX(slot.x-side*PLATE_W*.5*scale),from=new Vector3(side*.35,1.05+row*.1,.25),mid=from.clone().lerp(top,.5).setY(Math.max(from.y,top.y)+(small0?.25:.55));
+  return new TubeGeometry(new QuadraticBezierCurve3(from,mid,top),48,small0?.016:.012,6,false);
+ }
  const isles=MOUNTS.map(([deg,radius,lift],i)=>{
   const a=deg*Math.PI/180,base=new Vector3(Math.sin(a)*radius,0,Math.cos(a)*radius),size=.95+hash(i,7,1)*.35;
   const rock=new Mesh(keep(rockGeometry(11+i*3.7,small0?2:3)),rockMat);rock.scale.set(size*1.05,.85*size,size*.9);rig.add(rock);
   const plate=new Group();rig.add(plate);
-  const canvas=document.createElement('canvas');canvas.width=PANEL_W;canvas.height=PANEL_H;const context=canvas.getContext('2d')!;
-  const [side,row]=PANEL_SLOTS[i],slot=new Vector3(side*(small0?2.05:4.35),(small0?3.2:3.55)-row*(small0?.62:1.02),small0?1.6:.9);
+  const canvas=document.createElement('canvas');canvas.width=small0?PHONE_PANEL_W:PANEL_W;canvas.height=small0?PHONE_PANEL_H:PANEL_H;const context=canvas.getContext('2d')!;
+  const [side,row]=PANEL_SLOTS[i],slot=new Vector3(side*4.35,3.55-row*1.02,.9);
   const tex=keep(new CanvasTexture(canvas));tex.colorSpace=SRGBColorSpace;
   const faceMat=keep(new MeshBasicMaterial({map:tex,transparent:true,opacity:0,toneMapped:false,depthWrite:false,fog:false,side:DoubleSide}));
   const face=new Mesh(plateGeometry,faceMat);plate.add(face);
   const edgeMat=keep(new LineBasicMaterial({color:WHITE,transparent:true,opacity:0,fog:false})),edge=new LineSegments(plateEdges,edgeMat);plate.add(edge);
   const haloMat=keep(new MeshBasicMaterial({color:WHITE,map:glow,transparent:true,opacity:0,blending:AdditiveBlending,depthWrite:false,fog:false})),halo=new Mesh(keep(new PlaneGeometry(3,2.2)),haloMat);halo.position.z=-.05;plate.add(halo);
   const pick=new Mesh(platePick,pickMat);plate.add(pick);
+  // Phones: the panels are drawn over the rocks in front of them.
+  if(small0){faceMat.depthTest=edgeMat.depthTest=false;face.renderOrder=edge.renderOrder=5;}
   const rings=[ripple(0),ripple(0)];rings.forEach(r=>{r.position.x=base.x;r.position.z=base.z;rig.add(r);});
   // Arc of light from the heart of the X to the inner edge of its panel.
-  const panelScale=small0?.5:1,top=slot.clone().setX(slot.x-side*PLATE_W*.5*panelScale),from=new Vector3(side*.35,1.05+row*.1,.25),mid=from.clone().lerp(top,.5).setY(Math.max(from.y,top.y)+.55);
+  const panelScale=1;
   const arcMat=keep(new ShaderMaterial({uniforms:{uDraw:{value:0},uTime:{value:0},uOn:{value:0}},transparent:true,depthWrite:false,blending:AdditiveBlending,fog:false,
    vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
    fragmentShader:`uniform float uDraw;uniform float uTime;uniform float uOn;varying vec2 vUv;
@@ -362,11 +371,12 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
      float pulse=pow(.5+.5*sin(t*18.-uTime*(3.+uOn*4.)),6.);float ends=smoothstep(0.,.06,t)*smoothstep(1.,.92,t);
      float a=ends*(.32+.4*uOn+pulse*(.3+.7*uOn)+head*.8);gl_FragColor=vec4(vec3(.92,.95,1.)*a,a);}`}));
   arcMats.push(arcMat);
-  const arc=new Mesh(keep(new TubeGeometry(new QuadraticBezierCurve3(from,mid,top),48,.012,6,false)),arcMat);rig.add(arc);
-  return {rock,plate,face,faceMat,edgeMat,haloMat,pick,rings,arc,arcMat,context,tex,base,size,lift,slot,panelScale,level:0,clock:i*1.7,showing:'icon' as 'icon'|'live'};
+  const arc=new Mesh(arcGeometry(slot,side,row,panelScale),arcMat);rig.add(arc);
+  return {rock,plate,face,faceMat,edgeMat,haloMat,pick,rings,arc,arcMat,context,tex,base,size,lift,slot,side,row,panelScale,level:0,clock:i*1.7,showing:'icon' as 'icon'|'live'};
  });
+ disposables.push({dispose:()=>isles.forEach(isle=>isle.arc.geometry.dispose())});
 
- const drawPanels=()=>isles.forEach((isle,i)=>{drawPanel(isle.context,i,panelNames[i]||'',isle.level,isle.clock,panelFont);isle.tex.needsUpdate=true;});
+ const drawPanels=()=>isles.forEach((isle,i)=>{drawPanel(isle.context,i,panelNames[i]||'',isle.level,isle.clock,panelFont,small0);isle.tex.needsUpdate=true;});
  drawPanels();document.fonts?.ready.then(()=>{if(!stopped){drawPanels();wake();}});
  // ---- the chrome pedestal under the orb (act 1) and the shaft of light that falls on it ----
  const chromeMat=keep(new MeshPhysicalMaterial({color:0xdfe4ea,metalness:1,roughness:.09,clearcoat:1,clearcoatRoughness:.05,envMapIntensity:1.9}));
@@ -449,7 +459,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
  function resize(nextSmall:boolean){
   small=nextSmall;measure();renderer.setPixelRatio(quality);renderer.setSize(width,height,false);
   if(composer){composer.setPixelRatio(Math.min(quality,1.5));composer.setSize(width,height);}
-  camera.aspect=width/height;lastPlaced.fill('');
+  camera.aspect=width/height;lastPlaced.fill('');layoutPanels();
   if(mirror)(water as Reflector).getRenderTarget().setSize(Math.round(width*quality*.5),Math.round(height*quality*.5));
  }
  function project(v:Vector3,side:NodePlacement['side']):NodePlacement{
@@ -476,6 +486,43 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   const t=clamp(progress*1.15-lag);(r.material as MeshBasicMaterial).opacity=Math.sin(Math.PI*t)*.32;r.scale.setScalar(radius*(.6+t*1.6));
  };
 
+ // The scroll-driven camera, without pointer sway: also used to fit the phone panels to the act 3 view.
+ function pose(c:number,mix:number,closing:number,aspect:number,pos:Vector3,target:Vector3){
+  let from=CAMERA[0],to=CAMERA[1];
+  if(c===1){from=CAMERA[1];to=CAMERA[2];}else if(c===2){from=CAMERA[2];to=CAMERA[3];}
+  const narrow=clamp((1.45-aspect)/.9),reach=1+narrow*.75;// phones: pull back so the whole isle fits the band
+  const k=(i:0|1|2)=>lerp(lerp(from.pos[i],to.pos[i],mix),CAMERA[4].pos[i],closing);
+  const t=(i:0|1|2)=>lerp(lerp(from.target[i],to.target[i],mix),CAMERA[4].target[i],closing);
+  target.set(t(0),t(1),t(2));pos.set(k(0)*reach,target.y+(k(1)-target.y)*reach,k(2)*reach);
+  return lerp(lerp(from.off,to.off,mix),CAMERA[4].off,closing);// sideways view offset (desktop)
+ }
+ // Phones: two columns of three panels on either side of the X, sized and placed in screen space for the act 3
+ // view, so the names stay readable on any phone. Re-run on resize; the arcs follow their panels.
+ const layoutCam=new PerspectiveCamera(32,1,.1,200);
+ function layoutPanels(){
+  if(!small0)return;
+  layoutCam.aspect=width/height;layoutCam.updateProjectionMatrix();
+  pose(2,1,0,layoutCam.aspect,layoutCam.position,tmp);layoutCam.lookAt(tmp);layoutCam.updateMatrixWorld();
+  const gap=Math.max(.38*width,120),margin=8,rowGap=8,ratio=PHONE_PANEL_H/PHONE_PANEL_W;
+  // usable band: under the drag hint and above the dark fade at the bottom of the stage
+  const bandTop=Math.max(height*.1,48),bandBottom=height*.8;
+  let w=Math.min(150,(width-gap-margin*2)/2);const fit=(bandBottom-bandTop-rowGap*2)/3/ratio;if(w>fit)w=fit;
+  const h=w*ratio;
+  tmp2.set(0,X_REST,0).project(layoutCam);const xMid=(-tmp2.y*.5+.5)*height;
+  const top=clamp(xMid-(h*3+rowGap*2)/2,bandTop,bandBottom-(h*3+rowGap*2));
+  const zPlane=4.3,// in front of the nearest rocks
+  ray=new Vector3(),hit=(px:number,py:number,out:Vector3)=>{
+   ray.set(px/width*2-1,-(py/height)*2+1,.5).unproject(layoutCam).sub(layoutCam.position).normalize();
+   return out.copy(layoutCam.position).addScaledVector(ray,(zPlane-layoutCam.position.z)/ray.z);
+  };
+  const l=new Vector3(),r=new Vector3();
+  isles.forEach(isle=>{
+   const cx=isle.side<0?margin+w/2:width-margin-w/2,cy=top+h/2+isle.row*(h+rowGap);
+   hit(cx,cy,isle.slot);hit(cx-w/2,cy,l);hit(cx+w/2,cy,r);isle.panelScale=l.distanceTo(r)/PLATE_W;
+   isle.arc.geometry.dispose();isle.arc.geometry=arcGeometry(isle.slot,isle.side,isle.row,isle.panelScale);
+  });
+ }
+
  function frame(now:number){
   const dt=lastNow?Math.min(.05,(now-lastNow)/1000):1/60;lastNow=now;time+=dt;
   const p=story;if(!p)return;
@@ -491,18 +538,14 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   const grow=c>1?1:c===1?smooth(run/.6):0;// the centre rock widens into the X's plinth
 
   // ---- camera ----
-  let from=CAMERA[0],to=CAMERA[1];const mix=smooth(run);
-  if(c===1){from=CAMERA[1];to=CAMERA[2];}else if(c===2){from=CAMERA[2];to=CAMERA[3];}
-  const narrow=clamp((1.45-camera.aspect)/.9),reach=1+narrow*.75;// phones: pull back so the whole isle fits the band
-  const k=(i:0|1|2)=>lerp(lerp(from.pos[i],to.pos[i],mix),CAMERA[4].pos[i],closing);
-  const t=(i:0|1|2)=>lerp(lerp(from.target[i],to.target[i],mix),CAMERA[4].target[i],closing);
-  look.set(t(0),t(1),t(2));
+  const mix=smooth(run);
+  const viewOff=pose(c,mix,closing,camera.aspect,camera.position,look);
   const sway=pointerInside&&!small?1:0;
-  camera.position.set(k(0)*reach+pointer.x*.3*sway,look.y+(k(1)-look.y)*reach-pointer.y*.15*sway,k(2)*reach);
+  camera.position.x+=pointer.x*.3*sway;camera.position.y-=pointer.y*.15*sway;
   lockMix=lerp(lockMix,locked&&locked[0]===2?1:0,1-Math.exp(-dt*5));
   if(lockMix>.001&&locked){isles[locked[1]].plate.getWorldPosition(tmp);look.lerp(tmp,lockMix*.4);camera.position.lerp(tmp,lockMix*.14);}
   camera.lookAt(look);
-  const off=small?0:lerp(lerp(from.off,to.off,mix),CAMERA[4].off,closing);
+  const off=small?0:viewOff;
   camera.setViewOffset(width,height,-off*width,0,width,height);
   camera.updateMatrixWorld();
 
@@ -573,7 +616,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
   xPivot.visible=rise>0;
   const settle=c===1&&!p.hold?1-smooth(run):0;
   xPivot.position.y=lerp(X_START,X_REST,rise)+(rise>=1?Math.sin(time*.8)*.025:0);
-  xPivot.scale.setScalar(c===2?lerp(1,1.14,smooth(deploy/.6)):1);
+  xPivot.scale.setScalar(c===2?lerp(1,small0?1:1.14,smooth(deploy/.6)):1);
   xPivot.rotation.set(xPitch,xYaw+settle*Math.PI*.42+(rise>=1?Math.sin(time*.3)*.12:0),0);
   xClip.constant=-(TOP-.02);
   // While the X rises the stone opens in light, so the cut through the rock reads as a gateway, not as debris.
@@ -613,14 +656,15 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
    const rockTop=lerp(-1.2,.32,out);isle.rock.position.set(isle.base.x,rockTop-.45*isle.rock.scale.y,isle.base.z);
    const plateOut=smooth((out-.35)/.65);
    // Panels fly out of the X to their column slot and hang there, turned to the camera.
-   isle.plate.position.set(0,1.6,.3).lerp(isle.slot,plateOut);isle.plate.position.y+=Math.sin(time*.9+i*1.3)*.035;isle.plate.position.z+=isle.level*.35;
+   isle.plate.position.set(0,1.6,.3).lerp(isle.slot,plateOut);isle.plate.position.y+=Math.sin(time*.9+i*1.3)*(small0?.015:.035);isle.plate.position.z+=isle.level*(small0?.12:.35);
    isle.plate.scale.setScalar(isle.panelScale*(.25+.75*plateOut)*(1+isle.level*.06));
-   isle.plate.rotation.set(-.05,Math.atan2(toCam.x-isle.plate.position.x,toCam.z-isle.plate.position.z)*.6,0);
+   if(small0)isle.plate.quaternion.copy(rig.quaternion).invert().multiply(camera.quaternion);// phones: square to the screen
+   else isle.plate.rotation.set(-.05,Math.atan2(toCam.x-isle.plate.position.x,toCam.z-isle.plate.position.z)*.6,0);
    isle.faceMat.opacity=plateOut*(out<.9?.75+.25*Math.sin(time*30+i):1);isle.edgeMat.opacity=plateOut*(.45+.55*isle.level);isle.haloMat.opacity=plateOut*(.12+.4*isle.level);
    isle.arcMat.uniforms.uDraw.value=smooth((out-.2)/.8);isle.arcMat.uniforms.uTime.value=time;isle.arcMat.uniforms.uOn.value=isle.level;
    // The selected plate plays its miniature; the rest show their icon.
-   if(isle.level>.05){isle.clock+=dt;drawPanel(isle.context,i,panelNames[i]||'',isle.level,isle.clock,panelFont);isle.tex.needsUpdate=true;isle.showing='live';}
-   else if(isle.showing==='live'){drawPanel(isle.context,i,panelNames[i]||'',0,0,panelFont);isle.tex.needsUpdate=true;isle.showing='icon';}
+   if(isle.level>.05){isle.clock+=dt;drawPanel(isle.context,i,panelNames[i]||'',isle.level,isle.clock,panelFont,small0);isle.tex.needsUpdate=true;isle.showing='live';}
+   else if(isle.showing==='live'){drawPanel(isle.context,i,panelNames[i]||'',0,0,panelFont,small0);isle.tex.needsUpdate=true;isle.showing='icon';}
   });
 
   // ---- beam from the orb to the selected service ----
@@ -652,7 +696,7 @@ export function createDeck(host:DeckHost,signal:AbortSignal):Deck|null{
     tmp3.setFromMatrixColumn(camera.matrixWorld,0);
     placeNodes(2,isles.map((isle,i)=>{const at=anchor(2,i,tmp),n=project(at,'center'),k=isle.plate.getWorldScale(tmp2).x;
      const l=project(at.clone().addScaledVector(tmp3,-PLATE_W*.5*k),'center'),r=project(at.clone().addScaledVector(tmp3,PLATE_W*.5*k),'center');
-     n.w=Math.round(Math.abs(r.x-l.x));n.h=Math.round(n.w*PLATE_H/PLATE_W);return n;}));
+     n.w=Math.round(Math.abs(r.x-l.x));n.h=Math.round(n.w*PH/PLATE_W);return n;}));
    }
   }
   if(composer&&!small)composer.render();else renderer.render(scene,camera);
