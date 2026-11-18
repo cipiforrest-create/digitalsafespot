@@ -1,5 +1,6 @@
 import { CINEMATIC_PAGES, enhanceCinematicHtml } from "./lib/cinematic-seo.mjs";
 import conciergeRoutes from "./lib/concierge-routes.json";
+import htmlRouteList from "./lib/html-routes.json";
 import {
   enhanceGscIndexingHtml,
   filterGscSitemap,
@@ -31,12 +32,14 @@ import { enhanceStructuredDataHtml } from "./lib/structured-data-fixes.mjs";
 import { enhancePerformanceHtml } from "./lib/performance-html.mjs";
 import {
   canonicalHostTarget,
+  htmlTwinTarget,
   trailingSlashTarget,
   isRetiredLegacyPath,
   legacyServiceTarget,
 } from "./lib/routing-policy.mjs";
 
 const RAW_QUERY = "__dx_seo_raw";
+const HTML_ROUTES = new Set(htmlRouteList);
 const CONTINUE_REQUEST = { headers: { "x-middleware-next": "1" } };
 const CINEMATIC_ENGINE_VERSION = "20260910-2fd6fd2";
 
@@ -313,7 +316,7 @@ export default async function middleware(request) {
   // Internal source request: continue to the deployment's original static/rewrite handler.
   if (requestUrl.searchParams.get(RAW_QUERY) === "1") return next();
 
-  const slashTarget = trailingSlashTarget(requestUrl);
+  const slashTarget = htmlTwinTarget(requestUrl, HTML_ROUTES) || trailingSlashTarget(requestUrl);
   const canonicalTarget = canonicalHostTarget(slashTarget ? new URL(slashTarget) : requestUrl) || slashTarget;
   if (canonicalTarget) return redirect301(canonicalTarget);
 

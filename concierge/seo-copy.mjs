@@ -6,6 +6,44 @@
 const T = (bs, en, de) => [bs, en, de];
 
 export const pageCopy = {
+  // Homepage: a factual answer block under the 3D hero and the FAQ section (also published as FAQPage schema).
+  // Delivery times are the published ones: Smart Website Launch 7–14 working days after content (Sarajevo page),
+  // first automation workflow 5–7 days (AI automation guide).
+  home: {
+    answer: T('Digital X je agencija iz Sarajeva koja radi web stranice i web shopove, SEO, AEO i GEO vidljivost, oglašavanje i AI automatizaciju za firme u BiH, regionu i dijaspori. Landing stranica kreće od 199 KM, prezentacijska stranica od 449 KM, a cinematic web s AI asistentom (Smart Website Launch) košta 499 KM uz plan isporuke od 7 do 14 radnih dana nakon prijema sadržaja. Web shop kreće od 2.490 KM.',
+      'Digital X is an agency in Sarajevo that builds websites and online shops, SEO, AEO and GEO visibility, advertising and AI automation for businesses in Bosnia and Herzegovina, the region and the diaspora. A landing page starts at 199 KM, a business website at 449 KM, and a cinematic website with an AI assistant (Smart Website Launch) costs 499 KM, with a delivery plan of 7 to 14 working days after we receive your content. An online shop starts at 2,490 KM.',
+      'Digital X ist eine Agentur aus Sarajevo für Websites und Onlineshops, Sichtbarkeit durch SEO, AEO und GEO, Werbung und KI-Automatisierung – für Unternehmen in Bosnien und Herzegowina, der Region und der Diaspora. Eine Landingpage beginnt bei 199 KM, eine Unternehmenswebsite bei 449 KM, und eine Cinematic-Website mit KI-Assistent (Smart Website Launch) kostet 499 KM, mit einem Lieferplan von 7 bis 14 Arbeitstagen nach Erhalt Ihrer Inhalte. Ein Onlineshop beginnt bei 2.490 KM.'),
+    faq: [
+      [T('Koliko košta izrada web stranice u Sarajevu i BiH?', 'How much does a website cost in Sarajevo and Bosnia and Herzegovina?', 'Was kostet eine Website in Sarajevo und Bosnien und Herzegowina?'),
+        T('Landing stranica kreće od 199 KM, prezentacijska stranica od 449 KM, cinematic web s AI asistentom (Smart Website Launch) košta 499 KM, a web shop kreće od 2.490 KM. Konačna cijena zavisi od broja stranica i funkcija i potvrđuje se prije početka.',
+          'A landing page starts at 199 KM, a business website at 449 KM, a cinematic website with an AI assistant (Smart Website Launch) costs 499 KM, and an online shop starts at 2,490 KM. The final price depends on the number of pages and features and is confirmed before we start.',
+          'Eine Landingpage beginnt bei 199 KM, eine Unternehmenswebsite bei 449 KM, eine Cinematic-Website mit KI-Assistent (Smart Website Launch) kostet 499 KM und ein Onlineshop beginnt bei 2.490 KM. Der Endpreis hängt von der Zahl der Seiten und Funktionen ab und wird vor dem Start bestätigt.')],
+      [T('Koliko traje izrada web stranice?', 'How long does it take to build a website?', 'Wie lange dauert die Erstellung einer Website?'),
+        T('Smart Website Launch ima plan isporuke od 7 do 14 radnih dana nakon prijema sadržaja. Veći projekti i web shopovi traju duže i dijele se u faze.',
+          'Smart Website Launch has a delivery plan of 7 to 14 working days after we receive your content. Larger projects and online shops take longer and are split into phases.',
+          'Smart Website Launch hat einen Lieferplan von 7 bis 14 Arbeitstagen nach Erhalt Ihrer Inhalte. Größere Projekte und Onlineshops dauern länger und werden in Phasen aufgeteilt.')],
+      [T('Šta je razlika između SEO, AEO i GEO optimizacije?', 'What is the difference between SEO, AEO and GEO?', 'Was ist der Unterschied zwischen SEO, AEO und GEO?'),
+        T('SEO uređuje stranicu tako da je Google razumije i prikaže ljudima koji traže vašu uslugu. AEO priprema jasne, kratke odgovore koje pretraživači i asistenti mogu prikazati. GEO gradi provjerljive činjenice o vašoj firmi kako bi je AI sistemi poput ChatGPT-a i Geminija tačno opisali. Paket SEO · GEO · AEO kreće od 249 KM mjesečno.',
+          'SEO shapes your site so Google understands it and shows it to people looking for your service. AEO prepares clear, short answers that search engines and assistants can display. GEO builds verifiable facts about your business so AI systems such as ChatGPT and Gemini describe it accurately. The SEO · GEO · AEO package starts at 249 KM a month.',
+          'SEO gestaltet Ihre Website so, dass Google sie versteht und Menschen zeigt, die Ihre Leistung suchen. AEO bereitet klare, kurze Antworten vor, die Suchmaschinen und Assistenten anzeigen können. GEO baut überprüfbare Fakten über Ihr Unternehmen auf, damit KI-Systeme wie ChatGPT und Gemini es zutreffend beschreiben. Das Paket SEO · GEO · AEO beginnt bei 249 KM im Monat.')],
+      [T('Kako radi AI prodajni asistent na web stranici?', 'How does an AI sales assistant on a website work?', 'Wie funktioniert ein KI-Verkaufsassistent auf einer Website?'),
+        T('Asistent odgovara posjetiocima na pitanja o vašoj ponudi, pojašnjava opcije i priprema sažetak upita za vaš tim. Telefon, SMS, termini i CRM povezuju se prema dogovorenom obimu. AI prodajni asistent kreće od 490 KM uz održavanje.',
+          'The assistant answers visitors\' questions about your offer, explains the options and prepares a summary of the enquiry for your team. Phone, SMS, bookings and CRM are connected according to the agreed scope. The AI sales assistant starts at 490 KM plus maintenance.',
+          'Der Assistent beantwortet Fragen von Besuchern zu Ihrem Angebot, erklärt die Optionen und bereitet eine Zusammenfassung der Anfrage für Ihr Team vor. Telefon, SMS, Termine und CRM werden im vereinbarten Umfang angebunden. Der KI-Verkaufsassistent beginnt bei 490 KM plus Wartung.')],
+      [T('Koliko traje postavljanje AI automatizacije?', 'How long does it take to set up AI automation?', 'Wie lange dauert die Einrichtung einer KI-Automatisierung?'),
+        T('Prvi prioritetni workflow, od upita do zadatka, obavijesti ili CRM zapisa, postavljamo za 5 do 7 dana. Automation Starter kreće od 349 KM jednokratno.',
+          'We set up the first priority workflow, from enquiry to task, notification or CRM record, in 5 to 7 days. Automation Starter starts at 349 KM as a one-off.',
+          'Den ersten priorisierten Workflow, von der Anfrage bis zur Aufgabe, Benachrichtigung oder zum CRM-Eintrag, richten wir in 5 bis 7 Tagen ein. Automation Starter beginnt bei 349 KM einmalig.')],
+      [T('Možete li ubrzati našu postojeću web stranicu?', 'Can you speed up our existing website?', 'Können Sie unsere bestehende Website beschleunigen?'),
+        T('Da. Speed optimizacija kreće od 99 KM jednokratno i uključuje brže učitavanje, stabilniji prikaz i tehničko čišćenje postojećeg sajta.',
+          'Yes. Speed optimisation starts at 99 KM as a one-off and covers faster loading, a more stable layout and a technical clean-up of your existing site.',
+          'Ja. Die Speed-Optimierung beginnt bei 99 KM einmalig und umfasst schnelleres Laden, eine stabilere Darstellung und eine technische Bereinigung Ihrer bestehenden Website.')],
+      [T('Radite li i za firme izvan Sarajeva?', 'Do you work with businesses outside Sarajevo?', 'Arbeiten Sie auch für Unternehmen außerhalb von Sarajevo?'),
+        T('Da. Radimo s firmama u cijeloj BiH, regionu i dijaspori. Saradnja na daljinu ide preko video poziva, e-maila i dijeljenih dokumenata, a u Sarajevu se možemo sastati i uživo.',
+          'Yes. We work with businesses across Bosnia and Herzegovina, the region and the diaspora. Remote work runs over video calls, email and shared documents, and in Sarajevo we can also meet in person.',
+          'Ja. Wir arbeiten mit Unternehmen in ganz Bosnien und Herzegowina, der Region und der Diaspora. Die Zusammenarbeit aus der Ferne läuft über Videoanrufe, E-Mail und geteilte Dokumente, in Sarajevo treffen wir uns auch persönlich.')],
+    ],
+  },
   visibility: {
     title: T('SEO optimizacija Sarajevo, AEO i GEO | Digital X', 'SEO, AEO and GEO optimisation in Sarajevo | Digital X', 'SEO-, AEO- und GEO-Optimierung in Sarajevo | Digital X'),
     desc: T('SEO, AEO i GEO optimizacija za firme u BiH: tehnička osnova, lokalna vidljivost, sadržaj i struktura za Google i AI odgovore. Od 249 KM mjesečno.',

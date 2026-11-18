@@ -11,7 +11,15 @@
       "digitalne usluge Sarajevo"
     ],
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
-    "questions": [],
+    "questions": [
+      "Koliko košta izrada web stranice u Sarajevu i BiH?",
+      "Koliko traje izrada web stranice?",
+      "Šta je razlika između SEO, AEO i GEO optimizacije?",
+      "Kako radi AI prodajni asistent na web stranici?",
+      "Koliko traje postavljanje AI automatizacije?",
+      "Možete li ubrzati našu postojeću web stranicu?",
+      "Radite li i za firme izvan Sarajeva?"
+    ],
     "links": [],
     "action": "improve_existing",
     "noindex": true

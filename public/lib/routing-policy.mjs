@@ -52,6 +52,21 @@ export function isLegacyRedirectPath(pathname) {
   return Boolean(cleanPathForLegacy(pathname) || localizedLegacyTarget(pathname));
 }
 
+// Pages published as /name.html (lib/html-routes.json, written by the build): /name and /name/ have
+// no file behind them, so they go to the .html URL in one hop instead of /name -> /name/ -> 404.
+export function htmlTwinTarget(input, htmlRoutes) {
+  const url = input instanceof URL ? new URL(input.href) : new URL(String(input));
+  const { pathname } = url;
+  if (pathname === '/' || !htmlRoutes) return null;
+  const stem = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+  const last = stem.slice(stem.lastIndexOf('/') + 1);
+  if (!last || last.includes('.')) return null;
+  const target = `${stem}.html`;
+  if (!htmlRoutes.has(target)) return null;
+  url.pathname = target;
+  return url.href;
+}
+
 // Directory pages are canonical with a trailing slash (every sitemap URL ends in "/" or a file
 // extension). Send the slashless twin there in one hop so /usluge and /usluge/ don't both answer 200.
 export function trailingSlashTarget(input) {
