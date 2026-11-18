@@ -75,8 +75,17 @@ ${siblings.length || c.blog.length ? `<h3>Još iz teme „${esc(c.name)}“</h3>
   return page({ path, title: `${g.title} | Digital X`, desc: g.desc, keywords: g.keywords, image: '/media/znanje/znanje-og.jpg', type: 'article', schema, body, bodyClass: 'is-guide' });
 }
 
-// Guide cards borrow the cover of a blog post from the same topic; topics without one use the hub image.
-const guideImage = g => { const p = posts.find(x => cluster(g.cluster).blog.some(([h]) => h === x.url)); return p ? visualSrc('article-' + p.id) : '/media/znanje/znanje-og.jpg'; };
+// Each guide has its own cover so no image repeats among the Blog cards (the 15 articles keep theirs).
+const V = '/ai-concierge-preview/media/visuals/', R = '/media/review-2026/';
+const guideImages = {
+  'digitalni-marketing-za-male-firme': R + 'category-growth.webp', 'kako-odabrati-digitalnu-agenciju': R + 'page-contact.webp',
+  'izrada-web-stranica-vodic': V + 'launch.webp', 'wordpress-shopify-ili-custom': V + 'signal.webp',
+  'kako-otvoriti-web-shop-bih': R + 'category-web.webp', 'sta-je-seo-optimizacija': V + 'visibility.webp',
+  'seo-aeo-geo-razlika': R + 'category-ai.webp', 'google-oglasi-cijena': V + 'growth.webp',
+  'instagram-facebook-reklama-cijena': R + 'category-content.webp', 'plan-sadrzaja-drustvene-mreze': V + 'content.webp',
+  'ai-za-male-firme': V + 'assistant.webp', 'kako-mjeriti-rezultate-marketinga': V + 'brain.webp',
+};
+const guideImage = g => { const src = guideImages[g.slug]; if (!src) throw new Error('No Blog card image for guide ' + g.slug); return src; };
 function hubPage() {
   const byCluster = c => guides.filter(g => g.cluster === c.id);
   const galaxy = { clusters: clusters.map(c => ({ id: c.id, name: c.name, color: c.color, pos: c.pos, nodes: [...byCluster(c).map(g => ({ t: g.title.split(':')[0], h: url(g) })), ...c.blog.map(([h, t]) => ({ t, h }))] })) };

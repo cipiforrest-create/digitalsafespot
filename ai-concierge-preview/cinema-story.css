@@ -19,7 +19,7 @@
 
 /* Reserve the complete scroll runway before scripts mount, including reload restoration. */
 @media(prefers-reduced-motion:no-preference){.cinema-story{height:calc(8.4 * max(100svh,560px));overflow-anchor:none}.cinema-stage{position:sticky;top:0;height:100svh;min-height:560px;overflow:hidden}.cinema-story:not([data-mounted]) .cinema-state:not(:first-of-type){display:none}}
-@media(max-width:720px) and (prefers-reduced-motion:no-preference){.cinema-story{height:calc(8.7 * max(100svh,520px))}.cinema-stage{min-height:520px}}
+@media(max-width:720px) and (prefers-reduced-motion:no-preference){.cinema-story{height:calc(12.2 * max(100svh,520px))}.cinema-stage{min-height:520px}}
 @media(scripting:none){.cinema-story{height:auto!important}.cinema-stage{position:relative;height:auto;overflow:visible}.cinema-story .cinema-state:not(:first-of-type){display:block}}
 
 .cinema-story .hero-actions .button{flex-basis:100%}.cinema-story .hero-actions .cinema-text{flex:1;text-align:left}@media(max-width:720px){.cinema-story .hero-actions .cinema-text{font-size:11px;white-space:nowrap;text-align:center}}

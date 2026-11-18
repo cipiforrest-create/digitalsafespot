@@ -12,8 +12,9 @@ test('the story is three acts and far shorter than the film it replaced',()=>{
   assert.equal(timeline.length,ACTS);
   timeline.forEach((s,i)=>{assert.equal(s.run,p.run[i]);assert.equal(s.stop,p.stop[i]);assert.ok(near(s.end,s.start+s.run+s.stop));if(i)assert.ok(near(s.start,timeline[i-1].end));});
   assert.ok(near(storyTotal(small),timeline[ACTS-1].end));
-  // The film story ran 16 to 19 stage heights; the deck story must stay under half of that.
-  assert.ok(storyTotal(small)<8,`total ${storyTotal(small)}`);
+  // The film story ran 16 to 19 stage heights. Desktop stays under half of that; phones scroll the acts more slowly
+  // on purpose (owner request, Nov 2026) and stay under 12.
+  assert.ok(storyTotal(small)<(small?12:8),`total ${storyTotal(small)}`);
  }
 });
 
