@@ -7310,5 +7310,133 @@
   "Web stranice po djelatnostima": [
     "Websites by industry",
     "Websites nach Branchen"
+  ],
+  "ODABRANI RADOVI / STUDIJE SLUČAJA": [
+    "SELECTED WORK / CASE STUDIES",
+    "AUSGEWÄHLTE ARBEITEN / FALLSTUDIEN"
+  ],
+  "Stvarni klijenti.": [
+    "Real clients.",
+    "Echte Kunden."
+  ],
+  "Stranice i aplikacije koje rade.": [
+    "Websites and apps that work.",
+    "Websites und Apps, die funktionieren."
+  ],
+  "STUDIJA SLUČAJA · WEB STRANICA · E-COMMERCE": [
+    "CASE STUDY · WEBSITE · E-COMMERCE",
+    "FALLSTUDIE · WEBSITE · E-COMMERCE"
+  ],
+  "STUDIJA SLUČAJA · APLIKACIJA · KONFIGURATOR": [
+    "CASE STUDY · APP · CONFIGURATOR",
+    "FALLSTUDIE · APP · KONFIGURATOR"
+  ],
+  "STUDIJA SLUČAJA · WEB STRANICA · CINEMATIC": [
+    "CASE STUDY · WEBSITE · CINEMATIC",
+    "FALLSTUDIE · WEBSITE · CINEMATIC"
+  ],
+  "STUDIJA SLUČAJA · WEB STRANICA": [
+    "CASE STUDY · WEBSITE",
+    "FALLSTUDIE · WEBSITE"
+  ],
+  "STUDIJA SLUČAJA · WEB STRANICA · PORTFOLIO": [
+    "CASE STUDY · WEBSITE · PORTFOLIO",
+    "FALLSTUDIE · WEBSITE · PORTFOLIO"
+  ],
+  "EYNNA Hair — Dizajner perika": [
+    "EYNNA Hair — Wig Designer",
+    "EYNNA Hair — Perücken-Designer"
+  ],
+  "Web stranica sarajevske trgovine perika, ekstenzija, repova i toppera: proizvodi, varijante i put do narudžbe na jednom mjestu.": [
+    "Website for a Sarajevo shop selling wigs, extensions, ponytails and toppers: products, variants and the path to an order in one place.",
+    "Website eines Sarajevoer Geschäfts für Perücken, Extensions, Zöpfe und Topper: Produkte, Varianten und der Weg zur Bestellung an einem Ort."
+  ],
+  "Aplikacija koja kupca korak po korak vodi kroz izbor modela, boje, dužine i detalja perike prije slanja upita.": [
+    "An app that guides the customer step by step through the model, colour, length and details of a wig before they send an enquiry.",
+    "Eine App, die Kunden Schritt für Schritt durch Modell, Farbe, Länge und Details einer Perücke führt, bevor sie eine Anfrage senden."
+  ],
+  "Cinematic web stranica parfimerije iz Sarajeva: proizvod, ambijent i ritam istraživanja mirisa vođeni skrolom.": [
+    "A cinematic website for a Sarajevo perfumery: product, atmosphere and the rhythm of exploring scents, driven by scrolling.",
+    "Eine cineastische Website für eine Parfümerie in Sarajevo: Produkt, Atmosphäre und der Rhythmus der Duftentdeckung, gesteuert durch Scrollen."
+  ],
+  "Pogledajte stranicu": [
+    "View the website",
+    "Website ansehen"
+  ],
+  "Pogledajte studiju": [
+    "Read the case study",
+    "Fallstudie lesen"
+  ],
+  "Studija slučaja": [
+    "Case study",
+    "Fallstudie"
+  ],
+  "Stvarni klijent, bez izmišljenih brojeva": [
+    "A real client, no invented numbers",
+    "Ein echter Kunde, keine erfundenen Zahlen"
+  ],
+  "STAR je stvarni klijent Digital X. Studija opisuje izvedbu i dizajnerske odluke; ne navodimo promjene prodaje ili posjeta jer za njih nemamo objavljene podatke.": [
+    "STAR is a real Digital X client. The case study describes the build and the design decisions; we do not quote changes in sales or visits because no published data exists for them.",
+    "STAR ist ein echter Kunde von Digital X. Die Fallstudie beschreibt Umsetzung und Designentscheidungen; Veränderungen bei Umsatz oder Besuchen nennen wir nicht, weil dazu keine veröffentlichten Daten vorliegen."
+  ],
+  "Mogu li pogledati stranicu?": [
+    "Can I see the website?",
+    "Kann ich die Website ansehen?"
+  ],
+  "Javna adresa stranice trenutno nije dostupna. Možete pročitati studiju ili razgovarati s nama o sličnom projektu.": [
+    "The site's public address is not available at the moment. You can read the case study or talk to us about a similar project.",
+    "Die öffentliche Adresse der Website ist derzeit nicht verfügbar. Sie können die Fallstudie lesen oder mit uns über ein ähnliches Projekt sprechen."
+  ],
+  "DIP Studio": [
+    "DIP Studio",
+    "DIP Studio"
+  ],
+  "Ajla Weddings": [
+    "Ajla Weddings",
+    "Ajla Weddings"
+  ],
+  "EYNNA Hair — web stranica": [
+    "EYNNA Hair — website",
+    "EYNNA Hair — Website"
+  ],
+  "EYNNA Hair — aplikacija Dizajner perika": [
+    "EYNNA Hair — Wig Designer app",
+    "EYNNA Hair — App Perücken-Designer"
+  ],
+  "STAR Parfimerija — web stranica": [
+    "STAR Parfimerija — website",
+    "STAR Parfimerija — Website"
+  ],
+  "EYNNA Hair — početna stranica web shopa": [
+    "EYNNA Hair — online shop home page",
+    "EYNNA Hair — Startseite des Onlineshops"
+  ],
+  "STAR Sarajevo — početna stranica": [
+    "STAR Sarajevo — home page",
+    "STAR Sarajevo — Startseite"
+  ],
+  "WEB STRANICA · E-COMMERCE": [
+    "WEBSITE · E-COMMERCE",
+    "WEBSITE · E-COMMERCE"
+  ],
+  "APLIKACIJA · KONFIGURATOR": [
+    "APP · CONFIGURATOR",
+    "APP · KONFIGURATOR"
+  ],
+  "WEB STRANICA · CINEMATIC": [
+    "WEBSITE · CINEMATIC",
+    "WEBSITE · CINEMATIC"
+  ],
+  "WEB STRANICA": [
+    "WEBSITE",
+    "WEBSITE"
+  ],
+  "WEB STRANICA · PORTFOLIO": [
+    "WEBSITE · PORTFOLIO",
+    "WEBSITE · PORTFOLIO"
+  ],
+  "Kliknite veliku zvijezdu teme da priđete bliže i vidite njene članke. Skrolajte da proletite kroz sve teme ili povucite da okrenete mapu.": [
+    "Click a topic's big star to fly closer and see its articles. Scroll to travel through every topic or drag to turn the map.",
+    "Klicken Sie auf den großen Stern eines Themas, um näher heranzufliegen und seine Artikel zu sehen. Scrollen Sie durch alle Themen oder ziehen Sie, um die Karte zu drehen."
   ]
 }

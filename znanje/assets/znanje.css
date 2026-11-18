@@ -232,3 +232,6 @@ td{color:#d3d6dc}
 .post-card p{color:var(--muted);font-size:14.5px;margin:0 0 14px}
 .post-card span{margin-top:auto;font-size:14px}
 @media (prefers-reduced-motion:reduce){.post-card{transition:none}.post-card:hover{transform:none}}
+.hub-intro h1{font-size:clamp(30px,4.2vw,56px);line-height:1.08;max-width:22ch;margin:6px 0 18px}
+.hub-intro .lead{max-width:62ch;color:var(--muted);font-size:clamp(16px,1.4vw,19px);margin-bottom:46px}
+.hub-intro h2{margin-bottom:22px}

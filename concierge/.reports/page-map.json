@@ -593,7 +593,7 @@
     ],
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
-      "Mogu li pogledati prikaz?",
+      "Mogu li pogledati stranicu?",
       "Može li ovakav stil odgovarati drugom brendu?"
     ],
     "links": [
@@ -657,7 +657,7 @@
     "id": "work",
     "preview": "/projekti/",
     "production": "/projekti/",
-    "title": "Radovi i vizuelni koncepti | Digital X",
+    "title": "Radovi i studije slučaja | Digital X Sarajevo",
     "description": "Projekti i vizuelni prikazi koji povezuju identitet, sadržaj i korisnički put.",
     "primaryIntent": "Odabrani radovi",
     "secondaryKeywords": [

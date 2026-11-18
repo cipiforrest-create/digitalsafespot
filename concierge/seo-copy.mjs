@@ -349,10 +349,10 @@ export const pageCopy = {
       'Beispiele für Cinematic Websites für Hotels, Immobilien, Praxen, Uhren, Parfum und Autos. Öffnen Sie eine Präsentation und folgen Sie dem Weg zur Anfrage.'),
   },
   work: {
-    title: T('Radovi i vizuelni koncepti | Digital X', 'Work and visual concepts | Digital X', 'Arbeiten und visuelle Konzepte | Digital X'),
-    desc: T('Odabrani radovi i vizuelni koncepti Digital X: EYNNA Hair, STAR Parfimerija i dizajner perika. Identitet, sadržaj i korisnički put na jednom mjestu.',
-      'Selected Digital X work and visual concepts: EYNNA Hair, STAR Parfimerija and the wig designer. Identity, content and the customer path in one place.',
-      'Ausgewählte Arbeiten und visuelle Konzepte von Digital X: EYNNA Hair, STAR Parfimerija und der Perückendesigner. Identität, Inhalte und Kundenweg an einem Ort.'),
+    title: T('Radovi i studije slučaja | Digital X Sarajevo', 'Work and case studies | Digital X Sarajevo', 'Arbeiten und Fallstudien | Digital X Sarajevo'),
+    desc: T('Studije slučaja Digital X: web stranice i aplikacije za stvarne klijente — EYNNA Hair, EYNNA Hair Dizajner perika, STAR Sarajevo, DIP Studio i Ajla Weddings.',
+      'Digital X case studies: websites and apps for real clients — EYNNA Hair, the EYNNA Hair Wig Designer, STAR Sarajevo, DIP Studio and Ajla Weddings.',
+      'Fallstudien von Digital X: Websites und Apps für echte Kunden — EYNNA Hair, der EYNNA Hair Perücken-Designer, STAR Sarajevo, DIP Studio und Ajla Weddings.'),
   },
   about: {
     title: T('O nama: digitalna agencija iz Sarajeva | Digital X', 'About us: a digital agency in Sarajevo | Digital X', 'Über uns: Digitalagentur aus Sarajevo | Digital X'),

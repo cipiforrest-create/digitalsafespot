@@ -58,7 +58,7 @@ test('internal docs are not published', () => {
 test('Blog and the knowledge hub are one page at /blog/', async () => {
   const blog = read('/blog/index.html');
   assert.match(blog, /data-galaxy/);
-  assert.equal((blog.match(/class="post-card"/g) || []).length, 15);
+  assert.equal((blog.match(/class="post-card"/g) || []).length, 27);
   assert.ok(!existsSync('public/znanje/index.html'));
   const { legacyServiceTarget } = await import('../lib/routing-policy.mjs');
   for (const path of ['/znanje', '/znanje/', '/znanje/index.html'])

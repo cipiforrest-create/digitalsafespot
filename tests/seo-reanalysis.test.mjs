@@ -58,7 +58,7 @@ test('internal docs are not published', () => {
 test('Blog and the knowledge hub are one page at /blog/', async () => {
   const blog = read('/blog/index.html');
   assert.match(blog, /data-galaxy/);
-  assert.equal((blog.match(/class="post-card"/g) || []).length, 15);
+  assert.equal((blog.match(/class="post-card"/g) || []).length, 27);
   assert.ok(!existsSync('public/znanje/index.html'));
   const { legacyServiceTarget } = await import('../lib/routing-policy.mjs');
   for (const path of ['/znanje', '/znanje/', '/znanje/index.html'])
@@ -78,4 +78,25 @@ test('Blog and guide pages use the homepage header: same menu, language switch, 
 
 test('client navigation loads the homepage as a full page', () => {
   assert.match(readFileSync('concierge/client/navigation.ts', 'utf8'), /id==='home'&&document\.body\.dataset\.page!=='home'\)\{if\(push\)location\.assign/);
+});
+
+test('work section shows the five real client case studies, none labelled as a concept', () => {
+  for (const path of ['/index.html', '/projekti/index.html']) {
+    const html = read(path), cards = [...html.matchAll(/<article class="image-card case-study">([\s\S]*?)<\/article>/g)].map(m => m[1]);
+    assert.equal(cards.length, 5, path);
+    for (const [name, href] of [['EYNNA Hair', 'https://eynna-hair.ba/'], ['Dizajner perika', '/projekti/eynna-hair-dizajner-perika/'], ['STAR', '/cinematic-perfume/'], ['DIP Studio', 'https://dipstudio.ba/'], ['Ajla Weddings', 'https://ajlaweddings.com/']])
+      assert.ok(cards.some(c => c.includes(name) && c.includes(`href="${href}"`)), `${path} ${name}`);
+    assert.ok(cards.every(c => !/koncept/i.test(c)), path);
+  }
+});
+
+test('blog page opens with the galaxy and carries its H1 below it', () => {
+  const blog = read('/blog/index.html'), main = blog.slice(blog.indexOf('<main'));
+  assert.ok(main.indexOf('id="galaksija"') < main.indexOf('<h1'), 'galaxy before H1');
+  assert.equal((main.match(/<h1/g) || []).length, 1);
+});
+
+test('the homepage-style header is fixed on every page', () => {
+  assert.match(readFileSync('ai-concierge-preview/visual-experience.css', 'utf8'), /\.dx-navigation\.navigation\{position:fixed!important/);
+  assert.match(readFileSync('znanje/assets/znanje.css', 'utf8'), /\.zn-header\{position:sticky;top:18px/);
 });
