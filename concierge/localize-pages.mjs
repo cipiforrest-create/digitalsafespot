@@ -6,11 +6,14 @@ const origin='https://www.digital-x-marketing.com';
 const attributes=['alt','title','aria-label','placeholder','data-feature','data-goal-prompt'];
 const reviewed=JSON.parse(readFileSync(new URL('./locales/reviewed.json',import.meta.url),'utf8'));
 const seoEditorialTranslations=JSON.parse(readFileSync(new URL('./locales/seo-editorial-2026-11.json',import.meta.url),'utf8'));
+// Homepage answer block, pricing table, FAQ and case studies (reviewed copy, key = Bosnian source: [en, de]).
+const homepageTranslations=JSON.parse(readFileSync(new URL('./locales/homepage-2026-11.json',import.meta.url),'utf8'));
 
 const dictionaries=Object.fromEntries(['en','de'].map((lang,index)=>{
  const cache=JSON.parse(readFileSync(new URL(`./locales/${lang}.json`,import.meta.url),'utf8'));
  for(const [key,values] of Object.entries(reviewed))cache[key]=values[index];
  for(const [key,values] of Object.entries(seoEditorialTranslations))cache[key]=values[index];
+ for(const [key,values] of Object.entries(homepageTranslations))cache[key]=values[index];
  for(const [key,values] of Object.entries(copyTranslations))cache[key]=values[index];
  // Symbols, numbers and brand names are not prose. Keep them intact.
  for(const key of Object.keys(cache)){
@@ -26,6 +29,20 @@ const dictionaries=Object.fromEntries(['en','de'].map((lang,index)=>{
 const demoLanguages={hotel:'en',watch:'en',penthouse:'en',clothes:'en',deepsea:'en',vanta:'en',sneakers:'en',dentist:'bs',perfume:'bs',kodent:'sr-Latn-ME'};
 const languageNames={en:{en:'English',bs:'Bosnian','sr-Latn-ME':'Montenegrin'},de:{en:'Englisch',bs:'Bosnisch','sr-Latn-ME':'Montenegrinisch'}};
 const languageNote={en:'in',de:'auf'};
+// The convertible mark is pegged to the euro: 1 EUR = 1.95583 KM.
+const KM_PER_EUR=1.95583;
+export function withEuro(text,lang){
+ if(!text||!text.includes('KM'))return text;
+ const number='\\d{1,3}(?:[.,]\\d{3})+|\\d+';
+ const toEuro=amount=>Math.round(Number(amount.replace(/[.,]/g,''))/KM_PER_EUR).toLocaleString(lang==='de'?'de-DE':'en-GB');
+ // "49/149/249 KM" lists several prices: convert each one.
+ return text.replace(new RegExp(`((?:${number})(?:/(?:${number}))*)(\\s?)KM\\b(?!\\s*\\(≈)`,'g'),(match,amounts,space)=>{
+  const parts=amounts.split('/');
+  if(parts.some(p=>!Number(p.replace(/[.,]/g,''))))return match;
+  const euro=parts.map(toEuro).join('/');
+  return `${amounts}${space}KM (≈ ${lang==='de'?`${euro} €`:`€${euro}`})`;
+ });
+}
 export function localizePage(source,lang,route,routes){
  const $=load(source,{scriptingEnabled:false}),dictionary=dictionaries[lang];
  if(!dictionary)throw new Error(`Unsupported page language: ${lang}`);
@@ -43,6 +60,8 @@ export function localizePage(source,lang,route,routes){
   return value.startsWith(origin)?origin+path:path;
  };
  $('*').contents().filter((_,node)=>node.type==='text'&&!$(node).parents('script,style,svg,code,pre').length).each((_,node)=>{node.data=translate(node.data);});
+ // Visitors from the diaspora and the DACH region think in euros: show the fixed-rate equivalent after each KM price.
+ $('body').find('*').contents().filter((_,node)=>node.type==='text'&&!$(node).parents('script,style,svg,code,pre').length).each((_,node)=>{node.data=withEuro(node.data,lang);});
  $('*').each((_,node)=>{for(const attr of attributes){const value=$(node).attr(attr);if(value)$(node).attr(attr,translate(value));}});
  $('meta[name="description"],meta[name="keywords"],meta[property="og:title"],meta[property="og:description"],meta[name="twitter:title"],meta[name="twitter:description"]').each((_,node)=>{$(node).attr('content',translate($(node).attr('content')));});
  $('a[href]').each((_,node)=>{$(node).attr('href',localPath($(node).attr('href')));});

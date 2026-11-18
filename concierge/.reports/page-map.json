@@ -11,7 +11,15 @@
       "digitalne usluge Sarajevo"
     ],
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
-    "questions": [],
+    "questions": [
+      "Koliko košta izrada web stranice u Sarajevu i BiH?",
+      "Koliko traje izrada web stranice?",
+      "Šta je razlika između SEO, AEO i GEO optimizacije?",
+      "Kako radi AI prodajni asistent na web stranici?",
+      "Koliko traje postavljanje AI automatizacije?",
+      "Možete li ubrzati našu postojeću web stranicu?",
+      "Radite li i za firme izvan Sarajeva?"
+    ],
     "links": [],
     "action": "improve_existing",
     "noindex": true
@@ -585,7 +593,7 @@
     ],
     "keywordEvidence": "Editorial intent mapping; search volume and rankings not measured.",
     "questions": [
-      "Mogu li pogledati prikaz?",
+      "Mogu li pogledati stranicu?",
       "Može li ovakav stil odgovarati drugom brendu?"
     ],
     "links": [
@@ -649,7 +657,7 @@
     "id": "work",
     "preview": "/projekti/",
     "production": "/projekti/",
-    "title": "Radovi i vizuelni koncepti | Digital X",
+    "title": "Radovi i studije slučaja | Digital X Sarajevo",
     "description": "Projekti i vizuelni prikazi koji povezuju identitet, sadržaj i korisnički put.",
     "primaryIntent": "Odabrani radovi",
     "secondaryKeywords": [

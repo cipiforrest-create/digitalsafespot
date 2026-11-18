@@ -10,7 +10,8 @@ export type StorySegment={start:number;run:number;stop:number;end:number};
 // while the transformations are shorter.
 export const pacing={
  large:{run:[.9,1.1,1.1],stop:[1.2,1.3,1.8]},
- small:{run:[.7,.8,.8],stop:[1.6,1.6,2.2]},
+ // Phones get about 1.8x more scroll per transformation and 1.3x per checkpoint, so a flick does not race through the acts.
+ small:{run:[1.3,1.45,1.45],stop:[2.1,2.1,2.8]},
 } as const;
 export const ACTS=3;
 export const ARRIVE=.12,RELEASE=.2;

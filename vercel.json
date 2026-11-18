@@ -981,6 +981,21 @@
       "source": "/usluge/ai-concierge/",
       "destination": "/ai-concierge-preview/",
       "permanent": true
+    },
+    {
+      "source": "/znanje",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/znanje/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/znanje/index.html",
+      "destination": "/blog/",
+      "permanent": true
     }
   ],
   "headers": [

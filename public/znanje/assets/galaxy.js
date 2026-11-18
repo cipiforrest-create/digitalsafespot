@@ -22,14 +22,20 @@
 
   const small = matchMedia('(max-width: 760px)').matches;
   const BRAIN_POINTS = small ? 6500 : 13600;
-  const STARS = small ? 500 : 1100;
-  const AXONS = small ? 60 : 130;
+  const STARS = small ? 220 : 450;
+  const AXONS = small ? 40 : 80;
+  // Elliptical halo around the clusters: radii (x, y, z) and centre, in brain units.
+  const HALO_DISTANCE = 0.26, HALO_KEEP = 0.14, HALO_RADII = [1.35, 0.4, 0.95], HALO_CENTRE = [0, 0.12, -0.05];
+  // Everything is stretched wide and squashed flat, so the whole map reads as an elliptical galaxy.
+  const SQUASH = [1.15, 0.62, 1];
   const SEGMENTS = 18;
 
   // Deterministic randomness so the galaxy looks the same on every visit.
   let seed = 20261113;
   const rand = () => { seed |= 0; seed = seed + 0x6d2b79f5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
   const gauss = () => (rand() + rand() + rand() + rand() - 2) / 2;
+  // Denser towards the middle like an elliptical galaxy; points outside the ellipsoid are drawn again.
+  const ellipsePoint = () => { for (;;) { const u = [gauss() * 1.7, gauss() * 1.7, gauss() * 1.7]; if (u[0] * u[0] + u[1] * u[1] + u[2] * u[2] <= 1) return u.map((v, n) => HALO_CENTRE[n] + v * HALO_RADII[n]); } };
   const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255);
   const add = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
   const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
@@ -40,7 +46,7 @@
   const mix = (a, b, t) => a + (b - a) * t;
   const sphereDir = () => { const z = rand() * 2 - 1, a = rand() * Math.PI * 2, r = Math.sqrt(1 - z * z); return [r * Math.cos(a), z, r * Math.sin(a)]; };
 
-  const cores = clusters.map(c => c.pos);
+  const cores = clusters.map(c => c.pos.map((v, i) => v * SQUASH[i]));
   const colors = clusters.map(c => hex(c.color));
   const SILVER = [0.74, 0.8, 0.92];
 
@@ -132,7 +138,11 @@ void main(){float t=texture2D(uTex,vUv).r;float a=t*vA*uMix*uMix;gl_FragColor=ve
     const pushPoint = (from, to, size, col, k) => pts.push(from[0], from[1], from[2], to[0], to[1], to[2], size, col[0], col[1], col[2], rand(), k);
     for (let i = 0; i < brainCount; i++) {
       const b = data ? [data[i * 4] / 20000, data[i * 4 + 1] / 20000, data[i * 4 + 2] / 20000, data[i * 4 + 3] / 32767] : proceduralBrainPoint();
-      const p = [b[0], b[1], b[2]], [k, d] = nearest(p), tint = Math.max(0, 1 - d / 0.5) * 0.85;
+      let p = [b[0] * SQUASH[0], b[1] * SQUASH[1], b[2] * SQUASH[2]], [k, d] = nearest(p);
+      // Stars that build a topic cluster keep their place. Most of the outer shell is dropped and the rest
+      // forms a soft elliptical halo, so the galaxy reads as an ellipse and the clusters stay in view.
+      if (d >= HALO_DISTANCE) { if (rand() > HALO_KEEP) continue; p = ellipsePoint(); [k, d] = nearest(p); }
+      const tint = Math.max(0, 1 - d / 0.5) * 0.85;
       const c = colors[k], col = [mix(SILVER[0], c[0], tint), mix(SILVER[1], c[1], tint), mix(SILVER[2], c[2], tint)];
       // Brighter reference pixels are the ridges of the folds, so they get larger, hotter stars.
       pushPoint(galaxyPoint(), p, 1.8 + b[3] * 4.6, mulS(col, 0.28 + b[3] * 0.85), d < 0.4 ? k : -1);
@@ -194,7 +204,8 @@ void main(){float t=texture2D(uTex,vUv).r;float a=t*vA*uMix*uMix;gl_FragColor=ve
       const dir = k % 2 ? 1 : -1;
       sprite(nebulaA, cores[k], 0.74, colors[k], k, 0.035 * dir, 0.5);
       sprite(nebulaB, cores[k], 0.5, colors[k], k, -0.06 * dir, 0.42);
-      sprite(stars, cores[k], 0.2, add(mulS(colors[k], 0.45), [0.55, 0.55, 0.55]), k, 0, 0.9);
+      // One big star marks each cluster's centre; it carries the cluster name and zooms in on click.
+      sprite(stars, cores[k], 0.42, add(mulS(colors[k], 0.45), [0.55, 0.55, 0.55]), k, 0, 1.25);
     });
     nodes.forEach(n => sprite(stars, n.p, 0.11, add(mulS(colors[n.k], 0.5), [0.5, 0.5, 0.5]), n.k, 0, 1));
 
@@ -223,7 +234,8 @@ void main(){float t=texture2D(uTex,vUv).r;float a=t*vA*uMix*uMix;gl_FragColor=ve
     const perspective = (fov, aspect, near, far) => { const f = 1 / Math.tan(fov / 2), nf = 1 / (near - far); return [f / aspect, 0, 0, 0, 0, f, 0, 0, 0, 0, (far + near) * nf, -1, 0, 0, 2 * far * near * nf, 0]; };
     const lookAt = (eye, target) => { const z = norm(sub(eye, target)), x = norm(cross([0, 1, 0], z)), y = cross(z, x); return [x[0], y[0], z[0], 0, x[1], y[1], z[1], 0, x[2], y[2], z[2], 0, -(x[0] * eye[0] + x[1] * eye[1] + x[2] * eye[2]), -(y[0] * eye[0] + y[1] * eye[1] + y[2] * eye[2]), -(z[0] * eye[0] + z[1] * eye[1] + z[2] * eye[2]), 1]; };
     const multiply = (a, b) => { const o = new Array(16); for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++) o[c * 4 + r] = a[r] * b[c * 4] + a[4 + r] * b[c * 4 + 1] + a[8 + r] * b[c * 4 + 2] + a[12 + r] * b[c * 4 + 3]; return o; };
-    const stops = [{ target: [0, -0.05, 0], dist: 3.3, yaw: 0.9, pitch: 0.14 }, ...cores.map(c => {
+    // The overview looks down on the flat galaxy, so its ellipse and the eight clusters spread across the screen.
+    const stops = [{ target: [0, 0.05, 0], dist: 2.55, yaw: 0.9, pitch: 0.62 }, ...cores.map(c => {
       const centre = len(c) < 0.3;
       return { target: mulS(c, 0.92), dist: centre ? 1.7 : 1.32, yaw: centre ? 0 : Math.atan2(c[0], c[2]), pitch: centre ? 0.3 : Math.max(-0.1, Math.min(0.7, Math.asin(c[1] / len(c)) * 0.7)) };
     })];
@@ -259,14 +271,23 @@ void main(){float t=texture2D(uTex,vUv).r;float a=t*vA*uMix*uMix;gl_FragColor=ve
     addEventListener('hashchange', fromHash);
 
     let drag = null;
-    canvas.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, touch: e.pointerType === 'touch' }; canvas.classList.add('is-dragging'); });
+    canvas.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY, touch: e.pointerType === 'touch' }; canvas.classList.add('is-dragging'); });
+    // A click (not a drag) on or near a cluster's centre star flies the camera to that cluster.
+    canvas.addEventListener('click', e => {
+      if (!matrix.length || lastMove > 6) return;
+      const box = canvas.getBoundingClientRect(), x = e.clientX - box.left, y = e.clientY - box.top;
+      let best = -1, bestD = small ? 48 : 40;
+      cores.forEach((c, k) => { const p = project(c); const d = Math.hypot(p.x - x, p.y - y); if (p.w > 0.15 && d < bestD) { best = k; bestD = d; } });
+      if (best >= 0) goTo(best + 1);
+    });
     addEventListener('pointermove', e => {
       if (!drag) return;
       user.yaw -= (e.clientX - drag.x) * 0.006;
       if (!drag.touch) user.pitch = Math.max(-0.9, Math.min(0.9, user.pitch + (e.clientY - drag.y) * 0.004));
       drag.x = e.clientX; drag.y = e.clientY;
     });
-    const endDrag = () => { drag = null; canvas.classList.remove('is-dragging'); };
+    let lastMove = 0;
+    const endDrag = () => { if (drag) lastMove = Math.hypot(drag.x - drag.sx, drag.y - drag.sy); drag = null; canvas.classList.remove('is-dragging'); };
     addEventListener('pointerup', endDrag); addEventListener('pointercancel', endDrag);
 
     const angleLerp = (a, b, t) => { let d = (b - a) % (Math.PI * 2); if (d > Math.PI) d -= Math.PI * 2; if (d < -Math.PI) d += Math.PI * 2; return a + d * t; };
@@ -347,7 +368,12 @@ void main(){float t=texture2D(uTex,vUv).r;float a=t*vA*uMix*uMix;gl_FragColor=ve
       drawSprites(starBuffer, texStar, stars.length / 12);
 
       const ready = mixValue > 0.92;
-      placeLabels(coreLabels.map((el, k) => [el, cores[k]]), ready && stop === 0);
+      // Every cluster name stays visible in the overview, just under its centre star.
+      coreLabels.forEach((el, k) => {
+        const p = project(cores[k]), show = ready && stop === 0 && p.w > 0.15;
+        el.classList.toggle('is-on', show);
+        if (show) el.style.transform = `translate(-50%,0) translate(${p.x}px,${p.y + 16}px)`;
+      });
       placeLabels(nodeLabels.map((el, i) => [el, nodes[i].p]).filter((_, i) => nodes[i].k === focus), ready);
       nodeLabels.forEach((el, i) => { if (nodes[i].k !== focus) el.classList.remove('is-on'); });
       raf = requestAnimationFrame(frame);

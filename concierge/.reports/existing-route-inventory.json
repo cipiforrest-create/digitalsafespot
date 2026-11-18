@@ -108,13 +108,13 @@
   },
   {
     "file": "./blog/index.html",
-    "title": "Blog — praktični vodiči za digitalni rast | Digital X",
+    "title": "Blog: vodiči za web, SEO, AI i marketing | Digital X",
     "canonical": "https://www.digital-x-marketing.com/blog/",
-    "robots": "",
+    "robots": "index,follow,max-image-preview:large",
     "h1": [
-      "Naučite prije nego platite."
+      "Blog o izradi web stranica, SEO-u, AI pretrazi i digitalnom marketingu za firme u BiH"
     ],
-    "schema": 0
+    "schema": 1
   },
   {
     "file": "./blog/koliko-kosta-web-stranica-bih.html",
@@ -1318,6 +1318,56 @@
     "schema": 1
   },
   {
+    "file": "./industrije/advokati/index.html",
+    "title": "Web stranica za advokatsku kancelariju | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/industrije/advokati/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Web stranica za advokatsku kancelariju: jasna područja rada i ozbiljan prvi utisak"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./industrije/hoteli-i-turizam/index.html",
+    "title": "Web stranica za hotel i apartmane: direktne rezervacije | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/industrije/hoteli-i-turizam/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Web stranica za hotele i apartmane: više direktnih upita, manje provizija"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./industrije/index.html",
+    "title": "Web stranice i marketing po djelatnostima | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/industrije/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Web stranice i marketing za vašu djelatnost"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./industrije/nekretnine/index.html",
+    "title": "Web stranica za nekretnine i investitore | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/industrije/nekretnine/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Web stranica za nekretnine: projekt koji kupac razumije prije razgledanja"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./industrije/stomatologija/index.html",
+    "title": "Web stranica za stomatološku ordinaciju | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/industrije/stomatologija/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Web stranica za stomatološku ordinaciju: povjerenje prije prvog poziva"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./kolacici.html",
     "title": "Politika kolačića | Digital X Sarajevo",
     "canonical": "https://www.digital-x-marketing.com/kolacici.html",
@@ -1654,12 +1704,32 @@
     "schema": 0
   },
   {
+    "file": "./usluge/izrada-web-shopa/index.html",
+    "title": "Izrada web shopa u BiH: cijena i šta dobijate | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-shopa/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Izrada web shopa u BiH: trgovina spremna za prvu narudžbu"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./usluge/izrada-web-stranica/sarajevo/index.html",
     "title": "Izrada web stranica Sarajevo: cijene i rokovi | Digital X",
     "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-stranica/sarajevo/",
     "robots": "index,follow,max-image-preview:large",
     "h1": [
       "Izrada web stranica u Sarajevu: brze, jasne i pronađene na Googleu"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./usluge/lokalni-seo-sarajevo/index.html",
+    "title": "Lokalni SEO Sarajevo: Google mapa i pretraga | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/usluge/lokalni-seo-sarajevo/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Lokalni SEO u Sarajevu: budite na Google mapi kad vas traže u blizini"
     ],
     "schema": 1
   },
@@ -1690,16 +1760,6 @@
     "robots": "index,follow,max-image-preview:large",
     "h1": [
       "Google oglasi: koliko koštaju i kako odrediti budžet"
-    ],
-    "schema": 1
-  },
-  {
-    "file": "./znanje/index.html",
-    "title": "Centar znanja: vodiči za web, SEO, AI i marketing | Digital X",
-    "canonical": "https://www.digital-x-marketing.com/znanje/",
-    "robots": "index,follow,max-image-preview:large",
-    "h1": [
-      "Sve što trebate znati o webu, vidljivosti i AI-ju — povezano u jednu mapu."
     ],
     "schema": 1
   },

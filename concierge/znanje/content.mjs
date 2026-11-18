@@ -24,7 +24,7 @@ export const clusters = [
     blog: [['/blog/koliko-kosta-web-stranica-bih.html', 'Koliko košta web stranica u BiH'], ['/blog/landing-stranica-vodic.html', 'Landing stranica: od oglasa do upita'], ['/blog/brzina-sajta.html', 'Zašto spor sajt ubija prodaju'], ['/blog/odrzavanje-sigurnost-vodic.html', 'Održavanje i sigurnost sajta'], ['/blog/uiux-rebranding-vodic.html', 'Rebranding i UI/UX dizajn']] },
   { id: 'shop', name: 'Web shop i e-commerce', color: '#8fe3d0', pos: [0.36, 0.3, 0.62],
     blurb: 'Platforma, plaćanje, dostava i sve što trgovina treba prije prve narudžbe.',
-    service: ['/usluge/smart-storefront/', 'Web & E-commerce'],
+    service: ['/usluge/izrada-web-shopa/', 'Izrada web shopa'],
     blog: [['/blog/foto-video-produkcija.html', 'Foto i video produkcija proizvoda']] },
   { id: 'seo', name: 'SEO i lokalna vidljivost', color: '#b9a7ff', pos: [-0.44, 0.52, -0.08],
     blurb: 'Kako vas Google pronalazi, razumije i prikazuje — u pretrazi i na mapi.',
@@ -199,7 +199,7 @@ export const guides = [
       ['Koliko proizvoda trebam za početak?', 'Nema minimuma. Bolje je deset dobro predstavljenih proizvoda nego dvjesto bez fotografija i opisa.'],
       ['Shopify ili WooCommerce za BiH?', 'Oba rade. Shopify je jednostavniji za održavanje, WooCommerce daje više slobode. Prije odluke provjerite podršku za načine plaćanja i dostave koje želite koristiti.'],
     ],
-    related: [['/usluge/smart-storefront/', 'Web & E-commerce'], ['/shop/product/ecommerce-launch/', 'E-commerce Launch — od 2.490 KM'], ['/usluge/fotografija-proizvoda/', 'Fotografija proizvoda']],
+    related: [['/usluge/izrada-web-shopa/', 'Izrada web shopa'], ['/shop/product/ecommerce-launch/', 'E-commerce Launch — od 2.490 KM'], ['/usluge/fotografija-proizvoda/', 'Fotografija proizvoda']],
   },
   {
     slug: 'sta-je-seo-optimizacija', cluster: 'seo', stage: 'pronadjen', minutes: 6,
@@ -379,7 +379,7 @@ export const guides = [
 ];
 
 export const hubFaq = [
-  ['Šta je Digital X Centar znanja?', 'To je besplatna zbirka vodiča o web stranicama, SEO-u, AI pretrazi, oglašavanju, društvenim mrežama i AI automatizaciji, složena kao put od prvog pitanja do mjerljivog rezultata.'],
+  ['Šta je Digital X blog?', 'To je besplatna zbirka vodiča i članaka o web stranicama, SEO-u, AI pretrazi, oglašavanju, društvenim mrežama i AI automatizaciji, složena kao put od prvog pitanja do mjerljivog rezultata.'],
   ['Kojim redom čitati vodiče?', 'Vodiči prate sedam koraka: razumjeti, planirati, izgraditi, biti pronađen, privući, automatizovati i mjeriti. Možete krenuti od početka ili odabrati jedan od četiri puta prema svojoj situaciji.'],
   ['Da li su cijene u vodičima stvarne?', 'Da. Navedene Digital X cijene su javne početne cijene iz cjenovnika. Obim i dostupnost potvrđuju se prije ugovaranja.'],
   ['Za koga su vodiči pisani?', 'Za vlasnike i menadžere malih i srednjih firmi u BiH, regionu i dijaspori koji žele razumjeti šta kupuju prije nego što plate.'],

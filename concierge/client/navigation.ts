@@ -5,13 +5,18 @@ export async function navigate(id:PageId,hash='',push=true):Promise<boolean>{
   if(document.querySelector('dialog[open]'))return false;
   const locale=document.documentElement.lang;const path=(locale==='en'||locale==='de'?`/${locale}`:'')+previewPath(id);navigation?.abort();const controller=new AbortController();navigation=controller;
   try{
+    // The homepage carries inline head styles and its own 3D scripts that a <main> swap cannot bring along
+    // (the X plate rendered at its natural 1536px width with no hero copy). Load it as a full page instead.
+    if(id==='home'&&document.body.dataset.page!=='home'){if(push)location.assign(path+hash);else location.replace(path+hash);return true;}
     if(document.body.dataset.page!==id){
       const response=await fetch(path,{signal:controller.signal,credentials:'same-origin'});
-      if(!response.ok||pageFromPath(new URL(response.url).pathname)!==id)throw new Error('Navigation unavailable');
+      if(!response.ok)throw new Error('Navigation unavailable');
+      if(pageFromPath(new URL(response.url).pathname)!==id){if(push)location.assign(path+hash);else location.replace(path+hash);return true;}
       const html=await response.text();if(html.length>1_000_000)throw new Error('Page too large');
       if(controller.signal.aborted)return false;
       const doc=new DOMParser().parseFromString(html,'text/html');const next=doc.querySelector('main#main');
-      if(!next||doc.documentElement.dataset.experience!=='digital-x-preview')throw new Error('Unexpected page');
+      // Pages built outside the catalogue template (the /blog/ galaxy, guides) cannot be swapped in: open them normally.
+      if(!next||doc.documentElement.dataset.experience!=='digital-x-preview'){if(push)location.assign(path+hash);else location.replace(path+hash);return true;}
       // Only registered first-party build output enters the document. Never audit or model HTML.
       next.querySelectorAll('script').forEach(n=>n.remove());
       // Crossfade the page swap where supported instead of a hard cut while the concierge keeps talking.
