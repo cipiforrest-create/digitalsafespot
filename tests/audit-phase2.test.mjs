@@ -31,3 +31,15 @@ test('EN and DE never show the Bosnian KM/mj unit', () => {
     assert.equal(values.filter(v => /KM\/mj\b/i.test(v)).length, 0, lang);
   }
 });
+
+test('company identity: legal name and street address in schema and legal pages', () => {
+  for (const f of ['lib/site-seo.mjs', 'lib/service-seo.mjs', 'lib/cinematic-seo.mjs', 'concierge/znanje/build.mjs']) {
+    const src = readFileSync(f, 'utf8');
+    assert.match(src, /legalName['"]?\s*:\s*['"]Digital X Marketing['"]/, `${f} legalName`);
+    assert.match(src, /Stupska bb/, `${f} streetAddress`);
+  }
+  for (const f of ['pravne-informacije.html', 'en/pravne-informacije.html', 'de/pravne-informacije.html']) {
+    assert.match(readFileSync(f, 'utf8'), /Stupska bb/, `${f} address`);
+  }
+  assert.match(readFileSync('usluge/web-dizajn/index.html', 'utf8'), /"legalName":"Digital X Marketing"/);
+});
