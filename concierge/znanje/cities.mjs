@@ -45,6 +45,6 @@ export const cities = [
       ['Da li radite i za firme izvan Sarajeva?', 'Da. Radimo s firmama u cijeloj BiH, regionu i dijaspori. Saradnja na daljinu ide preko video poziva, e-maila i dijeljenih dokumenata.'],
       ['Da li je lokalni SEO uključen?', 'Tehnička SEO osnova, lokalni podaci u strukturiranim podacima i povezivanje s Google Business profilom dio su izrade. Kontinuirani SEO rad ugovara se posebno, od 249 KM mjesečno.'],
     ],
-    related: [['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/usluge/x-signal/', 'Besplatna analiza postojećeg sajta'], ['/kontakt.html', 'Kontakt i besplatne konzultacije']],
+    related: [['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/usluge/web-dizajn/', 'Web dizajn: paketi i cijene'], ['/usluge/x-signal/', 'Besplatna analiza postojećeg sajta'], ['/kontakt.html', 'Kontakt i besplatne konzultacije']],
   },
 ];

@@ -38,7 +38,69 @@ export const landings = [
       ['Možete li prebaciti postojeću trgovinu?', 'Da. Prenosimo proizvode i za stare adrese postavljamo preusmjerenja kako ne biste izgubili pozicije na Googleu.'],
       ['Ko je vlasnik trgovine?', 'Vi. Domena, nalozi i podaci ostaju na vašoj firmi.'],
     ],
-    related: [['/shop/product/ecommerce-launch/', 'E-commerce Launch — od 2.490 KM'], ['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/kontakt.html', 'Kontakt i besplatne konzultacije']],
+    related: [['/shop/product/ecommerce-launch/', 'E-commerce Launch — od 2.490 KM'], ['/usluge/web-dizajn/', 'Web dizajn: paketi i cijene'], ['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/kontakt.html', 'Kontakt i besplatne konzultacije']],
+  },
+  {
+    path: '/usluge/web-dizajn/',
+    crumbs: [['Usluge', '/usluge/'], ['Web dizajn', '/usluge/web-dizajn/']],
+    eyebrow: 'WEB DIZAJN · SARAJEVO I BIH',
+    title: 'Web dizajn Sarajevo i BiH: cijene od 199 KM | Digital X',
+    h1: 'Web dizajn u Sarajevu i BiH: moderne stranice s jasnim cijenama',
+    desc: 'Web dizajn za firme u Sarajevu i BiH: landing stranica od 199 KM, web prezentacija od 449 KM, cinematic web s AI asistentom 499 KM, web shop od 2.490 KM.',
+    keywords: ['web dizajn', 'web dizajn sarajevo', 'web dizajn bih', 'web dizajner sarajevo', 'dizajn web stranice cijena', 'moderna web stranica'],
+    service: { name: 'Web dizajn', serviceType: 'Web design', areaServed: [{ '@type': 'City', name: 'Sarajevo' }, { '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['Landing stranica', 199], ['Premium web prisustvo', 449], ['Smart Website Launch', 499], ['E-commerce Launch', 2490]] },
+    answer: 'Digital X je agencija za web dizajn iz Sarajeva. Dizajniramo i izrađujemo stranice za firme u cijeloj BiH: landing stranicu od 199 KM, web prezentaciju od 449 KM, cinematic web s AI asistentom za 499 KM i web shop od 2.490 KM. Svaka stranica radi na mobitelu, ima osnovni SEO i pripada vašoj firmi.',
+    sections: [
+      ['Cijene web dizajna', `<div class="table-wrap"><table><thead><tr><th scope="col">Paket</th><th scope="col">Za koga</th><th scope="col">Cijena</th></tr></thead><tbody>
+<tr><th scope="row">${a('/shop/product/landing-starter/', 'Landing stranica')}</th><td>Jedna ponuda, kampanja ili događaj</td><td>od 199 KM</td></tr>
+<tr><th scope="row">${a('/shop/product/web-presence/', 'Premium web prisustvo')}</th><td>Firma kojoj treba ozbiljna web prezentacija</td><td>od 449 KM</td></tr>
+<tr><th scope="row">${a('/shop/product/smart-website-launch/', 'Smart Website Launch')}</th><td>Cinematic web do pet stranica s AI asistentom prva tri mjeseca</td><td>499 KM</td></tr>
+<tr><th scope="row">${a('/shop/product/ecommerce-launch/', 'E-commerce Launch')}</th><td>Online prodaja s plaćanjem i dostavom</td><td>od 2.490 KM</td></tr></tbody></table></div>
+<p>Konačan obim i rok potvrđujemo pisano prije početka. Detaljan pregled troškova je u članku ${a('/blog/koliko-kosta-web-stranica-bih.html', 'koliko košta web stranica u BiH')}.</p>`],
+      ['Šta dobijate uz svaki dizajn', `<ul><li><strong>Dizajn za mobitel.</strong> Većina posjeta dolazi s telefona, pa dizajn krećemo od malog ekrana.</li>
+<li><strong>Brzina.</strong> Optimizovane slike i čist kod, jer spora stranica gubi posjetioce prije nego što se učita.</li>
+<li><strong>Osnovni SEO.</strong> Naslovi, opisi, strukturirani podaci i mapa sajta, da vas Google i AI pretraga mogu razumjeti.</li>
+<li><strong>Jasan put do upita.</strong> Poziv, WhatsApp ili obrazac uvijek su na dohvat ruke.</li>
+<li><strong>Vlasništvo.</strong> Domena, sadržaj i pristupi ostaju na vašoj firmi.</li></ul>`],
+      ['Primjeri i koncepti', `<p>Pogledajte ${a('/primjeri-web-stranica/', 'primjere web stranica')} i ${a('/projekti/', 'naše radove')}. Za hotele, nekretnine i luksuzne brendove radimo i ${a('/usluge/cinematic-web-stranice/', 'cinematic web stranice')} koje se pokreću dok posjetilac skrola.</p>
+${demo('/cinematic-hotel/', 'cinematic hotel')}`],
+      ['Web dizajn za vašu industriju', `<p>Stranica ordinacije, advokatske kancelarije ili hotela odgovara na različita pitanja. Pogledajte šta preporučujemo za ${a('/industrije/stomatologija/', 'stomatologe')}, ${a('/industrije/advokati/', 'advokate')}, ${a('/industrije/hoteli-i-turizam/', 'hotele i turizam')} i ${a('/industrije/nekretnine/', 'nekretnine')}.</p>`],
+      ['Već imate stranicu?', `<p>Ako stranica postoji, ali ne donosi upite, često je dovoljan ${a('/usluge/redizajn-web-stranice/', 'redizajn web stranice')}, a ne izrada od nule. ${a('/usluge/x-signal/', 'Besplatna analiza sajta')} pokazuje šta prvo popraviti.</p>`],
+    ],
+    faq: [
+      ['Koliko košta web dizajn u Sarajevu?', 'Kod Digital X landing stranica kreće od 199 KM, web prezentacija od 449 KM, cinematic web s AI asistentom košta 499 KM, a web shop kreće od 2.490 KM. Cijenu potvrđujemo pisano prije početka.'],
+      ['Koja je razlika između web dizajna i izrade web stranice?', 'Web dizajn je izgled i raspored stranice, a izrada uključuje i programiranje, sadržaj, SEO i objavu. Digital X radi oboje u jednom paketu.'],
+      ['Radite li za firme izvan Sarajeva?', 'Da. Radimo za firme iz cijele Bosne i Hercegovine i regije. Sastanci se mogu održati online.'],
+      ['Ko je vlasnik stranice nakon izrade?', 'Vi. Domena, sadržaj i pristupi ostaju na vašoj firmi.'],
+    ],
+    related: [['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/usluge/izrada-web-stranica/sarajevo/', 'Izrada web stranica Sarajevo'], ['/usluge/redizajn-web-stranice/', 'Redizajn web stranice'], ['/kontakt.html', 'Kontakt i besplatne konzultacije']],
+  },
+  {
+    path: '/usluge/redizajn-web-stranice/',
+    crumbs: [['Usluge', '/usluge/'], ['Web dizajn', '/usluge/web-dizajn/'], ['Redizajn web stranice', '/usluge/redizajn-web-stranice/']],
+    eyebrow: 'REDIZAJN · X CONVERT',
+    title: 'Redizajn web stranice: kad ima smisla i šta košta | Digital X',
+    h1: 'Redizajn web stranice: od stare stranice do stranice koja donosi upite',
+    desc: 'Redizajn web stranice za firme u BiH metodom X Convert: analiza, nova struktura, brža stranica i jasniji put do upita. Bez gubitka pozicija na Googleu.',
+    keywords: ['redizajn web stranice', 'redizajn sajta', 'novi dizajn web stranice', 'osvježavanje web stranice', 'redizajn web stranice cijena'],
+    service: { name: 'Redizajn web stranice (X Convert)', serviceType: 'Website redesign and conversion optimization', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['Premium web prisustvo', 449], ['Smart Website Launch', 499]] },
+    answer: 'Redizajn ima smisla kad stranica izgleda zastarjelo, sporo se učitava, loše radi na mobitelu ili ne donosi upite. Digital X redizajn radi metodom X Convert: prvo besplatna analiza, zatim nova struktura, dizajn i brža stranica, uz preusmjerenja da ne izgubite pozicije na Googleu. Nova stranica kreće od 449 KM.',
+    sections: [
+      ['Znakovi da vam treba redizajn', `<ul><li>Stranica je spora ili se raspada na mobitelu.</li><li>Posjetioci ne nalaze cijene, kontakt ili ponudu.</li><li>Stranica ne donosi upite iako ima posjeta.</li><li>Dizajn više ne odgovara kvalitetu vaše usluge.</li></ul>
+<p>Ponekad redizajn nije potreban. Bolja ponuda, jasniji obrazac ili nova ${a('/shop/product/landing-starter/', 'landing stranica')} mogu biti dovoljni.</p>`],
+      ['Kako radi X Convert', `<ol><li><strong>Analiza.</strong> ${a('/usluge/x-signal/', 'Besplatna analiza sajta')} provjerava brzinu, SEO i put do upita.</li>
+<li><strong>Struktura.</strong> Planiramo stranice prema pitanjima koja kupci stvarno postavljaju.</li>
+<li><strong>Dizajn i razvoj.</strong> Nova stranica, brža i prilagođena mobitelu.</li>
+<li><strong>Prelazak bez gubitka.</strong> Za stare adrese postavljamo preusmjerenja kako Google ne bi izgubio vaše stranice.</li></ol>
+<p>Više o metodi na stranici ${a('/usluge/x-convert/', 'X Convert')}.</p>`],
+      ['Šta košta redizajn', `<p>Nova web prezentacija kreće od 449 KM, a cinematic web s AI asistentom košta 499 KM. Ako redizajn uključuje web shop ili mnogo stranica, cijenu potvrđujemo nakon analize. Pregled svih paketa je na stranici ${a('/usluge/web-dizajn/', 'web dizajn')}.</p>`],
+    ],
+    faq: [
+      ['Hoću li izgubiti pozicije na Googleu nakon redizajna?', 'Ne bi trebalo, ako se za svaku staru adresu postavi preusmjerenje na novu i sačuvaju važni sadržaji. To je dio svakog Digital X redizajna.'],
+      ['Koliko košta redizajn web stranice?', 'Nova web prezentacija kreće od 449 KM, a cinematic web s AI asistentom košta 499 KM. Veći projekti dobijaju cijenu nakon besplatne analize.'],
+      ['Može li se zadržati postojeći sadržaj?', 'Da. Dobar sadržaj prenosimo i uređujemo, a ono što ne pomaže kupcu skraćujemo ili uklanjamo.'],
+    ],
+    related: [['/usluge/web-dizajn/', 'Web dizajn: paketi i cijene'], ['/usluge/x-convert/', 'X Convert'], ['/usluge/x-signal/', 'Besplatna analiza sajta']],
   },
   {
     path: '/usluge/lokalni-seo-sarajevo/',
