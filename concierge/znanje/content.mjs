@@ -302,7 +302,7 @@ export const guides = [
       ['Koliko dugo treba da reklama „proradi“?', 'Kampanji treba nekoliko dana da izađe iz faze učenja. Zaključke donosite nakon jedne do dvije sedmice, ne nakon jednog dana.'],
       ['Treba li mi web stranica za Instagram reklame?', 'Nije obavezna, ali pomaže. Stranica s jednom jasnom ponudom obično pretvara više klikova u upite i omogućava tačno mjerenje.'],
     ],
-    related: [['/usluge/meta-ads/', 'Meta Ads usluga'], ['/usluge/digitalne-kampanje/', 'Digitalne kampanje'], ['/usluge/video-proizvoda/', 'Video proizvoda']],
+    related: [['/usluge/meta-ads/', 'Meta Ads usluga'], ['/usluge/optimizacija-meta-oglasa/', 'Optimizacija Meta oglasa'], ['/znanje/kako-smanjiti-cijenu-facebook-oglasa/', 'Kako smanjiti cijenu Facebook oglasa'], ['/usluge/digitalne-kampanje/', 'Digitalne kampanje'], ['/usluge/video-proizvoda/', 'Video proizvoda']],
   },
   {
     slug: 'plan-sadrzaja-drustvene-mreze', cluster: 'sadrzaj', stage: 'privuci', minutes: 5,

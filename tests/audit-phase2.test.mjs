@@ -74,3 +74,18 @@ test('phase 3 step 2: speed, AI chatbot and compliance pages', () => {
   assert.match(readFileSync('usluge/web-dizajn/index.html', 'utf8'), /gdpr-pristupacnost-web-stranice/);
   assert.match(readFileSync('usluge/redizajn-web-stranice/index.html', 'utf8'), /optimizacija-brzine-sajta/);
 });
+
+test('meta ads cluster: optimization page, cost guide, cross-links', () => {
+  const opt = landings.find(l => l.path === '/usluge/optimizacija-meta-oglasa/');
+  const guide = landings.find(l => l.path === '/znanje/kako-smanjiti-cijenu-facebook-oglasa/');
+  assert.deepEqual(opt.service.offers.map(o => o.slice(0, 2)), [['Kampanje za rast', 249]]);
+  assert.ok(guide.article && !guide.service);
+  for (const l of [opt, guide]) {
+    const n = l.answer.split(/\s+/).length;
+    assert.ok(n >= 35 && n <= 70, `${l.path} ${n} words`);
+    const html = readFileSync(`.${l.path}index.html`, 'utf8');
+    assert.ok(html.includes('"@type":"FAQPage"'));
+    assert.ok(html.includes('/usluge/meta-ads/'), 'links the head-term page');
+  }
+  assert.match(readFileSync('znanje/instagram-facebook-reklama-cijena/index.html', 'utf8'), /optimizacija-meta-oglasa/);
+});

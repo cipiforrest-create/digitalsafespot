@@ -339,6 +339,68 @@ ${demo('/cinematic-penthouse/', 'THE MERIDIAN, cinematic web za premium nekretni
     related: [['/usluge/web-dizajn/', 'Web dizajn i cijene'], ['/usluge/ai-chatbot-za-web-stranicu/', 'AI chatbot za web stranicu'], ['/pravne-informacije.html', 'Pravne informacije Digital X']],
   },
   {
+    path: '/usluge/optimizacija-meta-oglasa/',
+    crumbs: [['Usluge', '/usluge/'], ['Optimizacija Meta oglasa', '/usluge/optimizacija-meta-oglasa/']],
+    eyebrow: 'META OGLASI · FACEBOOK I INSTAGRAM',
+    title: 'Optimizacija Facebook i Instagram oglasa: niža cijena upita | Digital X',
+    h1: 'Optimizacija Facebook i Instagram oglasa: niža cijena upita, bolja publika',
+    desc: 'Pregled i optimizacija Meta kampanja: mjerenje (Pixel i Conversions API), publika, retargeting, testiranje kreativa i cijena po upitu. Od 249 KM mjesečno plus budžet.',
+    keywords: ['optimizacija facebook oglasa', 'optimizacija meta oglasa', 'optimizacija instagram oglasa', 'facebook oglasi ne rade', 'ciljanje publike facebook', 'meta pixel postavljanje'],
+    service: { name: 'Optimizacija Meta oglasa', serviceType: 'Paid social advertising optimization', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['Kampanje za rast', 249, 'mjesečno plus budžet za oglase']] },
+    answer: 'Digital X optimizuje postojeće Facebook i Instagram kampanje: provjerimo mjerenje, cilj kampanje, publiku i kreative, pa mijenjamo ono što diže cijenu upita ili prodaje. Rezultat pratimo kroz cijenu po upitu, ne kroz lajkove. Vođenje i optimizacija kreću od 249 KM mjesečno plus budžet za oglase.',
+    sections: [
+      ['Šta provjeravamo i popravljamo', `<div class="table-wrap"><table><thead><tr><th scope="col">Područje</th><th scope="col">Česti problem</th><th scope="col">Šta radimo</th></tr></thead><tbody>
+<tr><th scope="row">Mjerenje</th><td>Pixel ne bilježi upite ili prodaje, pa Meta optimizuje naslijepo</td><td>Postavljamo Meta Pixel i Conversions API, provjeravamo događaje</td></tr>
+<tr><th scope="row">Cilj kampanje</th><td>Kampanja cilja klikove ili preglede umjesto upita</td><td>Biramo cilj koji odgovara poslovnom rezultatu</td></tr>
+<tr><th scope="row">Publika</th><td>Preusko ili preširoko ciljanje, publike se preklapaju</td><td>Gradimo publike iz posjetilaca, kupaca i sličnih ljudi, bez preklapanja</td></tr>
+<tr><th scope="row">Retargeting</th><td>Ljudi koji su bili na sajtu nikad više ne vide ponudu</td><td>Postavljamo kampanju za posjetioce koji nisu poslali upit</td></tr>
+<tr><th scope="row">Kreativa</th><td>Isti oglas mjesecima, pa cijena raste</td><td>Testiramo nove slike, video i naslove i gasimo slabe</td></tr>
+<tr><th scope="row">Stranica nakon klika</th><td>Oglas dobar, a stranica spora ili nejasna</td><td>Predlažemo ili radimo ${a('/shop/product/landing-starter/', 'landing stranicu')} za kampanju</td></tr>
+</tbody></table></div>`],
+      ['Kako smanjujemo cijenu po upitu', `<p>Cijenu po upitu ne spuštamo rezanjem budžeta, nego time da Meta dobije bolje signale i bolji oglas. Zato redoslijed uvijek ide: mjerenje, pa cilj, pa publika, pa kreativa. Detaljno objašnjenje je u vodiču ${a('/znanje/kako-smanjiti-cijenu-facebook-oglasa/', 'kako smanjiti cijenu Facebook oglasa')}.</p>`],
+      ['Šta dobijate svaki mjesec', `<ul>
+<li><strong>Izvještaj s brojkama koje se računaju.</strong> Potrošnja, broj upita ili prodaja i cijena po rezultatu.</li>
+<li><strong>Nove kreative za test.</strong> Svaki mjesec barem jedna nova varijanta oglasa.</li>
+<li><strong>Preporuku za budžet.</strong> Gdje dodati, a gdje stati.</li></ul>
+<p>Paket je ${a('/shop/product/growth-campaigns/', 'Kampanje za rast')}, od 249 KM mjesečno. Budžet za oglase plaćate direktno Meti. Ako tek pokrećete oglase, pogledajte ${a('/usluge/meta-ads/', 'vođenje Facebook i Instagram oglasa')}.</p>`],
+    ],
+    faq: [
+      ['Koliko košta optimizacija Facebook oglasa?', 'Vođenje i optimizacija kreću od 249 KM mjesečno. Budžet za oglase je odvojen i plaća se direktno Meti.'],
+      ['Zašto moji Facebook oglasi ne donose upite?', 'Najčešći razlozi su pogrešan cilj kampanje, mjerenje koje ne bilježi upite, preširoka publika, stara kreativa ili spora stranica nakon klika. Provjeravamo svaki od tih koraka redom.'],
+      ['Šta je Conversions API?', 'To je način da vaša stranica šalje Meti podatke o upitima i kupovinama direktno sa servera. Uz Pixel daje pouzdanije mjerenje, pa Meta bolje uči koga treba ciljati.'],
+      ['Da li morate imati pristup mom oglasnom nalogu?', 'Da, kao partner u vašem Business Manageru. Nalog, stranica i podaci ostaju vaši, a pristup možete ukinuti u bilo kojem trenutku.'],
+    ],
+    related: [['/usluge/meta-ads/', 'Facebook i Instagram oglasi'], ['/znanje/kako-smanjiti-cijenu-facebook-oglasa/', 'Kako smanjiti cijenu Facebook oglasa'], ['/znanje/instagram-facebook-reklama-cijena/', 'Cijena reklame na Instagramu i Facebooku']],
+  },
+  {
+    path: '/znanje/kako-smanjiti-cijenu-facebook-oglasa/',
+    article: true,
+    crumbs: [['Blog', '/blog/'], ['Kako smanjiti cijenu Facebook oglasa', '/znanje/kako-smanjiti-cijenu-facebook-oglasa/']],
+    eyebrow: 'VODIČ · META OGLASI',
+    title: 'Kako smanjiti cijenu Facebook i Instagram oglasa: 7 koraka | Digital X',
+    h1: 'Kako smanjiti cijenu Facebook i Instagram oglasa: 7 koraka koji stvarno rade',
+    desc: 'Zašto Facebook oglasi poskupljuju i kako smanjiti cijenu po upitu: mjerenje, cilj kampanje, publika, retargeting, kreativa i stranica nakon klika.',
+    keywords: ['kako smanjiti cijenu facebook oglasa', 'skupi facebook oglasi', 'cijena po upitu', 'lookalike publika', 'retargeting facebook', 'testiranje kreativa'],
+    answer: 'Cijena Facebook i Instagram oglasa pada kada Meta dobija tačne podatke o upitima, kada kampanja cilja upit a ne klik, kada publike nisu preuske i kada se kreativa redovno mijenja. Najveće uštede obično dolaze iz popravke mjerenja i boljeg oglasa, a ne iz manjeg budžeta.',
+    sections: [
+      ['1. Popravite mjerenje', `<p>Ako Meta Pixel ne bilježi upite ili kupovine, algoritam ne zna ko je dobar kupac. Postavite događaje za upit, poziv i kupovinu, a uz Pixel dodajte Conversions API za pouzdaniji prenos podataka.</p>`],
+      ['2. Birajte cilj prema rezultatu', `<p>Kampanja za promet traži ljude koji klikaju, a kampanja za potencijalne kupce traži ljude koji šalju upit. Ako vam treba upit, birajte cilj koji ga mjeri. Dugme Promoviši objavu najčešće optimizuje za interakcije.</p>`],
+      ['3. Ne sužavajte publiku previše', `<p>Preusko ciljanje diže cijenu prikaza. Za većinu malih firmi bolje radi šira publika uz dobar oglas, plus publike iz vlastitih podataka: posjetioci stranice, ljudi koji su gledali video i slični postojećim kupcima (lookalike).</p>`],
+      ['4. Uključite retargeting', `<p>Posjetilac koji je bio na stranici a nije poslao upit je najjeftiniji sljedeći kupac. Kratka kampanja koja mu ponovo pokaže ponudu često ima najnižu cijenu po upitu.</p>`],
+      ['5. Mijenjajte kreativu', `<p>Kad ista publika predugo gleda isti oglas, učestalost raste, a s njom i cijena. Testirajte više slika, kratkih videa i naslova, pa zadržite one koji donose upite.</p>`],
+      ['6. Popravite stranicu nakon klika', `<p>Spora ili nejasna stranica gubi ljude koje ste već platili. Jedna stranica s jednom ponudom i jednim pozivom na akciju obično radi bolje od početne stranice sajta.</p>`],
+      ['7. Mjerite cijenu po upitu, ne po kliku', `<p>Jeftin klik bez upita je skup. Pratite potrošnju podijeljenu s brojem upita ili prodaja i odluke o budžetu donosite prema tom broju.</p>
+<p>Ako želite da neko provjeri vaše kampanje, pogledajte ${a('/usluge/optimizacija-meta-oglasa/', 'optimizaciju Meta oglasa')}.</p>`],
+    ],
+    faq: [
+      ['Zašto su Facebook oglasi poskupili?', 'Cijena raste kad je više oglašivača za istu publiku, kad mjerenje ne radi, kad je publika preuska ili kad ljudi predugo gledaju isti oglas.'],
+      ['Koliki budžet treba za Facebook oglase?', 'Ne postoji jedan iznos. Budžet treba biti dovoljan da kampanja dobije više rezultata sedmično kako bi Meta mogla učiti. Kreće se od cilja i cijene jednog upita.'],
+      ['Šta je lookalike publika?', 'To je publika ljudi sličnih vašim postojećim kupcima ili posjetiocima, koju Meta pravi iz vaših podataka.'],
+      ['Da li je Promoviši objavu dovoljno?', 'Za vidljivost objave može biti. Za upite i prodaju Ads Manager daje bolji izbor cilja, publike i mjerenja.'],
+    ],
+    related: [['/usluge/optimizacija-meta-oglasa/', 'Optimizacija Meta oglasa'], ['/usluge/meta-ads/', 'Facebook i Instagram oglasi'], ['/znanje/instagram-facebook-reklama-cijena/', 'Cijena reklame na Instagramu i Facebooku']],
+  },
+  {
     // Fact sheet for AI answers and journalists: only verified company data and catalogue prices.
     path: '/cinjenice/',
     about: true,
