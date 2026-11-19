@@ -241,6 +241,64 @@ ${demo('/cinematic-penthouse/', 'THE MERIDIAN, cinematic web za premium nekretni
     related: [['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/usluge/digitalne-kampanje/', 'Digitalne kampanje'], ['/industrije/', 'Sve industrije']],
   },
   {
+    path: '/industrije/restorani/',
+    crumbs: [['Industrije', '/industrije/'], ['Restorani i kafići', '/industrije/restorani/']],
+    eyebrow: 'INDUSTRIJE · RESTORANI I KAFIĆI',
+    title: 'Web stranica i marketing za restoran: meni, rezervacije, Google | Digital X',
+    h1: 'Web stranica za restoran: meni, rezervacija i Google mapa na jednom mjestu',
+    desc: 'Web stranica, lokalni SEO i Instagram oglasi za restorane i kafiće u BiH: meni koji se čita na mobitelu, rezervacija, Google Business profil i recenzije. Od 199 KM.',
+    keywords: ['web stranica za restoran', 'izrada web stranice za restoran', 'marketing za restorane', 'online meni za restoran', 'restoran sarajevo web'],
+    service: { name: 'Web stranice i marketing za restorane', serviceType: 'Web design and local marketing for restaurants', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['Landing stranica', 199], ['Premium web prisustvo', 449], ['Smart Website Launch', 499]] },
+    answer: 'Gost prije dolaska provjerava meni, cijene, radno vrijeme, lokaciju i recenzije, najčešće na mobitelu. Digital X izrađuje stranice za restorane i kafiće koje to pokazuju odmah i vode do rezervacije ili poziva: jednostavna stranica od 199 KM, prezentacijska od 449 KM, a web s AI asistentom 499 KM.',
+    sections: [
+      ['Šta gost traži na stranici restorana', `<ul>
+<li><strong>Meni kao tekst, ne kao PDF.</strong> Čita se na mobitelu, a Google i AI asistenti ga mogu pročitati i preporučiti.</li>
+<li><strong>Rezervacija ili poziv.</strong> Dugme za poziv, WhatsApp ili obrazac vidljiv na svakom ekranu.</li>
+<li><strong>Radno vrijeme i lokacija.</strong> Karta, parking i isto radno vrijeme kao na Google profilu.</li>
+<li><strong>Fotografije jela i prostora.</strong> Prave fotografije prodaju više od opisa. Po potrebi radimo ${a('/usluge/fotografija-proizvoda/', 'fotografisanje')}.</li>
+<li><strong>Događaji i grupe.</strong> Posebna stranica za proslave i poslovne ručkove, jer to ljudi posebno traže.</li></ul>`],
+      ['Google mapa i recenzije', `<p>Za restoran je Google Business profil često važniji od same stranice. Uređujemo kategorije, fotografije, meni i radno vrijeme, a uz ${a('/shop/product/review-engine/', 'sistem recenzija')} gosti nakon posjete dobiju poziv da ostave recenziju. Više na stranici ${a('/usluge/lokalni-seo-sarajevo/', 'lokalni SEO')}.</p>`],
+      ['Instagram i oglasi', `<p>Restoran se bira očima. Lokalni Instagram i Facebook oglasi za ljude u blizini, uz sedmični sadržaj, pune termine koji su inače prazni. Pogledajte ${a('/usluge/meta-ads/', 'Facebook i Instagram oglase')}.</p>`],
+    ],
+    faq: [
+      ['Koliko košta web stranica za restoran?', 'Jednostavna stranica s menijem i rezervacijom kreće od 199 KM, prezentacijska stranica od 449 KM, a web s AI asistentom 499 KM. Cijenu potvrđujemo pisano prije početka.'],
+      ['Zašto meni ne bi trebao biti PDF?', 'PDF se teško čita na mobitelu i sporo učitava, a Google i AI asistenti ga slabije razumiju. Meni kao tekst se lakše mijenja i bolje se pronalazi.'],
+      ['Možete li povezati online rezervacije?', 'Možemo povezati obrazac, WhatsApp ili sistem za rezervacije koji restoran već koristi. Šta je moguće provjeravamo prije ponude.'],
+    ],
+    related: [['/usluge/lokalni-seo-sarajevo/', 'Lokalni SEO Sarajevo'], ['/usluge/meta-ads/', 'Facebook i Instagram oglasi'], ['/industrije/', 'Sve industrije']],
+  },
+  {
+    path: '/industrije/luksuzni-brendovi/',
+    crumbs: [['Industrije', '/industrije/'], ['Luksuzni brendovi', '/industrije/luksuzni-brendovi/']],
+    eyebrow: 'INDUSTRIJE · LUKSUZNI BRENDOVI',
+    title: 'Web stranica za luksuzni brend: cinematic web i web shop | Digital X',
+    h1: 'Web stranica za luksuzni brend: doživljaj proizvoda prije kupovine',
+    desc: 'Cinematic web stranice i web shopovi za luksuzne brendove: satove, parfeme, modu i nakit. Proizvod u pokretu, diskretan upit i kupovina. Cinematic web 499 KM.',
+    keywords: ['web stranica za luksuzni brend', 'luksuzni web dizajn', 'cinematic web stranica', 'web shop za modni brend', 'web stranica za nakit i satove'],
+    service: { name: 'Web stranice za luksuzne brendove', serviceType: 'Luxury brand web design', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['Smart Website Launch', 499], ['E-commerce Launch', 2490]] },
+    answer: 'Kupac luksuznog proizvoda kupuje osjećaj prije cijene: materijal, detalj, priču i povjerenje u brend. Digital X izrađuje cinematic web stranice u kojima se proizvod otkriva dok posjetilac skroluje, uz diskretan upit ili kupovinu. Cinematic web do pet stranica košta 499 KM, a web shop kreće od 2.490 KM.',
+    sections: [
+      ['Šta luksuzna stranica mora imati', `<ul>
+<li><strong>Proizvod u prvom planu.</strong> Velike fotografije i pokret koji pokazuje materijal i detalj.</li>
+<li><strong>Mir na ekranu.</strong> Malo teksta, dosta prostora, jasna tipografija.</li>
+<li><strong>Priča brenda.</strong> Porijeklo, izrada i ljudi iza proizvoda.</li>
+<li><strong>Diskretan kontakt.</strong> Upit, privatna prezentacija ili kupovina, bez napadnih poziva.</li>
+<li><strong>Brzina uprkos slikama.</strong> Optimizovane slike i video kako doživljaj ne bi čekao.</li></ul>`],
+      ['Primjeri koje možete isprobati', `<p>Napravili smo više interaktivnih koncepata za luksuzne proizvode.</p>
+${demo('/cinematic-watch/', 'cinematic web za luksuzni sat')}
+${demo('/cinematic-perfume/', 'cinematic web za parfem')}
+${demo('/cinematic-clothes/', 'cinematic web za modni brend')}
+<p>Više o pristupu na stranici ${a('/usluge/cinematic-web-stranice/', 'cinematic web stranice')}.</p>`],
+      ['Kad brend prodaje online', `<p>Za prodaju na internetu radimo ${a('/usluge/izrada-web-shopa/', 'web shop')} koji zadržava isti doživljaj, a ${a('/usluge/smart-storefront/', 'Smart Storefront')} dodaje asistenta koji kupcu pomaže izabrati proizvod. Za vizuale tu su ${a('/usluge/fotografija-proizvoda/', 'fotografija')} i ${a('/usluge/video-proizvoda/', 'video proizvoda')}.</p>`],
+    ],
+    faq: [
+      ['Koliko košta web stranica za luksuzni brend?', 'Cinematic web do pet stranica s AI asistentom prva tri mjeseca košta 499 KM. Web shop kreće od 2.490 KM. Veći broj proizvoda, jezika ili posebne animacije povećavaju obim.'],
+      ['Da li animacije usporavaju stranicu?', 'Ne moraju. Slike i video pripremamo za brzo učitavanje, a pokret se učitava postepeno dok posjetilac skroluje.'],
+      ['Jesu li primjeri stranice stvarnih klijenata?', 'Ne. To su interaktivni koncepti napravljeni kao demonstracija mogućnosti.'],
+    ],
+    related: [['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/usluge/izrada-web-shopa/', 'Izrada web shopa'], ['/industrije/', 'Sve industrije']],
+  },
+  {
     path: '/usluge/optimizacija-brzine-sajta/',
     crumbs: [['Usluge', '/usluge/'], ['Optimizacija brzine sajta', '/usluge/optimizacija-brzine-sajta/']],
     eyebrow: 'BRZINA SAJTA · CORE WEB VITALS',
@@ -467,6 +525,6 @@ export const industryHub = {
   path: '/industrije/',
   title: 'Web stranice i marketing po djelatnostima | Digital X',
   h1: 'Web stranice i marketing za vašu djelatnost',
-  desc: 'Digital X web stranice, lokalni SEO i AI asistenti prilagođeni djelatnostima: stomatološke ordinacije, advokati, hoteli i apartmani, nekretnine.',
+  desc: 'Digital X web stranice, lokalni SEO i AI asistenti prilagođeni djelatnostima: stomatološke ordinacije, advokati, hoteli i apartmani, nekretnine, restorani i luksuzni brendovi.',
   answer: 'Svaka djelatnost ima svoja pitanja kupaca. Pacijent traži tretman i tim, gost prostor i lokaciju, klijent advokata područje rada. Odaberite svoju djelatnost i pogledajte šta stranica treba, koji koncept možete isprobati i koliko košta.',
 };

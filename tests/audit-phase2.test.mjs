@@ -89,3 +89,16 @@ test('meta ads cluster: optimization page, cost guide, cross-links', () => {
   }
   assert.match(readFileSync('znanje/instagram-facebook-reklama-cijena/index.html', 'utf8'), /optimizacija-meta-oglasa/);
 });
+
+test('industry pages: restaurants and luxury brands', () => {
+  for (const p of ['/industrije/restorani/', '/industrije/luksuzni-brendovi/']) {
+    const l = landings.find(x => x.path === p);
+    const n = l.answer.split(/\s+/).length;
+    assert.ok(n >= 35 && n <= 70, `${p} ${n} words`);
+    for (const [, price] of l.service.offers) assert.ok([199, 449, 499, 2490].includes(price), `${p} price ${price} from catalogue`);
+    assert.ok(readFileSync(`.${p}index.html`, 'utf8').includes('"@type":"Service"'));
+  }
+  const hub = readFileSync('industrije/index.html', 'utf8');
+  assert.ok(hub.includes('/industrije/restorani/') && hub.includes('/industrije/luksuzni-brendovi/'));
+  assert.match(readFileSync('industrije/luksuzni-brendovi/index.html', 'utf8'), /nije stranica stvarnog klijenta/);
+});
