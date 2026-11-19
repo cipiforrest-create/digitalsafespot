@@ -239,17 +239,17 @@
     },
     {
       "source": "/audit.html",
-      "destination": "https://audit.digital-x-marketing.com/",
+      "destination": "/usluge/x-signal/",
       "permanent": true
     },
     {
       "source": "/audit",
-      "destination": "https://audit.digital-x-marketing.com/",
+      "destination": "/usluge/x-signal/",
       "permanent": true
     },
     {
       "source": "/audit/",
-      "destination": "https://audit.digital-x-marketing.com/",
+      "destination": "/usluge/x-signal/",
       "permanent": true
     },
     {

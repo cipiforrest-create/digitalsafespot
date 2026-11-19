@@ -73,7 +73,7 @@ ${demo('/cinematic-hotel/', 'cinematic hotel')}`],
       ['Radite li za firme izvan Sarajeva?', 'Da. Radimo za firme iz cijele Bosne i Hercegovine i regije. Sastanci se mogu održati online.'],
       ['Ko je vlasnik stranice nakon izrade?', 'Vi. Domena, sadržaj i pristupi ostaju na vašoj firmi.'],
     ],
-    related: [['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/usluge/izrada-web-stranica/sarajevo/', 'Izrada web stranica Sarajevo'], ['/usluge/redizajn-web-stranice/', 'Redizajn web stranice'], ['/kontakt.html', 'Kontakt i besplatne konzultacije']],
+    related: [['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/usluge/izrada-web-stranica/sarajevo/', 'Izrada web stranica Sarajevo'], ['/usluge/redizajn-web-stranice/', 'Redizajn web stranice'], ['/znanje/gdpr-pristupacnost-web-stranice/', 'GDPR, kolačići i pristupačnost'], ['/kontakt.html', 'Kontakt i besplatne konzultacije']],
   },
   {
     path: '/usluge/redizajn-web-stranice/',
@@ -100,7 +100,7 @@ ${demo('/cinematic-hotel/', 'cinematic hotel')}`],
       ['Koliko košta redizajn web stranice?', 'Nova web prezentacija kreće od 449 KM, a cinematic web s AI asistentom košta 499 KM. Veći projekti dobijaju cijenu nakon besplatne analize.'],
       ['Može li se zadržati postojeći sadržaj?', 'Da. Dobar sadržaj prenosimo i uređujemo, a ono što ne pomaže kupcu skraćujemo ili uklanjamo.'],
     ],
-    related: [['/usluge/web-dizajn/', 'Web dizajn: paketi i cijene'], ['/usluge/x-convert/', 'X Convert'], ['/usluge/x-signal/', 'Besplatna analiza sajta']],
+    related: [['/usluge/web-dizajn/', 'Web dizajn: paketi i cijene'], ['/usluge/x-convert/', 'X Convert'], ['/usluge/optimizacija-brzine-sajta/', 'Optimizacija brzine sajta'], ['/usluge/x-signal/', 'Besplatna analiza sajta']],
   },
   {
     path: '/usluge/lokalni-seo-sarajevo/',
@@ -240,12 +240,293 @@ ${demo('/cinematic-penthouse/', 'THE MERIDIAN, cinematic web za premium nekretni
     ],
     related: [['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/usluge/digitalne-kampanje/', 'Digitalne kampanje'], ['/industrije/', 'Sve industrije']],
   },
+  {
+    path: '/industrije/restorani/',
+    crumbs: [['Industrije', '/industrije/'], ['Restorani i kafići', '/industrije/restorani/']],
+    eyebrow: 'INDUSTRIJE · RESTORANI I KAFIĆI',
+    title: 'Web stranica i marketing za restoran: meni, rezervacije, Google | Digital X',
+    h1: 'Web stranica za restoran: meni, rezervacija i Google mapa na jednom mjestu',
+    desc: 'Web stranica, lokalni SEO i Instagram oglasi za restorane i kafiće u BiH: meni koji se čita na mobitelu, rezervacija, Google Business profil i recenzije. Od 199 KM.',
+    keywords: ['web stranica za restoran', 'izrada web stranice za restoran', 'marketing za restorane', 'online meni za restoran', 'restoran sarajevo web'],
+    service: { name: 'Web stranice i marketing za restorane', serviceType: 'Web design and local marketing for restaurants', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['Landing stranica', 199], ['Premium web prisustvo', 449], ['Smart Website Launch', 499]] },
+    answer: 'Gost prije dolaska provjerava meni, cijene, radno vrijeme, lokaciju i recenzije, najčešće na mobitelu. Digital X izrađuje stranice za restorane i kafiće koje to pokazuju odmah i vode do rezervacije ili poziva: jednostavna stranica od 199 KM, prezentacijska od 449 KM, a web s AI asistentom 499 KM.',
+    sections: [
+      ['Šta gost traži na stranici restorana', `<ul>
+<li><strong>Meni kao tekst, ne kao PDF.</strong> Čita se na mobitelu, a Google i AI asistenti ga mogu pročitati i preporučiti.</li>
+<li><strong>Rezervacija ili poziv.</strong> Dugme za poziv, WhatsApp ili obrazac vidljiv na svakom ekranu.</li>
+<li><strong>Radno vrijeme i lokacija.</strong> Karta, parking i isto radno vrijeme kao na Google profilu.</li>
+<li><strong>Fotografije jela i prostora.</strong> Prave fotografije prodaju više od opisa. Po potrebi radimo ${a('/usluge/fotografija-proizvoda/', 'fotografisanje')}.</li>
+<li><strong>Događaji i grupe.</strong> Posebna stranica za proslave i poslovne ručkove, jer to ljudi posebno traže.</li></ul>`],
+      ['Google mapa i recenzije', `<p>Za restoran je Google Business profil često važniji od same stranice. Uređujemo kategorije, fotografije, meni i radno vrijeme, a uz ${a('/shop/product/review-engine/', 'sistem recenzija')} gosti nakon posjete dobiju poziv da ostave recenziju. Više na stranici ${a('/usluge/lokalni-seo-sarajevo/', 'lokalni SEO')}.</p>`],
+      ['Instagram i oglasi', `<p>Restoran se bira očima. Lokalni Instagram i Facebook oglasi za ljude u blizini, uz sedmični sadržaj, pune termine koji su inače prazni. Pogledajte ${a('/usluge/meta-ads/', 'Facebook i Instagram oglase')}.</p>`],
+    ],
+    faq: [
+      ['Koliko košta web stranica za restoran?', 'Jednostavna stranica s menijem i rezervacijom kreće od 199 KM, prezentacijska stranica od 449 KM, a web s AI asistentom 499 KM. Cijenu potvrđujemo pisano prije početka.'],
+      ['Zašto meni ne bi trebao biti PDF?', 'PDF se teško čita na mobitelu i sporo učitava, a Google i AI asistenti ga slabije razumiju. Meni kao tekst se lakše mijenja i bolje se pronalazi.'],
+      ['Možete li povezati online rezervacije?', 'Možemo povezati obrazac, WhatsApp ili sistem za rezervacije koji restoran već koristi. Šta je moguće provjeravamo prije ponude.'],
+    ],
+    related: [['/usluge/lokalni-seo-sarajevo/', 'Lokalni SEO Sarajevo'], ['/usluge/meta-ads/', 'Facebook i Instagram oglasi'], ['/industrije/', 'Sve industrije']],
+  },
+  {
+    path: '/industrije/luksuzni-brendovi/',
+    crumbs: [['Industrije', '/industrije/'], ['Luksuzni brendovi', '/industrije/luksuzni-brendovi/']],
+    eyebrow: 'INDUSTRIJE · LUKSUZNI BRENDOVI',
+    title: 'Web stranica za luksuzni brend: cinematic web i web shop | Digital X',
+    h1: 'Web stranica za luksuzni brend: doživljaj proizvoda prije kupovine',
+    desc: 'Cinematic web stranice i web shopovi za luksuzne brendove: satove, parfeme, modu i nakit. Proizvod u pokretu, diskretan upit i kupovina. Cinematic web 499 KM.',
+    keywords: ['web stranica za luksuzni brend', 'luksuzni web dizajn', 'cinematic web stranica', 'web shop za modni brend', 'web stranica za nakit i satove'],
+    service: { name: 'Web stranice za luksuzne brendove', serviceType: 'Luxury brand web design', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['Smart Website Launch', 499], ['E-commerce Launch', 2490]] },
+    answer: 'Kupac luksuznog proizvoda kupuje osjećaj prije cijene: materijal, detalj, priču i povjerenje u brend. Digital X izrađuje cinematic web stranice u kojima se proizvod otkriva dok posjetilac skroluje, uz diskretan upit ili kupovinu. Cinematic web do pet stranica košta 499 KM, a web shop kreće od 2.490 KM.',
+    sections: [
+      ['Šta luksuzna stranica mora imati', `<ul>
+<li><strong>Proizvod u prvom planu.</strong> Velike fotografije i pokret koji pokazuje materijal i detalj.</li>
+<li><strong>Mir na ekranu.</strong> Malo teksta, dosta prostora, jasna tipografija.</li>
+<li><strong>Priča brenda.</strong> Porijeklo, izrada i ljudi iza proizvoda.</li>
+<li><strong>Diskretan kontakt.</strong> Upit, privatna prezentacija ili kupovina, bez napadnih poziva.</li>
+<li><strong>Brzina uprkos slikama.</strong> Optimizovane slike i video kako doživljaj ne bi čekao.</li></ul>`],
+      ['Primjeri koje možete isprobati', `<p>Napravili smo više interaktivnih koncepata za luksuzne proizvode.</p>
+${demo('/cinematic-watch/', 'cinematic web za luksuzni sat')}
+${demo('/cinematic-perfume/', 'cinematic web za parfem')}
+${demo('/cinematic-clothes/', 'cinematic web za modni brend')}
+<p>Više o pristupu na stranici ${a('/usluge/cinematic-web-stranice/', 'cinematic web stranice')}.</p>`],
+      ['Kad brend prodaje online', `<p>Za prodaju na internetu radimo ${a('/usluge/izrada-web-shopa/', 'web shop')} koji zadržava isti doživljaj, a ${a('/usluge/smart-storefront/', 'Smart Storefront')} dodaje asistenta koji kupcu pomaže izabrati proizvod. Za vizuale tu su ${a('/usluge/fotografija-proizvoda/', 'fotografija')} i ${a('/usluge/video-proizvoda/', 'video proizvoda')}.</p>`],
+    ],
+    faq: [
+      ['Koliko košta web stranica za luksuzni brend?', 'Cinematic web do pet stranica s AI asistentom prva tri mjeseca košta 499 KM. Web shop kreće od 2.490 KM. Veći broj proizvoda, jezika ili posebne animacije povećavaju obim.'],
+      ['Da li animacije usporavaju stranicu?', 'Ne moraju. Slike i video pripremamo za brzo učitavanje, a pokret se učitava postepeno dok posjetilac skroluje.'],
+      ['Jesu li primjeri stranice stvarnih klijenata?', 'Ne. To su interaktivni koncepti napravljeni kao demonstracija mogućnosti.'],
+    ],
+    related: [['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/usluge/izrada-web-shopa/', 'Izrada web shopa'], ['/industrije/', 'Sve industrije']],
+  },
+  {
+    path: '/usluge/optimizacija-brzine-sajta/',
+    crumbs: [['Usluge', '/usluge/'], ['Optimizacija brzine sajta', '/usluge/optimizacija-brzine-sajta/']],
+    eyebrow: 'BRZINA SAJTA · CORE WEB VITALS',
+    title: 'Optimizacija brzine sajta: od 99 KM, mjereno prije i poslije | Digital X',
+    h1: 'Optimizacija brzine web stranice: brži sajt, mjeren prije i poslije',
+    desc: 'Spor sajt gubi posjetioce i pozicije na Googleu. Speed optimizacija od 99 KM: mjerenje, slike, kod, cache i mobilna stabilnost, uz izvještaj prije i poslije.',
+    keywords: ['optimizacija brzine sajta', 'ubrzanje web stranice', 'spor sajt', 'core web vitals', 'pagespeed optimizacija'],
+    service: { name: 'Optimizacija brzine web stranice', serviceType: 'Website performance optimization', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['Speed optimizacija', 99, 'jednokratno']] },
+    answer: 'Digital X ubrzava postojeće web stranice: prvo izmjerimo brzinu i stabilnost prikaza, zatim optimizujemo slike, kod i cache te popravimo prikaz na mobitelu. Na kraju dobijate izvještaj prije i poslije. Speed optimizacija kreće od 99 KM jednokratno, a obim potvrđujemo nakon mjerenja.',
+    sections: [
+      ['Šta radimo', `<ol>
+<li><strong>Mjerenje prije intervencije.</strong> Bilježimo brzinu učitavanja i stabilnost prikaza na mobitelu i računaru, kako bi rezultat bio uporediv.</li>
+<li><strong>Slike.</strong> Prave dimenzije, moderni formati i odgođeno učitavanje slika ispod prvog ekrana.</li>
+<li><strong>Kod i cache.</strong> Uklanjamo nepotrebne skripte i stilove, odgađamo ono što ne treba odmah i podešavamo keširanje.</li>
+<li><strong>Mobilna stabilnost.</strong> Elementi koji skaču tokom učitavanja dobiju rezervisan prostor.</li>
+<li><strong>Izvještaj prije i poslije.</strong> Iste mjere, isti uređaji, jasna razlika.</li></ol>
+<p>Detalji paketa su na stranici ${a('/shop/product/speed-optimization/', 'Speed optimizacija')}.</p>`],
+      ['Koje brojeve gledamo', `<div class="table-wrap"><table><thead><tr><th scope="col">Mjera</th><th scope="col">Šta znači</th><th scope="col">Dobra vrijednost po Googleu</th></tr></thead><tbody>
+<tr><th scope="row">LCP</th><td>Koliko brzo se pojavi glavni sadržaj</td><td>do 2,5 sekunde</td></tr>
+<tr><th scope="row">INP</th><td>Koliko brzo stranica reaguje na klik ili dodir</td><td>do 200 milisekundi</td></tr>
+<tr><th scope="row">CLS</th><td>Koliko elementi skaču tokom učitavanja</td><td>do 0,1</td></tr>
+</tbody></table></div>
+<p>To su Core Web Vitals, mjere koje Google koristi da ocijeni iskustvo na stranici. Zašto su važne za prodaju objašnjavamo u vodiču ${a('/blog/brzina-sajta.html', 'zašto spor sajt ubija prodaju')}.</p>`],
+      ['Kad brzina nije dovoljna', `<p>Ako je stranica zastarjela i u dizajnu i u kodu, ubrzavanje daje ograničen rezultat. Tada je isplativiji ${a('/usluge/redizajn-web-stranice/', 'redizajn')}. Da brzina ne bi opet pala nakon izmjena, tu je ${a('/shop/product/site-care/', 'održavanje stranice')} od 49 KM mjesečno.</p>`],
+    ],
+    faq: [
+      ['Koliko košta optimizacija brzine sajta?', 'Speed optimizacija kod Digital X kreće od 99 KM jednokratno. Konačan obim i cijenu potvrđujemo nakon prvog mjerenja.'],
+      ['Da li brži sajt bolje rangira na Googleu?', 'Brzina i stabilnost prikaza dio su Googleove ocjene iskustva na stranici. Nisu jedini faktor, ali spor sajt gubi posjetioce prije nego što vide ponudu.'],
+      ['Radite li na WordPressu i Shopifyju?', 'Da. Šta se može promijeniti zavisi od platforme, teme i dodataka, pa to provjerimo u mjerenju prije ponude.'],
+      ['Kako da provjerim brzinu svog sajta?', 'Besplatno preko Google PageSpeed Insights ili kroz našu besplatnu analizu sajta, uz objašnjenje šta brojevi znače.'],
+    ],
+    related: [['/usluge/x-signal/', 'Besplatna analiza sajta'], ['/blog/brzina-sajta.html', 'Vodič: brzina sajta'], ['/usluge/web-dizajn/', 'Web dizajn i cijene']],
+  },
+  {
+    path: '/usluge/ai-chatbot-za-web-stranicu/',
+    crumbs: [['Usluge', '/usluge/'], ['AI chatbot za web stranicu', '/usluge/ai-chatbot-za-web-stranicu/']],
+    eyebrow: 'AI ASISTENT · WEB I PORUKE',
+    title: 'AI chatbot za web stranicu: cijena od 490 KM | Digital X',
+    h1: 'AI chatbot za web stranicu koji odgovara, kvalifikuje i prikuplja upite',
+    desc: 'AI chatbot za web stranicu firme u BiH: odgovori 24/7 iz vašeg sadržaja, pitanja za kvalifikaciju i predaja razgovora čovjeku. AI prodajni asistent od 490 KM.',
+    keywords: ['ai chatbot za web stranicu', 'chatbot za web stranicu', 'ai asistent za web', 'chatbot cijena', 'ai chatbot bih'],
+    service: { name: 'AI chatbot za web stranicu', serviceType: 'AI chatbot development', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['AI prodajni asistent', 490, 'uz mjesečno održavanje']] },
+    answer: 'Digital X postavlja AI chatbot na web stranicu firme: asistent odgovara 24/7 iz vašeg sadržaja i u vašem tonu, postavlja pitanja koja kvalifikuju upit i predaje razgovor čovjeku kad treba. AI prodajni asistent kreće od 490 KM, uz održavanje od 149 KM mjesečno.',
+    sections: [
+      ['Šta asistent radi', `<ul>
+<li><strong>Odgovara 24/7.</strong> Pitanja o uslugama, cijenama, radnom vremenu i lokaciji dobijaju odgovor i kad niko nije u kancelariji.</li>
+<li><strong>Koristi vaš sadržaj i ton.</strong> Odgovara iz odobrenih informacija o vašoj firmi, ne iz nagađanja.</li>
+<li><strong>Kvalifikuje upit.</strong> Pita ono što bi pitao vaš prodavač: šta treba, kada i u kojem obimu.</li>
+<li><strong>Predaje razgovor čovjeku.</strong> Kad pitanje traži osobu, vaš tim dobija sažetak i nastavlja razgovor.</li></ul>
+<p>Asistenta možete isprobati u ${a('/ai-concierge-preview/', 'demo razgovoru')}. Detalji paketa su na stranici ${a('/shop/product/ai-concierge/', 'AI prodajni asistent')}.</p>`],
+      ['Cijena i održavanje', `<div class="table-wrap"><table><thead><tr><th scope="col">Opcija</th><th scope="col">Cijena</th></tr></thead><tbody>
+<tr><th scope="row">${a('/shop/product/ai-concierge/', 'AI prodajni asistent')}</th><td>od 490 KM</td></tr>
+<tr><th scope="row">${a('/shop/product/site-care/', 'Održavanje stranice s AI asistentom')}</th><td>149 KM mjesečno</td></tr>
+<tr><th scope="row">${a('/shop/product/smart-website-launch/', 'Smart Website Launch')} (nova stranica s asistentom)</th><td>499 KM, asistent uključen prva tri mjeseca</td></tr>
+</tbody></table></div>
+<p>Održavanje pokriva ažuriranje znanja asistenta kad se promijene usluge ili cijene. Konačan obim potvrđujemo pisano prije početka.</p>`],
+      ['Pošteno prema posjetiocu', `<p>Posjetilac uvijek zna da razgovara s asistentom, a ne s osobom. Asistent ne daje obećanja koja vaša firma nije odobrila, a podatke iz razgovora koristite samo za odgovor na upit. Šta to znači za zaštitu podataka objašnjavamo u vodiču ${a('/znanje/gdpr-pristupacnost-web-stranice/', 'GDPR, kolačići i pristupačnost')}.</p>`],
+      ['Za telefon i termine', `<p>Ako upiti stižu pozivom ili trebaju zakazivanje termina, pogledajte ${a('/usluge/ai-receptionist/', 'AI recepcionara')}. Šta je chatbot i kad se isplati objašnjava ${a('/blog/ai-chatbot-vodic.html', 'vodič o AI chatbotu za biznis')}.</p>`],
+    ],
+    faq: [
+      ['Koliko košta AI chatbot za web stranicu?', 'AI prodajni asistent kod Digital X kreće od 490 KM, uz održavanje od 149 KM mjesečno. Uz novu stranicu, Smart Website Launch od 499 KM uključuje asistenta prva tri mjeseca.'],
+      ['Da li chatbot izmišlja odgovore?', 'Asistent odgovara iz informacija koje vi odobrite. Kad ne zna odgovor ili pitanje traži osobu, predaje razgovor vašem timu.'],
+      ['Na kojim jezicima radi?', 'Na bosanskom, hrvatskom, srpskom, engleskom i njemačkom, prema tome koje jezike koriste vaši kupci.'],
+      ['Može li raditi i na Instagramu ili WhatsAppu?', 'Asistent je namijenjen webu i kanalima komunikacije. Koje kanale povezujemo dogovaramo u ponudi, prema obimu.'],
+    ],
+    related: [['/ai-concierge-preview/', 'Isprobajte demo razgovor'], ['/blog/ai-chatbot-vodic.html', 'Vodič: AI chatbot za biznis'], ['/usluge/ai-receptionist/', 'AI recepcionar']],
+  },
+  {
+    path: '/znanje/gdpr-pristupacnost-web-stranice/',
+    article: true,
+    crumbs: [['Blog', '/blog/'], ['GDPR i pristupačnost web stranice', '/znanje/gdpr-pristupacnost-web-stranice/']],
+    eyebrow: 'VODIČ · PRIVATNOST I PRISTUPAČNOST',
+    title: 'GDPR, kolačići i pristupačnost web stranice: vodič za firme u BiH | Digital X',
+    h1: 'GDPR, kolačići i pristupačnost: šta web stranica firme iz BiH treba',
+    desc: 'Kada GDPR važi za firmu iz BiH, šta treba za kolačiće, šta traži Evropski akt o pristupačnosti i šta s AI chatbotom. Praktičan pregled, bez pravnog žargona.',
+    keywords: ['gdpr bih', 'gdpr web stranica', 'kolačići pristanak', 'pristupačnost web stranice', 'wcag', 'zaštita ličnih podataka bih'],
+    answer: 'Firma iz BiH prati domaći zakon o zaštiti ličnih podataka, a GDPR dodatno kad nudi robu ili usluge ljudima u EU. Stranica treba politiku privatnosti, pristanak za kolačiće koji nisu nužni i formu koja traži samo potrebne podatke. Prodaja potrošačima u EU donosi i pravila o pristupačnosti.',
+    sections: [
+      ['Kada GDPR važi za firmu iz BiH', `<p>U Bosni i Hercegovini važi domaći zakon o zaštiti ličnih podataka, a nadzor vrši Agencija za zaštitu ličnih podataka u BiH. Opća uredba o zaštiti podataka EU (GDPR) dodatno važi i za firme izvan EU kada nude robu ili usluge ljudima u EU ili prate njihovo ponašanje na internetu. Hotel koji prima goste iz Njemačke ili web shop koji šalje u Hrvatsku spadaju u tu grupu.</p>`],
+      ['Šta stranica treba imati', `<ul>
+<li><strong>Politiku privatnosti.</strong> Koje podatke prikupljate, zašto, koliko ih čuvate i kome se posjetilac javlja.</li>
+<li><strong>Pristanak za kolačiće.</strong> Analitika i oglasni kolačići za posjetioce iz EU traže pristanak prije postavljanja. Nužni kolačići, npr. za korpu, ne traže.</li>
+<li><strong>Forme sa minimumom podataka.</strong> Pitajte samo ono što vam treba za odgovor.</li>
+<li><strong>Siguran prenos.</strong> HTTPS na cijeloj stranici.</li></ul>`],
+      ['Pristupačnost i Evropski akt o pristupačnosti', `<p>Od 28. 6. 2025. Evropski akt o pristupačnosti traži da određene usluge za potrošače u EU, uključujući online prodaju, budu pristupačne osobama s invaliditetom. Mikropreduzeća koja pružaju usluge (manje od 10 zaposlenih i do 2 miliona eura prometa) izuzeta su. Tehnička osnova je standard koji se oslanja na WCAG smjernice: dovoljan kontrast, opis slika, upotreba tastaturom i jasne oznake u formama.</p>
+<p>I kada zakon ne obavezuje, pristupačna stranica je lakša za sve, a Google i AI alati bolje razumiju njen sadržaj.</p>`],
+      ['AI chatbot i podaci', `<p>Evropski propisi o umjetnoj inteligenciji traže da ljudi znaju kada razgovaraju s AI sistemom. Asistent zato treba to jasno reći, prikupljati samo podatke potrebne za upit i biti opisan u politici privatnosti. Kako mi postavljamo asistenta opisano je na stranici ${a('/usluge/ai-chatbot-za-web-stranicu/', 'AI chatbot za web stranicu')}.</p>`],
+      ['Važna napomena', `<p>Ovaj vodič je praktičan pregled, a ne pravni savjet. Za vašu konkretnu situaciju, posebno ako obrađujete zdravstvene ili finansijske podatke, konsultujte pravnika.</p>`],
+    ],
+    faq: [
+      ['Da li GDPR važi za firme u BiH?', 'Važi kada firma iz BiH nudi robu ili usluge ljudima u EU ili prati njihovo ponašanje na internetu. Za ostalo važi domaći zakon o zaštiti ličnih podataka.'],
+      ['Treba li mi baner za kolačiće?', 'Ako koristite analitičke ili oglasne kolačiće i imate posjetioce iz EU, treba vam pristanak prije postavljanja tih kolačića. Nužni kolačići ne traže pristanak.'],
+      ['Šta je WCAG?', 'WCAG su međunarodne smjernice za pristupačnost web sadržaja: kontrast, tekstualni opisi slika, upotreba tastaturom i razumljive forme.'],
+      ['Da li je ovaj vodič pravni savjet?', 'Nije. To je praktičan pregled za vlasnike firmi. Za konkretnu situaciju konsultujte pravnika.'],
+    ],
+    related: [['/usluge/web-dizajn/', 'Web dizajn i cijene'], ['/usluge/ai-chatbot-za-web-stranicu/', 'AI chatbot za web stranicu'], ['/pravne-informacije.html', 'Pravne informacije Digital X']],
+  },
+  {
+    path: '/usluge/optimizacija-meta-oglasa/',
+    crumbs: [['Usluge', '/usluge/'], ['Optimizacija Meta oglasa', '/usluge/optimizacija-meta-oglasa/']],
+    eyebrow: 'META OGLASI · FACEBOOK I INSTAGRAM',
+    title: 'Optimizacija Facebook i Instagram oglasa: niža cijena upita | Digital X',
+    h1: 'Optimizacija Facebook i Instagram oglasa: niža cijena upita, bolja publika',
+    desc: 'Pregled i optimizacija Meta kampanja: mjerenje (Pixel i Conversions API), publika, retargeting, testiranje kreativa i cijena po upitu. Od 249 KM mjesečno plus budžet.',
+    keywords: ['optimizacija facebook oglasa', 'optimizacija meta oglasa', 'optimizacija instagram oglasa', 'facebook oglasi ne rade', 'ciljanje publike facebook', 'meta pixel postavljanje'],
+    service: { name: 'Optimizacija Meta oglasa', serviceType: 'Paid social advertising optimization', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['Kampanje za rast', 249, 'mjesečno plus budžet za oglase']] },
+    answer: 'Digital X optimizuje postojeće Facebook i Instagram kampanje: provjerimo mjerenje, cilj kampanje, publiku i kreative, pa mijenjamo ono što diže cijenu upita ili prodaje. Rezultat pratimo kroz cijenu po upitu, ne kroz lajkove. Vođenje i optimizacija kreću od 249 KM mjesečno plus budžet za oglase.',
+    sections: [
+      ['Šta provjeravamo i popravljamo', `<div class="table-wrap"><table><thead><tr><th scope="col">Područje</th><th scope="col">Česti problem</th><th scope="col">Šta radimo</th></tr></thead><tbody>
+<tr><th scope="row">Mjerenje</th><td>Pixel ne bilježi upite ili prodaje, pa Meta optimizuje naslijepo</td><td>Postavljamo Meta Pixel i Conversions API, provjeravamo događaje</td></tr>
+<tr><th scope="row">Cilj kampanje</th><td>Kampanja cilja klikove ili preglede umjesto upita</td><td>Biramo cilj koji odgovara poslovnom rezultatu</td></tr>
+<tr><th scope="row">Publika</th><td>Preusko ili preširoko ciljanje, publike se preklapaju</td><td>Gradimo publike iz posjetilaca, kupaca i sličnih ljudi, bez preklapanja</td></tr>
+<tr><th scope="row">Retargeting</th><td>Ljudi koji su bili na sajtu nikad više ne vide ponudu</td><td>Postavljamo kampanju za posjetioce koji nisu poslali upit</td></tr>
+<tr><th scope="row">Kreativa</th><td>Isti oglas mjesecima, pa cijena raste</td><td>Testiramo nove slike, video i naslove i gasimo slabe</td></tr>
+<tr><th scope="row">Stranica nakon klika</th><td>Oglas dobar, a stranica spora ili nejasna</td><td>Predlažemo ili radimo ${a('/shop/product/landing-starter/', 'landing stranicu')} za kampanju</td></tr>
+</tbody></table></div>`],
+      ['Kako smanjujemo cijenu po upitu', `<p>Cijenu po upitu ne spuštamo rezanjem budžeta, nego time da Meta dobije bolje signale i bolji oglas. Zato redoslijed uvijek ide: mjerenje, pa cilj, pa publika, pa kreativa. Detaljno objašnjenje je u vodiču ${a('/znanje/kako-smanjiti-cijenu-facebook-oglasa/', 'kako smanjiti cijenu Facebook oglasa')}.</p>`],
+      ['Šta dobijate svaki mjesec', `<ul>
+<li><strong>Izvještaj s brojkama koje se računaju.</strong> Potrošnja, broj upita ili prodaja i cijena po rezultatu.</li>
+<li><strong>Nove kreative za test.</strong> Svaki mjesec barem jedna nova varijanta oglasa.</li>
+<li><strong>Preporuku za budžet.</strong> Gdje dodati, a gdje stati.</li></ul>
+<p>Paket je ${a('/shop/product/growth-campaigns/', 'Kampanje za rast')}, od 249 KM mjesečno. Budžet za oglase plaćate direktno Meti. Ako tek pokrećete oglase, pogledajte ${a('/usluge/meta-ads/', 'vođenje Facebook i Instagram oglasa')}.</p>`],
+    ],
+    faq: [
+      ['Koliko košta optimizacija Facebook oglasa?', 'Vođenje i optimizacija kreću od 249 KM mjesečno. Budžet za oglase je odvojen i plaća se direktno Meti.'],
+      ['Zašto moji Facebook oglasi ne donose upite?', 'Najčešći razlozi su pogrešan cilj kampanje, mjerenje koje ne bilježi upite, preširoka publika, stara kreativa ili spora stranica nakon klika. Provjeravamo svaki od tih koraka redom.'],
+      ['Šta je Conversions API?', 'To je način da vaša stranica šalje Meti podatke o upitima i kupovinama direktno sa servera. Uz Pixel daje pouzdanije mjerenje, pa Meta bolje uči koga treba ciljati.'],
+      ['Da li morate imati pristup mom oglasnom nalogu?', 'Da, kao partner u vašem Business Manageru. Nalog, stranica i podaci ostaju vaši, a pristup možete ukinuti u bilo kojem trenutku.'],
+    ],
+    related: [['/usluge/meta-ads/', 'Facebook i Instagram oglasi'], ['/znanje/kako-smanjiti-cijenu-facebook-oglasa/', 'Kako smanjiti cijenu Facebook oglasa'], ['/znanje/instagram-facebook-reklama-cijena/', 'Cijena reklame na Instagramu i Facebooku']],
+  },
+  {
+    path: '/znanje/kako-smanjiti-cijenu-facebook-oglasa/',
+    article: true,
+    crumbs: [['Blog', '/blog/'], ['Kako smanjiti cijenu Facebook oglasa', '/znanje/kako-smanjiti-cijenu-facebook-oglasa/']],
+    eyebrow: 'VODIČ · META OGLASI',
+    title: 'Kako smanjiti cijenu Facebook i Instagram oglasa: 7 koraka | Digital X',
+    h1: 'Kako smanjiti cijenu Facebook i Instagram oglasa: 7 koraka koji stvarno rade',
+    desc: 'Zašto Facebook oglasi poskupljuju i kako smanjiti cijenu po upitu: mjerenje, cilj kampanje, publika, retargeting, kreativa i stranica nakon klika.',
+    keywords: ['kako smanjiti cijenu facebook oglasa', 'skupi facebook oglasi', 'cijena po upitu', 'lookalike publika', 'retargeting facebook', 'testiranje kreativa'],
+    answer: 'Cijena Facebook i Instagram oglasa pada kada Meta dobija tačne podatke o upitima, kada kampanja cilja upit a ne klik, kada publike nisu preuske i kada se kreativa redovno mijenja. Najveće uštede obično dolaze iz popravke mjerenja i boljeg oglasa, a ne iz manjeg budžeta.',
+    sections: [
+      ['1. Popravite mjerenje', `<p>Ako Meta Pixel ne bilježi upite ili kupovine, algoritam ne zna ko je dobar kupac. Postavite događaje za upit, poziv i kupovinu, a uz Pixel dodajte Conversions API za pouzdaniji prenos podataka.</p>`],
+      ['2. Birajte cilj prema rezultatu', `<p>Kampanja za promet traži ljude koji klikaju, a kampanja za potencijalne kupce traži ljude koji šalju upit. Ako vam treba upit, birajte cilj koji ga mjeri. Dugme Promoviši objavu najčešće optimizuje za interakcije.</p>`],
+      ['3. Ne sužavajte publiku previše', `<p>Preusko ciljanje diže cijenu prikaza. Za većinu malih firmi bolje radi šira publika uz dobar oglas, plus publike iz vlastitih podataka: posjetioci stranice, ljudi koji su gledali video i slični postojećim kupcima (lookalike).</p>`],
+      ['4. Uključite retargeting', `<p>Posjetilac koji je bio na stranici a nije poslao upit je najjeftiniji sljedeći kupac. Kratka kampanja koja mu ponovo pokaže ponudu često ima najnižu cijenu po upitu.</p>`],
+      ['5. Mijenjajte kreativu', `<p>Kad ista publika predugo gleda isti oglas, učestalost raste, a s njom i cijena. Testirajte više slika, kratkih videa i naslova, pa zadržite one koji donose upite.</p>`],
+      ['6. Popravite stranicu nakon klika', `<p>Spora ili nejasna stranica gubi ljude koje ste već platili. Jedna stranica s jednom ponudom i jednim pozivom na akciju obično radi bolje od početne stranice sajta.</p>`],
+      ['7. Mjerite cijenu po upitu, ne po kliku', `<p>Jeftin klik bez upita je skup. Pratite potrošnju podijeljenu s brojem upita ili prodaja i odluke o budžetu donosite prema tom broju.</p>
+<p>Ako želite da neko provjeri vaše kampanje, pogledajte ${a('/usluge/optimizacija-meta-oglasa/', 'optimizaciju Meta oglasa')}.</p>`],
+    ],
+    faq: [
+      ['Zašto su Facebook oglasi poskupili?', 'Cijena raste kad je više oglašivača za istu publiku, kad mjerenje ne radi, kad je publika preuska ili kad ljudi predugo gledaju isti oglas.'],
+      ['Koliki budžet treba za Facebook oglase?', 'Ne postoji jedan iznos. Budžet treba biti dovoljan da kampanja dobije više rezultata sedmično kako bi Meta mogla učiti. Kreće se od cilja i cijene jednog upita.'],
+      ['Šta je lookalike publika?', 'To je publika ljudi sličnih vašim postojećim kupcima ili posjetiocima, koju Meta pravi iz vaših podataka.'],
+      ['Da li je Promoviši objavu dovoljno?', 'Za vidljivost objave može biti. Za upite i prodaju Ads Manager daje bolji izbor cilja, publike i mjerenja.'],
+    ],
+    related: [['/usluge/optimizacija-meta-oglasa/', 'Optimizacija Meta oglasa'], ['/usluge/meta-ads/', 'Facebook i Instagram oglasi'], ['/znanje/instagram-facebook-reklama-cijena/', 'Cijena reklame na Instagramu i Facebooku']],
+  },
+  {
+    // Fact sheet for AI answers and journalists: only verified company data and catalogue prices.
+    path: '/cinjenice/',
+    about: true,
+    crumbs: [['Činjenice o Digital X', '/cinjenice/']],
+    eyebrow: 'DIGITAL X · ČINJENICE',
+    title: 'Digital X: činjenice o agenciji, usluge i cijene | Digital X',
+    h1: 'Digital X u činjenicama: ko smo, šta radimo i koliko košta',
+    desc: 'Provjerene činjenice o Digital X Marketing iz Sarajeva: adresa, kontakt, jezici, područje rada, usluge i početne cijene u KM. Jedna stranica za brz i tačan odgovor.',
+    keywords: ['digital x', 'digital x marketing', 'digital x sarajevo', 'digitalna agencija sarajevo', 'marketing agencija sarajevo'],
+    answer: 'Digital X Marketing je digitalna agencija iz Sarajeva (Stupska bb) koja izrađuje web stranice i web shopove, radi SEO i vidljivost u AI odgovorima, vodi Google i Meta kampanje i uvodi AI asistente i automatizacije. Radi na bosanskom, hrvatskom, srpskom, engleskom i njemačkom. Cijene kreću od 199 KM za landing stranicu.',
+    sections: [
+      ['Osnovni podaci', `<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Naziv</th><td>Digital X (pravni naziv: Digital X Marketing)</td></tr>
+<tr><th scope="row">Sjedište</th><td>Stupska bb, Sarajevo, Bosna i Hercegovina</td></tr>
+<tr><th scope="row">E-mail</th><td>${a('mailto:marketing@digital-x-marketing.com', 'marketing@digital-x-marketing.com')}</td></tr>
+<tr><th scope="row">Telefon</th><td>${a('tel:+387644383566', '+387 64 438 3566')}</td></tr>
+<tr><th scope="row">Jezici</th><td>bosanski, hrvatski, srpski, engleski, njemački</td></tr>
+<tr><th scope="row">Područje rada</th><td>Bosna i Hercegovina, Hrvatska, Srbija, Crna Gora, Njemačka, Austrija i Švicarska</td></tr>
+<tr><th scope="row">Web</th><td>${a('https://www.digital-x-marketing.com/', 'digital-x-marketing.com')}</td></tr>
+<tr><th scope="row">Instagram</th><td>${a('https://www.instagram.com/digitalxmarketing.ba', '@digitalxmarketing.ba')}</td></tr>
+</tbody></table></div>
+<p>Pravni podaci su i na stranici ${a('/pravne-informacije.html', 'pravne informacije')}.</p>`],
+      ['Usluge i početne cijene', `<div class="table-wrap"><table><thead><tr><th scope="col">Usluga</th><th scope="col">Cijena od</th><th scope="col">Plaćanje</th></tr></thead><tbody>
+<tr><th scope="row">${a('/shop/product/landing-starter/', 'Landing stranica')}</th><td>199 KM</td><td>jednokratno</td></tr>
+<tr><th scope="row">${a('/shop/product/web-presence/', 'Premium web prisustvo')}</th><td>449 KM</td><td>jednokratno</td></tr>
+<tr><th scope="row">${a('/shop/product/smart-website-launch/', 'Smart Website Launch')} (web s AI asistentom)</th><td>499 KM</td><td>jednokratno</td></tr>
+<tr><th scope="row">${a('/shop/product/ecommerce-launch/', 'E-commerce Launch')} (web shop)</th><td>2.490 KM</td><td>jednokratno</td></tr>
+<tr><th scope="row">${a('/shop/product/seo-aeo/', 'SEO · GEO · AEO')}</th><td>249 KM</td><td>mjesečno</td></tr>
+<tr><th scope="row">${a('/shop/product/growth-campaigns/', 'Kampanje za rast')} (Google i Meta)</th><td>249 KM</td><td>mjesečno, plus budžet oglasa</td></tr>
+<tr><th scope="row">${a('/shop/product/content-system/', 'Sistem sadržaja')}</th><td>249 KM</td><td>mjesečno</td></tr>
+<tr><th scope="row">${a('/shop/product/ai-concierge/', 'AI prodajni asistent')}</th><td>490 KM</td><td>plus održavanje</td></tr>
+<tr><th scope="row">${a('/shop/product/workflow-starter/', 'Automation Starter')}</th><td>349 KM</td><td>jednokratno</td></tr>
+<tr><th scope="row">${a('/shop/product/review-engine/', 'Sistem recenzija')}</th><td>199 KM</td><td>plus održavanje</td></tr>
+<tr><th scope="row">${a('/shop/product/speed-optimization/', 'Speed optimizacija')}</th><td>99 KM</td><td>jednokratno</td></tr>
+<tr><th scope="row">${a('/shop/product/site-care/', 'Održavanje stranice')}</th><td>49 KM</td><td>mjesečno</td></tr>
+<tr><th scope="row">${a('/shop/product/digital-partner/', 'Digitalni partner')}</th><td>899 KM</td><td>mjesečno</td></tr>
+</tbody></table></div>
+<p>Cijene su početne. Konačnu cijenu i obim potvrđujemo pisano prije početka rada.</p>`],
+      ['Kako radimo', `<ul>
+<li><strong>Cijena i rok pisano unaprijed.</strong> Nema skrivenih troškova nakon potpisane ponude.</li>
+<li><strong>Vlasništvo ostaje na klijentu.</strong> Domena, nalozi i podaci pripadaju firmi klijenta.</li>
+<li><strong>Koncepti su označeni.</strong> Demo stranice na sajtu su ${a('/primjeri-web-stranica/', 'interaktivni koncepti')}, a ne stranice stvarnih klijenata.</li>
+<li><strong>Bez izmišljenih rezultata.</strong> Ne objavljujemo statistike ni recenzije koje ne možemo dokazati.</li>
+</ul>`],
+      ['Logo i vizuelni identitet', `<p><img src="/assets/brand/digital-x-logo.webp" width="1200" height="400" loading="lazy" decoding="async" alt="Digital X logo"></p>
+<p>Za medije i partnere: ${a('/assets/brand/digital-x-logo.png', 'logo (PNG, providna pozadina)')}, ${a('/assets/brand/digital-x-profile.jpg', 'profilna slika')} i ${a('/assets/brand/digital-x-cover.jpg', 'naslovna slika')}. Logo koristite bez izmjena boja i proporcija.</p>`],
+      ['Gdje saznati više', `<ul>
+<li>${a('/usluge/web-dizajn/', 'Web dizajn: paketi i cijene')}</li>
+<li>${a('/usluge/izrada-web-shopa/', 'Izrada web shopa')}</li>
+<li>${a('/usluge/lokalni-seo-sarajevo/', 'Lokalni SEO Sarajevo')}</li>
+<li>${a('/industrije/', 'Rješenja po djelatnostima')}</li>
+<li>${a('/blog/', 'Vodiči i odgovori na česta pitanja')}</li>
+</ul>`],
+    ],
+    faq: [
+      ['Gdje se nalazi Digital X?', 'Digital X Marketing ima sjedište na adresi Stupska bb u Sarajevu, Bosna i Hercegovina. Sastanci su mogući uživo u Sarajevu ili online.'],
+      ['Koliko košta web stranica kod Digital X?', 'Landing stranica kreće od 199 KM, prezentacijska stranica od 449 KM, web s AI asistentom 499 KM, a web shop od 2.490 KM.'],
+      ['Na kojim jezicima radi Digital X?', 'Na bosanskom, hrvatskom, srpskom, engleskom i njemačkom jeziku.'],
+      ['Kako kontaktirati Digital X?', 'E-mailom na marketing@digital-x-marketing.com, telefonom na +387 64 438 3566 ili preko kontakt stranice.'],
+    ],
+    related: [['/kontakt.html', 'Kontakt'], ['/usluge/web-dizajn/', 'Web dizajn i cijene'], ['/pravne-informacije.html', 'Pravne informacije']],
+  },
 ];
 
 export const industryHub = {
   path: '/industrije/',
   title: 'Web stranice i marketing po djelatnostima | Digital X',
   h1: 'Web stranice i marketing za vašu djelatnost',
-  desc: 'Digital X web stranice, lokalni SEO i AI asistenti prilagođeni djelatnostima: stomatološke ordinacije, advokati, hoteli i apartmani, nekretnine.',
+  desc: 'Digital X web stranice, lokalni SEO i AI asistenti prilagođeni djelatnostima: stomatološke ordinacije, advokati, hoteli i apartmani, nekretnine, restorani i luksuzni brendovi.',
   answer: 'Svaka djelatnost ima svoja pitanja kupaca. Pacijent traži tretman i tim, gost prostor i lokaciju, klijent advokata područje rada. Odaberite svoju djelatnost i pogledajte šta stranica treba, koji koncept možete isprobati i koliko košta.',
 };
