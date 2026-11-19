@@ -503,6 +503,8 @@ ${demo('/cinematic-clothes/', 'cinematic web za modni brend')}
 <li><strong>Koncepti su označeni.</strong> Demo stranice na sajtu su ${a('/primjeri-web-stranica/', 'interaktivni koncepti')}, a ne stranice stvarnih klijenata.</li>
 <li><strong>Bez izmišljenih rezultata.</strong> Ne objavljujemo statistike ni recenzije koje ne možemo dokazati.</li>
 </ul>`],
+      ['Logo i vizuelni identitet', `<p><img src="/assets/brand/digital-x-logo.webp" width="1200" height="400" loading="lazy" decoding="async" alt="Digital X logo"></p>
+<p>Za medije i partnere: ${a('/assets/brand/digital-x-logo.png', 'logo (PNG, providna pozadina)')}, ${a('/assets/brand/digital-x-profile.jpg', 'profilna slika')} i ${a('/assets/brand/digital-x-cover.jpg', 'naslovna slika')}. Logo koristite bez izmjena boja i proporcija.</p>`],
       ['Gdje saznati više', `<ul>
 <li>${a('/usluge/web-dizajn/', 'Web dizajn: paketi i cijene')}</li>
 <li>${a('/usluge/izrada-web-shopa/', 'Izrada web shopa')}</li>
