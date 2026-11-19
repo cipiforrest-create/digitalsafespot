@@ -73,7 +73,7 @@ ${demo('/cinematic-hotel/', 'cinematic hotel')}`],
       ['Radite li za firme izvan Sarajeva?', 'Da. Radimo za firme iz cijele Bosne i Hercegovine i regije. Sastanci se mogu održati online.'],
       ['Ko je vlasnik stranice nakon izrade?', 'Vi. Domena, sadržaj i pristupi ostaju na vašoj firmi.'],
     ],
-    related: [['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/usluge/izrada-web-stranica/sarajevo/', 'Izrada web stranica Sarajevo'], ['/usluge/redizajn-web-stranice/', 'Redizajn web stranice'], ['/kontakt.html', 'Kontakt i besplatne konzultacije']],
+    related: [['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/usluge/izrada-web-stranica/sarajevo/', 'Izrada web stranica Sarajevo'], ['/usluge/redizajn-web-stranice/', 'Redizajn web stranice'], ['/znanje/gdpr-pristupacnost-web-stranice/', 'GDPR, kolačići i pristupačnost'], ['/kontakt.html', 'Kontakt i besplatne konzultacije']],
   },
   {
     path: '/usluge/redizajn-web-stranice/',
@@ -100,7 +100,7 @@ ${demo('/cinematic-hotel/', 'cinematic hotel')}`],
       ['Koliko košta redizajn web stranice?', 'Nova web prezentacija kreće od 449 KM, a cinematic web s AI asistentom košta 499 KM. Veći projekti dobijaju cijenu nakon besplatne analize.'],
       ['Može li se zadržati postojeći sadržaj?', 'Da. Dobar sadržaj prenosimo i uređujemo, a ono što ne pomaže kupcu skraćujemo ili uklanjamo.'],
     ],
-    related: [['/usluge/web-dizajn/', 'Web dizajn: paketi i cijene'], ['/usluge/x-convert/', 'X Convert'], ['/usluge/x-signal/', 'Besplatna analiza sajta']],
+    related: [['/usluge/web-dizajn/', 'Web dizajn: paketi i cijene'], ['/usluge/x-convert/', 'X Convert'], ['/usluge/optimizacija-brzine-sajta/', 'Optimizacija brzine sajta'], ['/usluge/x-signal/', 'Besplatna analiza sajta']],
   },
   {
     path: '/usluge/lokalni-seo-sarajevo/',
@@ -239,6 +239,104 @@ ${demo('/cinematic-penthouse/', 'THE MERIDIAN, cinematic web za premium nekretni
       ['Imate li fotografije i renderinge?', 'Renderinge obično daje arhitekt ili investitor. Mi ih uklapamo u stranicu, a po potrebi organizujemo fotografisanje i video.'],
     ],
     related: [['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/usluge/digitalne-kampanje/', 'Digitalne kampanje'], ['/industrije/', 'Sve industrije']],
+  },
+  {
+    path: '/usluge/optimizacija-brzine-sajta/',
+    crumbs: [['Usluge', '/usluge/'], ['Optimizacija brzine sajta', '/usluge/optimizacija-brzine-sajta/']],
+    eyebrow: 'BRZINA SAJTA · CORE WEB VITALS',
+    title: 'Optimizacija brzine sajta: od 99 KM, mjereno prije i poslije | Digital X',
+    h1: 'Optimizacija brzine web stranice: brži sajt, mjeren prije i poslije',
+    desc: 'Spor sajt gubi posjetioce i pozicije na Googleu. Speed optimizacija od 99 KM: mjerenje, slike, kod, cache i mobilna stabilnost, uz izvještaj prije i poslije.',
+    keywords: ['optimizacija brzine sajta', 'ubrzanje web stranice', 'spor sajt', 'core web vitals', 'pagespeed optimizacija'],
+    service: { name: 'Optimizacija brzine web stranice', serviceType: 'Website performance optimization', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['Speed optimizacija', 99, 'jednokratno']] },
+    answer: 'Digital X ubrzava postojeće web stranice: prvo izmjerimo brzinu i stabilnost prikaza, zatim optimizujemo slike, kod i cache te popravimo prikaz na mobitelu. Na kraju dobijate izvještaj prije i poslije. Speed optimizacija kreće od 99 KM jednokratno, a obim potvrđujemo nakon mjerenja.',
+    sections: [
+      ['Šta radimo', `<ol>
+<li><strong>Mjerenje prije intervencije.</strong> Bilježimo brzinu učitavanja i stabilnost prikaza na mobitelu i računaru, kako bi rezultat bio uporediv.</li>
+<li><strong>Slike.</strong> Prave dimenzije, moderni formati i odgođeno učitavanje slika ispod prvog ekrana.</li>
+<li><strong>Kod i cache.</strong> Uklanjamo nepotrebne skripte i stilove, odgađamo ono što ne treba odmah i podešavamo keširanje.</li>
+<li><strong>Mobilna stabilnost.</strong> Elementi koji skaču tokom učitavanja dobiju rezervisan prostor.</li>
+<li><strong>Izvještaj prije i poslije.</strong> Iste mjere, isti uređaji, jasna razlika.</li></ol>
+<p>Detalji paketa su na stranici ${a('/shop/product/speed-optimization/', 'Speed optimizacija')}.</p>`],
+      ['Koje brojeve gledamo', `<div class="table-wrap"><table><thead><tr><th scope="col">Mjera</th><th scope="col">Šta znači</th><th scope="col">Dobra vrijednost po Googleu</th></tr></thead><tbody>
+<tr><th scope="row">LCP</th><td>Koliko brzo se pojavi glavni sadržaj</td><td>do 2,5 sekunde</td></tr>
+<tr><th scope="row">INP</th><td>Koliko brzo stranica reaguje na klik ili dodir</td><td>do 200 milisekundi</td></tr>
+<tr><th scope="row">CLS</th><td>Koliko elementi skaču tokom učitavanja</td><td>do 0,1</td></tr>
+</tbody></table></div>
+<p>To su Core Web Vitals, mjere koje Google koristi da ocijeni iskustvo na stranici. Zašto su važne za prodaju objašnjavamo u vodiču ${a('/blog/brzina-sajta.html', 'zašto spor sajt ubija prodaju')}.</p>`],
+      ['Kad brzina nije dovoljna', `<p>Ako je stranica zastarjela i u dizajnu i u kodu, ubrzavanje daje ograničen rezultat. Tada je isplativiji ${a('/usluge/redizajn-web-stranice/', 'redizajn')}. Da brzina ne bi opet pala nakon izmjena, tu je ${a('/shop/product/site-care/', 'održavanje stranice')} od 49 KM mjesečno.</p>`],
+    ],
+    faq: [
+      ['Koliko košta optimizacija brzine sajta?', 'Speed optimizacija kod Digital X kreće od 99 KM jednokratno. Konačan obim i cijenu potvrđujemo nakon prvog mjerenja.'],
+      ['Da li brži sajt bolje rangira na Googleu?', 'Brzina i stabilnost prikaza dio su Googleove ocjene iskustva na stranici. Nisu jedini faktor, ali spor sajt gubi posjetioce prije nego što vide ponudu.'],
+      ['Radite li na WordPressu i Shopifyju?', 'Da. Šta se može promijeniti zavisi od platforme, teme i dodataka, pa to provjerimo u mjerenju prije ponude.'],
+      ['Kako da provjerim brzinu svog sajta?', 'Besplatno preko Google PageSpeed Insights ili kroz našu besplatnu analizu sajta, uz objašnjenje šta brojevi znače.'],
+    ],
+    related: [['/usluge/x-signal/', 'Besplatna analiza sajta'], ['/blog/brzina-sajta.html', 'Vodič: brzina sajta'], ['/usluge/web-dizajn/', 'Web dizajn i cijene']],
+  },
+  {
+    path: '/usluge/ai-chatbot-za-web-stranicu/',
+    crumbs: [['Usluge', '/usluge/'], ['AI chatbot za web stranicu', '/usluge/ai-chatbot-za-web-stranicu/']],
+    eyebrow: 'AI ASISTENT · WEB I PORUKE',
+    title: 'AI chatbot za web stranicu: cijena od 490 KM | Digital X',
+    h1: 'AI chatbot za web stranicu koji odgovara, kvalifikuje i prikuplja upite',
+    desc: 'AI chatbot za web stranicu firme u BiH: odgovori 24/7 iz vašeg sadržaja, pitanja za kvalifikaciju i predaja razgovora čovjeku. AI prodajni asistent od 490 KM.',
+    keywords: ['ai chatbot za web stranicu', 'chatbot za web stranicu', 'ai asistent za web', 'chatbot cijena', 'ai chatbot bih'],
+    service: { name: 'AI chatbot za web stranicu', serviceType: 'AI chatbot development', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['AI prodajni asistent', 490, 'uz mjesečno održavanje']] },
+    answer: 'Digital X postavlja AI chatbot na web stranicu firme: asistent odgovara 24/7 iz vašeg sadržaja i u vašem tonu, postavlja pitanja koja kvalifikuju upit i predaje razgovor čovjeku kad treba. AI prodajni asistent kreće od 490 KM, uz održavanje od 149 KM mjesečno.',
+    sections: [
+      ['Šta asistent radi', `<ul>
+<li><strong>Odgovara 24/7.</strong> Pitanja o uslugama, cijenama, radnom vremenu i lokaciji dobijaju odgovor i kad niko nije u kancelariji.</li>
+<li><strong>Koristi vaš sadržaj i ton.</strong> Odgovara iz odobrenih informacija o vašoj firmi, ne iz nagađanja.</li>
+<li><strong>Kvalifikuje upit.</strong> Pita ono što bi pitao vaš prodavač: šta treba, kada i u kojem obimu.</li>
+<li><strong>Predaje razgovor čovjeku.</strong> Kad pitanje traži osobu, vaš tim dobija sažetak i nastavlja razgovor.</li></ul>
+<p>Asistenta možete isprobati u ${a('/ai-concierge-preview/', 'demo razgovoru')}. Detalji paketa su na stranici ${a('/shop/product/ai-concierge/', 'AI prodajni asistent')}.</p>`],
+      ['Cijena i održavanje', `<div class="table-wrap"><table><thead><tr><th scope="col">Opcija</th><th scope="col">Cijena</th></tr></thead><tbody>
+<tr><th scope="row">${a('/shop/product/ai-concierge/', 'AI prodajni asistent')}</th><td>od 490 KM</td></tr>
+<tr><th scope="row">${a('/shop/product/site-care/', 'Održavanje stranice s AI asistentom')}</th><td>149 KM mjesečno</td></tr>
+<tr><th scope="row">${a('/shop/product/smart-website-launch/', 'Smart Website Launch')} (nova stranica s asistentom)</th><td>499 KM, asistent uključen prva tri mjeseca</td></tr>
+</tbody></table></div>
+<p>Održavanje pokriva ažuriranje znanja asistenta kad se promijene usluge ili cijene. Konačan obim potvrđujemo pisano prije početka.</p>`],
+      ['Pošteno prema posjetiocu', `<p>Posjetilac uvijek zna da razgovara s asistentom, a ne s osobom. Asistent ne daje obećanja koja vaša firma nije odobrila, a podatke iz razgovora koristite samo za odgovor na upit. Šta to znači za zaštitu podataka objašnjavamo u vodiču ${a('/znanje/gdpr-pristupacnost-web-stranice/', 'GDPR, kolačići i pristupačnost')}.</p>`],
+      ['Za telefon i termine', `<p>Ako upiti stižu pozivom ili trebaju zakazivanje termina, pogledajte ${a('/usluge/ai-receptionist/', 'AI recepcionara')}. Šta je chatbot i kad se isplati objašnjava ${a('/blog/ai-chatbot-vodic.html', 'vodič o AI chatbotu za biznis')}.</p>`],
+    ],
+    faq: [
+      ['Koliko košta AI chatbot za web stranicu?', 'AI prodajni asistent kod Digital X kreće od 490 KM, uz održavanje od 149 KM mjesečno. Uz novu stranicu, Smart Website Launch od 499 KM uključuje asistenta prva tri mjeseca.'],
+      ['Da li chatbot izmišlja odgovore?', 'Asistent odgovara iz informacija koje vi odobrite. Kad ne zna odgovor ili pitanje traži osobu, predaje razgovor vašem timu.'],
+      ['Na kojim jezicima radi?', 'Na bosanskom, hrvatskom, srpskom, engleskom i njemačkom, prema tome koje jezike koriste vaši kupci.'],
+      ['Može li raditi i na Instagramu ili WhatsAppu?', 'Asistent je namijenjen webu i kanalima komunikacije. Koje kanale povezujemo dogovaramo u ponudi, prema obimu.'],
+    ],
+    related: [['/ai-concierge-preview/', 'Isprobajte demo razgovor'], ['/blog/ai-chatbot-vodic.html', 'Vodič: AI chatbot za biznis'], ['/usluge/ai-receptionist/', 'AI recepcionar']],
+  },
+  {
+    path: '/znanje/gdpr-pristupacnost-web-stranice/',
+    article: true,
+    crumbs: [['Blog', '/blog/'], ['GDPR i pristupačnost web stranice', '/znanje/gdpr-pristupacnost-web-stranice/']],
+    eyebrow: 'VODIČ · PRIVATNOST I PRISTUPAČNOST',
+    title: 'GDPR, kolačići i pristupačnost web stranice: vodič za firme u BiH | Digital X',
+    h1: 'GDPR, kolačići i pristupačnost: šta web stranica firme iz BiH treba',
+    desc: 'Kada GDPR važi za firmu iz BiH, šta treba za kolačiće, šta traži Evropski akt o pristupačnosti i šta s AI chatbotom. Praktičan pregled, bez pravnog žargona.',
+    keywords: ['gdpr bih', 'gdpr web stranica', 'kolačići pristanak', 'pristupačnost web stranice', 'wcag', 'zaštita ličnih podataka bih'],
+    answer: 'Firma iz BiH prati domaći zakon o zaštiti ličnih podataka, a GDPR dodatno kad nudi robu ili usluge ljudima u EU. Stranica treba politiku privatnosti, pristanak za kolačiće koji nisu nužni i formu koja traži samo potrebne podatke. Prodaja potrošačima u EU donosi i pravila o pristupačnosti.',
+    sections: [
+      ['Kada GDPR važi za firmu iz BiH', `<p>U Bosni i Hercegovini važi domaći zakon o zaštiti ličnih podataka, a nadzor vrši Agencija za zaštitu ličnih podataka u BiH. Opća uredba o zaštiti podataka EU (GDPR) dodatno važi i za firme izvan EU kada nude robu ili usluge ljudima u EU ili prate njihovo ponašanje na internetu. Hotel koji prima goste iz Njemačke ili web shop koji šalje u Hrvatsku spadaju u tu grupu.</p>`],
+      ['Šta stranica treba imati', `<ul>
+<li><strong>Politiku privatnosti.</strong> Koje podatke prikupljate, zašto, koliko ih čuvate i kome se posjetilac javlja.</li>
+<li><strong>Pristanak za kolačiće.</strong> Analitika i oglasni kolačići za posjetioce iz EU traže pristanak prije postavljanja. Nužni kolačići, npr. za korpu, ne traže.</li>
+<li><strong>Forme sa minimumom podataka.</strong> Pitajte samo ono što vam treba za odgovor.</li>
+<li><strong>Siguran prenos.</strong> HTTPS na cijeloj stranici.</li></ul>`],
+      ['Pristupačnost i Evropski akt o pristupačnosti', `<p>Od 28. 6. 2025. Evropski akt o pristupačnosti traži da određene usluge za potrošače u EU, uključujući online prodaju, budu pristupačne osobama s invaliditetom. Mikropreduzeća koja pružaju usluge (manje od 10 zaposlenih i do 2 miliona eura prometa) izuzeta su. Tehnička osnova je standard koji se oslanja na WCAG smjernice: dovoljan kontrast, opis slika, upotreba tastaturom i jasne oznake u formama.</p>
+<p>I kada zakon ne obavezuje, pristupačna stranica je lakša za sve, a Google i AI alati bolje razumiju njen sadržaj.</p>`],
+      ['AI chatbot i podaci', `<p>Evropski propisi o umjetnoj inteligenciji traže da ljudi znaju kada razgovaraju s AI sistemom. Asistent zato treba to jasno reći, prikupljati samo podatke potrebne za upit i biti opisan u politici privatnosti. Kako mi postavljamo asistenta opisano je na stranici ${a('/usluge/ai-chatbot-za-web-stranicu/', 'AI chatbot za web stranicu')}.</p>`],
+      ['Važna napomena', `<p>Ovaj vodič je praktičan pregled, a ne pravni savjet. Za vašu konkretnu situaciju, posebno ako obrađujete zdravstvene ili finansijske podatke, konsultujte pravnika.</p>`],
+    ],
+    faq: [
+      ['Da li GDPR važi za firme u BiH?', 'Važi kada firma iz BiH nudi robu ili usluge ljudima u EU ili prati njihovo ponašanje na internetu. Za ostalo važi domaći zakon o zaštiti ličnih podataka.'],
+      ['Treba li mi baner za kolačiće?', 'Ako koristite analitičke ili oglasne kolačiće i imate posjetioce iz EU, treba vam pristanak prije postavljanja tih kolačića. Nužni kolačići ne traže pristanak.'],
+      ['Šta je WCAG?', 'WCAG su međunarodne smjernice za pristupačnost web sadržaja: kontrast, tekstualni opisi slika, upotreba tastaturom i razumljive forme.'],
+      ['Da li je ovaj vodič pravni savjet?', 'Nije. To je praktičan pregled za vlasnike firmi. Za konkretnu situaciju konsultujte pravnika.'],
+    ],
+    related: [['/usluge/web-dizajn/', 'Web dizajn i cijene'], ['/usluge/ai-chatbot-za-web-stranicu/', 'AI chatbot za web stranicu'], ['/pravne-informacije.html', 'Pravne informacije Digital X']],
   },
   {
     // Fact sheet for AI answers and journalists: only verified company data and catalogue prices.

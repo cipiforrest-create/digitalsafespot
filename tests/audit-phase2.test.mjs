@@ -54,3 +54,23 @@ test('facts page: verified company data, catalogue prices, AboutPage schema', ()
   assert.ok(!html.includes('"@type":"Service"'), 'no Service schema on facts page');
   for (const p of ['199 KM', '449 KM', '499 KM', '2.490 KM', '249 KM', '490 KM', '349 KM', '99 KM', '49 KM', '899 KM']) assert.ok(html.includes(`<td>${p}</td>`), p);
 });
+
+test('phase 3 step 2: speed, AI chatbot and compliance pages', () => {
+  const byPath = p => landings.find(l => l.path === p);
+  const speed = byPath('/usluge/optimizacija-brzine-sajta/');
+  const bot = byPath('/usluge/ai-chatbot-za-web-stranicu/');
+  const guide = byPath('/znanje/gdpr-pristupacnost-web-stranice/');
+  assert.deepEqual(speed.service.offers.map(o => o.slice(0, 2)), [['Speed optimizacija', 99]]);
+  assert.deepEqual(bot.service.offers.map(o => o.slice(0, 2)), [['AI prodajni asistent', 490]]);
+  assert.ok(guide.article && !guide.service, 'guide is an article without offers');
+  for (const l of [speed, bot, guide]) {
+    const n = l.answer.split(/\s+/).length;
+    assert.ok(n >= 35 && n <= 70, `${l.path} answer ${n} words`);
+    const html = readFileSync(`.${l.path}index.html`, 'utf8');
+    assert.ok(html.includes('"@type":"FAQPage"'), `${l.path} FAQPage`);
+    assert.ok(html.includes(l.article ? '"@type":"Article"' : '"@type":"Service"'), `${l.path} main schema`);
+  }
+  assert.match(readFileSync('znanje/gdpr-pristupacnost-web-stranice/index.html', 'utf8'), /nije pravni savjet|a ne pravni savjet/);
+  assert.match(readFileSync('usluge/web-dizajn/index.html', 'utf8'), /gdpr-pristupacnost-web-stranice/);
+  assert.match(readFileSync('usluge/redizajn-web-stranice/index.html', 'utf8'), /optimizacija-brzine-sajta/);
+});

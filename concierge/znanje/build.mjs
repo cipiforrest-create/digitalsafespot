@@ -152,7 +152,9 @@ ${l.sections.map(([h, html]) => `<section id="${slugify(h)}"><h2>${esc(h)}</h2>$
 <section class="related"><h2>Povezano</h2><div class="related-grid">${l.related.map(([h, n]) => `<a href="${h}">${esc(n)}<span aria-hidden="true">→</span></a>`).join('')}</div></section>
 </div></div></article>${cta}`;
   const schema = [
-    l.about
+    l.article
+      ? { '@type': 'Article', '@id': origin + l.path + '#article', headline: l.h1, description: l.desc, inLanguage: 'bs', datePublished: published, dateModified: published, keywords: l.keywords.join(', '), mainEntityOfPage: origin + l.path, image: origin + '/media/znanje/znanje-og.jpg', author: { '@id': origin + '/#organization' }, publisher: { '@id': origin + '/#organization' } }
+      : l.about
       ? { '@type': 'AboutPage', '@id': origin + l.path + '#about', url: origin + l.path, name: l.h1, description: l.desc, inLanguage: 'bs', about: { '@id': origin + '/#organization' }, mainEntity: { '@id': origin + '/#organization' } }
       : { '@type': 'Service', '@id': origin + l.path + '#service', name: l.service.name, serviceType: l.service.serviceType, description: l.desc, provider: { '@id': origin + '/#organization' }, areaServed: l.service.areaServed, offers: l.service.offers.map(offer) },
     crumbs([['Digital X', '/'], ...l.crumbs]),
