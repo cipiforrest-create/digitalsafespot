@@ -17,7 +17,7 @@ const stageIndex = id => stages.findIndex(s => s[0] === id);
 const guide = slug => { const g = guides.find(x => x.slug === slug); if (!g) throw new Error('Unknown guide ' + slug); return g; };
 
 const nav = [['/usluge/', 'Usluge'], ['/cjenovnik/', 'Cjenovnik'], ['/projekti/', 'Radovi'], ['/primjeri-web-stranica/', 'Primjeri'], ['/shop/', 'Shop'], ['/blog/', 'Blog'], ['/usluge/x-signal/', 'Analiza'], ['/kontakt.html', 'Kontakt']];
-const logo = `<a class="brand" href="/" aria-label="Digital X početna"><span class="brand-symbol" aria-hidden="true"><i></i><i></i></span><span class="brand-word">DIGITAL <b>X</b><small>WEB. MARKETING. INTELIGENCIJA.</small></span></a>`;
+const logo = `<a class="brand" href="/" aria-label="Digital X početna"><img class="brand-logo" src="/assets/brand/digital-x-header.webp" width="371" height="96" alt="" decoding="async"></a>`;
 // Same header as the homepage: the floating bar, the same menu, the BS/EN/DE switch and the consultation button.
 const header = path => {
   const inBlog = path === '/blog/' || path.startsWith('/znanje/');
