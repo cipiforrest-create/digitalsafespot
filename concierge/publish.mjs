@@ -4,7 +4,7 @@ import {createRequire} from 'node:module';
 import {load} from 'cheerio';
 import {filterGscSitemap} from '../lib/gsc-indexing.mjs';
 import {isServicePath,replaceLegacyServiceLinks} from '../lib/service-seo.mjs';
-import {isLegacyRedirectPath} from '../lib/routing-policy.mjs';
+import {isLegacyRedirectPath,movedPageEntries,movedPageTarget} from '../lib/routing-policy.mjs';
 import {readdirSync,statSync} from 'node:fs';
 import {localizePage} from './localize-pages.mjs';
 import {znanjePages} from './znanje/build.mjs';
@@ -81,6 +81,8 @@ for(const file of htmlFiles('public')){
  // On EN/DE pages a legacy Bosnian landing link should land on the same-language page, not the Bosnian one.
  if(fileLang)for(const [legacy,clean] of [...localizedLegacy,['landing-web.html','landing-web.html'],['usluge/izrada-web-stranica/','landing-web.html']])html=html.replaceAll(`"/${legacy}`,`"/${fileLang}/${clean}`).replaceAll(`${origin}/${legacy}`,`${origin}/${fileLang}/${clean}`);
  html=replaceLegacyServiceLinks(html);
+ // Merged pages: link straight to the page that replaced them.
+ for(const [moved,target] of movedPageEntries())html=html.replaceAll(`href="${moved}"`,`href="${target}"`).replaceAll(`href="${origin}${moved}"`,`href="${origin}${target}"`);
  for(const lang of ['en','de'])for(const [legacy,clean] of localizedLegacy)html=html.replaceAll(`"/${lang}/${legacy}`,`"/${lang}/${clean}`).replaceAll(`${origin}/${lang}/${legacy}`,`${origin}/${lang}/${clean}`);
  const rel=file.slice('public'.length);
  if(!/^\/(en|de)\//.test(rel)&&!isLegacyRedirectPath(rel)&&!/<link[^>]+hreflang=/i.test(html)&&existsSync(`public/en${rel}`)&&existsSync(`public/de${rel}`)){
@@ -95,7 +97,7 @@ const file='public/google-business-profile.html';if(existsSync(file)){const $=lo
 console.log(`Published ${routes.length} canonical pages and updated sitemap.`);
 // llms.txt: a plain-text summary for AI assistants, built from the same catalogue as the pages so facts never drift.
 const kmPrice=p=>p.priceMinor==null?'procjena po zahtjevu':`${p.id==='smart-website-launch'?'':'od '}${(p.priceMinor/100).toLocaleString('bs-BA')} KM (${p.billing})`;
-const pageLine=p=>`- [${p.name}](${origin+p.production}): ${p.intro}`;
+const pageLine=p=>`- [${p.name}](${origin+(movedPageTarget(p.production)||p.production)}): ${p.intro}`;
 const group=test=>offers.filter(test).map(pageLine).join('\n');
 writeFileSync('public/llms.txt',[
  '# Digital X','',

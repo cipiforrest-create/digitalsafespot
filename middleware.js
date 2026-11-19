@@ -231,10 +231,8 @@ async function enhanceCinematicRequest(request, slug) {
     upstream = await rawFetch(request, "text/html,application/xhtml+xml", "DigitalX-Cinematic-Proxy/1.0");
   } catch (error) {
     console.error("Cinematic upstream fetch failed", slug, error);
-    return new Response("Cinematic experience is temporarily unavailable.", {
-      status: 502,
-      headers: { "content-type": "text/plain; charset=utf-8" },
-    });
+    // Serve the static page unenhanced rather than an error: crawlers must never see a 5xx here.
+    return next();
   }
 
   const contentType = upstream.headers.get("content-type") || "";

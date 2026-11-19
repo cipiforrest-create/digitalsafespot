@@ -25,7 +25,7 @@ export const cities = [
 <div class="table-wrap"><table><thead><tr><th>Paket</th><th>Šta dobijate</th><th>Cijena</th></tr></thead><tbody>
 <tr><th>${a('/shop/product/landing-starter/', 'Landing stranica')}</th><td>Jedna stranica s jednim ciljem, za kampanju ili jednu uslugu</td><td>od 199 KM</td></tr>
 <tr><th>${a('/shop/product/web-presence/', 'Premium web prisustvo')}</th><td>Prezentacijska stranica, mobilni dizajn, osnovni SEO i kontakt</td><td>od 449 KM</td></tr>
-<tr><th>${a('/smart-website-launch/', 'Smart Website Launch')}</th><td>Cinematic web do pet stranica i AI asistent prva tri mjeseca</td><td>499 KM</td></tr>
+<tr><th>${a('/shop/product/smart-website-launch/', 'Smart Website Launch')}</th><td>Cinematic web do pet stranica i AI asistent prva tri mjeseca</td><td>499 KM</td></tr>
 <tr><th>${a('/shop/product/ecommerce-launch/', 'E-commerce Launch')}</th><td>Web shop s kategorijama, plaćanjem, dostavom i obukom</td><td>od 2.490 KM</td></tr>
 <tr><th>${a('/shop/product/site-care/', 'Održavanje')}</th><td>Ažuriranja, sigurnosne kopije i tehnička podrška</td><td>od 49 KM mjesečno</td></tr></tbody></table></div>
 <p>Šira slika tržišnih cijena i od čega se razlike sastoje je u vodiču ${a('/blog/koliko-kosta-web-stranica-bih.html', 'koliko košta web stranica u BiH')}.</p>`],
