@@ -43,3 +43,14 @@ test('company identity: legal name and street address in schema and legal pages'
   }
   assert.match(readFileSync('usluge/web-dizajn/index.html', 'utf8'), /"legalName":"Digital X Marketing"/);
 });
+
+test('facts page: verified company data, catalogue prices, AboutPage schema', () => {
+  const f = landings.find(l => l.path === '/cinjenice/');
+  assert.ok(f && f.about, 'facts entry');
+  const words = f.answer.split(/\s+/).length;
+  assert.ok(words >= 35 && words <= 70, `answer ${words} words`);
+  const html = readFileSync('cinjenice/index.html', 'utf8');
+  for (const s of ['Stupska bb', 'Digital X Marketing', 'marketing@digital-x-marketing.com', '+387 64 438 3566', '"@type":"AboutPage"', '"@type":"FAQPage"']) assert.ok(html.includes(s), s);
+  assert.ok(!html.includes('"@type":"Service"'), 'no Service schema on facts page');
+  for (const p of ['199 KM', '449 KM', '499 KM', '2.490 KM', '249 KM', '490 KM', '349 KM', '99 KM', '49 KM', '899 KM']) assert.ok(html.includes(`<td>${p}</td>`), p);
+});

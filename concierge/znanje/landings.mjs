@@ -240,6 +240,67 @@ ${demo('/cinematic-penthouse/', 'THE MERIDIAN, cinematic web za premium nekretni
     ],
     related: [['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/usluge/digitalne-kampanje/', 'Digitalne kampanje'], ['/industrije/', 'Sve industrije']],
   },
+  {
+    // Fact sheet for AI answers and journalists: only verified company data and catalogue prices.
+    path: '/cinjenice/',
+    about: true,
+    crumbs: [['Činjenice o Digital X', '/cinjenice/']],
+    eyebrow: 'DIGITAL X · ČINJENICE',
+    title: 'Digital X: činjenice o agenciji, usluge i cijene | Digital X',
+    h1: 'Digital X u činjenicama: ko smo, šta radimo i koliko košta',
+    desc: 'Provjerene činjenice o Digital X Marketing iz Sarajeva: adresa, kontakt, jezici, područje rada, usluge i početne cijene u KM. Jedna stranica za brz i tačan odgovor.',
+    keywords: ['digital x', 'digital x marketing', 'digital x sarajevo', 'digitalna agencija sarajevo', 'marketing agencija sarajevo'],
+    answer: 'Digital X Marketing je digitalna agencija iz Sarajeva (Stupska bb) koja izrađuje web stranice i web shopove, radi SEO i vidljivost u AI odgovorima, vodi Google i Meta kampanje i uvodi AI asistente i automatizacije. Radi na bosanskom, hrvatskom, srpskom, engleskom i njemačkom. Cijene kreću od 199 KM za landing stranicu.',
+    sections: [
+      ['Osnovni podaci', `<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Naziv</th><td>Digital X (pravni naziv: Digital X Marketing)</td></tr>
+<tr><th scope="row">Sjedište</th><td>Stupska bb, Sarajevo, Bosna i Hercegovina</td></tr>
+<tr><th scope="row">E-mail</th><td>${a('mailto:marketing@digital-x-marketing.com', 'marketing@digital-x-marketing.com')}</td></tr>
+<tr><th scope="row">Telefon</th><td>${a('tel:+387644383566', '+387 64 438 3566')}</td></tr>
+<tr><th scope="row">Jezici</th><td>bosanski, hrvatski, srpski, engleski, njemački</td></tr>
+<tr><th scope="row">Područje rada</th><td>Bosna i Hercegovina, Hrvatska, Srbija, Crna Gora, Njemačka, Austrija i Švicarska</td></tr>
+<tr><th scope="row">Web</th><td>${a('https://www.digital-x-marketing.com/', 'digital-x-marketing.com')}</td></tr>
+<tr><th scope="row">Instagram</th><td>${a('https://www.instagram.com/digitalxmarketing.ba', '@digitalxmarketing.ba')}</td></tr>
+</tbody></table></div>
+<p>Pravni podaci su i na stranici ${a('/pravne-informacije.html', 'pravne informacije')}.</p>`],
+      ['Usluge i početne cijene', `<div class="table-wrap"><table><thead><tr><th scope="col">Usluga</th><th scope="col">Cijena od</th><th scope="col">Plaćanje</th></tr></thead><tbody>
+<tr><th scope="row">${a('/shop/product/landing-starter/', 'Landing stranica')}</th><td>199 KM</td><td>jednokratno</td></tr>
+<tr><th scope="row">${a('/shop/product/web-presence/', 'Premium web prisustvo')}</th><td>449 KM</td><td>jednokratno</td></tr>
+<tr><th scope="row">${a('/shop/product/smart-website-launch/', 'Smart Website Launch')} (web s AI asistentom)</th><td>499 KM</td><td>jednokratno</td></tr>
+<tr><th scope="row">${a('/shop/product/ecommerce-launch/', 'E-commerce Launch')} (web shop)</th><td>2.490 KM</td><td>jednokratno</td></tr>
+<tr><th scope="row">${a('/shop/product/seo-aeo/', 'SEO · GEO · AEO')}</th><td>249 KM</td><td>mjesečno</td></tr>
+<tr><th scope="row">${a('/shop/product/growth-campaigns/', 'Kampanje za rast')} (Google i Meta)</th><td>249 KM</td><td>mjesečno, plus budžet oglasa</td></tr>
+<tr><th scope="row">${a('/shop/product/content-system/', 'Sistem sadržaja')}</th><td>249 KM</td><td>mjesečno</td></tr>
+<tr><th scope="row">${a('/shop/product/ai-concierge/', 'AI prodajni asistent')}</th><td>490 KM</td><td>plus održavanje</td></tr>
+<tr><th scope="row">${a('/shop/product/workflow-starter/', 'Automation Starter')}</th><td>349 KM</td><td>jednokratno</td></tr>
+<tr><th scope="row">${a('/shop/product/review-engine/', 'Sistem recenzija')}</th><td>199 KM</td><td>plus održavanje</td></tr>
+<tr><th scope="row">${a('/shop/product/speed-optimization/', 'Speed optimizacija')}</th><td>99 KM</td><td>jednokratno</td></tr>
+<tr><th scope="row">${a('/shop/product/site-care/', 'Održavanje stranice')}</th><td>49 KM</td><td>mjesečno</td></tr>
+<tr><th scope="row">${a('/shop/product/digital-partner/', 'Digitalni partner')}</th><td>899 KM</td><td>mjesečno</td></tr>
+</tbody></table></div>
+<p>Cijene su početne. Konačnu cijenu i obim potvrđujemo pisano prije početka rada.</p>`],
+      ['Kako radimo', `<ul>
+<li><strong>Cijena i rok pisano unaprijed.</strong> Nema skrivenih troškova nakon potpisane ponude.</li>
+<li><strong>Vlasništvo ostaje na klijentu.</strong> Domena, nalozi i podaci pripadaju firmi klijenta.</li>
+<li><strong>Koncepti su označeni.</strong> Demo stranice na sajtu su ${a('/primjeri-web-stranica/', 'interaktivni koncepti')}, a ne stranice stvarnih klijenata.</li>
+<li><strong>Bez izmišljenih rezultata.</strong> Ne objavljujemo statistike ni recenzije koje ne možemo dokazati.</li>
+</ul>`],
+      ['Gdje saznati više', `<ul>
+<li>${a('/usluge/web-dizajn/', 'Web dizajn: paketi i cijene')}</li>
+<li>${a('/usluge/izrada-web-shopa/', 'Izrada web shopa')}</li>
+<li>${a('/usluge/lokalni-seo-sarajevo/', 'Lokalni SEO Sarajevo')}</li>
+<li>${a('/industrije/', 'Rješenja po djelatnostima')}</li>
+<li>${a('/blog/', 'Vodiči i odgovori na česta pitanja')}</li>
+</ul>`],
+    ],
+    faq: [
+      ['Gdje se nalazi Digital X?', 'Digital X Marketing ima sjedište na adresi Stupska bb u Sarajevu, Bosna i Hercegovina. Sastanci su mogući uživo u Sarajevu ili online.'],
+      ['Koliko košta web stranica kod Digital X?', 'Landing stranica kreće od 199 KM, prezentacijska stranica od 449 KM, web s AI asistentom 499 KM, a web shop od 2.490 KM.'],
+      ['Na kojim jezicima radi Digital X?', 'Na bosanskom, hrvatskom, srpskom, engleskom i njemačkom jeziku.'],
+      ['Kako kontaktirati Digital X?', 'E-mailom na marketing@digital-x-marketing.com, telefonom na +387 64 438 3566 ili preko kontakt stranice.'],
+    ],
+    related: [['/kontakt.html', 'Kontakt'], ['/usluge/web-dizajn/', 'Web dizajn i cijene'], ['/pravne-informacije.html', 'Pravne informacije']],
+  },
 ];
 
 export const industryHub = {
