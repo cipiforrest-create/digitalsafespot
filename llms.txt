@@ -12,12 +12,12 @@ Ključne činjenice:
 - GrowthOS: interaktivni demo poslovne aplikacije po mjeri sa CRM-om, projektima, automatizacijama, izvještajima, klijentskim portalom i AI Second Brain modulom
 - Speed optimizacija: od 99 KM (cilj: Google ocjena 90+)
 - Održavanje sajta: od 49 KM/mj
-- Besplatna GEO/SEO/AEO analiza sajta: https://audit.digital-x-marketing.com/
+- Besplatna analiza sajta (X Signal): https://www.digital-x-marketing.com/usluge/x-signal/
 - Kontakt: marketing@digital-x-marketing.com · +387 64 438 3566 (telefon/WhatsApp) · Sarajevo, BiH
 
 ## Stranice
 - [Početna](https://www.digital-x-marketing.com/): uvodna izjava, zatim scroll-driven cinematic film preko cijelog ekrana (Digital X signal, cinematic web stranice, SEO/AEO/GEO, AI automatizacija, AI Second Brain, jedan sistem), pa Smart Website Launch ponuda, cinematic showcase po branšama, šest disciplina, put rasta, radovi, cjenovnik, shop, besplatna analiza, vodiči i kontakt
-- [Besplatna analiza sajta](https://audit.digital-x-marketing.com/): GEO/SEO/AEO audit za 60 sekundi
+- [Besplatna analiza sajta](https://www.digital-x-marketing.com/usluge/x-signal/): provjera naslova, opisa, strukture, robots, sitemapa i strukturiranih podataka
 - [Izrada web stranica](https://www.digital-x-marketing.com/usluge/izrada-web-stranica/): za advokate, ordinacije, obrte
 - [AI automatizacija](https://www.digital-x-marketing.com/usluge/ai-automatizacija/): chatbot, podsjetnici, recenzije
 - [GrowthOS poslovna aplikacija](https://www.digital-x-marketing.com/growthos.html): interaktivni demo sistema koji se prilagođava industriji, timu, procesima i integracijama klijenta

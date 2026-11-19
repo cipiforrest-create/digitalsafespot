@@ -217,7 +217,9 @@ test("calls to action point at destinations that exist", () => {
     } else if (href.startsWith("/") && !href.startsWith("//")) {
       const target = href.split(/[?#]/)[0];
       const candidate = target.endsWith("/") ? `${target}index.html` : target;
-      assert.doesNotThrow(() => statSync(resolve(site, candidate.slice(1))), `missing ${href}`);
+      // Concierge service pages (e.g. /usluge/x-signal/) are generated into public/ by the build.
+      const exists = (root) => { try { statSync(resolve(root, candidate.slice(1))); return true; } catch { return false; } };
+      assert.ok(exists(site) || exists(resolve(site, "public")), `missing ${href}`);
     }
   }
 });
