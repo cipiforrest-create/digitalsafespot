@@ -116,3 +116,6 @@ html{scroll-padding-top:110px}
 /* Case studies: real client work, five cards (3 + 2 on desktop). */
 .case-study .case-links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:auto}
 .case-study>div{display:flex;flex-direction:column}
+
+/* Header logo image (brand asset, dark-background version). */
+.brand-logo{display:block;height:46px;width:auto;max-width:none;flex:none}@media (max-width:760px){.brand-logo{height:36px}}@media (max-width:380px){.brand-logo{height:31px}}
