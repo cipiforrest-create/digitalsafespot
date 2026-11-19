@@ -27,3 +27,5 @@ for (const entry of readdirSync('.', { withFileTypes: true })) {
 // separate concierge landing page. The classic index.html stays in the repo as the source of the homepage's
 // search and social head (visual-pages.mjs) and is no longer published.
 await import('./publish.mjs');
+// Last: sitemap <lastmod> from the final published pages (publish.mjs still rewrites links after writing the sitemap).
+await import('./sitemap-lastmod.mjs');
