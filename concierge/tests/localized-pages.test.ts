@@ -4,6 +4,8 @@ import {readFileSync} from 'node:fs';
 import {load} from 'cheerio';
 import {pageIds,pageFromPath,previewPath} from '../shared/catalogue';
 
+// Pages merged into another URL on purpose (SEO audit phase 1): their canonical names the surviving page.
+const dedupedCanonical:Record<string,string>={'/smart-website-launch/':'/shop/product/smart-website-launch/'};
 const read=(route:string)=>readFileSync(`public${route}${route.endsWith('/')?'index.html':''}`,'utf8');
 for(const lang of ['en','de']){
  test(`${lang}: every published page preserves the Bosnian structure and shared assets`,()=>{
@@ -18,10 +20,10 @@ for(const lang of ['en','de']){
    }
    const resources=(doc:ReturnType<typeof load>)=>doc('script[src],link[rel=stylesheet],main img').toArray().map(n=>doc(n).attr('src')||doc(n).attr('href'));
    assert.deepEqual(resources($),resources(bs),route);
-   assert.equal($('link[rel=canonical]').attr('href'),`https://www.digital-x-marketing.com/${lang}${route}`);
+   assert.equal($('link[rel=canonical]').attr('href'),`https://www.digital-x-marketing.com/${lang}${dedupedCanonical[route]??route}`);
    assert.deepEqual($('link[hreflang]').map((_,n)=>$(n).attr('hreflang')).get(),['bs','en','de','x-default']);
    assert.equal($(`.language-nav a[lang=${lang}]`).attr('aria-current'),'page');
-   assert.equal($(`.language-nav a[lang=bs]`).attr('href'),route);
+   assert.equal($(`.language-nav a[lang=bs]`).attr('href'),dedupedCanonical[route]??route);
    assert.equal(pageFromPath(`/${lang}${route}`),id);
    $('a[href]').each((_,n)=>{
     const href=$(n).attr('href')!;

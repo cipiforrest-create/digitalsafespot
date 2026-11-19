@@ -87,7 +87,9 @@ describe("GrowthOS website integration", () => {
       const pathOnly = reference.split("#")[0].split("?")[0];
       if (!pathOnly) continue;
       const target = pathOnly.startsWith("/") ? resolve(site, `.${pathOnly}`) : resolve(site, pathOnly);
-      assert.equal(existsSync(target), true, `broken local reference: ${reference}`);
+      // Generated routes (e.g. /usluge/x-signal/) exist only in the build output.
+      const built = pathOnly.startsWith("/") ? resolve(site, "public", `.${pathOnly}`) : null;
+      assert.equal(existsSync(target) || Boolean(built && existsSync(built)), true, `broken local reference: ${reference}`);
     }
   });
 

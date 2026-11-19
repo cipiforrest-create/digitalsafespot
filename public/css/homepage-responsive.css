@@ -118,19 +118,19 @@
   color: var(--muted);
 }
 
-a[href="https://audit.digital-x-marketing.com/"] {
+html[lang="bs"] a[href="/usluge/x-signal/"] {
   min-height: 44px;
 }
 
-.nav__links a[href="https://audit.digital-x-marketing.com/"],
-.nav__sheet a[href="https://audit.digital-x-marketing.com/"],
-.foot__col a[href="https://audit.digital-x-marketing.com/"] {
+html[lang="bs"] .nav__links a[href="/usluge/x-signal/"],
+html[lang="bs"] .nav__sheet a[href="/usluge/x-signal/"],
+html[lang="bs"] .foot__col a[href="/usluge/x-signal/"] {
   display: inline-flex;
   align-items: center;
   width: fit-content;
 }
 
-a[href="https://audit.digital-x-marketing.com/"]:focus-visible {
+html[lang="bs"] a[href="/usluge/x-signal/"]:focus-visible {
   outline: 2px solid var(--cyan);
   outline-offset: 4px;
 }

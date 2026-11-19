@@ -6,13 +6,13 @@ import { fileURLToPath } from "node:url";
 
 const site = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (relative) => readFileSync(resolve(site, relative), "utf8");
-const auditUrl = "https://audit.digital-x-marketing.com/";
+const auditUrl = "/usluge/x-signal/";
 
-test("homepage audit entry points use the exact external audit URL", () => {
+test("homepage audit entry points use the main-site X Signal URL", () => {
   const html = read("index.html");
   const auditLinks = [...html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/g)]
     .map((match) => match[1])
-    .filter((href) => href.includes("audit.digital-x-marketing.com"));
+    .filter((href) => href === auditUrl);
 
   assert.equal(auditLinks.length, 7);
   assert.ok(auditLinks.every((href) => href === auditUrl));
@@ -71,11 +71,11 @@ test("audit calls to action have visible focus and a 44px target", () => {
 
   assert.match(
     styles,
-    /a\[href="https:\/\/audit\.digital-x-marketing\.com\/"\]\s*\{\s*min-height:\s*44px/,
+    /a\[href="\/usluge\/x-signal\/"\]\s*\{\s*min-height:\s*44px/,
   );
   assert.match(
     styles,
-    /a\[href="https:\/\/audit\.digital-x-marketing\.com\/"\]:focus-visible\s*\{[^}]*outline:\s*2px solid var\(--cyan\)/s,
+    /a\[href="\/usluge\/x-signal\/"\]:focus-visible\s*\{[^}]*outline:\s*2px solid var\(--cyan\)/s,
   );
 });
 

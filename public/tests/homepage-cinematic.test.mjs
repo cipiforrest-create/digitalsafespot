@@ -55,14 +55,15 @@ test("both frame ladders are complete, non-empty and served as WebP", () => {
   assert.doesNotMatch(html, /\/media\/frames\/journey\/(?:lg|sm)\//);
 });
 
-test("the film ships the poster, the social card and one still per chapter", () => {
+test("the film ships the poster, the brand social card and one still per chapter", () => {
   for (const name of ["journey-open", "journey-core", ...[1, 2, 3, 4, 5, 6].map((i) => `journey-beat-${i}`)]) {
     for (const extension of ["jpg", "webp"]) {
       const file = resolve(site, `media/poster/${name}.${extension}`);
       assert.ok(statSync(file).size > 4096, `${name}.${extension}`);
     }
   }
-  assert.match(html, /og:image" content="https:\/\/www\.digital-x-marketing\.com\/media\/poster\/journey-core\.jpg"/);
+  assert.match(html, /og:image" content="https:\/\/www\.digital-x-marketing\.com\/assets\/brand\/digital-x-og\.jpg"/);
+  assert.ok(statSync(resolve(site, "assets/brand/digital-x-og.jpg")).size > 4096, "brand social card");
   assert.equal((html.match(/journey-beat-\d\.jpg/g) || []).length, 6);
 });
 
@@ -217,7 +218,9 @@ test("calls to action point at destinations that exist", () => {
     } else if (href.startsWith("/") && !href.startsWith("//")) {
       const target = href.split(/[?#]/)[0];
       const candidate = target.endsWith("/") ? `${target}index.html` : target;
-      assert.doesNotThrow(() => statSync(resolve(site, candidate.slice(1))), `missing ${href}`);
+      // Concierge service pages (e.g. /usluge/x-signal/) are generated into public/ by the build.
+      const exists = (root) => { try { statSync(resolve(root, candidate.slice(1))); return true; } catch { return false; } };
+      assert.ok(exists(site) || exists(resolve(site, "public")), `missing ${href}`);
     }
   }
 });

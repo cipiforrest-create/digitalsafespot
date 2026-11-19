@@ -100,3 +100,9 @@ test('the homepage-style header is fixed on every page', () => {
   assert.match(readFileSync('ai-concierge-preview/visual-experience.css', 'utf8'), /\.dx-navigation\.navigation\{position:fixed!important/);
   assert.match(readFileSync('znanje/assets/znanje.css', 'utf8'), /\.zn-header\{position:sticky;top:18px/);
 });
+
+test('no image repeats among the Blog cards', () => {
+  const srcs = [...read('/blog/index.html').matchAll(/<a class="post-card" href="[^"]+"><img src="([^"]+)"/g)].map(m => m[1]);
+  assert.equal(srcs.length, 27);
+  assert.equal(new Set(srcs).size, srcs.length);
+});

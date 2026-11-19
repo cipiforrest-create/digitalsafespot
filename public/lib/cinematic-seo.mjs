@@ -109,11 +109,13 @@ function schemaFor(slug, config, canonical) {
         "@type": "Organization",
         "@id": ORGANIZATION_ID,
         name: "Digital X",
+        legalName: "Digital X Marketing",
         url: `${SITE_ORIGIN}/`,
         email: "marketing@digital-x-marketing.com",
         telephone: "+387644383566",
         address: {
           "@type": "PostalAddress",
+          streetAddress: "Stupska bb",
           addressLocality: "Sarajevo",
           addressCountry: "BA",
         },
@@ -159,6 +161,8 @@ export function enhanceCinematicHtml(source, slug) {
   let html = source;
 
   html = upsertCanonical(html, canonical);
+  // Demo frames are concepts, not service pages: keep them out of the index, let link equity flow to /industrije/.
+  html = upsertMeta(html, "name", "robots", "noindex, follow");
   html = upsertMeta(html, "name", "description", config.description);
   html = upsertMeta(html, "property", "og:type", "website");
   html = upsertMeta(html, "property", "og:site_name", "Digital X");
