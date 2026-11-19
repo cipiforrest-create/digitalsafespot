@@ -130,7 +130,8 @@ export const pageCopy = {
     ],
   },
   storefront: {
-    title: T('Izrada web shopa u BiH: Smart Storefront | Digital X', 'Online shop development in Bosnia | Digital X', 'Onlineshop-Entwicklung in Bosnien | Digital X'),
+    // The plain "izrada web shopa" query belongs to /usluge/izrada-web-shopa/; this page targets the AI-assisted shop.
+    title: T('Smart Storefront: web shop s AI asistentom za prodaju | Digital X', 'Smart Storefront: online shop with an AI sales assistant | Digital X', 'Smart Storefront: Onlineshop mit KI-Verkaufsassistent | Digital X'),
     desc: T('Web shop s kategorijama, plaćanjem, dostavom i AI asistentom koji pomaže kupcu. E-commerce Launch kreće od 2.490 KM, uz obuku i plan nakon objave.',
       'An online shop with categories, payment, delivery and an AI assistant that helps the buyer. E-commerce Launch starts at 2,490 KM, with training and a post-launch plan.',
       'Ein Onlineshop mit Kategorien, Zahlung, Versand und KI-Assistent für Kunden. E-Commerce Launch beginnt bei 2.490 KM, inklusive Schulung und Plan nach dem Start.'),

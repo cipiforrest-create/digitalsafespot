@@ -96,7 +96,7 @@ ${demo('/cinematic-dentist/', 'cinematic web za dentalnu ordinaciju')}
       ['Možete li povezati online zakazivanje?', 'Možemo povezati obrazac, WhatsApp ili postojeći sistem za termine koji ordinacija koristi. Šta je moguće zavisi od tog sistema, pa to provjeravamo prije ponude.'],
       ['Smijemo li objaviti cijene tretmana?', 'To odlučuje ordinacija u skladu s pravilima komore i propisima. Stranica može navesti okvirne cijene ili poziv na konsultacije.'],
     ],
-    related: [['/smart-website-launch/', 'Smart Website Launch — 499 KM'], ['/usluge/ai-receptionist/', 'AI recepcionar'], ['/industrije/', 'Sve industrije']],
+    related: [['/shop/product/smart-website-launch/', 'Smart Website Launch — 499 KM'], ['/usluge/ai-receptionist/', 'AI recepcionar'], ['/industrije/', 'Sve industrije']],
   },
   {
     path: '/industrije/advokati/',
@@ -149,7 +149,7 @@ ${demo('/cinematic-hotel/', 'HALCYON, cinematic web za luksuzni hotel')}`],
       ['Možete li povezati Booking ili sistem za rezervacije?', 'Možemo povezati sistem koji već koristite, ako ima mogućnost ugradnje ili veze. To provjeravamo prije ponude.'],
       ['Da li vodite i oglase za smještaj?', 'Da. Kampanje za rast na Googleu i Meti kreću od 249 KM mjesečno, a budžet za oglase plaćate platformi odvojeno.'],
     ],
-    related: [['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/smart-website-launch/', 'Smart Website Launch — 499 KM'], ['/industrije/', 'Sve industrije']],
+    related: [['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/shop/product/smart-website-launch/', 'Smart Website Launch — 499 KM'], ['/industrije/', 'Sve industrije']],
   },
   {
     path: '/industrije/nekretnine/',
