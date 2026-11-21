@@ -128,6 +128,7 @@ function stripSeoHead(html) {
   return String(html)
     .replace(/\s*<title>[\s\S]*?<\/title>/i, '')
     .replace(/\s*<meta\b(?=[^>]*\bname=["']description["'])[^>]*>/gi, '')
+    .replace(/\s*<meta\b(?=[^>]*\bname=["']robots["'])[^>]*>/gi, '')
     .replace(/\s*<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/gi, '')
     .replace(/\s*<meta\b(?=[^>]*\bproperty=["']og:(?:type|url|title|description|image)["'])[^>]*>/gi, '')
     .replace(/\s*<meta\b(?=[^>]*\bname=["']twitter:(?:card|title|description|image)["'])[^>]*>/gi, '')
@@ -150,6 +151,7 @@ function metadataMarkup(pathname, route) {
   return [
     `<title>${escapeHtml(route.title)}</title>`,
     `<meta name="description" content="${escapeHtml(route.description)}">`,
+    `<meta name="robots" content="index,follow,max-image-preview:large">`,
     `<link rel="canonical" href="${canonical}">`,
     ...alternateMarkup(pathname, route),
     `<meta property="og:type" content="website">`,
@@ -214,6 +216,8 @@ function schemaMarkup(pathname, route, faqs = route.faqs) {
       telephone: '+387644383566',
       logo: { '@type': 'ImageObject', url: LOGO_URL },
       image: LOGO_URL,
+      founder: { '@type': 'Person', name: 'Vedad Čičak' },
+      address: { '@type': 'PostalAddress', streetAddress: 'Stupska bb', addressLocality: 'Sarajevo', postalCode: '71000', addressCountry: 'BA' },
       sameAs: ['https://www.instagram.com/digitalxmarketing.ba'],
     },
     {
@@ -223,9 +227,12 @@ function schemaMarkup(pathname, route, faqs = route.faqs) {
       url: `${SITE_ORIGIN}/`,
       email: 'marketing@digital-x-marketing.com',
       telephone: '+387644383566',
+      priceRange: '199 KM - 3490 KM',
       parentOrganization: { '@id': organizationId },
       logo: { '@type': 'ImageObject', '@id': `${organizationId}-logo`, url: LOGO_URL },
-      address: { '@type': 'PostalAddress', streetAddress: 'Stupska bb', addressLocality: 'Sarajevo', addressCountry: 'BA' },
+      address: { '@type': 'PostalAddress', streetAddress: 'Stupska bb', addressLocality: 'Sarajevo', postalCode: '71000', addressCountry: 'BA' },
+      geo: { '@type': 'GeoCoordinates', latitude: 43.8419, longitude: 18.3245 },
+      openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '17:00' }],
       areaServed: ['BA', 'HR', 'RS', 'ME', 'DE', 'AT', 'CH'],
     },
     {

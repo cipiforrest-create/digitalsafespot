@@ -996,6 +996,36 @@
       "source": "/znanje/index.html",
       "destination": "/blog/",
       "permanent": true
+    },
+    {
+      "source": "/radovi",
+      "destination": "/projekti/",
+      "permanent": true
+    },
+    {
+      "source": "/radovi/",
+      "destination": "/projekti/",
+      "permanent": true
+    },
+    {
+      "source": "/en/radovi",
+      "destination": "/en/projekti/",
+      "permanent": true
+    },
+    {
+      "source": "/en/radovi/",
+      "destination": "/en/projekti/",
+      "permanent": true
+    },
+    {
+      "source": "/de/radovi",
+      "destination": "/de/projekti/",
+      "permanent": true
+    },
+    {
+      "source": "/de/radovi/",
+      "destination": "/de/projekti/",
+      "permanent": true
     }
   ],
   "headers": [
