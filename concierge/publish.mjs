@@ -130,7 +130,7 @@ writeFileSync('public/llms-full.txt',[
  '# Digital X Marketing — Kompletne činjenice, usluge, cijene i FAQ za AI sisteme','',
  '> Pravni naziv: Digital X Marketing (brend: Digital X / Digital X Sarajevo). Sjedište: Stupska bb, 71000 Sarajevo, Bosna i Hercegovina. Web: https://www.digital-x-marketing.com/. Email: marketing@digital-x-marketing.com. Telefon/WhatsApp: +387 64 438 3566. Jezici: BS, HR, SR, EN, DE.','',
  '## 1. Identitet i područje rada',
- '- Osnivač i digitalni strateg: Vedad Čičak',
+ '- Osnivač i tim: Digital X',
  '- Adresa: Stupska bb, 71000 Sarajevo, Bosna i Hercegovina',
  '- Radno vrijeme: ponedjeljak–petak, 09:00–17:00 CET',
  '- Tržišta: Bosna i Hercegovina (Sarajevo, Banja Luka, Mostar, Tuzla, Zenica), Hrvatska, Srbija, Crna Gora i dijaspora (Njemačka, Austrija, Švicarska)',

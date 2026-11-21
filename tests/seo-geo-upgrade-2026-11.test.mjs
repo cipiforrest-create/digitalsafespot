@@ -13,14 +13,17 @@ test('vercel.json redirects /radovi/ to /projekti/ in all locales', () => {
   }
 });
 
-test('homepage and service schemas carry complete entity, geo, hours and founder data without unverified superlatives', () => {
+test('homepage and service schemas carry complete entity, geo, hours, founder Digital X and return policy without unverified superlatives', () => {
   const home = read('/index.html');
   assert.doesNotMatch(home, /Prva AEO agencija u BiH/);
+  assert.doesNotMatch(home, /Vedad|Čičak|Cicak/i);
   const org = schemas(home).find(n => [n['@type']].flat().includes('Organization'));
   assert.equal(org.legalName, 'Digital X Marketing');
+  assert.equal(org.founder?.name, 'Digital X');
+  assert.equal(org.hasMerchantReturnPolicy?.['@type'], 'MerchantReturnPolicy');
   assert.equal(org.address.streetAddress, 'Stupska bb');
   assert.equal(org.address.postalCode, '71000');
-  assert.ok(org.geo && org.openingHoursSpecification && org.founder);
+  assert.ok(org.geo && org.openingHoursSpecification);
 });
 
 test('localized landing pages have valid JSON-LD without HTML leakage', () => {
@@ -39,14 +42,15 @@ test('llms-full.txt and /pojmovnik/ DefinedTermSet exist and are linked', () => 
   const llmsFull = read('/llms-full.txt');
   assert.match(llms, /llms-full\.txt/);
   assert.match(llmsFull, /Stupska bb, 71000 Sarajevo/);
-  assert.match(llmsFull, /Vedad Čičak/);
+  assert.match(llmsFull, /Osnivač i tim: Digital X/);
+  assert.doesNotMatch(llmsFull, /Vedad|Čičak|Cicak/i);
 
   const glossary = read('/pojmovnik/index.html');
   const termSet = schemas(glossary).find(n => n['@type'] === 'DefinedTermSet');
   assert.ok(termSet && termSet.hasDefinedTerm.length >= 12);
 });
 
-test('new city pages, industry pages and gap-closing guides are built, indexed and carry Person author', () => {
+test('new city pages, industry pages and gap-closing guides are built, indexed and carry Digital X author without personal founder names', () => {
   const sitemap = read('/sitemap.xml');
   const newPaths = [
     '/pojmovnik/',
@@ -63,11 +67,22 @@ test('new city pages, industry pages and gap-closing guides are built, indexed a
   for (const p of newPaths) {
     assert.ok(existsSync(`public${p}index.html`), `missing ${p}`);
     assert.ok(sitemap.includes(`https://www.digital-x-marketing.com${p}<`), `sitemap missing ${p}`);
+    assert.doesNotMatch(read(`${p}index.html`), /Vedad|Čičak|Cicak/i, `${p} should not contain personal founder name`);
   }
   for (const g of ['/znanje/koliko-kosta-seo-optimizacija-bih/', '/znanje/agencija-ili-freelancer-web-stranica/', '/znanje/meta-capi-server-side-tracking/']) {
     const nodes = schemas(read(`${g}index.html`));
-    assert.ok(nodes.some(n => n['@type'] === 'Person' && n.name === 'Vedad Čičak'), `${g} Person`);
-    assert.ok(nodes.some(n => n['@type'] === 'Article' && n.author?.['@id']?.includes('#author-vedad-cicak')), `${g} Article author`);
+    assert.ok(nodes.some(n => n['@type'] === 'Organization' && n.founder?.name === 'Digital X'), `${g} founder Digital X`);
+    assert.ok(nodes.some(n => n['@type'] === 'Article' && n.author?.['@id'] === 'https://www.digital-x-marketing.com/#organization'), `${g} Article author`);
+  }
+});
+
+test('shop product offers include shippingDetails and hasMerchantReturnPolicy across BS, EN and DE', () => {
+  for (const prefix of ['', '/en', '/de']) {
+    const nodes = schemas(read(`${prefix}/shop/product/seo-aeo/index.html`));
+    const service = nodes.find(n => n['@type'] === 'Service' && n.offers);
+    assert.ok(service, `${prefix} service offer`);
+    assert.equal(service.offers.shippingDetails?.['@type'], 'OfferShippingDetails', `${prefix} shippingDetails`);
+    assert.equal(service.offers.hasMerchantReturnPolicy?.['@type'], 'MerchantReturnPolicy', `${prefix} returnPolicy`);
   }
 });
 

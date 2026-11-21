@@ -27,8 +27,8 @@ const header = path => {
 };
 const footer = `<footer class="zn-footer"><div>${logo}<p>Web. Marketing. Inteligencija.</p></div><div><h2>Blog</h2>${clusters.map(c => `<a href="/blog/#${c.id}">${esc(c.name)}</a>`).join('')}<a href="/pojmovnik/">Pojmovnik (SEO, AEO, GEO, AI)</a></div><div><h2>Istražite</h2>${nav.map(([h, n]) => `<a href="${h}">${n}</a>`).join('')}</div><div><h2>Razgovarajmo</h2><a href="mailto:marketing@digital-x-marketing.com">marketing@digital-x-marketing.com</a><a href="tel:+387644383566">+387 64 438 3566</a><a href="https://wa.me/387644383566" rel="noopener">WhatsApp</a><a href="/o-nama.html">O nama</a><a href="/cinjenice/">Činjenice o Digital X</a></div><div class="zn-footer-base"><span>© 2026 Digital X Sarajevo</span><a href="/privatnost.html">Privatnost</a><a href="/uslovi.html">Uslovi korištenja</a><a href="/kolacici.html">Kolačići</a></div></footer>`;
 
-const authorPerson = { '@type': 'Person', '@id': origin + '/#author-vedad-cicak', name: 'Vedad Čičak', jobTitle: 'Osnivač i digitalni strateg', worksFor: { '@id': origin + '/#organization' }, url: origin + '/o-nama.html' };
-const organization = { '@type': 'Organization', '@id': origin + '/#organization', name: 'Digital X', legalName: 'Digital X Marketing', url: origin + '/', logo: origin + '/assets/icon-512.png', founder: { '@id': origin + '/#author-vedad-cicak' }, sameAs: ['https://www.instagram.com/digitalxmarketing.ba'], address: { '@type': 'PostalAddress', streetAddress: 'Stupska bb', addressLocality: 'Sarajevo', postalCode: '71000', addressCountry: 'BA' }, geo: { '@type': 'GeoCoordinates', latitude: 43.8419, longitude: 18.3245 }, openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '17:00' }], priceRange: '199 KM - 3490 KM' };
+const returnPolicy = { '@type': 'MerchantReturnPolicy', applicableCountry: ['BA', 'HR', 'RS', 'ME', 'DE', 'AT', 'CH'], returnPolicyCountry: 'BA', returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow', merchantReturnDays: 15, returnMethod: 'https://schema.org/ReturnByMail', returnFees: 'https://schema.org/FreeReturn', refundType: 'https://schema.org/FullRefund', merchantReturnLink: origin + '/otkazivanje-povrat.html' };
+const organization = { '@type': 'Organization', '@id': origin + '/#organization', name: 'Digital X', legalName: 'Digital X Marketing', url: origin + '/', logo: origin + '/assets/icon-512.png', founder: { '@type': 'Organization', name: 'Digital X' }, hasMerchantReturnPolicy: returnPolicy, sameAs: ['https://www.instagram.com/digitalxmarketing.ba'], address: { '@type': 'PostalAddress', streetAddress: 'Stupska bb', addressLocality: 'Sarajevo', postalCode: '71000', addressCountry: 'BA' }, geo: { '@type': 'GeoCoordinates', latitude: 43.8419, longitude: 18.3245 }, openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '17:00' }], priceRange: '199 KM - 3490 KM' };
 const faqSchema = faq => ({ '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
 const crumbs = items => ({ '@type': 'BreadcrumbList', itemListElement: items.map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: origin + path })) });
 
@@ -58,7 +58,7 @@ function guidePage(g, i) {
   const body = `<article class="guide" style="--accent:${c.color}">
 <header class="guide-hero"><nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span>/</span><a href="/blog/">Blog</a><span>/</span><a href="/blog/#${c.id}">${esc(c.name)}</a></nav>
 <p class="eyebrow">KORAK ${si + 1} OD ${stages.length} · ${esc(stages[si][1]).toUpperCase()}</p><h1>${esc(g.h1)}</h1>
-<p class="guide-meta">Vedad Čičak · Digital X · ažurirano <time datetime="${published}">21. 11. 2026.</time> · ${g.minutes} min čitanja</p>
+<p class="guide-meta">Digital X · ažurirano <time datetime="${published}">21. 11. 2026.</time> · ${g.minutes} min čitanja</p>
 <ol class="journey" aria-label="Koraci puta">${stages.map(([id, name], n) => { const first = guides.find(x => x.stage === id); return `<li${n === si ? ' class="is-current" aria-current="step"' : n < si ? ' class="is-done"' : ''}><a href="${first ? url(first) : '/blog/'}"><span>${n + 1}</span>${esc(name)}</a></li>`; }).join('')}</ol></header>
 <div class="guide-layout"><aside class="guide-toc" aria-label="Sadržaj"><h2>U ovom vodiču</h2><ol>${toc.map(([h, id]) => `<li><a href="#${id}">${esc(h)}</a></li>`).join('')}<li><a href="#pitanja">Česta pitanja</a></li></ol></aside>
 <div class="guide-body"><div class="answer"><p class="eyebrow">KRATAK ODGOVOR</p><p>${esc(g.answer)}</p></div>
@@ -69,8 +69,7 @@ ${siblings.length || c.blog.length ? `<h3>Još iz teme „${esc(c.name)}“</h3>
 <nav class="step-nav" aria-label="Prethodni i sljedeći korak">${prev ? `<a rel="prev" href="${url(prev)}"><small>← Prethodni korak</small>${esc(prev.title)}</a>` : `<a href="/blog/"><small>← Početak</small>Blog</a>`}${next ? `<a rel="next" href="${url(next)}"><small>Sljedeći korak →</small>${esc(next.title)}</a>` : `<a href="/kontakt.html"><small>Kraj puta →</small>Razgovarajte s Digital X</a>`}</nav>
 </div></div></article>${cta}`;
   const schema = [
-    authorPerson,
-    { '@type': 'Article', '@id': origin + path + '#article', headline: g.h1, description: g.desc, inLanguage: 'bs', datePublished: published, dateModified: published, wordCount: words, articleSection: c.name, keywords: g.keywords.join(', '), mainEntityOfPage: origin + path, image: origin + '/media/znanje/znanje-og.jpg', author: { '@id': origin + '/#author-vedad-cicak' }, publisher: { '@id': origin + '/#organization' }, isPartOf: { '@id': origin + '/blog/#hub' } },
+    { '@type': 'Article', '@id': origin + path + '#article', headline: g.h1, description: g.desc, inLanguage: 'bs', datePublished: published, dateModified: published, wordCount: words, articleSection: c.name, keywords: g.keywords.join(', '), mainEntityOfPage: origin + path, image: origin + '/media/znanje/znanje-og.jpg', author: { '@id': origin + '/#organization' }, publisher: { '@id': origin + '/#organization' }, isPartOf: { '@id': origin + '/blog/#hub' } },
     crumbs([['Digital X', '/'], ['Blog', '/blog/'], [g.title, path]]),
     faqSchema(g.faq),
   ];
@@ -133,22 +132,22 @@ ${c.sections.map(([h, html]) => `<section id="${slugify(h)}"><h2>${esc(h)}</h2>$
 </div></div></article>${cta}`;
   const schema = [
     { '@type': 'Service', '@id': origin + path + '#service', name: `Izrada web stranica ${c.city}`, serviceType: 'Web design and web development', description: c.desc, provider: { '@id': origin + '/#organization' }, areaServed: { '@type': 'City', name: c.city },
-      offers: [['Landing stranica', 199], ['Premium web prisustvo', 449], ['Smart Website Launch', 499], ['E-commerce Launch', 2490]].map(([name, price]) => ({ '@type': 'Offer', name, price, priceCurrency: 'BAM' })) },
+      offers: [['Landing stranica', 199], ['Premium web prisustvo', 449], ['Smart Website Launch', 499], ['E-commerce Launch', 2490]].map(([name, price]) => ({ '@type': 'Offer', name, price, priceCurrency: 'BAM', availability: 'https://schema.org/InStock', shippingDetails: digitalShipping, hasMerchantReturnPolicy: returnPolicy })) },
     crumbs([['Digital X', '/'], ['Usluge', '/usluge/'], ['Izrada web stranica', '/usluge/izrada-web-stranica/'], [c.city, path]]),
     faqSchema(c.faq),
   ];
   return page({ path, title: c.title, desc: c.desc, keywords: c.keywords, image: '/media/znanje/znanje-og.jpg', type: 'website', schema, body, bodyClass: 'is-guide' });
 }
 
-// Search-aligned service and industry pages (landings.mjs) share the same layout.
-const offer = ([name, price, period]) => ({ '@type': 'Offer', name, price, priceCurrency: 'BAM', availability: 'https://schema.org/InStock', ...(period ? { description: `Početna cijena, ${period}.` } : {}) });
+const digitalShipping = { '@type': 'OfferShippingDetails', shippingRate: { '@type': 'MonetaryAmount', value: '0.00', currency: 'BAM' }, shippingDestination: ['BA', 'HR', 'RS', 'ME', 'DE', 'AT', 'CH'].map(addressCountry => ({ '@type': 'DefinedRegion', addressCountry })), deliveryTime: { '@type': 'ShippingDeliveryTime', handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 3, unitCode: 'DAY' }, transitTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 14, unitCode: 'DAY' } } };
+const offer = ([name, price, period]) => ({ '@type': 'Offer', name, price, priceCurrency: 'BAM', availability: 'https://schema.org/InStock', shippingDetails: digitalShipping, hasMerchantReturnPolicy: returnPolicy, ...(period ? { description: `Početna cijena, ${period}.` } : {}) });
 function landingPage(l) {
   const toc = l.sections.map(([h]) => [h, slugify(h)]);
   const trail = [['Početna', '/'], ...l.crumbs];
   const body = `<article class="guide" style="--accent:#9fc4ff">
 <header class="guide-hero"><nav class="crumbs" aria-label="Putanja">${trail.map(([n, h], i) => i === trail.length - 1 ? `<span>${esc(n)}</span>` : `<a href="${h}">${esc(n)}</a><span>/</span>`).join('')}</nav>
 <p class="eyebrow">${esc(l.eyebrow)}</p><h1>${esc(l.h1)}</h1>
-<p class="guide-meta">${l.article ? 'Vedad Čičak · ' : ''}Digital X, Sarajevo · ažurirano <time datetime="${published}">21. 11. 2026.</time></p>
+<p class="guide-meta">Digital X, Sarajevo · ažurirano <time datetime="${published}">21. 11. 2026.</time></p>
 <div class="hub-actions"><a class="btn btn-primary" href="/kontakt.html">Besplatne konzultacije</a><a class="btn" href="/usluge/x-signal/">Besplatna analiza sajta</a></div></header>
 <div class="guide-layout"><aside class="guide-toc" aria-label="Sadržaj"><h2>Na ovoj stranici</h2><ol>${toc.map(([h, id]) => `<li><a href="#${id}">${esc(h)}</a></li>`).join('')}<li><a href="#pitanja">Česta pitanja</a></li></ol></aside>
 <div class="guide-body"><div class="answer"><p class="eyebrow">KRATAK ODGOVOR</p><p>${esc(l.answer)}</p></div>
@@ -157,9 +156,8 @@ ${l.sections.map(([h, html]) => `<section id="${slugify(h)}"><h2>${esc(h)}</h2>$
 <section class="related"><h2>Povezano</h2><div class="related-grid">${l.related.map(([h, n]) => `<a href="${h}">${esc(n)}<span aria-hidden="true">→</span></a>`).join('')}</div></section>
 </div></div></article>${cta}`;
   const schema = [
-    ...(l.article ? [authorPerson] : []),
     l.article
-      ? { '@type': 'Article', '@id': origin + l.path + '#article', headline: l.h1, description: l.desc, inLanguage: 'bs', datePublished: published, dateModified: published, keywords: l.keywords.join(', '), mainEntityOfPage: origin + l.path, image: origin + '/media/znanje/znanje-og.jpg', author: { '@id': origin + '/#author-vedad-cicak' }, publisher: { '@id': origin + '/#organization' } }
+      ? { '@type': 'Article', '@id': origin + l.path + '#article', headline: l.h1, description: l.desc, inLanguage: 'bs', datePublished: published, dateModified: published, keywords: l.keywords.join(', '), mainEntityOfPage: origin + l.path, image: origin + '/media/znanje/znanje-og.jpg', author: { '@id': origin + '/#organization' }, publisher: { '@id': origin + '/#organization' } }
       : l.about
       ? { '@type': 'AboutPage', '@id': origin + l.path + '#about', url: origin + l.path, name: l.h1, description: l.desc, inLanguage: 'bs', about: { '@id': origin + '/#organization' }, mainEntity: { '@id': origin + '/#organization' } }
       : { '@type': 'Service', '@id': origin + l.path + '#service', name: l.service.name, serviceType: l.service.serviceType, description: l.desc, provider: { '@id': origin + '/#organization' }, areaServed: l.service.areaServed, offers: l.service.offers.map(offer) },
@@ -200,7 +198,7 @@ function glossaryPage() {
   const body = `<article class="guide" style="--accent:#b9a7ff">
 <header class="guide-hero"><nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span>Pojmovnik</span></nav>
 <p class="eyebrow">DIGITAL X / POJMOVNIK</p><h1>Pojmovnik za SEO, AEO, GEO, AI automatizaciju i web razvoj</h1>
-<p class="guide-meta">Vedad Čičak · Digital X, Sarajevo · ažurirano <time datetime="${published}">21. 11. 2026.</time></p></header>
+<p class="guide-meta">Digital X, Sarajevo · ažurirano <time datetime="${published}">21. 11. 2026.</time></p></header>
 <div class="guide-layout"><aside class="guide-toc" aria-label="Pojmovi"><h2>Pojmovi</h2><ol>${glossaryTerms.map(([term]) => `<li><a href="#${slugify(term)}">${esc(term)}</a></li>`).join('')}</ol></aside>
 <div class="guide-body"><div class="answer"><p class="eyebrow">KRATAK ODGOVOR</p><p>Digital X pojmovnik objašnjava ključne pojmove modernog digitalnog marketinga, pretrage i AI automatizacije na bosanskom jeziku — bez žargona i s direktnim vezama na praktične vodiče i usluge.</p></div>
 ${glossaryTerms.map(([term, def, href]) => `<section id="${slugify(term)}"><h2>${esc(term)}</h2><p>${esc(def)}</p><p><a href="${href}">Detaljnije →</a></p></section>`).join('')}

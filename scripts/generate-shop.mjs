@@ -181,6 +181,30 @@ function productSchema(product, canonical) {
       priceCurrency: "BAM",
       availability: "https://schema.org/InStock",
       url: canonical,
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: { "@type": "MonetaryAmount", value: "0.00", currency: "BAM" },
+        shippingDestination: ["BA", "HR", "RS", "ME", "DE", "AT", "CH"].map((addressCountry) => ({
+          "@type": "DefinedRegion",
+          addressCountry,
+        })),
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 3, unitCode: "DAY" },
+          transitTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 14, unitCode: "DAY" },
+        },
+      },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: ["BA", "HR", "RS", "ME", "DE", "AT", "CH"],
+        returnPolicyCountry: "BA",
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 15,
+        returnMethod: "https://schema.org/ReturnByMail",
+        returnFees: "https://schema.org/FreeReturn",
+        refundType: "https://schema.org/FullRefund",
+        merchantReturnLink: absolute("otkazivanje-povrat.html"),
+      },
     };
   }
   return common;

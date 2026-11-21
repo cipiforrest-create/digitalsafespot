@@ -24,12 +24,20 @@ for (const entry of readdirSync('.', { withFileTypes: true })) {
   if (entry.name.startsWith('.') || /\.(log|pid)$/.test(entry.name) || excluded.has(entry.name)) continue;
   if (process.platform === 'win32' && entry.isDirectory()) {
     try {
-      execFileSync('robocopy', [entry.name, `public/${entry.name}`, '/E', '/MT:16', '/NFL', '/NDL', '/NJH', '/NJS', '/NC', '/NS'], { stdio: 'ignore' });
+      execFileSync('robocopy', [entry.name, `public/${entry.name}`, '/E', '/MT:16', '/R:2', '/W:1', '/NFL', '/NDL', '/NJH', '/NJS', '/NC', '/NS'], { stdio: 'ignore' });
     } catch (err) {
       if (typeof err?.status !== 'number' || err.status >= 8) throw err;
     }
   } else if (process.platform === 'win32') {
-    copyFileSync(entry.name, `public/${entry.name}`);
+    for (let attempt = 0; ; attempt++) {
+      try {
+        copyFileSync(entry.name, `public/${entry.name}`);
+        break;
+      } catch (err) {
+        if (attempt >= 5 || (err?.code !== 'EBUSY' && err?.code !== 'EPERM')) throw err;
+        Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 150);
+      }
+    }
   } else {
     cpSync(entry.name, `public/${entry.name}`, { recursive: true });
   }

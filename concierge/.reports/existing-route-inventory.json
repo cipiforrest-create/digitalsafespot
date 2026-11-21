@@ -1378,6 +1378,26 @@
     "schema": 1
   },
   {
+    "file": "./industrije/privatne-klinike/index.html",
+    "title": "Web stranica i SEO za privatne klinike i poliklinike | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/industrije/privatne-klinike/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Web stranica za privatnu kliniku: jasni pregledi, povjerenje i zakazivanje termina"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./industrije/racunovodstvo-i-konsalting/index.html",
+    "title": "Web stranica za računovodstvene agencije i konsultante | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/industrije/racunovodstvo-i-konsalting/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Web stranica za računovodstvo i konsalting: autoritet koji donosi B2B upite"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./industrije/restorani/index.html",
     "title": "Web stranica i marketing za restoran: meni, rezervacije, Google | Digital X",
     "canonical": "https://www.digital-x-marketing.com/industrije/restorani/",
@@ -1466,6 +1486,16 @@
       "Otkazivanje, povrat i reklamacije"
     ],
     "schema": 0
+  },
+  {
+    "file": "./pojmovnik/index.html",
+    "title": "Pojmovnik: SEO, AEO, GEO, AI i web pojmovi | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/pojmovnik/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Pojmovnik za SEO, AEO, GEO, AI automatizaciju i web razvoj"
+    ],
+    "schema": 1
   },
   {
     "file": "./pravne-informacije.html",
@@ -1754,12 +1784,52 @@
     "schema": 1
   },
   {
+    "file": "./usluge/izrada-web-stranica/banja-luka/index.html",
+    "title": "Izrada web stranica Banja Luka: cijene i rokovi | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-stranica/banja-luka/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Izrada web stranica u Banjoj Luci: brze, jasne i spremne za Google i AI pretragu"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./usluge/izrada-web-stranica/mostar/index.html",
+    "title": "Izrada web stranica Mostar: cijene i rokovi | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-stranica/mostar/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Izrada web stranica u Mostaru: za turizam, ordinacije, trgovine i usluge"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./usluge/izrada-web-stranica/sarajevo/index.html",
     "title": "Izrada web stranica Sarajevo: cijene i rokovi | Digital X",
     "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-stranica/sarajevo/",
     "robots": "index,follow,max-image-preview:large",
     "h1": [
       "Izrada web stranica u Sarajevu: brze, jasne i pronađene na Googleu"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./usluge/izrada-web-stranica/tuzla/index.html",
+    "title": "Izrada web stranica Tuzla: cijene i rokovi | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-stranica/tuzla/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Izrada web stranica u Tuzli: brze poslovne stranice i web shopovi"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./usluge/izrada-web-stranica/zenica/index.html",
+    "title": "Izrada web stranica Zenica: cijene i rokovi | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-stranica/zenica/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Izrada web stranica u Zenici: jasna ponuda, brz sajt i lokalni SEO"
     ],
     "schema": 1
   },
@@ -1810,6 +1880,16 @@
     "robots": "index,follow,max-image-preview:large",
     "h1": [
       "Web dizajn u Sarajevu i BiH: moderne stranice s jasnim cijenama"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/agencija-ili-freelancer-web-stranica/index.html",
+    "title": "Agencija ili freelancer za izradu web stranice u BiH: pošteno poređenje | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/agencija-ili-freelancer-web-stranica/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Agencija ili freelancer za izradu web stranice: šta odabrati i kako ne pogriješiti"
     ],
     "schema": 1
   },
@@ -1910,6 +1990,26 @@
     "robots": "index,follow,max-image-preview:large",
     "h1": [
       "Kako smanjiti cijenu Facebook i Instagram oglasa: 7 koraka koji stvarno rade"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/koliko-kosta-seo-optimizacija-bih/index.html",
+    "title": "Koliko košta SEO, AEO i GEO optimizacija u BiH (2026/2027) | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/koliko-kosta-seo-optimizacija-bih/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Koliko košta SEO, AEO i GEO optimizacija u BiH: realne cijene i šta dobijate"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/meta-capi-server-side-tracking/index.html",
+    "title": "Meta Conversions API (CAPI) i server-side mjerenje: vodič za firme u BiH | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/meta-capi-server-side-tracking/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": [
+      "Meta Conversions API (CAPI): zašto sam Pixel više nije dovoljan za oglase"
     ],
     "schema": 1
   },
