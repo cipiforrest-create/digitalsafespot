@@ -1,7 +1,7 @@
 // Centar znanja: clusters, the customer journey and every guide.
 // Prices quoted here are the published starting prices from the shop catalogue; keep them in sync.
 export const origin = 'https://www.digital-x-marketing.com';
-export const published = '2026-11-13';
+export const published = '2026-11-21';
 
 export const stages = [
   ['razumjeti', 'Razumjeti', 'Šta vam zaista treba i zašto.'],
@@ -239,14 +239,20 @@ export const guides = [
 <tr><th>Šta sistem traži</th><td>Relevantnu, brzu, pouzdanu stranicu</td><td>Kratak, jasan odgovor na pitanje</td><td>Provjerljive činjenice i izvor kojem vjeruje</td></tr>
 <tr><th>Ključni posao</th><td>Tehnika, sadržaj, linkovi</td><td>Pitanja i odgovori, struktura, schema</td><td>Dosljedni podaci o firmi, spominjanja, citabilnost</td></tr>
 <tr><th>Kako se mjeri</th><td>Pozicije, klikovi, upiti</td><td>Prikazi u odgovorima</td><td>Spominjanja i citati u AI odgovorima</td></tr></tbody></table></div>`],
-      ['Kako AI bira koga će navesti', `<p>AI asistenti odgovor sastavljaju iz onoga što su naučili i iz stranica koje u tom trenutku pronađu. Prednost imaju izvori koji su jasni, konkretni i potvrđeni na više mjesta. Stranica koja kaže „nudimo vrhunske usluge“ nema šta ponuditi. Stranica koja kaže „landing stranica od 199 KM, jedna stranica s jednim ciljem“ daje činjenicu koju AI može prenijeti.</p>`],
+      ['Kako AI bira koga će navesti', `<p>AI asistenti odgovor sastavljaju iz onoga što su naučili i iz stranica koje u tom trenutku pronađu. Prednost imaju izvori koji su jasni, konkretni i potvrđeni na više mjesta. Stranica koja kaže „nudimo vrhunske usluge“ nema šta ponuditi. Stranica koja kaže „landing stranica od 199 KM, jedna stranica s jednim ciljem“ daje činjenicu koju AI može prenijeti.</p>
+<div class="table-wrap"><table><thead><tr><th>AI sistem</th><th>Odakle najčešće povlači podatke</th><th>Šta najviše pomaže citiranju</th></tr></thead><tbody>
+<tr><th>Google AI Overviews</th><td>Google indeks, Core Web Vitals, lokalni signali</td><td>Odgovor-prvo struktura, jasni H2/H3 naslovi, tehnički SEO</td></tr>
+<tr><th>ChatGPT Search</th><td>Bing/web pretraga, OAI-SearchBot, javne činjenice</td><td>Dozvoljen pristup u robots.txt, tabele cijena, vanjska spominjanja</td></tr>
+<tr><th>Perplexity &amp; Gemini</th><td>Direktni izvori, Google Business Profile, recenzije</td><td>Dosljedan NAP, Schema.org entiteti, stranica činjenica i pojmovnik</td></tr></tbody></table></div>`],
       ['Sedam konkretnih koraka', `<ol><li><strong>Odgovorite odmah.</strong> Prva dva pasusa svake stranice trebaju direktno odgovoriti na pitanje iz naslova.</li>
 <li><strong>Pišite pitanja kao naslove.</strong> Onako kako ih ljudi postavljaju.</li>
-<li><strong>Navedite činjenice.</strong> Cijene, rokove, lokaciju, uslove — s datumom.</li>
-<li><strong>Dodajte strukturirane podatke.</strong> Organization, Service, FAQPage, Article.</li>
-<li><strong>Uskladite podatke o firmi.</strong> Isto ime, adresa, telefon i e-mail na stranici, mapi i mrežama.</li>
-<li><strong>Dozvolite AI botovima pristup</strong> u robots.txt i dodajte llms.txt sa sažetkom ponude.</li>
-<li><strong>Budite spomenuti drugdje.</strong> Portali, direktoriji, recenzije, gostujući tekstovi.</li></ol>`],
+<li><strong>Navedite činjenice.</strong> Cijene, rokove, lokaciju, uslove — s datumom i jasnim izvorom.</li>
+<li><strong>Dodajte strukturirane podatke.</strong> Organization, LocalBusiness, Service, Person (autor), FAQPage, Article.</li>
+<li><strong>Uskladite podatke o firmi.</strong> Isto ime, adresa, telefon i e-mail na stranici, mapi, direktorijima i mrežama.</li>
+<li><strong>Dozvolite AI botovima pristup</strong> u robots.txt (OAI-SearchBot, ClaudeBot, PerplexityBot) i dodajte llms.txt sa sažetkom ponude.</li>
+<li><strong>Budite spomenuti drugdje.</strong> Portali, poslovni direktoriji, recenzije, studije slučaja i gostujući tekstovi.</li></ol>`],
+      ['Provjera spremnosti vaše stranice za AI pretragu', `<ul><li>Imate li posebnu stranicu za svaku ključnu uslugu s jasnim cijenama ili rasponima?</li><li>Postoji li na stranici kratak odgovor od 40–60 riječi odmah ispod glavnog naslova?</li><li>Jesu li naziv firme, adresa i telefon identični na webu, Google Business profilu i društvenim mrežama?</li><li>Imate li imenovanog autora ili stručnjaka iza vodiča i provjerljive reference na stranici?</li></ul>
+<p>Osnovne pojmove iz ove oblasti možete provjeriti i u našem ${a('/pojmovnik/', 'pojmovniku za SEO, AEO, GEO i AI')}.</p>`],
       ['Šta od ovoga treba maloj firmi', `<p>Prvo ${a('/znanje/sta-je-seo-optimizacija/', 'SEO osnova')} i Google Business profil. Zatim stranice s jasnim odgovorima i čestim pitanjima — to je AEO. GEO dolazi prirodno kad su podaci o firmi dosljedni i kad vas drugi spominju. Više o praktičnoj strani je u vodiču ${a('/blog/aeo-vodic.html', 'kako da vas ChatGPT preporuči')}.</p>`],
       ['Šta se ne može obećati', `<p>AI odgovori nisu isti za svakog korisnika i mijenjaju se iz dana u dan. Niko ne može garantovati da će vas ChatGPT spomenuti. Može se pratiti koliko često i u kojim odgovorima se pojavljujete — tome služi ${a('/usluge/ai-visibility-tracker/', 'AI Visibility Tracker')} — i sistematski povećavati šanse.</p>`],
     ],
@@ -375,6 +381,88 @@ export const guides = [
       ['Šta je dobra stopa konverzije?', 'Zavisi od branše i izvora posjeta. Korisnije od poređenja s drugima je pratiti vlastiti trend iz mjeseca u mjesec.'],
     ],
     related: [['/usluge/x-signal/', 'Besplatna analiza sajta'], ['/usluge/ai-visibility-tracker/', 'AI Visibility Tracker'], ['/shop/product/digital-partner/', 'Digitalni partner — od 899 KM mjesečno']],
+  },
+  {
+    slug: 'koliko-kosta-seo-optimizacija-bih', cluster: 'seo', stage: 'pronadjen', minutes: 7,
+    title: 'Koliko košta SEO, AEO i GEO optimizacija u BiH (2026/2027)',
+    h1: 'Koliko košta SEO, AEO i GEO optimizacija u BiH: realne cijene i šta dobijate',
+    desc: 'Realne cijene SEO, AEO i GEO optimizacije u BiH: od 249 KM do 1.500+ KM mjesečno. Šta ulazi u cijenu, kako prepoznati lošu ponudu i kako izračunati povrat.',
+    keywords: ['koliko košta seo optimizacija bih', 'seo cijena sarajevo', 'seo paket cijena', 'aeo geo cijena', 'seo agencija bih'],
+    answer: 'Mjesečna SEO optimizacija u Bosni i Hercegovini najčešće košta između 249 KM i 800 KM mjesečno za mala i srednja preduzeća, dok veći web shopovi i regionalni projekti koštaju 1.000 KM do 2.500+ KM mjesečno. Jednokratno ubrzanje ili tehnički pregled kreću od 99 KM. Kod Digital X paket SEO · GEO · AEO kreće od 249 KM mjesečno.',
+    sections: [
+      ['Pregled tržišnih cijena SEO usluga u BiH', `<div class="table-wrap"><table><thead><tr><th>Nivo usluge</th><th>Okvirni raspon u BiH</th><th>Kome je namijenjeno</th><th>Šta obično uključuje</th></tr></thead><tbody>
+<tr><th>Jednokratni tehnički popravak / Speed</th><td>99 – 600 KM jednokratno</td><td>Spori sajtovi ili greške indeksacije</td><td>Core Web Vitals, slike, cache, sitemap, robots.txt, osnovna schema</td></tr>
+<tr><th>Lokalni SEO + AEO/GEO start</th><td>249 – 450 KM / mj</td><td>Ordinacije, advokati, saloni, servisi</td><td>Google Business Profile, lokalne stranice usluga, FAQ/AEO struktura, schema</td></tr>
+<tr><th>Rast i sadržajni SEO (SME / Shop)</th><td>500 – 900 KM / mj</td><td>Web shopovi i firme za cijelu BiH</td><td>Tehnički SEO, 2–4 vodiča mjesečno, optimizacija kategorija, autoritet</td></tr>
+<tr><th>Višejezični / DACH SEO + GEO</th><td>1.000 – 2.500+ KM / mj</td><td>Firme koje ciljaju BiH, EU i dijasporu</td><td>BS/EN/DE klasteri, digitalni citati, praćenje AI vidljivosti</td></tr></tbody></table></div>`],
+      ['Zašto se ponude razlikuju od 249 KM do 1.200 KM', `<p>Cijenu ne određuje „tajna formula“, nego broj radnih sati i obim isporuka u četiri oblasti: tehničko stanje sajta (čist kod naspram sporog WordPressa s desetinama dodataka), pisanje novih stranica i vodiča, jačina konkurencije u vašoj niši i uključeni AEO/GEO sloj za AI pretraživače.</p>
+<p>Kod Digital X paket ${a('/usluge/seo-aeo-geo/', 'SEO · GEO · AEO')} kreće od 249 KM mjesečno, a jednokratna ${a('/usluge/optimizacija-brzine-sajta/', 'Speed optimizacija')} od 99 KM.</p>`],
+      ['Pet znakova da plaćate loš SEO', `<ol><li><strong>Garancija prvog mjesta za 30 dana.</strong> Niko ne kontroliše Googleov algoritam ni AI modele.</li>
+<li><strong>Nema pristupa Search Consoleu i GA4.</strong> Svi nalozi moraju ostati u vlasništvu vaše firme.</li>
+<li><strong>Izvještaj bez upita i poziva.</strong> Impresije ne plaćaju račune ako ne mjerite konverzije.</li>
+<li><strong>Kopiranje istog teksta za 20 gradova.</strong> Masovne šablonske stranice krše Googleova pravila kvaliteta.</li>
+<li><strong>Dugoročno zaključavanje bez pisanog mjesečnog plana rada.</strong></li></ol>`],
+      ['Kako izračunati da li se SEO isplati', `<p>Ako je prosječna vrijednost jednog vašeg klijenta 500 KM, a mjesečni rad košta 249 KM, dovoljan je jedan novi klijent svaka dva mjeseca da pokrijete ulaganje. Za razliku od oglasa koji staju čim zaustavite budžet, optimizovane stranice i ${a('/usluge/lokalni-seo-sarajevo/', 'lokalni SEO')} nastavljaju donositi upite mjesecima.</p>`],
+    ],
+    faq: [
+      ['Koliko košta najjeftiniji ozbiljan SEO paket u BiH?', 'Ozbiljan mjesečni rad koji uključuje tehničku osnovu, lokalni SEO, AEO/GEO strukturu i mjerenje u BiH kreće od 249 KM mjesečno kod Digital X.'],
+      ['Da li je bolje uložiti u SEO ili u Google Ads?', 'Ako vam upiti trebaju odmah, krenite s Google Ads kampanjom i landing stranicom. Ako želite smanjiti cijenu po kupcu na duži rok, SEO/AEO/GEO gradite paralelno od prvog mjeseca.'],
+      ['Šta je uključeno u jednokratnu Speed optimizaciju od 99 KM?', 'Mjerenje prije intervencije, optimizacija slika, čišćenje blokirajućih skripti i CSS-a, podešavanje cachea i stabilizacija mobilnog prikaza, uz izvještaj prije i poslije.'],
+    ],
+    related: [['/usluge/seo-aeo-geo/', 'SEO · AEO · GEO usluga'], ['/shop/product/seo-aeo/', 'SEO paket — od 249 KM mjesečno'], ['/znanje/seo-aeo-geo-razlika/', 'SEO, AEO i GEO: razlika']],
+  },
+  {
+    slug: 'agencija-ili-freelancer-web-stranica', cluster: 'web', stage: 'planirati', minutes: 6,
+    title: 'Agencija ili freelancer za izradu web stranice u BiH: pošteno poređenje',
+    h1: 'Agencija ili freelancer za izradu web stranice: šta odabrati i kako ne pogriješiti',
+    desc: 'Pošteno poređenje agencije i freelancera za izradu web stranice u BiH: cijene, rokovi, vlasništvo nad domenom, SEO, održavanje i kada je ko bolji izbor.',
+    keywords: ['agencija ili freelancer', 'izrada web stranice bih', 'web agencija sarajevo', 'cijena web stranice freelancer'],
+    answer: 'Freelancer je često dobar izbor za manji, jasno definisan zadatak poput jedne landing stranice ili grafičkog dizajna. Agencija je sigurniji izbor kada web stranica mora povezati dizajn, brzinu, tehnički SEO, AEO/GEO strukturu, analitiku i dugoročno održavanje pod jednim ugovorom i jasnim rokom.',
+    sections: [
+      ['Direktno poređenje: agencija vs. freelancer', `<div class="table-wrap"><table><thead><tr><th>Kriterij</th><th>Digitalna agencija (npr. Digital X)</th><th>Freelancer</th></tr></thead><tbody>
+<tr><th>Cijena u BiH</th><td>Od 199 KM (landing) / 449 KM (web) do 2.490+ KM (shop)</td><td>Najčešće 250 – 1.500 KM zavisno od iskustva</td></tr>
+<tr><th>Širina tima</th><td>Dizajn, razvoj, SEO/AEO/GEO, copy, analitika i AI na jednom mjestu</td><td>Jedna osoba — obično jaka u dizajnu ili kodu, rjeđe u SEO-u i mjerenju</td></tr>
+<tr><th>Rok i kontinuitet</th><td>Pisani rok (7–14 radnih dana za Smart Website Launch) i podrška nakon objave</td><td>Zavisi od dostupnosti jedne osobe i drugih projekata</td></tr>
+<tr><th>Vlasništvo i ugovor</th><td>Pisana ponuda, faktura, domena i nalozi na firmi klijenta</td><td>Često bez formalnog ugovora ako se ne traži unaprijed</td></tr></tbody></table></div>`],
+      ['Kada odabrati freelancera, a kada agenciju', `<ul><li><strong>Odaberite freelancera</strong> ako već imate gotove tekstove, SEO plan i osobu za održavanje, a treba vam samo izvedba jednog jasnog zadatka.</li>
+<li><strong>Odaberite agenciju</strong> ako želite da stranica od prvog dana bude brza, povezana s Google Business profilom, mjerena u GA4/Search Consoleu i spremna za oglase ili AI asistenta.</li></ul>
+<p>Detaljan spisak pitanja prije potpisa nalazi se u vodiču ${a('/znanje/kako-odabrati-digitalnu-agenciju/', 'kako odabrati digitalnu agenciju u BiH')}.</p>`],
+      ['Šta uvijek morate provjeriti prije uplate', `<ol><li>Da su domena, hosting i Google nalozi registrovani na vašu firmu.</li>
+<li>Da je u cijenu uključena osnovna SEO struktura, SSL i mobilna optimizacija.</li>
+<li>Koliko košta održavanje nakon objave — kod Digital X ${a('/shop/product/site-care/', 'održavanje stranice')} kreće od 49 KM mjesečno.</li></ol>`],
+    ],
+    faq: [
+      ['Da li je agencija uvijek skuplja od freelancera?', 'Ne nužno. Kod Digital X landing stranica kreće od 199 KM, a prezentacijska stranica od 449 KM, što je često u rangu ili povoljnije od pojedinačnih ponuda freelancera, uz uključen osnovni SEO i 30 dana podrške.'],
+      ['Šta ako sam već počeo s freelancerom i projekat je stao?', 'Možemo preuzeti postojeću stranicu ili domenu, uraditi besplatnu analizu stanja i predložiti najbrži put do objave ili redizajna.'],
+      ['Ko ostaje vlasnik web stranice nakon završetka?', 'Uvijek vaša firma. Domena, kod, sadržaj i analitički nalozi pripadaju vama.'],
+    ],
+    related: [['/usluge/izrada-web-stranica/', 'Izrada web stranica'], ['/usluge/web-dizajn/', 'Web dizajn: paketi i cijene'], ['/znanje/kako-odabrati-digitalnu-agenciju/', '9 pitanja prije potpisa']],
+  },
+  {
+    slug: 'meta-capi-server-side-tracking', cluster: 'oglasi', stage: 'mjeriti', minutes: 6,
+    title: 'Meta Conversions API (CAPI) i server-side mjerenje: vodič za firme u BiH',
+    h1: 'Meta Conversions API (CAPI): zašto sam Pixel više nije dovoljan za oglase',
+    desc: 'Šta je Meta Conversions API (CAPI), zašto preglednici i blokatori skrivaju konverzije od Pixela, šta je Event Match Quality (EMQ) i kako smanjiti cijenu upita.',
+    keywords: ['meta conversions api', 'meta capi bih', 'server side tracking', 'meta pixel ne mjeri', 'facebook oglasi konverzije'],
+    answer: 'Meta Conversions API (CAPI) šalje podatke o upitima i kupovinama direktno s vašeg servera prema Meti, paralelno s klasičnim Pixelom u pregledniku. Time nadoknađuje događaje koje blokiraju iOS ograničenja i ad-blockeri, poboljšava Event Match Quality (EMQ) i daje algoritmu tačnije podatke za nižu cijenu upita.',
+    sections: [
+      ['Zašto sam Meta Pixel gubi podatke', `<p>Klasični Meta Pixel radi u pregledniku posjetioca. Zbog blokatora oglasa, privatnih preglednika i ograničenja kolačića trećih strana, dio stvarnih upita i narudžbi nikada ne stigne do Ads Managera. Kada Meta ne vidi ko je poslao upit ili kupio proizvod, algoritam nastavlja trošiti budžet na pogrešnu publiku.</p>`],
+      ['Pixel vs. Conversions API (CAPI)', `<div class="table-wrap"><table><thead><tr><th>Signal</th><th>Samo Meta Pixel (Browser)</th><th>Pixel + Conversions API (Server-side)</th></tr></thead><tbody>
+<tr><th>Gdje se izvršava</th><td>U pregledniku korisnika</td><td>U pregledniku + direktno sa servera uz deduplikaciju</td></tr>
+<tr><th>Otpornost na blokatore</th><td>Niska — dio događaja se gubi</td><td>Visoka — server šalje potvrđene događaje</td></tr>
+<tr><th>Event Match Quality (EMQ)</th><td>Često nizak bez dodatnih parametara</td><td>Viši uz hashirane parametre i event_id deduplikaciju</td></tr>
+<tr><th>Pristanak (GDPR)</th><td>Obavezan pristanak za marketinške kolačiće</td><td>Obavezan pristanak prije slanja marketinških događaja</td></tr></tbody></table></div>`],
+      ['Tri pravila za ispravno postavljanje', `<ol><li><strong>Deduplikacija (event_id).</strong> Isti upit ili kupovina ne smije se brojati dvaput — i Pixel i CAPI moraju dijeliti isti identifikator događaja.</li>
+<li><strong>Poštovanje pristanka.</strong> Server-side slanje ne služi za zaobilaženje pristanka korisnika; prati se ista odluka iz ${a('/znanje/gdpr-pristupacnost-web-stranice/', 'postavki kolačića')}.</li>
+<li><strong>Mjerenje stvarnih leadova.</strong> Pratite slanje forme, klik na WhatsApp/telefon i završenu narudžbu, a ne samo otvaranje stranice.</li></ol>
+<p>Više o optimizaciji kampanja pročitajte u vodiču ${a('/znanje/kako-smanjiti-cijenu-facebook-oglasa/', 'kako smanjiti cijenu Facebook oglasa')} i na stranici ${a('/usluge/optimizacija-meta-oglasa/', 'optimizacija Meta oglasa')}.</p>`],
+    ],
+    faq: [
+      ['Da li CAPI zamjenjuje Meta Pixel?', 'Ne. Najbolje rade zajedno: Pixel pokriva interakcije u pregledniku, a CAPI dopunjuje događaje sa servera uz deduplikaciju kako se konverzije ne bi duplirale.'],
+      ['Treba li mi CAPI ako imam mali budžet za oglase?', 'Ako vodite kampanje za upite ili web shop prodaju, tačno mjerenje je još važnije kod manjeg budžeta jer svaki pogrešno optimizovan klik košta više.'],
+      ['Da li je CAPI dozvoljen po GDPR-u?', 'Da, pod uslovom da se marketinški događaji šalju tek nakon pristanka korisnika i da je obrada opisana u politici privatnosti.'],
+    ],
+    related: [['/usluge/optimizacija-meta-oglasa/', 'Optimizacija Meta oglasa'], ['/usluge/meta-ads/', 'Meta Ads usluga'], ['/znanje/kako-smanjiti-cijenu-facebook-oglasa/', 'Kako smanjiti cijenu oglasa']],
   },
 ];
 

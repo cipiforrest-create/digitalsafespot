@@ -6,12 +6,13 @@ English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovi
 
 ## Ukratko
 - Domena: digital-x-marketing.com. Digital X nije povezan s agencijama sličnog naziva kao što su digitalxmarketing.com ili digitalx-ai.com.
-- Sjedište: Sarajevo, Bosna i Hercegovina
+- Sjedište: Stupska bb, 71000 Sarajevo, Bosna i Hercegovina
 - Klijenti: firme u BiH, regionu i dijaspori (Njemačka, Austrija, Švicarska)
 - Jezici: bosanski, hrvatski, srpski, engleski, njemački
 - Radno vrijeme: ponedjeljak–petak, 09:00–17:00
 - Cijene su početne; obim i dostupnost potvrđuju se prije ugovaranja.
 - Besplatna analiza sajta provjerava javni HTML i tehničke signale; ne mjeri AI pozicije, konverzije niti Core Web Vitals.
+- Detaljna verzija za AI sisteme: [llms-full.txt](https://www.digital-x-marketing.com/llms-full.txt)
 
 ## Početne cijene
 - [Premium web prisustvo](https://www.digital-x-marketing.com/shop/product/web-presence/): od 449 KM (jednokratno). Prezentacijska stranica s jasnom ponudom, mobilnim dizajnom, osnovnim SEO-om i kontakt tokom.
@@ -73,6 +74,7 @@ English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovi
 
 ## Blog: vodiči i članci
 - [Blog](https://www.digital-x-marketing.com/blog/): Mapa svih vodiča po temama i koracima.
+- [Pojmovnik: SEO, AEO, GEO i AI](https://www.digital-x-marketing.com/pojmovnik/): Jasna objašnjenja ključnih pojmova za digitalni rast u BiH.
 - [Digitalni marketing za male firme: plan za prvih 90 dana](https://www.digital-x-marketing.com/znanje/digitalni-marketing-za-male-firme/): Šta je digitalni marketing, koje kanale mala firma u BiH zaista treba i kako izgleda realan plan za prvih 90 dana — bez bacanja budžeta.
 - [Kako odabrati digitalnu agenciju u BiH: 9 pitanja prije potpisa](https://www.digital-x-marketing.com/znanje/kako-odabrati-digitalnu-agenciju/): Praktična lista za izbor digitalne agencije u Sarajevu i BiH: šta pitati, koje odgovore tražiti i koji su znakovi da treba otići.
 - [Izrada web stranica: kompletan vodič za firme u BiH (2026)](https://www.digital-x-marketing.com/znanje/izrada-web-stranica-vodic/): Kako napraviti web stranicu za firmu: koraci izrade, šta pripremiti, koliko traje, koliko košta i po čemu prepoznati stranicu koja donosi upite.
@@ -85,7 +87,14 @@ English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovi
 - [Plan sadržaja za društvene mreže: šta objavljivati i koliko često](https://www.digital-x-marketing.com/znanje/plan-sadrzaja-drustvene-mreze/): Kako napraviti plan sadržaja za Instagram, Facebook i TikTok: stubovi sadržaja, formati, učestalost objava i mjesečni kalendar koji se može održati.
 - [AI za male firme: 7 primjena koje se isplate i odakle početi](https://www.digital-x-marketing.com/znanje/ai-za-male-firme/): Praktičan vodič za AI u maloj firmi: gdje umjetna inteligencija pomaže, šta košta, koji su rizici i kako uvesti prvi AI alat bez haosa.
 - [Kako mjeriti rezultate marketinga: 6 brojeva koji su bitni](https://www.digital-x-marketing.com/znanje/kako-mjeriti-rezultate-marketinga/): Koje brojeve pratiti u Google Analyticsu i Search Consoleu, kako izračunati cijenu upita i povrat ulaganja te kako izgleda koristan mjesečni izvještaj.
+- [Koliko košta SEO, AEO i GEO optimizacija u BiH (2026/2027)](https://www.digital-x-marketing.com/znanje/koliko-kosta-seo-optimizacija-bih/): Realne cijene SEO, AEO i GEO optimizacije u BiH: od 249 KM do 1.500+ KM mjesečno. Šta ulazi u cijenu, kako prepoznati lošu ponudu i kako izračunati povrat.
+- [Agencija ili freelancer za izradu web stranice u BiH: pošteno poređenje](https://www.digital-x-marketing.com/znanje/agencija-ili-freelancer-web-stranica/): Pošteno poređenje agencije i freelancera za izradu web stranice u BiH: cijene, rokovi, vlasništvo nad domenom, SEO, održavanje i kada je ko bolji izbor.
+- [Meta Conversions API (CAPI) i server-side mjerenje: vodič za firme u BiH](https://www.digital-x-marketing.com/znanje/meta-capi-server-side-tracking/): Šta je Meta Conversions API (CAPI), zašto preglednici i blokatori skrivaju konverzije od Pixela, šta je Event Match Quality (EMQ) i kako smanjiti cijenu upita.
 - [Izrada web stranica Sarajevo: cijene i rokovi](https://www.digital-x-marketing.com/usluge/izrada-web-stranica/sarajevo/): Izrada web stranica u Sarajevu: prezentacija od 449 KM, web s AI asistentom 499 KM, web shop od 2.490 KM. Lokalni SEO, Google mapa i sastanak uživo.
+- [Izrada web stranica Banja Luka: cijene i rokovi](https://www.digital-x-marketing.com/usluge/izrada-web-stranica/banja-luka/): Izrada web stranica za firme u Banjoj Luci: prezentacija od 449 KM, cinematic web s AI asistentom 499 KM, web shop od 2.490 KM. Lokalni SEO i online saradnja.
+- [Izrada web stranica Mostar: cijene i rokovi](https://www.digital-x-marketing.com/usluge/izrada-web-stranica/mostar/): Izrada web stranica u Mostaru i Hercegovini: prezentacija od 449 KM, cinematic web s AI asistentom 499 KM, web shop od 2.490 KM. Više jezika i lokalni SEO.
+- [Izrada web stranica Tuzla: cijene i rokovi](https://www.digital-x-marketing.com/usluge/izrada-web-stranica/tuzla/): Izrada web stranica za firme u Tuzli i TK: prezentacija od 449 KM, cinematic web s AI asistentom 499 KM, web shop od 2.490 KM. Lokalni SEO i AI automatizacija.
+- [Izrada web stranica Zenica: cijene i rokovi](https://www.digital-x-marketing.com/usluge/izrada-web-stranica/zenica/): Izrada web stranica za firme u Zenici i ZDK: prezentacija od 449 KM, cinematic web s AI asistentom 499 KM, web shop od 2.490 KM. Jasni rokovi i podrška.
 - [Izrada web shopa u BiH: cijena i šta dobijate](https://www.digital-x-marketing.com/usluge/izrada-web-shopa/): Izrada web shopa za firme u BiH: kategorije, proizvodi, plaćanje, dostava i obuka. E-commerce Launch od 2.490 KM. Shopify, WooCommerce ili rješenje po mjeri.
 - [Web dizajn Sarajevo i BiH: cijene od 199 KM](https://www.digital-x-marketing.com/usluge/web-dizajn/): Web dizajn za firme u Sarajevu i BiH: landing stranica od 199 KM, web prezentacija od 449 KM, cinematic web s AI asistentom 499 KM, web shop od 2.490 KM.
 - [Redizajn web stranice: kad ima smisla i šta košta](https://www.digital-x-marketing.com/usluge/redizajn-web-stranice/): Redizajn web stranice za firme u BiH metodom X Convert: analiza, nova struktura, brža stranica i jasniji put do upita. Bez gubitka pozicija na Googleu.
@@ -96,13 +105,15 @@ English summary: Digital X is a digital agency in Sarajevo, Bosnia and Herzegovi
 - [Web stranica za nekretnine i investitore](https://www.digital-x-marketing.com/industrije/nekretnine/): Web stranice za investitore, agencije za nekretnine i nove stambene projekte u BiH: stanovi, tlocrti, lokacija i upit za razgledanje. Cinematic prikaz projekta.
 - [Web stranica i marketing za restoran: meni, rezervacije, Google](https://www.digital-x-marketing.com/industrije/restorani/): Web stranica, lokalni SEO i Instagram oglasi za restorane i kafiće u BiH: meni koji se čita na mobitelu, rezervacija, Google Business profil i recenzije. Od 199 KM.
 - [Web stranica za luksuzni brend: cinematic web i web shop](https://www.digital-x-marketing.com/industrije/luksuzni-brendovi/): Cinematic web stranice i web shopovi za luksuzne brendove: satove, parfeme, modu i nakit. Proizvod u pokretu, diskretan upit i kupovina. Cinematic web 499 KM.
+- [Web stranica i SEO za privatne klinike i poliklinike](https://www.digital-x-marketing.com/industrije/privatne-klinike/): Izrada web stranica, lokalni SEO i AI recepcionar za privatne klinike, poliklinike i laboratorije u BiH: odjeli, doktori, cjenovnik i zakazivanje. Od 449 KM.
+- [Web stranica za računovodstvene agencije i konsultante](https://www.digital-x-marketing.com/industrije/racunovodstvo-i-konsalting/): Izrada web stranica i SEO za računovodstvene agencije, porezne savjetnike i B2B konsultante u BiH i dijaspori: jasne usluge, vodiči i upiti. Od 449 KM.
 - [Optimizacija brzine sajta: od 99 KM, mjereno prije i poslije](https://www.digital-x-marketing.com/usluge/optimizacija-brzine-sajta/): Spor sajt gubi posjetioce i pozicije na Googleu. Speed optimizacija od 99 KM: mjerenje, slike, kod, cache i mobilna stabilnost, uz izvještaj prije i poslije.
 - [AI chatbot za web stranicu: cijena od 490 KM](https://www.digital-x-marketing.com/usluge/ai-chatbot-za-web-stranicu/): AI chatbot za web stranicu firme u BiH: odgovori 24/7 iz vašeg sadržaja, pitanja za kvalifikaciju i predaja razgovora čovjeku. AI prodajni asistent od 490 KM.
 - [GDPR, kolačići i pristupačnost web stranice: vodič za firme u BiH](https://www.digital-x-marketing.com/znanje/gdpr-pristupacnost-web-stranice/): Kada GDPR važi za firmu iz BiH, šta treba za kolačiće, šta traži Evropski akt o pristupačnosti i šta s AI chatbotom. Praktičan pregled, bez pravnog žargona.
 - [Optimizacija Facebook i Instagram oglasa: niža cijena upita](https://www.digital-x-marketing.com/usluge/optimizacija-meta-oglasa/): Pregled i optimizacija Meta kampanja: mjerenje (Pixel i Conversions API), publika, retargeting, testiranje kreativa i cijena po upitu. Od 249 KM mjesečno plus budžet.
 - [Kako smanjiti cijenu Facebook i Instagram oglasa: 7 koraka](https://www.digital-x-marketing.com/znanje/kako-smanjiti-cijenu-facebook-oglasa/): Zašto Facebook oglasi poskupljuju i kako smanjiti cijenu po upitu: mjerenje, cilj kampanje, publika, retargeting, kreativa i stranica nakon klika.
 - [Digital X: činjenice o agenciji, usluge i cijene](https://www.digital-x-marketing.com/cinjenice/): Provjerene činjenice o Digital X Marketing iz Sarajeva: adresa, kontakt, jezici, područje rada, usluge i početne cijene u KM. Jedna stranica za brz i tačan odgovor.
-- [Web stranice i marketing po djelatnostima](https://www.digital-x-marketing.com/industrije/): Digital X web stranice, lokalni SEO i AI asistenti prilagođeni djelatnostima: stomatološke ordinacije, advokati, hoteli i apartmani, nekretnine, restorani i luksuzni brendovi.
+- [Web stranice i marketing po djelatnostima](https://www.digital-x-marketing.com/industrije/): Digital X web stranice, lokalni SEO i AI asistenti prilagođeni djelatnostima: stomatološke ordinacije, privatne klinike, advokati, računovodstvo, hoteli, nekretnine, restorani i luksuzni brendovi.
 
 ## Demo aplikacije
 - [GrowthOS](https://www.digital-x-marketing.com/growthos.html): interaktivni demo poslovne aplikacije po mjeri sa CRM-om, projektima, automatizacijama, izvještajima, klijentskim portalom i AI Second Brain modulom

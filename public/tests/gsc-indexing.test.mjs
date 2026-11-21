@@ -10,12 +10,14 @@ import {
 const doc = (body, head = "") => `<!doctype html><html><head>${head}</head><body><main>${body}</main></body></html>`;
 
 test("indexing policy targets only the audited noindex URLs", () => {
-  assert.equal(NOINDEX_PATHS.size, 21);
+  assert.equal(NOINDEX_PATHS.size, 23);
   assert.ok(NOINDEX_PATHS.has("/shop/category/ai/"));
   assert.ok(NOINDEX_PATHS.has("/en/shop/category/web/"));
   assert.ok(NOINDEX_PATHS.has("/de/shop/category/ai/"));
   assert.ok(NOINDEX_PATHS.has("/uslovi.html"));
+  assert.ok(NOINDEX_PATHS.has("/kolacici.html"));
   assert.ok(NOINDEX_PATHS.has("/en/kolacici.html"));
+  assert.ok(NOINDEX_PATHS.has("/de/kolacici.html"));
   assert.equal(NOINDEX_PATHS.has("/shop/category/web/"), false);
   assert.equal(NOINDEX_PATHS.has("/en/shop/category/ai/"), false);
   assert.equal(NOINDEX_PATHS.has("/shop/product/seo-aeo/"), false);

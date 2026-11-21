@@ -1,5 +1,6 @@
 import { build } from 'esbuild';
-import { existsSync, mkdirSync, readdirSync, cpSync,rmSync,writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { existsSync, mkdirSync, readdirSync, cpSync, copyFileSync, rmSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import {resolve,dirname} from 'node:path';
 await build({entryPoints:['concierge/shared/catalogue.ts'],outfile:'.concierge/catalogue.cjs',bundle:true,platform:'node',format:'cjs',target:'node24'});
@@ -17,11 +18,21 @@ if (existsSync('concierge/server/lead.ts')) await build({ entryPoints: ['concier
 console.log('Concierge assets built; existing site files preserved.');
 // Build an isolated static output; server sources, dependencies and local secrets are never served.
 const output=resolve('public');if(dirname(output)!==process.cwd())throw new Error('Output must remain inside the site workspace');
-rmSync(output,{recursive:true,force:true});mkdirSync(output, { recursive: true });
+rmSync(output,{recursive:true,force:true,maxRetries:10,retryDelay:200});mkdirSync(output, { recursive: true });
 const excluded = new Set(['public','api','concierge','docs','node_modules','package.json','package-lock.json','tsconfig.json','eslint.config.mjs','vercel.json','test-results','playwright-report']);
 for (const entry of readdirSync('.', { withFileTypes: true })) {
   if (entry.name.startsWith('.') || /\.(log|pid)$/.test(entry.name) || excluded.has(entry.name)) continue;
-  cpSync(entry.name, `public/${entry.name}`, { recursive: true });
+  if (process.platform === 'win32' && entry.isDirectory()) {
+    try {
+      execFileSync('robocopy', [entry.name, `public/${entry.name}`, '/E', '/MT:16', '/NFL', '/NDL', '/NJH', '/NJS', '/NC', '/NS'], { stdio: 'ignore' });
+    } catch (err) {
+      if (typeof err?.status !== 'number' || err.status >= 8) throw err;
+    }
+  } else if (process.platform === 'win32') {
+    copyFileSync(entry.name, `public/${entry.name}`);
+  } else {
+    cpSync(entry.name, `public/${entry.name}`, { recursive: true });
+  }
 }
 // The 3D homepage (X hero + cinema story) is the site's indexable homepage at /. /ai-concierge-preview/ is a
 // separate concierge landing page. The classic index.html stays in the repo as the source of the homepage's

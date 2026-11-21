@@ -24,7 +24,11 @@ export const landings = [
 <li><strong>Osnovni SEO.</strong> Naslovi, opisi, strukturirani podaci o proizvodima i mapa sajta za Google.</li>
 <li><strong>Obuka.</strong> Kako dodati proizvod, promijeniti cijenu i obraditi narudžbu.</li></ul>
 <p>Detalji paketa su na stranici ${a('/shop/product/ecommerce-launch/', 'E-commerce Launch')}.</p>`],
-      ['Shopify, WooCommerce ili po mjeri', `<p>Nema jedne platforme koja je najbolja za sve. Shopify je jednostavniji za održavanje, WooCommerce daje više slobode, a rješenje po mjeri ima smisla kad proces prodaje ne staje u gotov sistem. Razlike, troškove i ograničenja objašnjavamo u vodiču ${a('/znanje/wordpress-shopify-ili-custom/', 'WordPress, Shopify ili custom')}.</p>`],
+      ['Shopify, WooCommerce ili po mjeri', `<p>Nema jedne platforme koja je najbolja za sve. Razlike, troškove i ograničenja objašnjavamo u vodiču ${a('/znanje/wordpress-shopify-ili-custom/', 'WordPress, Shopify ili custom')}.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Platforma</th><th scope="col">Najbolje za</th><th scope="col">Prednost u BiH</th></tr></thead><tbody>
+<tr><th scope="row">WooCommerce (WordPress)</th><td>Većinu trgovina u BiH s lokalnim dostavama i karticama</td><td>Fleksibilnost, lokalni platni procesori (Monri/PikPay/banke), bez mjesečne provizije platforme</td></tr>
+<tr><th scope="row">Shopify</th><td>Brendove koji prodaju i u EU/dijaspori i žele minimalno održavanje</td><td>Stabilan hosting, brz checkout, jednostavno upravljanje zalihama</td></tr>
+<tr><th scope="row">Custom / Next.js</th><td>Specifične B2B kataloge, konfiguratore i ERP integracije</td><td>Maksimalna brzina, prilagođen tok narudžbe i potpuna kontrola</td></tr></tbody></table></div>`],
       ['Prije prve narudžbe', `<ol><li><strong>Asortiman.</strong> Popis proizvoda, varijanti i cijena u tabeli.</li>
 <li><strong>Fotografije.</strong> Dobre fotografije prodaju više od opisa. Po potrebi radimo ${a('/usluge/fotografija-proizvoda/', 'fotografisanje proizvoda')}.</li>
 <li><strong>Plaćanje i dostava.</strong> Ugovor s bankom ili procesorom plaćanja i dogovor s dostavnom službom.</li>
@@ -299,6 +303,54 @@ ${demo('/cinematic-clothes/', 'cinematic web za modni brend')}
     related: [['/usluge/cinematic-web-stranice/', 'Cinematic web stranice'], ['/usluge/izrada-web-shopa/', 'Izrada web shopa'], ['/industrije/', 'Sve industrije']],
   },
   {
+    path: '/industrije/privatne-klinike/',
+    crumbs: [['Industrije', '/industrije/'], ['Privatne klinike i poliklinike', '/industrije/privatne-klinike/']],
+    eyebrow: 'INDUSTRIJE · ZDRAVSTVO I POLIKLINIKE',
+    title: 'Web stranica i SEO za privatne klinike i poliklinike | Digital X',
+    h1: 'Web stranica za privatnu kliniku: jasni pregledi, povjerenje i zakazivanje termina',
+    desc: 'Izrada web stranica, lokalni SEO i AI recepcionar za privatne klinike, poliklinike i laboratorije u BiH: odjeli, doktori, cjenovnik i zakazivanje. Od 449 KM.',
+    keywords: ['web stranica za polikliniku', 'web stranica za privatnu kliniku', 'marketing za klinike bih', 'lokalni seo klinika sarajevo'],
+    service: { name: 'Web stranice i marketing za privatne klinike', serviceType: 'Web design and local SEO for medical clinics', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['Premium web prisustvo', 449], ['Smart Website Launch', 499], ['SEO · GEO · AEO', 249, 'mjesečno']] },
+    answer: 'Pacijent prije zakazivanja pregleda traži konkretan odjel, ime doktora, pripremu za pregled, lokaciju i okvirnu cijenu. Digital X izrađuje brze stranice za klinike i poliklinike s jasnim zakazivanjem i lokalnim SEO-om: prezentacijska stranica od 449 KM, cinematic web s AI asistentom 499 KM, a SEO · GEO · AEO od 249 KM mjesečno.',
+    sections: [
+      ['Šta pacijent mora pronaći za 10 sekundi', `<ul><li><strong>Odjeli i pretrage.</strong> Posebna stranica za svaku granu medicine i dijagnostiku kako bi vas Google povezao s konkretnim simptomom ili pregledom.</li>
+<li><strong>Tim ljekara.</strong> Biografije, specijalizacije i radno vrijeme ordiniranja.</li>
+<li><strong>Priprema i cijene.</strong> Jasne upute prije dolaska smanjuju broj nepotrebnih poziva recepciji.</li>
+<li><strong>Zakazivanje 24/7.</strong> Forma, klik-za-poziv ili ${a('/usluge/ai-receptionist/', 'AI recepcionar')} koji prikuplja zahtjev za termin i van radnog vremena bez davanja medicinskih savjeta.</li></ul>`],
+      ['Lokalni SEO i Google Mape za klinike', `<p>Pacijenti najčešće pretražuju „poliklinika Sarajevo“ ili „ultrazvuk blizu mene“. Uređujemo ${a('/usluge/google-business-profile/', 'Google Business profil')}, kategorije po odjelima i ${a('/shop/product/review-engine/', 'sistem recenzija')}.</p>`],
+    ],
+    faq: [
+      ['Koliko košta web stranica za privatnu kliniku ili polikliniku?', 'Prezentacijska stranica kreće od 449 KM, a Smart Website Launch s AI asistentom košta 499 KM. Veće poliklinike s više odjela i integracijom zakazivanja dobijaju ponudu po obimu.'],
+      ['Smije li AI asistent davati medicinske savjete?', 'Ne. Asistent odgovara isključivo na organizaciona pitanja (radno vrijeme, lokacija, priprema za pregled, cjenovnik) i predaje zahtjev za termin vašem osoblju.'],
+      ['Kako štitite podatke pacijenata?', 'Kontakt forme prikupljaju samo minimum podataka potreban za zakazivanje termina, uz jasnu politiku privatnosti i bez pohrane osjetljivih medicinskih nalaza na javnom webu.'],
+    ],
+    related: [['/industrije/stomatologija/', 'Web za stomatološke ordinacije'], ['/usluge/lokalni-seo-sarajevo/', 'Lokalni SEO Sarajevo'], ['/usluge/ai-receptionist/', 'AI recepcionar']],
+  },
+  {
+    path: '/industrije/racunovodstvo-i-konsalting/',
+    crumbs: [['Industrije', '/industrije/'], ['Računovodstvo i konsalting', '/industrije/racunovodstvo-i-konsalting/']],
+    eyebrow: 'INDUSTRIJE · B2B USLUGE I RAČUNOVODSTVO',
+    title: 'Web stranica za računovodstvene agencije i konsultante | Digital X',
+    h1: 'Web stranica za računovodstvo i konsalting: autoritet koji donosi B2B upite',
+    desc: 'Izrada web stranica i SEO za računovodstvene agencije, porezne savjetnike i B2B konsultante u BiH i dijaspori: jasne usluge, vodiči i upiti. Od 449 KM.',
+    keywords: ['web stranica za računovodstvo', 'knjigovodstvena agencija web stranica', 'marketing za računovođe bih', 'b2b web stranica sarajevo'],
+    service: { name: 'Web stranice i SEO za računovodstvo i konsalting', serviceType: 'Web design and SEO for accounting and consulting firms', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }], offers: [['Premium web prisustvo', 449], ['SEO · GEO · AEO', 249, 'mjesečno']] },
+    answer: 'Vlasnik firme koji traži knjigovođu ili poslovnog savjetnika bira povjerenje, stručnost i brz odgovor. Digital X izrađuje B2B web stranice za računovodstvene agencije i konsultante s jasnim paketima, stručnim odgovorima i lokalnim SEO-om: prezentacijska stranica kreće od 449 KM, a SEO · GEO · AEO od 249 KM mjesečno.',
+    sections: [
+      ['Šta B2B klijent provjerava prije prvog sastanka', `<ul><li><strong>Vrste klijenata.</strong> Radite li s obrtima, d.o.o. firmama, IT sektorom ili stranim investitorima koji otvaraju firmu u BiH?</li>
+<li><strong>Jasne usluge.</strong> Knjigovodstvo, obračun plata, porezno savjetovanje, osnivanje firme i prijave.</li>
+<li><strong>Stručni odgovori (AEO/GEO).</strong> Kratki vodiči o porezima, doprinosima i otvaranju firme dovode klijente direktno s Googlea i AI pretrage.</li>
+<li><strong>Više jezika.</strong> Engleski i njemački za strane osnivače i dijasporu.</li></ul>`],
+      ['Automatizacija prvog upita', `<p>Umjesto dugih telefonskih poziva bez osnovnih podataka, forma ili ${a('/usluge/ai-chatbot-za-web-stranicu/', 'AI asistent')} može unaprijed pitati za pravni oblik firme, broj zaposlenih i djelatnost.</p>`],
+    ],
+    faq: [
+      ['Koliko košta web stranica za računovodstvenu agenciju?', 'Prezentacijska stranica kreće od 449 KM jednokratno, a Smart Website Launch s AI asistentom košta 499 KM.'],
+      ['Možete li napraviti stranicu i na engleskom ili njemačkom za strane firme?', 'Da. Višejezične stranice pomažu agencijama koje rade sa stranim investitorima i dijasporom.'],
+      ['Kako privući nove B2B klijente bez agresivnih oglasa?', 'Kombinacijom jasnih stranica usluga, stručnih odgovora na česta pitanja (SEO/AEO) i uređenog Google Business profila.'],
+    ],
+    related: [['/industrije/advokati/', 'Web za advokatske kancelarije'], ['/usluge/seo-aeo-geo/', 'SEO · AEO · GEO usluga'], ['/industrije/', 'Sve industrije']],
+  },
+  {
     path: '/usluge/optimizacija-brzine-sajta/',
     crumbs: [['Usluge', '/usluge/'], ['Optimizacija brzine sajta', '/usluge/optimizacija-brzine-sajta/']],
     eyebrow: 'BRZINA SAJTA · CORE WEB VITALS',
@@ -357,12 +409,17 @@ ${demo('/cinematic-clothes/', 'cinematic web za modni brend')}
 <p>Održavanje pokriva ažuriranje znanja asistenta kad se promijene usluge ili cijene. Konačan obim potvrđujemo pisano prije početka.</p>`],
       ['Pošteno prema posjetiocu', `<p>Posjetilac uvijek zna da razgovara s asistentom, a ne s osobom. Asistent ne daje obećanja koja vaša firma nije odobrila, a podatke iz razgovora koristite samo za odgovor na upit. Šta to znači za zaštitu podataka objašnjavamo u vodiču ${a('/znanje/gdpr-pristupacnost-web-stranice/', 'GDPR, kolačići i pristupačnost')}.</p>`],
       ['Za telefon i termine', `<p>Ako upiti stižu pozivom ili trebaju zakazivanje termina, pogledajte ${a('/usluge/ai-receptionist/', 'AI recepcionara')}. Šta je chatbot i kad se isplati objašnjava ${a('/blog/ai-chatbot-vodic.html', 'vodič o AI chatbotu za biznis')}.</p>`],
+      ['AI prodajni asistent vs. obični chatbot', `<div class="table-wrap"><table><thead><tr><th scope="col">Kriterij</th><th scope="col">Digital X AI asistent</th><th scope="col">Obični „klikni dugme“ chatbot</th></tr></thead><tbody>
+<tr><th scope="row">Izvor odgovora</th><td>Vaši odobreni dokumenti, cjenovnik i FAQ</td><td>Unaprijed zaključana stabla dugmadi</td></tr>
+<tr><th scope="row">Jezici</th><td>BS / HR / SR / EN / DE prirodan razgovor</td><td>Ručno prevođenje svakog koraka</td></tr>
+<tr><th scope="row">Kvalifikacija i predaja</th><td>Prikuplja kontekst i šalje sažetak timu</td><td>Često ostavlja korisnika bez odgovora</td></tr></tbody></table></div>`],
     ],
     faq: [
       ['Koliko košta AI chatbot za web stranicu?', 'AI prodajni asistent kod Digital X kreće od 490 KM, uz održavanje od 149 KM mjesečno. Uz novu stranicu, Smart Website Launch od 499 KM uključuje asistenta prva tri mjeseca.'],
       ['Da li chatbot izmišlja odgovore?', 'Asistent odgovara iz informacija koje vi odobrite. Kad ne zna odgovor ili pitanje traži osobu, predaje razgovor vašem timu.'],
       ['Na kojim jezicima radi?', 'Na bosanskom, hrvatskom, srpskom, engleskom i njemačkom, prema tome koje jezike koriste vaši kupci.'],
       ['Može li raditi i na Instagramu ili WhatsAppu?', 'Asistent je namijenjen webu i kanalima komunikacije. Koje kanale povezujemo dogovaramo u ponudi, prema obimu.'],
+      ['Koliko traje postavljanje AI asistenta?', 'Osnovno postavljanje na postojeću stranicu traje 5 do 10 radnih dana nakon prijema vaših odobrenih materijala i cjenovnika.'],
     ],
     related: [['/ai-concierge-preview/', 'Isprobajte demo razgovor'], ['/blog/ai-chatbot-vodic.html', 'Vodič: AI chatbot za biznis'], ['/usluge/ai-receptionist/', 'AI recepcionar']],
   },
@@ -527,6 +584,6 @@ export const industryHub = {
   path: '/industrije/',
   title: 'Web stranice i marketing po djelatnostima | Digital X',
   h1: 'Web stranice i marketing za vašu djelatnost',
-  desc: 'Digital X web stranice, lokalni SEO i AI asistenti prilagođeni djelatnostima: stomatološke ordinacije, advokati, hoteli i apartmani, nekretnine, restorani i luksuzni brendovi.',
-  answer: 'Svaka djelatnost ima svoja pitanja kupaca. Pacijent traži tretman i tim, gost prostor i lokaciju, klijent advokata područje rada. Odaberite svoju djelatnost i pogledajte šta stranica treba, koji koncept možete isprobati i koliko košta.',
+  desc: 'Digital X web stranice, lokalni SEO i AI asistenti prilagođeni djelatnostima: stomatološke ordinacije, privatne klinike, advokati, računovodstvo, hoteli, nekretnine, restorani i luksuzni brendovi.',
+  answer: 'Svaka djelatnost ima svoja pitanja kupaca. Pacijent traži tretman i tim, gost prostor i lokaciju, klijent advokata ili računovođe područje rada. Odaberite svoju djelatnost i pogledajte šta stranica treba, koji koncept možete isprobati i koliko košta.',
 };
