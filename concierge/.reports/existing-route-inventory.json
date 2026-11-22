@@ -481,7 +481,7 @@
     "file": "./de/growthos.html",
     "title": "GrowthOS individuelle Business-App | Digital X",
     "canonical": "https://digital-x-marketing.com/de/growthos.html",
-    "robots": "",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Ihr Unternehmen.Ein Betriebssystem."
     ],
@@ -541,7 +541,7 @@
     "file": "./de/landing-web.html",
     "title": "Professionelle Websites für Anwälte, Praxen und Handwerk — ab 449 KM | Digital X",
     "canonical": "https://digital-x-marketing.com/de/landing-web.html",
-    "robots": "",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Ihre Kunden googeln Sie zuerst. Was finden sie gerade?"
     ],
@@ -601,7 +601,7 @@
     "file": "./de/second-brain-os.html",
     "title": "AI Second Brain OS und privater Co-Pilot | Digital X",
     "canonical": "https://digital-x-marketing.com/de/second-brain-os.html",
-    "robots": "",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Ihr Unternehmenswissen.Eine lebendige Galaxie."
     ],
@@ -971,7 +971,7 @@
     "file": "./en/growthos.html",
     "title": "GrowthOS custom business app | Digital X",
     "canonical": "https://digital-x-marketing.com/en/growthos.html",
-    "robots": "",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Your business.One operating system."
     ],
@@ -1031,7 +1031,7 @@
     "file": "./en/landing-web.html",
     "title": "Professional websites for lawyers, clinics and trades — from 449 KM | Digital X",
     "canonical": "https://digital-x-marketing.com/en/landing-web.html",
-    "robots": "",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Your clients google you first. What do they find right now?"
     ],
@@ -1091,7 +1091,7 @@
     "file": "./en/second-brain-os.html",
     "title": "AI Second Brain OS and private Co-Pilot | Digital X",
     "canonical": "https://digital-x-marketing.com/en/second-brain-os.html",
-    "robots": "",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Your business knowledge.One living galaxy."
     ],
@@ -1301,7 +1301,7 @@
     "file": "./growthos.html",
     "title": "GrowthOS poslovna aplikacija po mjeri | Digital X",
     "canonical": "https://digital-x-marketing.com/growthos.html",
-    "robots": "",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Vaš posao.Jedan operativni sistem."
     ],
@@ -1551,7 +1551,7 @@
     "file": "./second-brain-os.html",
     "title": "AI Second Brain OS i privatni Co-Pilot | Digital X",
     "canonical": "https://digital-x-marketing.com/second-brain-os.html",
-    "robots": "",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Vaše poslovno znanje.Jedna živa galaksija."
     ],

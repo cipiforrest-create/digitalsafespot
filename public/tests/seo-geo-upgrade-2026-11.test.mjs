@@ -104,6 +104,11 @@ test('2026 GEO/AEO upgrades: sameAs GitHub, ProfilePage, inline citations, EN/DE
   const benchmark = read('/znanje/ai-spremnost-web-stranica-bih-2026/index.html');
   assert.match(benchmark, /developers\.google\.com\/search\/docs\/appearance\/ai-features/);
   assert.match(benchmark, /arxiv\.org\/pdf\/2311\.09735/);
+  assert.match(benchmark, /78 javnih BiH poslovnih sajtova/);
+  assert.match(benchmark, /30,8%/);
+  for (const f of ['/growthos.html', '/en/growthos.html', '/de/growthos.html', '/second-brain-os.html', '/en/second-brain-os.html', '/de/second-brain-os.html', '/en/landing-web.html', '/de/landing-web.html']) {
+    assert.match(read(f), /max-snippet:-1/, `${f} max-snippet:-1`);
+  }
 
   const seoService = read('/usluge/seo-aeo-geo/index.html');
   assert.match(seoService, /Klasični SEO vs\. integrisani SEO, GEO i AEO/);
