@@ -7,9 +7,9 @@ import { fileURLToPath } from "node:url";
 const site = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (relative) => readFileSync(resolve(site, relative), "utf8");
 const variants = [
-  { file: "index.html", lang: "bs", url: "https://www.digital-x-marketing.com/", current: "BS" },
-  { file: "en/index.html", lang: "en", url: "https://www.digital-x-marketing.com/en/", current: "EN" },
-  { file: "de/index.html", lang: "de", url: "https://www.digital-x-marketing.com/de/", current: "DE" },
+  { file: "index.html", lang: "bs", url: "https://digital-x-marketing.com/", current: "BS" },
+  { file: "en/index.html", lang: "en", url: "https://digital-x-marketing.com/en/", current: "EN" },
+  { file: "de/index.html", lang: "de", url: "https://digital-x-marketing.com/de/", current: "DE" },
 ];
 const cinematicSlugs = [
   "cinematic-hotel",
@@ -27,10 +27,10 @@ test("localized homepages use distinct self canonicals and complete reciprocal h
     assert.match(html, new RegExp(`<html lang=["']${variant.lang}["']`), variant.file);
     assert.ok(html.includes(`<link rel="canonical" href="${variant.url}">`), variant.file);
     for (const [lang, url] of [
-      ["bs", "https://www.digital-x-marketing.com/"],
-      ["en", "https://www.digital-x-marketing.com/en/"],
-      ["de", "https://www.digital-x-marketing.com/de/"],
-      ["x-default", "https://www.digital-x-marketing.com/"],
+      ["bs", "https://digital-x-marketing.com/"],
+      ["en", "https://digital-x-marketing.com/en/"],
+      ["de", "https://digital-x-marketing.com/de/"],
+      ["x-default", "https://digital-x-marketing.com/"],
     ]) {
       assert.ok(html.includes(`hreflang="${lang}" href="${url}"`), `${variant.file}: ${lang}`);
     }

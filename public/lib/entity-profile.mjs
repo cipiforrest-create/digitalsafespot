@@ -1,4 +1,4 @@
-export const SITE_ORIGIN = 'https://www.digital-x-marketing.com';
+export const SITE_ORIGIN = 'https://digital-x-marketing.com';
 export const ORGANIZATION_ID = `${SITE_ORIGIN}/#organization`;
 export const LOCAL_BUSINESS_ID = `${SITE_ORIGIN}/#local-business`;
 export const WEBSITE_ID = `${SITE_ORIGIN}/#website`;

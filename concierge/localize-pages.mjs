@@ -2,7 +2,7 @@ import {readFileSync} from 'node:fs';
 import {load} from 'cheerio';
 import {copyTranslations} from './seo-copy.mjs';
 
-const origin='https://www.digital-x-marketing.com';
+const origin='https://digital-x-marketing.com';
 const attributes=['alt','title','aria-label','placeholder','data-feature','data-goal-prompt'];
 const reviewed=JSON.parse(readFileSync(new URL('./locales/reviewed.json',import.meta.url),'utf8'));
 const seoEditorialTranslations=JSON.parse(readFileSync(new URL('./locales/seo-editorial-2026-11.json',import.meta.url),'utf8'));

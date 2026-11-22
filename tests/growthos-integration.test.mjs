@@ -30,7 +30,7 @@ describe("GrowthOS website integration", () => {
     const landing = read("growthos.html");
 
     assert.match(landing, /<title>GrowthOS[^<]+Digital X<\/title>/);
-    assert.match(landing, /rel="canonical" href="https:\/\/www\.digital-x-marketing\.com\/growthos\.html"/);
+    assert.match(landing, /rel="canonical" href="https:\/\/digital-x-marketing\.com\/growthos\.html"/);
     assert.match(landing, /property="og:title"/);
     assert.match(landing, /name="twitter:card" content="summary_large_image"/);
     assert.match(landing, /"@type":\s*"SoftwareApplication"/);
@@ -94,7 +94,7 @@ describe("GrowthOS website integration", () => {
   });
 
   it("adds GrowthOS to discovery files", () => {
-    assert.match(read("sitemap.xml"), /https:\/\/www\.digital-x-marketing\.com\/growthos\.html/);
+    assert.match(read("sitemap.xml"), /https:\/\/digital-x-marketing\.com\/growthos\.html/);
     assert.match(read("llms.txt"), /GrowthOS/);
   });
 

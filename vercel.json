@@ -368,6 +368,16 @@
       "permanent": true
     },
     {
+      "source": "/en/index.html",
+      "destination": "/en/",
+      "permanent": true
+    },
+    {
+      "source": "/de/index.html",
+      "destination": "/de/",
+      "permanent": true
+    },
+    {
       "source": "/blog/index.html",
       "destination": "/blog/",
       "permanent": true
@@ -519,29 +529,7 @@
     },
     {
       "source": "/",
-      "destination": "https://www.digital-x-marketing.com/",
-      "permanent": true,
-      "has": [
-        {
-          "type": "host",
-          "value": "digital-x-marketing.com"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "destination": "https://www.digital-x-marketing.com/$1",
-      "permanent": true,
-      "has": [
-        {
-          "type": "host",
-          "value": "digital-x-marketing.com"
-        }
-      ]
-    },
-    {
-      "source": "/",
-      "destination": "https://www.digital-x-marketing.com/",
+      "destination": "https://digital-x-marketing.com/",
       "permanent": true,
       "has": [
         {
@@ -552,7 +540,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "https://www.digital-x-marketing.com/$1",
+      "destination": "https://digital-x-marketing.com/$1",
       "permanent": true,
       "has": [
         {
@@ -563,7 +551,7 @@
     },
     {
       "source": "/",
-      "destination": "https://www.digital-x-marketing.com/",
+      "destination": "https://digital-x-marketing.com/",
       "permanent": true,
       "has": [
         {
@@ -574,7 +562,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "https://www.digital-x-marketing.com/$1",
+      "destination": "https://digital-x-marketing.com/$1",
       "permanent": true,
       "has": [
         {
@@ -585,7 +573,7 @@
     },
     {
       "source": "/",
-      "destination": "https://www.digital-x-marketing.com/",
+      "destination": "https://digital-x-marketing.com/",
       "permanent": true,
       "has": [
         {
@@ -596,7 +584,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "https://www.digital-x-marketing.com/$1",
+      "destination": "https://digital-x-marketing.com/$1",
       "permanent": true,
       "has": [
         {
@@ -607,7 +595,7 @@
     },
     {
       "source": "/",
-      "destination": "https://www.digital-x-marketing.com/",
+      "destination": "https://digital-x-marketing.com/",
       "permanent": true,
       "has": [
         {
@@ -618,7 +606,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "https://www.digital-x-marketing.com/$1",
+      "destination": "https://digital-x-marketing.com/$1",
       "permanent": true,
       "has": [
         {
@@ -650,11 +638,6 @@
     {
       "source": "/en/cinematic-digiritalx/",
       "destination": "/en/cinematic-digitalx/",
-      "permanent": false
-    },
-    {
-      "source": "/en/cinematic-digiritalx/",
-      "destination": "/en/cinematic-digitalx/",
       "statusCode": 301
     },
     {
@@ -666,11 +649,6 @@
       "source": "/de/cinematic-digiritalx",
       "destination": "/de/cinematic-digitalx/",
       "statusCode": 301
-    },
-    {
-      "source": "/de/cinematic-digiritalx/",
-      "destination": "/de/cinematic-digitalx/",
-      "permanent": false
     },
     {
       "source": "/de/cinematic-digiritalx/",

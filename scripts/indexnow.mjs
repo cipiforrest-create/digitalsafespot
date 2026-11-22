@@ -4,7 +4,7 @@
 // only new or changed URLs; --all submits every URL. Google does not use IndexNow (it reads the sitemap instead).
 import {readFileSync,writeFileSync,existsSync,readdirSync} from 'node:fs';
 
-const HOST='www.digital-x-marketing.com';
+const HOST='digital-x-marketing.com';
 const ORIGIN=`https://${HOST}`;
 const SENT='concierge/.reports/indexnow-sent.json';
 const dryRun=process.argv.includes('--dry-run');

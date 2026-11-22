@@ -39,7 +39,7 @@ test('guides contain answer-oriented tables and visible FAQs, with old canonical
     assert.match(html, /<table class="dx-guide-table">/);
     assert.match(html, /<h3>/);
     assert.match(html, /Česta pitanja/);
-    assert.ok(html.includes('href="https://www.digital-x-marketing.com/blog/' + slug + '.html"'));
+    assert.ok(html.includes('href="https://digital-x-marketing.com/blog/' + slug + '.html"'));
     assert.ok(html.includes('href="/kontakt.html"'));
   }
 });

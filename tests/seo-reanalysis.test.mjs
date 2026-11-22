@@ -22,7 +22,7 @@ test('new landing pages are indexable, canonical and carry Service + FAQPage sch
   for (const path of landings) {
     const html = read(path + 'index.html');
     assert.match(html, /<meta name="robots" content="index,follow/, path);
-    assert.ok(html.includes(`<link rel="canonical" href="https://www.digital-x-marketing.com${path}">`), path);
+    assert.ok(html.includes(`<link rel="canonical" href="https://digital-x-marketing.com${path}">`), path);
     const types = schemaTypes(html);
     for (const type of ['Service', 'FAQPage', 'BreadcrumbList']) assert.ok(types.includes(type), `${path} ${type}`);
   }
@@ -32,8 +32,8 @@ test('new landing pages are indexable, canonical and carry Service + FAQPage sch
 test('new pages are in the sitemap and llms.txt', () => {
   const sitemap = read('/sitemap.xml'), llms = read('/llms.txt');
   for (const path of [...landings, '/industrije/']) {
-    assert.ok(sitemap.includes(`https://www.digital-x-marketing.com${path}<`), `sitemap ${path}`);
-    assert.ok(llms.includes(`https://www.digital-x-marketing.com${path})`), `llms ${path}`);
+    assert.ok(sitemap.includes(`https://digital-x-marketing.com${path}<`), `sitemap ${path}`);
+    assert.ok(llms.includes(`https://digital-x-marketing.com${path})`), `llms ${path}`);
   }
 });
 
@@ -62,8 +62,8 @@ test('Blog and the knowledge hub are one page at /blog/', async () => {
   assert.ok(!existsSync('public/znanje/index.html'));
   const { legacyServiceTarget } = await import('../lib/routing-policy.mjs');
   for (const path of ['/znanje', '/znanje/', '/znanje/index.html'])
-    assert.equal(legacyServiceTarget(`https://www.digital-x-marketing.com${path}`), 'https://www.digital-x-marketing.com/blog/');
-  assert.equal(legacyServiceTarget('https://www.digital-x-marketing.com/znanje/sta-je-seo-optimizacija/'), null);
+    assert.equal(legacyServiceTarget(`https://digital-x-marketing.com${path}`), 'https://digital-x-marketing.com/blog/');
+  assert.equal(legacyServiceTarget('https://digital-x-marketing.com/znanje/sta-je-seo-optimizacija/'), null);
 });
 
 test('Blog and guide pages use the homepage header: same menu, language switch, no Znanje item', () => {

@@ -31,7 +31,7 @@ describe("cinematic SEO/AEO proxy", () => {
     const source = `<!doctype html><html><head><title>HALCYON</title></head><body><div id="experience">Film</div></body></html>`;
     const html = enhanceCinematicHtml(source, "cinematic-hotel");
 
-    assert.match(html, /rel="canonical" href="https:\/\/www\.digital-x-marketing\.com\/cinematic-hotel\/"/);
+    assert.match(html, /rel="canonical" href="https:\/\/digital-x-marketing\.com\/cinematic-hotel\/"/);
     assert.match(html, /name="description"/);
     assert.match(html, /property="og:title"/);
     assert.match(html, /property="og:description"/);
@@ -60,7 +60,7 @@ describe("cinematic SEO/AEO proxy", () => {
     assert.ok(types.includes("WebPage"));
     assert.equal(
       schema["@graph"].find((node) => node["@type"] === "WebPage").url,
-      "https://www.digital-x-marketing.com/cinematic-hotel/",
+      "https://digital-x-marketing.com/cinematic-hotel/",
     );
   });
 

@@ -16,7 +16,7 @@ test('Smart Website Launch has one canonical page in every language', () => {
       const path = `${prefix}/smart-website-launch${tail}`;
       assert.equal(movedPageTarget(path), target);
       assert.ok(isLegacyRedirectPath(path), `${path} must stay out of the sitemap`);
-      assert.equal(legacyServiceTarget(`https://www.digital-x-marketing.com${path}`), `https://www.digital-x-marketing.com${target}`);
+      assert.equal(legacyServiceTarget(`https://digital-x-marketing.com${path}`), `https://digital-x-marketing.com${target}`);
     }
   }
   assert.equal(movedPageTarget('/shop/product/smart-website-launch/'), null);

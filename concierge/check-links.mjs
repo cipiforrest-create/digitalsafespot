@@ -1,7 +1,7 @@
 import {readFileSync,existsSync,statSync,writeFileSync,mkdirSync} from 'node:fs';
 import {load} from 'cheerio';
 const config=JSON.parse(readFileSync('vercel.json','utf8'));
-const origin='https://www.digital-x-marketing.com';
+const origin='https://digital-x-marketing.com';
 const sitemap=load(readFileSync('public/sitemap.xml','utf8'),{xmlMode:true});
 const urls=sitemap('loc').map((i,e)=>sitemap(e).text()).get();
 const errors=[],redirects=[];

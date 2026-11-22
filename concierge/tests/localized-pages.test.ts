@@ -20,7 +20,7 @@ for(const lang of ['en','de']){
    }
    const resources=(doc:ReturnType<typeof load>)=>doc('script[src],link[rel=stylesheet],main img').toArray().map(n=>doc(n).attr('src')||doc(n).attr('href'));
    assert.deepEqual(resources($),resources(bs),route);
-   assert.equal($('link[rel=canonical]').attr('href'),`https://www.digital-x-marketing.com/${lang}${dedupedCanonical[route]??route}`);
+   assert.equal($('link[rel=canonical]').attr('href'),`https://digital-x-marketing.com/${lang}${dedupedCanonical[route]??route}`);
    assert.deepEqual($('link[hreflang]').map((_,n)=>$(n).attr('hreflang')).get(),['bs','en','de','x-default']);
    assert.equal($(`.language-nav a[lang=${lang}]`).attr('aria-current'),'page');
    assert.equal($(`.language-nav a[lang=bs]`).attr('href'),dedupedCanonical[route]??route);

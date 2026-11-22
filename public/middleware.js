@@ -314,12 +314,12 @@ export default async function middleware(request) {
   // Internal source request: continue to the deployment's original static/rewrite handler.
   if (requestUrl.searchParams.get(RAW_QUERY) === "1") return next();
 
+  const serviceTarget = legacyServiceTarget(requestUrl);
+  if (serviceTarget) return redirect301(serviceTarget);
+
   const slashTarget = htmlTwinTarget(requestUrl, HTML_ROUTES) || trailingSlashTarget(requestUrl);
   const canonicalTarget = canonicalHostTarget(slashTarget ? new URL(slashTarget) : requestUrl) || slashTarget;
   if (canonicalTarget) return redirect301(canonicalTarget);
-
-  const serviceTarget = legacyServiceTarget(requestUrl);
-  if (serviceTarget) return redirect301(serviceTarget);
 
   // The homepage is the prebuilt 3D homepage (concierge/build.mjs); the classic-homepage enhancements don't apply.
   const pagePath = pathname.replace(/^\/(?:en|de)(?=\/|$)/, '') || '/';

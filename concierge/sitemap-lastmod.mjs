@@ -7,7 +7,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {sourcePathForService,isServicePath} from '../lib/service-seo.mjs';
 
-const ORIGIN='https://www.digital-x-marketing.com';
+const ORIGIN='https://digital-x-marketing.com';
 const STORE='concierge/.reports/sitemap-lastmod.json';
 const today=new Date().toISOString().slice(0,10);
 const store=existsSync(STORE)?JSON.parse(readFileSync(STORE,'utf8')):{};

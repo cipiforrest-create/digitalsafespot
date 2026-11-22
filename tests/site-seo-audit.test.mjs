@@ -15,8 +15,8 @@ test("homepage exposes stable Organization, LocalBusiness and WebSite entities",
   assert.match(html, /"@type":"Organization"/);
   assert.match(html, /"@type":"LocalBusiness"/);
   assert.match(html, /"@type":"WebSite"/);
-  assert.match(html, /https:\/\/www\.digital-x-marketing\.com\/#organization/);
-  assert.match(html, /https:\/\/www\.digital-x-marketing\.com\/#local-business/);
+  assert.match(html, /https:\/\/digital-x-marketing\.com\/#organization/);
+  assert.match(html, /https:\/\/digital-x-marketing\.com\/#local-business/);
 });
 
 test("blog gets machine-readable Blog and ItemList schema and heading jumps are normalized", () => {

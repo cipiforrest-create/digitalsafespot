@@ -20,12 +20,12 @@ try{
   report.session={status:session.status(),ready:session.ok()};
   if(!session.ok())throw new Error('Deployed session failed');
   report.text={tested:false,reason:'Configured text model daily free-tier quota exhausted; no additional model request made.'};
-  const audit=await context.request.post(origin+'/api/concierge/audit',{headers:{Origin:origin},data:{url:'https://www.digital-x-marketing.com/',industry:'Digital services',market:'Bosnia and Herzegovina',objective:'AI visibility'},timeout:35000});
+  const audit=await context.request.post(origin+'/api/concierge/audit',{headers:{Origin:origin},data:{url:'https://digital-x-marketing.com/',industry:'Digital services',market:'Bosnia and Herzegovina',objective:'AI visibility'},timeout:35000});
   const body=await audit.text();report.audit={status:audit.status(),hasEvidence:body.includes('event: result')};
   if(!audit.ok()||!report.audit.hasEvidence)throw new Error('Deployed audit failed');
   report.n8n={configured:false,tested:false,reason:'N8N_WEBHOOK_URL is absent; no enquiry submitted.'};
   for(const path of ['/','/o-nama.html','/blog/','/projekti/','/shop/']){
-    const response=await fetch('https://www.digital-x-marketing.com'+path);const html=await response.text();
+    const response=await fetch('https://digital-x-marketing.com'+path);const html=await response.text();
     report.production.push({path,status:response.status,concierge:html.includes('id="hero-title"')});
   }
   const star=await context.request.get(origin+'/ai-concierge-preview/star/');

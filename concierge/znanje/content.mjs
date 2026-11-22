@@ -1,6 +1,6 @@
 // Centar znanja: clusters, the customer journey and every guide.
 // Prices quoted here are the published starting prices from the shop catalogue; keep them in sync.
-export const origin = 'https://www.digital-x-marketing.com';
+export const origin = 'https://digital-x-marketing.com';
 export const published = '2026-11-21';
 
 export const stages = [

@@ -278,14 +278,14 @@ for (const [relative, content] of outputs) {
 
 const sitemapPath = resolve(site, "sitemap.xml");
 let sitemap = await readFile(sitemapPath, "utf8");
-sitemap = sitemap.replace(/\s*<url><loc>https:\/\/www\.digital-x-marketing\.com\/shop\/(?:category|product)\.html\?[^<]+<\/loc><lastmod>[^<]+<\/lastmod><\/url>/g, "");
-sitemap = sitemap.replace(/\s*<url><loc>https:\/\/www\.digital-x-marketing\.com\/shop\/(?:category|product)\/[^/]+\/<\/loc><lastmod>[^<]+<\/lastmod><\/url>/g, "");
+sitemap = sitemap.replace(/\s*<url><loc>https:\/\/digital-x-marketing\.com\/shop\/(?:category|product)\.html\?[^<]+<\/loc><lastmod>[^<]+<\/lastmod><\/url>/g, "");
+sitemap = sitemap.replace(/\s*<url><loc>https:\/\/digital-x-marketing\.com\/shop\/(?:category|product)\/[^/]+\/<\/loc><lastmod>[^<]+<\/lastmod><\/url>/g, "");
 const routeLines = [
   ...categoryEntries.map(([id]) => `  <url><loc>${absolute(catalog.categoryPath(id))}</loc><lastmod>${lastmod}</lastmod></url>`),
   ...catalog.products.map((product) => `  <url><loc>${absolute(catalog.productPath(product.id))}</loc><lastmod>${lastmod}</lastmod></url>`),
 ].join("\n");
 sitemap = sitemap.replace(
-  /(<url><loc>https:\/\/www\.digital-x-marketing\.com\/shop\/<\/loc><lastmod>[^<]+<\/lastmod><\/url>)/,
+  /(<url><loc>https:\/\/digital-x-marketing\.com\/shop\/<\/loc><lastmod>[^<]+<\/lastmod><\/url>)/,
   `$1\n${routeLines}`,
 );
 

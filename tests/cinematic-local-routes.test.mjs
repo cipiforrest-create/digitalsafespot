@@ -75,7 +75,7 @@ test("VANTA ships its local cinematic page and contiguous frame set", () => {
   const runtime = read("cinematic-vanta/app.js");
 
   assert.match(html, /<canvas id="drive"/);
-  assert.match(html, /href="https:\/\/www\.digital-x-marketing\.com\/cinematic-vanta\/"/);
+  assert.match(html, /href="https:\/\/digital-x-marketing\.com\/cinematic-vanta\/"/);
   assert.match(html, /rel="preload" as="image" href="\/assets\/primjeri\/vanta\/frames\/frame_001\.jpg"/);
   assert.match(html, /rel="preload" as="image" href="\/assets\/primjeri\/vanta\/hero\.jpg"/);
   assert.match(html, /src="\/cinematic-vanta\/app\.js"/);

@@ -62,7 +62,7 @@ test("the film ships the poster, the brand social card and one still per chapter
       assert.ok(statSync(file).size > 4096, `${name}.${extension}`);
     }
   }
-  assert.match(html, /og:image" content="https:\/\/www\.digital-x-marketing\.com\/assets\/brand\/digital-x-og\.jpg"/);
+  assert.match(html, /og:image" content="https:\/\/digital-x-marketing\.com\/assets\/brand\/digital-x-og\.jpg"/);
   assert.ok(statSync(resolve(site, "assets/brand/digital-x-og.jpg")).size > 4096, "brand social card");
   assert.equal((html.match(/journey-beat-\d\.jpg/g) || []).length, 6);
 });

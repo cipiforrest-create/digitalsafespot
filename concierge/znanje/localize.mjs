@@ -6,7 +6,7 @@ import { EDITORIAL_POLICY_URL, ROBOTS_INDEX_CONTENT, SAME_AS } from '../../lib/e
 import { localizedServices } from './localized-services.mjs';
 import { localizedGuides } from './localized-guides.mjs';
 
-const origin = 'https://www.digital-x-marketing.com';
+const origin = 'https://digital-x-marketing.com';
 const published = '2026-11-21';
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const slugify = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'dj').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');

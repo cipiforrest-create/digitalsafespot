@@ -24,7 +24,7 @@ try{
    await page.waitForURL(`**${prefix}/kontakt.html`);
    assert.equal(await page.locator('body').getAttribute('data-page'),'contact');
    assert.equal(await page.locator('html').getAttribute('lang'),lang);
-   assert.equal(await page.locator('link[rel=canonical]').getAttribute('href'),`https://www.digital-x-marketing.com${prefix}/kontakt.html`);
+   assert.equal(await page.locator('link[rel=canonical]').getAttribute('href'),`https://digital-x-marketing.com${prefix}/kontakt.html`);
    assert.equal(await page.locator('.language-nav a[lang=en]').getAttribute('href'),'/en/kontakt.html');
    await page.locator('.language-nav a[lang=de]').click();
    await page.waitForURL('**/de/kontakt.html');

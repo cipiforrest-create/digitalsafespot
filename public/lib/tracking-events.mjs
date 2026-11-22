@@ -1,4 +1,4 @@
-export function classifyHref(href, base = 'https://www.digital-x-marketing.com/') {
+export function classifyHref(href, base = 'https://digital-x-marketing.com/') {
   const raw = String(href || '').trim();
   if (/^mailto:/i.test(raw)) return 'email';
   if (/^tel:/i.test(raw)) return 'phone';

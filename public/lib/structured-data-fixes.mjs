@@ -1,4 +1,4 @@
-const SITE_ORIGIN = 'https://www.digital-x-marketing.com';
+const SITE_ORIGIN = 'https://digital-x-marketing.com';
 const LOGO_URL = `${SITE_ORIGIN}/assets/icon-512.png`;
 const FALLBACK_ARTICLE_IMAGE = `${SITE_ORIGIN}/media/poster/journey-core.jpg`;
 const ARTICLE_TYPES = new Set(['Article', 'BlogPosting', 'NewsArticle', 'TechArticle']);

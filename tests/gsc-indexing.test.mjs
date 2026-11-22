@@ -33,19 +33,19 @@ test("GSC enhancer covers localized shop and audited policy pages", () => {
 
 test("audited noindex pages receive noindex,follow without losing canonical", () => {
   const html = enhanceGscIndexingHtml(
-    doc("<h1>AI sistemi</h1>", '<link rel="canonical" href="https://www.digital-x-marketing.com/shop/category/ai/">'),
+    doc("<h1>AI sistemi</h1>", '<link rel="canonical" href="https://digital-x-marketing.com/shop/category/ai/">'),
     "/shop/category/ai/",
   );
   assert.match(html, /<meta name="robots" content="noindex,follow">/);
-  assert.match(html, /rel="canonical" href="https:\/\/www\.digital-x-marketing\.com\/shop\/category\/ai\/"/);
+  assert.match(html, /rel="canonical" href="https:\/\/digital-x-marketing\.com\/shop\/category\/ai\/"/);
 });
 
 test("shop routes receive one complete self-consistent hreflang cluster", () => {
   const html = enhanceGscIndexingHtml(doc("<h1>SEO · GEO · AEO</h1>"), "/en/shop/product/seo-aeo/");
-  assert.match(html, /hreflang="bs" href="https:\/\/www\.digital-x-marketing\.com\/shop\/product\/seo-aeo\/"/);
-  assert.match(html, /hreflang="en" href="https:\/\/www\.digital-x-marketing\.com\/en\/shop\/product\/seo-aeo\/"/);
-  assert.match(html, /hreflang="de" href="https:\/\/www\.digital-x-marketing\.com\/de\/shop\/product\/seo-aeo\/"/);
-  assert.match(html, /hreflang="x-default" href="https:\/\/www\.digital-x-marketing\.com\/shop\/product\/seo-aeo\/"/);
+  assert.match(html, /hreflang="bs" href="https:\/\/digital-x-marketing\.com\/shop\/product\/seo-aeo\/"/);
+  assert.match(html, /hreflang="en" href="https:\/\/digital-x-marketing\.com\/en\/shop\/product\/seo-aeo\/"/);
+  assert.match(html, /hreflang="de" href="https:\/\/digital-x-marketing\.com\/de\/shop\/product\/seo-aeo\/"/);
+  assert.match(html, /hreflang="x-default" href="https:\/\/digital-x-marketing\.com\/shop\/product\/seo-aeo\/"/);
   assert.equal((html.match(/hreflang="en"/g) || []).length, 1);
 });
 
@@ -70,15 +70,15 @@ test("localized shop cleanup fixes known machine-translation artifacts conservat
 
 test("sitemap filter removes exactly audited noindex URLs and keeps indexable routes", () => {
   const xml = `<?xml version="1.0"?><urlset>
-    <url><loc>https://www.digital-x-marketing.com/shop/category/ai/</loc></url>
-    <url><loc>https://www.digital-x-marketing.com/shop/category/web/</loc></url>
-    <url><loc>https://www.digital-x-marketing.com/en/shop/category/web/</loc></url>
-    <url><loc>https://www.digital-x-marketing.com/en/shop/category/ai/</loc></url>
-    <url><loc>https://www.digital-x-marketing.com/shop/product/seo-aeo/</loc></url>
-    <url><loc>https://www.digital-x-marketing.com/uslovi.html</loc></url>
+    <url><loc>https://digital-x-marketing.com/shop/category/ai/</loc></url>
+    <url><loc>https://digital-x-marketing.com/shop/category/web/</loc></url>
+    <url><loc>https://digital-x-marketing.com/en/shop/category/web/</loc></url>
+    <url><loc>https://digital-x-marketing.com/en/shop/category/ai/</loc></url>
+    <url><loc>https://digital-x-marketing.com/shop/product/seo-aeo/</loc></url>
+    <url><loc>https://digital-x-marketing.com/uslovi.html</loc></url>
   </urlset>`;
   const filtered = filterGscSitemap(xml);
-  assert.doesNotMatch(filtered, /https:\/\/www\.digital-x-marketing\.com\/shop\/category\/ai\/<\/loc>/);
+  assert.doesNotMatch(filtered, /https:\/\/digital-x-marketing\.com\/shop\/category\/ai\/<\/loc>/);
   assert.doesNotMatch(filtered, /\/en\/shop\/category\/web\/<\/loc>/);
   assert.doesNotMatch(filtered, /\/uslovi\.html<\/loc>/);
   assert.match(filtered, /\/shop\/category\/web\/<\/loc>/);
@@ -88,7 +88,7 @@ test("sitemap filter removes exactly audited noindex URLs and keeps indexable ro
 
 test("category pages do not advertise alternates that are intentionally noindexed", () => {
   const html = enhanceGscIndexingHtml(
-    doc("<h1>Web</h1>", '<link rel="alternate" hreflang="en" href="https://www.digital-x-marketing.com/en/shop/category/web/"><link rel="alternate" hreflang="de" href="https://www.digital-x-marketing.com/de/shop/category/web/">'),
+    doc("<h1>Web</h1>", '<link rel="alternate" hreflang="en" href="https://digital-x-marketing.com/en/shop/category/web/"><link rel="alternate" hreflang="de" href="https://digital-x-marketing.com/de/shop/category/web/">'),
     "/shop/category/web/",
   );
   assert.doesNotMatch(html, /hreflang=/);
@@ -96,15 +96,15 @@ test("category pages do not advertise alternates that are intentionally noindexe
 
 test("sitemap filter removes hreflang references to audited noindex URLs", () => {
   const xml = `<?xml version="1.0"?><urlset xmlns:xhtml="http://www.w3.org/1999/xhtml">
-    <url><loc>https://www.digital-x-marketing.com/shop/category/web/</loc>
-      <xhtml:link rel="alternate" hreflang="bs" href="https://www.digital-x-marketing.com/shop/category/web/" />
-      <xhtml:link rel="alternate" hreflang="en" href="https://www.digital-x-marketing.com/en/shop/category/web/" />
-      <xhtml:link rel="alternate" hreflang="de" href="https://www.digital-x-marketing.com/de/shop/category/web/" />
+    <url><loc>https://digital-x-marketing.com/shop/category/web/</loc>
+      <xhtml:link rel="alternate" hreflang="bs" href="https://digital-x-marketing.com/shop/category/web/" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://digital-x-marketing.com/en/shop/category/web/" />
+      <xhtml:link rel="alternate" hreflang="de" href="https://digital-x-marketing.com/de/shop/category/web/" />
     </url>
   </urlset>`;
   const filtered = filterGscSitemap(xml);
-  assert.match(filtered, /<loc>https:\/\/www\.digital-x-marketing\.com\/shop\/category\/web\/<\/loc>/);
-  assert.match(filtered, /href="https:\/\/www\.digital-x-marketing\.com\/shop\/category\/web\/"/);
-  assert.doesNotMatch(filtered, /href="https:\/\/www\.digital-x-marketing\.com\/en\/shop\/category\/web\/"/);
-  assert.doesNotMatch(filtered, /href="https:\/\/www\.digital-x-marketing\.com\/de\/shop\/category\/web\/"/);
+  assert.match(filtered, /<loc>https:\/\/digital-x-marketing\.com\/shop\/category\/web\/<\/loc>/);
+  assert.match(filtered, /href="https:\/\/digital-x-marketing\.com\/shop\/category\/web\/"/);
+  assert.doesNotMatch(filtered, /href="https:\/\/digital-x-marketing\.com\/en\/shop\/category\/web\/"/);
+  assert.doesNotMatch(filtered, /href="https:\/\/digital-x-marketing\.com\/de\/shop\/category\/web\/"/);
 });

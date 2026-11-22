@@ -137,7 +137,7 @@ test("public URLs use the canonical production domain", () => {
     const content = read(file);
     assert.doesNotMatch(content, /https:\/\/(?:web\.)?digitalx\.ba/);
     assert.doesNotMatch(content, /https:\/\/digital-x-agency\.vercel\.app/);
-    assert.match(content, /https:\/\/www\.digital-x-marketing\.com/);
+    assert.match(content, /https:\/\/digital-x-marketing\.com/);
   }
   assert.match(read("second-brain-os.html"), /https:\/\/digital-x-growthos\.vercel\.app/);
 });

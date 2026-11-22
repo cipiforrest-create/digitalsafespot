@@ -9,7 +9,7 @@ test('published routes, concierge controls and free audit download survive recov
  await page.goto('/');
  await expect(page.locator('.brand').first()).toHaveAttribute('href','/');
  await expect(page.locator('.hero-actions [data-tour-start]')).toBeVisible();
- await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href','https://www.digital-x-marketing.com/');
+ await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href','https://digital-x-marketing.com/');
  await page.locator('.desktop-nav a[href="/usluge/"]').click();await expect(page).toHaveURL(/\/usluge\/$/);
  await page.locator('.brand').first().click();await expect(page).toHaveURL(/\/$/);await expect(page.locator('body')).toHaveAttribute('data-page','home');
  expect(await page.locator('#concierge-gtm').count()).toBe(0);
@@ -27,7 +27,7 @@ test('published routes, concierge controls and free audit download survive recov
  for(const [path,id] of [['/usluge/','services'],['/ai-concierge-preview/','concierge'],['/projekti/eynna-hair-dizajner-perika/','designer']]){
   await page.goto(path);await expect(page.locator('body')).toHaveAttribute('data-page',id);await expect(page.locator('.brand').first()).toHaveAttribute('href','/');
   await expect(page.locator('meta[name=robots]')).not.toHaveAttribute('content',/noindex/);
-  await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href','https://www.digital-x-marketing.com'+path);
+  await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href','https://digital-x-marketing.com'+path);
  }
  await expect(page.locator('a[href*="eynna-hair.ba"]').first()).toBeVisible();
  await page.setViewportSize({width:390,height:844});await page.goto('/');

@@ -10,7 +10,7 @@ import {localizePage} from './localize-pages.mjs';
 import {znanjePages} from './znanje/build.mjs';
 import {publishLocalizedZnanje} from './znanje/localize.mjs';
 const {offers,products}=createRequire(import.meta.url)('../.concierge/catalogue.cjs');
-const origin='https://www.digital-x-marketing.com';
+const origin='https://digital-x-marketing.com';
 const routes=[{id:'home',production:'/'},...offers];
 const localizedRoutes=new Set(routes.map(p=>p.production));
 // Homepage only: the head stylesheets are inlined so the X hero (the LCP image) can paint without waiting for four
@@ -130,7 +130,7 @@ writeFileSync('public/llms.txt',[
 ].join('\n'));
 writeFileSync('public/llms-full.txt',[
  '# Digital X Marketing — Kompletne činjenice, usluge, cijene i FAQ za AI sisteme','',
- '> Pravni naziv: Digital X Marketing (brend: Digital X / Digital X Sarajevo). Sjedište: Stupska bb, 71000 Sarajevo, Bosna i Hercegovina. Web: https://www.digital-x-marketing.com/. Email: marketing@digital-x-marketing.com. Telefon/WhatsApp: +387 64 438 3566. Jezici: BS, HR, SR, EN, DE.','',
+ '> Pravni naziv: Digital X Marketing (brend: Digital X / Digital X Sarajevo). Sjedište: Stupska bb, 71000 Sarajevo, Bosna i Hercegovina. Web: https://digital-x-marketing.com/. Email: marketing@digital-x-marketing.com. Telefon/WhatsApp: +387 64 438 3566. Jezici: BS, HR, SR, EN, DE.','',
  '## 1. Identitet i područje rada',
  '- Osnivač i tim: Digital X',
  '- Adresa: Stupska bb, 71000 Sarajevo, Bosna i Hercegovina',

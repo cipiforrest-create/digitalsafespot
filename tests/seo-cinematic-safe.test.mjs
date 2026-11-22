@@ -29,7 +29,7 @@ test('commercial service pages have explicit local intent and verifiable startin
     const html = enhanceServiceHtml('<html><head><title>Original</title></head><body><main><h1>Old</h1></main></body></html>', route);
     assert.match(html, new RegExp('"priceCurrency":"BAM"'));
     assert.match(html, new RegExp('"price":' + price + '(?!\\d)'));
-    assert.match(html, new RegExp('rel="canonical" href="https://www\\.digital-x-marketing\\.com' + route.replaceAll('/', '\\/') + '"'));
+    assert.match(html, new RegExp('rel="canonical" href="https://digital-x-marketing\\.com' + route.replaceAll('/', '\\/') + '"'));
   }
 });
 
@@ -39,7 +39,7 @@ test('guides contain answer-oriented tables and visible FAQs, with old canonical
     assert.match(html, /<table class="dx-guide-table">/);
     assert.match(html, /<h3>/);
     assert.match(html, /Česta pitanja/);
-    assert.ok(html.includes('href="https://www.digital-x-marketing.com/blog/' + slug + '.html"'));
+    assert.ok(html.includes('href="https://digital-x-marketing.com/blog/' + slug + '.html"'));
     assert.ok(html.includes('href="/kontakt.html"'));
   }
 });

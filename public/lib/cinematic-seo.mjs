@@ -1,4 +1,4 @@
-const SITE_ORIGIN = "https://www.digital-x-marketing.com";
+const SITE_ORIGIN = "https://digital-x-marketing.com";
 const ORGANIZATION_ID = `${SITE_ORIGIN}/#organization`;
 const WEBSITE_ID = `${SITE_ORIGIN}/#website`;
 const SOCIAL_IMAGE = `${SITE_ORIGIN}/assets/film/og-final.jpg`;

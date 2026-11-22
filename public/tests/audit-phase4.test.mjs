@@ -17,7 +17,7 @@ test('priced service pages carry a Service Offer with the catalogue starting pri
       assert.ok(service, `${prefix}/usluge/${slug}/ has no priced Service`);
       assert.equal(service.offers.price, price, slug);
       assert.equal(service.offers.priceCurrency, 'BAM', slug);
-      assert.equal(service.offers.url, `https://www.digital-x-marketing.com${prefix}/usluge/${slug}/`);
+      assert.equal(service.offers.url, `https://digital-x-marketing.com${prefix}/usluge/${slug}/`);
       assert.equal(service.offers.priceSpecification?.unitCode === 'MON', monthly, `${slug} monthly unit`);
     }
   }

@@ -20,4 +20,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://www.digital-x-marketing.com/sitemap.xml
+Sitemap: https://digital-x-marketing.com/sitemap.xml

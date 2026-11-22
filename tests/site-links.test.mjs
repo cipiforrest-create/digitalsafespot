@@ -7,7 +7,7 @@ import { allServicePaths } from '../lib/service-seo.mjs';
 // Every URL in the sitemap and every internal link on a page must reach a real file
 // (or a redirect that does). This is what was missing when an audit reported "dead" pages.
 const root = 'public';
-const origin = 'https://www.digital-x-marketing.com';
+const origin = 'https://digital-x-marketing.com';
 const vercel = JSON.parse(readFileSync('vercel.json', 'utf8'));
 const redirects = new Set(vercel.redirects.filter(r => !r.has).map(r => r.source));
 const rewrites = new Set(vercel.rewrites.map(r => r.source));

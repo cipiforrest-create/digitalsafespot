@@ -10,7 +10,7 @@ if(mode==='text'){
   const raw=await response.text();const sanitized=raw.replace(/"continuation":"[^"]+"/g,'"continuation":"[signed continuation omitted]"');console.log('Chat status',response.status,sanitized);
 }else if(mode==='audit'){
   await post('/api/concierge/session',{mode:'audit',context:{goal:null,messages:[]}});
-  const response=await post('/api/concierge/audit',{url:'https://www.digital-x-marketing.com/',industry:'Digital services',market:'Bosnia and Herzegovina',objective:'AI visibility'});const raw=await response.text();mkdirSync('concierge/.screenshots',{recursive:true});writeFileSync('concierge/.screenshots/live-audit.txt',raw);console.log('Audit status',response.status,'result',raw.includes('event: result'),'bytes',raw.length);
+  const response=await post('/api/concierge/audit',{url:'https://digital-x-marketing.com/',industry:'Digital services',market:'Bosnia and Herzegovina',objective:'AI visibility'});const raw=await response.text();mkdirSync('concierge/.screenshots',{recursive:true});writeFileSync('concierge/.screenshots/live-audit.txt',raw);console.log('Audit status',response.status,'result',raw.includes('event: result'),'bytes',raw.length);
 }else if(mode==='voice'){
   const response=await post('/api/concierge/session',{mode:'voice',context:{goal:null,messages:[]}});const token=await response.json();if(!response.ok){console.log('Voice token status',response.status,token);process.exitCode=1;}
   else { console.log('Voice token issued',response.status,'model',token.model);await new Promise(resolve=>{

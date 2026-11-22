@@ -1,7 +1,7 @@
 (() => {
   const localPreview = ["localhost", "127.0.0.1"].includes(location.hostname);
   const demoBase = localPreview ? "http://127.0.0.1:43173" : "https://digital-x-growthos.vercel.app";
-  const demoPath = "/beauty-salon/dashboard?lang=bs&utm_source=www.digital-x-marketing.com&utm_medium=growthos_showcase";
+  const demoPath = "/beauty-salon/dashboard?lang=bs&utm_source=digital-x-marketing.com&utm_medium=growthos_showcase";
 
   document.querySelectorAll("[data-growthos-demo]").forEach((link) => {
     link.href = `${demoBase}${demoPath}`;

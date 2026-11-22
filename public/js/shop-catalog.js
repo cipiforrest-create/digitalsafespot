@@ -5,7 +5,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
   "use strict";
 
-  const origin = "https://www.digital-x-marketing.com";
+  const origin = "https://digital-x-marketing.com";
   const categories = {
     web: {
       name: "Web & E-commerce",

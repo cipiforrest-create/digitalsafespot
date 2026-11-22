@@ -5,7 +5,7 @@ import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const site = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const origin = "https://www.digital-x-marketing.com";
+const origin = "https://digital-x-marketing.com";
 const excludedDirectories = new Set(["en", "de", "_preview", "tests", "node_modules", "cinematic-clothes", "cinematic-deepsea", "cinematic-dentist", "cinematic-hotel", "cinematic-penthouse", "cinematic-vanta", "cinematic-watch"]);
 const excludedFiles = new Set(["404.html", "audit.html", "hvala.html", "shop/product.html", "shop/category.html"]);
 
@@ -54,7 +54,7 @@ test("localized pages have language, self-canonical, reciprocal hreflang and swi
 });
 
 test("localized page links stay in the current locale", () => {
-  const pageRoute = /^(?:\/|https:\/\/www\.digital-x-marketing\.com\/)(?!assets\/|css\/|js\/|api\/|_vercel\/)(?!en\/|de\/)(?:[^"'#?]+\.html|(?:blog|shop|primjeri-web-stranica)\/)/;
+  const pageRoute = /^(?:\/|https:\/\/digital-x-marketing\.com\/)(?!assets\/|css\/|js\/|api\/|_vercel\/)(?!en\/|de\/)(?:[^"'#?]+\.html|(?:blog|shop|primjeri-web-stranica)\/)/;
   for (const source of sources.filter((file) => file !== "index.html")) {
     for (const lang of ["en", "de"]) {
       const file = `${lang}/${source}`;

@@ -534,7 +534,7 @@ ${demo('/cinematic-clothes/', 'cinematic web za modni brend')}
 <tr><th scope="row">Telefon</th><td>${a('tel:+387644383566', '+387 64 438 3566')}</td></tr>
 <tr><th scope="row">Jezici</th><td>bosanski, hrvatski, srpski, engleski, njemački</td></tr>
 <tr><th scope="row">Područje rada</th><td>Bosna i Hercegovina, Hrvatska, Srbija, Crna Gora, Njemačka, Austrija i Švicarska</td></tr>
-<tr><th scope="row">Web</th><td>${a('https://www.digital-x-marketing.com/', 'digital-x-marketing.com')}</td></tr>
+<tr><th scope="row">Web</th><td>${a('https://digital-x-marketing.com/', 'digital-x-marketing.com')}</td></tr>
 <tr><th scope="row">Instagram</th><td>${a('https://www.instagram.com/digitalxmarketing.ba', '@digitalxmarketing.ba')}</td></tr>
 <tr><th scope="row">YouTube</th><td>${a('https://www.youtube.com/@DigitalXMarketingSarajevo', '@DigitalXMarketingSarajevo')}</td></tr>
 <tr><th scope="row">GitHub</th><td>${a('https://github.com/cipiforrest-create', 'github.com/cipiforrest-create')}</td></tr>

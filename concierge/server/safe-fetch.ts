@@ -75,7 +75,7 @@ export async function safeFetch(raw: string, signal: AbortSignal, maxBytes = 1_5
       const request = (target.protocol === 'https:' ? https : http).request(target, {
         method: 'GET', agent: false, family: address.family, signal: deadline,
         lookup: (_hostname, _options, callback) => callback(null, address.address, address.family),
-        headers: { 'User-Agent': 'DigitalX-Audit/1.0 (+https://www.digital-x-marketing.com/)', Accept: 'text/html,application/xhtml+xml,application/xml,text/plain;q=0.8', 'Accept-Encoding': 'identity' },
+        headers: { 'User-Agent': 'DigitalX-Audit/1.0 (+https://digital-x-marketing.com/)', Accept: 'text/html,application/xhtml+xml,application/xml,text/plain;q=0.8', 'Accept-Encoding': 'identity' },
       }, incoming => {
         const status = incoming.statusCode || 0;
         if (status >= 300 && status < 400) { incoming.destroy(); resolve({ url: target.href, status, text: '', headers: incoming.headers, truncated: false }); return; }

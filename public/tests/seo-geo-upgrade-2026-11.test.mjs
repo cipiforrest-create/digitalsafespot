@@ -69,22 +69,22 @@ test('new city pages, industry pages and gap-closing guides are built, indexed a
   ];
   for (const p of newPaths) {
     assert.ok(existsSync(`public${p}index.html`), `missing ${p}`);
-    assert.ok(sitemap.includes(`https://www.digital-x-marketing.com${p}<`), `sitemap missing ${p}`);
+    assert.ok(sitemap.includes(`https://digital-x-marketing.com${p}<`), `sitemap missing ${p}`);
     assert.doesNotMatch(read(`${p}index.html`), /Vedad|Čičak|Cicak/i, `${p} should not contain personal founder name`);
     assert.match(read(`${p}index.html`), /max-snippet:-1/, `${p} max-snippet:-1`);
   }
   for (const city of ['banja-luka', 'mostar', 'tuzla', 'zenica']) {
     const cityPath = `/usluge/izrada-web-stranica/${city}/`;
     assert.ok(!existsSync(`public${cityPath}index.html`), `doorway page should not be published: ${cityPath}`);
-    assert.ok(!sitemap.includes(`https://www.digital-x-marketing.com${cityPath}<`), `sitemap should exclude ${cityPath}`);
+    assert.ok(!sitemap.includes(`https://digital-x-marketing.com${cityPath}<`), `sitemap should exclude ${cityPath}`);
     assert.ok(vercel.redirects.some(r => r.source === cityPath && r.destination === '/usluge/izrada-web-stranica/' && r.permanent === true), `vercel redirect ${cityPath}`);
-    assert.equal(legacyServiceTarget(`https://www.digital-x-marketing.com${cityPath}`), 'https://www.digital-x-marketing.com/usluge/izrada-web-stranica/');
+    assert.equal(legacyServiceTarget(`https://digital-x-marketing.com${cityPath}`), 'https://digital-x-marketing.com/usluge/izrada-web-stranica/');
   }
   for (const g of ['/znanje/koliko-kosta-seo-optimizacija-bih/', '/znanje/agencija-ili-freelancer-web-stranica/', '/znanje/meta-capi-server-side-tracking/', '/znanje/ai-spremnost-web-stranica-bih-2026/']) {
     const nodes = schemas(read(`${g}index.html`));
     assert.ok(nodes.some(n => n['@type'] === 'Organization' && n.founder?.name === 'Digital X'), `${g} founder Digital X`);
-    assert.ok(nodes.some(n => n['@type'] === 'Article' && n.author?.['@id'] === 'https://www.digital-x-marketing.com/#organization'), `${g} Article author`);
-    assert.ok(nodes.some(n => n['@type'] === 'Article' && n.publishingPrinciples === 'https://www.digital-x-marketing.com/uredjivacka-politika/'), `${g} publishingPrinciples`);
+    assert.ok(nodes.some(n => n['@type'] === 'Article' && n.author?.['@id'] === 'https://digital-x-marketing.com/#organization'), `${g} Article author`);
+    assert.ok(nodes.some(n => n['@type'] === 'Article' && n.publishingPrinciples === 'https://digital-x-marketing.com/uredjivacka-politika/'), `${g} publishingPrinciples`);
   }
 });
 
@@ -95,7 +95,7 @@ test('2026 GEO/AEO upgrades: sameAs GitHub, ProfilePage, inline citations, EN/DE
   assert.ok(homeOrg.sameAs.includes('https://www.youtube.com/@DigitalXMarketingSarajevo'), 'Organization sameAs includes YouTube');
   assert.ok(homeOrg.sameAs.some(u => u.startsWith('https://www.google.com/maps/place/Digital+X/')), 'Organization sameAs includes GBP');
   assert.ok(homeOrg.hasMap?.startsWith('https://www.google.com/maps/place/Digital+X/'), 'Organization hasMap includes GBP');
-  assert.equal(homeOrg.publishingPrinciples, 'https://www.digital-x-marketing.com/uredjivacka-politika/');
+  assert.equal(homeOrg.publishingPrinciples, 'https://digital-x-marketing.com/uredjivacka-politika/');
 
   const teamNodes = schemas(read('/tim/index.html'));
   assert.ok(teamNodes.some(n => n['@type'] === 'ProfilePage'), '/tim/ ProfilePage schema');
@@ -112,7 +112,7 @@ test('2026 GEO/AEO upgrades: sameAs GitHub, ProfilePage, inline citations, EN/DE
     for (const lang of ['en', 'de']) {
       const locPath = `/${lang}${p}`;
       assert.ok(existsSync(`public${locPath}index.html`), `missing ${locPath}`);
-      assert.ok(sitemap.includes(`https://www.digital-x-marketing.com${locPath}<`), `sitemap missing ${locPath}`);
+      assert.ok(sitemap.includes(`https://digital-x-marketing.com${locPath}<`), `sitemap missing ${locPath}`);
       const html = read(`${locPath}index.html`);
       assert.match(html, new RegExp(`<html lang="${lang}">`));
       assert.match(html, /hreflang="bs"/);
@@ -141,6 +141,6 @@ test('shop product offers include shippingDetails and hasMerchantReturnPolicy ac
 test('cookie pages are consistently noindex and excluded from sitemap across all locales', () => {
   const sitemap = read('/sitemap.xml');
   for (const p of ['/kolacici.html', '/en/kolacici.html', '/de/kolacici.html']) {
-    assert.ok(!sitemap.includes(`https://www.digital-x-marketing.com${p}<`), `sitemap should exclude ${p}`);
+    assert.ok(!sitemap.includes(`https://digital-x-marketing.com${p}<`), `sitemap should exclude ${p}`);
   }
 });

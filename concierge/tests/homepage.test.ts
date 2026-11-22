@@ -22,14 +22,14 @@ test('canonical pages publish at their public routes, with a distinct concierge 
  const $=load(readFileSync('public/index.html','utf8')),classic=load(readFileSync('index.html','utf8'));
  assert.equal($('meta[name=robots]').attr('content'),'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
  assert.equal($('title').text(),classic('title').text());
- assert.equal($('link[rel=canonical]').attr('href'),'https://www.digital-x-marketing.com/');
+ assert.equal($('link[rel=canonical]').attr('href'),'https://digital-x-marketing.com/');
  assert.deepEqual($('link[rel=alternate][hreflang]').toArray().map(n=>$(n).attr('hreflang')),['bs','en','de','x-default']);
  assert.equal($('h1').length,1);
  assert.deepEqual(JSON.parse($('script[data-page-schema]').text())['@graph'].map((n:{'@type':string|string[]})=>n['@type']),[['Organization','ProfessionalService'],'WebSite','WebPage','FAQPage']);
  // The homepage FAQPage schema is exactly the visible FAQ: same questions, same answers, same order.
  { const faq=JSON.parse($('script[data-page-schema]').text())['@graph'].find((n:{'@type':string})=>n['@type']==='FAQPage'); const visible=$('#pitanja details').map((_,d)=>[[$(d).find('summary').text(),$(d).find('p').text()]]).get(); assert.ok(visible.length>=6); assert.deepEqual(faq.mainEntity.map((q:{name:string;acceptedAnswer:{text:string}})=>[q.name,q.acceptedAnswer.text]),visible); }
  for(const route of ['usluge/index.html','cjenovnik/index.html','kontakt.html','ai-concierge-preview/index.html'])assert.doesNotMatch(load(readFileSync(`public/${route}`,'utf8'))('meta[name=robots]').attr('content')!,/noindex/);
- const landing=load(readFileSync('public/ai-concierge-preview/index.html','utf8'));assert.equal(landing('body').attr('data-page'),'concierge');assert.equal(landing('link[rel=canonical]').attr('href'),'https://www.digital-x-marketing.com/ai-concierge-preview/');
+ const landing=load(readFileSync('public/ai-concierge-preview/index.html','utf8'));assert.equal(landing('body').attr('data-page'),'concierge');assert.equal(landing('link[rel=canonical]').attr('href'),'https://digital-x-marketing.com/ai-concierge-preview/');
  assert.equal($('.brand').first().attr('href'),'/');assert.equal($('.xh-actions [data-tour-start]').length,1);assert.equal($('.world-system a').length,6);
 });
 test('homepage answers search and AI audits: organisation, short descriptions, decorative images, llms.txt',()=>{
@@ -39,7 +39,7 @@ test('homepage answers search and AI audits: organisation, short descriptions, d
   assert.ok(description.length>=50&&description.length<=160,file+' description length');
   assert.ok(description.split(/(?<=\.)\s/)[0].length<110,file+' description lead sentence');
   const org=JSON.parse($('script[data-page-schema]').text())['@graph'][0];
-  assert.equal(org.name,'Digital X');assert.match(org.url,/^https:\/\/www\.digital-x-marketing\.com\/(?:en\/|de\/)?$/);
+  assert.equal(org.name,'Digital X');assert.match(org.url,/^https:\/\/digital-x-marketing\.com\/(?:en\/|de\/)?$/);
   assert.ok(org.logo?.url&&org.sameAs?.length&&org.address?.addressLocality==='Sarajevo');
   assert.equal($('img:not([alt])').length,0);assert.equal($('img[alt=""]:not([role=presentation])').length,0);
   // Below-the-fold media must not compete with the first screen.

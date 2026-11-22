@@ -1,5 +1,5 @@
 import { allServicePaths, cleanPathForLegacy } from "./service-seo.mjs";
-const SITE_ORIGIN = "https://www.digital-x-marketing.com";
+const SITE_ORIGIN = "https://digital-x-marketing.com";
 
 export const NOINDEX_PATHS = new Set([
   "/de/kolacici.html",
@@ -130,7 +130,7 @@ function canonicalizeSitemapUrl(value) {
     const url = new URL(decoded);
     const clean = cleanPathForLegacy(url.pathname);
     if (clean) url.pathname = clean;
-    url.hostname = "www.digital-x-marketing.com";
+    url.hostname = "digital-x-marketing.com";
     url.protocol = "https:";
     return url.href;
   } catch {
