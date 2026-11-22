@@ -175,6 +175,12 @@ p{margin:0 0 1em}
 .guide-body ul,.guide-body ol{padding-left:22px;margin:0 0 1em}
 .guide-body li{margin-bottom:9px}
 .guide-body strong{color:#fff;font-weight:500}
+.guide-body code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;padding:2px 6px;border-radius:6px;background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff}
+.guide-cover{margin:28px 0 0;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--panel)}
+.guide-cover img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.guide-cover figcaption,.guide-figure figcaption{padding:12px 18px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line)}
+.guide-figure{margin:26px 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel)}
+.guide-figure img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px}
 table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px;line-height:1.45}
 th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}

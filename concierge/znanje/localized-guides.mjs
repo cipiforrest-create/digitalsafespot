@@ -1,3 +1,5 @@
+import { cluster1Localized } from './cluster1-localized.mjs';
+
 export const localizedGuides = [
   {
     path: '/znanje/seo-aeo-geo-razlika/',
@@ -309,4 +311,5 @@ export const localizedGuides = [
       related: [['/de/shop/product/web-presence/', 'Premium-Webpräsenz — ab 449 KM'], ['/de/usluge/seo-aeo-geo/', 'SEO · AEO · GEO'], ['/de/industrije/', 'Alle Branchen']],
     },
   },
+  ...cluster1Localized,
 ];

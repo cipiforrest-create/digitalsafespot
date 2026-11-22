@@ -1,5 +1,6 @@
 // Centar znanja: clusters, the customer journey and every guide.
 // Prices quoted here are the published starting prices from the shop catalogue; keep them in sync.
+import { cluster1Guides } from './cluster1.mjs';
 export const origin = 'https://digital-x-marketing.com';
 export const published = '2026-11-21';
 
@@ -505,6 +506,7 @@ export const guides = [
     ],
     related: [['/usluge/x-signal/', 'Pokrenite besplatnu X Signal analizu'], ['/usluge/seo-aeo-geo/', 'SEO · AEO · GEO usluga'], ['/uredjivacka-politika/', 'Urednička politika i metodologija']],
   },
+  ...cluster1Guides,
 ];
 
 export const hubFaq = [

@@ -1924,6 +1924,16 @@
     "schema": 1
   },
   {
+    "file": "./znanje/google-ai-overviews-kako-radi/index.html",
+    "title": "Google AI Overviews i AI Mode: kako biraju izvore (query fan-out) | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/google-ai-overviews-kako-radi/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Kako Google AI Overviews i AI Mode biraju izvore i šta je query fan-out"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./znanje/google-oglasi-cijena/index.html",
     "title": "Google oglasi: cijena, budžet i kako rade (vodič 2026) | Digital X",
     "canonical": "https://digital-x-marketing.com/znanje/google-oglasi-cijena/",
@@ -1950,6 +1960,16 @@
     "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Izrada web stranice za firmu: koraci, rokovi i šta stranica mora imati"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/kako-mjeriti-ai-vidljivost/index.html",
+    "title": "Kako mjeriti AI vidljivost u ChatGPT-u i Perplexityju bez lažnih garancija | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/kako-mjeriti-ai-vidljivost/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Kako mjeriti vidljivost brenda u ChatGPT-u, Perplexityju i Google AI Modeu"
     ],
     "schema": 1
   },
@@ -2004,6 +2024,16 @@
     "schema": 1
   },
   {
+    "file": "./znanje/llms-txt-sta-je-i-treba-li-vam/index.html",
+    "title": "Da li vam treba llms.txt? Šta čitaju Google, ChatGPT i Perplexity | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/llms-txt-sta-je-i-treba-li-vam/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Da li vam treba llms.txt u 2026: šta stvarno čitaju Google, ChatGPT, Claude i Perplexity"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./znanje/meta-capi-server-side-tracking/index.html",
     "title": "Meta Conversions API (CAPI) i server-side mjerenje: vodič za firme u BiH | Digital X",
     "canonical": "https://digital-x-marketing.com/znanje/meta-capi-server-side-tracking/",
@@ -2020,6 +2050,16 @@
     "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Plan sadržaja za društvene mreže: jednostavan sistem za mjesec dana objava"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/schema-markup-za-ai-pretragu/index.html",
+    "title": "Schema.org za AI pretragu u 2026: šta radi, a šta je Google ukinuo | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/schema-markup-za-ai-pretragu/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Schema.org za AI pretragu u 2026: aktivni entiteti, povučeni tipovi i JSON-LD pravila"
     ],
     "schema": 1
   },

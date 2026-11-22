@@ -150,3 +150,32 @@ test('cookie pages are consistently noindex and excluded from sitemap across all
     assert.ok(!sitemap.includes(`https://digital-x-marketing.com${p}<`), `sitemap should exclude ${p}`);
   }
 });
+
+test('Cluster 1 AI Search guides publish in BS, EN and DE with featured + in-content WebP images, preload and full schema', () => {
+  const sitemap = read('/sitemap.xml');
+  const cluster1 = [
+    ['/znanje/google-ai-overviews-kako-radi/', 'cluster1-ai-overviews-cover.webp', 'cluster1-query-fanout-diagram.webp'],
+    ['/znanje/schema-markup-za-ai-pretragu/', 'cluster1-schema-2026-cover.webp', 'cluster1-schema-graph-diagram.webp'],
+    ['/znanje/llms-txt-sta-je-i-treba-li-vam/', 'cluster1-llms-txt-cover.webp', 'cluster1-ai-crawlers-diagram.webp'],
+    ['/znanje/kako-mjeriti-ai-vidljivost/', 'cluster1-ai-tracking-cover.webp', 'cluster1-ai-measurement-diagram.webp'],
+  ];
+  for (const [route, cover, diagram] of cluster1) {
+    for (const prefix of ['', '/en', '/de']) {
+      const full = `${prefix}${route}`;
+      assert.ok(existsSync(`public${full}index.html`), `missing ${full}`);
+      assert.ok(sitemap.includes(`https://digital-x-marketing.com${full}<`), `sitemap missing ${full}`);
+      const html = read(`${full}index.html`);
+      assert.match(html, /max-snippet:-1/, `${full} max-snippet:-1`);
+      assert.match(html, new RegExp(`<link rel="preload" as="image" href="/media/znanje/${cover}"`), `${full} preload`);
+      assert.match(html, new RegExp(`class="guide-cover"[\\s\\S]*?/media/znanje/${cover}`), `${full} cover`);
+      assert.match(html, new RegExp(`class="guide-figure"[\\s\\S]*?/media/znanje/${diagram}`), `${full} diagram`);
+      assert.match(html, /hreflang="bs"/, `${full} hreflang bs`);
+      assert.match(html, /hreflang="en"/, `${full} hreflang en`);
+      assert.match(html, /hreflang="de"/, `${full} hreflang de`);
+      const nodes = schemas(html);
+      const article = nodes.find(n => n['@type'] === 'Article');
+      assert.ok(article && Array.isArray(article.image) && article.image.length === 2, `${full} Article ImageObject array`);
+      assert.ok(nodes.some(n => n['@type'] === 'FAQPage' && n.mainEntity.length >= 2), `${full} FAQPage`);
+    }
+  }
+});

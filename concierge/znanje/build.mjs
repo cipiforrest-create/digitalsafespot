@@ -1,6 +1,6 @@
 // Generates the Blog hub (/znanje/) and its guides as static HTML.
 // Runs from the repo root, before the site is copied into public/.
-import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import { existsSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { visualSrc } from '../visual-pages.mjs';
 import { EDITORIAL_POLICY_URL, ROBOTS_INDEX_CONTENT, SAME_AS } from '../../lib/entity-profile.mjs';
@@ -33,16 +33,16 @@ const organization = { '@type': 'Organization', '@id': origin + '/#organization'
 const faqSchema = faq => ({ '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
 const crumbs = items => ({ '@type': 'BreadcrumbList', itemListElement: items.map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: origin + path })) });
 
-function page({ path, title, desc, keywords, image, type, schema, body, scripts = '', bodyClass = '' }) {
+function page({ path, title, desc, keywords, image, preload = '', type, schema, body, scripts = '', bodyClass = '' }) {
   const canonical = origin + path;
   return `<!DOCTYPE html><html lang="bs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="${ROBOTS_INDEX_CONTENT}"><meta name="theme-color" content="#050608">
 <title>${esc(title)}</title><meta name="description" content="${esc(desc)}">${keywords ? `<meta name="keywords" content="${esc(keywords.join(', '))}">` : ''}
 <link rel="canonical" href="${canonical}"><link rel="alternate" hreflang="bs" href="${canonical}"><link rel="alternate" hreflang="x-default" href="${canonical}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/inter-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/inter-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>${preload}
 <link rel="stylesheet" href="/css/fonts.css"><link rel="stylesheet" href="/znanje/assets/znanje.css">
-<meta property="og:type" content="${type}"><meta property="og:site_name" content="Digital X Sarajevo"><meta property="og:locale" content="bs_BA"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${origin + image}"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="${type}"><meta property="og:site_name" content="Digital X Sarajevo"><meta property="og:locale" content="bs_BA"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${origin + image}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${origin + image}">
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': [organization, ...schema] }).replace(/</g, '\\u003c')}</script>
 </head><body class="${bodyClass}">${header(path)}<main id="main">${body}</main>${footer}<script src="/znanje/assets/site.js" defer></script>${scripts}</body></html>`;
 }
@@ -50,17 +50,29 @@ function page({ path, title, desc, keywords, image, type, schema, body, scripts 
 const faqHtml = faq => `<div class="faq">${faq.map(([q, a]) => `<details><summary><h3>${esc(q)}</h3></summary><p>${esc(a)}</p></details>`).join('')}</div>`;
 const cta = `<section class="zn-cta"><div><p class="eyebrow">SLJEDEĆI KORAK</p><h2>Želite ovo primijeniti na svoju firmu?</h2><p>Besplatna analiza provjerava vašu postojeću stranicu. U besplatnim konsultacijama dobijate prijedlog prvog koraka — bez obaveze.</p></div><div class="zn-cta-actions"><a class="btn btn-primary" href="/kontakt.html">Besplatne konzultacije</a><a class="btn" href="/usluge/x-signal/">Besplatna analiza sajta</a></div></section>`;
 
+const smallVariant = src => { const s = String(src).replace(/\.webp$/, '-768.webp'); return s !== src && existsSync('.' + s) ? s : null; };
+const formatDateBs = iso => { const [y, m, d] = String(iso).split('-'); return `${Number(d)}. ${Number(m)}. ${y}.`; };
+
 function guidePage(g, i) {
   const c = cluster(g.cluster), si = stageIndex(g.stage), prev = guides[i - 1], next = guides[i + 1];
   const path = url(g);
   const toc = g.sections.map(([h]) => [h, slugify(h)]);
   const siblings = guides.filter(x => x.cluster === g.cluster && x !== g);
   const words = strip(g.answer + g.sections.map(s => s[1]).join(' ') + g.faq.flat().join(' ')).split(' ').length;
+  const pubDate = g.published || published;
+  const coverSrc = g.cover ? guideImage(g) : null;
+  const coverSmall = coverSrc ? smallVariant(coverSrc) : null;
+  const coverHtml = g.cover ? `<figure class="guide-cover"><img src="${coverSrc}"${coverSmall ? ` srcset="${coverSmall} 768w, ${coverSrc} 1536w" sizes="(max-width:760px) 92vw, 1100px"` : ''} width="1536" height="1024" fetchpriority="high" decoding="async" alt="${esc(g.cover.alt)}">${g.cover.caption ? `<figcaption>${esc(g.cover.caption)}</figcaption>` : ''}</figure>` : '';
+  const preload = coverSrc ? `<link rel="preload" as="image" href="${coverSrc}"${coverSmall ? ` imagesrcset="${coverSmall} 768w, ${coverSrc} 1536w" imagesizes="(max-width:760px) 92vw, 1100px"` : ''} fetchpriority="high">` : '';
+  const ogImg = coverSrc || '/media/znanje/znanje-og.jpg';
+  const schemaImages = coverSrc
+    ? [{ '@type': 'ImageObject', url: origin + coverSrc, width: 1536, height: 1024 }, ...(g.diagram ? [{ '@type': 'ImageObject', url: origin + g.diagram, width: 1200, height: 675 }] : [])]
+    : origin + '/media/znanje/znanje-og.jpg';
   const body = `<article class="guide" style="--accent:${c.color}">
 <header class="guide-hero"><nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span>/</span><a href="/blog/">Blog</a><span>/</span><a href="/blog/#${c.id}">${esc(c.name)}</a></nav>
 <p class="eyebrow">KORAK ${si + 1} OD ${stages.length} · ${esc(stages[si][1]).toUpperCase()}</p><h1>${esc(g.h1)}</h1>
-<p class="guide-meta">Pripremio i provjerio: <a href="/tim/">Digital X SEO &amp; Web tim</a> · <a href="/uredjivacka-politika/">Urednička metodologija</a> · ažurirano <time datetime="${published}">21. 11. 2026.</time> · ${g.minutes} min čitanja</p>
-<ol class="journey" aria-label="Koraci puta">${stages.map(([id, name], n) => { const first = guides.find(x => x.stage === id); return `<li${n === si ? ' class="is-current" aria-current="step"' : n < si ? ' class="is-done"' : ''}><a href="${first ? url(first) : '/blog/'}"><span>${n + 1}</span>${esc(name)}</a></li>`; }).join('')}</ol></header>
+<p class="guide-meta">Pripremio i provjerio: <a href="/tim/">Digital X SEO &amp; Web tim</a> · <a href="/uredjivacka-politika/">Urednička metodologija</a> · ažurirano <time datetime="${pubDate}">${formatDateBs(pubDate)}</time> · ${g.minutes} min čitanja</p>
+<ol class="journey" aria-label="Koraci puta">${stages.map(([id, name], n) => { const first = guides.find(x => x.stage === id); return `<li${n === si ? ' class="is-current" aria-current="step"' : n < si ? ' class="is-done"' : ''}><a href="${first ? url(first) : '/blog/'}"><span>${n + 1}</span>${esc(name)}</a></li>`; }).join('')}</ol>${coverHtml}</header>
 <div class="guide-layout"><aside class="guide-toc" aria-label="Sadržaj"><h2>U ovom vodiču</h2><ol>${toc.map(([h, id]) => `<li><a href="#${id}">${esc(h)}</a></li>`).join('')}<li><a href="#pitanja">Česta pitanja</a></li></ol></aside>
 <div class="guide-body"><div class="answer"><p class="eyebrow">KRATAK ODGOVOR</p><p>${esc(g.answer)}</p></div>
 ${g.sections.map(([h, html]) => `<section id="${slugify(h)}"><h2>${esc(h)}</h2>${html}</section>`).join('')}
@@ -70,15 +82,15 @@ ${siblings.length || c.blog.length ? `<h3>Još iz teme „${esc(c.name)}“</h3>
 <nav class="step-nav" aria-label="Prethodni i sljedeći korak">${prev ? `<a rel="prev" href="${url(prev)}"><small>← Prethodni korak</small>${esc(prev.title)}</a>` : `<a href="/blog/"><small>← Početak</small>Blog</a>`}${next ? `<a rel="next" href="${url(next)}"><small>Sljedeći korak →</small>${esc(next.title)}</a>` : `<a href="/kontakt.html"><small>Kraj puta →</small>Razgovarajte s Digital X</a>`}</nav>
 </div></div></article>${cta}`;
   const schema = [
-    { '@type': 'Article', '@id': origin + path + '#article', headline: g.h1, description: g.desc, inLanguage: 'bs', datePublished: published, dateModified: published, wordCount: words, articleSection: c.name, keywords: g.keywords.join(', '), mainEntityOfPage: origin + path, image: origin + '/media/znanje/znanje-og.jpg', author: { '@id': origin + '/#organization' }, publisher: { '@id': origin + '/#organization' }, publishingPrinciples: EDITORIAL_POLICY_URL, isPartOf: { '@id': origin + '/blog/#hub' } },
+    { '@type': 'Article', '@id': origin + path + '#article', headline: g.h1, description: g.desc, inLanguage: 'bs', datePublished: pubDate, dateModified: pubDate, wordCount: words, articleSection: c.name, keywords: g.keywords.join(', '), mainEntityOfPage: origin + path, image: schemaImages, author: { '@id': origin + '/#organization' }, publisher: { '@id': origin + '/#organization' }, publishingPrinciples: EDITORIAL_POLICY_URL, isPartOf: { '@id': origin + '/blog/#hub' } },
     crumbs([['Digital X', '/'], ['Blog', '/blog/'], [g.title, path]]),
     faqSchema(g.faq),
   ];
-  return page({ path, title: `${g.title} | Digital X`, desc: g.desc, keywords: g.keywords, image: '/media/znanje/znanje-og.jpg', type: 'article', schema, body, bodyClass: 'is-guide' });
+  return page({ path, title: `${g.title} | Digital X`, desc: g.desc, keywords: g.keywords, image: ogImg, preload, type: 'article', schema, body, bodyClass: 'is-guide' });
 }
 
 // Each guide has its own cover so no image repeats among the Blog cards (the 15 articles keep theirs).
-const V = '/ai-concierge-preview/media/visuals/', R = '/media/review-2026/', A = '/assets/images/';
+const V = '/ai-concierge-preview/media/visuals/', R = '/media/review-2026/', A = '/assets/images/', Z = '/media/znanje/';
 const guideImages = {
   'digitalni-marketing-za-male-firme': R + 'category-growth.webp', 'kako-odabrati-digitalnu-agenciju': R + 'page-contact.webp',
   'izrada-web-stranica-vodic': V + 'launch.webp', 'wordpress-shopify-ili-custom': V + 'signal.webp',
@@ -90,6 +102,10 @@ const guideImages = {
   'agencija-ili-freelancer-web-stranica': A + 'custom-project-planning.webp',
   'meta-capi-server-side-tracking': A + 'service-growth.webp',
   'ai-spremnost-web-stranica-bih-2026': A + 'growthos-dashboard.webp',
+  'google-ai-overviews-kako-radi': Z + 'cluster1-ai-overviews-cover.webp',
+  'schema-markup-za-ai-pretragu': Z + 'cluster1-schema-2026-cover.webp',
+  'llms-txt-sta-je-i-treba-li-vam': Z + 'cluster1-llms-txt-cover.webp',
+  'kako-mjeriti-ai-vidljivost': Z + 'cluster1-ai-tracking-cover.webp',
 };
 const guideImage = g => { const src = guideImages[g.slug]; if (!src) throw new Error('No Blog card image for guide ' + g.slug); return src; };
 function hubPage() {
@@ -102,7 +118,7 @@ ${clusters.map(panel).join('')}
 <nav class="g-rail" aria-label="Teme">${clusters.map((c, n) => `<a href="#${c.id}" data-go="${n + 1}" style="--accent:${c.color}"><span></span>${esc(c.name)}</a>`).join('')}</nav>
 <a class="g-skip" href="#clanci">Preskočite animaciju ↓</a></div></section>
 <section class="hub-section hub-intro" id="clanci"><p class="eyebrow">DIGITAL X BLOG · SARAJEVO</p><h1>Blog o izradi web stranica, SEO-u, AI pretrazi i digitalnom marketingu za firme u BiH</h1><p class="lead">${guides.length} vodiča i ${posts.length} članaka Digital X agencije iz Sarajeva, složenih u ${clusters.length} tema i sedam koraka: od prvog pitanja do rezultata koji se mjeri. Javne cijene, bez žargona i bez obećanja koja niko ne može dati.</p>
-<h2>Svi vodiči i članci</h2><div class="post-grid">${guides.map(g => `<a class="post-card" href="${url(g)}"><img src="${guideImage(g)}" width="1536" height="1024" loading="lazy" decoding="async" alt=""><div><p class="eyebrow">VODIČ · ${g.minutes} MIN</p><h3>${esc(g.title)}</h3><p>${esc(g.desc)}</p><span>Pročitajte vodič →</span></div></a>`).join('')}${posts.map(p => `<a class="post-card" href="${p.url}"><img src="${visualSrc('article-' + p.id)}" width="1536" height="1024" loading="lazy" decoding="async" alt=""><div><p class="eyebrow">${esc(p.meta)}</p><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><span>Pročitajte članak →</span></div></a>`).join('')}</div></section>
+<h2>Svi vodiči i članci</h2><div class="post-grid">${guides.map(g => { const src = guideImage(g), sm = smallVariant(src); return `<a class="post-card" href="${url(g)}"><img src="${src}"${sm ? ` srcset="${sm} 768w, ${src} 1536w" sizes="(max-width:760px) 92vw, 360px"` : ''} width="1536" height="1024" loading="lazy" decoding="async" alt=""><div><p class="eyebrow">VODIČ · ${g.minutes} MIN</p><h3>${esc(g.title)}</h3><p>${esc(g.desc)}</p><span>Pročitajte vodič →</span></div></a>`; }).join('')}${posts.map(p => `<a class="post-card" href="${p.url}"><img src="${visualSrc('article-' + p.id)}" width="1536" height="1024" loading="lazy" decoding="async" alt=""><div><p class="eyebrow">${esc(p.meta)}</p><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><span>Pročitajte članak →</span></div></a>`).join('')}</div></section>
 <section class="hub-section" id="put"><p class="eyebrow">ČETIRI PUTA</p><h2>Odaberite situaciju koja vam je najbliža.</h2><div class="paths">${paths.map(p => `<article><h3>${esc(p.name)}</h3><p>${esc(p.text)}</p><ol>${p.steps.map(s => { const g = guide(s); return `<li><a href="${url(g)}">${esc(g.title.split(':')[0])}</a></li>`; }).join('')}</ol><a class="btn btn-small" href="${url(guide(p.steps[0]))}">Počnite ovdje →</a></article>`).join('')}</div></section>
 <section class="hub-section" id="koraci"><p class="eyebrow">SEDAM KORAKA</p><h2>Put od pitanja do rezultata.</h2><ol class="stage-list">${stages.map(([id, name, text], n) => `<li><span>${n + 1}</span><div><h3>${esc(name)}</h3><p>${esc(text)}</p><ul>${guides.filter(g => g.stage === id).map(g => `<li><a href="${url(g)}">${esc(g.title)}</a></li>`).join('')}</ul></div></li>`).join('')}</ol></section>
 <section class="hub-section" id="pitanja"><p class="eyebrow">ČESTA PITANJA</p><h2>O blogu.</h2>${faqHtml(hubFaq)}</section>${cta}
