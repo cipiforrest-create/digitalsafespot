@@ -92,6 +92,7 @@ test('2026 GEO/AEO upgrades: sameAs GitHub, ProfilePage, inline citations, EN/DE
   const sitemap = read('/sitemap.xml');
   const homeOrg = schemas(read('/index.html')).find(n => [n['@type']].flat().includes('Organization'));
   assert.ok(homeOrg.sameAs.includes('https://github.com/cipiforrest-create'), 'Organization sameAs includes GitHub');
+  assert.ok(homeOrg.sameAs.includes('https://www.threads.com/@digitalxmarketing.ba'), 'Organization sameAs includes Threads');
   assert.ok(homeOrg.sameAs.includes('https://www.youtube.com/@DigitalXMarketingSarajevo'), 'Organization sameAs includes YouTube');
   assert.ok(homeOrg.sameAs.some(u => u.startsWith('https://www.google.com/maps/place/Digital+X/')), 'Organization sameAs includes GBP');
   assert.ok(homeOrg.hasMap?.startsWith('https://www.google.com/maps/place/Digital+X/'), 'Organization hasMap includes GBP');

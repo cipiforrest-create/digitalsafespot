@@ -536,6 +536,7 @@ ${demo('/cinematic-clothes/', 'cinematic web za modni brend')}
 <tr><th scope="row">Područje rada</th><td>Bosna i Hercegovina, Hrvatska, Srbija, Crna Gora, Njemačka, Austrija i Švicarska</td></tr>
 <tr><th scope="row">Web</th><td>${a('https://digital-x-marketing.com/', 'digital-x-marketing.com')}</td></tr>
 <tr><th scope="row">Instagram</th><td>${a('https://www.instagram.com/digitalxmarketing.ba', '@digitalxmarketing.ba')}</td></tr>
+<tr><th scope="row">Threads</th><td>${a('https://www.threads.com/@digitalxmarketing.ba', '@digitalxmarketing.ba')}</td></tr>
 <tr><th scope="row">YouTube</th><td>${a('https://www.youtube.com/@DigitalXMarketingSarajevo', '@DigitalXMarketingSarajevo')}</td></tr>
 <tr><th scope="row">GitHub</th><td>${a('https://github.com/cipiforrest-create', 'github.com/cipiforrest-create')}</td></tr>
 <tr><th scope="row">Google Business Profile</th><td>${a('https://www.google.com/maps/place/Digital+X/@43.9315429,17.6762169,17z/data=!3m1!4b1!4m6!3m5!1s0x4758cfea08e87259:0xd478d21abc9b26ec!8m2!3d43.9315429!4d17.6762169!16s%2Fg%2F11ntfjpll8', 'Digital X na Google Mapama')}</td></tr>
@@ -632,7 +633,8 @@ ${demo('/cinematic-clothes/', 'cinematic web za modni brend')}
 <li><strong>GitHub:</strong> ${a('https://github.com/cipiforrest-create', 'github.com/cipiforrest-create')}</li>
 <li><strong>YouTube:</strong> ${a('https://www.youtube.com/@DigitalXMarketingSarajevo', '@DigitalXMarketingSarajevo')}</li>
 <li><strong>Google Business Profile:</strong> ${a('https://www.google.com/maps/place/Digital+X/@43.9315429,17.6762169,17z/data=!3m1!4b1!4m6!3m5!1s0x4758cfea08e87259:0xd478d21abc9b26ec!8m2!3d43.9315429!4d17.6762169!16s%2Fg%2F11ntfjpll8', 'Digital X na Google Mapama')}</li>
-<li><strong>Instagram:</strong> ${a('https://www.instagram.com/digitalxmarketing.ba', '@digitalxmarketing.ba')}</li></ul>`],
+<li><strong>Instagram:</strong> ${a('https://www.instagram.com/digitalxmarketing.ba', '@digitalxmarketing.ba')}</li>
+<li><strong>Threads:</strong> ${a('https://www.threads.com/@digitalxmarketing.ba', '@digitalxmarketing.ba')}</li></ul>`],
     ],
     faq: [
       ['Ko stoji iza vodiča i analiza na Digital X stranici?', 'Vodiče i tehničke analize priprema i provjerava Digital X SEO, GEO/AEO i web inženjerski tim u Sarajevu prema pravilima objavljenim na stranici Urednička politika.'],

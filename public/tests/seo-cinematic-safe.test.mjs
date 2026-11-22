@@ -29,7 +29,7 @@ test('commercial service pages have explicit local intent and verifiable startin
     const html = enhanceServiceHtml('<html><head><title>Original</title></head><body><main><h1>Old</h1></main></body></html>', route);
     assert.match(html, new RegExp('"priceCurrency":"BAM"'));
     assert.match(html, new RegExp('"price":' + price + '(?!\\d)'));
-    assert.match(html, new RegExp('rel="canonical" href="https://www\\.digital-x-marketing\\.com' + route.replaceAll('/', '\\/') + '"'));
+    assert.match(html, new RegExp('rel="canonical" href="https://digital-x-marketing\\.com' + route.replaceAll('/', '\\/') + '"'));
   }
 });
 
