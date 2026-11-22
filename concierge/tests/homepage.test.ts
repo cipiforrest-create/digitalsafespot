@@ -20,7 +20,7 @@ test('home and the separate concierge landing are public and support voice',()=>
 });
 test('canonical pages publish at their public routes, with a distinct concierge landing',()=>{
  const $=load(readFileSync('public/index.html','utf8')),classic=load(readFileSync('index.html','utf8'));
- assert.equal($('meta[name=robots]').attr('content'),'index,follow,max-image-preview:large');
+ assert.equal($('meta[name=robots]').attr('content'),'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
  assert.equal($('title').text(),classic('title').text());
  assert.equal($('link[rel=canonical]').attr('href'),'https://www.digital-x-marketing.com/');
  assert.deepEqual($('link[rel=alternate][hreflang]').toArray().map(n=>$(n).attr('hreflang')),['bs','en','de','x-default']);

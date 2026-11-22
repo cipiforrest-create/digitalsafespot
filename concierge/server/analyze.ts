@@ -96,3 +96,98 @@ export function robotsAllows(text: string, path: string, agent = '*'): boolean {
   const rules = selected.flatMap(g => g.rules).filter(r => new RegExp('^' + r.pattern.split('*').map(part => part.replace(/[.+?^${}()|[\]\\]/g,'\\$&')).join('.*').replace(/\\\$$/,'$')).test(path)).sort((a,b) => b.pattern.length-a.pattern.length || Number(b.allow)-Number(a.allow));
   return rules[0]?.allow ?? true;
 }
+
+const DEPRECATED_SCHEMA_2025 = new Set([
+  'BookActions', 'CourseInfo', 'ClaimReview', 'EstimatedSalary', 'LearningVideo', 'SpecialAnnouncement', 'VehicleListing',
+]);
+
+/** Additive 2025–2026 AI Search & GEO checks run by X Signal without altering frozen extractFacts/gradeChecks parity. */
+export function analyzeAiSearchSignals(html: string, url: string): AuditCheck[] {
+  const $ = cheerio.load(html);
+  const checks: AuditCheck[] = [];
+  const robotsMeta = ($('meta[name="robots" i]').attr('content') || '').toLowerCase();
+  const hasNoSnippet = /\bnosnippet\b/.test(robotsMeta);
+  const maxSnippetMatch = robotsMeta.match(/\bmax-snippet\s*:\s*(-?\d+)/);
+  const maxSnippet = maxSnippetMatch ? Number(maxSnippetMatch[1]) : null;
+  const hasFullSnippet = maxSnippet === -1 && /\bmax-image-preview\s*:\s*large\b/.test(robotsMeta);
+  checks.push({
+    id: 'snippet-policy',
+    title: 'AI i Search snippet direktive',
+    category: 'Vidljivost u pretrazi i AI',
+    weight: 3,
+    status: hasNoSnippet || (maxSnippet !== null && maxSnippet >= 0 && maxSnippet < 120) ? 'attention' : 'found',
+    severity: hasNoSnippet ? 'warning' : (maxSnippet !== null && maxSnippet >= 0 && maxSnippet < 120) ? 'warning' : 'good',
+    evidence: hasNoSnippet
+      ? 'Meta robots sadrži nosnippet, što ograničava prikaz isječaka u pretrazi i AI pregledima.'
+      : hasFullSnippet
+        ? 'Postavljene su direktive max-snippet:-1 i max-image-preview:large za puni prikaz isječaka.'
+        : robotsMeta
+          ? `Robots direktiva: "${robotsMeta}". Nema ograničenja isječaka (nosnippet).`
+          : 'Nema restriktivnih snippet direktiva; preporučuje se eksplicitno max-snippet:-1 i max-image-preview:large.',
+    recommendation: hasNoSnippet || (maxSnippet !== null && maxSnippet >= 0 && maxSnippet < 120)
+      ? 'Uklonite nosnippet ili kratki max-snippet limit na javnim stranicama koje želite prikazati u pretrazi i AI odgovorima.'
+      : '',
+    url,
+  });
+
+  const schema = parseSchema(html);
+  const deprecatedFound = schema.types.filter(t => DEPRECATED_SCHEMA_2025.has(t));
+  checks.push({
+    id: 'deprecated-schema',
+    title: 'Aktuelnost Schema.org tipova',
+    category: 'Vidljivost u pretrazi i AI',
+    weight: 2,
+    status: deprecatedFound.length ? 'attention' : 'found',
+    severity: deprecatedFound.length ? 'warning' : 'good',
+    evidence: deprecatedFound.length
+      ? `Pronađeni tipovi koje je Google povukao iz podrške (2025): ${deprecatedFound.join(', ')}.`
+      : 'Nisu pronađeni zastarjeli Schema.org tipovi povučeni u Googleovom čišćenju 2025.',
+    recommendation: deprecatedFound.length
+      ? 'Zamijenite povučene tipove aktivnim entitetima (Organization, Service, Article, Product, BreadcrumbList) koji tačno prate vidljivi tekst.'
+      : '',
+    url,
+  });
+
+  const hasAuthorSchema = /"(?:author|editor|publishingPrinciples)"\s*:|"ProfilePage"|"Person"/i.test(html);
+  const hasVisibleByline = $('a[rel="author"], [itemprop="author"], .guide-meta, .byline, time[datetime]').length > 0;
+  checks.push({
+    id: 'author-provenance',
+    title: 'Porijeklo sadržaja i autorstvo (E-E-A-T)',
+    category: 'Sadržaj i poruka',
+    weight: 3,
+    status: hasAuthorSchema || hasVisibleByline ? 'found' : 'attention',
+    severity: hasAuthorSchema && hasVisibleByline ? 'good' : (hasAuthorSchema || hasVisibleByline) ? 'info' : 'warning',
+    evidence: hasAuthorSchema && hasVisibleByline
+      ? 'Pronađeni su i vidljivi podaci o autoru/ažuriranju i strukturirani signali porijekla.'
+      : hasAuthorSchema || hasVisibleByline
+        ? 'Pronađen je djelimičan signal autorstva ili datuma; nedostaje potpuna veza između vidljivog potpisa i JSON-LD entiteta.'
+        : 'Nisu pronađeni jasni signali ko stoji iza sadržaja, kada je ažuriran niti urednička metodologija.',
+    recommendation: hasAuthorSchema && hasVisibleByline
+      ? ''
+      : 'Dodajte vidljiv potpis autora ili uredničkog tima, datum ažuriranja i link na metodologiju ili profil stranicu.',
+    url,
+  });
+
+  const paragraphs = $('main p, article p, body p').map((_, el) => $(el).text().replace(/\s+/g, ' ').trim()).get().filter(Boolean);
+  const extractablePassages = paragraphs.filter(p => {
+    const wc = p.split(' ').length;
+    return wc >= 30 && wc <= 90;
+  }).length;
+  const hasTablesOrLists = $('main table, main ul, main ol, article table, article ul, article ol').length > 0;
+  checks.push({
+    id: 'passage-readiness',
+    title: 'Spremnost pasusa za AI izdvajanje',
+    category: 'Sadržaj i poruka',
+    weight: 3,
+    status: extractablePassages >= 2 ? 'found' : 'attention',
+    severity: extractablePassages >= 2 ? 'good' : 'warning',
+    evidence: `Pronađeno ${extractablePassages} samostalnih pasusa od 30–90 riječi${hasTablesOrLists ? ' uz strukturirane liste ili tabele' : ''}.`,
+    recommendation: extractablePassages >= 2
+      ? ''
+      : 'Otvorite ključne H2/H3 cjeline kratkim, samostalnim odgovorom od 40–80 riječi kako bi pretraživači i AI sistemi lakše izdvojili tačan pasus.',
+    url,
+  });
+
+  return checks;
+}
+

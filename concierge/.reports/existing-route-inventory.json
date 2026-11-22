@@ -20,7 +20,7 @@
     "file": "./blog/aeo-vodic.html",
     "title": "AEO: kako da vas ChatGPT preporuči kupcima (vodič 2026) | Digital X",
     "canonical": "https://www.digital-x-marketing.com/blog/aeo-vodic.html",
-    "robots": "",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "AEO: kako da vas ChatGPT preporuči kupcima"
     ],
@@ -110,7 +110,7 @@
     "file": "./blog/index.html",
     "title": "Blog: vodiči za web, SEO, AI i marketing | Digital X",
     "canonical": "https://www.digital-x-marketing.com/blog/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Blog o izradi web stranica, SEO-u, AI pretrazi i digitalnom marketingu za firme u BiH"
     ],
@@ -301,7 +301,7 @@
     "file": "./cinjenice/index.html",
     "title": "Digital X: činjenice o agenciji, usluge i cijene | Digital X",
     "canonical": "https://www.digital-x-marketing.com/cinjenice/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Digital X u činjenicama: ko smo, šta radimo i koliko košta"
     ],
@@ -1331,7 +1331,7 @@
     "file": "./industrije/advokati/index.html",
     "title": "Web stranica za advokatsku kancelariju | Digital X",
     "canonical": "https://www.digital-x-marketing.com/industrije/advokati/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Web stranica za advokatsku kancelariju: jasna područja rada i ozbiljan prvi utisak"
     ],
@@ -1341,7 +1341,7 @@
     "file": "./industrije/hoteli-i-turizam/index.html",
     "title": "Web stranica za hotel i apartmane: direktne rezervacije | Digital X",
     "canonical": "https://www.digital-x-marketing.com/industrije/hoteli-i-turizam/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Web stranica za hotele i apartmane: više direktnih upita, manje provizija"
     ],
@@ -1351,7 +1351,7 @@
     "file": "./industrije/index.html",
     "title": "Web stranice i marketing po djelatnostima | Digital X",
     "canonical": "https://www.digital-x-marketing.com/industrije/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Web stranice i marketing za vašu djelatnost"
     ],
@@ -1361,7 +1361,7 @@
     "file": "./industrije/luksuzni-brendovi/index.html",
     "title": "Web stranica za luksuzni brend: cinematic web i web shop | Digital X",
     "canonical": "https://www.digital-x-marketing.com/industrije/luksuzni-brendovi/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Web stranica za luksuzni brend: doživljaj proizvoda prije kupovine"
     ],
@@ -1371,7 +1371,7 @@
     "file": "./industrije/nekretnine/index.html",
     "title": "Web stranica za nekretnine i investitore | Digital X",
     "canonical": "https://www.digital-x-marketing.com/industrije/nekretnine/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Web stranica za nekretnine: projekt koji kupac razumije prije razgledanja"
     ],
@@ -1381,7 +1381,7 @@
     "file": "./industrije/privatne-klinike/index.html",
     "title": "Web stranica i SEO za privatne klinike i poliklinike | Digital X",
     "canonical": "https://www.digital-x-marketing.com/industrije/privatne-klinike/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Web stranica za privatnu kliniku: jasni pregledi, povjerenje i zakazivanje termina"
     ],
@@ -1391,7 +1391,7 @@
     "file": "./industrije/racunovodstvo-i-konsalting/index.html",
     "title": "Web stranica za računovodstvene agencije i konsultante | Digital X",
     "canonical": "https://www.digital-x-marketing.com/industrije/racunovodstvo-i-konsalting/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Web stranica za računovodstvo i konsalting: autoritet koji donosi B2B upite"
     ],
@@ -1401,7 +1401,7 @@
     "file": "./industrije/restorani/index.html",
     "title": "Web stranica i marketing za restoran: meni, rezervacije, Google | Digital X",
     "canonical": "https://www.digital-x-marketing.com/industrije/restorani/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Web stranica za restoran: meni, rezervacija i Google mapa na jednom mjestu"
     ],
@@ -1411,7 +1411,7 @@
     "file": "./industrije/stomatologija/index.html",
     "title": "Web stranica za stomatološku ordinaciju | Digital X",
     "canonical": "https://www.digital-x-marketing.com/industrije/stomatologija/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Web stranica za stomatološku ordinaciju: povjerenje prije prvog poziva"
     ],
@@ -1491,7 +1491,7 @@
     "file": "./pojmovnik/index.html",
     "title": "Pojmovnik: SEO, AEO, GEO, AI i web pojmovi | Digital X",
     "canonical": "https://www.digital-x-marketing.com/pojmovnik/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Pojmovnik za SEO, AEO, GEO, AI automatizaciju i web razvoj"
     ],
@@ -1754,6 +1754,26 @@
     "schema": 0
   },
   {
+    "file": "./tim/index.html",
+    "title": "Digital X tim i specijalizovane prakse u Sarajevu | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/tim/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Digital X tim: prakse za web inženjering, SEO/GEO/AEO i AI automatizaciju"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./uredjivacka-politika/index.html",
+    "title": "Urednička politika, izvori i metodologija mjerenja | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/uredjivacka-politika/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Urednička politika: ko priprema sadržaj, kako provjeravamo činjenice i kako mjerimo rezultate"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./uslovi.html",
     "title": "Uslovi korištenja | Digital X",
     "canonical": "https://www.digital-x-marketing.com/uslovi.html",
@@ -1767,7 +1787,7 @@
     "file": "./usluge/ai-chatbot-za-web-stranicu/index.html",
     "title": "AI chatbot za web stranicu: cijena od 490 KM | Digital X",
     "canonical": "https://www.digital-x-marketing.com/usluge/ai-chatbot-za-web-stranicu/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "AI chatbot za web stranicu koji odgovara, kvalifikuje i prikuplja upite"
     ],
@@ -1777,29 +1797,9 @@
     "file": "./usluge/izrada-web-shopa/index.html",
     "title": "Izrada web shopa u BiH: cijena i šta dobijate | Digital X",
     "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-shopa/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Izrada web shopa u BiH: trgovina spremna za prvu narudžbu"
-    ],
-    "schema": 1
-  },
-  {
-    "file": "./usluge/izrada-web-stranica/banja-luka/index.html",
-    "title": "Izrada web stranica Banja Luka: cijene i rokovi | Digital X",
-    "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-stranica/banja-luka/",
-    "robots": "index,follow,max-image-preview:large",
-    "h1": [
-      "Izrada web stranica u Banjoj Luci: brze, jasne i spremne za Google i AI pretragu"
-    ],
-    "schema": 1
-  },
-  {
-    "file": "./usluge/izrada-web-stranica/mostar/index.html",
-    "title": "Izrada web stranica Mostar: cijene i rokovi | Digital X",
-    "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-stranica/mostar/",
-    "robots": "index,follow,max-image-preview:large",
-    "h1": [
-      "Izrada web stranica u Mostaru: za turizam, ordinacije, trgovine i usluge"
     ],
     "schema": 1
   },
@@ -1807,29 +1807,9 @@
     "file": "./usluge/izrada-web-stranica/sarajevo/index.html",
     "title": "Izrada web stranica Sarajevo: cijene i rokovi | Digital X",
     "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-stranica/sarajevo/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Izrada web stranica u Sarajevu: brze, jasne i pronađene na Googleu"
-    ],
-    "schema": 1
-  },
-  {
-    "file": "./usluge/izrada-web-stranica/tuzla/index.html",
-    "title": "Izrada web stranica Tuzla: cijene i rokovi | Digital X",
-    "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-stranica/tuzla/",
-    "robots": "index,follow,max-image-preview:large",
-    "h1": [
-      "Izrada web stranica u Tuzli: brze poslovne stranice i web shopovi"
-    ],
-    "schema": 1
-  },
-  {
-    "file": "./usluge/izrada-web-stranica/zenica/index.html",
-    "title": "Izrada web stranica Zenica: cijene i rokovi | Digital X",
-    "canonical": "https://www.digital-x-marketing.com/usluge/izrada-web-stranica/zenica/",
-    "robots": "index,follow,max-image-preview:large",
-    "h1": [
-      "Izrada web stranica u Zenici: jasna ponuda, brz sajt i lokalni SEO"
     ],
     "schema": 1
   },
@@ -1837,7 +1817,7 @@
     "file": "./usluge/lokalni-seo-sarajevo/index.html",
     "title": "Lokalni SEO Sarajevo: Google mapa i pretraga | Digital X",
     "canonical": "https://www.digital-x-marketing.com/usluge/lokalni-seo-sarajevo/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Lokalni SEO u Sarajevu: budite na Google mapi kad vas traže u blizini"
     ],
@@ -1847,7 +1827,7 @@
     "file": "./usluge/optimizacija-brzine-sajta/index.html",
     "title": "Optimizacija brzine sajta: od 99 KM, mjereno prije i poslije | Digital X",
     "canonical": "https://www.digital-x-marketing.com/usluge/optimizacija-brzine-sajta/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Optimizacija brzine web stranice: brži sajt, mjeren prije i poslije"
     ],
@@ -1857,7 +1837,7 @@
     "file": "./usluge/optimizacija-meta-oglasa/index.html",
     "title": "Optimizacija Facebook i Instagram oglasa: niža cijena upita | Digital X",
     "canonical": "https://www.digital-x-marketing.com/usluge/optimizacija-meta-oglasa/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Optimizacija Facebook i Instagram oglasa: niža cijena upita, bolja publika"
     ],
@@ -1867,9 +1847,19 @@
     "file": "./usluge/redizajn-web-stranice/index.html",
     "title": "Redizajn web stranice: kad ima smisla i šta košta | Digital X",
     "canonical": "https://www.digital-x-marketing.com/usluge/redizajn-web-stranice/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Redizajn web stranice: od stare stranice do stranice koja donosi upite"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./usluge/seo-aeo-geo-cijena/index.html",
+    "title": "SEO, GEO i AEO cijena (2026): transparentni paketi bez skrivenih dodataka | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/usluge/seo-aeo-geo-cijena/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "SEO, GEO i AEO cijena: transparentni paketi bez doplate po AI promptu"
     ],
     "schema": 1
   },
@@ -1877,7 +1867,7 @@
     "file": "./usluge/web-dizajn/index.html",
     "title": "Web dizajn Sarajevo i BiH: cijene od 199 KM | Digital X",
     "canonical": "https://www.digital-x-marketing.com/usluge/web-dizajn/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Web dizajn u Sarajevu i BiH: moderne stranice s jasnim cijenama"
     ],
@@ -1887,9 +1877,19 @@
     "file": "./znanje/agencija-ili-freelancer-web-stranica/index.html",
     "title": "Agencija ili freelancer za izradu web stranice u BiH: pošteno poređenje | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/agencija-ili-freelancer-web-stranica/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Agencija ili freelancer za izradu web stranice: šta odabrati i kako ne pogriješiti"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/ai-spremnost-web-stranica-bih-2026/index.html",
+    "title": "X Signal 2026 benchmark: tehnička i AI spremnost web stranica | Digital X",
+    "canonical": "https://www.digital-x-marketing.com/znanje/ai-spremnost-web-stranica-bih-2026/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "X Signal 2026 benchmark: šta zaista odlučuje o vidljivosti u Google AI Modeu i LLM odgovorima"
     ],
     "schema": 1
   },
@@ -1897,7 +1897,7 @@
     "file": "./znanje/ai-za-male-firme/index.html",
     "title": "AI za male firme: 7 primjena koje se isplate i odakle početi | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/ai-za-male-firme/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "AI u maloj firmi: gdje umjetna inteligencija stvarno štedi vrijeme"
     ],
@@ -1907,7 +1907,7 @@
     "file": "./znanje/digitalni-marketing-za-male-firme/index.html",
     "title": "Digitalni marketing za male firme: plan za prvih 90 dana | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/digitalni-marketing-za-male-firme/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Digitalni marketing za male firme: odakle početi i šta raditi prvih 90 dana"
     ],
@@ -1917,7 +1917,7 @@
     "file": "./znanje/gdpr-pristupacnost-web-stranice/index.html",
     "title": "GDPR, kolačići i pristupačnost web stranice: vodič za firme u BiH | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/gdpr-pristupacnost-web-stranice/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "GDPR, kolačići i pristupačnost: šta web stranica firme iz BiH treba"
     ],
@@ -1927,7 +1927,7 @@
     "file": "./znanje/google-oglasi-cijena/index.html",
     "title": "Google oglasi: cijena, budžet i kako rade (vodič 2026) | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/google-oglasi-cijena/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Google oglasi: koliko koštaju i kako odrediti budžet"
     ],
@@ -1937,7 +1937,7 @@
     "file": "./znanje/instagram-facebook-reklama-cijena/index.html",
     "title": "Instagram i Facebook reklama: cijena i kako početi (2026) | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/instagram-facebook-reklama-cijena/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Instagram i Facebook reklama: koliko košta i kako je postaviti da radi"
     ],
@@ -1947,7 +1947,7 @@
     "file": "./znanje/izrada-web-stranica-vodic/index.html",
     "title": "Izrada web stranica: kompletan vodič za firme u BiH (2026) | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/izrada-web-stranica-vodic/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Izrada web stranice za firmu: koraci, rokovi i šta stranica mora imati"
     ],
@@ -1957,7 +1957,7 @@
     "file": "./znanje/kako-mjeriti-rezultate-marketinga/index.html",
     "title": "Kako mjeriti rezultate marketinga: 6 brojeva koji su bitni | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/kako-mjeriti-rezultate-marketinga/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Kako mjeriti rezultate digitalnog marketinga bez gubljenja u izvještajima"
     ],
@@ -1967,7 +1967,7 @@
     "file": "./znanje/kako-odabrati-digitalnu-agenciju/index.html",
     "title": "Kako odabrati digitalnu agenciju u BiH: 9 pitanja prije potpisa | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/kako-odabrati-digitalnu-agenciju/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Kako odabrati digitalnu ili marketing agenciju: pitanja koja vrijedi postaviti"
     ],
@@ -1977,7 +1977,7 @@
     "file": "./znanje/kako-otvoriti-web-shop-bih/index.html",
     "title": "Kako otvoriti web shop u BiH: koraci, troškovi i platforme | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/kako-otvoriti-web-shop-bih/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Kako otvoriti web shop u BiH: od ideje do prve narudžbe"
     ],
@@ -1987,7 +1987,7 @@
     "file": "./znanje/kako-smanjiti-cijenu-facebook-oglasa/index.html",
     "title": "Kako smanjiti cijenu Facebook i Instagram oglasa: 7 koraka | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/kako-smanjiti-cijenu-facebook-oglasa/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Kako smanjiti cijenu Facebook i Instagram oglasa: 7 koraka koji stvarno rade"
     ],
@@ -1997,7 +1997,7 @@
     "file": "./znanje/koliko-kosta-seo-optimizacija-bih/index.html",
     "title": "Koliko košta SEO, AEO i GEO optimizacija u BiH (2026/2027) | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/koliko-kosta-seo-optimizacija-bih/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Koliko košta SEO, AEO i GEO optimizacija u BiH: realne cijene i šta dobijate"
     ],
@@ -2007,7 +2007,7 @@
     "file": "./znanje/meta-capi-server-side-tracking/index.html",
     "title": "Meta Conversions API (CAPI) i server-side mjerenje: vodič za firme u BiH | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/meta-capi-server-side-tracking/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Meta Conversions API (CAPI): zašto sam Pixel više nije dovoljan za oglase"
     ],
@@ -2017,7 +2017,7 @@
     "file": "./znanje/plan-sadrzaja-drustvene-mreze/index.html",
     "title": "Plan sadržaja za društvene mreže: šta objavljivati i koliko često | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/plan-sadrzaja-drustvene-mreze/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Plan sadržaja za društvene mreže: jednostavan sistem za mjesec dana objava"
     ],
@@ -2027,7 +2027,7 @@
     "file": "./znanje/seo-aeo-geo-razlika/index.html",
     "title": "SEO, AEO i GEO: razlika i kako se pojaviti u AI odgovorima | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/seo-aeo-geo-razlika/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "SEO, AEO i GEO: u čemu je razlika i šta od toga treba vašoj firmi"
     ],
@@ -2037,7 +2037,7 @@
     "file": "./znanje/sta-je-seo-optimizacija/index.html",
     "title": "Šta je SEO optimizacija i koliko košta u BiH (2026) | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/sta-je-seo-optimizacija/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Šta je SEO optimizacija: kako radi, koliko košta i kada daje rezultate"
     ],
@@ -2047,7 +2047,7 @@
     "file": "./znanje/wordpress-shopify-ili-custom/index.html",
     "title": "WordPress, Shopify ili custom web: šta odabrati za firmu | Digital X",
     "canonical": "https://www.digital-x-marketing.com/znanje/wordpress-shopify-ili-custom/",
-    "robots": "index,follow,max-image-preview:large",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "WordPress, Shopify ili stranica po mjeri: kako odabrati platformu"
     ],

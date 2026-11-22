@@ -1,3 +1,5 @@
+import { EDITORIAL_POLICY_URL, GBP_MAP_URL, ROBOTS_INDEX_CONTENT, SAME_AS } from './entity-profile.mjs';
+
 const SITE_ORIGIN = 'https://www.digital-x-marketing.com';
 const LOGO_URL = `${SITE_ORIGIN}/assets/icon-512.png`;
 const UPDATED_DATE = '2026-09-09';
@@ -151,7 +153,7 @@ function metadataMarkup(pathname, route) {
   return [
     `<title>${escapeHtml(route.title)}</title>`,
     `<meta name="description" content="${escapeHtml(route.description)}">`,
-    `<meta name="robots" content="index,follow,max-image-preview:large">`,
+    `<meta name="robots" content="${ROBOTS_INDEX_CONTENT}">`,
     `<link rel="canonical" href="${canonical}">`,
     ...alternateMarkup(pathname, route),
     `<meta property="og:type" content="website">`,
@@ -217,6 +219,7 @@ function schemaMarkup(pathname, route, faqs = route.faqs) {
       logo: { '@type': 'ImageObject', url: LOGO_URL },
       image: LOGO_URL,
       founder: { '@type': 'Organization', name: 'Digital X' },
+      publishingPrinciples: EDITORIAL_POLICY_URL,
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',
         applicableCountry: ['BA', 'HR', 'RS', 'ME', 'DE', 'AT', 'CH'],
@@ -229,7 +232,7 @@ function schemaMarkup(pathname, route, faqs = route.faqs) {
         merchantReturnLink: `${SITE_ORIGIN}/otkazivanje-povrat.html`,
       },
       address: { '@type': 'PostalAddress', streetAddress: 'Stupska bb', addressLocality: 'Sarajevo', postalCode: '71000', addressCountry: 'BA' },
-      sameAs: ['https://www.instagram.com/digitalxmarketing.ba'],
+      sameAs: [...SAME_AS],
     },
     {
       '@type': 'LocalBusiness',
@@ -239,6 +242,7 @@ function schemaMarkup(pathname, route, faqs = route.faqs) {
       email: 'marketing@digital-x-marketing.com',
       telephone: '+387644383566',
       priceRange: '199 KM - 3490 KM',
+      hasMap: GBP_MAP_URL,
       parentOrganization: { '@id': organizationId },
       logo: { '@type': 'ImageObject', '@id': `${organizationId}-logo`, url: LOGO_URL },
       address: { '@type': 'PostalAddress', streetAddress: 'Stupska bb', addressLocality: 'Sarajevo', postalCode: '71000', addressCountry: 'BA' },

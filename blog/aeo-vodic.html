@@ -9,12 +9,13 @@
 <script src="/js/consent.js" defer></script><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AEO: kako da vas ChatGPT preporuči kupcima (vodič 2026) | Digital X</title>
 <meta name="description" content="SEO, AEO i GEO objašnjeni na primjerima: kako pripremiti web stranicu za Google i razumljive AI odgovore, uz provjerljive podatke i konkretne korake.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="https://www.digital-x-marketing.com/blog/aeo-vodic.html">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/cormorant-garamond-500-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/inter-400-latin.woff2">
 <link rel="stylesheet" href="/css/fonts.css">
 <link rel="stylesheet" href="/css/style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AEO: kako da vas ChatGPT preporuči kupcima","datePublished":"2026-07-11","dateModified":"2026-11-12","author":{"@type":"Organization","name":"Digital X"},"publisher":{"@type":"Organization","name":"Digital X"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AEO: kako da vas ChatGPT preporuči kupcima","datePublished":"2026-07-11","dateModified":"2026-11-21","author":{"@type":"Organization","@id":"https://www.digital-x-marketing.com/#organization","name":"Digital X"},"publisher":{"@type":"Organization","@id":"https://www.digital-x-marketing.com/#organization","name":"Digital X"},"publishingPrinciples":"https://www.digital-x-marketing.com/uredjivacka-politika/"}</script>
 <meta property="og:url" content="https://www.digital-x-marketing.com/blog/aeo-vodic.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="AEO: kako da vas ChatGPT preporuči kupcima (vodič 2026) | Digital X">
@@ -64,23 +65,26 @@
 <p>Ove discipline se dopunjuju. Strukturirani podaci i jasni odgovori pomažu razumijevanju sadržaja, ali ne obavezuju pretraživač ili AI asistenta da preporuči bilo koju firmu.</p>
 
 <h2>Kako AI bira koga će preporučiti</h2>
+<p>AI pretraživači i Google AI Mode razlažu složene upite na više paralelnih podupita (query fan-out) i izdvajaju samostalne pasuse od 40 do 80 riječi potkrijepljene vanjskim izvorima. Recenzirano KDD 2024 istraživanje (<a href="https://arxiv.org/pdf/2311.09735" target="_blank" rel="noopener">Aggarwal et al., GEO-bench</a>) pokazalo je da dodavanje provjerljivih statistika, citata i izvora povećava vidljivost u generativnim odgovorima do 40%.</p>
 <ul>
-<li><b>Razumljivost:</b> AI mora jasno "pročitati" ko ste, šta radite, gdje i za koga. Pomaže i schema markup (strukturirani podaci) — oznake u kodu koje kažu "ovo je firma, ovo su usluge, ovo su cijene, ovo su recenzije".</li>
+<li><b>Razumljivost:</b> AI mora jasno "pročitati" ko ste, šta radite, gdje i za koga. Pomaže i schema markup (strukturirani podaci) koji tačno odgovara vidljivom tekstu na stranici (<a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener">Google Search Central: AI Features</a>).</li>
 <li><b>Pristup:</b> crawleri za treniranje modela i crawleri za pretragu i odgovore služe različitim svrhama. Blokiranje jednog bota ne znači nestanak iz svih AI odgovora, a dozvoljen pristup ne garantuje preporuku.</li>
-<li><b>Citabilnost:</b> AI voli sadržaj koji direktno odgovara na pitanja — kratki, jasni pasusi, FAQ sekcije, konkretne brojke. "Prezentacijska stranica košta 500–1.800 KM" je citabilno; tri pasusa marketinške magle nisu.</li>
-<li><b>Autoritet:</b> spominjanja vašeg brenda na drugim mjestima (portali, direktoriji, recenzije) uče AI da ste stvarni i relevantni.</li>
+<li><b>Citabilnost:</b> AI voli sadržaj koji direktno odgovara na pitanja — kratki, jasni pasusi od 40–80 riječi, tabele, FAQ sekcije i konkretne brojke. "Prezentacijska stranica od 449 KM" je citabilno; tri pasusa marketinške magle nisu.</li>
+<li><b>Autoritet i vanjska spominjanja:</b> nezavisne publikacije, poslovni direktoriji i recenzije uče AI da ste stvarni i relevantni — empirijske studije pokazuju da AI asistenti sistematski preferiraju nezavisne izvore u odnosu na samopromotivne blogove.</li>
 </ul>
 
 <h2>Pet koraka koje možete uraditi već ovaj mjesec</h2>
+<p>Za pojavljivanje u Google AI Overviews i AI Modeu nisu potrebni posebni AI fajlovi ni eksperimentalne oznake, već uredan HTML, brza stranica (Core Web Vitals) i provjerljivi podaci o firmi. Sljedećih pet koraka pokriva tehničku osnovu i strukturu odgovora:</p>
 <ol>
-<li>Dodajte <b>schema markup</b> (Organization/LocalBusiness + FAQ) na sajt.</li>
-<li>Provjerite <b>robots.txt</b> — svjesno odlučite koje crawlere za pretragu i treniranje dozvoljavate.</li>
-<li>Po želji dodajte <b>llms.txt</b> — predloženi format sažetka za AI alate, ne dokazan faktor rangiranja. Google Pretraga ga ne koristi.</li>
-<li>Napišite <b>FAQ stranicu</b> s pitanjima koja kupci stvarno postavljaju — i odgovorite u prve dvije rečenice.</li>
-<li>Sredite <b>Google Business profil</b> — AI sistemi ga koriste kao izvor za lokalne preporuke.</li>
+<li>Dodajte <b>schema markup</b> (Organization/LocalBusiness + Service/Article) koji tačno prati vidljivi tekst; imajte na umu da Google od 2023. ograničava FAQ rich rezultate na državne i zdravstvene sajtove (<a href="https://developers.google.com/search/blog/2023/08/howto-faq-changes" target="_blank" rel="noopener">Google Search Central Blog</a>).</li>
+<li>Provjerite <b>robots.txt</b> i meta direktive (<code>max-snippet:-1, max-image-preview:large</code>) — svjesno odlučite koje crawlere za pretragu i treniranje dozvoljavate.</li>
+<li>Po želji dodajte <b>llms.txt</b> — predloženi format sažetka za treće AI alate, ne dokazan faktor rangiranja. Google Pretraga ga ne zahtijeva niti koristi za AI Overviews.</li>
+<li>Napišite <b>FAQ i H2 sekcije</b> s pitanjima koja kupci stvarno postavljaju — i otvorite svaku cjelinu jasnim odgovorom od 40–80 riječi.</li>
+<li>Sredite <b>Google Business profil</b> i dosljedne podatke o firmi — Google i AI sistemi ih koriste kao izvor za lokalne preporuke.</li>
 </ol>
 
 <h2>Šta zaista najviše pomaže</h2>
+<p>Najveću razliku prave originalni podaci, jasna struktura pasusa i tehnička ispravnost stranice (LCP ≤ 2,5 s, INP &lt; 200 ms, CLS &lt; 0,1). Više o našoj metodologiji provjere pročitajte na stranici <a href="/uredjivacka-politika/">Urednička politika</a> i u <a href="/znanje/ai-spremnost-web-stranica-bih-2026/">X Signal 2026 benchmarku</a>.</p>
 <blockquote>Koristan, originalan sadržaj i provjerljivi dokazi o vašem poslovanju vrijede više od količine oznaka u kodu. Google navodi da za AI prikaze u Pretrazi nije potrebna posebna optimizacija izvan dobrih SEO osnova.</blockquote>
 
 <p>Želite znati kako vaš sajt trenutno stoji? <a href="/usluge/x-signal/">Besplatna analiza pokazuje odakle početi →</a> Ili pogledajte naš <a href="/usluge/seo-aeo-geo/">SEO/GEO/AEO paket od 249 KM mjesečno</a>.</p>

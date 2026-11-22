@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { auditRequestSchema, type AuditCheck, type AuditResult } from '../shared/contracts';
 import type { AuditFacts } from '../shared/audit-facts';
 import type { AuditRecord } from '../shared/audit-record';
-import { extractFacts, gradeChecks, robotsAllows } from './analyze';
+import { extractFacts, gradeChecks, robotsAllows, analyzeAiSearchSignals } from './analyze';
 import { safeFetch, normalizeTarget, createAuditBudget, sameSiteHost, type FetchBudget } from './safe-fetch';
 import { guard, getSession, stream, send, fail, sign, verify, renewSession, HttpError, type Request, type Response } from './http';
 import { startTrace } from './core/trace';
@@ -28,6 +28,7 @@ export async function runAudit(url: string, signal: AbortSignal, progress: (mess
   const started = performance.now(); const page = await safeFetch(target.href, signal, 1_500_000, budget); const elapsed = Math.round(performance.now() - started);
   const facts = extractFacts(page.text, page.url, page.status);
   checks.push(...gradeChecks(facts));
+  if (facts.ok) checks.push(...analyzeAiSearchSignals(page.text, page.url));
   checks.push({ id: 'speed', title: 'Odgovor servera', category: 'Tehnička osnova', weight: 6, severity: elapsed < 900 ? 'good' : elapsed < 2200 ? 'warning' : 'critical', status: elapsed < 900 ? 'found' : 'attention', evidence: `Stranica je stigla za ${elapsed} ms (jedno mjerenje s našeg servera, uključuje DNS i TLS). Nije Core Web Vitals mjerenje.`, recommendation: elapsed < 900 ? '' : 'Spor odgovor gubi posjetioce: provjerite hosting, keširanje i veličinu stranice.', url: page.url });
   const origin = new URL(page.url).origin;
   // Side fetches go to the final origin only when its host matches the entered host (a leading www toggle is allowed);

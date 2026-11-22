@@ -8,6 +8,7 @@ import {isLegacyRedirectPath,movedPageEntries,movedPageTarget} from '../lib/rout
 import {readdirSync,statSync} from 'node:fs';
 import {localizePage} from './localize-pages.mjs';
 import {znanjePages} from './znanje/build.mjs';
+import {publishLocalizedZnanje} from './znanje/localize.mjs';
 const {offers,products}=createRequire(import.meta.url)('../.concierge/catalogue.cjs');
 const origin='https://www.digital-x-marketing.com';
 const routes=[{id:'home',production:'/'},...offers];
@@ -63,8 +64,9 @@ for(const p of routes){
  }
 }
 // Preserve existing translations and legacy URLs in the sitemap; add all published canonical pages.
+const localizedZnanjeUrls=publishLocalizedZnanje(localizedRoutes);
 const sitemap=load(filterGscSitemap(readFileSync('sitemap.xml','utf8')),{xmlMode:true});
-const urls=new Set([...sitemap('loc').map((i,e)=>sitemap(e).text()).get(),...routes.flatMap(p=>['','/en','/de'].map(prefix=>origin+prefix+p.production)),...znanjePages.map(p=>origin+p.path)]);
+const urls=new Set([...sitemap('loc').map((i,e)=>sitemap(e).text()).get(),...routes.flatMap(p=>['','/en','/de'].map(prefix=>origin+prefix+p.production)),...znanjePages.map(p=>origin+p.path),...localizedZnanjeUrls]);
 const lastmod=new Map(znanjePages.map(p=>[origin+p.path,p.lastmod]));
 // Only 200 URLs: middleware-served service pages count; redirected legacy URLs never do.
 const inSitemap=p=>!isLegacyRedirectPath(p)&&(isServicePath(p)||existsSync('public'+p+(p.endsWith('/')?'index.html':'')));

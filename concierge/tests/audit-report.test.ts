@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {EventEmitter} from 'node:events';import {randomUUID} from 'node:crypto';
 import {auditSummary,priorities,reportHtml,reportText} from '../shared/audit-report';
-import {analyzeHtml} from '../server/analyze';
+import {analyzeHtml,analyzeAiSearchSignals} from '../server/analyze';
 import {signAudit,verifyAudit} from '../server/audit';
 import lead from '../server/lead';
 import {sign,type Request,type Response} from '../server/http';
@@ -50,4 +50,12 @@ test('e-mail delivery: team always, visitor report only for a report this server
  sent.length=0;const forgedSid=randomUUID(),forged=await invoke({...base,submissionId:randomUUID(),email:'forged@example.com',audit:{result:{...r,checks:[{...r.checks[0],evidence:'Buy now!'}]},signature:signAudit(r,forgedSid)}},forgedSid);
  assert.equal(forged.status,200);assert.equal(forged.body.report,false);assert.equal(sent.length,1);assert.equal(sent[0].to[0],'marketing@digital-x-marketing.com');
  delete process.env.DX_BUDGET_VISITOR_EMAIL_DAILY;delete process.env.DX_VISITOR_COPY;delete process.env.RESEND_API_KEY;
+});
+test('analyzeAiSearchSignals checks 2026 snippet directives, deprecated schema, author provenance and passage readiness',()=>{
+ const goodHtml=`<!doctype html><html><head><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"><script type="application/ld+json">{"@type":"Article","author":{"@id":"https://example.com/#org"},"publishingPrinciples":"https://example.com/editorial/"}</script></head><body><main><p class="guide-meta"><time datetime="2026-11-21">21.11.2026</time></p><p>${'word '.repeat(45)}</p><p>${'passage '.repeat(45)}</p></main></body></html>`;
+ const good=analyzeAiSearchSignals(goodHtml,'https://example.com/');
+ for(const id of ['snippet-policy','deprecated-schema','author-provenance','passage-readiness'])assert.equal(good.find(c=>c.id===id)?.severity,'good',id);
+ const badHtml=`<!doctype html><html><head><meta name="robots" content="nosnippet"><script type="application/ld+json">{"@type":"ClaimReview"}</script></head><body><main><p>Short.</p></main></body></html>`;
+ const bad=analyzeAiSearchSignals(badHtml,'https://example.com/');
+ for(const id of ['snippet-policy','deprecated-schema','author-provenance','passage-readiness'])assert.equal(bad.find(c=>c.id===id)?.severity,'warning',id);
 });

@@ -253,6 +253,46 @@
       "permanent": true
     },
     {
+      "source": "/usluge/izrada-web-stranica/banja-luka",
+      "destination": "/usluge/izrada-web-stranica/",
+      "permanent": true
+    },
+    {
+      "source": "/usluge/izrada-web-stranica/banja-luka/",
+      "destination": "/usluge/izrada-web-stranica/",
+      "permanent": true
+    },
+    {
+      "source": "/usluge/izrada-web-stranica/mostar",
+      "destination": "/usluge/izrada-web-stranica/",
+      "permanent": true
+    },
+    {
+      "source": "/usluge/izrada-web-stranica/mostar/",
+      "destination": "/usluge/izrada-web-stranica/",
+      "permanent": true
+    },
+    {
+      "source": "/usluge/izrada-web-stranica/tuzla",
+      "destination": "/usluge/izrada-web-stranica/",
+      "permanent": true
+    },
+    {
+      "source": "/usluge/izrada-web-stranica/tuzla/",
+      "destination": "/usluge/izrada-web-stranica/",
+      "permanent": true
+    },
+    {
+      "source": "/usluge/izrada-web-stranica/zenica",
+      "destination": "/usluge/izrada-web-stranica/",
+      "permanent": true
+    },
+    {
+      "source": "/usluge/izrada-web-stranica/zenica/",
+      "destination": "/usluge/izrada-web-stranica/",
+      "permanent": true
+    },
+    {
       "source": "/assets/film/poster-hero.webp",
       "destination": "/assets/images/service-web.webp",
       "permanent": false

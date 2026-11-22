@@ -536,6 +536,9 @@ ${demo('/cinematic-clothes/', 'cinematic web za modni brend')}
 <tr><th scope="row">Područje rada</th><td>Bosna i Hercegovina, Hrvatska, Srbija, Crna Gora, Njemačka, Austrija i Švicarska</td></tr>
 <tr><th scope="row">Web</th><td>${a('https://www.digital-x-marketing.com/', 'digital-x-marketing.com')}</td></tr>
 <tr><th scope="row">Instagram</th><td>${a('https://www.instagram.com/digitalxmarketing.ba', '@digitalxmarketing.ba')}</td></tr>
+<tr><th scope="row">YouTube</th><td>${a('https://www.youtube.com/@DigitalXMarketingSarajevo', '@DigitalXMarketingSarajevo')}</td></tr>
+<tr><th scope="row">GitHub</th><td>${a('https://github.com/cipiforrest-create', 'github.com/cipiforrest-create')}</td></tr>
+<tr><th scope="row">Google Business Profile</th><td>${a('https://www.google.com/maps/place/Digital+X/@43.9315429,17.6762169,17z/data=!3m1!4b1!4m6!3m5!1s0x4758cfea08e87259:0xd478d21abc9b26ec!8m2!3d43.9315429!4d17.6762169!16s%2Fg%2F11ntfjpll8', 'Digital X na Google Mapama')}</td></tr>
 </tbody></table></div>
 <p>Pravni podaci su i na stranici ${a('/pravne-informacije.html', 'pravne informacije')}.</p>`],
       ['Usluge i početne cijene', `<div class="table-wrap"><table><thead><tr><th scope="col">Usluga</th><th scope="col">Cijena od</th><th scope="col">Plaćanje</th></tr></thead><tbody>
@@ -577,6 +580,98 @@ ${demo('/cinematic-clothes/', 'cinematic web za modni brend')}
       ['Kako kontaktirati Digital X?', 'E-mailom na marketing@digital-x-marketing.com, telefonom na +387 64 438 3566 ili preko kontakt stranice.'],
     ],
     related: [['/kontakt.html', 'Kontakt'], ['/usluge/web-dizajn/', 'Web dizajn i cijene'], ['/pravne-informacije.html', 'Pravne informacije']],
+  },
+  {
+    path: '/uredjivacka-politika/',
+    about: true,
+    crumbs: [['O nama', '/o-nama.html'], ['Urednička politika i metodologija', '/uredjivacka-politika/']],
+    eyebrow: 'DIGITAL X · METODOLOGIJA I E-E-A-T',
+    title: 'Urednička politika, izvori i metodologija mjerenja | Digital X',
+    h1: 'Urednička politika: ko priprema sadržaj, kako provjeravamo činjenice i kako mjerimo rezultate',
+    desc: 'Kako Digital X Marketing iz Sarajeva priprema vodiče, provjerava tehničke tvrdnje prema Google Search Central standardima, koristi AI alate pod ljudskom kontrolom i mjeri Core Update promjene.',
+    keywords: ['urednička politika digital x', 'metodologija seo mjerenja', 'google core update analiza', 'e-e-a-t standardi'],
+    answer: 'Svaki vodič i tehnička preporuka na Digital X stranici prolazi ljudsku uredničku i inženjersku provjeru u Sarajevu. Tvrdnje zasnivamo na zvaničnoj Google Search Central dokumentaciji, recenziranim GEO istraživanjima i ponovljivim HTML provjerama kroz X Signal, bez izmišljenih statistika, lažnih recenzija ili garancija pozicija.',
+    sections: [
+      ['Ko priprema i provjerava sadržaj (Who)', `<p>Sadržaj pripremaju i pregledaju specijalisti za web inženjering, tehnički SEO/GEO/AEO i AI automatizaciju unutar ${a('/tim/', 'Digital X tima u Sarajevu')} (Stupska bb). Ne koristimo masovno automatsko generisanje stranica bez ljudske kontrole, jer takva praksa krši Googleovu politiku protiv zloupotrebe skaliranog sadržaja (<a href="https://developers.google.com/search/docs/essentials/spam-policies" target="_blank" rel="noopener">Google Spam Policies</a>).</p>`],
+      ['Kako provjeravamo tehničke tvrdnje i AI nacrte (How)', `<ul>
+<li><strong>Primarni izvori:</strong> tehničke preporuke za indeksiranje, strukturirane podatke i AI preglede usklađujemo sa zvaničnom dokumentacijom <a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener">Google Search Central: AI Features</a> i <a href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener">Core Web Vitals</a>.</li>
+<li><strong>Ljudska kontrola AI alata:</strong> kada se AI koristi za strukturiranje nacrta, svaka cijena, tehnički podatak i pravna napomena ručno se provjeravaju prije objave u skladu sa smjernicama <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener">People-First Content</a>.</li>
+<li><strong>Jasno označavanje koncepata:</strong> interaktivni demo primjeri na stranici označeni su kao koncepti, a ne kao stranice stvarnih klijenata.</li>
+<li><strong>Usklađenost JSON-LD podataka:</strong> svaka vrijednost u strukturiranim podacima mora tačno odgovarati vidljivom tekstu na istoj adresi.</li></ul>`],
+      ['Metodologija mjerenja i Google Core Update protokol', `<p>Rezultate pratimo kroz Google Search Console, GA4 konverzije i ponovljive uzorke upita u AI pretraživačima. Kada Google završi Core Update na Search Status Dashboardu, čekamo najmanje jednu punu sedmicu prije poređenja podataka u Search Consoleu sa sedmicom prije početka ažuriranja (<a href="https://developers.google.com/search/docs/appearance/core-updates" target="_blank" rel="noopener">Google Core Updates</a>). Sitne oscilacije (npr. pozicija 2 na 4) ne diramo ishitreno; dubinsku reviziju radimo samo kod trajnih padova po segmentima Web, Images i Video.</p>`],
+      ['Zašto objavljujemo javne cijene i izvore (Why)', `<p>Vlasnici firmi u BiH i dijaspori često dobijaju nejasne ponude bez obima i roka. Naš cilj je da prije prvog poziva vidite početne cijene, šta je uključeno, šta nije moguće garantovati i kako sami možete provjeriti osnovne signale putem ${a('/usluge/x-signal/', 'besplatne X Signal analize')}.</p>`],
+    ],
+    faq: [
+      ['Da li Digital X koristi AI za pisanje članaka?', 'AI alate možemo koristiti kao pomoć u istraživanju i strukturi, ali svaki objavljeni tekst prolazi ljudsku provjeru činjenica, cijena i tehničke tačnosti prema Googleovim smjernicama za koristan sadržaj.'],
+      ['Zašto ne objavljujete garantovane procente rasta prometa?', 'Zato što pozicije na Googleu i preporuke u AI odgovorima zavise od konkurencije i sistema trećih strana. Objavljujemo samo provjerljive cijene, metodologiju i mjerljive tehničke nalaze.'],
+      ['Koliko često ažurirate vodiče i cijene?', 'Ključne vodiče i cjenovnike pregledamo kvartalno ili odmah nakon promjene Googleovih standarda i naših paketa, uz vidljiv datum ažuriranja na vrhu stranice.'],
+    ],
+    related: [['/tim/', 'Digital X tim i prakse'], ['/cinjenice/', 'Činjenice o Digital X'], ['/znanje/ai-spremnost-web-stranica-bih-2026/', 'X Signal 2026 benchmark']],
+  },
+  {
+    path: '/tim/',
+    profilePage: true,
+    crumbs: [['O nama', '/o-nama.html'], ['Tim i prakse', '/tim/']],
+    eyebrow: 'DIGITAL X · TIM I PRAKSE',
+    title: 'Digital X tim i specijalizovane prakse u Sarajevu | Digital X',
+    h1: 'Digital X tim: prakse za web inženjering, SEO/GEO/AEO i AI automatizaciju',
+    desc: 'Upoznajte specijalizovane prakse Digital X Marketing tima u Sarajevu: web razvoj i Core Web Vitals, tehnički SEO/GEO/AEO, AI automatizacija i produkcija sadržaja.',
+    keywords: ['digital x tim', 'digitalna agencija sarajevo tim', 'seo stručnjaci sarajevo', 'web razvoj sarajevo'],
+    answer: 'Digital X Marketing u Sarajevu (Stupska bb) okuplja četiri povezane prakse: web inženjering i performanse, SEO/GEO/AEO vidljivost, AI automatizaciju i produkciju sadržaja. Svaki projekat i objavljeni vodič prolazi pregled odgovorne prakse prije isporuke ili objave.',
+    sections: [
+      ['Četiri specijalizovane prakse pod jednim krovom', `<div class="table-wrap"><table><thead><tr><th scope="col">Praksa</th><th scope="col">Odgovornost</th><th scope="col">Standard provjere</th></tr></thead><tbody>
+<tr><th scope="row">Web inženjering i performanse</th><td>Prezentacijske stranice, web shopovi, aplikacije po mjeri i cinematic iskustva</td><td>Core Web Vitals (LCP ≤ 2,5 s, INP &lt; 200 ms, CLS &lt; 0,1), mobilni QA i čisti HTML</td></tr>
+<tr><th scope="row">SEO, GEO i AEO praksa</th><td>Tehnički SEO, lokalni Google Business signali, query fan-out struktura i JSON-LD</td><td>Google Search Essentials, Rich Results Test, Search Console i GA4 atribucija</td></tr>
+<tr><th scope="row">AI automatizacija i sistemi</th><td>AI prodajni asistenti, recepcionar, CRM tokovi i AI Second Brain baze znanja</td><td>Odobreni izvori znanja, ljudska potvrda osjetljivih radnji i jasna predaja timu</td></tr>
+<tr><th scope="row">Sadržaj i produkcija</th><td>Struktura ponude, vodiči, fotografija proizvoda i kratki video formati</td><td>Urednička provjera činjenica, jasni odgovori od 40–80 riječi i dosljedan ton brenda</td></tr></tbody></table></div>`],
+      ['Kako sarađujemo s klijentima u BiH i dijaspori', `<p>Sa klijentima u Sarajevu sastajemo se uživo ili online, dok sa firmama u Banjoj Luci, Mostaru, Tuzli, Zenici, Hrvatskoj, Srbiji, Njemačkoj, Austriji i Švicarskoj radimo putem video poziva i dijeljenih dokumenata na bosanskom, hrvatskom, srpskom, engleskom i njemačkom jeziku.</p>`],
+      ['Provjerljivi kanali i kontakt', `<ul>
+<li><strong>Sjedište:</strong> Stupska bb, 71000 Sarajevo, Bosna i Hercegovina</li>
+<li><strong>E-mail:</strong> ${a('mailto:marketing@digital-x-marketing.com', 'marketing@digital-x-marketing.com')}</li>
+<li><strong>Telefon / WhatsApp:</strong> ${a('tel:+387644383566', '+387 64 438 3566')}</li>
+<li><strong>GitHub:</strong> ${a('https://github.com/cipiforrest-create', 'github.com/cipiforrest-create')}</li>
+<li><strong>YouTube:</strong> ${a('https://www.youtube.com/@DigitalXMarketingSarajevo', '@DigitalXMarketingSarajevo')}</li>
+<li><strong>Google Business Profile:</strong> ${a('https://www.google.com/maps/place/Digital+X/@43.9315429,17.6762169,17z/data=!3m1!4b1!4m6!3m5!1s0x4758cfea08e87259:0xd478d21abc9b26ec!8m2!3d43.9315429!4d17.6762169!16s%2Fg%2F11ntfjpll8', 'Digital X na Google Mapama')}</li>
+<li><strong>Instagram:</strong> ${a('https://www.instagram.com/digitalxmarketing.ba', '@digitalxmarketing.ba')}</li></ul>`],
+    ],
+    faq: [
+      ['Ko stoji iza vodiča i analiza na Digital X stranici?', 'Vodiče i tehničke analize priprema i provjerava Digital X SEO, GEO/AEO i web inženjerski tim u Sarajevu prema pravilima objavljenim na stranici Urednička politika.'],
+      ['Da li radite s podizvođačima bez znanja klijenta?', 'Ne. Obim, faze, rok i odgovornost definišemo pisano prije početka rada, a svi nalozi i domena ostaju u vlasništvu klijenta.'],
+      ['Kako mogu zakazati razgovor s timom?', 'Putem kontakt forme na stranici Kontakt, e-mailom na marketing@digital-x-marketing.com ili pozivom/WhatsApp porukom na +387 64 438 3566.'],
+    ],
+    related: [['/uredjivacka-politika/', 'Urednička politika i metodologija'], ['/o-nama.html', 'O nama'], ['/kontakt.html', 'Kontakt']],
+  },
+  {
+    path: '/usluge/seo-aeo-geo-cijena/',
+    crumbs: [['Usluge', '/usluge/'], ['SEO · AEO · GEO', '/usluge/seo-aeo-geo/'], ['Cijene i poređenje modela', '/usluge/seo-aeo-geo-cijena/']],
+    eyebrow: 'SEO · GEO · AEO · CIJENE I POREĐENJE',
+    title: 'SEO, GEO i AEO cijena (2026): transparentni paketi bez skrivenih dodataka | Digital X',
+    h1: 'SEO, GEO i AEO cijena: transparentni paketi bez doplate po AI promptu',
+    desc: 'Uporedite cijene SEO, GEO i AEO usluga u BiH i DACH regiji: od 99 KM jednokratno i 249 KM mjesečno, bez skrivenih doplata po promptu ili dugoročnog zaključavanja.',
+    keywords: ['seo geo aeo cijena', 'aeo optimizacija cijena', 'geo agencija cijena', 'seo paket bih cijena', 'poredjenje seo agencija'],
+    service: { name: 'SEO, GEO i AEO paketi i poređenje', serviceType: 'SEO, GEO and AEO optimization pricing', areaServed: [{ '@type': 'Country', name: 'Bosna i Hercegovina' }, { '@type': 'Country', name: 'Germany' }, { '@type': 'Country', name: 'Austria' }, { '@type': 'Country', name: 'Switzerland' }], offers: [['Speed optimizacija', 99], ['SEO · GEO · AEO', 249, 'mjesečno'], ['Digitalni partner', 899, 'mjesečno']] },
+    answer: 'Kod Digital X tehničko ubrzanje kreće od 99 KM jednokratno, mjesečni SEO · GEO · AEO paket kreće od 249 KM mjesečno, a cjeloviti Digitalni partner od 899 KM mjesečno. Za razliku od modela s visokim enterprise retainerima ili doplatom po broju praćenih AI promptova, obim i cijenu potvrđujemo pisano unaprijed.',
+    sections: [
+      ['Poređenje modela: tradicionalne agencije vs. Digital X pristup', `<p>Kupci koji traže SEO i AI vidljivost često nailaze na tri problema: nejasne cijene bez javnog obima, dodatne naknade za praćenje AI promptova ili masovno generisanje AI tekstova bez tehničke osnove. Tabela ispod poredi tipične tržišne modele s našim pristupom.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Kriterij</th><th scope="col">Tipični enterprise / legacy model</th><th scope="col">Digital X transparentni model</th></tr></thead><tbody>
+<tr><th scope="row">Transparentnost cijene</th><td>Prilagođene ponude bez javnog praga ili doplate po setu AI promptova</td><td>Javne početne cijene (99 KM jednokratno, od 249 KM/mj, od 899 KM/mj) uz pisani obim</td></tr>
+<tr><th scope="row">Fokus tržišta</th><td>Često ograničeno na velike B2B SaaS budžete</td><td>Prilagođeno malim i srednjim firmama, lokalnim biznisima, web shopovima i DACH izvozu</td></tr>
+<tr><th scope="row">Tehnički standardi</th><td>Ponekad prodaje llms.txt ili FAQ rich-snippet obećanja kao prečicu</td><td>Zasnovano na Google Search Essentials, Core Web Vitals i tačnom JSON-LD-u</td></tr>
+<tr><th scope="row">Struktura sadržaja</th><td>Dugi opšti tekstovi ili masovni AI članci bez provjere</td><td>Odgovor-prvo pasusi (40–80 riječi) za query fan-out, citati izvora i ljudska kontrola</td></tr>
+<tr><th scope="row">Ugovorna fleksibilnost</th><td>Dugoročno zaključavanje od 6–12 mjeseci</td><td>Jasne faze i mjesečni rad bez skrivenih troškova</td></tr></tbody></table></div>`],
+      ['Tri jasna nivoa ulaganja prema fazi firme', `<p>Umjesto jednog skupog paketa za sve, ulaganje dijelimo prema stvarnom stanju vaše stranice i tržišta. Svaki nivo počinje provjerom postojećeg stanja kako ne biste plaćali ono što već radi.</p>
+<ul>
+<li><strong>Tehnički start i brzina (od 99 KM jednokratno):</strong> ${a('/shop/product/speed-optimization/', 'Speed optimizacija')} i ${a('/usluge/x-signal/', 'X Signal provjera')} za spore stranice, greške indeksacije, slike i osnovne meta/schema signale.</li>
+<li><strong>SEO · GEO · AEO mjesečni rast (od 249 KM mjesečno):</strong> ${a('/shop/product/seo-aeo/', 'SEO · GEO · AEO paket')} za lokalne firme, ordinacije, advokate i uslužne biznise — tehnički SEO, Google Business Profile, AEO/GEO struktura odgovora, Schema.org i mjesečni izvještaj.</li>
+<li><strong>Digitalni partner za širenje i DACH tržište (od 899 KM mjesečno):</strong> ${a('/shop/product/digital-partner/', 'Digitalni partner')} za web shopove i firme koje ciljaju cijelu BiH, region i dijasporu (BS/EN/DE klasteri, kampanje, sadržaj i praćenje AI vidljivosti).</li></ul>`],
+      ['Šta ulazi u cijenu, a šta se ne može kupiti', `<p>U cijenu ulaze tehničke popravke, struktura stranica, lokalni signali, pisanje ili uređivanje sadržaja i mjerenje u Search Consoleu i GA4. Ono što nijedna ozbiljna agencija ne može prodati jeste garantovano prvo mjesto na Googleu ili garantovana preporuka u ChatGPT-u — detalje objašnjavamo u vodiču ${a('/znanje/koliko-kosta-seo-optimizacija-bih/', 'koliko košta SEO u BiH')}.</p>`],
+    ],
+    faq: [
+      ['Zašto je početni SEO · GEO · AEO paket 249 KM mjesečno, a ne 2.000+ KM?', 'Zato što je prilagođen obimu malih i srednjih firmi u BiH: fokusira se na najvažnije tehničke popravke, lokalni profil i ključne stranice usluga bez agencijskog viška. Veći web shopovi i višejezična DACH tržišta imaju veći obim i višu cijenu.'],
+      ['Da li naplaćujete posebno za AEO i GEO uz klasični SEO?', 'Ne. AEO struktura odgovora i GEO provjerljivost entiteta dio su istog SEO · GEO · AEO paketa od 249 KM mjesečno, jer se grade na istim tehničkim temeljima.'],
+      ['Mogu li prvo provjeriti sajt prije bilo kakve uplate?', 'Da. Pokrenite besplatnu X Signal analizu na /usluge/x-signal/ ili zatražite besplatne konsultacije kako bismo procijenili šta ima najveći povrat.'],
+    ],
+    related: [['/usluge/seo-aeo-geo/', 'SEO · AEO · GEO usluga'], ['/znanje/koliko-kosta-seo-optimizacija-bih/', 'Vodič: cijene SEO-a u BiH'], ['/usluge/x-signal/', 'Besplatna X Signal analiza']],
   },
 ];
 

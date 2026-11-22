@@ -206,5 +206,221 @@
   "GEO": [
     "GEO",
     "GEO"
+  ],
+  "Tim i prakse": [
+    "Team & practices",
+    "Team & Fachbereiche"
+  ],
+  "Urednička politika": [
+    "Editorial policy",
+    "Redaktionsrichtlinie"
+  ],
+  "SEO, GEO i AEO cijene i poređenje": [
+    "SEO, GEO and AEO pricing & comparison",
+    "SEO-, GEO- und AEO-Preise & Vergleich"
+  ],
+  "X Signal 2026 benchmark": [
+    "X Signal 2026 benchmark",
+    "X Signal 2026 Benchmark"
+  ],
+  "Urednička politika i metodologija": [
+    "Editorial policy & methodology",
+    "Redaktionsrichtlinie & Methodik"
+  ],
+  "Digital X tim i prakse": [
+    "Digital X team & practices",
+    "Digital X Team & Fachbereiche"
+  ],
+  "SEO · GEO · AEO STANDARD 2026": [
+    "SEO · GEO · AEO STANDARD 2026",
+    "SEO · GEO · AEO STANDARD 2026"
+  ],
+  "Klasični SEO vs. integrisani SEO, GEO i AEO.": [
+    "Classic SEO vs. integrated SEO, GEO and AEO.",
+    "Klassisches SEO vs. integriertes SEO, GEO und AEO."
+  ],
+  "Google AI Mode razlaže složene upite na paralelne podupite i izdvaja samostalne pasuse od 40–80 riječi. Zato spajamo tehnički SEO, strukturu odgovora i provjerljive izvore u jedan sistem.": [
+    "Google AI Mode breaks complex prompts into parallel subqueries and extracts standalone 40–80 word passages. That is why we combine technical SEO, answer-first structure and verifiable sources in one system.",
+    "Google AI Mode zerlegt komplexe Anfragen in parallele Unterfragen und extrahiert eigenständige Absätze von 40–80 Wörtern. Deshalb verbinden wir technisches SEO, Antwortstruktur und überprüfbare Quellen in einem System."
+  ],
+  "Poređenje klasičnog SEO-a i Digital X SEO + GEO + AEO standarda": [
+    "Comparison of classic SEO and the Digital X SEO + GEO + AEO standard",
+    "Vergleich zwischen klassischem SEO und dem Digital X SEO + GEO + AEO Standard"
+  ],
+  "Sloj optimizacije": [
+    "Optimization layer",
+    "Optimierungsebene"
+  ],
+  "Klasični SEO": [
+    "Classic SEO",
+    "Klassisches SEO"
+  ],
+  "Digital X SEO + GEO + AEO": [
+    "Digital X SEO + GEO + AEO",
+    "Digital X SEO + GEO + AEO"
+  ],
+  "Jedinica izdvajanja": [
+    "Retrieval unit",
+    "Abrufeinheit"
+  ],
+  "Ciljanje ključnih riječi na nivou cijele stranice": [
+    "Whole-page keyword targeting",
+    "Keyword-Ausrichtung auf Seitenebene"
+  ],
+  "Samostalni odgovori od 40–80 riječi za query fan-out": [
+    "Standalone 40–80 word answers mapped to query fan-out",
+    "Eigenständige 40–80-Wörter-Antworten für Query Fan-Out"
+  ],
+  "Povjerenje i autoritet": [
+    "Trust & authority",
+    "Vertrauen & Autorität"
+  ],
+  "Backlinkovi i osnovni signali domene": [
+    "Backlinks and baseline domain signals",
+    "Backlinks und grundlegende Domain-Signale"
+  ],
+  "Urednička metodologija, provjerljivi podaci, citati i vanjska spominjanja": [
+    "Editorial methodology, verifiable data, citations and external mentions",
+    "Redaktionelle Methodik, überprüfbare Daten, Zitate und externe Erwähnungen"
+  ],
+  "Tehnički standardi": [
+    "Technical standards",
+    "Technische Standards"
+  ],
+  "Indeksiranje i mobilni prikaz": [
+    "Indexing and mobile rendering",
+    "Indexierung und mobile Darstellung"
+  ],
+  "Čist HTML, Core Web Vitals i JSON-LD usklađen s vidljivim tekstom": [
+    "Clean HTML, Core Web Vitals and JSON-LD matching visible text",
+    "Sauberes HTML, Core Web Vitals und JSON-LD passend zum sichtbaren Text"
+  ],
+  "Ključni pokazatelji": [
+    "Core KPIs",
+    "Zentrale KPIs"
+  ],
+  "Pozicije, klikovi i CTR": [
+    "Rankings, clicks and CTR",
+    "Rankings, Klicks und CTR"
+  ],
+  "Organski upiti, konverzije i učestalost citiranja u AI odgovorima": [
+    "Organic enquiries, conversions and citation frequency in AI answers",
+    "Organische Anfragen, Conversions und Zitierhäufigkeit in KI-Antworten"
+  ],
+  "Tri jasna nivoa ulaganja bez doplate po promptu": [
+    "Three clear investment tiers with no per-prompt surcharges",
+    "Drei klare Leistungsstufen ohne Aufpreis pro Prompt"
+  ],
+  "Tehničko ubrzanje i čišćenje kreće od 99 KM jednokratno, mjesečni SEO · GEO · AEO paket kreće od 249 KM mjesečno, a cjeloviti Digitalni partner za web shopove i DACH tržište od 899 KM mjesečno. Nema skrivenih doplata po broju praćenih AI promptova.": [
+    "Technical speed optimization starts at 99 KM one-off, the monthly SEO · GEO · AEO package starts at 249 KM a month, and the full Digital Partner for online shops and the DACH market starts at 899 KM a month. There are no hidden surcharges per tracked AI prompt.",
+    "Technische Speed-Optimierung beginnt bei 99 KM einmalig, das monatliche SEO · GEO · AEO Paket bei 249 KM im Monat und der umfassende Digital Partner für Onlineshops und den DACH-Markt bei 899 KM im Monat. Es gibt keine versteckten Aufpreise pro verfolgtem KI-Prompt."
+  ],
+  "Da li su potrebni posebni AI fajlovi za Google AI Overviews?": [
+    "Are special AI files required for Google AI Overviews?",
+    "Sind spezielle KI-Dateien für Google AI Overviews erforderlich?"
+  ],
+  "Ne. Zvanična Google Search Central dokumentacija potvrđuje da za AI Overviews i AI Mode nisu potrebni posebni Schema.org tipovi niti llms.txt fajlovi. Presudni su indeksiranje, Core Web Vitals, jasan HTML tekst i tačni strukturirani podaci.": [
+    "No. Official Google Search Central documentation confirms that AI Overviews and AI Mode require no special Schema.org types or llms.txt files. What matters is indexing, Core Web Vitals, clear HTML text and accurate structured data.",
+    "Nein. Die offizielle Google Search Central Dokumentation bestätigt, dass für AI Overviews und AI Mode weder spezielle Schema.org-Typen noch llms.txt-Dateien nötig sind. Entscheidend sind Indexierung, Core Web Vitals, klarer HTML-Text und präzise strukturierte Daten."
+  ],
+  "AI pretraživači i Google AI Mode razlažu složene upite na više paralelnih podupita (query fan-out) i izdvajaju samostalne pasuse od 40 do 80 riječi potkrijepljene vanjskim izvorima. Recenzirano KDD 2024 istraživanje (": [
+    "AI search engines and Google AI Mode decompose complex queries into parallel subqueries (query fan-out) and extract standalone 40–80 word passages backed by external sources. Peer-reviewed KDD 2024 research (",
+    "KI-Suchmaschinen und Google AI Mode zerlegen komplexe Anfragen in parallele Unterfragen (Query Fan-Out) und extrahieren eigenständige Absätze von 40–80 Wörtern mit externen Quellen. Eine begutachtete KDD-2024-Studie ("
+  ],
+  "Aggarwal et al., GEO-bench": [
+    "Aggarwal et al., GEO-bench",
+    "Aggarwal et al., GEO-bench"
+  ],
+  ") pokazalo je da dodavanje provjerljivih statistika, citata i izvora povećava vidljivost u generativnim odgovorima do 40%.": [
+    ") showed that adding verifiable statistics, quotations and citations increases generative visibility by up to 40%.",
+    ") zeigte, dass überprüfbare Statistiken, Zitate und Quellenangaben die Sichtbarkeit in generativen Antworten um bis zu 40 % steigern."
+  ],
+  "AI mora jasno \"pročitati\" ko ste, šta radite, gdje i za koga. Pomaže i schema markup (strukturirani podaci) koji tačno odgovara vidljivom tekstu na stranici (": [
+    "AI must clearly read who you are, what you do, where and for whom. Schema markup (structured data) that matches the visible text on the page helps (",
+    "KI muss klar erkennen, wer Sie sind, was Sie tun, wo und für wen. Strukturierte Daten (Schema Markup), die exakt zum sichtbaren Seitentext passen, helfen dabei ("
+  ],
+  "Google Search Central: AI Features": [
+    "Google Search Central: AI Features",
+    "Google Search Central: AI Features"
+  ],
+  ").": [
+    ").",
+    ")."
+  ],
+  "AI voli sadržaj koji direktno odgovara na pitanja — kratki, jasni pasusi od 40–80 riječi, tabele, FAQ sekcije i konkretne brojke. \"Prezentacijska stranica od 449 KM\" je citabilno; tri pasusa marketinške magle nisu.": [
+    "AI favors content that answers questions directly — short, clear 40–80 word passages, tables, FAQ sections and concrete figures. \"A business website from 449 KM\" is citable; three paragraphs of marketing fluff are not.",
+    "KI bevorzugt Inhalte, die Fragen direkt beantworten — kurze, klare Absätze von 40–80 Wörtern, Tabellen, FAQ-Bereiche und konkrete Zahlen. \"Eine Unternehmenswebsite ab 449 KM\" ist zitierfähig; drei Absätze Marketing-Nebel sind es nicht."
+  ],
+  "Autoritet i vanjska spominjanja:": [
+    "Authority and external mentions:",
+    "Autorität und externe Erwähnungen:"
+  ],
+  "nezavisne publikacije, poslovni direktoriji i recenzije uče AI da ste stvarni i relevantni — empirijske studije pokazuju da AI asistenti sistematski preferiraju nezavisne izvore u odnosu na samopromotivne blogove.": [
+    "independent publications, business directories and reviews teach AI that you are real and relevant — empirical studies show AI assistants systematically prefer independent sources over self-promotional brand blogs.",
+    "unabhängige Publikationen, Branchenverzeichnisse und Bewertungen zeigen der KI, dass Sie real und relevant sind — empirische Studien belegen, dass KI-Assistenten unabhängige Quellen gegenüber reinen Markenblogs bevorzugen."
+  ],
+  "Za pojavljivanje u Google AI Overviews i AI Modeu nisu potrebni posebni AI fajlovi ni eksperimentalne oznake, već uredan HTML, brza stranica (Core Web Vitals) i provjerljivi podaci o firmi. Sljedećih pet koraka pokriva tehničku osnovu i strukturu odgovora:": [
+    "Appearing in Google AI Overviews and AI Mode requires no special AI files or experimental markup, just clean HTML, a fast site (Core Web Vitals) and verifiable business details. The five steps below cover the technical foundation and answer structure:",
+    "Für Google AI Overviews und AI Mode sind keine speziellen KI-Dateien oder experimentellen Markups nötig, sondern sauberes HTML, eine schnelle Website (Core Web Vitals) und überprüfbare Unternehmensdaten. Die folgenden fünf Schritte decken die technische Basis und Antwortstruktur ab:"
+  ],
+  "(Organization/LocalBusiness + Service/Article) koji tačno prati vidljivi tekst; imajte na umu da Google od 2023. ograničava FAQ rich rezultate na državne i zdravstvene sajtove (": [
+    "(Organization/LocalBusiness + Service/Article) matching visible text; note that since 2023 Google restricts FAQ rich results to government and health sites (",
+    "(Organization/LocalBusiness + Service/Article) passend zum sichtbaren Text; beachten Sie, dass Google FAQ-Rich-Results seit 2023 auf Behörden- und Gesundheitswebsites beschränkt ("
+  ],
+  "Google Search Central Blog": [
+    "Google Search Central Blog",
+    "Google Search Central Blog"
+  ],
+  "i meta direktive (": [
+    "and meta directives (",
+    "und Meta-Direktiven ("
+  ],
+  "max-snippet:-1, max-image-preview:large": [
+    "max-snippet:-1, max-image-preview:large",
+    "max-snippet:-1, max-image-preview:large"
+  ],
+  ") — svjesno odlučite koje crawlere za pretragu i treniranje dozvoljavate.": [
+    ") — consciously decide which search and training crawlers you allow.",
+    ") — entscheiden Sie bewusst, welche Such- und Trainings-Crawler Sie zulassen."
+  ],
+  "— predloženi format sažetka za treće AI alate, ne dokazan faktor rangiranja. Google Pretraga ga ne zahtijeva niti koristi za AI Overviews.": [
+    "— a proposed summary format for third-party AI tools, not a proven ranking factor. Google Search neither requires nor uses it for AI Overviews.",
+    "— ein vorgeschlagenes Zusammenfassungsformat für Drittanbieter-KI-Tools, kein nachgewiesener Rankingfaktor. Die Google-Suche verlangt und nutzt es für AI Overviews nicht."
+  ],
+  "FAQ i H2 sekcije": [
+    "FAQ and H2 sections",
+    "FAQ- und H2-Abschnitte"
+  ],
+  "s pitanjima koja kupci stvarno postavljaju — i otvorite svaku cjelinu jasnim odgovorom od 40–80 riječi.": [
+    "with questions buyers actually ask — and open each section with a clear 40–80 word answer.",
+    "mit Fragen, die Kunden wirklich stellen — und eröffnen Sie jeden Abschnitt mit einer klaren Antwort von 40–80 Wörtern."
+  ],
+  "i dosljedne podatke o firmi — Google i AI sistemi ih koriste kao izvor za lokalne preporuke.": [
+    "and consistent business details — Google and AI systems use them as a source for local recommendations.",
+    "und einheitliche Unternehmensdaten — Google und KI-Systeme nutzen sie als Quelle für lokale Empfehlungen."
+  ],
+  "Najveću razliku prave originalni podaci, jasna struktura pasusa i tehnička ispravnost stranice (LCP ≤ 2,5 s, INP < 200 ms, CLS < 0,1). Više o našoj metodologiji provjere pročitajte na stranici": [
+    "The biggest difference comes from original data, clear passage structure and technical site health (LCP ≤ 2.5s, INP < 200ms, CLS < 0.1). Read more about our verification methodology on",
+    "Den größten Unterschied machen Originaldaten, eine klare Absatzstruktur und technische Seitengesundheit (LCP ≤ 2,5 s, INP < 200 ms, CLS < 0,1). Mehr über unsere Prüfmethodik lesen Sie auf"
+  ],
+  "i u": [
+    "and in the",
+    "und im"
+  ],
+  "X Signal 2026 benchmarku": [
+    "X Signal 2026 benchmark",
+    "X Signal 2026 Benchmark"
+  ],
+  "Pripremio i provjerio:": [
+    "Prepared and reviewed by:",
+    "Erstellt und geprüft von:"
+  ],
+  "Digital X tim": [
+    "Digital X team",
+    "Digital X Team"
+  ],
+  "Urednička metodologija": [
+    "Editorial methodology",
+    "Redaktionsmethodik"
   ]
 }
