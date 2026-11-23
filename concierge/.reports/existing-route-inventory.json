@@ -1934,12 +1934,32 @@
     "schema": 1
   },
   {
+    "file": "./znanje/google-business-profile-verifikacija-bih/index.html",
+    "title": "Google Business Profile verifikacija i suspenzija u BiH: kako riješiti | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/google-business-profile-verifikacija-bih/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Google Business Profile verifikacija i suspenzija u BiH: koraci za odobrenje profila"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./znanje/google-oglasi-cijena/index.html",
     "title": "Google oglasi: cijena, budžet i kako rade (vodič 2026) | Digital X",
     "canonical": "https://digital-x-marketing.com/znanje/google-oglasi-cijena/",
     "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Google oglasi: koliko koštaju i kako odrediti budžet"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/google-recenzije-i-ai-preporuke/index.html",
+    "title": "Google recenzije, Maps i AI preporuke: kako tekst recenzija utiče na upite | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/google-recenzije-i-ai-preporuke/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Kako Google recenzije utiču na Google Maps i AI preporuke u 2026."
     ],
     "schema": 1
   },
@@ -2034,6 +2054,16 @@
     "schema": 1
   },
   {
+    "file": "./znanje/lokalni-seo-vise-gradova-bih/index.html",
+    "title": "Lokalni SEO za više gradova u BiH bez doorway stranica | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/lokalni-seo-vise-gradova-bih/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Lokalni SEO za više gradova u BiH: kako rangirati bez doorway spam rizika"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./znanje/meta-capi-server-side-tracking/index.html",
     "title": "Meta Conversions API (CAPI) i server-side mjerenje: vodič za firme u BiH | Digital X",
     "canonical": "https://digital-x-marketing.com/znanje/meta-capi-server-side-tracking/",
@@ -2080,6 +2110,16 @@
     "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Šta je SEO optimizacija: kako radi, koliko košta i kada daje rezultate"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/tehnicki-seo-audit-checklist/index.html",
+    "title": "Tehnički SEO audit u 15 minuta: 10 grešaka na BiH sajtovima | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/tehnicki-seo-audit-checklist/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Tehnički SEO audit u 15 minuta: 10 grešaka koje najčešće koče BiH web stranice"
     ],
     "schema": 1
   },
