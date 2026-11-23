@@ -16,7 +16,7 @@ describe("GrowthOS website integration", () => {
 
     assert.equal(
       createHash("sha256").update(cinema).digest("hex").toUpperCase(),
-      "BE1D0BAF193142465E6D7AB5824FFD334EC0DC2A6574B40B4794DBAA2AD9A69A",
+      "B767FE3205E112464500408A67F3A0464643585A0DFAE74560C057C646A0428E",
     );
     assert.match(home, /id="growthos-showcase"/);
     assert.match(home, /href="\/growthos\.html"/);

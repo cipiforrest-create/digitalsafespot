@@ -1,5 +1,8 @@
 import { cluster1Localized } from './cluster1-localized.mjs';
 import { cluster2Localized } from './cluster2-localized.mjs';
+import { cluster3Localized } from './cluster3-localized.mjs';
+import { cluster4Localized } from './cluster4-localized.mjs';
+import { cluster5Localized } from './cluster5-localized.mjs';
 
 export const localizedGuides = [
   {
@@ -314,4 +317,7 @@ export const localizedGuides = [
   },
   ...cluster1Localized,
   ...cluster2Localized,
+  ...cluster3Localized,
+  ...cluster4Localized,
+  ...cluster5Localized,
 ];

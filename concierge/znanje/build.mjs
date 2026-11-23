@@ -110,6 +110,18 @@ const guideImages = {
   'lokalni-seo-vise-gradova-bih': Z + 'cluster2-multi-city-seo-cover.webp',
   'google-recenzije-i-ai-preporuke': Z + 'cluster2-reviews-ai-cover.webp',
   'tehnicki-seo-audit-checklist': Z + 'cluster2-tech-audit-cover.webp',
+  'core-web-vitals-optimizacija-brzine': Z + 'cluster3-cwv-speed-cover.webp',
+  'redizajn-web-stranice-bez-gubitka-seo': Z + 'cluster3-redesign-seo-cover.webp',
+  'web-shop-placanje-dostava-bih': Z + 'cluster3-ecommerce-bih-cover.webp',
+  'konverzija-web-stranice-cro-vodic': Z + 'cluster3-cro-conversion-cover.webp',
+  'google-ads-search-vs-performance-max-bih': Z + 'cluster4-google-ads-pmax-cover.webp',
+  'meta-oglasi-kreativa-i-testiranje': Z + 'cluster4-meta-creative-cover.webp',
+  'kratki-video-reels-tiktok-produkcija': Z + 'cluster4-short-video-cover.webp',
+  'fotografija-proizvoda-i-katalog-prodaja': Z + 'cluster4-product-photo-cover.webp',
+  'ai-chatbot-rag-za-web-stranicu': Z + 'cluster5-ai-rag-chatbot-cover.webp',
+  'ai-recepcionar-i-automatizacija-upita': Z + 'cluster5-ai-receptionist-cover.webp',
+  'ai-second-brain-baza-znanja-firme': Z + 'cluster5-second-brain-cover.webp',
+  'ga4-consent-mode-v2-mjerenje-konverzija': Z + 'cluster5-ga4-consent-cover.webp',
 };
 const guideImage = g => { const src = guideImages[g.slug]; if (!src) throw new Error('No Blog card image for guide ' + g.slug); return src; };
 function hubPage() {
@@ -244,5 +256,5 @@ mkdirSync('blog', { recursive: true }); writeFileSync('blog/index.html', hubPage
 rmSync('znanje/index.html', { force: true });
 guides.forEach((g, i) => { mkdirSync(`znanje/${g.slug}`, { recursive: true }); writeFileSync(`znanje/${g.slug}/index.html`, guidePage(g, i)); });
 // Shared with publish.mjs so the sitemap and llms.txt list the same pages.
-export const znanjePages = [{ path: '/blog/', title: 'Blog', desc: 'Mapa svih vodiča po temama i koracima.', lastmod: published }, { path: '/pojmovnik/', title: 'Pojmovnik: SEO, AEO, GEO i AI', desc: 'Jasna objašnjenja ključnih pojmova za digitalni rast u BiH.', lastmod: published }, ...guides.map(g => ({ path: url(g), title: g.title, desc: g.desc, lastmod: published })), ...cities.map(c => ({ path: cityUrl(c), title: c.title.replace(' | Digital X', ''), desc: c.desc, lastmod: published })), ...[...landings, industryHub].map(l => ({ path: l.path, title: l.title.replace(' | Digital X', ''), desc: l.desc, lastmod: published }))];
+export const znanjePages = [{ path: '/blog/', title: 'Blog', desc: 'Mapa svih vodiča po temama i koracima.', lastmod: published }, { path: '/pojmovnik/', title: 'Pojmovnik: SEO, AEO, GEO i AI', desc: 'Jasna objašnjenja ključnih pojmova za digitalni rast u BiH.', lastmod: published }, ...guides.map(g => ({ path: url(g), title: g.title, desc: g.desc, lastmod: g.published || published })), ...cities.map(c => ({ path: cityUrl(c), title: c.title.replace(' | Digital X', ''), desc: c.desc, lastmod: published })), ...[...landings, industryHub].map(l => ({ path: l.path, title: l.title.replace(' | Digital X', ''), desc: l.desc, lastmod: published }))];
 console.log(`Blog: hub + ${guides.length} guides.`);

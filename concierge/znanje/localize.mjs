@@ -136,7 +136,11 @@ function renderLocalizedPage(entry, lang, localizedRoutes) {
   const cta = `<section class="zn-cta"><div><p class="eyebrow">${esc(u.ctaEyebrow)}</p><h2>${esc(u.ctaTitle)}</h2><p>${esc(u.ctaBody)}</p></div><div class="zn-cta-actions"><a class="btn btn-primary" href="/${lang}/kontakt.html">${esc(u.consult)}</a><a class="btn" href="/${lang}/usluge/x-signal/">${esc(u.audit)}</a></div></section>`;
 
   const pubDate = entry.published || published;
-  const updatedText = pubDate === '2026-11-22' ? (lang === 'de' ? 'aktualisiert am 22.11.2026' : 'updated 22 Nov 2026') : u.updated;
+  const [py, pm, pd] = String(pubDate).split('-');
+  const enMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const updatedText = py && pm && pd
+    ? (lang === 'de' ? `aktualisiert am ${pd}.${pm}.${py}` : `updated ${Number(pd)} ${enMonths[Number(pm) - 1]} ${py}`)
+    : u.updated;
   const coverSrc = entry.cover || null;
   const coverSmall = coverSrc ? smallVariant(coverSrc) : null;
   const coverHtml = coverSrc && d.cover ? `<figure class="guide-cover"><img src="${coverSrc}"${coverSmall ? ` srcset="${coverSmall} 768w, ${coverSrc} 1536w" sizes="(max-width:760px) 92vw, 1100px"` : ''} width="1536" height="1024" fetchpriority="high" decoding="async" alt="${esc(d.cover.alt)}">${d.cover.caption ? `<figcaption>${esc(d.cover.caption)}</figcaption>` : ''}</figure>` : '';

@@ -2,6 +2,9 @@
 // Prices quoted here are the published starting prices from the shop catalogue; keep them in sync.
 import { cluster1Guides } from './cluster1.mjs';
 import { cluster2Guides } from './cluster2.mjs';
+import { cluster3Guides } from './cluster3.mjs';
+import { cluster4Guides } from './cluster4.mjs';
+import { cluster5Guides } from './cluster5.mjs';
 export const origin = 'https://digital-x-marketing.com';
 export const published = '2026-11-21';
 
@@ -509,6 +512,9 @@ export const guides = [
   },
   ...cluster1Guides,
   ...cluster2Guides,
+  ...cluster3Guides,
+  ...cluster4Guides,
+  ...cluster5Guides,
 ];
 
 export const hubFaq = [

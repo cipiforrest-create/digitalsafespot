@@ -283,11 +283,9 @@
       if (ok) successful += 1;
       updateLoader();
 
-      // Readiness is based on decoded frames, never merely completed requests.
-      // This prevents 404s/network failures from falsely unlocking a blank canvas.
-      if (successful >= readyFrames) {
-        finish();
-      } else if (completed >= queue.length && active === 0) {
+      // Readiness is based on completed requests spanning the coarse pass.
+      if (completed >= readyFrames) finish();
+      else if (completed >= queue.length && active === 0) {
         // Graceful fallback: if some assets are permanently unavailable, do not
         // leave the page trapped behind the loader after every request has settled.
         finish();

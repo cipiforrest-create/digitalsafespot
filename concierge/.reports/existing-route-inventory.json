@@ -1884,6 +1884,36 @@
     "schema": 1
   },
   {
+    "file": "./znanje/ai-chatbot-rag-za-web-stranicu/index.html",
+    "title": "AI chatbot za web (RAG): kako odgovara tačno bez izmišljanja | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/ai-chatbot-rag-za-web-stranicu/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "AI chatbot za web stranicu s RAG arhitekturom: tačni odgovori iz vaših dokumenata bez halucinacija"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/ai-recepcionar-i-automatizacija-upita/index.html",
+    "title": "AI recepcionar i automatizacija upita: od poruke do CRM-a bez gubitka leada | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/ai-recepcionar-i-automatizacija-upita/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "AI recepcionar i automatizacija upita (X Lead Desk): kako povezati web, WhatsApp i CRM"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/ai-second-brain-baza-znanja-firme/index.html",
+    "title": "AI Second Brain za firme: interna baza znanja s kontrolom pristupa | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/ai-second-brain-baza-znanja-firme/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "AI Second Brain i interna baza znanja: kako organizovati dokumente, SOP-ove i ponude firme"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./znanje/ai-spremnost-web-stranica-bih-2026/index.html",
     "title": "X Signal 2026 benchmark: tehnička i AI spremnost web stranica | Digital X",
     "canonical": "https://digital-x-marketing.com/znanje/ai-spremnost-web-stranica-bih-2026/",
@@ -1904,6 +1934,16 @@
     "schema": 1
   },
   {
+    "file": "./znanje/core-web-vitals-optimizacija-brzine/index.html",
+    "title": "Core Web Vitals i optimizacija brzine sajta u 2026: LCP, INP i CLS | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/core-web-vitals-optimizacija-brzine/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Core Web Vitals i optimizacija brzine web stranice: kako postići LCP ≤ 2,5 s, INP < 200 ms i CLS < 0,1"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./znanje/digitalni-marketing-za-male-firme/index.html",
     "title": "Digitalni marketing za male firme: plan za prvih 90 dana | Digital X",
     "canonical": "https://digital-x-marketing.com/znanje/digitalni-marketing-za-male-firme/",
@@ -1914,12 +1954,42 @@
     "schema": 1
   },
   {
+    "file": "./znanje/fotografija-proizvoda-i-katalog-prodaja/index.html",
+    "title": "Fotografija proizvoda i digitalni katalog: kako vizuali dižu prodaju | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/fotografija-proizvoda-i-katalog-prodaja/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Fotografija proizvoda i digitalni katalog: standardi za web shop, oglase i B2B prodaju"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/ga4-consent-mode-v2-mjerenje-konverzija/index.html",
+    "title": "GA4 i Consent Mode v2: mjerenje konverzija za BiH i EU tržište | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/ga4-consent-mode-v2-mjerenje-konverzija/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "GA4, Google Consent Mode v2 i mjerenje stvarnih konverzija za firme u BiH i DACH regiji"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./znanje/gdpr-pristupacnost-web-stranice/index.html",
     "title": "GDPR, kolačići i pristupačnost web stranice: vodič za firme u BiH | Digital X",
     "canonical": "https://digital-x-marketing.com/znanje/gdpr-pristupacnost-web-stranice/",
     "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "GDPR, kolačići i pristupačnost: šta web stranica firme iz BiH treba"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/google-ads-search-vs-performance-max-bih/index.html",
+    "title": "Google Ads Search vs. Performance Max u BiH: šta odabrati za upite | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/google-ads-search-vs-performance-max-bih/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Google Ads Search vs. Performance Max: koja kampanja donosi kvalitetnije upite u BiH"
     ],
     "schema": 1
   },
@@ -2044,6 +2114,26 @@
     "schema": 1
   },
   {
+    "file": "./znanje/konverzija-web-stranice-cro-vodic/index.html",
+    "title": "Optimizacija konverzije (CRO): zašto posjetioci ne šalju upit | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/konverzija-web-stranice-cro-vodic/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Optimizacija konverzije web stranice (CRO): kako pretvoriti postojeće posjete u upite i narudžbe"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/kratki-video-reels-tiktok-produkcija/index.html",
+    "title": "Kratki video (Reels, TikTok, Shorts) za firme u BiH: produkcija u jednom danu | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/kratki-video-reels-tiktok-produkcija/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Kratki video za firme u BiH: kako snimiti mjesec dana Reels i TikTok sadržaja u jednom danu"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./znanje/llms-txt-sta-je-i-treba-li-vam/index.html",
     "title": "Da li vam treba llms.txt? Šta čitaju Google, ChatGPT i Perplexity | Digital X",
     "canonical": "https://digital-x-marketing.com/znanje/llms-txt-sta-je-i-treba-li-vam/",
@@ -2074,12 +2164,32 @@
     "schema": 1
   },
   {
+    "file": "./znanje/meta-oglasi-kreativa-i-testiranje/index.html",
+    "title": "Meta Ads kreative i testiranje u 2026: kako smanjiti cijenu upita | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/meta-oglasi-kreativa-i-testiranje/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Meta Ads kreative i struktura testiranja: kako smanjiti cijenu upita na Instagramu i Facebooku"
+    ],
+    "schema": 1
+  },
+  {
     "file": "./znanje/plan-sadrzaja-drustvene-mreze/index.html",
     "title": "Plan sadržaja za društvene mreže: šta objavljivati i koliko često | Digital X",
     "canonical": "https://digital-x-marketing.com/znanje/plan-sadrzaja-drustvene-mreze/",
     "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Plan sadržaja za društvene mreže: jednostavan sistem za mjesec dana objava"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/redizajn-web-stranice-bez-gubitka-seo/index.html",
+    "title": "Redizajn web stranice bez gubitka SEO pozicija: 301 mapa i provjera | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/redizajn-web-stranice-bez-gubitka-seo/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Redizajn web stranice bez gubitka Google pozicija i prometa: kompletan protokol"
     ],
     "schema": 1
   },
@@ -2120,6 +2230,16 @@
     "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
     "h1": [
       "Tehnički SEO audit u 15 minuta: 10 grešaka koje najčešće koče BiH web stranice"
+    ],
+    "schema": 1
+  },
+  {
+    "file": "./znanje/web-shop-placanje-dostava-bih/index.html",
+    "title": "Web shop plaćanje i dostava u BiH: kartice, pouzeće i povrat | Digital X",
+    "canonical": "https://digital-x-marketing.com/znanje/web-shop-placanje-dostava-bih/",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+    "h1": [
+      "Plaćanje i dostava u web shopu u BiH: kartično plaćanje, pouzeće, kuriri i pravila povrata"
     ],
     "schema": 1
   },

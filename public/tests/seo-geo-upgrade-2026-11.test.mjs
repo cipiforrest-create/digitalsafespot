@@ -208,3 +208,91 @@ test('Cluster 2 Local & Technical SEO guides publish in BS, EN and DE with featu
     }
   }
 });
+
+test('Cluster 3 Web Performance, Redesign, E-commerce & CRO guides publish in BS, EN and DE with featured + in-content WebP images, preload and full schema', () => {
+  const sitemap = read('/sitemap.xml');
+  const cluster3 = [
+    ['/znanje/core-web-vitals-optimizacija-brzine/', 'cluster3-cwv-speed-cover.webp', 'cluster3-cwv-thresholds-diagram.webp'],
+    ['/znanje/redizajn-web-stranice-bez-gubitka-seo/', 'cluster3-redesign-seo-cover.webp', 'cluster3-redesign-migration-diagram.webp'],
+    ['/znanje/web-shop-placanje-dostava-bih/', 'cluster3-ecommerce-bih-cover.webp', 'cluster3-checkout-flow-diagram.webp'],
+    ['/znanje/konverzija-web-stranice-cro-vodic/', 'cluster3-cro-conversion-cover.webp', 'cluster3-cro-funnel-diagram.webp'],
+  ];
+  for (const [route, cover, diagram] of cluster3) {
+    for (const prefix of ['', '/en', '/de']) {
+      const full = `${prefix}${route}`;
+      assert.ok(existsSync(`public${full}index.html`), `missing ${full}`);
+      assert.ok(sitemap.includes(`https://digital-x-marketing.com${full}<`), `sitemap missing ${full}`);
+      const html = read(`${full}index.html`);
+      assert.match(html, /max-snippet:-1/, `${full} max-snippet:-1`);
+      assert.match(html, new RegExp(`<link rel="preload" as="image" href="/media/znanje/${cover}"`), `${full} preload`);
+      assert.match(html, new RegExp(`class="guide-cover"[\\s\\S]*?/media/znanje/${cover}`), `${full} cover`);
+      assert.match(html, new RegExp(`class="guide-figure"[\\s\\S]*?/media/znanje/${diagram}`), `${full} diagram`);
+      assert.match(html, /hreflang="bs"/, `${full} hreflang bs`);
+      assert.match(html, /hreflang="en"/, `${full} hreflang en`);
+      assert.match(html, /hreflang="de"/, `${full} hreflang de`);
+      const nodes = schemas(html);
+      const article = nodes.find(n => n['@type'] === 'Article');
+      assert.ok(article && Array.isArray(article.image) && article.image.length === 2, `${full} Article ImageObject array`);
+      assert.ok(nodes.some(n => n['@type'] === 'FAQPage' && n.mainEntity.length >= 2), `${full} FAQPage`);
+    }
+  }
+});
+
+test('Cluster 4 Paid Ads & Content Production guides publish in BS, EN and DE with featured + in-content WebP images, preload and full schema', () => {
+  const sitemap = read('/sitemap.xml');
+  const cluster4 = [
+    ['/znanje/google-ads-search-vs-performance-max-bih/', 'cluster4-google-ads-pmax-cover.webp', 'cluster4-search-vs-pmax-diagram.webp'],
+    ['/znanje/meta-oglasi-kreativa-i-testiranje/', 'cluster4-meta-creative-cover.webp', 'cluster4-creative-testing-diagram.webp'],
+    ['/znanje/kratki-video-reels-tiktok-produkcija/', 'cluster4-short-video-cover.webp', 'cluster4-content-day-diagram.webp'],
+    ['/znanje/fotografija-proizvoda-i-katalog-prodaja/', 'cluster4-product-photo-cover.webp', 'cluster4-visual-standards-diagram.webp'],
+  ];
+  for (const [route, cover, diagram] of cluster4) {
+    for (const prefix of ['', '/en', '/de']) {
+      const full = `${prefix}${route}`;
+      assert.ok(existsSync(`public${full}index.html`), `missing ${full}`);
+      assert.ok(sitemap.includes(`https://digital-x-marketing.com${full}<`), `sitemap missing ${full}`);
+      const html = read(`${full}index.html`);
+      assert.match(html, /max-snippet:-1/, `${full} max-snippet:-1`);
+      assert.match(html, new RegExp(`<link rel="preload" as="image" href="/media/znanje/${cover}"`), `${full} preload`);
+      assert.match(html, new RegExp(`class="guide-cover"[\\s\\S]*?/media/znanje/${cover}`), `${full} cover`);
+      assert.match(html, new RegExp(`class="guide-figure"[\\s\\S]*?/media/znanje/${diagram}`), `${full} diagram`);
+      assert.match(html, /hreflang="bs"/, `${full} hreflang bs`);
+      assert.match(html, /hreflang="en"/, `${full} hreflang en`);
+      assert.match(html, /hreflang="de"/, `${full} hreflang de`);
+      const nodes = schemas(html);
+      const article = nodes.find(n => n['@type'] === 'Article');
+      assert.ok(article && Array.isArray(article.image) && article.image.length === 2, `${full} Article ImageObject array`);
+      assert.ok(nodes.some(n => n['@type'] === 'FAQPage' && n.mainEntity.length >= 2), `${full} FAQPage`);
+    }
+  }
+});
+
+test('Cluster 5 AI Automation, Second Brain & GA4 Consent Mode guides publish in BS, EN and DE with featured + in-content WebP images, preload and full schema', () => {
+  const sitemap = read('/sitemap.xml');
+  const cluster5 = [
+    ['/znanje/ai-chatbot-rag-za-web-stranicu/', 'cluster5-ai-rag-chatbot-cover.webp', 'cluster5-rag-architecture-diagram.webp'],
+    ['/znanje/ai-recepcionar-i-automatizacija-upita/', 'cluster5-ai-receptionist-cover.webp', 'cluster5-lead-automation-diagram.webp'],
+    ['/znanje/ai-second-brain-baza-znanja-firme/', 'cluster5-second-brain-cover.webp', 'cluster5-second-brain-diagram.webp'],
+    ['/znanje/ga4-consent-mode-v2-mjerenje-konverzija/', 'cluster5-ga4-consent-cover.webp', 'cluster5-ga4-consent-diagram.webp'],
+  ];
+  for (const [route, cover, diagram] of cluster5) {
+    for (const prefix of ['', '/en', '/de']) {
+      const full = `${prefix}${route}`;
+      assert.ok(existsSync(`public${full}index.html`), `missing ${full}`);
+      assert.ok(sitemap.includes(`https://digital-x-marketing.com${full}<`), `sitemap missing ${full}`);
+      const html = read(`${full}index.html`);
+      assert.match(html, /max-snippet:-1/, `${full} max-snippet:-1`);
+      assert.match(html, new RegExp(`<link rel="preload" as="image" href="/media/znanje/${cover}"`), `${full} preload`);
+      assert.match(html, new RegExp(`class="guide-cover"[\\s\\S]*?/media/znanje/${cover}`), `${full} cover`);
+      assert.match(html, new RegExp(`class="guide-figure"[\\s\\S]*?/media/znanje/${diagram}`), `${full} diagram`);
+      assert.match(html, /hreflang="bs"/, `${full} hreflang bs`);
+      assert.match(html, /hreflang="en"/, `${full} hreflang en`);
+      assert.match(html, /hreflang="de"/, `${full} hreflang de`);
+      const nodes = schemas(html);
+      const article = nodes.find(n => n['@type'] === 'Article');
+      assert.ok(article && Array.isArray(article.image) && article.image.length === 2, `${full} Article ImageObject array`);
+      assert.ok(nodes.some(n => n['@type'] === 'FAQPage' && n.mainEntity.length >= 2), `${full} FAQPage`);
+    }
+  }
+});
+

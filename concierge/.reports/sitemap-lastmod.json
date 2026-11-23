@@ -8,7 +8,7 @@
   "date": "2026-11-22"
  },
  "https://digital-x-marketing.com/blog/": {
-  "hash": "743cc16f81bacec1",
+  "hash": "61d21b396eacaa5e",
   "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/blog/aeo-vodic.html": {
@@ -168,8 +168,8 @@
   "date": "2026-11-22"
  },
  "https://digital-x-marketing.com/de/growthos.html": {
-  "hash": "fb5c89b946bcf27d",
-  "date": "2026-11-22"
+  "hash": "4b0d42516f15bff5",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/de/industrije/": {
   "hash": "3e9c26382acf8ad3",
@@ -196,8 +196,8 @@
   "date": "2026-11-22"
  },
  "https://digital-x-marketing.com/de/landing-web.html": {
-  "hash": "0d7be0a10cff7f59",
-  "date": "2026-11-22"
+  "hash": "4bc821a9957ebf93",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/de/o-nama.html": {
   "hash": "cf95f090459aa446",
@@ -208,8 +208,8 @@
   "date": "2026-11-22"
  },
  "https://digital-x-marketing.com/de/privatnost.html": {
-  "hash": "858291c750c95cf7",
-  "date": "2026-11-22"
+  "hash": "0225c8897b5f41e9",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/de/projekti/": {
   "hash": "626c16927b19d50b",
@@ -228,8 +228,8 @@
   "date": "2026-11-22"
  },
  "https://digital-x-marketing.com/de/second-brain-os.html": {
-  "hash": "2ab9d9f679575df1",
-  "date": "2026-11-22"
+  "hash": "a89d8075ac3646c5",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/de/shop/": {
   "hash": "4063c02e1a3907c1",
@@ -324,8 +324,8 @@
   "date": "2026-11-22"
  },
  "https://digital-x-marketing.com/de/uslovi.html": {
-  "hash": "a067ac34465891af",
-  "date": "2026-11-22"
+  "hash": "42b143d42ffe6b5f",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/de/usluge/": {
   "hash": "50c7338dffd62572",
@@ -423,9 +423,37 @@
   "hash": "6dc76918bc49db9c",
   "date": "2026-11-22"
  },
+ "https://digital-x-marketing.com/de/znanje/ai-chatbot-rag-za-web-stranicu/": {
+  "hash": "625378c92b129663",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/de/znanje/ai-recepcionar-i-automatizacija-upita/": {
+  "hash": "45910570f14cc96b",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/de/znanje/ai-second-brain-baza-znanja-firme/": {
+  "hash": "86dabb9a22cae3c0",
+  "date": "2026-11-23"
+ },
  "https://digital-x-marketing.com/de/znanje/ai-spremnost-web-stranica-bih-2026/": {
   "hash": "5145c75715a65823",
   "date": "2026-11-22"
+ },
+ "https://digital-x-marketing.com/de/znanje/core-web-vitals-optimizacija-brzine/": {
+  "hash": "6d1e2cb035fa8448",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/de/znanje/fotografija-proizvoda-i-katalog-prodaja/": {
+  "hash": "56b7edc6c1b57a30",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/de/znanje/ga4-consent-mode-v2-mjerenje-konverzija/": {
+  "hash": "59fc9655686eb446",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/de/znanje/google-ads-search-vs-performance-max-bih/": {
+  "hash": "39a3a6303fcdcbf1",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/de/znanje/google-ai-overviews-kako-radi/": {
   "hash": "6a3d20320301eaa9",
@@ -447,12 +475,28 @@
   "hash": "d1826adbde825db9",
   "date": "2026-11-22"
  },
+ "https://digital-x-marketing.com/de/znanje/konverzija-web-stranice-cro-vodic/": {
+  "hash": "5083c4a9552fb18b",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/de/znanje/kratki-video-reels-tiktok-produkcija/": {
+  "hash": "452c159f6216da47",
+  "date": "2026-11-23"
+ },
  "https://digital-x-marketing.com/de/znanje/llms-txt-sta-je-i-treba-li-vam/": {
   "hash": "f6b58e88ec85d79c",
   "date": "2026-11-22"
  },
  "https://digital-x-marketing.com/de/znanje/lokalni-seo-vise-gradova-bih/": {
   "hash": "6fdc24ce833274b2",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/de/znanje/meta-oglasi-kreativa-i-testiranje/": {
+  "hash": "4023c519434da459",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/de/znanje/redizajn-web-stranice-bez-gubitka-seo/": {
+  "hash": "626d5553c16eab54",
   "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/de/znanje/schema-markup-za-ai-pretragu/": {
@@ -465,6 +509,10 @@
  },
  "https://digital-x-marketing.com/de/znanje/tehnicki-seo-audit-checklist/": {
   "hash": "224e0265624a86f3",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/de/znanje/web-shop-placanje-dostava-bih/": {
+  "hash": "aa871aa30f611c81",
   "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/en/": {
@@ -807,9 +855,37 @@
   "hash": "f4551f6ca7367e21",
   "date": "2026-11-22"
  },
+ "https://digital-x-marketing.com/en/znanje/ai-chatbot-rag-za-web-stranicu/": {
+  "hash": "a7d6cb6a04e7ec95",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/en/znanje/ai-recepcionar-i-automatizacija-upita/": {
+  "hash": "9692243c908674f8",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/en/znanje/ai-second-brain-baza-znanja-firme/": {
+  "hash": "79aa616206151656",
+  "date": "2026-11-23"
+ },
  "https://digital-x-marketing.com/en/znanje/ai-spremnost-web-stranica-bih-2026/": {
   "hash": "dc13f458cfcb9895",
   "date": "2026-11-22"
+ },
+ "https://digital-x-marketing.com/en/znanje/core-web-vitals-optimizacija-brzine/": {
+  "hash": "06f7a8c52c014ccb",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/en/znanje/fotografija-proizvoda-i-katalog-prodaja/": {
+  "hash": "b7511cd3783be42e",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/en/znanje/ga4-consent-mode-v2-mjerenje-konverzija/": {
+  "hash": "532734774d696895",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/en/znanje/google-ads-search-vs-performance-max-bih/": {
+  "hash": "f2f706bad05298d2",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/en/znanje/google-ai-overviews-kako-radi/": {
   "hash": "bdcec0447c26ed2b",
@@ -831,12 +907,28 @@
   "hash": "83a16137a42d6e5f",
   "date": "2026-11-22"
  },
+ "https://digital-x-marketing.com/en/znanje/konverzija-web-stranice-cro-vodic/": {
+  "hash": "5fdaa51b34c140d9",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/en/znanje/kratki-video-reels-tiktok-produkcija/": {
+  "hash": "c2acac5aea7e2d2d",
+  "date": "2026-11-23"
+ },
  "https://digital-x-marketing.com/en/znanje/llms-txt-sta-je-i-treba-li-vam/": {
   "hash": "952ae95dc388a355",
   "date": "2026-11-22"
  },
  "https://digital-x-marketing.com/en/znanje/lokalni-seo-vise-gradova-bih/": {
   "hash": "c68bf692b5398a92",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/en/znanje/meta-oglasi-kreativa-i-testiranje/": {
+  "hash": "d8be0a077e225189",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/en/znanje/redizajn-web-stranice-bez-gubitka-seo/": {
+  "hash": "5c01bb2992344be7",
   "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/en/znanje/schema-markup-za-ai-pretragu/": {
@@ -849,6 +941,10 @@
  },
  "https://digital-x-marketing.com/en/znanje/tehnicki-seo-audit-checklist/": {
   "hash": "235887367df83281",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/en/znanje/web-shop-placanje-dostava-bih/": {
+  "hash": "52a85bda07b6673e",
   "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/growthos.html": {
@@ -1148,24 +1244,52 @@
   "date": "2026-11-22"
  },
  "https://digital-x-marketing.com/znanje/agencija-ili-freelancer-web-stranica/": {
-  "hash": "ca998eb1b04ddf55",
-  "date": "2026-11-22"
+  "hash": "6610e522438b20b0",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/znanje/ai-chatbot-rag-za-web-stranicu/": {
+  "hash": "0ae16f7662c12249",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/znanje/ai-recepcionar-i-automatizacija-upita/": {
+  "hash": "5a4e441e42c44687",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/znanje/ai-second-brain-baza-znanja-firme/": {
+  "hash": "88dea0c3fc28303c",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/ai-spremnost-web-stranica-bih-2026/": {
   "hash": "0e85340cfd2decf2",
   "date": "2026-11-22"
  },
  "https://digital-x-marketing.com/znanje/ai-za-male-firme/": {
-  "hash": "d5ab710de20c01b9",
-  "date": "2026-11-22"
+  "hash": "f9c676212c854c9e",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/znanje/core-web-vitals-optimizacija-brzine/": {
+  "hash": "f6a660370ddbf4cd",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/digitalni-marketing-za-male-firme/": {
-  "hash": "998238ac2a807788",
-  "date": "2026-11-22"
+  "hash": "e4bd1a308cabb65e",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/znanje/fotografija-proizvoda-i-katalog-prodaja/": {
+  "hash": "411591974d1d64ea",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/znanje/ga4-consent-mode-v2-mjerenje-konverzija/": {
+  "hash": "2d7672886504b4c4",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/gdpr-pristupacnost-web-stranice/": {
   "hash": "4e1a3c313eba8768",
   "date": "2026-11-22"
+ },
+ "https://digital-x-marketing.com/znanje/google-ads-search-vs-performance-max-bih/": {
+  "hash": "e100780cc87a5d2d",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/google-ai-overviews-kako-radi/": {
   "hash": "c3ae129388f15d03",
@@ -1176,36 +1300,36 @@
   "date": "2026-11-21"
  },
  "https://digital-x-marketing.com/znanje/google-oglasi-cijena/": {
-  "hash": "a6f04ead62339ad3",
-  "date": "2026-11-22"
+  "hash": "7922cb82be992606",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/google-recenzije-i-ai-preporuke/": {
   "hash": "8b191c5586dbcc82",
   "date": "2026-11-21"
  },
  "https://digital-x-marketing.com/znanje/instagram-facebook-reklama-cijena/": {
-  "hash": "3db6d214622621ed",
-  "date": "2026-11-22"
+  "hash": "65835778994836f1",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/izrada-web-stranica-vodic/": {
-  "hash": "b37e8c2dace8bf45",
-  "date": "2026-11-22"
+  "hash": "2b0a4569757640a3",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/kako-mjeriti-ai-vidljivost/": {
   "hash": "d8479fe66c555933",
   "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/kako-mjeriti-rezultate-marketinga/": {
-  "hash": "4a478e67d9c006a4",
-  "date": "2026-11-22"
+  "hash": "e8d09e3579b03de1",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/kako-odabrati-digitalnu-agenciju/": {
-  "hash": "7b845e16add1385b",
-  "date": "2026-11-22"
+  "hash": "03da2756c7d5b6a0",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/kako-otvoriti-web-shop-bih/": {
-  "hash": "91a6a45d7a823e81",
-  "date": "2026-11-22"
+  "hash": "6249417454c07dee",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/kako-smanjiti-cijenu-facebook-oglasa/": {
   "hash": "4790e84d3add1bef",
@@ -1213,6 +1337,14 @@
  },
  "https://digital-x-marketing.com/znanje/koliko-kosta-seo-optimizacija-bih/": {
   "hash": "a42db5ed5cd104b9",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/znanje/konverzija-web-stranice-cro-vodic/": {
+  "hash": "755071abd21879be",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/znanje/kratki-video-reels-tiktok-produkcija/": {
+  "hash": "69c7b40faa3e9419",
   "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/llms-txt-sta-je-i-treba-li-vam/": {
@@ -1224,12 +1356,20 @@
   "date": "2026-11-21"
  },
  "https://digital-x-marketing.com/znanje/meta-capi-server-side-tracking/": {
-  "hash": "3449b019e99d13e4",
-  "date": "2026-11-22"
+  "hash": "dd3cb62d32e3ec98",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/znanje/meta-oglasi-kreativa-i-testiranje/": {
+  "hash": "c927549496f4c75a",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/plan-sadrzaja-drustvene-mreze/": {
-  "hash": "c63b4f7ff067fbb1",
-  "date": "2026-11-22"
+  "hash": "aee8555b5c7247ee",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/znanje/redizajn-web-stranice-bez-gubitka-seo/": {
+  "hash": "a07d42b5054c8aa6",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/schema-markup-za-ai-pretragu/": {
   "hash": "7238f43b2478ea35",
@@ -1244,11 +1384,15 @@
   "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/tehnicki-seo-audit-checklist/": {
-  "hash": "67cb05150d6e3f50",
-  "date": "2026-11-21"
+  "hash": "884a878cfc721b1a",
+  "date": "2026-11-23"
+ },
+ "https://digital-x-marketing.com/znanje/web-shop-placanje-dostava-bih/": {
+  "hash": "f0236cdaa8eda226",
+  "date": "2026-11-23"
  },
  "https://digital-x-marketing.com/znanje/wordpress-shopify-ili-custom/": {
-  "hash": "c906d119e074d442",
-  "date": "2026-11-22"
+  "hash": "720ec5515f22363d",
+  "date": "2026-11-23"
  }
 }
