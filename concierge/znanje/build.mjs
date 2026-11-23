@@ -106,6 +106,10 @@ const guideImages = {
   'schema-markup-za-ai-pretragu': Z + 'cluster1-schema-2026-cover.webp',
   'llms-txt-sta-je-i-treba-li-vam': Z + 'cluster1-llms-txt-cover.webp',
   'kako-mjeriti-ai-vidljivost': Z + 'cluster1-ai-tracking-cover.webp',
+  'google-business-profile-verifikacija-bih': Z + 'cluster2-gbp-verification-cover.webp',
+  'lokalni-seo-vise-gradova-bih': Z + 'cluster2-multi-city-seo-cover.webp',
+  'google-recenzije-i-ai-preporuke': Z + 'cluster2-reviews-ai-cover.webp',
+  'tehnicki-seo-audit-checklist': Z + 'cluster2-tech-audit-cover.webp',
 };
 const guideImage = g => { const src = guideImages[g.slug]; if (!src) throw new Error('No Blog card image for guide ' + g.slug); return src; };
 function hubPage() {
